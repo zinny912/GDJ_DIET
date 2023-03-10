@@ -21,6 +21,7 @@ public class HomeController {
 	
 	/**
 	 * Siddmply selects the home view to render by returning its name.
+	 * 올라가요
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
