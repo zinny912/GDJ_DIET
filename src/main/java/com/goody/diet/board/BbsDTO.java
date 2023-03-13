@@ -9,6 +9,9 @@ public class BbsDTO {
 	private String contents;
 	private String writer;
 	private Date regDate;
+	
+	
+	
 	public Long getNum() {
 		return num;
 	}
