@@ -2,8 +2,6 @@ package com.goody.diet.util;
 
 public class Pager {
 	
-	private Long bookNum;
-	
 	private Long num;
 	
 	//검색 종류(사용할 column)
@@ -109,15 +107,6 @@ public class Pager {
 	public void setNum(Long num) {
 		this.num = num;
 	}
-
-
-	public Long getBookNum() {
-		return bookNum;
-	}
-	public void setBookNum(Long bookNum) {
-		this.bookNum = bookNum;
-	}
-
 
 	public String getKind() {
 		return kind;
