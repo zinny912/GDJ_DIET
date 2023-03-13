@@ -3,6 +3,7 @@ package com.goody.diet.board;
 public class BoardDTO extends BbsDTO {
 	private String title;
 	private Long hit;
+	
 	public String getTitle() {
 		return title;
 	}

@@ -5,6 +5,8 @@ public class BoardFileDTO {
 	private Long Num;
 	private String fileName;
 	private String oriName;
+	
+	
 	public Long getFileNum() {
 		return FileNum;
 	}
