@@ -16,8 +16,13 @@ public class MemberDAO {
 	}
 
 	public MemberDTO setMemberLogin(MemberDTO memberDTO) throws Exception {
-		
-		return sqlSession.selectOne(NAMESPACE+"setMemberLogin", memberDTO);
+		memberDTO = sqlSession.selectOne(NAMESPACE+"setMemberLogin", memberDTO);
+		System.out.println(memberDTO.getNames());
+		return memberDTO;
+	}
+	
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setMemberJoin", memberDTO);
 	}
 
 }

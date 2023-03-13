@@ -1,5 +1,7 @@
 package com.goody.diet.member;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,25 @@ public class MemberController {
 		return "/member/login";
 	}
 	@PostMapping("login")
-	public ModelAndView setMemberLogin(ModelAndView mv, MemberDTO memberDTO) throws Exception {
-		memberService.setMemberLogin(memberDTO);
+	public ModelAndView setMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
+		memberDTO = memberService.setMemberLogin(memberDTO);
+		if(memberDTO!=null) {
+			session.setAttribute("sessionMember", memberDTO);			
+		}
+		mv.setViewName("redirect:../");
+		
+		return mv;
+	}
+
+	@GetMapping("join")
+	public String setMemberJoin() throws Exception {
+		return "/member/join";
+	}
+	public ModelAndView setMemberJoin(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+		int result = memberService.setMemberJoin(memberDTO);
+		
+		mv.setViewName("redirect:../");
+		mv.addObject("result", result);
 		return mv;
 	}
 

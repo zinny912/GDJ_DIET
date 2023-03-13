@@ -10,7 +10,18 @@ public class MemberService {
 	MemberDAO memberDAO;
 
 	public MemberDTO setMemberLogin(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setMemberLogin(memberDTO);
+		
+		if(memberDTO.getPw()!=null) { 
+			memberDTO=memberDAO.setMemberLogin(memberDTO);
+		}else {
+			memberDTO=null;
+		}//비번 null이면 null받음
+		return memberDTO;
 	}
+	
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setMemberJoin(memberDTO);
+	}
+
 	
 }
