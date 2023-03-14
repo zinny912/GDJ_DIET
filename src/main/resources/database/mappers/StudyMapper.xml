@@ -4,7 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.goody.diet.study.StudyDAO">
-  	<select id="getBoardList" parameterType="Pager" resultType="StudyDTO">
+  	<select id="getStudyCount" parameterType="Pager" resultType="Long">
+ 		SELECT COUNT(STUDYNUM) FROM STUDY
+ 	</select>
+  	
+	<select id="getBoardList" parameterType="Pager" resultType="StudyDTO">
 		SELECT * FROM STUDY
 	</select>
   </mapper>

@@ -9,14 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.board.BbsDTO;
-import com.goody.diet.board.BbsService;
 import com.goody.diet.util.Pager;
 
+
 @Controller
-public class StudyReviewController {
+@RequestMapping("/study/")
+public class StudyController {
 	
 	@Autowired
-	private BbsService studyReviewService;
+	private StudyService studyService;
 	
-
+	@GetMapping("studyList")
+	public ModelAndView getBoardList(Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		List<BbsDTO> ar  = studyService.getBoardList(pager);
+		
+		mv.setViewName("study/studyList");
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+		return mv;
+	}
 }

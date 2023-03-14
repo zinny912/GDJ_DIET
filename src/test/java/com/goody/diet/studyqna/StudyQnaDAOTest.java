@@ -23,5 +23,6 @@ public class StudyQnaDAOTest extends MyTestCase {
 		List<BbsDTO> ar = studyQnaDAO.getBoardList(pager);
 		assertNotEquals(0, ar.size());
 	}
+	
 
 }
