@@ -25,4 +25,6 @@ public class StudyDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
 	}
+	
+	
 }
