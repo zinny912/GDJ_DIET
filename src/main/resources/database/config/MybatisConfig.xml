@@ -7,10 +7,17 @@
 		<typeAlias type="com.goody.diet.order.OrderDTO" alias="OrderDTO"/>	
 		<typeAlias type="com.goody.diet.order.OrderDetailDTO" alias="OrderDetailDTO"/>
 		<typeAlias type="com.goody.diet.member.MemberDTO" alias="MemberDTO"/>	
-		<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
+		
 		<typeAlias type="com.goody.diet.study.StudyDTO" alias="StudyDTO"/>
-		<typeAlias type="com.goody.diet.study.StudyReviewDTO" alias="StudyReviewDTO"/>
-		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
+		
+		<typeAlias type="com.goody.diet.board.BbsDTO" alias="BbsDTO"></typeAlias>
+  	  	<typeAlias type="com.goody.diet.board.BoardDTO" alias="BoardDTO"/>
+  	  	<typeAlias type="com.goody.diet.board.BoardFileDTO" alias="BoardFileDTO"/>		
+  	  	
+  	  	<typeAlias type="com.goody.diet.board.studyqna.StudyQnaDTO" alias="StudyQnaDTO"/>
+
+  	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
+  	  	<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
 
 

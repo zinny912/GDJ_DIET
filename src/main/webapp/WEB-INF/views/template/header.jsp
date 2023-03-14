@@ -23,7 +23,7 @@
             루틴 스터디
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">스터디 신청하기</a></li>
+            <li><a class="dropdown-item" href="/study/studyList">스터디 신청하기</a></li>
             <li><a class="dropdown-item" href="#">스터디 리얼후기</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -42,7 +42,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link" href="#">이지은 다이어트</a>
+          <a class="nav-link" href="/">구디 다이어트</a>
         </li>
 
       </ul>
