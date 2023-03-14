@@ -1,9 +1,9 @@
 package com.goody.diet.board.studyqna;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.goody.diet.board.BbsDTO;
 import com.goody.diet.board.BoardDAO;
@@ -11,12 +11,13 @@ import com.goody.diet.board.BoardDTO;
 import com.goody.diet.board.BoardFileDTO;
 import com.goody.diet.util.Pager;
 
+@Repository
 public class StudyQnaDAO implements BoardDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private final String NAMESPACE="com.goody.diet.studyqna.StudyQnaDTO.";
+	private final String NAMESPACE="com.goody.diet.board.studyqna.StudyQnaDAO.";
 
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
@@ -33,19 +34,19 @@ public class StudyQnaDAO implements BoardDAO{
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO)
 	}
 
 	@Override
