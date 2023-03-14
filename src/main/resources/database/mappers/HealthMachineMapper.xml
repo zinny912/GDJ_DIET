@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
+	<select id="getHealthMachineList" resultType="HealthMachineDTO">
+		SELECT * FROM
+		HEALTHMACHINE
+	</select>
+	<insert id="setHealthMachineAdd" 
+		parameterType="HealthMachineDTO">
+		<selectKey keyProperty="machineNum" resultType="Long" order="BEFORE">
+		SELECT MACHINE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO HEALTHMACHINE
+		(MACHINENUM,CATEGORYNUM,MACHINENAME,MACHINESCORE,MACHINEDETAIL,PRICE,STOCK,SALE)
+		VALUES(#{machineNum},#{categoryNum},#{machineName},0,#{machineDetail},#{price},#{stock},#{sale})
+	</insert>
+	<insert id="setHealthMachineTopOptionAdd"
+		parameterType="HealthMachineTopOptionDTO">
+		INSERT INTO TOPOPTION (TOPOPTIONNUM,MACHINENUM,OPTIONNAME)
+		VALUES(OPTION_SEQ.NEXTVAL,#{machineNum},#{optionName})
+	</insert>
+	
+	<insert id="setHealthMachineImgAdd" parameterType="HealthMachineImgDTO">
+	INSERT INTO MACHINEIMG(FILENUM, MACHINENUM,FILENAME,ORINAME)
+	VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
+	</insert>
+</mapper>
