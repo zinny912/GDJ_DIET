@@ -16,6 +16,7 @@ public class StudyDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.goody.diet.study.StudyDAO.";
 	
+	//스터디 구매 페이지 페이징 설정 
 	public Long getStudyCount(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getStudyCount",pager);
 	}

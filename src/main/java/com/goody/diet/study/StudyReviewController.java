@@ -13,10 +13,23 @@ import com.goody.diet.board.BbsService;
 import com.goody.diet.util.Pager;
 
 @Controller
+@RequestMapping("/studyReview/*")
 public class StudyReviewController {
 	
 	@Autowired
-	private BbsService studyReviewService;
+	private StudyReviewService studyReviewService;
+	
+	@GetMapping("list")
+	public ModelAndView getBoardList(Pager pager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<StudyReviewDTO> ar = studyReviewService.getBoardList(pager);
+		
+		mv.addObject("list",ar);
+		mv.setViewName("common/reviewList");
+		
+		return mv;
+	}
+	
 	
 
 }
