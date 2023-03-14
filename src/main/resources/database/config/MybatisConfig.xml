@@ -13,7 +13,7 @@
 		<typeAlias type="com.goody.diet.board.BbsDTO" alias="BbsDTO"></typeAlias>
   	  	<typeAlias type="com.goody.diet.board.BoardDTO" alias="BoardDTO"/>
   	  	<typeAlias type="com.goody.diet.board.BoardFileDTO" alias="BoardFileDTO"/>		
-  	  	<typeAlias type="com.goody.diet.board.studyqna.StudyQnaDTO" alias="StudyQnaDTO"/>
+  	  	
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
 	</typeAliases>
 
