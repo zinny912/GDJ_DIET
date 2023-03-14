@@ -6,51 +6,41 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.goody.diet.board.BbsDAO;
 import com.goody.diet.board.BbsDTO;
 import com.goody.diet.util.Pager;
 
 @Repository
-public class StudyReviewDAO implements BbsDAO {
+public class StudyReviewDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.goody.diet.study.StudyReviewDAO.";
 
-	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount",pager);
 	}
-
-	@Override
-	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
+	
+	public List<StudyReviewDTO> getBoardList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
 	}
 	
 	
-	
-	
-	
+//	//리뷰(댓글 추가)
+//	public int setBoardAdd(StudyReviewDTO studyReviewDTO) throws Exception{
+//		return sqlSession.insert(NAMESPACE+"setBoardAdd", studyReviewDTO);
+//	}
+//
+//	//리뷰댓글 수정 
+//	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
+//		return sqlSession.update(NAMESPACE+"setBoardUpdate", studyReviewDTO);
+//		}
+//	
+//	//리뷰삭제 
+//	public int setBoardDelete(StudyReviewDTO studyReviewDTO) throws Exception {
+//		return sqlSession.delete(NAMESPACE+"setBoardDelete", studyReviewDTO);
+//		
+//	}
 
 }

@@ -31,7 +31,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">짧강효확</a>
+          <a class="nav-link" href="/exercise/exerciseList">짧강효확</a>
         </li>
 
         <li class="nav-item">
