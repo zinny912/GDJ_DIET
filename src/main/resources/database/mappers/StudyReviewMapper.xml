@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.goody.diet.study.StudyReviewDAO">
+  
+  
+  <select id="getBoardList" parameterType="Pager" resultType="StudyReviewDTO">
+		SELECT * FROM STUDYREVIEW
+  </select>
+  
+  <insert id="setBoardAdd" parameterType="StudyReviewDTO">
+  		INSERT INTO STUDYREVIEW (NUM, STUDYNUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, SCORE)
+  		VALUES (REVIEW_SEQ.NEXTVAL, #{studyNum}, #{title}, #{contents}, #{writer}, SYSDATE , #{hit}, #{score})
+  </insert>
+  
+  <update id="setBoardUpdate" parameterType="StudyReviewDTO">
+  		UPDATE STUDYREVIEW 
+  		SET CONTENTS = #{contents}
+  		WHERE NUM = #{num}
+  </update>
+  
+  <delete id="setBoardDelete" parameterType="StudyReviewDTO">
+  		DELETE STUDYREVIEW WHERE NUM=#{num}
+  </delete>
+  
+  
+  </mapper>

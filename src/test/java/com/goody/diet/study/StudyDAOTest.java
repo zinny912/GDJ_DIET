@@ -20,7 +20,10 @@ public class StudyDAOTest extends MyTestCase {
 	public void getBoardList() throws Exception{
 		Pager pager = new Pager();
 		List<BbsDTO> ar = studyDAO.getBoardList(pager);
+		System.out.println(ar);
 		assertNotEquals(0, ar.size());
 	}
+	
+	
 
 }

@@ -8,41 +8,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.goody.diet.board.BbsDAO;
-import com.goody.diet.board.BbsDTO;
-import com.goody.diet.board.BbsService;
+
 import com.goody.diet.util.Pager;
 
 @Service
-public class StudyReviewService implements BbsService {
+public class StudyReviewService {
 	
 	@Autowired
-	private BbsDAO studyReviewDAO;
+	private StudyReviewDAO studyReviewDAO;
 
-	@Override
-	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
+	public List<StudyReviewDTO> getBoardList(Pager pager) throws Exception {
+		pager.makeRow();
+		pager.makeNum(studyReviewDAO.getTotalCount(pager));
 		
-		return null;
+		return studyReviewDAO.getBoardList(pager);
 	}
 
-	@Override
-	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int setBoardDelete(BbsDTO bbsDTO, HttpSession httpSession) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//	public int setBoardAdd(StudyReviewDTO studyReviewDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
+//		
+//		return studyReviewDAO.setBoardAdd(studyReviewDTO);
+//	}
+//
+//	
+//	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
+//		
+//		return studyReviewDAO.setBoardUpdate(studyReviewDTO);
+//	}
+//
+//	
+//	public int setBoardDelete(StudyReviewDTO studyReviewDTO, HttpSession httpSession) throws Exception {
+//		// TODO Auto-generated method stub
+//		return studyReviewDAO.setBoardDelete(studyReviewDTO);
+//	}
 	
 	
 	
