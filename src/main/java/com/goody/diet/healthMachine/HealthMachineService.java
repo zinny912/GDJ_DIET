@@ -30,19 +30,40 @@ public class HealthMachineService {
 		for(MultipartFile file:files) {
 			String fileName = fileManager.fileSave(file, realPath);
 			HealthMachineImgDTO healthMachineImgDTO = new HealthMachineImgDTO();
+			healthMachineImgDTO.setMachineNum(healthMachineDTO.getMachineNum());
 			healthMachineImgDTO.setFileName(fileName);
 			healthMachineImgDTO.setOriName(file.getOriginalFilename());
-			healthMachineImgDTO.setMachineNum(healthMachineDTO.getMachineNum());
 			result =healthMachineDAO.setHealthMachineImgAdd(healthMachineImgDTO);
 			
 		}
 		
+		//option 넣기
+//		HealthMachineTopOptionDTO topOptionDTO = new HealthMachineTopOptionDTO();
+//		topOptionDTO.setMachineNum(healthMachineDTO.getMachineNum());
+//		topOptionDTO.setOptionName(healthMachineDTO.getHealthMachineTopOptionDTO().getOptionName());
+//		result = healthMachineDAO.setHealthMachineTopOptionAdd(topOptionDTO);
+//		
+//		HealthMachineBottomOptionDTO bottomOptionDTO = new HealthMachineBottomOptionDTO();
+//		bottomOptionDTO.setTopOptionNum(topOptionDTO.getTopOptionNum());
+//		
+//		bottomOptionDTO.setOptionName(healthMachineDTO.getHealthMachineBottomOptionDTO().getOptionName());
+//		result  = healthMachineDAO.setHealtMachineBottomOptionAdd(bottomOptionDTO);
+		
+		
+		
 		return result;
 
 	}
-	public int setHealthMachineTopOptionAdd(HealthMachineTopOptionDTO healthMachineTopOptionDTO)throws Exception{
-		return healthMachineDAO.setHealthMachineTopOptionAdd(healthMachineTopOptionDTO);
-
+	public List<HealthMachineDTO> getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
+		return healthMachineDAO.getHealthMachineDetail(healthMachineDTO);
 	}
+	
+//	public int setHealthMachineTopOptionAdd(HealthMachineTopOptionDTO healthMachineTopOptionDTO)throws Exception{
+//		return healthMachineDAO.setHealthMachineTopOptionAdd(healthMachineTopOptionDTO);
+//
+//	}
+	
+	
+	
 
 }
