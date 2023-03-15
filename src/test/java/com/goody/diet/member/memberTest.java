@@ -17,7 +17,7 @@ public class memberTest extends MyTestCase{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("HM");
 		memberDTO.setPw("1234");
-		memberDTO = memberDAO.setMemberLogin(memberDTO);
+		memberDTO = memberDAO.getMemberLogin(memberDTO);
 		assertNotNull(memberDTO);
 	}
 	

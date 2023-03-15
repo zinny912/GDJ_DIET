@@ -15,6 +15,36 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+
+	
+//그냥 JS에서 할게요...ㅠ
+//	@RequestMapping(value = "kakaoLogin")
+//    public String kakaoLogin() throws Exception {
+//    	System.out.println("왔어...");
+////    	String kakaoUrl="https://kauth.kakao.com/oauth/authorize?client_id=4dbfcfd2f5a649a659ccd93aa0364e69&redirect_uri=https://localhost/oauth&response_type=code";
+////    	String url = "/member/kakao";
+////    	return kakaoUrl;
+//    	
+//    	String restAPI="4dbfcfd2f5a649a659ccd93aa0364e69";
+//        StringBuffer loginUrl = new StringBuffer();
+//        loginUrl.append("https://kauth.kakao.com/oauth/authorize?client_id=");
+//        loginUrl.append(restAPI); //REST API
+//        loginUrl.append("&redirect_uri=");
+//        loginUrl.append("https://localhost/oauth"); //redirect URL
+//        loginUrl.append("&response_type=code");
+//        
+//        return "redirect:"+loginUrl.toString();
+//    }	
+
+	
+	
+//------------------카카오 끝----------------------
+	
+	@GetMapping("agree")
+	public ModelAndView setMemberAgree(ModelAndView mv) throws Exception {
+		mv.setViewName("member/agree");
+		return mv;
+	}
 	
 	@GetMapping("login")
 	public String setMemberLogin() throws Exception {
@@ -31,12 +61,25 @@ public class MemberController {
 		return mv;
 	}
 
+	@PostMapping("check")
+	public ModelAndView getIdCheck (MemberDTO memberDTO, ModelAndView mv) throws Exception {
+//		System.out.println(memberDTO.getId());
+		String result = memberService.getIdCheck(memberDTO);
+//		System.out.println(result);
+		mv.addObject("result", result);
+		mv.setViewName("/member/ajaxResult");
+		return mv;
+	}
+	
 	@GetMapping("join")
 	public String setMemberJoin() throws Exception {
 		return "/member/join";
 	}
+	@PostMapping("join")
 	public ModelAndView setMemberJoin(MemberDTO memberDTO, ModelAndView mv) throws Exception {
 		int result = memberService.setMemberJoin(memberDTO);
+		
+		System.out.println(memberDTO.getAddress());
 		
 		mv.setViewName("redirect:../");
 		mv.addObject("result", result);
