@@ -19,7 +19,17 @@
   	  	<typeAlias type="com.goody.diet.board.BoardDTO" alias="BoardDTO"/>
   	  	<typeAlias type="com.goody.diet.board.BoardFileDTO" alias="BoardFileDTO"/>		
   	  	
+		<typeAlias type="com.goody.diet.healthMachine.HealthMachineDTO" alias="HealthMachineDTO"/>
+		<typeAlias type="com.goody.diet.healthMachine.HealthMachineImgDTO" alias="HealthMachineImgDTO"/>
+		<typeAlias type="com.goody.diet.healthMachine.HealthMachineTopOptionDTO" alias="HealthMachineTopOptionDTO"/>
+		<typeAlias type="com.goody.diet.healthMachine.HealthMachineBottomOptionDTO" alias="HealthMachineBottomOptionDTO"/>
+
+
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
+  	  	<typeAlias type="java.lang.Long" alias="Long" />
+		<typeAlias type="java.util.List" alias="List"/>
+		<typeAlias type="com.goody.diet.util.Pager" alias="Pager" />
+	
 	</typeAliases>
 
 
