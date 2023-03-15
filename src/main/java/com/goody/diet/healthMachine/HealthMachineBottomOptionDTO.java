@@ -4,7 +4,7 @@ public class HealthMachineBottomOptionDTO {
 
 	private Long bottomOptionNum;
 	private Long topOptionNum;
-	private String optionName;
+	private String bottomOptionName;
 	
 	
 	
@@ -20,12 +20,13 @@ public class HealthMachineBottomOptionDTO {
 	public void setTopOptionNum(Long topOptionNum) {
 		this.topOptionNum = topOptionNum;
 	}
-	public String getOptionName() {
-		return optionName;
+	public String getBottomOptionName() {
+		return bottomOptionName;
 	}
-	public void setOptionName(String optionName) {
-		this.optionName = optionName;
+	public void setBottomOptionName(String bottomOptionName) {
+		this.bottomOptionName = bottomOptionName;
 	}
+	
 	
 	
 }
