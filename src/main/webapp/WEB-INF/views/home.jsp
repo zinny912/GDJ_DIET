@@ -36,7 +36,7 @@
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">구디 다이어트</a>
+  					<a class="navbar-brand w-100" href="/">구디 다이어트</a>
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="oi oi-menu"></span> Menu
 			      </button>
@@ -44,9 +44,9 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item active"><a href="index.jsp" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item active"><a href="/exercise/exerciseList" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item"><a href="classes.jsp" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="schedule.jsp" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="index.jsp" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>

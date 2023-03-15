@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
-	<select id="getHealthMachineList" resultType="HealthMachineDTO">
+ <mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
+	<!--<select id="getHealthMachineList" resultType="HealthMachineDTO">
 		SELECT * FROM
 		HEALTHMACHINE
 	</select>
@@ -26,5 +26,5 @@
 	<insert id="setHealthMachineImgAdd" parameterType="HealthMachineImgDTO">
 	INSERT INTO MACHINEIMG(FILENUM, MACHINENUM,FILENAME,ORINAME)
 	VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
-	</insert>
-</mapper>
+	</insert> -->
+</mapper> 
