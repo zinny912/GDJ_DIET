@@ -26,7 +26,7 @@
 				<tr>
 					<td>${dto.machineNum }</td>
 					<td>${dto.categoryNum }</td>
-					<td>${dto.machineName }</td>
+					<td><a href="./detail?machineNum=${dto.machineNum}">${dto.machineName }</a></td>
 					<td>${dto.machineScore }</td>
 					<td>${dto.machineDetail }</td>
 					<td>${dto.price }</td>

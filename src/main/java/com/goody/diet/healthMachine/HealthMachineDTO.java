@@ -11,9 +11,9 @@ public class HealthMachineDTO {
 	private Long stock;
 	private Long sale;
 	
-	private HealthMachineTopOptionDTO healthMachineTopOptionDTO;
-	private HealthMachineBottomOptionDTO healthMachineBottomOptionDTO;
 	private HealthMachineImgDTO healthMachineImgDTO;
+	private HealthMachineTopOptionDTO healthMachineTopOptionDTO;
+	
 	
 	public Long getMachineNum() {
 		return machineNum;
@@ -45,24 +45,7 @@ public class HealthMachineDTO {
 	public void setMachineDetail(String machineDetail) {
 		this.machineDetail = machineDetail;
 	}
-	public HealthMachineTopOptionDTO getHealthMachineTopOptionDTO() {
-		return healthMachineTopOptionDTO;
-	}
-	public void setHealthMachineTopOptionDTO(HealthMachineTopOptionDTO healthMachineTopOptionDTO) {
-		this.healthMachineTopOptionDTO = healthMachineTopOptionDTO;
-	}
-	public HealthMachineBottomOptionDTO getHealthMachineBottomOptionDTO() {
-		return healthMachineBottomOptionDTO;
-	}
-	public void setHealthMachineBottomOptionDTO(HealthMachineBottomOptionDTO healthMachineBottomOptionDTO) {
-		this.healthMachineBottomOptionDTO = healthMachineBottomOptionDTO;
-	}
-	public HealthMachineImgDTO getHealthMachineImgDTO() {
-		return healthMachineImgDTO;
-	}
-	public void setHealthMachineImgDTO(HealthMachineImgDTO healthMachineImgDTO) {
-		this.healthMachineImgDTO = healthMachineImgDTO;
-	}
+	
 	public Long getPrice() {
 		return price;
 	}
@@ -80,6 +63,18 @@ public class HealthMachineDTO {
 	}
 	public void setSale(Long sale) {
 		this.sale = sale;
+	}
+	public HealthMachineImgDTO getHealthMachineImgDTO() {
+		return healthMachineImgDTO;
+	}
+	public void setHealthMachineImgDTO(HealthMachineImgDTO healthMachineImgDTO) {
+		this.healthMachineImgDTO = healthMachineImgDTO;
+	}
+	public HealthMachineTopOptionDTO getHealthMachineTopOptionDTO() {
+		return healthMachineTopOptionDTO;
+	}
+	public void setHealthMachineTopOptionDTO(HealthMachineTopOptionDTO healthMachineTopOptionDTO) {
+		this.healthMachineTopOptionDTO = healthMachineTopOptionDTO;
 	}
 	
 	
