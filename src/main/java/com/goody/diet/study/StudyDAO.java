@@ -25,4 +25,8 @@ public class StudyDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
 	}
+	
+	public StudyDTO getBoardDetail(StudyDTO studyDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", studyDTO);
+	}
 }

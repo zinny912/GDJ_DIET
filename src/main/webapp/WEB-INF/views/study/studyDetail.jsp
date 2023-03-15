@@ -62,37 +62,46 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">Class Program</h1>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="ftco-section">
-		<div class="container">
-			<div class="row">
-				<c:forEach items="${list}" var="dto">
-					<div class="col-md-4">
-						<div class="classes w-100 ftco-animate">
-							<a href="./studyDetail?studyNum=${dto.studyNum}" class="img w-100 mb-3"
-								style="background-image: url(/resources/images/studyclass.jpg);"></a>
-							<div class="text w-100 text-center">
-								<h3>
-									<a href="./studyDetail?studyNum=${dto.studyNum}">${dto.studyName}</a>
-								</h3>
-								<p>${dto.studyPeriod}</p>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</section>
+	<div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyclass.jpg" alt="..." /></div>
+                <div class="col-lg-5">
+                    <h2 class="font-weight-light">${dto.studyName}</h2>
+                    <h3 class="font-weight-light">${dto.studyCost}원</h3>
+                    <hr class="my-hr2">
+            		<div class="text-center">
+                    <h6><strong>스터디 일정안내</strong></h6>
+                    ${dto.studyPeriod} 스터디 기간
+                    <br>반배정 문자 일괄 발송
+                    <br>문의:010-0000-1111
+                    </div>
+                    <br>
+                    <a class="btn btn-primary" href="#!">장바구니에 담기</a>
+                </div>
+            </div>
+            <!-- Call to Action-->
+            
+            <div class="col-12 w-100 text-center">
+			        <div class="row">
+			        <div class="col-md-4">
+			          <div class="nav-link" id="studyQnaInfo">상세정보</div>
+			        </div>
+			        <div class="col-md-4">
+			         <div class="nav-link">구매평</div>
+			        </div>
+			        <div class="col-md-4">
+			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}">Q&amp;A</div>
+			        </div>
+			        <hr class="my-hr2">
+			        </div>
+  			</div>
+  			
+  			<div class="my-5" id="studyQnaListResult">
+  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
+  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
+  			</div>
 
     <footer class="ftco-footer ftco-section bg-light">
       <div class="container">
@@ -185,6 +194,16 @@
   <script src="/resources/js/google-map.js"></script>
   <script src="/resources/js/main.js"></script>
 
-<c:import url="../template/common_js.jsp"></c:import> 
+  <style>
+  	.my-hr2 {
+    border: 0;
+    height: 2px;
+    background: #ccc;
+  }
+  </style>
+
+<c:import url="../template/common_js.jsp"></c:import>
+<script src="/resources/js/studyQna.js"></script>
   </body>
 </html>
+
