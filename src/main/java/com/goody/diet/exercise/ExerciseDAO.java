@@ -13,7 +13,7 @@ public class ExerciseDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NANMESPACE = "com.goody.diet.exercise.ExerciseDAO.";
+	private final String NAMESPACE = "com.goody.diet.exercise.ExerciseDAO.";
 	
 //	public Long getExerciseCount(Pager pager) throws Exception{
 //		return sqlSession.selectOne(NANMESPACE+"getExerciseCount", pager);
@@ -21,10 +21,13 @@ public class ExerciseDAO {
 //	
 //	
 	public List<ExerciseDTO> getExerciseList () throws Exception{
-		return sqlSession.selectList(NANMESPACE+"getExerciseList");
+		return sqlSession.selectList(NAMESPACE+"getExerciseList");
 		
 	}
 	
+	public ExerciseDTO getExercisBody() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getExerciseBody");
+	}
 	
 
 }

@@ -1,4 +1,4 @@
-%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -44,9 +44,9 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item"><a href="index.jsp" class="nav-link">이달의루틴</a></li>
-			          <li class="nav-item"><a href="classes.jsp" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="schedule.jsp" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
+			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item active"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>

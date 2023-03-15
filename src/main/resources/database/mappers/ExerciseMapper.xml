@@ -5,8 +5,14 @@
   
   <mapper namespace="com.goody.diet.exercise.ExerciseDAO">
  
- 	
-  	<select id="getExerciseList" parameterType="Pager" resultType="ExerciseDTO">
+ <!-- list -->	
+  	<select id="getExerciseList" parameterType="ExerciseDTO" resultType="ExerciseDTO">
 		SELECT * FROM EXERCISE
+	</select>
+
+<!-- detail : urlName만 뽑아오기-->
+	<select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+		SELECT URLNAME FROM EXERCISE WHERE BODYPART = #{bodyPart}
+		 
 	</select>
   </mapper>

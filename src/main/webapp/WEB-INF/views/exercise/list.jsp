@@ -1,4 +1,4 @@
-%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -6,7 +6,7 @@
     <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <c:import url="./template/common_css.jsp"></c:import>
+    <c:import url="../template/common_css.jsp"></c:import>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 
@@ -44,9 +44,9 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item"><a href="index.jsp" class="nav-link">이달의루틴</a></li>
-			          <li class="nav-item"><a href="classes.jsp" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="schedule.jsp" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
+			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item active"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
@@ -60,24 +60,42 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/allbody2header.png');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">Our Professional Trainer</h1>
+            <h1 class="mb-3 bread">짧강효확</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Trainer</span></p>
           </div>
         </div>
       </div>
     </section>
 
+
+	<div class = "container-fluid">
+		<div class="img" img="/resources/images/allbody.jpg"></div>
+		<c:forEach items="${list}" var="dto">
+			<h1>${dto.num}</h1>
+			<tr>
+				<td>
+					<a href="./body?bodyPart=${dto.bodyPart}">${dto.bodyPart}</a>
+						
+					
+				</td>
+				
+			</tr>
+		</c:forEach>
+	</div>
+
+
+
     <section class="ftco-section">
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-3 d-flex ftco-animate">
     				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-1.jpg);"></div>
+	    				<div class="img" style="background-image: url(/resources/images/allbody2.jpeg);"></div>
 	    				<div class="text bg-white p-4 ftco-animate">
 	    					<span class="subheading">Owner / Head Coach</span>
 	    					<h3><a href="#">Elizabeth Nelson</a></h3>
@@ -234,6 +252,6 @@
   <script src="/resources/js/google-map.js"></script>
   <script src="/resources/js/main.js"></script>
 
-<c:import url="./template/common_js.jsp"></c:import>    
+<c:import url="../template/common_js.jsp"></c:import>    
   </body>
 </html>

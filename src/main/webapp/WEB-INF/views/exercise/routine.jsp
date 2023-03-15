@@ -46,9 +46,9 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item active"><a href="/exercise/exerciseList" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item"><a href="studyList.jsp" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="index.jsp" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
@@ -111,105 +111,91 @@
                     <td><i class="ion-ios-close"></i></td>
                     <td><i class="ion-ios-close"></i></td>
                     
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-1.jpg);"></div>
+                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/leg1.png);"></div>
                       <a href="https://youtu.be/46vQnzaZ6aU"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-2.jpg);"></div>
-                      <a href="#"><strong>승마살 싹뚝루틴</strong>
-                      7 am-6 am</a>
+                      <a href="#"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
               
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>승마살 싹뚝루틴</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
                   
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>승마살 싹뚝루틴</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>승마살 싹뚝루틴</strong></a>
+                    </td>
                   </tr>
                   <tr>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-4.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
+                    </td>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-5.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
+                    
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-6.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
+                  
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-7.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong> </a>
                     </td>
+                   
                   </tr>
                   <tr>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-1.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-2.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                   </tr>
                   <tr>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-4.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-5.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-6.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-7.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                   </tr>
                   <tr>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-1.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-2.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-4.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-5.jpg);"></div>
-                      <a href="#"><strong>Yoga training</strong> <br>
-                      7 am-6 am</a>
+                      <a href="#"><strong>Yoga training</strong></a>
                     </td>
                   </tr>
                 </tbody>
