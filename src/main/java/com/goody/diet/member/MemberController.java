@@ -40,6 +40,11 @@ public class MemberController {
 	
 //------------------카카오 끝----------------------
 	
+	@GetMapping("dummiHome")
+	public String dummiHome() throws Exception {
+		return "/member/dummiHome";
+	}
+	
 	@GetMapping("agree")
 	public ModelAndView setMemberAgree(ModelAndView mv) throws Exception {
 		mv.setViewName("member/agree");
@@ -51,20 +56,47 @@ public class MemberController {
 		return "/member/login";
 	}
 	@PostMapping("login")
-	public ModelAndView setMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
-		memberDTO = memberService.setMemberLogin(memberDTO);
+	public ModelAndView getMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
+//		System.out.println("컨트롤러왔니..?");
+		memberDTO = memberService.getMemberLogin(memberDTO);
 		if(memberDTO!=null) {
 			session.setAttribute("sessionMember", memberDTO);			
 		}
-		mv.setViewName("redirect:../");
+		mv.setViewName("redirect:./dummiHome");
 		
 		return mv;
 	}
+	@GetMapping("logout")
+	public String getMemberLogout(HttpSession session) throws Exception {
+		session.invalidate();
+		return "redirect:./dummiHome";
+	}
+	
+	@GetMapping("myPage")
+	public ModelAndView getMyPage(ModelAndView mv, HttpSession session) throws Exception {
+		
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		if(memberDTO!=null) {
+			memberDTO = memberService.getMyPage(memberDTO);
+		}
+		mv.addObject("mypage",memberDTO );
+		mv.setViewName("/member/myPage");
+		return mv;
+	}
 
-	@PostMapping("check")
+	@PostMapping("idCheck")
 	public ModelAndView getIdCheck (MemberDTO memberDTO, ModelAndView mv) throws Exception {
 //		System.out.println(memberDTO.getId());
 		String result = memberService.getIdCheck(memberDTO);
+//		System.out.println(result);
+		mv.addObject("result", result);
+		mv.setViewName("/member/ajaxResult");
+		return mv;
+	}
+	@PostMapping("emailCheck")
+	public ModelAndView getEmailCheck (MemberDTO memberDTO, ModelAndView mv) throws Exception {
+//		System.out.println(memberDTO.getId());
+		String result = memberService.getEmailCheck(memberDTO);
 //		System.out.println(result);
 		mv.addObject("result", result);
 		mv.setViewName("/member/ajaxResult");

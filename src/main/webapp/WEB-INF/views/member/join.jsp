@@ -38,7 +38,7 @@
                       <input type="text" id="id" name="id" class="form-control" placeholder="아이디"/>
                            <label class="form-label" id="idLabel" for="id"></label>
                       <input type="email" id="email" name="email" class="form-control" placeholder="이메일"/>
-<!--                       <label class="form-label" for="Email">Your Email</label> -->
+                           <label class="form-label" id="emailLabel" for="email"></label>
                       <input type="password" id="password" name="pw" class="form-control" placeholder="비밀번호"/>
                       <label class="form-label" for="Password" id="passwordLabel"></label>
                       <input type="password" id="passwordCheck" class="form-control" placeholder="비밀번호 확인"/>
@@ -82,7 +82,7 @@
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" id="joinBtn" class="btn btn-primary btn-lg">회원가입</button>
+                    <button type="button" id="submitBtn" class="btn btn-primary btn-lg">회원가입</button>
                   </div>
 
                 </form>

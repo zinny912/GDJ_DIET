@@ -38,14 +38,14 @@ $('#modalSubmit').click(()=>{
 })
 
 //@회원가입버튼
-$('#joinBtn').click(()=>{
+$('#submitBtn').click(()=>{
 	if(! $('.form-check-input').attr("checked")=="checked"){
 		alert("약관동의점..")
 
 	}else if(checkCount.includes(false)){
 		alert("필수정보 입력점")
 	}else{
-		$('#joinBtn').attr("type", "submit")
+		$('#submitBtn').attr("type", "submit")
 	}
 
 })
@@ -53,7 +53,7 @@ $('#joinBtn').click(()=>{
 //@idCheck
 $('#id').blur(()=>{
 	console.log($('#id').val())
-	fetch('/member/check', {
+	fetch('/member/idCheck', {
 		method:"POST",
 		headers:{"Content-type":"application/x-www-form-urlencoded"},
 		body:"id="+$('#id').val(),
@@ -79,6 +79,42 @@ $('#id').blur(()=>{
 		}else{
 			$('#idLabel').prop("class", "form-label redResult")
 			$('#idLabel').text("필수정보")
+			checkCount[0]=false;
+		}
+	})
+
+})
+
+// console.log($('#email').attr('id'))
+//@emailCheck
+$('#email').blur(()=>{
+	// console.log($('#email').val())
+	fetch('/member/emailCheck', {
+		method:"POST",
+		headers:{"Content-type":"application/x-www-form-urlencoded"},
+		body:"email="+$('#email').val(),
+	}).then((response)=>{
+
+		return response.text()
+	})
+	.then((res)=>{
+
+		if(res.trim()=="사용가능"){
+			// $('#idLabel').prop("hidden", "false")
+			$('#emailLabel').prop("class", "form-label blueResult")
+			$('#emailLabel').text("사용가능 "+$('#email').attr('id'))
+			console.log('사용가능 '+$('#email').attr('id'))
+			checkCount[0]=true;
+
+		}else if(res.trim()=="중복"){
+			// $('#idLabel').prop("hidden", "false")
+			$('#emailLabel').prop("class", "form-label redResult")
+			$('#emailLabel').text($('#email').attr('id')+" 중복")
+			console.log('중복'+$('#email').attr('id'))
+			checkCount[0]=false;
+		}else{
+			$('#emailLabel').prop("class", "form-label redResult")
+			$('#emailLabel').text("필수정보")
 			checkCount[0]=false;
 		}
 	})
