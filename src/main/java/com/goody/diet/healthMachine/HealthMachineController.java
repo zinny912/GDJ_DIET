@@ -34,9 +34,17 @@ public class HealthMachineController {
 	}
 	@PostMapping("add")
 	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO,HttpSession session, MultipartFile [] files) throws Exception{
-		int result =healthMachineService.setHealthMachineAdd(healthMachineDTO,files,session);
+		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, files, session);
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
-	
+	@GetMapping("detail")
+	public ModelAndView getHealthMachineDetail(ModelAndView mv, HealthMachineDTO healthMachineDTO) throws Exception{
+		List<HealthMachineDTO> ar = healthMachineService.getHealthMachineDetail(healthMachineDTO);
+//		System.out.println(ar.get(0).getMachineName());
+		mv.addObject("list", ar);
+		mv.setViewName("healthMachine/detail");
+		
+		return mv;
+	}
 }
