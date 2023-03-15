@@ -44,14 +44,14 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
-			          <li class="nav-item active"><a href="classes.jsp" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item active"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
-			          <li class="nav-item active"><a href="about.jsp" class="nav-link">운동기구</a></li>
-			          <li class="nav-item active"><a href="#" class="nav-link">Logout</a></li>
-			          <li class="nav-item active"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
-			          <li class="nav-item active"><a href="blog.jsp" class="nav-link">장바구니</a></li>
-			          <li class="nav-item active"><a href="contact.jsp" class="nav-link">search</a></li>
+			          <li class="nav-item active"><a href="index" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href="classes" class="nav-link">루틴스터디</a></li>
+			          <li class="nav-item"><a href="schedule" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="./healthMachine/list" class="nav-link">운동기구</a></li>
+			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+			          <li class="nav-item"><a href="trainer" class="nav-link">마이페이지</a></li>
+			          <li class="nav-item"><a href="blog" class="nav-link">장바구니</a></li>
+			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
 			        </ul>
 			      </div>
   				</div>

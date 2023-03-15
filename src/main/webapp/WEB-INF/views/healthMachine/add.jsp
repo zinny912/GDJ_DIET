@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -47,25 +48,33 @@
 					<input class="form-check-input" type="radio" name="sale" value="0">
 					<label class="form-check-label"> 판매중단 </label>
 				</div>
-				<div id="fileList1">
-					<div class="mb-3">
-						<label for="files" class="form-label">이미지</label> <input
-							type="file" class="form-control" id="files" name="files">
-					</div>
+				<div id="fileList">
+					<button type="button" class="btn btn-primary col-md-2" id="fileAdd"
+					>fileadd</button>
 				</div>
-				<div id="fileList2">
-					<div class="mb-3">
-						<label for="files" class="form-label">이미지</label> <input
-							type="file" class="form-control" id="files" name="files">
-					</div>
+				<div class="mb-3">
+					<label for="machineName" class="form-label">상위옵션명</label> 
+					<input type="text" class="form-control" name="topOptionName">
 				</div>
+				<div class="mb-3">
+					<label for="machineName" class="form-label">하위옵션명</label> 
+					<input type="text" class="form-control" name="bottomOptionName">
+				</div>
+				
+				
 				<button type="submit"
 					class="btn btn-outline-primary col col-md-2 offset-md-10">add
 				</button>
 			</form>
 		</div>
 	</div>
-
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="/resources/js/healthMachineAdd.js"></script>
+	<script>
+		setMax(3);
+		setParam('f');
+	</script>
 </body>
 </html>
