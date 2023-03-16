@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+    <title>구디다이어트</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <c:import url="./template/common_css.jsp"></c:import>
+     <c:import url="../template/common_css.jsp"></c:import>
      
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 
@@ -38,7 +38,7 @@
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">구디 다이어트</a>
+  					<a class="navbar-brand w-100" href="/">구디 다이어트</a>
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="oi oi-menu"></span> Menu
 			      </button>
@@ -47,9 +47,9 @@
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
 			          <li class="nav-item"><a href="index.jsp" class="nav-link">이달의루틴</a></li>
-			          <li class="nav-item active"><a href="classes.jsp" class="nav-link">루틴스터디</a></li>
+			          <li class="nav-item active"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
 			          <li class="nav-item"><a href="schedule.jsp" class="nav-link">짧강효확</a></li>
-			          <li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
+			          <li class="nav-item"><a href="/healthMachine/list" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
 			          <li class="nav-item"><a href="blog.jsp" class="nav-link">장바구니</a></li>
@@ -62,78 +62,46 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">Class Program</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Classes</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="ftco-section">
-    	<div class="container">
-        <div class="row">
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(/resources/images/classes-1.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Private &amp; Group Lessons</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(/resources/images/classes-2.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga for Pregnant</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(/resources/images/classes-3.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga for Beginners</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(/resources/images/classes-4.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga Barre</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(/resources/images/classes-5.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga Core</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-4">
-        		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(/resources/images/classes-6.jpg);"></a>
-        			<div class="text w-100 text-center">
-        				<h3><a href="#">Yoga Restore</a></h3>
-        				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
-        			</div>
-        		</div>
-        	</div>
-        </div>
-    	</div>
-    </section>
+	<div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyclass.jpg" alt="..." /></div>
+                <div class="col-lg-5">
+                    <h2 class="font-weight-light">${dto.studyName}</h2>
+                    <h3 class="font-weight-light">${dto.studyCost}원</h3>
+                    <hr class="my-hr2">
+            		<div class="text-center">
+                    <h6><strong>스터디 일정안내</strong></h6>
+                    ${dto.studyPeriod} 스터디 기간
+                    <br>반배정 문자 일괄 발송
+                    <br>문의:010-0000-1111
+                    </div>
+                    <br>
+                    <a class="btn btn-primary" href="#!">장바구니에 담기</a>
+                </div>
+            </div>
+            <!-- Call to Action-->
+            
+            <div class="col-12 w-100 text-center">
+			        <div class="row">
+			        <div class="col-md-4">
+			          <div class="nav-link" id="studyQnaInfo">상세정보</div>
+			        </div>
+			        <div class="col-md-4">
+			         <div class="nav-link">구매평</div>
+			        </div>
+			        <div class="col-md-4">
+			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}">Q&amp;A</div>
+			        </div>
+			        <hr class="my-hr2">
+			        </div>
+  			</div>
+  			
+  			<div class="my-5" id="studyQnaListResult">
+  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
+  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
+  			</div>
 
     <footer class="ftco-footer ftco-section bg-light">
       <div class="container">
@@ -226,6 +194,16 @@
   <script src="/resources/js/google-map.js"></script>
   <script src="/resources/js/main.js"></script>
 
-<c:import url="./template/common_js.jsp"></c:import> 
+  <style>
+  	.my-hr2 {
+    border: 0;
+    height: 2px;
+    background: #ccc;
+  }
+  </style>
+
+<c:import url="../template/common_js.jsp"></c:import>
+<script src="/resources/js/studyQna.js"></script>
   </body>
 </html>
+

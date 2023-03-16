@@ -5,7 +5,7 @@ public class StudyDTO {
 	private Long studyNum;
 	private String studyName;
 	private Long studyCost;
-	private String studyPriod;
+	private String studyPeriod;
 	private Long studyStock;
 	
 	
@@ -27,11 +27,11 @@ public class StudyDTO {
 	public void setStudyCost(Long studyCost) {
 		this.studyCost = studyCost;
 	}
-	public String getStudyPriod() {
-		return studyPriod;
+	public String getStudyPeriod() {
+		return studyPeriod;
 	}
-	public void setStudyPriod(String studyPriod) {
-		this.studyPriod = studyPriod;
+	public void setStudyPeriod(String studyPeriod) {
+		this.studyPeriod = studyPeriod;
 	}
 	public Long getStudyStock() {
 		return studyStock;
