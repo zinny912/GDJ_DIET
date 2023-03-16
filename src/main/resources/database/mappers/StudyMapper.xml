@@ -12,7 +12,7 @@
 		SELECT * FROM STUDY ORDER BY STUDYNUM ASC
 	</select>
 	
-	<select id="getBoardDetail" parameterType="StudyDTO" resultType="StudyDTO">
+	<select id="getBoardDetail" parameterType="Pager" resultType="StudyDTO">
 		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
 	</select>
   </mapper>

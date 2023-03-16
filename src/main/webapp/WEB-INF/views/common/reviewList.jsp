@@ -3,6 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 
 <table class = "table table-striped">
+	<thead>
+		<tr>
+			<th>CONTENTS</th>
+			<th>WRITER</th>
+			<th>DATE</th>
+		</tr>
+	</thead>
 	<c:forEach items ="${list}" var="dto">
 		<tr>
 			<td id="contents${dto.num}">
@@ -10,18 +17,6 @@
 			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.regDate}</td>
-			<td>
-			<%--  <c:if test="${member.id eq dto.writer}"> --%>
-			<button class="btn btn-warning">댓글수정</button>
-			<%-- </c:if>--%>
-			
-			</td>
-			<%--  <c:if test="${member.id eq dto.writer}"> --%>
-			<button class="btn btn-warning">댓글삭제</button>
-			<%-- </c:if>--%>
-			<td>
-			
-			</td>
 		</tr>
 	</c:forEach>
 </table>
