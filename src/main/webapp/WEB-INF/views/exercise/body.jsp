@@ -6,6 +6,7 @@
     <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <c:import url="./template/common_css.jsp"></c:import>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
