@@ -23,4 +23,8 @@ public class StudyService {
 		
 		return studyDAO.getBoardList(pager);
 	}
+	
+	public StudyDTO getBoardDetail(StudyDTO studyDTO) throws Exception{
+		return studyDAO.getBoardDetail(studyDTO);
+	}
 }
