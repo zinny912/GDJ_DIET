@@ -36,7 +36,7 @@
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">Meditative</a>
+  					<a class="navbar-brand w-100" href="index.html">구디 다이어트</a>
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="oi oi-menu"></span> Menu
 			      </button>
@@ -47,7 +47,7 @@
 			          <li class="nav-item"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
 			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
-			          <li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
+			          <li class="nav-item"><a href="/healthMachine/list" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item active"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
 			          <li class="nav-item"><a href="blog.jsp" class="nav-link">장바구니</a></li>
@@ -65,7 +65,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread">짧강효확</h1>
+            <h1 class="mb-3 bread"></h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Trainer</span></p>
           </div>
         </div>
