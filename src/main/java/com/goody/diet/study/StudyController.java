@@ -30,4 +30,16 @@ public class StudyController {
 		mv.addObject("pager", pager);
 		return mv;
 	}
-}
+	
+	@GetMapping("studyDetail")
+	public ModelAndView getBoardDetail(StudyDTO studyDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		studyDTO = studyService.getBoardDetail(studyDTO);
+		
+		mv.setViewName("study/studyDetail");
+		mv.addObject("dto", studyDTO);
+		
+		return mv;
+	}
+} 

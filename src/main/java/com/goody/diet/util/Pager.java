@@ -4,6 +4,8 @@ public class Pager {
 	
 	private Long num;
 	
+	private Long studyNum;
+	
 	//검색 종류(사용할 column)
 	private String kind;
 	//검색어
@@ -206,6 +208,16 @@ public class Pager {
 	}
 	public void setLastRow(Long lastRow) {
 		this.lastRow = lastRow;
+	}
+
+
+	public Long getStudyNum() {
+		return studyNum;
+	}
+
+
+	public void setStudyNum(Long studyNum) {
+		this.studyNum = studyNum;
 	}
 	
 	

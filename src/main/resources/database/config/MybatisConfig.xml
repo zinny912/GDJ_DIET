@@ -28,7 +28,8 @@
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
   	  	<typeAlias type="java.lang.Long" alias="Long" />
 		<typeAlias type="java.util.List" alias="List"/>
-		<typeAlias type="com.goody.diet.util.Pager" alias="Pager" />
+		
+		<typeAlias type="com.goody.diet.board.studyqna.StudyQnaDTO" alias="StudyQnaDTO"/>
 	
 	</typeAliases>
 
