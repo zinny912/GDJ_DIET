@@ -49,10 +49,10 @@
 					</tbody>
 				</table>
 				<div class="form-floating">
-					<select class="form-select" id="floatingSelect"
-						aria-label="상위옵션">
+					<select class="form-select" id="floatingSelect" aria-label="상위옵션">
 						<c:forEach items="${list }" var="dto" varStatus="i">
-						<option value="${dto.healthMachineTopOptionDTO.topOptionName}" id="${dto.healthMachineTopOptionDTO.topOptionNum}">${dto.healthMachineTopOptionDTO.topOptionName}</option>
+							<option value="${dto.healthMachineTopOptionDTO.topOptionName}"
+								id="${dto.healthMachineTopOptionDTO.topOptionNum}">${dto.healthMachineTopOptionDTO.topOptionName}</option>
 						</c:forEach>
 					</select> <label for="floatingSelect">Works with selects</label>
 				</div>

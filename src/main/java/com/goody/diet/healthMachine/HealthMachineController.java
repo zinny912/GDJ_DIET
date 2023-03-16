@@ -47,4 +47,14 @@ public class HealthMachineController {
 		
 		return mv;
 	}
+	@GetMapping("optionAdd")
+	public ModelAndView setMachineOptionAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO)throws Exception{
+		mv.setViewName("healthMachine/optionAdd");
+		return mv;
+	}
+	@PostMapping("optionAdd")
+	public ModelAndView setMachineOptionAdd(ModelAndView mv)throws Exception{
+		
+		return mv;
+	}
 }

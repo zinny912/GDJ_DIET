@@ -24,11 +24,11 @@ public class HealthMachineDAO {
 	public int setHealthMachineTopOptionAdd(HealthMachineTopOptionDTO healthMachineTopOptionDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setHealthMachineTopOptionAdd", healthMachineTopOptionDTO);
 	}
-	public int setHealthMachineImgAdd(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setHealthMachineImgAdd", healthMachineImgDTO);
-	}
 	public int setHealtMachineBottomOptionAdd(HealthMachineBottomOptionDTO healthMachineBottomOptionDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setHealtMachineBottomOptionAdd", healthMachineBottomOptionDTO);
+	}
+	public int setHealthMachineImgAdd(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setHealthMachineImgAdd", healthMachineImgDTO);
 	}
 	public List<HealthMachineDTO> getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineDetail",healthMachineDTO);
