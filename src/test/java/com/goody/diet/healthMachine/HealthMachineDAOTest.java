@@ -22,9 +22,17 @@ public class HealthMachineDAOTest extends MyTestCase {
 //	@Test
 	public void setHealthMachineTopOptionAdd()throws Exception{
 		HealthMachineTopOptionDTO dto = new HealthMachineTopOptionDTO();
-		dto.setOptionName("옵션top1");
+//		dto.setOptionName("옵션top1");
 		dto.setMachineNum(26L);
 		healthMachineDAO.setHealthMachineTopOptionAdd(dto);
 		assertNotEquals(0, dto);
+	}
+	
+	@Test
+	public void getHealthMachineDetailTest()throws Exception{
+		HealthMachineDTO dto = new HealthMachineDTO();
+		dto.setMachineNum(49L);
+		List<HealthMachineDTO> ar  = healthMachineDAO.getHealthMachineDetail(dto);
+		assertNotNull(ar);
 	}
 }
