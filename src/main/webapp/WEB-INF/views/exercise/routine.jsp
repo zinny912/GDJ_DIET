@@ -62,7 +62,6 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -111,90 +110,70 @@
                     <td><i class="ion-ios-close"></i></td>
                     <td><i class="ion-ios-close"></i></td>
                     
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/leg1.png);"></div>
                       <a href="https://youtu.be/46vQnzaZ6aU"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-2.jpg);"></div>
                       <a href="#"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
               
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
                   
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>승마살 싹뚝루틴</strong></a>
                     </td>
                   </tr>
                   <tr>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-4.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-5.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-6.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                   
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-7.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> </a>
                     </td>
                    
                   </tr>
                   <tr>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-1.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-2.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                   </tr>
                   <tr>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-4.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-5.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-6.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-7.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                   </tr>
                   <tr>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-1.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-2.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-4.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
-                    <td class="text-center"><div class="img rounded-circle mb-2" style="background-image: url(/resources/images/classes-5.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong></a>
                     </td>
                   </tr>

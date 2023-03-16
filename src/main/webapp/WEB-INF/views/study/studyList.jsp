@@ -46,9 +46,9 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item"><a href="index.jsp" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href=/exercise/routine" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item active"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="schedule.jsp" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="/healthMachine/list" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
@@ -62,7 +62,6 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -80,7 +79,6 @@
 					<div class="col-md-4">
 						<div class="classes w-100 ftco-animate">
 							<a href="./studyDetail?studyNum=${dto.studyNum}" class="img w-100 mb-3"
-								style="background-image: url(/resources/images/studyclass.jpg);"></a>
 							<div class="text w-100 text-center">
 								<h3>
 									<a href="./studyDetail?studyNum=${dto.studyNum}">${dto.studyName}</a>

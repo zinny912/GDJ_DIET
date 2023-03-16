@@ -108,7 +108,6 @@
     			</div>
 
     			<div class="col-md-4 d-flex">
-    				<div class="img img-services w-100" style="background-image: url(./resources/images/services.jpg);"></div>
     			</div>
 
     			<div class="col-md-4">
@@ -163,7 +162,6 @@
         <div class="row">
         	<div class="col-md-4">
         		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(./resources/images/classes-1.jpg);"></a>
         			<div class="text w-100 text-center">
         				<h3><a href="#">Private &amp; Group Lessons</a></h3>
         				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
@@ -172,7 +170,6 @@
         	</div>
         	<div class="col-md-4">
         		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(./resources/images/classes-2.jpg);"></a>
         			<div class="text w-100 text-center">
         				<h3><a href="#">Yoga for Pregnant</a></h3>
         				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
@@ -181,7 +178,6 @@
         	</div>
         	<div class="col-md-4">
         		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(./resources/images/classes-3.jpg);"></a>
         			<div class="text w-100 text-center">
         				<h3><a href="#">Yoga for Beginners</a></h3>
         				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
@@ -190,7 +186,6 @@
         	</div>
         	<div class="col-md-4">
         		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(./resources/images/classes-4.jpg);"></a>
         			<div class="text w-100 text-center">
         				<h3><a href="#">Yoga Barre</a></h3>
         				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
@@ -199,7 +194,6 @@
         	</div>
         	<div class="col-md-4">
         		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(./resources/images/classes-5.jpg);"></a>
         			<div class="text w-100 text-center">
         				<h3><a href="#">Yoga Core</a></h3>
         				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
@@ -208,7 +202,6 @@
         	</div>
         	<div class="col-md-4">
         		<div class="classes w-100 ftco-animate">
-        			<a href="#" class="img w-100 mb-3" style="background-image: url(./resources/images/classes-6.jpg);"></a>
         			<div class="text w-100 text-center">
         				<h3><a href="#">Yoga Restore</a></h3>
         				<p>Sept. 30, 2019 - 01:00pm - 03:00pm</p>
@@ -244,102 +237,83 @@
                 <tbody>
                   <tr>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-1.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-2.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                   </tr>
                   <tr>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-4.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-5.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-6.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-7.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                   </tr>
                   <tr>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-1.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-2.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
                   </tr>
                   <tr>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-4.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-5.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-6.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-7.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                   </tr>
                   <tr>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-1.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-2.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-3.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
                     <td><i class="ion-ios-close"></i></td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-4.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
-                    <td class="text-center"><div class="img rounded-circle ftco-animate mb-2" style="background-image: url(./resources/images/classes-5.jpg);"></div>
                       <a href="#"><strong>Yoga training</strong> <br>
                       7 am-6 am</a>
                     </td>
@@ -385,7 +359,6 @@
 	                    </span>
 	                  </div>
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(./resources/images/person_1.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Gabby Smith</p>
@@ -406,7 +379,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(./resources/images/person_2.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Floyd Weather</p>
@@ -427,7 +399,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(./resources/images/person_3.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">James Dee</p>
@@ -448,7 +419,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(./resources/images/person_4.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Lance Roger</p>
@@ -469,7 +439,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(./resources/images/person_2.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Kenny Bufer</p>
@@ -485,7 +454,6 @@
       </div>
     </section>
 
-    <section class="ftco-counter img" id="section-counter" style="background-image: url(./resources/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
       <div class="container">
         <div class="row justify-content-center">
@@ -539,7 +507,6 @@
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('./resources/images/image_1.jpg');">
               </a>
               <div class="text w-100 mt-3">
               	<div class="meta">
@@ -554,7 +521,6 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('./resources/images/image_2.jpg');">
               </a>
               <div class="text w-100 mt-3">
               	<div class="meta">
@@ -569,7 +535,6 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('./resources/images/image_3.jpg');">
               </a>
               <div class="text w-100 mt-3">
               	<div class="meta">
@@ -595,28 +560,24 @@
         </div>
     		<div class="row">
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-1.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-2.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="/template/images/gallery-3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-3.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-4.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
@@ -624,28 +585,24 @@
 					</div>
 
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-5.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-5.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-6.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-6.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-7.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-7.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="./resources/images/gallery-8.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(./resources/images/gallery-8.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>

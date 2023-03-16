@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+    <title>짧강효확</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <c:import url="../template/common_css.jsp"></c:import>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
@@ -30,13 +32,14 @@
     <link rel="stylesheet" href="/resources/css/flaticon.css">
     <link rel="stylesheet" href="/resources/css/icomoon.css">
     <link rel="stylesheet" href="/resources/css/style.css">
+    
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="index.html">구디 다이어트</a>
+  					<a class="navbar-brand w-100" href="index.html">Meditative</a>
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="oi oi-menu"></span> Menu
 			      </button>
@@ -49,9 +52,9 @@
 			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="/healthMachine/list" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
-			          <li class="nav-item active"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
+			          <li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
 			          <li class="nav-item"><a href="blog.jsp" class="nav-link">장바구니</a></li>
-			          <li class="nav-item"><a href="contact.jsp" class="nav-link">search</a></li>
+			          <li class="nav-item active"><a href="contact.jsp" class="nav-link">search</a></li>
 			        </ul>
 			      </div>
   				</div>
@@ -60,106 +63,75 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/allbody2header.png');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-3 bread"></h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Trainer</span></p>
+            <h1 class="mb-3 bread">짧강효확</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/">짧지만 강하게,</a></span> <span>효과는 확실하게!</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+   <html>
+
+
+<!-- Save for Web Slices (짧강효확.jpg) --> 
+
+
+    <section class="ftco-section contact-section ftco-no-pt ftco-no-pb">
+      <div class="container">
+        <div class="row block-9">
+					<div class="col-md-4 contact-info ftco-animate p-4 w-100 py-md-5">
+						<div class="row">
+							<div class="col-md-12 mb-4">
+	              <h2>Contact Information</h2>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Website:</span> <a href="#">yoursite.com</a></p>
+	            </div>
+						</div>
+					</div>
+					<div class="col-md-1 py-4 py-md-5"></div>
+          <div class="col-md-6 ftco-animate py-md-5">
+            <form action="#" class="contact-form">
+            	<div class="row">
+            		<div class="col-md-6">
+	                <div class="form-group">
+	                  <input type="text" class="form-control" placeholder="Your Name">
+	                </div>
+                </div>
+                <div class="col-md-6">
+	                <div class="form-group">
+	                  <input type="text" class="form-control" placeholder="Your Email">
+	                </div>
+	                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="form-group">
+                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-
-	<div class = "container-fluid">
-		<div class="img" img="/resources/images/allbody.jpg"></div>
-		<c:forEach items="${list}" var="dto">
-			<h1>${dto.num}</h1>
-			<tr>
-				<td>
-					<a href="./body?bodyPart=${dto.bodyPart}">${dto.bodyPart}</a>
-						
-					
-				</td>
-				
-			</tr>
-		</c:forEach>
-	</div>
-
-
-
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-lg-3 d-flex ftco-animate">
-    				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/allbody2.jpeg);"></div>
-	    				<div class="text bg-white p-4 ftco-animate">
-	    					<span class="subheading">Owner / Head Coach</span>
-	    					<h3><a href="#">Elizabeth Nelson</a></h3>
-	    					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	    					<ul class="ftco-social-media d-flex mt-4">
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-twitter"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-facebook"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-instagram"></span></a></li>
-	              </ul>
-	    					<p></p>
-	    				</div>
-	    			</div>
-    			</div>
-    			<div class="col-lg-3 d-flex ftco-animate">
-    				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-2.jpg);"></div>
-	    				<div class="text bg-white p-4 ftco-animate">
-	    					<span class="subheading">Owner / Head Coach</span>
-	    					<h3><a href="#">Scarlett Torres</a></h3>
-	    					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	    					<ul class="ftco-social-media d-flex mt-4">
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-twitter"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-facebook"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-instagram"></span></a></li>
-	              </ul>
-	    					<p></p>
-	    				</div>
-	    			</div>
-    			</div>
-    			<div class="col-lg-3 d-flex ftco-animate">
-    				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-3.jpg);"></div>
-	    				<div class="text bg-white p-4 ftco-animate">
-	    					<span class="subheading">Owner / Head Coach</span>
-	    					<h3><a href="#">Victoria Wright</a></h3>
-	    					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	    					<ul class="ftco-social-media d-flex mt-4">
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-twitter"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-facebook"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-instagram"></span></a></li>
-	              </ul>
-	    					<p></p>
-	    				</div>
-	    			</div>
-    			</div>
-    			<div class="col-lg-3 d-flex ftco-animate">
-    				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-4.jpg);"></div>
-	    				<div class="text bg-white p-4 ftco-animate">
-	    					<span class="subheading">Owner / Head Coach</span>
-	    					<h3><a href="#">Stella Perry</a></h3>
-	    					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-	    					<ul class="ftco-social-media d-flex mt-4">
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-twitter"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-facebook"></span></a></li>
-	                <li class="ftco-animate"><a href="#" class="mr-2 d-flex justify-content-center align-items-center"><span class="icon-instagram"></span></a></li>
-	              </ul>
-	    					<p></p>
-	    				</div>
-	    			</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
+    <div id="map" class="map"></div>
 
     <footer class="ftco-footer ftco-section bg-light">
       <div class="container">
@@ -227,7 +199,6 @@
       </div>
     </footer>
     
-    
   
 
   <!-- loader -->
@@ -252,6 +223,6 @@
   <script src="/resources/js/google-map.js"></script>
   <script src="/resources/js/main.js"></script>
 
-<c:import url="../template/common_js.jsp"></c:import>    
+<c:import url="../template/common_js.jsp"></c:import> 
   </body>
 </html>

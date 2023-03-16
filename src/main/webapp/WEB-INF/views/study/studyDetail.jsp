@@ -46,9 +46,9 @@
   				<div class="col-12 w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav m-auto">
-			          <li class="nav-item"><a href="index.jsp" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item active"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="schedule.jsp" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="/healthMachine/list" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
@@ -66,7 +66,6 @@
 	<div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyclass.jpg" alt="..." /></div>
                 <div class="col-lg-5">
                     <h2 class="font-weight-light">${dto.studyName}</h2>
                     <h3 class="font-weight-light">${dto.studyCost}원</h3>
@@ -99,8 +98,6 @@
   			</div>
   			
   			<div class="my-5" id="studyQnaListResult">
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
   			</div>
 
     <footer class="ftco-footer ftco-section bg-light">
