@@ -45,16 +45,4 @@ public class StudyController {
 		
 		return mv;
 	}
-	
-	@PostMapping("studyDetail")
-	public ModelAndView getBoardDetail(Pager pager, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		StudyDTO studyDTO = studyService.getBoardDetail(pager);
-		
-		mv.setViewName("study/studyDetail");
-		mv.addObject("dto", studyDTO);
-		
-		return mv;
-	}
 } 

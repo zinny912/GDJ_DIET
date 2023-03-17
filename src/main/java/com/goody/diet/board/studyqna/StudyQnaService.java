@@ -12,6 +12,7 @@ import com.goody.diet.board.BbsDTO;
 import com.goody.diet.board.BoardDTO;
 import com.goody.diet.board.BoardFileDTO;
 import com.goody.diet.board.BoardService;
+import com.goody.diet.util.FileManager;
 import com.goody.diet.util.Pager;
 
 @Service
@@ -19,6 +20,9 @@ public class StudyQnaService implements BoardService{
 
 	@Autowired
 	private StudyQnaDAO qnaDAO;
+	
+	@Autowired
+	private FileManager fileManager;
 	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
@@ -29,14 +33,12 @@ public class StudyQnaService implements BoardService{
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.setBoardAdd(bbsDTO);
 	}
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.setBoardUpdate(bbsDTO);
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class StudyQnaService implements BoardService{
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return qnaDAO.getBoardDetail(boardDTO);
 	}
 
 	@Override

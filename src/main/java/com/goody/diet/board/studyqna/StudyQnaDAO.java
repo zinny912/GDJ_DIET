@@ -22,7 +22,7 @@ public class StudyQnaDAO implements BoardDAO{
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return 0L;
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 
 	@Override
@@ -38,28 +38,29 @@ public class StudyQnaDAO implements BoardDAO{
 	}
 
 	@Override
+	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
+		return sqlSession.insert(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO);
+		return 0;
 	}
 
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", boardDTO);
 	}
 
-	@Override
-	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {

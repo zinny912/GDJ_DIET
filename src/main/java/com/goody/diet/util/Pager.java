@@ -47,7 +47,6 @@ public class Pager {
 	
 	//startNum, lastNum
 	public void makeNum(Long totalCount) {
-		
 		//1. 전체 row의 갯수 구하기
 		//2. 총 page의 갯수 구하기
 		//ex> totalCount가 135 getPerPage가 10이면 14개 페이지
@@ -57,6 +56,11 @@ public class Pager {
 			//totalPage+=1;
 			totalPage++;
 		}
+		
+		if(totalPage == 0) {
+			totalPage =1L;
+		}
+		
 		if(this.getPage()>totalPage) {
 			this.setPage(totalPage);
 			

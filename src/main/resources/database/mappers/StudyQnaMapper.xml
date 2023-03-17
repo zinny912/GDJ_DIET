@@ -20,7 +20,8 @@
 	</sql>
   	
   	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-  		SELECT COUNT(NUM) FROM STUDYQNA WHERE STUDYNUM=#{studyNum}
+  		SELECT COUNT(NUM) FROM STUDYQNA 
+  			<include refid="qnaCondition"></include>
   	</select>
   	
    	<select id="getBoardList" resultType="StudyQnaDTO" parameterType="Pager">
@@ -35,12 +36,44 @@
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}   
   	</select>
-<!-- 
+
   	<insert id="setBoardAdd" parameterType="StudyQnaDTO">
+  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
   		INSERT INTO STUDYQNA (NUM,STUDYNUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
   		VALUES(#{num},#{studyNum},#{title}, #{contents}, #{writer},SYSDATE,0,#{num},0,0)
   	</insert>
   	
+  	
+  	<select id="getBoardDetail" resultType="StudyQnaDTO" parameterType="BoardDTO">
+  		SELECT * FROM STUDYQNA WHERE NUM=#{num}
+  	</select>
+  	
+  	<update id="setBoardUpdate" parameterType="BbsDTO">
+ 		UPDATE STUDYQNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+ 	</update>
+  	
+<!--   	<resultMap type="StudyQnaDTO" id="getBoardDetailResult">
+  		<id column="num" property="num"/>
+	  		<result column="title" property="title"/>
+	  		<result column="writer" property="writer"/>
+	  		<result column="contents" property="contents"/>
+	  		<result column="regDate" property="regDate"/>
+	  		<result column="hit" property="hit"/>
+	  		<result column="depth" property="depth"/>
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+		javaType: 데이터타입 ofType: 제네릭  //리스트는 어떤 타입을 모아놓았는지 모르기 때문에 제네릭 타입을 적어줘야 한다.
+			<id column="fileNum" property="fileNum"/>
+				<result column="fileName" property="fileName"/>
+				<result column="oriName" property="oriName"/>
+		</collection>  		
+  	</resultMap> -->
+  	
+  	
+  	
+  	
+<!--   	
   	<update id="setBoardAdd" parameterType="BbsDTO">
   		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
   	</update>

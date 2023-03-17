@@ -1,5 +1,5 @@
 
-//studyQna댓글목록
+//studyQna목록
 $('#studyQnaList').click(function getList(){
     fetch("/studyQna/list?studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
         method:'GET'
@@ -13,8 +13,16 @@ $('#studyQnaList').click(function getList(){
 //page를 요청할 수 있도록 만든 이벤트
 $('#studyQnaListResult').on("click",".page-link",function(e){
     let page = $(this).attr('data-board-page');
-    
-    fetch("/studyQna/list?studyNum="+studyQnaList.getAttribute('data-study-studyNum')+"&page="+page,{
+    let kind =''
+    $(".searchOption").each(function(idx, item){
+        if($(item).prop("selected")){
+            kind = $(item).val();
+        }
+    })
+
+    let search = $("#search").val();
+
+    fetch("/studyQna/list?studyNum="+studyQnaList.getAttribute('data-study-studyNum')+"&page="+page+"&kind="+kind+"&search="+search,{
         method:'GET'
     })
     .then((response)=>response.text())
@@ -26,12 +34,10 @@ $('#studyQnaListResult').on("click",".page-link",function(e){
 })
 
 //검색할 수 있도록 만든 이벤트
-
 $('#studyQnaListResult').on("click","#searchbutton",function(e){
     let kind = ''
     $(".searchOption").each(function(idx, item){
         if($(item).prop("selected")){
-            console.log($(item).val())
             kind = $(item).val();
         }
     })

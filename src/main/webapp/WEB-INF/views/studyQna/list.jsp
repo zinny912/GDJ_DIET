@@ -14,7 +14,7 @@
 		<tbody>
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><a href="#">${dto.title}</a></td>
+					<td><a href="/studyQna/detail?num=${dto.num}">${dto.title}</a></td>
 					<td>${dto.writer}</td>
 					<td>${dto.regDate}</td>
 				</tr>
@@ -58,23 +58,26 @@
 
 <!-- 검색창 -->
 <div class="row">
-	<form class="row g-3" id="searchForm">
- 		<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 
+	
 		<div class="col-auto">
 			<label for="kind" class="visually-hidden">Kind</label> <select
 				class="form-select" name="kind" id="kind"
 				aria-label="Default select example">
-				<option class="searchOption" value="title" data-board-option="title" ${pager.kind eq 'title'?'selected':''}>Title</option>
-				<option class="searchOption" value="writer" data-board-option="writer" ${pager.kind eq 'writer'?'selected':''}>Writer</option>
+				<option class="searchOption" value="title" ${pager.kind eq 'title'?'selected':''}>Title</option>
+				<option class="searchOption" value="writer" ${pager.kind eq 'writer'?'selected':''}>Writer</option>
 			</select>
 		</div>
 		<div class="col-auto">
 			<label for="search" class="visually-hidden">Search</label> <input
 				type="text" class="form-control" style="font-size:15px;" value="${pager.search}"
-				name="search" id="search" placeholder="검색어를 입력하세요." data-board-search="${pager.search}">
+				name="search" id="search" placeholder="검색어를 입력하세요.">
 		</div>
 		<div class="col-auto">
 			<button type="button" class="btn btn-primary mb-3" id="searchbutton">검색</button>
 		</div>
-	</form>
+		
+		<div class="row my-3">
+			<a href="/studyQna/add" class="btn btn-primary">상품문의</a>			
+		</div>
 </div>
+

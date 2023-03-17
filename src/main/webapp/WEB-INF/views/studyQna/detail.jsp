@@ -1,11 +1,10 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>구디다이어트</title>
+<head>
+<title>구디다이어트</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <c:import url="../template/common_css.jsp"></c:import>
@@ -32,9 +31,12 @@
     <link rel="stylesheet" href="/resources/css/flaticon.css">
     <link rel="stylesheet" href="/resources/css/icomoon.css">
     <link rel="stylesheet" href="/resources/css/style.css">
-  </head>
-  <body>
-  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
@@ -61,50 +63,37 @@
   		</div>
 	  </nav>
     <!-- END nav -->
+    
+<div class="container px-4 px-lg-5">
+	<div class="row gx-4 gx-lg-5 align-items-center my-5">
+		<div class="col-lg-5">
+			<h5><strong>${dto.title}</strong></h5>
+			<h6><strong>${dto.writer}</strong></h6>
+		</div>
+		<hr class="my-hr2">
+			<p>${dto.contents}</p>
+			<div class="my-3">
+				<form action="./update" id="frm">
+					<input type="hidden" name="num" value="${dto.num}">
+					<%-- <c:if test="${dto.writer eq member.id}"> --%>
+						<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
+						<button id="delete" type="button" class="btn btn-primary">DELETE</button>
+					<%-- </c:if> --%>
+				</form>
+			</div>
+		<hr class="my-hr2">
+		
+		<div class="my-2" id="studyQnaReplyResult">
+		
+		</div>
+				
+		<div> <a href="./reply?num=${dto.num}" class="btn btn-primary">답글</a> </div>
+		
+		
+	</div>
+</div>
 
-
-	<div class="container px-4 px-lg-5">
-            <!-- Heading Row-->
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyclass.jpg" alt="..." /></div>
-                <div class="col-lg-5">
-                    <h2 class="font-weight-light">${dto.studyName}</h2>
-                    <h3 class="font-weight-light">${dto.studyCost}원</h3>
-                    <hr class="my-hr2">
-            		<div class="text-center">
-                    <h6><strong>스터디 일정안내</strong></h6>
-                    ${dto.studyPeriod} 스터디 기간
-                    <br>반배정 문자 일괄 발송
-                    <br>문의:010-0000-1111
-                    </div>
-                    <br>
-                    <a class="btn btn-primary" href="#!">장바구니에 담기</a>
-                </div>
-            </div>
-            <!-- Call to Action-->
-            
-            <div class="col-12 w-100 text-center">
-			        <div class="row">
-			        <div class="col-md-4">
-			          <div class="nav-link" id="studyQnaInfo" style="cursor: pointer">상세정보</div>
-			        </div>
-			        <div class="col-md-4">
-			         <div class="nav-link" style="cursor: pointer">구매평</div>
-			        </div>
-			        <div class="col-md-4">
-			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}" style="cursor: pointer">Q&amp;A</div>
-			        </div>
-			        <hr class="my-hr2">
-			        </div>
-  			</div>
-  			
-  			<div class="my-5" id="studyQnaListResult">
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
-  			</div>
-  	</div>
-
-    <footer class="ftco-footer ftco-section bg-light">
+ <footer class="ftco-footer ftco-section bg-light">
       <div class="container">
         <div class="row d-flex">
           <div class="col-md">
@@ -170,7 +159,6 @@
       </div>
     </footer>
     
-    
   
 
   <!-- loader -->
@@ -203,8 +191,7 @@
   }
   </style>
 
+<script src="../resources/js/boardForm.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
-<script src="/resources/js/studyQna.js"></script>
-  </body>
+</body>
 </html>
-
