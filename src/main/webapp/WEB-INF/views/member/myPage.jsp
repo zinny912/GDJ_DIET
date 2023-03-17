@@ -21,13 +21,12 @@
 				<div class="row">
   				  <div class="col mx-5 bg-success bg-opacity-50">
 					<h3>id: ${sessionMember.id}</h3>
-					<h3>pw: ${sessionMember.pw}</h3>
 					<h3>name: ${sessionMember.names}</h3>
 					<h3>address: ${sessionMember.address}</h3>
 					<h3>phone: ${sessionMember.phone}</h3>
 					<h3>email: ${sessionMember.email}</h3>
-					<h3>등급: </h3>	
-					<h3 id="kakao-id">나야나</h3>
+					<h3>등급: ${sessionMember.roleDTO.roleName}</h3>	
+					<h3>로그인: ${sessionMember.loginType}</h3>
 					<a href="./update" class="btn btn-info">회원수정</a>
   				  </div>
 				</div>

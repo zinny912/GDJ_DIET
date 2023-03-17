@@ -4,7 +4,19 @@ console.log(Kakao.Auth.getAccessToken())
 function kakaoInfo() {
     if (Kakao.Auth.getAccessToken()) {
         $('#dum').append('<a href="javascript:kakaoLogout()">카카오 로그아웃</a>')
+
+        console.log(Kakao.Auth.getAccessToken())
         console.log('Not logged in.');
+        return;
+    }
+
+
+}
+function kakaoInfoLoginPage() {
+    if (Kakao.Auth.getAccessToken()) {
+
+        console.log(Kakao.Auth.getAccessToken())
+
         return;
     }
 
