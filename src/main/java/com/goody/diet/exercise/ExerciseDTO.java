@@ -4,13 +4,22 @@ public class ExerciseDTO {
 	
 	private Long num;
 	private Long machineNum;
-	private String urlName;
+	private String title;
+	private String days;
+	private String urlId;
 	private Long power;
 	private String bodyPart;
 	private String time;
+	private String thumbNail;
 	
 	
 	
+	public String getThumbNail() {
+		return thumbNail;
+	}
+	public void setThumbNail(String thumbNail) {
+		this.thumbNail = thumbNail;
+	}
 	public Long getNum() {
 		return num;
 	}
@@ -22,12 +31,6 @@ public class ExerciseDTO {
 	}
 	public void setMachineNum(Long machineNum) {
 		this.machineNum = machineNum;
-	}
-	public String getUrlName() {
-		return urlName;
-	}
-	public void setUrlName(String urlName) {
-		this.urlName = urlName;
 	}
 	public Long getPower() {
 		return power;
@@ -46,6 +49,24 @@ public class ExerciseDTO {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDays() {
+		return days;
+	}
+	public void setDays(String days) {
+		this.days = days;
+	}
+	public String getUrlId() {
+		return urlId;
+	}
+	public void setUrlId(String urlId) {
+		this.urlId = urlId;
 	}
 	
 	

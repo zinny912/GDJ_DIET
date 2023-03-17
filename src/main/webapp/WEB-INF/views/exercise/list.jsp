@@ -75,11 +75,12 @@
         </div>
       </div>
     </section>
+     
     
     <!-- Save for Web Slices (짧강효확.jpg) -->
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <!-- Save for Web Slices (짧강효확.jpg) -->
-<table id="__01" width="auto" height="auto" border="0" cellpadding="0" cellspacing="0">
+<table class="img-fluid rounded mb-4 mb-lg-0" id="__01" width="auto" height="auto" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td colspan="25">
 	<img src="/resources/bodyimg/body_01.gif" width="1920" height="515" alt=""></td>

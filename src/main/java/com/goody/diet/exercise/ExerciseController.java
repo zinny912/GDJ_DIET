@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,26 +18,31 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 	
-	//list
-	@GetMapping("list")
+	//list //routine
+	@GetMapping("routine")
 	public ModelAndView getExerciseList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<ExerciseDTO> ar = exerciseService.getExerciseList();
 		
-		mv.setViewName("exercise/list");
-		mv.addObject("list", ar);
+		mv.setViewName("exercise/routine");
+		mv.addObject("routine", ar);
 		
 		return mv;
 	}
 	
-	//routine
-	@GetMapping("routine")
-	public ModelAndView getExerciseRoutine(ModelAndView mv) throws Exception {
-		mv.setViewName("exercise/routine");
+	
+	
+	@GetMapping("video")
+	public ModelAndView getExerciseVideo(ModelAndView mv, ExerciseDTO exerciseDTO) throws Exception {
+		exerciseDTO = exerciseService.getExerciseVideo(exerciseDTO);
+		
+		mv.setViewName("exercise/video");
+		mv.addObject("dto", exerciseDTO);
 		return mv;
 	}
 	
+		
 	//detail
 	@GetMapping("body")
 	public ModelAndView getExerciseBody(ExerciseDTO exerciseDTO) throws Exception {
@@ -49,3 +55,9 @@ public class ExerciseController {
 	}
 
 }
+
+//	@PostMapping("video")
+//	public ModelAndView getExerciseVideo(ModelAndView mv) throws Exception {
+//		mv.setViewName("exercise/video");
+//		return mv;
+//	}

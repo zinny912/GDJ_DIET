@@ -5,14 +5,23 @@
   
   <mapper namespace="com.goody.diet.exercise.ExerciseDAO">
  
- <!-- list -->	
-  	<select id="getExerciseList" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+ 
+<!-- routine에서 일차별로 영상 가져오기 -->	
+	<select id="getExerciseList" parameterType="ExerciseDTO" resultType="ExerciseDTO">
 		SELECT * FROM EXERCISE
 	</select>
 
-<!-- detail : urlName만 뽑아오기-->
-	<select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">
-		SELECT URLNAME FROM EXERCISE WHERE BODYPART = #{bodyPart}
-		 
+<!-- video링크 -->
+	<select id="getExerciseVideo" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+		SELECT * FROM EXERCISE WHERE NUM = #{num}
 	</select>
-  </mapper>
+
+
+<!-- detail : urlId만 뽑아오기-->
+	<select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+		SELECT URLID FROM EXERCISE WHERE BODYPART = #{bodyPart}
+	</select>	
+
+
+		 
+ </mapper>

@@ -25,9 +25,13 @@ public class ExerciseDAO {
 		
 	}
 	
-	public ExerciseDTO getExercisBody() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getExerciseBody");
+	
+	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getExerciseVideo", exerciseDTO);
 	}
 	
 
+	public ExerciseDTO getExerciseBody() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getExerciseBody");
+	}
 }
