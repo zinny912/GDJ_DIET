@@ -1,5 +1,6 @@
 package com.goody.diet.member;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -36,13 +38,39 @@ public class MemberController {
 //        return "redirect:"+loginUrl.toString();
 //    }	
 
-	
-	
+	@PostMapping("kakaoLogin")
+	public ModelAndView getKakaoLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
+		System.out.println("카카오왓니?");
+		memberDTO = memberService.getKakaoLogin(memberDTO);
+		if(memberDTO!=null) {
+			memberService.getMyPage(memberDTO);
+			session.setAttribute("sessionMember", memberDTO);	
+		}
+		mv.setViewName("redirect:./dummiHome");
+
+//		MemberAuthDTO result = (MemberAuthDTO)session.getAttribute("sessionMember");
+//		System.out.println("세션: "+result.getEmail());
+		return mv;
+	}
 //------------------카카오 끝----------------------
+	
 	
 	@GetMapping("dummiHome")
 	public String dummiHome() throws Exception {
 		return "/member/dummiHome";
+	}
+
+	@PostMapping("delete")
+	public ModelAndView setMemberDelete(ModelAndView mv, HttpSession session) throws Exception {
+		System.out.println("post delete 왓니?");
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		int delResult=memberService.setMemberDelete(memberDTO);
+		session.invalidate();
+		
+		System.out.println("del ajax 가니?: " +delResult);
+		mv.addObject("result", delResult);
+		mv.setViewName("/member/ajaxResult");
+		return mv;
 	}
 	
 	@GetMapping("agree")
@@ -58,11 +86,27 @@ public class MemberController {
 	@PostMapping("login")
 	public ModelAndView getMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
 //		System.out.println("컨트롤러왔니..?");
+//		System.out.println("ajax옴?: "+memberDTO.getPw());
+//		memberDTO.setLoginType("general"); //내가젖소..ㅠ
 		memberDTO = memberService.getMemberLogin(memberDTO);
+
+//		System.out.println("타입: "+memberDTO.getLoginType());
+		
 		if(memberDTO!=null) {
+//			memberService.getMyPage(memberDTO);
 			session.setAttribute("sessionMember", memberDTO);			
+//			mv.setViewName("redirect:./dummiHome");
+//			MemberDTO result = (MemberDTO)session.getAttribute("sessionMember");
+//			System.out.println("세션: "+result+" 이메일"+result.getEmail());	
+			
+			mv.addObject("result", "굳^^");
+			mv.setViewName("/member/ajaxResult");
+		}else {//로그인실패
+			mv.addObject("result", "id/pw불일치"); //trim인데 띄어쓰기댐?
+			mv.setViewName("/member/ajaxResult");
 		}
-		mv.setViewName("redirect:./dummiHome");
+		
+		
 		
 		return mv;
 	}
@@ -73,15 +117,19 @@ public class MemberController {
 	}
 	
 	@GetMapping("myPage")
-	public ModelAndView getMyPage(ModelAndView mv, HttpSession session) throws Exception {
+	public void getMyPage(ModelAndView mv, HttpSession session) throws Exception {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
-		if(memberDTO!=null) {
-			memberDTO = memberService.getMyPage(memberDTO);
-		}
-		mv.addObject("mypage",memberDTO );
-		mv.setViewName("/member/myPage");
-		return mv;
+		
+		System.out.println("로그인타입: "+memberDTO.getLoginType());
+		
+		
+//		if(memberDTO!=null) {
+//			memberDTO = memberService.getMyPage(memberDTO);
+//		}
+//		mv.addObject("mypage",memberDTO );
+//		mv.setViewName("/member/myPage");
+//		return mv;
 	}
 
 	@PostMapping("idCheck")

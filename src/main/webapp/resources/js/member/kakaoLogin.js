@@ -11,7 +11,7 @@ console.log(Kakao.isInitialized());
 //카카오로그인 버튼 누르면 호출
 function loginWithKakao() {
     Kakao.Auth.authorize({
-      redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
+      redirectUri: 'http://localhost/login/oauth',
     });
   }
 
@@ -22,9 +22,10 @@ function loginWithKakao() {
             console.log(authObj); // access토큰 값
             Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
 
-            getInfo();
+            // getInfo();
+            kakaoLogin()
 
-            location.href="./dummiHome"
+            // location.href="./dummiHome"
         },
         fail: function (err) {
             console.log(err);
@@ -73,25 +74,48 @@ function kakaoLogout() {
 }
 
 // //뿌리기
-// infoinfo()
-// function infoinfo(){
-//     Kakao.API.request({
-//         url: '/v2/user/me',
-//         success: function (res) {
-//             console.log(res);
-//             // 이메일, 성별, 닉네임, 프로필이미지
-//             var email = res.kakao_account.email;
-//             // var gender = res.kakao_account.gender;
-//             var nickname = res.kakao_account.profile.nickname;
-//             // var profile_image = res.kakao_account.profile.thumbnail_image_url;
+function kakaoLogin() {
+    Kakao.API.request({
+        url: '/v2/user/me',
+        success: function (res) {
+            console.log(res);
+            var email = res.kakao_account.email;
+            var nickname = res.kakao_account.profile.nickname;
+            var kakao_id = res.id
+            console.log(email, nickname);
 
-//             // console.log(email, gender, nickname, profile_image);
-//             console.log(email, nickname);
-//             $('#kakao-id').text(email);
-//         },
-//         fail: function (error) {
-//             alert('카카오 정보없... 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
-//         }
-//     });
+            //parameter
+            $('#id').val(kakao_id)
+            $('#email').val(email)
+            $('#name').val(nickname)
+            // $('#loginType').val('kakao')
 
-// }
+            //제출
+            $('#loginForm').attr("action","./kakaoLogin")
+            // $('#submitBtn').attr("type", "submit")
+            // $('#submitBtn').click();
+            //제출v2
+            $('#loginForm').submit()
+
+        },
+        fail: function (error) {
+            alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
+        }
+    });
+}
+
+//회원탈퇴
+function kakaoDelete(){
+
+    Kakao.API.request({
+        url: '/v1/user/unlink',
+      })
+    .then(function(response) {
+        console.log(response);
+    })
+    .catch(function(error) {
+        alert('탈퇴처리가 미완료되었습니다. \n관리자에게 문의하시기 바랍니다.');
+        console.log(error);
+    });
+
+}

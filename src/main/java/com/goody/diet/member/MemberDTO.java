@@ -9,7 +9,24 @@ public class MemberDTO {
 	private String phone;
 	private String email;
 	private String address;
+	private String loginType;
+	private RoleDTO roleDTO;
 	
+	
+	
+	public RoleDTO getRoleDTO() {
+		return roleDTO;
+	}
+	public void setRoleDTO(RoleDTO roleDTO) {
+		this.roleDTO = roleDTO;
+	}
+	
+	public String getLoginType() {
+		return loginType;
+	}
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
+	}
 	public String getId() {
 		return id;
 	}
