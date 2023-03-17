@@ -42,7 +42,7 @@ $("#optionSelect").on("change","#optSelect1",function(e){
         url:"./option2",
         data:{
             machineNum:machineNum,
-            opt1Id:optId1
+            optId1:optId1
         },
         success:function(response){
             console.log(response.trim().length)
@@ -76,8 +76,8 @@ $("#optionSelect").on("change","#optSelect2",function(e){
         url:"./option3",
         data:{
             machineNum:machineNum,
-            opt1Id:optId1,
-            opt2Id:optId2
+            optId1:optId1,
+            optId2:optId2
         },
         success:function(response){
             console.log(response.trim().length)

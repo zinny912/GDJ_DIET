@@ -10,9 +10,11 @@ public class HealthMachineDTO {
 	private Double machineScore;
 	private Long price;
 	private Long salePrice;
-	private String opt1st;
-	private String opt2nd;
-	private String opt3nd;
+	private String option1;
+	private String option2;
+	private String option3;
+	private String option4;
+	
 	public Long getMachineNum() {
 		return machineNum;
 	}
@@ -49,23 +51,30 @@ public class HealthMachineDTO {
 	public void setSalePrice(Long salePrice) {
 		this.salePrice = salePrice;
 	}
-	public String getOpt1st() {
-		return opt1st;
+	public String getOption1() {
+		return option1;
 	}
-	public void setOpt1st(String opt1st) {
-		this.opt1st = opt1st;
+	public void setOption1(String option1) {
+		this.option1 = option1;
 	}
-	public String getOpt2nd() {
-		return opt2nd;
+	public String getOption2() {
+		return option2;
 	}
-	public void setOpt2nd(String opt2nd) {
-		this.opt2nd = opt2nd;
+	public void setOption2(String option2) {
+		this.option2 = option2;
 	}
-	public String getOpt3nd() {
-		return opt3nd;
+	public String getOption3() {
+		return option3;
 	}
-	public void setOpt3nd(String opt3nd) {
-		this.opt3nd = opt3nd;
+	public void setOption3(String option3) {
+		this.option3 = option3;
 	}
+	public String getOption4() {
+		return option4;
+	}
+	public void setOption4(String option4) {
+		this.option4 = option4;
+	}
+	
 		
 }

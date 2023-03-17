@@ -17,21 +17,21 @@
 	
 	<!-- 옵션 -->
 	<select id="getOption1" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-	SELECT DISTINCT OPT1NAME,OPT1ID FROM REALHEALTHMACHINE 
+	SELECT DISTINCT OPTNAME1,OPTID1 FROM REALHEALTHMACHINE 
 		WHERE MACHINENUM = #{machineNum}
 	</select>
 	<select id="getOption2" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-	SELECT DISTINCT OPT2NAME,OPT2ID FROM REALHEALTHMACHINE 
-		WHERE MACHINENUM = #{machineNum} and OPT1ID=#{opt1Id}
+	SELECT DISTINCT OPTNAME2,OPTID2 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1}
 		</select>
 	<select id="getOption3" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-		SELECT DISTINCT OPT3NAME,OPT3ID FROM REALHEALTHMACHINE 
-		WHERE MACHINENUM = #{machineNum} and OPT1ID=#{opt1Id}and OPT2ID=#{opt2Id}
+		SELECT DISTINCT OPTNAME3,OPTID3 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1} and OPTID2=#{optId2}
 		
 		</select>
 		<select id="getOption4" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-	SELECT DISTINCT OPT4NAME,OPT4ID FROM REALHEALTHMACHINE 
-		WHERE MACHINENUM = #{machineNum} and OPT1ID=#{opt1Id}and OPT2ID=#{opt2Id}and OPT3ID=#{opt3Id}
+	SELECT DISTINCT OPTNAME4,OPTID4 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1} and OPTID2=#{optId2} and OPTID3=#{optId3}
 		</select>
 		<!-- 옵션 -->
 </mapper>

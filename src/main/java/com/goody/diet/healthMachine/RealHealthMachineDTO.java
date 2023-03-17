@@ -5,14 +5,14 @@ public class RealHealthMachineDTO {
 	private Long realMachineNum;
 	private Long machineNum;
 	private Long stock;
-	private String opt1Name;
-	private String opt1Id;
-	private String opt2Name;
-	private String opt2Id;
-	private String opt3Name;
-	private String opt3Id;
-	private String opt4Name;
-	private String opt4Id;
+	private String optName1;
+	private String optId1;
+	private String optName2;
+	private String optId2;
+	private String optName3;
+	private String optId3;
+	private String optName4;
+	private String optId4;
 	public Long getRealMachineNum() {
 		return realMachineNum;
 	}
@@ -31,54 +31,53 @@ public class RealHealthMachineDTO {
 	public void setStock(Long stock) {
 		this.stock = stock;
 	}
-	public String getOpt1Name() {
-		return opt1Name;
+	public String getOptName1() {
+		return optName1;
 	}
-	public void setOpt1Name(String opt1Name) {
-		this.opt1Name = opt1Name;
+	public void setOptName1(String optName1) {
+		this.optName1 = optName1;
 	}
-	public String getOpt1Id() {
-		return opt1Id;
+	public String getOptId1() {
+		return optId1;
 	}
-	public void setOpt1Id(String opt1Id) {
-		this.opt1Id = opt1Id;
+	public void setOptId1(String optId1) {
+		this.optId1 = optId1;
 	}
-	public String getOpt2Name() {
-		return opt2Name;
+	public String getOptName2() {
+		return optName2;
 	}
-	public void setOpt2Name(String opt2Name) {
-		this.opt2Name = opt2Name;
+	public void setOptName2(String optName2) {
+		this.optName2 = optName2;
 	}
-	public String getOpt2Id() {
-		return opt2Id;
+	public String getOptId2() {
+		return optId2;
 	}
-	public void setOpt2Id(String opt2Id) {
-		this.opt2Id = opt2Id;
+	public void setOptId2(String optId2) {
+		this.optId2 = optId2;
 	}
-	public String getOpt3Name() {
-		return opt3Name;
+	public String getOptName3() {
+		return optName3;
 	}
-	public void setOpt3Name(String opt3Name) {
-		this.opt3Name = opt3Name;
+	public void setOptName3(String optName3) {
+		this.optName3 = optName3;
 	}
-	public String getOpt3Id() {
-		return opt3Id;
+	public String getOptId3() {
+		return optId3;
 	}
-	public void setOpt3Id(String opt3Id) {
-		this.opt3Id = opt3Id;
+	public void setOptId3(String optId3) {
+		this.optId3 = optId3;
 	}
-	public String getOpt4Name() {
-		return opt4Name;
+	public String getOptName4() {
+		return optName4;
 	}
-	public void setOpt4Name(String opt4Name) {
-		this.opt4Name = opt4Name;
+	public void setOptName4(String optName4) {
+		this.optName4 = optName4;
 	}
-	public String getOpt4Id() {
-		return opt4Id;
+	public String getOptId4() {
+		return optId4;
 	}
-	public void setOpt4Id(String opt4Id) {
-		this.opt4Id = opt4Id;
+	public void setOptId4(String optId4) {
+		this.optId4 = optId4;
 	}
-	
-	
+		
 	}

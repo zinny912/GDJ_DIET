@@ -41,14 +41,14 @@
 
 				<div class="row" id="optionSelect"
 					data-machineNum="${dto.machineNum}">
-					<div id="opt1" data-optName="${dto.opt1st }">
+					<div id="opt1" data-optName="${dto.option1 }">
 						<select class="form-select mb-3" id="optSelect1">
-							<option class="option" id="default">${dto.opt1st}선택</option>
+							<option class="option" id="default">${dto.option1}선택</option>
 						</select>
 					</div>
-					<div id="opt2" data-optName="${dto.opt2nd }"></div>
-					<div id="opt3" data-optName="${dto.opt3nd }"></div>
-
+					<div id="opt2" data-optName="${dto.option2 }"></div>
+					<div id="opt3" data-optName="${dto.option3 }"></div>
+					<div id="opt4" data-optName="${dto.option4 }"></div>
 				</div>
 
 			</div>

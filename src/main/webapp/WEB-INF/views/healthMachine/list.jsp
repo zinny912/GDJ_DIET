@@ -5,43 +5,70 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>리스트</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="row mb-4 mt-4 md-7">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>NUM</th>
-					<th>category</th>
-					<th>machinename</th>
-					<th>score</th>
-					<th>price</th>
-					
-					<th>saleprice</th>
-				</tr>
-			</thead>
-			<tbody>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-12 heading-section ftco-animate text-center">
+					<h2 class="mb-1">운동기구 목록</h2>
+				</div>
+			</div>
+			<div class="row">
 				<c:forEach items="${list}" var="dto">
-					<tr>
-						<td>${dto.machineNum }</td>
-						<td>${dto.categoryNum }</td>
-						<td><a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a></td>
-						<td>${dto.machineScore }</td>
-						<td>${dto.price }</td>
-						<td>${dto.salePrice }</td>
-					</tr>
+				<div class="col-md-4">
+					<div class="classes w-100 ftco-animate">
+						<a href="./detail?machineNum=${dto.machineNum }" class="img w-100 mb-3"
+							style="background-image: url(/resources/images/pormroller.jpg);"></a>
+						<div class="text w-100 text-center">
+							<h3>
+								<a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a>
+							</h3>
+							<p id=price>${dto.price }</p>
+							<h5>${dto.salePrice }</h5>
+						</div>
+					</div>
+				</div>
 				</c:forEach>
-			</tbody>
-		</table>
+			</div>
 		</div>
-	</div>
+	</section>
+
+
+	<%-- <div class="container-fluid">
+		<div class="row mb-4 mt-4 md-7">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>NUM</th>
+						<th>category</th>
+						<th>machinename</th>
+						<th>score</th>
+						<th>price</th>
+
+						<th>saleprice</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${list}" var="dto">
+						<tr>
+							<td>${dto.machineNum }</td>
+							<td>${dto.categoryNum }</td>
+							<td><a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a></td>
+							<td>${dto.machineScore }</td>
+							<td>${dto.price }</td>
+							<td>${dto.salePrice }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div> --%>
 	<a href="./add">add</a>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
