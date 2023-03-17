@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,34 +28,44 @@ public class HealthMachineController {
 		mv.setViewName("healthMachine/list");
 		return mv;
 	}
-	@GetMapping("add")
-	public ModelAndView setHealthMachineAdd(ModelAndView mv) throws Exception{
-		mv.setViewName("healthMachine/add");
-		return mv;
-	}
-	@PostMapping("add")
-	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO,HttpSession session, MultipartFile [] files) throws Exception{
-		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, files, session);
-		mv.setViewName("redirect:./list");
-		return mv;
-	}
 	@GetMapping("detail")
-	public ModelAndView getHealthMachineDetail(ModelAndView mv, HealthMachineDTO healthMachineDTO) throws Exception{
-		List<HealthMachineDTO> ar = healthMachineService.getHealthMachineDetail(healthMachineDTO);
-//		System.out.println(ar.get(0).getMachineName());
-		mv.addObject("list", ar);
+	public ModelAndView getHealthMachineDetail(ModelAndView mv,HealthMachineDTO healthMachineDTO)throws Exception{
+		healthMachineDTO =healthMachineService.getHealthMachineDetail(healthMachineDTO);
+		mv.addObject("dto", healthMachineDTO);
 		mv.setViewName("healthMachine/detail");
+		return mv;
+	}
+	@PostMapping("option1")
+	public ModelAndView getOption1(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		
+		List<RealHealthMachineDTO> ar = healthMachineService.getOption1(realHealthMachineDTO);
+		mv.addObject("optList", ar);
+		mv.setViewName("common/optionReply");
 		return mv;
 	}
-	@GetMapping("optionAdd")
-	public ModelAndView setMachineOptionAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO)throws Exception{
-		mv.setViewName("healthMachine/optionAdd");
-		return mv;
-	}
-	@PostMapping("optionAdd")
-	public ModelAndView setMachineOptionAdd(ModelAndView mv)throws Exception{
+	@PostMapping("option2")
+	public ModelAndView getOption2(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		
+		List<RealHealthMachineDTO> ar = healthMachineService.getOption2(realHealthMachineDTO);
+		mv.addObject("optList", ar);
+		mv.setViewName("common/optionReply");
 		return mv;
 	}
+	@PostMapping("option3")
+	public ModelAndView getOption3(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		
+		List<RealHealthMachineDTO> ar = healthMachineService.getOption3(realHealthMachineDTO);
+		mv.addObject("optList", ar);
+		mv.setViewName("common/optionReply");
+		return mv;
+	}
+	@PostMapping("option4")
+	public ModelAndView getOption4(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		
+		List<RealHealthMachineDTO> ar = healthMachineService.getOption4(realHealthMachineDTO);
+		mv.addObject("optList", ar);
+		mv.setViewName("common/optionReply");
+		return mv;
+	}
+	
 }
