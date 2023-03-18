@@ -73,7 +73,7 @@
 	<div class = "row mx-auto ">
 		<div class="form-group">            	
 				<div class="video-container">
-				<iframe width="640" height="360" src="https://www.youtube.com/embed/${dto.urlId}" title="YouTube video player" frameborder="5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<iframe id="youtube" width="640" height="360" src="https://www.youtube.com/embed/${dto.urlId}" title="YouTube video player" frameborder="5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
        			</div>
         </div>
 	</div>
@@ -82,7 +82,7 @@
 <section class="ftco-section">
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-3 bread">루틴 ${dto.days}</h1> 
-            <div class="success col-md-12 ftco-animate text-center breadcrumbs"><h1>오운완!</h1></div>
+            <img id=thumbsup src="../resources/images/thumbsup.png" width="200px" height="200px" alt="">
           </div>
 </section>
 	

@@ -117,7 +117,7 @@
       </c:if>
       <td class="text-center">
         <strong>${dto.days}</strong>
-        <div class="img rounded-circle mb-2" style="background-image:${dto.thumbNail}"></div>
+        <div class="imgchange rounded-circle mb-2" style="background-image:${dto.thumbNail}"></div>
         <a href="./video?num=${dto.num}"><strong>${dto.title}</strong></a>
       </td>
       <c:if test="${status.index % 7 == 6}">
