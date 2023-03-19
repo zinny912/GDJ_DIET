@@ -69,7 +69,7 @@ public class StudyQnaController {
 	public ModelAndView getBoardDetail(StudyQnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = studyQnaService.getBoardDetail(qnaDTO);
-		
+
 		mv.addObject("dto", boardDTO);
 		mv.setViewName("studyQna/detail");
 		return mv;
@@ -88,14 +88,32 @@ public class StudyQnaController {
 	}
 	
 	@PostMapping("update")
-	public ModelAndView setBoardUpdate(BoardDTO boardDTO, MultipartFile[] addFiles, HttpSession session, Long[] fileNum) throws Exception{
+	public ModelAndView setBoardUpdate(StudyQnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(fileNum);
-		int result = studyQnaService.setBoardUpdate(boardDTO, null, session, null);
+		int result = studyQnaService.setBoardUpdate(qnaDTO);
+		String message="수정 실패";
+		if(result>0) {
+			message="글이 수정 되었습니다";
+		}
+		mv.addObject("result", message);
+		mv.addObject("url", "/studyQna/detail?num="+qnaDTO.getNum());
 		mv.setViewName("common/result");
-		mv.addObject("result", "수정성공");
-		mv.addObject("url", "/studyQna/detail?num="+boardDTO.getNum());
 		
+		return mv;
+	}
+	
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(StudyQnaDTO qnaDTO, HttpSession httpSession) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = studyQnaService.setBoardDelete(qnaDTO, httpSession);
+		String message="삭제 실패";
+		if(result>0) {
+			message="글이 삭제 되었습니다";
+		}
+		System.out.println(qnaDTO.getStudyNum());
+		mv.addObject("result", message);
+		mv.addObject("url", "/study/studyList");
+		mv.setViewName("common/result");
 		return mv;
 	}
 }

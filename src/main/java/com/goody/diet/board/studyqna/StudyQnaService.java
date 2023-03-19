@@ -44,7 +44,7 @@ public class StudyQnaService implements BoardService{
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession httpSession) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.setBoardDelete(bbsDTO);
 	}
 
 	@Override

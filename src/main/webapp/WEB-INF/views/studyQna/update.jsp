@@ -53,7 +53,7 @@
 					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly>
 				</c:if>
 				<c:if test="${empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${dto.writer}" disabled>
+					<input type="text" name="writer" class="form-control" id="writer" value="${dto.writer}">
 					<!-- dto.writer대신 member.id로 추후 멤버 추가하고 바꾸기 -->
 				</c:if>
 			</div>
