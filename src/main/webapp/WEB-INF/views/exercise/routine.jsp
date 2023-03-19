@@ -1,7 +1,6 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
  <head>
@@ -124,11 +123,11 @@
         </tr>
       </c:if>
     </c:forEach>
-  </tbody>
+ </tbody>
  
  
  
- <td class="text-center">
+ <%-- <td class="text-center">
  <strong>${dto.days}</strong>
  <div class="img rounded-circle mb-2" style="background-image: url(/resources/images/leg1.png);"></div>
  <a href="./exercise/video?days=1일차" class="videoId" data-day="1"><strong>승마살 싹뚝루틴</strong></a>
@@ -222,6 +221,8 @@
  </td>
  </tr>
  </tbody>
+ --%> 
+ 
  <tfoot>
  <tr>
  <th><a href="#"><i class="ion-ios-arrow-round-back"></i> September</a></th>
