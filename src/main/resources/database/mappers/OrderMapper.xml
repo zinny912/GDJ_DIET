@@ -7,8 +7,7 @@
 	<select id="getOrderList" resultType="OrderDTO">
 		
 	</select>
-</mapper>
- -->
- 
+</mapper> -->
+
  <mapper namespace="sample">
   </mapper>

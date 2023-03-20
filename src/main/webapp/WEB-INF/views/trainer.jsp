@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -60,7 +60,6 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -77,7 +76,6 @@
     		<div class="row">
     			<div class="col-lg-3 d-flex ftco-animate">
     				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-1.jpg);"></div>
 	    				<div class="text bg-white p-4 ftco-animate">
 	    					<span class="subheading">Owner / Head Coach</span>
 	    					<h3><a href="#">Elizabeth Nelson</a></h3>
@@ -93,7 +91,6 @@
     			</div>
     			<div class="col-lg-3 d-flex ftco-animate">
     				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-2.jpg);"></div>
 	    				<div class="text bg-white p-4 ftco-animate">
 	    					<span class="subheading">Owner / Head Coach</span>
 	    					<h3><a href="#">Scarlett Torres</a></h3>
@@ -109,7 +106,6 @@
     			</div>
     			<div class="col-lg-3 d-flex ftco-animate">
     				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-3.jpg);"></div>
 	    				<div class="text bg-white p-4 ftco-animate">
 	    					<span class="subheading">Owner / Head Coach</span>
 	    					<h3><a href="#">Victoria Wright</a></h3>
@@ -125,7 +121,6 @@
     			</div>
     			<div class="col-lg-3 d-flex ftco-animate">
     				<div class="coach align-items-stretch">
-	    				<div class="img" style="background-image: url(/resources/images/trainer-4.jpg);"></div>
 	    				<div class="text bg-white p-4 ftco-animate">
 	    					<span class="subheading">Owner / Head Coach</span>
 	    					<h3><a href="#">Stella Perry</a></h3>
