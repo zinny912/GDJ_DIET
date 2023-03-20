@@ -15,6 +15,7 @@ public class HealthMachineDTO {
 	private String option3;
 	private String option4;
 	
+	private List<HealthMachineImgDTO> healthMachineImgDTOs;
 	public Long getMachineNum() {
 		return machineNum;
 	}
@@ -74,6 +75,12 @@ public class HealthMachineDTO {
 	}
 	public void setOption4(String option4) {
 		this.option4 = option4;
+	}
+	public List<HealthMachineImgDTO> getHealthMachineImgDTOs() {
+		return healthMachineImgDTOs;
+	}
+	public void setHealthMachineImgDTOs(List<HealthMachineImgDTO> healthMachineImgDTOs) {
+		this.healthMachineImgDTOs = healthMachineImgDTOs;
 	}
 	
 		

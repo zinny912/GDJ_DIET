@@ -21,7 +21,9 @@ public class HealthMachineService {
 	private FileManager fileManager;
 	
 	public List<HealthMachineDTO> getHealthMachineList() throws Exception{
-		return healthMachineDAO.getHealthMachineList();
+		List<HealthMachineDTO> ar =  healthMachineDAO.getHealthMachineList();
+		
+		return ar;
 
 	}
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO) throws Exception{
@@ -40,7 +42,27 @@ public class HealthMachineService {
 	public List<RealHealthMachineDTO> getOption4(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return healthMachineDAO.getOption4(realHealthMachineDTO);
 	}
-	
+	public int setHealthMachineAdd(HealthMachineDTO healthMachineDTO, MultipartFile [] multipartFiles, HttpSession httpSession)throws Exception{
+		int result = healthMachineDAO.setHealthMachineAdd(healthMachineDTO);
+		String realPath = httpSession.getServletContext().getRealPath("resources/images/");
+		System.out.println(realPath);
+		for(MultipartFile multipartFile : multipartFiles) {
+			if(multipartFile.isEmpty()) {
+				System.out.println("실패");
+				continue;
+			}
+			String fileName= fileManager.fileSave(multipartFile, realPath);
+			HealthMachineImgDTO healthMachineImgDTO = new HealthMachineImgDTO();
+			healthMachineImgDTO.setMachineNum(healthMachineDTO.getMachineNum());
+			healthMachineImgDTO.setFileName(fileName);
+			healthMachineImgDTO.setOriName(multipartFile.getOriginalFilename());
+			System.out.println("filename : "+healthMachineImgDTO.getFileName());
+			System.out.println("oriname : "+healthMachineImgDTO.getOriName());
+			
+			result = healthMachineDAO.setMachineImg(healthMachineImgDTO);
+		}
+		return result;
+	}
 	
 //	public int setHealthMachineAdd(HealthMachineDTO healthMachineDTO, MultipartFile [] files,HttpSession session)throws Exception{
 //		int result = healthMachineDAO.setHealthMachineAdd(healthMachineDTO);

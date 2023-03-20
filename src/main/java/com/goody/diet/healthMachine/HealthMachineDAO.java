@@ -17,6 +17,7 @@ public class HealthMachineDAO {
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
 
 	}
+	
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getHealthMachineDetail", healthMachineDTO);
 	}
@@ -36,6 +37,10 @@ public class HealthMachineDAO {
 
 		return sqlSession.selectList(NAMESPACE+"getOption4", realHealthMachineDTO);
 	}
-
-
+	public int setHealthMachineAdd(HealthMachineDTO healthMachineDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setHealthMachineAdd", healthMachineDTO);
+	}
+	public int setMachineImg(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setMachineImg", healthMachineImgDTO);
+	}
 }

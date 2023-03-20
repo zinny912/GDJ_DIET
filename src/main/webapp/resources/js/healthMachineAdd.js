@@ -3,14 +3,12 @@
 
 const fileAdd = document.getElementById("fileAdd");
 const fileList = document.getElementById("fileList");
-const optionAdd=document.getElementById("optionAdd");
-const optionList=document.getElementById("optionList");
 
 
 let count=0;
 let max=1;
 let idx=0;
-
+let optioncount=1;
 function setCount(c){
  count = c;
 }
@@ -85,22 +83,24 @@ $(".deleteCheck").click(function(e){
 
 // ---option--------------------------------------
 $("#optionAdd").click(function(e){
-    let productId=$("#productId").val();
-    $.ajax({
-        type:'GET',
-        url:"./json",
-        success:function(response){
-            console.log(response);
-            console.log(typeof response);
-
-            response=JSON.parse(response);
-        }
-    });
-   
-    // let optionTop='<select class="form-select" aria-label="Top select option">';
-    // optionTop= optionTop+'<option selected>상위옵션을 선택해주세요.</option>';
-    // optionTop= optionTop+'<option value="1">One</option>';
-    // optionTop = optionTop+'</select>'
-    // $("#optionList").append(optionTop)
+    if(optioncount>=4){
+        alert('옵션은 4개까지만 가능');
+        return;
+    }
+    optioncount++;
+    let child ='<div class="mb-3" id="option'+optioncount+'"'
+    child=child + '<label for="option'+optioncount+'" class="form-label">'
+    child = child+optioncount+' 번째 옵션 이름</label>'
+    child = child+'<input type = "text" class="form-control" name="option'+optioncount+'">'
+    child = child+"</div>";
+    $("#optionList").append(child);
+    
 })
-
+$("#optionDelete").click(function(e){
+    if(optioncount<=1){
+        alert('옵션1개는 필수 입니다.');
+        return;
+    }
+    $("#option"+optioncount).remove();
+    optioncount--;
+})
