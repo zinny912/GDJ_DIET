@@ -56,7 +56,6 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -73,7 +72,6 @@
 				<div class="row">
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(images/classes-6.jpg);"></div>
 							<div class="text mt-4">
 								<h3 class="mb-4">Power Yoga</h3>
 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -83,7 +81,6 @@
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(images/classes-1.jpg);"></div>
 							<div class="text mt-4">
 								<h3 class="mb-4">Community Class</h3>
 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -93,7 +90,6 @@
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(images/classes-7.jpg);"></div>
 							<div class="text mt-4">
 								<h3 class="mb-4">Foundation Yoga</h3>
 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -103,7 +99,6 @@
 					</div>
 					<div class="col-md-3 d-flex align-items-stretch">
 						<div class="offer-deal text-center">
-							<div class="img" style="background-image: url(images/classes-2.jpg);"></div>
 							<div class="text mt-4">
 								<h3 class="mb-4">Prenatal Yoga</h3>
 								<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -163,7 +158,6 @@
     			</div>
 
     			<div class="col-md-4 d-flex">
-    				<div class="img img-services w-100" style="background-image: url(images/services.jpg);"></div>
     			</div>
 
     			<div class="col-md-4">
@@ -229,7 +223,6 @@
 	                    </span>
 	                  </div>
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_1.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Gabby Smith</p>
@@ -250,7 +243,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_2.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Floyd Weather</p>
@@ -271,7 +263,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_3.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">James Dee</p>
@@ -292,7 +283,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_4.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Lance Roger</p>
@@ -313,7 +303,6 @@
 	                  </div>
 
                     <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_2.jpg)">
 		                  </div>
 		                  <div class="ml-4">
 		                  	<p class="name">Kenny Bufer</p>
@@ -329,7 +318,6 @@
       </div>
     </section>
 
-    <section class="ftco-counter img" id="section-counter" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
       <div class="container">
         <div class="row justify-content-center">
@@ -383,28 +371,24 @@
         </div>
     		<div class="row">
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
@@ -412,28 +396,24 @@
 					</div>
 
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-5.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-5.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-6.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-6.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-7.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-7.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a href="images/gallery-8.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-8.jpg);">
 							<div class="icon mb-4 d-flex align-items-center justify-content-center">
     						<span class="icon-instagram"></span>
     					</div>

@@ -56,4 +56,5 @@ $('#studyQnaListResult').on("click","#searchbutton",function(e){
 $('#studyQnaInfo').click(function(){
     $('#studyQnaListResult').html("<img class='img-fluid rounded mb-4 mb-lg-0' src='/resources/images/studyDetailinfomation.jpg'/>");
     $('#studyQnaListResult').append("<img class='img-fluid rounded mb-4 mb-lg-0' src='/resources/images/studyDetailinfomation2.jpg'/>");
+
 })

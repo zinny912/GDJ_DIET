@@ -4,14 +4,14 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.goody.diet.order.OrderDTO" alias="OrderDTO"/>	
+		<!-- <typeAlias type="com.goody.diet.order.OrderDTO" alias="OrderDTO"/>	
 		<typeAlias type="com.goody.diet.order.OrderDetailDTO" alias="OrderDetailDTO"/>
-		<typeAlias type="com.goody.diet.member.MemberDTO" alias="MemberDTO"/>	
+		 --><typeAlias type="com.goody.diet.member.MemberDTO" alias="MemberDTO"/>	
 		
 		<typeAlias type="com.goody.diet.study.StudyDTO" alias="StudyDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyReviewDTO" alias="StudyReviewDTO"/>
 		
-		<typeAlias type="com.goody.diet.board.BbsDTO" alias="BbsDTO"></typeAlias>
+		
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseRoleDTO" alias="ExerciseRoleDTO"/>
 		
