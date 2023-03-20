@@ -1,9 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  		<div class="container">
+  			<div class="row m-auto">
+  				<div class="col-12 w-100 text-center">
+  					<a class="navbar-brand w-100" href="/">구디 다이어트</a>
+			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			        <span class="oi oi-menu"></span> Menu
+			      </button>
+  				</div>
+  				<div class="col-12 w-100 text-center">
+  					<div class="collapse navbar-collapse" id="ftco-nav">
+			        <ul class="navbar-nav m-auto">
+			          <li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
+			          <li class="nav-item"><a href="/exercise/body" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/healthMachine/list" class="nav-link">운동기구</a></li>
+			          <li class="nav-item">
+			<c:choose>
+				<c:when test="${sessionMember eq null}"><a href="/member/login" class="nav-link">로그인/가입</a>	</c:when>
+				<c:when test="${sessionMember ne null}"><a class="nav-link" onclick="kakaoLogout()" 
+				href="#" >로그아웃</a></c:when>
+			</c:choose>
+					  </li>
+			          <li class="nav-item"><a href="/member/myPage" class="nav-link">마이페이지</a></li>
+			          <li class="nav-item"><a href="blog" class="nav-link">장바구니</a></li>
+			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
+			        </ul>
+			      </div>
+  				</div>
+  			</div>
+  		</div>
+	  </nav>
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
   
     <a class="navbar-brand" href="#"></a>
@@ -50,25 +81,32 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item" style="font-size:11px">
-          <a class="nav-link" href="#">logout</a>
-        </li>
-        <li class="nav-item" style="font-size:11px">
-          <a class="nav-link" href="#">마이페이지</a>
-        </li>
-        <li class="nav-item" style="font-size:11px">
-          <a class="nav-link" href="#">장바구니</a>
-        </li>
-        <li class="nav-item" style="font-size:11px">
-          <a class="nav-link" href="#">search</a>
-        </li>
+<!--           <a class="nav-link" href="#">logout</a> -->
+<%-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	<li class="nav-item" style="font-size: 11px"><c:choose>
+			<c:when test="${sessionMember eq null}">
+				<a href="/member/login">로그인</a>
+			</c:when>
+			<c:when test="${sessionMember ne null}">
+				<a onclick="kakaoLogout()" href="/member/logout">로그아웃</a>
+			</c:when>
+		</c:choose></li>
+	<li class="nav-item" style="font-size: 11px"><a class="nav-link"
+		href="#">마이페이지</a></li>
+	<li class="nav-item" style="font-size: 11px"><a class="nav-link"
+		href="#">장바구니</a></li>
+	<li class="nav-item" style="font-size: 11px"><a class="nav-link"
+		href="#">search</a></li>
 
-      </ul>
+</ul>
 
-<!--       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
-      
-    </div>
-  </div>
+<form class="d-flex" role="search">
+	<input class="form-control me-2" type="search" placeholder="Search"
+		aria-label="Search">
+	<button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+</div>
+</div>
 </nav>
+--> --%>
