@@ -48,8 +48,14 @@
 			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
 			          <li class="nav-item"><a href="/exercise/body" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="./healthMachine/list" class="nav-link">운동기구</a></li>
-			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
-			          <li class="nav-item"><a href="trainer" class="nav-link">마이페이지</a></li>
+			          <li class="nav-item">
+			<c:choose>
+				<c:when test="${sessionMember eq null}"><a href="/member/login" class="nav-link">로그인/가입</a>	</c:when>
+				<c:when test="${sessionMember ne null}"><a class="nav-link" onclick="kakaoLogout()" 
+				href="#" >로그아웃</a></c:when>
+			</c:choose>
+					  </li>
+			          <li class="nav-item"><a href="/member/myPage" class="nav-link">마이페이지</a></li>
 			          <li class="nav-item"><a href="blog" class="nav-link">장바구니</a></li>
 			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
 			        </ul>
@@ -704,7 +710,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="./resources/js/google-map.js"></script>
   <script src="./resources/js/main.js"></script> -->
-  
 <c:import url="./template/common_js.jsp"></c:import>  
+<script src="/resources/js/member/kakaoInfo.js"></script>
   </body>
 </html>
