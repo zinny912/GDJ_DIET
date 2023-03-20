@@ -166,4 +166,28 @@ public class MemberController {
 		return mv;
 	}
 
+	//--이메일
+	@GetMapping("verificationCode")
+	public ModelAndView sendVerificationCode(ModelAndView mv, HttpSession httpSession) {
+		SendEmail sendEmail= new SendEmail();
+		String result = sendEmail.generateEmail(httpSession);
+		mv.addObject("result", result);
+		mv.setViewName("/member/ajaxResult");
+		return mv;
+	}
+	@GetMapping("verificationCodeCheck")
+	public ModelAndView verificationCodeCheck(String verificationCode, ModelAndView mv, HttpSession httpSession) {
+		System.out.println(verificationCode);
+		System.out.println("string이니?: "+httpSession.getAttribute("verificationCode"));
+		
+		if(verificationCode.equals(httpSession.getAttribute("verificationCode"))) {
+			mv.addObject("result", "yes");
+		}else {
+			mv.addObject("result", "실패했따.");
+		}
+		mv.setViewName("/member/ajaxResult");
+		return mv;
+	}
+		
+	//--이메일 끝
 }
