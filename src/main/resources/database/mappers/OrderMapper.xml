@@ -8,5 +8,6 @@
 		
 	</select>
 </mapper> -->
+
  <mapper namespace="sample">
   </mapper>
