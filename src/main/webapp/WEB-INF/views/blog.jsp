@@ -59,7 +59,6 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -78,7 +77,6 @@
           	<div class="row">
 	          	<div class="col-md-12 d-flex ftco-animate">
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
-		              <a href="blog-single.html" class="block-20" style="background-image: url('/resources/images/image_1.jpg');">
 		              </a>
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
@@ -94,7 +92,6 @@
 		          </div>
 		          <div class="col-md-12 d-flex ftco-animate">
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
-		              <a href="blog-single.html" class="block-20" style="background-image: url('/resources/images/image_2.jpg');">
 		              </a>
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
@@ -110,7 +107,6 @@
 		          </div>
 		          <div class="col-md-12 d-flex ftco-animate">
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
-		              <a href="blog-single.html" class="block-20" style="background-image: url('/resources/images/image_3.jpg');">
 		              </a>
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
@@ -126,7 +122,6 @@
 		          </div>
 		          <div class="col-md-12 d-flex ftco-animate">
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
-		              <a href="blog-single.html" class="block-20" style="background-image: url('/resources/images/image_4.jpg');">
 		              </a>
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
@@ -142,7 +137,6 @@
 		          </div>
 		          <div class="col-md-12 d-flex ftco-animate">
 		          	<div class="blog-entry blog-entry-2 justify-content-end d-md-flex w-100">
-		              <a href="blog-single.html" class="block-20" style="background-image: url('/resources/images/image_5.jpg');">
 		              </a>
 		              <div class="text pl-md-4 ml-md-2 pt-4">
 		              	<div class="meta">
@@ -199,7 +193,6 @@
             <div class="sidebar-box ftco-animate">
               <h3 class="heading-2">Recent Blog</h3>
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(/resources/images/image_1.jpg);"></a>
                 <div class="text">
                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                   <div class="meta">
@@ -210,7 +203,6 @@
                 </div>
               </div>
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(/resources/images/image_2.jpg);"></a>
                 <div class="text">
                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                   <div class="meta">
@@ -221,7 +213,6 @@
                 </div>
               </div>
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(/resources/images/image_3.jpg);"></a>
                 <div class="text">
                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                   <div class="meta">
