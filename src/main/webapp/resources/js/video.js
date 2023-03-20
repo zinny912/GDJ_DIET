@@ -37,7 +37,11 @@ function onPlayerStateChange(event) {
    
    swal('오늘운동완료!',"1일차",'success')
     .then(function(){
-	    location.href="/exercise/routine";                   
+	    location.href="/exercise/routine"; 
+      function imagechange(){
+        var thumbNail = "${dto.thumbNail}";
+        console.log("썸네일",thumbNail);
+      }                  
       })
   }
   
