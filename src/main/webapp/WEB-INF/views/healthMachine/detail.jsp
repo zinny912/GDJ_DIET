@@ -23,49 +23,42 @@
 							<th>NUM</th>
 							<th>category</th>
 							<th>machinename</th>
-							<th>score</th>
-							<th>detail</th>
-							<th>price</th>
-							<th>stock</th>
-							<th>sale</th>
+
 
 
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" var="dto">
-							<tr>
-								<td>${dto.machineNum}</td>
-								<td>${dto.categoryNum}</td>
-								<td>${dto.machineName}</td>
-								<td>${dto.machineScore}</td>
-								<td>${dto.machineDetail}</td>
-								<td>${dto.price}</td>
-								<td>${dto.stock}</td>
-								<td>${dto.sale}</td>
+						<tr>
+							<td>${dto.machineNum}</td>
+							<td>${dto.categoryNum}</td>
+							<td>${dto.machineName}</td>
 
-							</tr>
-						</c:forEach>
+
+						</tr>
 					</tbody>
 				</table>
-				<div class="form-floating">
-					<select class="form-select" id="floatingSelect"
-						aria-label="상위옵션">
-						<c:forEach items="${list }" var="dto" varStatus="i">
-						<option value="${dto.healthMachineTopOptionDTO.topOptionName}" id="${dto.healthMachineTopOptionDTO.topOptionNum}">${dto.healthMachineTopOptionDTO.topOptionName}</option>
-						</c:forEach>
-					</select> <label for="floatingSelect">Works with selects</label>
+
+				<div class="row" id="optionSelect"
+					data-machineNum="${dto.machineNum}">
+					<div id="opt1" data-optName="${dto.option1 }">
+						<select class="form-select mb-3" id="optSelect1">
+							<option class="option" id="default">${dto.option1}선택</option>
+						</select>
+					</div>
+					<div id="opt2" data-optName="${dto.option2 }"></div>
+					<div id="opt3" data-optName="${dto.option3 }"></div>
+					<div id="opt4" data-optName="${dto.option4 }"></div>
 				</div>
 
 			</div>
 		</div>
-
 	</div>
 
 
 
 
-	<script src="/resources/js/healthMachineAdd.js"></script>
+	<script src="/resources/js/getOption.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

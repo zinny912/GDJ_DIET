@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <c:import url="./template/common_css.jsp"></c:import>
-    
+   <!--  
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     
     <link rel="stylesheet" href="./resources/css/flaticon.css">
     <link rel="stylesheet" href="./resources/css/icomoon.css">
-    <link rel="stylesheet" href="./resources/css/style.css">
+    <link rel="stylesheet" href="./resources/css/style.css"> -->
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -48,8 +48,14 @@
 			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
 			          <li class="nav-item"><a href="schedule" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="./healthMachine/list" class="nav-link">운동기구</a></li>
-			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
-			          <li class="nav-item"><a href="trainer" class="nav-link">마이페이지</a></li>
+			          <li class="nav-item">
+			<c:choose>
+				<c:when test="${sessionMember eq null}"><a href="/member/login" class="nav-link">로그인/가입</a>	</c:when>
+				<c:when test="${sessionMember ne null}"><a class="nav-link" onclick="kakaoLogout()" 
+				href="#" >로그아웃</a></c:when>
+			</c:choose>
+					  </li>
+			          <li class="nav-item"><a href="/member/myPage" class="nav-link">마이페이지</a></li>
 			          <li class="nav-item"><a href="blog" class="nav-link">장바구니</a></li>
 			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
 			        </ul>
@@ -729,7 +735,7 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+<!-- 
   <script src="./resources/js/jquery.min.js"></script>
   <script src="./resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="./resources/js/popper.min.js"></script>
@@ -746,8 +752,8 @@
   <script src="./resources/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="./resources/js/google-map.js"></script>
-  <script src="./resources/js/main.js"></script>
-  
+  <script src="./resources/js/main.js"></script> -->
 <c:import url="./template/common_js.jsp"></c:import>  
+<script src="/resources/js/member/kakaoInfo.js"></script>
   </body>
 </html>

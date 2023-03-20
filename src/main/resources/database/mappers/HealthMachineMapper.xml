@@ -4,67 +4,34 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
+	
+	
 	<select id="getHealthMachineList" resultType="HealthMachineDTO">
-		SELECT * FROM
-		HEALTHMACHINE
+	select * from healthmachine
 	</select>
-	<insert id="setHealthMachineAdd" 
-		parameterType="HealthMachineDTO">
-		<selectKey keyProperty="machineNum" resultType="Long" order="BEFORE">
-		SELECT MACHINE_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO HEALTHMACHINE
-		(MACHINENUM,CATEGORYNUM,MACHINENAME,MACHINESCORE,MACHINEDETAIL,PRICE,STOCK,SALE)
-		VALUES(#{machineNum},#{categoryNum},#{machineName},0,#{machineDetail},#{price},#{stock},#{sale})
-	</insert>
-	<insert id="setHealthMachineTopOptionAdd"
-		parameterType="HealthMachineTopOptionDTO">
-		
-		<selectKey keyProperty="topOptionNum" resultType="Long" order="BEFORE">
-		SELECT OPTION_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
-		
-		INSERT INTO TOPOPTION (TOPOPTIONNUM,MACHINENUM,OPTIONNAME)
-		VALUES(#{topOptionNum},#{machineNum},#{optionName})
-	</insert>
-	<insert id="setHealtMachineBottomOptionAdd" parameterType="HealthMachineBottomOptionDTO">
-	INSERT INTO BOTTOMOPTION (BOTTOMOPTIONNUM,TOPOPTIONNUM,OPTIONNAME)
-	VALUES(OPTION_SEQ.NEXTVAL,#{topOptionNum},#{optionName})
-	</insert>
-	
-	<insert id="setHealthMachineImgAdd" parameterType="HealthMachineImgDTO">
-	INSERT INTO MACHINEIMG(FILENUM, MACHINENUM,FILENAME,ORINAME)
-	VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
-	</insert>
-	
-	<select id="getHealthMachineDetail" parameterType="HealthMachineDTO" resultMap="machineDetailResult">
-	SELECT * FROM HEALTHMACHINE h 
-	LEFT OUTER JOIN
-	TOPOPTION t 
-	ON(h.MACHINENUM=t.MACHINENUM)
-	WHERE h.MACHINENUM =#{machineNum}
-	
+	<select id="getHealthMachineDetail" parameterType="HealthMachineDTO" resultType="HealthMachineDTO">
+	select * from healthmachine WHERE machinenum=#{machineNum}
 	</select>
-	<resultMap type="HealthMachineDTO" id="machineDetailResult">
 	
-		<id column="MACHINENUM" property="machineNum"/>
-		<result column="CATEGORYNUM" property="categoryNum"/>
-		<result column="MACHINENAME" property="machineName"/>
-		<result column="MACHINEDETAIL" property="machineDetail"/>
-		<result column="PRICE" property="price"/>
-		<result column="STOCK" property="stock"/>
-		<result column="SALE" property="sale"/>
-		<association property="healthMachineImgDTO" javaType="HealthMachineImgDTO">
-		<id column="FILENUM" property="fileNum" />
-			<result column="FILENAME" property="fileName" />
-			<result column="ORINAME" property="oriName" />
-		</association>
-		<association property="healthMachineTopOptionDTO" javaType="HealthMachineTopOptionDTO">
-		<id column="TOPOPTIONNUM" property="topOptionNum"/>
-		<result column="TOPOPTIONNAME" property="topOptionName"/>
-			
-		</association>
+	
+	
+	<!-- 옵션 -->
+	<select id="getOption1" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
+	SELECT DISTINCT OPTNAME1,OPTID1 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum}
+	</select>
+	<select id="getOption2" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
+	SELECT DISTINCT OPTNAME2,OPTID2 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1}
+		</select>
+	<select id="getOption3" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
+		SELECT DISTINCT OPTNAME3,OPTID3 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1} and OPTID2=#{optId2}
 		
-	</resultMap>
-	
+		</select>
+		<select id="getOption4" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
+	SELECT DISTINCT OPTNAME4,OPTID4 FROM REALHEALTHMACHINE 
+		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1} and OPTID2=#{optId2} and OPTID3=#{optId3}
+		</select>
+		<!-- 옵션 -->
 </mapper>
