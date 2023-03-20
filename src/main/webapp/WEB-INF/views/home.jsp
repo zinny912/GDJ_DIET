@@ -46,7 +46,7 @@
 			        <ul class="navbar-nav m-auto">
 			          <li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
-			          <li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="/exercise/body" class="nav-link">짧강효확</a></li>
 			          <li class="nav-item"><a href="./healthMachine/list" class="nav-link">운동기구</a></li>
 			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 			          <li class="nav-item"><a href="trainer" class="nav-link">마이페이지</a></li>

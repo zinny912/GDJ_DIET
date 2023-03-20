@@ -25,7 +25,7 @@ public class ExerciseService {
 		return exerciseDAO.getExerciseList();
 	}
 	
-	public ExerciseDTO getExerciseBody(ExerciseDTO exerciseDTO) throws Exception {
+	public ExerciseDTO getExerciseBody() throws Exception {
 		return exerciseDAO.getExerciseBody();
 	}
 	

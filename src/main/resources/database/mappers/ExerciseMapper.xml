@@ -18,10 +18,10 @@
 
 
 <!-- detail : urlId만 뽑아오기-->
-	<select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">
-		SELECT URLID FROM EXERCISE WHERE BODYPART = #{bodyPart}
+	<!-- <select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+		SELECT * FROM EXERCISE WHERE BODYPART = #{bodyPart}
 	</select>	
-
+ -->
 
 		 
  </mapper>

@@ -47,7 +47,7 @@
 	<ul class="navbar-nav m-auto">
 	<li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
 	<li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
-	<li class="nav-item"><a href="/exercise/list" class="nav-link">짧강효확</a></li>
+	<li class="nav-item"><a href="/exercise/body" class="nav-link">짧강효확</a></li>
 	<li class="nav-item"><a href="about.jsp" class="nav-link">운동기구</a></li>
 	<li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
 	<li class="nav-item"><a href="trainer.jsp" class="nav-link">마이페이지</a></li>
@@ -116,7 +116,7 @@
       </c:if>
       <td class="text-center">
         <strong>${dto.days}</strong>
-        <div class="imgchange rounded-circle mb-2" style="background-image:${dto.thumbNail}"></div>
+        <div class="img rounded-circle mb-2" style="background-image: url(${dto.thumbNail});"></div>
         <a href="./video?num=${dto.num}"><strong>${dto.title}</strong></a>
       </td>
       <c:if test="${status.index % 7 == 6}">
