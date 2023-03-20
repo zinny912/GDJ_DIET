@@ -6,15 +6,61 @@
 <mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
 	
 	
-	<select id="getHealthMachineList" resultType="HealthMachineDTO">
-	select * from healthmachine
+	<select id="getHealthMachineList" resultMap="getHealthMachineResult">
+	SELECT * FROM HEALTHMACHINE h 
+	LEFT OUTER JOIN
+	(
+	SELECT * FROM (
+	SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
+	FROM MACHINEIMG m2 
+	) WHERE ranknum=1) t
+	on(h.MACHINENUM=t.machinenum)
 	</select>
-	<select id="getHealthMachineDetail" parameterType="HealthMachineDTO" resultType="HealthMachineDTO">
-	select * from healthmachine WHERE machinenum=#{machineNum}
+	<!-- <select id="getMachineThumnail" resultType="HealthMachineImgDTO" parameterType="HealthMachineDTO">
+		SELECT * FROM MACHINEIMG m2 
+		WHERE MACHINENUM =#{machineNum} AND rownum=1
+		ORDER BY FILENUM 
+	</select> -->
+	<select id="getHealthMachineDetail" parameterType="HealthMachineDTO" resultMap="getHealthMachineResult">
+	
+	SELECT * FROM HEALTHMACHINE h
+	LEFT OUTER JOIN 
+	MACHINEIMG m 
+	on(h.MACHINENUM=m.MACHINENUM)
+	WHERE h.MACHINENUM =#{machineNum}
+	ORDER BY FILENUM
 	</select>
-	
-	
-	
+	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
+		<id column="MACHINENUM" property="machineNum"/>
+		<result column="categoryNum" property="categoryNum"/>
+		<result column="machineName" property="machineName"/>
+		<result column="machineScore" property="machineScore"/>
+		<result column="price" property="price"/>
+		<result column="salePrice" property="salePrice"/>
+		<result column="option1" property="option1"/>
+		<result column="option2" property="option2"/>
+		<result column="option3" property="option3"/>
+		<result column="option4" property="option4"/>
+		
+		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
+			<id column="fileNum" property="fileNum"/>
+	  			<result column="FILENAME" property="fileName"/>
+	  			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
+	<!-- HEALTHMACHINE  AND  IMG  ADD -->
+	<insert id="setHealthMachineAdd" parameterType="HealthMachineDTO">
+		<selectKey keyProperty="machineNum" resultType="Long" order="BEFORE">
+  			SELECT MACHINE_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO HEALTHMACHINE (MACHINENUM,CATEGORYNUM,MACHINENAME,PRICE,SALEPRICE,OPTION1,OPTION2,OPTION3,OPTION4)
+		VALUES(#{machineNum},#{categoryNum},#{machineName},#{price},#{salePrice},#{option1,jdbcType=VARCHAR},#{option2,jdbcType=VARCHAR},#{option3,jdbcType=VARCHAR},#{option4,jdbcType=VARCHAR})
+	</insert>
+	<insert id="setMachineImg" parameterType="HealthMachineImgDTO">
+		INSERT INTO MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
+		VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
+	</insert>
+<!-- ///////////////////////////////////////////////////////// -->
 	<!-- 옵션 -->
 	<select id="getOption1" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
 	SELECT DISTINCT OPTNAME1,OPTID1 FROM REALHEALTHMACHINE 

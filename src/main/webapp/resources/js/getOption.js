@@ -1,105 +1,142 @@
 
-let machineNum=$("#optionSelect").attr("data-machineNum");
-let idx=0;
-let optId1="";
-let optId2="";
-let optId3="";
-let optId4="";
-let optId5="";
-
+let machineNum = $("#optionSelect").attr("data-machineNum");
+let idx = 0; 
+let optId1 = "";
+let optId2 = "";
+let optId3 = "";
+let optId4 = "";
+let optId5 = "";
+let url = "";
+let select = "";
 $.ajax({
-    type:"POST",
-    url:"./option1",
-    data:{
-        machineNum:machineNum
+    type: "POST",
+    url: "./option1",
+    data: {
+        machineNum: machineNum
     },
-    success:function(response){
-        
+    success: function (response) {
+
         $("#optSelect1").append(response.trim())
     },
-    error:function(){
+    error: function () {
         console.log("error");
     }
 })
 
-$("#optionSelect").on("change","#optSelect1",function(e){
-    idx=2;
-    console.log($(this).val())
-    optId1=$(this).val()
-    optName=$("#opt2").attr("data-optName")
-    let select ='<select class="form-select mb-3" id="optSelect2">'
-    select=select+'<option class="option"  id="default">'+optName
-    select=select+'을 선택 해주세요</option></select>'
-    
-    for(i=2;i<=5;i++){
-    $("#optSelect"+i).remove()
-}
-    
-    
+$("#optionSelect").on("change", "#optSelect1", function (e) {
+    idx = 2;
+
+    optId1 = $(this).val();
+    // optName = $("#opt2").attr("data-optName")
+    // select = '<select class="form-select mb-3" id="optSelect2">'
+    // select = select + '<option class="option"  id="default">' + optName
+    // select = select + '을 선택 해주세요</option></select>'
+
+    // for (i = 2; i <= 5; i++) {
+    //     $("#optSelect" + i).remove()
+    // }
+    getOption(2);
+
     $.ajax({
 
-        type:"POST",
-        url:"./option2",
-        data:{
-            machineNum:machineNum,
-            optId1:optId1
+        type: "POST",
+        url: "./option2",
+        data: {
+            machineNum: machineNum,
+            optId1: optId1
         },
-        success:function(response){
-            console.log(response.trim().length)
-            if(response.trim().length>20){
-            $("#opt2").append(select);
-            $("#optSelect2").append(response.trim())
+        success: function (response) {
+
+            if (response.trim().length > 20) {
+                $("#opt2").append(select);
+                $("#optSelect2").append(response.trim())
             }
         },
-        error:function(){
+        error: function () {
             console.log("error");
         }
     })
-    
-    
-    
-})
-$("#optionSelect").on("change","#optSelect2",function(e){
 
-    idx=3;
-    optId2=$(this).val()
-    optName=$("#opt3").attr("data-optName")
-    let select ='<select class="form-select mb-3" id="optSelect3">'
-    select=select+'<option class="option"  id="default">'+optName
-    select=select+'을 선택해주세요</option></select>'
-    for(i=3;i<=5;i++){
-        $("#optSelect"+i).remove()
-    }
+
+
+})
+$("#optionSelect").on("change", "#optSelect2", function (e) {
+
+    optId2 = $(this).val()
+    // idx=3;
+    // optName=$("#opt3").attr("data-optName")
+    // select ='<select class="form-select mb-3" id="optSelect3">'
+    // select=select+'<option class="option"  id="default">'+optName
+    // select=select+'을 선택해주세요</option></select>'
+    getOption(3);
+    // for(i=3;i<=5;i++){
+    //     $("#optSelect"+i).remove()
+    // }
     $.ajax({
 
-        type:"POST",
-        url:"./option3",
-        data:{
-            machineNum:machineNum,
-            optId1:optId1,
-            optId2:optId2
+        type: "POST",
+        url: "./option3",
+        data: {
+            machineNum: machineNum,
+            optId1: optId1,
+            optId2: optId2
         },
-        success:function(response){
-            console.log(response.trim().length)
-            if(response.trim().length>20){
-            $("#opt"+idx).append(select);
-            $("#optSelect3").append(response.trim())
-        }
+        success: function (response) {
+
+            if (response.trim().length > 20) {
+                $("#opt" + idx).append(select);
+                $("#optSelect3").append(response.trim())
+            }
         },
-        error:function(){
+        error: function () {
             console.log("error");
         }
     })
-    
-    
-    
+
+
+
 })
 
-function getOption(optionNum){
+$("#optionSelect").on("change", "#optSelect3", function (e) {
+    optId3 = $(this).val();
+    getOption(4);
+
+    $.ajax({
+
+        type: "POST",
+        url: url,
+        data: {
+            machineNum: machineNum,
+            optId1: optId1,
+            optId2: optId2,
+            optId3: optId3
+        },
+        success: function (response) {
+
+            if (response.trim().length > 20) {
+                $("#opt" + idx).append(select);
+                $("#optSelect4").append(response.trim())
+            }
+        },
+        error: function () {
+            console.log("error");
+        }
+    })
+
+})
+
+function getOption(optSelectNum) {
+    optName = $("#opt" + optSelectNum).attr("data-optName")
+    url = "./option" + optSelectNum
+    select = '<select class="form-select mb-3" id="optSelect' + optSelectNum + '">'
+    select = select + '<option class="option"  id="default">' + optName
+    select = select + '을 선택해주세요</option></select>'
+    for (i = optSelectNum; i <= 5; i++) {
+        $("#optSelect" + i).remove()
+    }
+
 
 }
-
-
 
 
 

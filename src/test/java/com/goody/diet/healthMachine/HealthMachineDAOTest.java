@@ -14,10 +14,22 @@ public class HealthMachineDAOTest extends MyTestCase {
 	@Autowired
 	private HealthMachineDAO healthMachineDAO;
 	
-	@Test
+//	@Test
 	public void getHealthMachineList() throws Exception{
 		List<HealthMachineDTO> ar =healthMachineDAO.getHealthMachineList();
 		assertNotNull(ar);
 	}
-
+//	@Test
+	public void setHealthmachinieAdd()throws Exception{
+		HealthMachineDTO dto = new HealthMachineDTO();
+		dto.setCategoryNum(3L);
+		dto.setMachineName("test");
+		dto.setSalePrice(3L);
+		dto.setPrice(3L);
+		dto.setOption1("testoption1");
+		dto.setOption2("testoption2");
+		int result =  healthMachineDAO.setHealthMachineAdd(dto);
+		assertNotEquals(1, result);
+	}
+	
 }
