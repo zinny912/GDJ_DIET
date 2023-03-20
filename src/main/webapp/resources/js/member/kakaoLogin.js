@@ -25,7 +25,7 @@ function loginWithKakao() {
             // getInfo();
             kakaoLogin()
 
-            // location.href="./dummiHome"
+            // location.href="/"
         },
         fail: function (err) {
             console.log(err);
@@ -65,11 +65,13 @@ function getInfo() {
 // 5. 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
 function kakaoLogout() {
     if (!Kakao.Auth.getAccessToken()) {
-        alert('Not logged in.');
-        return;
+        // alert('Not logged in.');
+        location.href="/member/logout"
+        // return;
     }
     Kakao.Auth.logout(function() {
         alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+        location.href="/member/logout"
     });
 }
 

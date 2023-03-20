@@ -46,7 +46,7 @@ public class MemberController {
 			memberService.getMyPage(memberDTO);
 			session.setAttribute("sessionMember", memberDTO);	
 		}
-		mv.setViewName("redirect:./dummiHome");
+		mv.setViewName("redirect:/");
 
 //		MemberAuthDTO result = (MemberAuthDTO)session.getAttribute("sessionMember");
 //		System.out.println("세션: "+result.getEmail());
@@ -113,7 +113,7 @@ public class MemberController {
 	@GetMapping("logout")
 	public String getMemberLogout(HttpSession session) throws Exception {
 		session.invalidate();
-		return "redirect:./dummiHome";
+		return "redirect:/";
 	}
 	
 	@GetMapping("myPage")

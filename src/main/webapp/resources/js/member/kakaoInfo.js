@@ -1,5 +1,5 @@
-console.log('뭐')
-console.log(Kakao.Auth.getAccessToken())
+
+console.log("AccessToken: "+Kakao.Auth.getAccessToken())
 
 function kakaoInfo() {
     if (Kakao.Auth.getAccessToken()) {

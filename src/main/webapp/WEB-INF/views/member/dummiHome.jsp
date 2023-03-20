@@ -19,7 +19,7 @@
 
 <c:choose>
 	<c:when test="${sessionMember eq null}"><a href="/member/login">로그인</a>	</c:when>
-	<c:when test="${sessionMember ne null}"><a onclick="kakaoLogout()" href="./logout">로그아웃</a></c:when>
+	<c:when test="${sessionMember ne null}"><a onclick="kakaoLogout()" href="/member/logout">로그아웃</a></c:when>
 </c:choose>
 
 
@@ -59,9 +59,9 @@
 <a href="javascript:kakaoInfoLoginPage()">카카오 info login page</a>
 
 <c:import url="./common_js.jsp"></c:import>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="/resources/js/member/memberDeleteJSON.js"></script><!--카카오로그인에서 del기능호출-->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script><!-- kakaoAPI -->
 <script src="/resources/js/member/kakaoLogin.js"></script>
+<script src="/resources/js/member/memberDeleteJSON.js"></script><!--kakaoLogin.js에서 del기능호출-->
 <script src="/resources/js/member/kakaoInfo.js"></script>
 
 

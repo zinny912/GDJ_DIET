@@ -48,8 +48,13 @@
                   <!-- <input type="text" id="loginType" name="loginType" hidden="" value="general" class="form-control"/> -->
                   
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <button type="button" id="submitBtn" class="btn btn-dark col-12">로그인</button>
+                    <button type="button" id="submitBtnLogin" class="btn btn-dark col-12">로그인</button>
                   </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <button type="button" id="submitBtnJoin" class="btn btn-secondary col-12">가입</button>
+                  </div>                 
+
                  
                   <div class="d-flex flex-row align-items-center mb-4">
                   <a class="btn btnKakao px-2 pb-5" href="javascript:loginWithKakao()">카카오 로그인/회원가입</a></div>

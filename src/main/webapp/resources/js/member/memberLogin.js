@@ -1,6 +1,11 @@
 
+$('#submitBtnJoin').click(()=>{
+	location.href="/member/join"
+})
 
-$('#submitBtn').click(()=>{
+
+
+$('#submitBtnLogin').click(()=>{
 
     console.log($('#id').val())
 
@@ -31,7 +36,7 @@ $('#submitBtn').click(()=>{
         if(res.trim()=="id/pw불일치"){
             alert('id/pw 불일치')
         }else{
-            location.href="./dummiHome";
+            location.href="/";
         }
     })
 

@@ -14,7 +14,7 @@ function modalMemberDelete(){
                 kakaoDelete()
                 console.log("res: "+res)
                 $('#modalClose').click()
-                location.href="./dummiHome"
+                location.href="/"
             }
         }
 

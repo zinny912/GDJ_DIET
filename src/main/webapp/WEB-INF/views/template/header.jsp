@@ -50,7 +50,11 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item" style="font-size:11px">
-          <a class="nav-link" href="#">logout</a>
+<!--           <a class="nav-link" href="#">logout</a> -->
+			<c:choose>
+				<c:when test="${sessionMember eq null}"><a href="/member/login">로그인</a>	</c:when>
+				<c:when test="${sessionMember ne null}"><a onclick="kakaoLogout()" href="/member/logout">로그아웃</a></c:when>
+			</c:choose>
         </li>
         <li class="nav-item" style="font-size:11px">
           <a class="nav-link" href="#">마이페이지</a>
