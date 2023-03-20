@@ -35,6 +35,28 @@ public class HealthMachineController {
 		mv.setViewName("healthMachine/detail");
 		return mv;
 	}
+	@GetMapping("add")
+	public ModelAndView setHealthMachineAdd(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("healthMachine/add");
+		return mv;
+	}
+	
+	@PostMapping("add")
+	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO, MultipartFile [] Files, HttpSession session)throws Exception{
+		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, Files, session);
+		String message="실패";
+		if(result>0) {
+			message="성공";
+		}
+		mv.addObject("url","./list");
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	
+//	----------------option-----------------------------------
 	@PostMapping("option1")
 	public ModelAndView getOption1(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		

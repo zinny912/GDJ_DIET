@@ -2,8 +2,33 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  		<div class="container">
+  			<div class="row m-auto">
+  				<div class="col-12 w-100 text-center">
+  					<a class="navbar-brand w-100" href="/">구디 다이어트</a>
+			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			        <span class="oi oi-menu"></span> Menu
+			      </button>
+  				</div>
+  				<div class="col-12 w-100 text-center">
+  					<div class="collapse navbar-collapse" id="ftco-nav">
+			        <ul class="navbar-nav m-auto">
+			          <li class="nav-item active"><a href="index" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
+			          <li class="nav-item"><a href="schedule" class="nav-link">짧강효확</a></li>
+			          <li class="nav-item"><a href="./healthMachine/list" class="nav-link">운동기구</a></li>
+			          <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+			          <li class="nav-item"><a href="trainer" class="nav-link">마이페이지</a></li>
+			          <li class="nav-item"><a href="blog" class="nav-link">장바구니</a></li>
+			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
+			        </ul>
+			      </div>
+  				</div>
+  			</div>
+  		</div>
+	  </nav>
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
   
     <a class="navbar-brand" href="#"></a>
@@ -64,11 +89,12 @@
 
       </ul>
 
-<!--       <form class="d-flex" role="search">
+      <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+      </form>
       
     </div>
   </div>
 </nav>
+ -->
