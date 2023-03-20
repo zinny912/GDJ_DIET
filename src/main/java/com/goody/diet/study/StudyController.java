@@ -2,9 +2,12 @@ package com.goody.diet.study;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,10 +35,10 @@ public class StudyController {
 	}
 	
 	@GetMapping("studyDetail")
-	public ModelAndView getBoardDetail(StudyDTO studyDTO) throws Exception{
+	public ModelAndView getBoardDetail(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		studyDTO = studyService.getBoardDetail(studyDTO);
+		StudyDTO studyDTO = studyService.getBoardDetail(pager);
 		
 		mv.setViewName("study/studyDetail");
 		mv.addObject("dto", studyDTO);

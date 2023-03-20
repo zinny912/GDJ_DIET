@@ -22,7 +22,7 @@ public class StudyQnaDAO implements BoardDAO{
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return 0L;
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 
 	@Override
@@ -34,19 +34,40 @@ public class StudyQnaDAO implements BoardDAO{
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
+		return 0;
+	}
+
+	public int setBoardAdd(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", qnaDTO);
+	}
+
+	@Override
+	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
+		return 0;
 	}
-
+	
+	public int setBoardUpdate(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardUpdate", qnaDTO);
+	}
+	
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO);
+		return 0;
+	}
+	
+	public int setBoardDelete(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", qnaDTO);
 	}
 
 	@Override
@@ -55,10 +76,17 @@ public class StudyQnaDAO implements BoardDAO{
 		return null;
 	}
 
-	@Override
-	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+	public StudyQnaDTO getBoardDetail(StudyQnaDTO qnaDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", qnaDTO);
+	}
+
+	public int setStepUpdate(StudyQnaDTO qnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
+	public int setReplyAdd(StudyQnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
 	}
 
 	@Override

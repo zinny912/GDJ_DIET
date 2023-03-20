@@ -11,8 +11,6 @@ public class StudyQnaDTO extends BoardDTO {
 	private Long depth;
 	private Long studyNum;
 	
-	private List<BoardFileDTO> boardFileDTOs;
-	
 	public Long getRef() {
 		return ref;
 	}
@@ -30,12 +28,6 @@ public class StudyQnaDTO extends BoardDTO {
 	}
 	public void setDepth(Long depth) {
 		this.depth = depth;
-	}
-	public List<BoardFileDTO> getBoardFileDTOs() {
-		return boardFileDTOs;
-	}
-	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
-		this.boardFileDTOs = boardFileDTOs;
 	}
 	public Long getStudyNum() {
 		return studyNum;

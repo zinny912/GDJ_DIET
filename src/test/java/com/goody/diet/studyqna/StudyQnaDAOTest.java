@@ -20,9 +20,13 @@ public class StudyQnaDAOTest extends MyTestCase {
 	@Test
 	public void getBoardList() throws Exception {
 		Pager pager = new Pager();
+		pager.setStudyNum(1L);
+		pager.setKind("title");
+		pager.setSearch("1");
+		pager.makeRow();
 		List<BbsDTO> ar = studyQnaDAO.getBoardList(pager);
 		assertNotEquals(0, ar.size());
 	}
 	
-
+	
 }

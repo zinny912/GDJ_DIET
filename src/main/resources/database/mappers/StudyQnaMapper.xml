@@ -5,34 +5,67 @@
   
   <mapper namespace="com.goody.diet.board.studyqna.StudyQnaDAO">
   	
+  	<sql id="qnaCondition">
+	  	<trim prefix="where" suffixOverrides="and">
+			STUDYNUM=#{studyNum} AND
+			
+			<if test="kind == 'title'">
+				TITLE LIKE '%'|| #{search} || '%'
+			</if>
+			
+			<if test="kind == 'writer'">
+				WRITER LIKE '%'|| #{search} || '%'
+			</if>
+		</trim> 
+	</sql>
+  	
   	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-  		SELECT COUNT(NUM) FROM STUDYQNA WHERE STUDYNUM=#{studyNum}
+  		SELECT COUNT(NUM) FROM STUDYQNA 
+  			<include refid="qnaCondition"></include>
   	</select>
   	
    	<select id="getBoardList" resultType="StudyQnaDTO" parameterType="Pager">
-  		SELECT * FROM STUDYQNA WHERE STUDYNUM=#{studyNum}
-<!-- 	   		SELECT * FROM
+  		<!-- SELECT * FROM STUDYQNA WHERE STUDYNUM=#{studyNum} -->
+  		SELECT * FROM
   		(	
   			SELECT ROWNUM R, C.* FROM
-  				(	SELECT NUM,WRITER,TITLE,REGDATE,HIT,DEPTH FROM STUDYQNA
+  				(	SELECT * FROM STUDYQNA
   					<include refid="qnaCondition"></include>
 					ORDER BY REF DESC, STEP ASC
 				) C
 		)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}   -->
+		WHERE R BETWEEN #{startRow} AND #{lastRow}   
   	</select>
-<!-- 
+
   	<insert id="setBoardAdd" parameterType="StudyQnaDTO">
+  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
   		INSERT INTO STUDYQNA (NUM,STUDYNUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
   		VALUES(#{num},#{studyNum},#{title}, #{contents}, #{writer},SYSDATE,0,#{num},0,0)
   	</insert>
   	
-  	<update id="setBoardAdd" parameterType="BbsDTO">
-  		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+  	
+  	<select id="getBoardDetail" resultType="StudyQnaDTO" parameterType="StudyQnaDTO">
+  		SELECT * FROM STUDYQNA WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
+  	</select>
+  	
+  	<update id="setBoardUpdate" parameterType="StudyQnaDTO">
+ 		UPDATE STUDYQNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
+ 	</update>
+  	
+  	<delete id="setBoardDelete" parameterType="BbsDTO">
+  		DELETE STUDYQNA WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
+  	</delete> 
+  	
+  	<update id="setStepUpdate" parameterType="StudyQnaDTO">
+  		UPDATE STUDYQNA SET STEP = STEP+1
+  		WHERE REF = #{ref} AND STEP > #{step}
   	</update>
   	
-  	<delete id="setBoardAdd" parameterType="BbsDTO">
-  		DELETE QNA WHERE NUM=#{num}
-  	</delete> -->
+  	<insert id="setReplyAdd" parameterType="StudyQnaDTO">
+  		INSERT INTO STUDYQNA (NUM,STUDYNUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
+  		VALUES (QNA_SEQ.NEXTVAL,#{studyNum},#{title}, #{contents}, #{writer},SYSDATE,0,#{ref},#{step},#{depth})
+  	</insert>
   	
   </mapper>

@@ -26,7 +26,7 @@ public class StudyDAO {
 		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
 	}
 	
-	public StudyDTO getBoardDetail(StudyDTO studyDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", studyDTO);
+	public StudyDTO getBoardDetail(Pager pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", pager);
 	}
 }
