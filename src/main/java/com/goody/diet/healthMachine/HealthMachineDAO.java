@@ -8,29 +8,34 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class HealthMachineDAO {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.goody.diet.healthMachine.HealthMachineDAO.";
 
 	public List<HealthMachineDTO> getHealthMachineList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
-		
+
 	}
-	
-	public int setHealthMachineAdd(HealthMachineDTO healthMachineDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setHealthMachineAdd",healthMachineDTO);
+	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getHealthMachineDetail", healthMachineDTO);
 	}
-	public int setHealthMachineTopOptionAdd(HealthMachineTopOptionDTO healthMachineTopOptionDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setHealthMachineTopOptionAdd", healthMachineTopOptionDTO);
+	public List<RealHealthMachineDTO> getOption1(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+
+		return sqlSession.selectList(NAMESPACE+"getOption1", realHealthMachineDTO);
 	}
-	public int setHealthMachineImgAdd(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setHealthMachineImgAdd", healthMachineImgDTO);
+	public List<RealHealthMachineDTO> getOption2(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+
+		return sqlSession.selectList(NAMESPACE+"getOption2", realHealthMachineDTO);
 	}
-	public int setHealtMachineBottomOptionAdd(HealthMachineBottomOptionDTO healthMachineBottomOptionDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setHealtMachineBottomOptionAdd", healthMachineBottomOptionDTO);
+	public List<RealHealthMachineDTO> getOption3(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+
+		return sqlSession.selectList(NAMESPACE+"getOption3", realHealthMachineDTO);
 	}
-	public List<HealthMachineDTO> getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getHealthMachineDetail",healthMachineDTO);
+	public List<RealHealthMachineDTO> getOption4(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+
+		return sqlSession.selectList(NAMESPACE+"getOption4", realHealthMachineDTO);
 	}
+
+
 }
