@@ -45,8 +45,8 @@
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="studyNum" value="1" id="studyNum"> 	
+		<form class="col-md-7" action="./add" method="post">
+			<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
 				<c:if test="${not empty member}">
@@ -76,7 +76,7 @@
 			</div>
 		
 			<div class="mb-3">
-				<button class="btn btn-outline-success" type="submit">글쓰기</button> 
+				<button class="btn btn-primary" type="submit">글쓰기</button> 
 			</div>
 		</form>
 	</div>

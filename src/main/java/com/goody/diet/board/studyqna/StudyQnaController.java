@@ -41,7 +41,7 @@ public class StudyQnaController {
 	}
 	
 	@GetMapping("add")
-	public ModelAndView setBoardAdd() throws Exception{
+	public ModelAndView setBoardAdd(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("studyQna/add");
 		
@@ -50,9 +50,9 @@ public class StudyQnaController {
 	
 
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(StudyQnaDTO studyQnaDTO, MultipartFile[] addFiles,HttpSession session) throws Exception{
+	public ModelAndView setBoardAdd(StudyQnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = studyQnaService.setBoardAdd(studyQnaDTO, null, session);
+		int result = studyQnaService.setBoardAdd(qnaDTO);
 		
 		String message="등록 실패";
 		if(result>0) {
@@ -60,7 +60,7 @@ public class StudyQnaController {
 		}
 		
 		mv.addObject("result",message);
-		mv.addObject("url","/study/studyDetail?studyNum="+studyQnaDTO.getStudyNum());
+		mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -68,19 +68,18 @@ public class StudyQnaController {
 	@GetMapping("detail")
 	public ModelAndView getBoardDetail(StudyQnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO = studyQnaService.getBoardDetail(qnaDTO);
+		StudyQnaDTO qnaDTO2 = studyQnaService.getBoardDetail(qnaDTO);
 
-		mv.addObject("dto", boardDTO);
+		mv.addObject("dto", qnaDTO2);
 		mv.setViewName("studyQna/detail");
 		return mv;
 	}
 	
 	@GetMapping("update")
-	public ModelAndView setBoardUpdate(BoardDTO boardDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boardDTO = studyQnaService.getBoardDetail(boardDTO);
+	public ModelAndView setBoardUpdate(StudyQnaDTO qnaDTO, ModelAndView mv) throws Exception{
+		qnaDTO = studyQnaService.getBoardDetail(qnaDTO);
 		
-		mv.addObject("dto", boardDTO);
+		mv.addObject("dto", qnaDTO);
 		
 		mv.setViewName("studyQna/update");
 		
@@ -96,24 +95,48 @@ public class StudyQnaController {
 			message="글이 수정 되었습니다";
 		}
 		mv.addObject("result", message);
-		mv.addObject("url", "/studyQna/detail?num="+qnaDTO.getNum());
+		mv.addObject("url", "/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 		mv.setViewName("common/result");
 		
 		return mv;
 	}
 	
 	@PostMapping("delete")
-	public ModelAndView setBoardDelete(StudyQnaDTO qnaDTO, HttpSession httpSession) throws Exception{
+	public ModelAndView setBoardDelete(StudyQnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = studyQnaService.setBoardDelete(qnaDTO, httpSession);
+		int result = studyQnaService.setBoardDelete(qnaDTO);
 		String message="삭제 실패";
 		if(result>0) {
 			message="글이 삭제 되었습니다";
 		}
 		System.out.println(qnaDTO.getStudyNum());
 		mv.addObject("result", message);
-		mv.addObject("url", "/study/studyList");
+		mv.addObject("url", "/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@GetMapping("reply")
+	public ModelAndView setReplyAdd(StudyQnaDTO qnaDTO, ModelAndView mv) throws Exception{
+		mv.setViewName("studyQna/reply");
+		return mv;
+	}
+	
+	@PostMapping("reply")
+	public ModelAndView setReplyAdd(StudyQnaDTO qnaDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = studyQnaService.setReplyAdd(qnaDTO);
+		
+		String message="등록 실패";
+		if(result>0) {
+			message="글이 등록 되었습니다";
+		}
+		
+		mv.setViewName("common/result");
+		mv.addObject("result", message);
+		mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
+		return mv;
+	}
+	
 }

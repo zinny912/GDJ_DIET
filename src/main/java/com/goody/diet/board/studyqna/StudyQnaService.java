@@ -21,9 +21,6 @@ public class StudyQnaService implements BoardService{
 	@Autowired
 	private StudyQnaDAO qnaDAO;
 	
-	@Autowired
-	private FileManager fileManager;
-	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		pager.makeRow();
@@ -33,12 +30,21 @@ public class StudyQnaService implements BoardService{
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session) throws Exception {
-		return qnaDAO.setBoardAdd(bbsDTO);
+		return 0;
+	}
+	
+
+	public int setBoardAdd(StudyQnaDTO qnaDTO) throws Exception {
+		return qnaDAO.setBoardAdd(qnaDTO);
 	}
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		return qnaDAO.setBoardUpdate(bbsDTO);
+		return 0;
+	}
+	
+	public int setBoardUpdate(StudyQnaDTO qnaDTO) throws Exception {
+		return qnaDAO.setBoardUpdate(qnaDTO);
 	}
 
 	@Override
@@ -47,10 +53,20 @@ public class StudyQnaService implements BoardService{
 		return qnaDAO.setBoardDelete(bbsDTO);
 	}
 
+	public int setBoardDelete(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.setBoardDelete(qnaDTO);
+	}
+	
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.getBoardDetail(boardDTO);
+		return null;
+	}
+	
+	public StudyQnaDTO getBoardDetail(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.getBoardDetail(qnaDTO);
 	}
 
 	@Override
@@ -65,5 +81,34 @@ public class StudyQnaService implements BoardService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	//reply Insert
+	public int setReplyAdd(StudyQnaDTO qnaDTO) throws Exception{
+			//QnaDTO
+			//num : 부모의 글번호
+			//writer,title,contents :답글로 입력한 값
+			//ref: null
+			//step: null
+			//depth: null
+			
+			//1. 부모의 정보를 조회
+			StudyQnaDTO  parent = qnaDAO.getBoardDetail(qnaDTO);
+			
+			//ref: 부모의 ref
+			qnaDTO.setRef(parent.getRef());
+			
+			//step: 부모의 step+1
+			qnaDTO.setStep(parent.getStep()+1);
+			
+			//depth: 부모의 depth+1
+			qnaDTO.setDepth(parent.getDepth()+1);
+			
+			//2. Step을 update
+			int result = qnaDAO.setStepUpdate(qnaDTO);
+			
+			//3. 답글 insert
+			result = qnaDAO.setReplyAdd(qnaDTO);			
+			return result;
+		}
 	
 }

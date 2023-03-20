@@ -36,27 +36,21 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
-
 <body>
+
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<h1 class="col-md-7 text-center my-5">Q&amp;A 상품문의 수정</h1>
+		<h1 class="col-md-7 text-center my-5">${boardName} Reply PAGE</h1>
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./update" method="post">
-			<input type="hidden" name="num" value="${dto.num}" id="num">
-			<input type="hidden" name="studyNum" value="${dto.studyNum}" id="studyNum"> 	
+		<form class="col-md-7" action="./reply" method="post">
+				<input type="hidden" name="studyNum" value="${studyQnaDTO.studyNum}">
+				<input type="hidden" name="num" value="${studyQnaDTO.num}">
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
-				<c:if test="${not empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly>
-				</c:if>
-				<c:if test="${empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${dto.writer}">
-					<!-- dto.writer대신 member.id로 추후 멤버 추가하고 바꾸기 -->
-				</c:if>
+				<input type="text" name="writer" class="form-control" id="writer">
 			</div>
 			
 			<div class="mb-3">
@@ -69,13 +63,13 @@
 				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
 			
-			<div id="fileList">
-<!-- 				<div class="input-group mb-3", id="f'+idx+'">
-						<input type="file" class="form-control" name="'+param+'">
-						<button type="button class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button>
-					</div> -->
-				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
-			</div>
+			<!-- <div id="fileList">
+				<div class="mb-3">
+					<label for="files" class="form-label">이미지</label>
+					<input type="file" class="form-control" id="files" name="pic">
+				</div>
+				<button type="button" id="fileAdd">ADD</button>
+			</div> -->
 		
 			<div class="mb-3">
 				<button class="btn btn-primary" type="submit">글쓰기</button> 
@@ -83,10 +77,30 @@
 		</form>
 	</div>
 </div>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="/resources/js/jquery.min.js"></script>
+  <script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/resources/js/popper.min.js"></script>
+  <script src="/resources/js/bootstrap.min.js"></script>
+  <script src="/resources/js/jquery.easing.1.3.js"></script>
+  <script src="/resources/js/jquery.waypoints.min.js"></script>
+  <script src="/resources/js/jquery.stellar.min.js"></script>
+  <script src="/resources/js/owl.carousel.min.js"></script>
+  <script src="/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="/resources/js/bootstrap-datepicker.js"></script>
+  <script src="/resources/js/jquery.timepicker.min.js"></script>
+  <script src="/resources/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="/resources/js/google-map.js"></script>
+  <script src="/resources/js/main.js"></script>
 
 	<c:import url="../template/common_js.jsp"></c:import>
-	<script>
-		$('#contents').summernote();
-	</script>
 </body>
 </html>

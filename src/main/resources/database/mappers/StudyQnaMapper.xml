@@ -46,16 +46,26 @@
   	</insert>
   	
   	
-  	<select id="getBoardDetail" resultType="StudyQnaDTO" parameterType="BoardDTO">
-  		SELECT * FROM STUDYQNA WHERE NUM=#{num}
+  	<select id="getBoardDetail" resultType="StudyQnaDTO" parameterType="StudyQnaDTO">
+  		SELECT * FROM STUDYQNA WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
   	</select>
   	
-  	<update id="setBoardUpdate" parameterType="BbsDTO">
- 		UPDATE STUDYQNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+  	<update id="setBoardUpdate" parameterType="StudyQnaDTO">
+ 		UPDATE STUDYQNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
  	</update>
   	
   	<delete id="setBoardDelete" parameterType="BbsDTO">
-  		DELETE STUDYQNA WHERE NUM=#{num}
+  		DELETE STUDYQNA WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
   	</delete> 
+  	
+  	<update id="setStepUpdate" parameterType="StudyQnaDTO">
+  		UPDATE STUDYQNA SET STEP = STEP+1
+  		WHERE REF = #{ref} AND STEP > #{step}
+  	</update>
+  	
+  	<insert id="setReplyAdd" parameterType="StudyQnaDTO">
+  		INSERT INTO STUDYQNA (NUM,STUDYNUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
+  		VALUES (QNA_SEQ.NEXTVAL,#{studyNum},#{title}, #{contents}, #{writer},SYSDATE,0,#{ref},#{step},#{depth})
+  	</insert>
   	
   </mapper>

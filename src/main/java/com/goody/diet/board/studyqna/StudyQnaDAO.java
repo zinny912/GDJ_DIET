@@ -34,7 +34,12 @@ public class StudyQnaDAO implements BoardDAO{
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
+		return 0;
+	}
+
+	public int setBoardAdd(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", qnaDTO);
 	}
 
 	@Override
@@ -46,21 +51,43 @@ public class StudyQnaDAO implements BoardDAO{
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE+"setBoardUpdate", bbsDTO);
+		return 0;
 	}
-
+	
+	public int setBoardUpdate(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardUpdate", qnaDTO);
+	}
+	
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO);
+		return 0;
+	}
+	
+	public int setBoardDelete(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", qnaDTO);
 	}
 
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", boardDTO);
+		return null;
 	}
 
+	public StudyQnaDTO getBoardDetail(StudyQnaDTO qnaDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", qnaDTO);
+	}
+
+	public int setStepUpdate(StudyQnaDTO qnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
+	public int setReplyAdd(StudyQnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
 
 	@Override
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {

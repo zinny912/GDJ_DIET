@@ -14,7 +14,8 @@
 		<tbody>
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><a href="/studyQna/detail?num=${dto.num}">${dto.title}</a></td>
+					<td><c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+					<a href="/studyQna/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.title}</a></td>
 					<td>${dto.writer}</td>
 					<td>${dto.regDate}</td>
 				</tr>
@@ -77,7 +78,10 @@
 		</div>
 		
 		<div class="row my-3">
-			<a href="/studyQna/add" class="btn btn-primary">상품문의</a>			
+			<form class="col-md-7" action="/studyQna/add">
+			<input type="hidden" name="studyNum" value="${pager.studyNum}">
+			<button class="btn btn-primary" type="submit">상품문의</button> 
+			</form>			
 		</div>
 </div>
 

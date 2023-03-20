@@ -74,6 +74,7 @@
 			<p>${dto.contents}</p>
 			<div class="my-3">
 				<form action="./update" id="frm">
+					<input type="hidden" name="studyNum" value="${dto.studyNum}">
 					<input type="hidden" name="num" value="${dto.num}">
 					<%-- <c:if test="${dto.writer eq member.id}"> --%>
 						<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
@@ -87,7 +88,7 @@
 		
 		</div>
 				
-		<div> <a href="./reply?num=${dto.num}" class="btn btn-primary">답글</a> </div>
+		<div> <a href="./reply?studyNum=${dto.studyNum}&num=${dto.num}" class="btn btn-primary">답글</a> </div>
 		
 		
 	</div>
