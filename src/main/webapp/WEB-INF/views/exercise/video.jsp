@@ -83,6 +83,13 @@
 	</div>
 </div>
   
+  <select id="video-selector">
+  <option value="z3zp5U27mQg">동영상 1</option>
+  <option value="pq6cu0y-TTQ">동영상 2</option>
+  <option value="kK4_j-6LCWw">동영상 3</option>
+</select>
+  
+  
 <section class="ftco-section">
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-3 bread">루틴 ${dto.days}</h1> 
