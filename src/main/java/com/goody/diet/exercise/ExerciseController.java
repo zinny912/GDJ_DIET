@@ -53,6 +53,16 @@ public class ExerciseController {
 		
 		return mv;
 	}
+	
+	@GetMapping("body2")
+	public ModelAndView getExerciseBody(ModelAndView mv) throws Exception {
+		
+		
+		
+		mv.setViewName("exercise/body2");
+		
+		return mv;
+	}
 
 }
 
