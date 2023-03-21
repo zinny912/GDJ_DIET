@@ -68,4 +68,8 @@
   		VALUES (QNA_SEQ.NEXTVAL,#{studyNum},#{title}, #{contents}, #{writer},SYSDATE,0,#{ref},#{step},#{depth})
   	</insert>
   	
+  	<update id="setHitUpdate" parameterType="StudyQnaDTO">
+  		UPDATE STUDYQNA SET HIT=HIT+1 WHERE NUM=#{num}
+  	</update>
+  	
   </mapper>

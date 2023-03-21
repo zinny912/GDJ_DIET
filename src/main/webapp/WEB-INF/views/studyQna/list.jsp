@@ -9,6 +9,7 @@
 				<th>TITLE</th>
 				<th>WRITER</th>
 				<th>DATE</th>
+				<th>HIT</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,6 +19,7 @@
 					<a href="/studyQna/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.title}</a></td>
 					<td>${dto.writer}</td>
 					<td>${dto.regDate}</td>
+					<td>${dto.hit}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -26,11 +26,11 @@
 			<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
-				<c:if test="${not empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly>
+				<c:if test="${not empty sessionMember}">
+					<input type="text" name="writer" class="form-control" id="writer" value="${sessionMember.id}" readonly>
 				</c:if>
-				<c:if test="${empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}">
+				<c:if test="${empty sessionMember}">
+					<input type="text" name="writer" class="form-control" id="writer" value="${sessionMember.id}" disabled>
 				</c:if>
 			</div>
 			
@@ -49,7 +49,6 @@
 						<input type="file" class="form-control" name="'+param+'">
 						<button type="button class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button>
 					</div> -->
-				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
 			</div>
 		
 			<div class="mb-3">
@@ -59,7 +58,8 @@
 	</div>
 </div>
 
-	<c:import url="../template/common_js.jsp"></c:import>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script>
 		$('#contents').summernote();
 	</script>

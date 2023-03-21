@@ -68,6 +68,7 @@ public class StudyQnaController {
 	@GetMapping("detail")
 	public ModelAndView getBoardDetail(StudyQnaDTO qnaDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		int result = studyQnaService.setHitUpdate(qnaDTO);
 		StudyQnaDTO qnaDTO2 = studyQnaService.getBoardDetail(qnaDTO);
 
 		mv.addObject("dto", qnaDTO2);
@@ -138,5 +139,4 @@ public class StudyQnaController {
 		mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 		return mv;
 	}
-	
 }
