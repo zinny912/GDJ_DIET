@@ -1,4 +1,4 @@
-package com.goody.diet.board.studyqna;
+package com.goody.diet.study;
 
 import java.util.List;
 
@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.goody.diet.board.BbsDTO;
-import com.goody.diet.board.BoardDTO;
 import com.goody.diet.util.Pager;
 
 @Controller
@@ -32,7 +29,7 @@ public class StudyQnaController {
 	@GetMapping("list")
 	public ModelAndView getBoardList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<BbsDTO> ar = studyQnaService.getBoardList(pager);
+		List<StudyQnaDTO> ar = studyQnaService.getBoardList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("studyQna/list");

@@ -13,7 +13,7 @@ import com.goody.diet.board.BbsService;
 import com.goody.diet.util.Pager;
 
 @Controller
-@RequestMapping("/studyReview/*")
+@RequestMapping("/studyReview/**")
 public class StudyReviewController {
 	
 	@Autowired
@@ -25,7 +25,8 @@ public class StudyReviewController {
 		List<StudyReviewDTO> ar = studyReviewService.getBoardList(pager);
 		
 		mv.addObject("list",ar);
-		mv.setViewName("common/reviewList");
+		mv.addObject("pager", pager);
+		mv.setViewName("studyReview/list");
 		
 		return mv;
 	}

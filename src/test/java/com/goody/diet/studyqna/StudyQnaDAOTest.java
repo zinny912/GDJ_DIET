@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.goody.diet.MyTestCase;
 import com.goody.diet.board.BbsDTO;
-import com.goody.diet.board.studyqna.StudyQnaDAO;
+import com.goody.diet.study.StudyQnaDAO;
 import com.goody.diet.util.Pager;
 
 public class StudyQnaDAOTest extends MyTestCase {

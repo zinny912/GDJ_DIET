@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.goody.diet.board.studyqna.StudyQnaDAO">
+  <mapper namespace="com.goody.diet.study.StudyQnaDAO">
   	
   	<sql id="qnaCondition">
 	  	<trim prefix="where" suffixOverrides="and">

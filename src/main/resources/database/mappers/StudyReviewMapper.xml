@@ -5,12 +5,38 @@
   
   <mapper namespace="com.goody.diet.study.StudyReviewDAO">
   
+  <sql id="reviewCondition">
+	  	<trim prefix="where" suffixOverrides="and">
+			STUDYNUM=#{studyNum} AND
+			
+			<if test="kind == 'contents'">
+				CONTENTS LIKE '%'|| #{search} || '%'
+			</if>
+			
+			<if test="kind == 'writer'">
+				WRITER LIKE '%'|| #{search} || '%'
+			</if>
+		</trim> 
+	</sql>
+	
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+  		SELECT COUNT(NUM) FROM STUDYREVIEW 
+  			<include refid="reviewCondition"></include>
+  	</select>
   
-  <select id="getBoardList" parameterType="Pager" resultType="StudyReviewDTO">
-		SELECT * FROM STUDYREVIEW
+  <select id="getBoardList" resultType="StudyReviewDTO" parameterType="Pager">
+		SELECT * FROM
+  		(	
+  			SELECT ROWNUM R, C.* FROM
+  				(	SELECT * FROM STUDYREVIEW
+  					<include refid="reviewCondition"></include>
+					ORDER BY NUM DESC
+				) C
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}  
   </select>
   
-  <insert id="setBoardAdd" parameterType="StudyReviewDTO">
+<!--   <insert id="setBoardAdd" parameterType="StudyReviewDTO">
   		INSERT INTO STUDYREVIEW (NUM, STUDYNUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, SCORE)
   		VALUES (REVIEW_SEQ.NEXTVAL, #{studyNum}, #{title}, #{contents}, #{writer}, SYSDATE , #{hit}, #{score})
   </insert>
@@ -23,7 +49,7 @@
   
   <delete id="setBoardDelete" parameterType="StudyReviewDTO">
   		DELETE STUDYREVIEW WHERE NUM=#{num}
-  </delete>
+  </delete> -->
   
   
   </mapper>

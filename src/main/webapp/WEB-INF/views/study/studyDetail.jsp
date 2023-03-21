@@ -40,7 +40,7 @@
 			          <div class="nav-link" id="studyQnaInfo" style="cursor: pointer">상세정보</div>
 			        </div>
 			        <div class="col-md-4">
-			         <div class="nav-link" style="cursor: pointer">구매평</div>
+			         <div class="nav-link" id="studyReviewList" data-review-studyNum="${dto.studyNum}" style="cursor: pointer">구매평</div>
 			        </div>
 			        <div class="col-md-4">
 			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}" style="cursor: pointer">Q&amp;A</div>
@@ -49,7 +49,7 @@
 			        </div>
   			</div>
   			
-  			<div class="my-5" id="studyQnaListResult">
+  			<div class="my-5" id="studyListResult">
   				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
   				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
   			</div>

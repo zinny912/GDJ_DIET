@@ -28,7 +28,7 @@
   	  	<typeAlias type="java.lang.Long" alias="Long" />
 		<typeAlias type="java.util.List" alias="List"/>
 		
-		<typeAlias type="com.goody.diet.board.studyqna.StudyQnaDTO" alias="StudyQnaDTO"/>
+		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 	
 	</typeAliases>
 
