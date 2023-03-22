@@ -36,6 +36,24 @@
     <div class="col-10">
       <div class="row">
 
+<c:forEach items="${deliveryList}" var="prime">
+<c:if test="${sessionMember.address eq prime.address}">
+<div class="col-12">
+	<div class="card">
+	  <div class="card-body">
+	    <h5 class="card-title">${prime.recipient}</h5>
+
+	    <h6 class="card-subtitle mb-2 text-muted">대표주소</h6>
+	    
+	    <p class="card-text">${prime.address}</p>
+	    <p class="card-text">${prime.recipientTel}</p>
+	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}" class="card-link">수정</a>
+	    
+	  </div>
+	</div>		
+</div>
+</c:if>
+</c:forEach>
 
 <c:forEach items="${deliveryList}" var="i">
 <div class="col-12">
@@ -43,16 +61,18 @@
 	  <div class="card-body">
 	    <h5 class="card-title">${i.recipient}</h5>
 	    
-	    <c:if test="${sessionMember.address eq i.address}">
-	    <h6 class="card-subtitle mb-2 text-muted">대표주소</h6>
-	    </c:if>
-	    
-	    <p>나오니? ${i.deliveryNum}</p>
-	    
+		멤버id:${sessionMember.id}
+	  	멤버: ${sessionMember.address}
+	  	<br>
+	    델리: ${i.address}
+
 	    <p class="card-text">${i.address}</p>
 	    <p class="card-text">${i.recipientTel}</p>
-	    <a href="./deliveryUpdate?id=${sessionMember.id}&deliveryNum=${i.deliveryNum}" class="card-link">수정</a>
-	    <a href="./deliveryDelete?deliveryNum=${i.deliveryNum}" class="card-link">삭제</a>
+	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${i.addressNum}" class="card-link">수정</a>
+
+	    <a href="./deliveryDelete?addressNum=${i.addressNum}" class="card-link">삭제</a>
+
+	    
 	  </div>
 	</div>		
 </div>

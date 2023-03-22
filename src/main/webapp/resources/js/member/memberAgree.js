@@ -1,4 +1,4 @@
-
+let verificationChecked="";
 let checkCount = [];
 // $('#terms').click(()=>{
 
@@ -116,8 +116,14 @@ $('#email').blur(()=>{
 			// $('#emailDiv').after(emailSendDiv)
 
 			
-			$.get("/member/verificationCode", function(res){
+			console.log($('#email').val())
+			$.get("/member/verificationCode?emailVer="+$('#email').val(), function(res){
+
 				if(res==1){
+
+					//인증메시지를 보낸 이메일주소 저장
+					verificationChecked=$('#email').val();
+					
 					$('#emailLabel').prop("class", "form-label blueResult")
 					$('#emailLabel').text("보냈어용^^ "+$('#email').attr('id'))
 				}
@@ -212,13 +218,26 @@ function verificationSubmit(){
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
 			$('#verificationLabel').prop("class", "form-label blueResult")
 			$('#verificationLabel').text("굳^^ "+$('#email').attr('id'))
-			checkCount[2]=true;
+			checkCount[2]=true;//바까...
+			
 		}else{
 			$('#verificationLabel').remove()
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
 			$('#verificationLabel').prop("class", "form-label redResult")
 			$('#verificationLabel').text("불일치")
 			checkCount[2]=false;
+			
+
 		}
 	})
 }
+
+$('#email').change(()=>{
+
+	//도중에 email이 조작되고, 인증받은 이메일과 틀릴 때.
+	if(verificationChecked!=$('#email').val()){
+		checkCount[2]=false;
+	}else if(verificationChecked==$('#email').val()){ //같을때
+		checkCount[2]=true;
+	}
+})

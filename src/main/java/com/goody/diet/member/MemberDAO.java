@@ -60,7 +60,7 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"setDeliveryAdd", deliveryDTO);
 	}
 	public int setDeliveryDelete(DeliveryDTO deliveryDTO) throws Exception {
-		return sqlSession.update(NAMESPACE+"setAddressDelete", deliveryDTO);
+		return sqlSession.update(NAMESPACE+"setDeliveryDelete", deliveryDTO);
 	}
 	public int setdeliveryUpdate(DeliveryDTO deliveryDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"setdeliveryUpdate", deliveryDTO);

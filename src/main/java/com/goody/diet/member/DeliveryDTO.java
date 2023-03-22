@@ -1,17 +1,18 @@
 package com.goody.diet.member;
 
 public class DeliveryDTO {
-	private String deliveryNum;
+	private String addressNum;
 	private String id;
 	private String address;
 	private String recipient;
 	private String recipientTel;
 	
-	public String getDeliveryNum() {
-		return deliveryNum;
+
+	public String getAddressNum() {
+		return addressNum;
 	}
-	public void setDeliveryNum(String deliveryNum) {
-		this.deliveryNum = deliveryNum;
+	public void setAddressNum(String addressNum) {
+		this.addressNum = addressNum;
 	}
 	public String getId() {
 		return id;

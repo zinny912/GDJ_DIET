@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 public class SendEmail {
 	
-	public String generateEmail(HttpSession httpSession) { //나중에 세션너워줘
+	public String generateEmail(HttpSession httpSession, String emailVer) { //나중에 세션너워줘
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -34,10 +34,11 @@ public class SendEmail {
 			    });
 		
 		try {
-			//받아온 세션회원의 email 꺼내서 이메일 보내기.
+			//받아온 세션회원의 email 꺼내서 이메일 보내기. //매개변수로 받아와도 댈듯 email은 돌아갈 필요가 없다.
 //			MemberDTO memberDTO=(MemberDTO)httpSession.getAttribute("sessionMember");
 //			String mail_address=memberDTO.getEmail();
-			String mail_address="gmdiaal@gmail.com";
+//			String mail_address="gmdiaal@gmail.com";
+			String mail_address=emailVer;
 			
 			String verificationCode = Integer.toString((int) (Math.random() * 899999) + 100000);
 			
