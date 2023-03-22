@@ -132,11 +132,11 @@ $('#email').blur(()=>{
 			$('#emailLabel').prop("class", "form-label redResult")
 			$('#emailLabel').text($('#email').attr('id')+" 중복")
 			console.log('중복'+$('#email').attr('id'))
-			checkCount[0]=false;
+			checkCount[2]=false;
 		}else{
 			$('#emailLabel').prop("class", "form-label redResult")
 			$('#emailLabel').text("필수정보")
-			checkCount[0]=false;
+			checkCount[2]=false;
 		}
 	})
 
@@ -212,13 +212,13 @@ function verificationSubmit(){
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
 			$('#verificationLabel').prop("class", "form-label blueResult")
 			$('#verificationLabel').text("굳^^ "+$('#email').attr('id'))
-			checkCount[1]=true;
+			checkCount[2]=true;
 		}else{
 			$('#verificationLabel').remove()
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
 			$('#verificationLabel').prop("class", "form-label redResult")
 			$('#verificationLabel').text("불일치")
-			checkCount[1]=false;
+			checkCount[2]=false;
 		}
 	})
 }

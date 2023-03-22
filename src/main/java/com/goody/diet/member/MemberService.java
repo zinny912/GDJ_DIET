@@ -1,5 +1,7 @@
 package com.goody.diet.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -109,6 +111,35 @@ public class MemberService {
 		memberDAO.setMemberRole(memberDTO);
 		return memberDAO.setMemberJoin(memberDTO);
 	}
+	
+	public int setPasswordUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setPasswordUpdate(memberDTO);
+	}
+	
+	//주소설정
+	public DeliveryDTO getDeliveryDetail(DeliveryDTO deliveryDTO) throws Exception {
+		return memberDAO.getDeliveryDetail(deliveryDTO);
+	}	
+	public int setEmailUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setEmailUpdate(memberDTO);
+	}
+	public int setMemberAddressUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setMemberAddressUpdate(memberDTO);
+	}
+	public int setDeliveryAdd(DeliveryDTO deliveryDTO) throws Exception {
+		return memberDAO.setDeliveryAdd(deliveryDTO);
+	}
+	public int setDeliveryDelete(DeliveryDTO deliveryDTO) throws Exception {
+		return memberDAO.setDeliveryDelete(deliveryDTO);
+	}
+	public int setdeliveryUpdate(DeliveryDTO deliveryDTO) throws Exception {
+		return memberDAO.setdeliveryUpdate(deliveryDTO);
+	}
 
+
+	
+	public List<DeliveryDTO> getDeliveryPage (MemberDTO memberDTO) throws Exception {
+		return memberDAO.getDeliveryPage(memberDTO);
+	}
 	
 }
