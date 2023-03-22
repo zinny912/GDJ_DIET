@@ -31,5 +31,14 @@ public class HealthMachineDAOTest extends MyTestCase {
 		int result =  healthMachineDAO.setHealthMachineAdd(dto);
 		assertNotEquals(1, result);
 	}
-	
+	@Test
+	public void setoptionAdd()throws Exception{
+		RealHealthMachineDTO dto = new RealHealthMachineDTO();
+		dto.setMachineNum(12L);
+		dto.setOptId1("testid");
+		dto.setOptName1("testName");
+		dto.setStock(0L);
+		int result= healthMachineDAO.setOptionAdd(dto);
+		assertNotEquals(1, result);
+	}
 }

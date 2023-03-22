@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/resources/css/magnific-popup.css">
 
     <link rel="stylesheet" href="/resources/css/aos.css">
-
+    
     <link rel="stylesheet" href="/resources/css/ionicons.min.css">
 
     <link rel="stylesheet" href="/resources/css/bootstrap-datepicker.css">

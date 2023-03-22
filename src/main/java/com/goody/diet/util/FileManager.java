@@ -45,12 +45,21 @@ public class FileManager {
 		//5. 파일 저장
 		file = new File(file, name);
 		
+		
 		//1) multiPartFile객체의 transferTo메서드 사용
 		//multipartFile.transferTo(file);
 		
 		//2) Spring API FileCopyUtis 객체의 copy메서드 사용
-			FileCopyUtils.copy(multipartFile.getBytes(), file);
-					
+		FileCopyUtils.copy(multipartFile.getBytes(), file);
+		
+			
+		//임시 폴더에서 spring 정식 폴더로 이동
+//		String springpath = "D://중간프로젝트/GDJ_DIET/src/main/webapp/resources/images/machineDetail";	
+//		file = new File(springpath,multipartFile.getOriginalFilename());
+//		FileCopyUtils.copy(multipartFile.getBytes(), file);
+		//임시폴더에 uuid포함된 파일 및 originalFile이름으로된 파일로 2개가 올라감
+		//sts imge폴더엔 original파일 하나만 올라감
+		
 		return name;
 		}
 

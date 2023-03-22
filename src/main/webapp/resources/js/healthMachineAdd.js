@@ -6,7 +6,7 @@ const fileList = document.getElementById("fileList");
 
 
 let count=0;
-let max=1;
+let max=0;
 let idx=0;
 let optioncount=1;
 function setCount(c){
