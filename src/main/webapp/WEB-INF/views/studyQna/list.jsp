@@ -51,7 +51,7 @@
 			</li>
 			<li class="page-item ">
 				<%--${pager.after eq false ? 'disabled' : ''} --%> <a
-				class="page-link text-dark page-list" href="#" aria-label="Next"
+				class="page-link text-dark page-qna" href="#" aria-label="Next"
 				data-board-page="${pager.totalPage}"> <span aria-hidden="true">&raquo;</span>
 			</a>
 			</li>

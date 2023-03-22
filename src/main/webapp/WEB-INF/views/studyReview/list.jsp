@@ -7,8 +7,10 @@
 		<tbody class="table-group-divider">
 		<c:forEach items="${list}" var="dto">
 				<tr>
-					<td> <div class="col-lg-9">${dto.contents}</div></td>
-					<td><div class="col-lg-5">${dto.writer}</div></td>
+					<td>
+					${dto.contents}
+					</td>
+					<td>${dto.writer}</td>
 				</tr>
 		</c:forEach>
 	</table>
@@ -68,10 +70,16 @@
 			<button type="button" class="btn btn-primary mb-3" id="searchbtn">검색</button>
 		</div>
 		
-		<div class="row my-3">
+<%-- 		<div class="row my-3">
 			<form class="col-md-7" action="/studyReview/add">
 			<input type="hidden" name="studyNum" value="${pager.studyNum}">
 			<button class="btn btn-primary" type="submit">리뷰쓰기</button> 
 			</form>			
-		</div>
+		</div> --%>
+
+		<c:if test="${not empty sessionMember}">
+			<div class="col-md-7">
+				<button class="btn btn-primary add" data-comment-num="${pager.studyNum}" data-bs-toggle="modal" data-bs-target="#contentsModal">리뷰쓰기</button>
+			</div>			
+		</c:if>
 </div>

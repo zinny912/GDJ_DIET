@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.goody.diet.board.BbsDTO;
 import com.goody.diet.util.Pager;
+import com.goody.diet.board.BoardFileDTO;
 
 @Repository
 public class StudyReviewDAO {
@@ -26,11 +27,16 @@ public class StudyReviewDAO {
 		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);
 	}
 	
+	public int setBoardAdd(StudyReviewDTO studyReviewDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", studyReviewDTO);
+	}
 	
-//	//리뷰(댓글 추가)
-//	public int setBoardAdd(StudyReviewDTO studyReviewDTO) throws Exception{
-//		return sqlSession.insert(NAMESPACE+"setBoardAdd", studyReviewDTO);
-//	}
+	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardFileAdd", boardFileDTO);
+	}
+	
+	
 //
 //	//리뷰댓글 수정 
 //	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {

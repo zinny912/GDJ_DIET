@@ -55,6 +55,37 @@
   			</div>
   	</div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="contentsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<form>
+				<div class="form-floating">
+					<textarea class="form-control" placeholder="Leave a comment here" id="contents"></textarea>
+					<label for="contents">Comments</label>
+				</div>
+				<div id="fileList">
+				<!-- <div class="mb-3">
+					<label for="files" class="form-label">이미지</label>
+					<input type="file" class="form-control" id="files" name="pic">
+				</div> -->
+				<button type="button" id="fileAdd">ADD</button>
+			</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">Cancel</button>
+		  <button type="button" class="btn btn-primary" id="contentsConfirm" data-comment-num="">확인</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
  
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -67,7 +98,13 @@
  background: #ccc;
  }
  </style>
-
+ 
+<script type="text/javascript" src="/resources/js/fileManager.js"></script>
+	<script>
+		setMax(3);
+		
+		//setParam('f');
+	</script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/studyQna.js"></script>

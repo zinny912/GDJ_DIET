@@ -1,30 +1,28 @@
 package com.goody.diet.study;
 
 import java.sql.Date;
+import java.util.List;
 
-import com.goody.diet.board.BbsDTO;
+import com.goody.diet.board.BoardFileDTO;
+
 
 public class StudyReviewDTO {
 	private Long num;
+	private Long studyNum;
 	private String contents;
 	private String writer;
 	private Date regDate;
-	private Long studyNum;
-	private String title;
-	private Double score;
 	private Long hit;
+	private Double score;
+	
+	private List<BoardFileDTO> boardFileDTOs;
+
 		
 	public Long getStudyNum() {
 		return studyNum;
 	}
 	public void setStudyNum(Long studyNum) {
 		this.studyNum = studyNum;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	public Long getHit() {
 		return hit;
@@ -61,6 +59,12 @@ public class StudyReviewDTO {
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+	public List<BoardFileDTO> getBoardFileDTOs() {
+		return boardFileDTOs;
+	}
+	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
+		this.boardFileDTOs = boardFileDTOs;
 	}
 	
 	

@@ -30,17 +30,26 @@
   			SELECT ROWNUM R, C.* FROM
   				(	SELECT * FROM STUDYREVIEW
   					<include refid="reviewCondition"></include>
-					ORDER BY NUM DESC
+					ORDER BY NUM ASC
 				) C
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}  
   </select>
   
-<!--   <insert id="setBoardAdd" parameterType="StudyReviewDTO">
-  		INSERT INTO STUDYREVIEW (NUM, STUDYNUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, SCORE)
-  		VALUES (REVIEW_SEQ.NEXTVAL, #{studyNum}, #{title}, #{contents}, #{writer}, SYSDATE , #{hit}, #{score})
+  <insert id="setBoardAdd" parameterType="StudyReviewDTO">
+  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO STUDYQNA (NUM,STUDYNUM,CONTENTS,WRITER,REGDATE,HIT,SCORE)
+  		VALUES(#{num},#{studyNum},#{contents}, #{writer},SYSDATE,0,#{score})
   </insert>
+ 	
+ 	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+ 		INSERT INTO STUDYREVIEWFILE (FILENUM, NUM, FILENAME, ORINAME)
+ 		VALUES (FILE_SEQ.NEXTVAL ,#{num}, #{fileName}, #{oriName})
+ 	</insert>
   
+<!--   
   <update id="setBoardUpdate" parameterType="StudyReviewDTO">
   		UPDATE STUDYREVIEW 
   		SET CONTENTS = #{contents}
