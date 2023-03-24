@@ -22,3 +22,4 @@ public interface BbsDAO {
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception;
 
 }
+

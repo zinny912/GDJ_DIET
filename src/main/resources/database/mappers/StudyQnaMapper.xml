@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.goody.diet.board.studyqna.StudyQnaDAO">
+  <mapper namespace="com.goody.diet.study.StudyQnaDAO">
   	
   	<sql id="qnaCondition">
 	  	<trim prefix="where" suffixOverrides="and">
@@ -67,5 +67,9 @@
   		INSERT INTO STUDYQNA (NUM,STUDYNUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
   		VALUES (QNA_SEQ.NEXTVAL,#{studyNum},#{title}, #{contents}, #{writer},SYSDATE,0,#{ref},#{step},#{depth})
   	</insert>
+  	
+  	<update id="setHitUpdate" parameterType="StudyQnaDTO">
+  		UPDATE STUDYQNA SET HIT=HIT+1 WHERE NUM=#{num}
+  	</update>
   	
   </mapper>

@@ -36,6 +36,4 @@ public class MachineQnaDTO extends BoardDTO {
 	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
 		this.boardFileDTOs = boardFileDTOs;
 	}
-	
-	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.board.BbsDTO;
@@ -45,4 +46,16 @@ public class StudyController {
 		
 		return mv;
 	}
+	
+	
+	@PostMapping("summerFile")
+	public ModelAndView setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(files.getOriginalFilename());
+		String file = studyService.setBoardFileAdd(files, session);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", file);
+		return mv;
+	}
+	
 } 
