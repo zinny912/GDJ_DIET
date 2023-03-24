@@ -59,7 +59,6 @@ public class HealthMachineController {
 //	----------------option-----------------------------------
 	@PostMapping("option1")
 	public ModelAndView getOption1(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
-		
 		List<RealHealthMachineDTO> ar = healthMachineService.getOption1(realHealthMachineDTO);
 		mv.addObject("optList", ar);
 		mv.setViewName("common/optionReply");

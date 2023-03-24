@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans:400" rel="stylesheet">
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="/">구디 다이어트</a>
+  					<a class="navbar-brand w-100" href="/"><img src="/resources/images/headLogo.png"></a>
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			        <span class="oi oi-menu"></span> Menu
 			      </button>
