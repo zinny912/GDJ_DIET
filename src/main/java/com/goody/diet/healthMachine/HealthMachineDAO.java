@@ -13,9 +13,13 @@ public class HealthMachineDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.goody.diet.healthMachine.HealthMachineDAO.";
 
+	
 	public List<HealthMachineDTO> getHealthMachineList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
 
+	}
+	public List<HealthMachineDTO> getHealthMachineTypeList(CategoryDTO categoryDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getHealthMachineTypeList",categoryDTO);
 	}
 	
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
@@ -43,4 +47,9 @@ public class HealthMachineDAO {
 	public int setMachineImg(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setMachineImg", healthMachineImgDTO);
 	}
+	public int setOptionAdd(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setOptionAdd", realHealthMachineDTO);
+	}
+	
+	
 }
