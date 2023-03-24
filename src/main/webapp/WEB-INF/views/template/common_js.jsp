@@ -26,4 +26,4 @@
   <!-- 카카오 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script><!-- kakaoAPI -->
 <script src="/resources/js/member/kakaoLogin.js"></script>
-<script src="/resources/js/member/memberDeleteJSON.js"></script><!--kakaoLogin.js에서 del기능호출-->
+
