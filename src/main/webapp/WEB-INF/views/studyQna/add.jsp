@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<c:import url="../template/header.jsp"></c:import>
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
@@ -43,13 +44,6 @@
 				<label for="contents" class="form-label">상세내용</label>
 				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
-			
-			<div id="fileList">
-<!-- 				<div class="input-group mb-3", id="f'+idx+'">
-						<input type="file" class="form-control" name="'+param+'">
-						<button type="button class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button>
-					</div> -->
-			</div>
 		
 			<div class="mb-3">
 				<button class="btn btn-primary" type="submit">글쓰기</button> 
@@ -58,8 +52,8 @@
 	</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/footer.jsp"></c:import>
 	<script>
 		$('#contents').summernote();
 	</script>

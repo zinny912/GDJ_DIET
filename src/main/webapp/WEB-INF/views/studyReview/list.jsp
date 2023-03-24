@@ -3,16 +3,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="row">
-	<table class="table table-striped">
+	<table class="table table-hover">
 		<tbody class="table-group-divider">
-		<c:forEach items="${list}" var="dto">
+			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td>
-					${dto.contents}
-					</td>
+					<td><a href="/studyReview/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.contents}</a></td>
+					<c:choose>
+						<c:when test="${dto.score eq 0}">
+							<td>☆☆☆☆☆</td>
+						</c:when>
+						<c:when test="${dto.score eq 1}">
+							<td>★☆☆☆☆</td>
+						</c:when>
+						<c:when test="${dto.score eq 2}">
+							<td>★★☆☆☆</td>
+						</c:when>
+						<c:when test="${dto.score eq 3}">
+							<td>★★★☆☆</td>
+						</c:when>
+						<c:when test="${dto.score eq 4}">
+							<td>★★★★☆</td>
+						</c:when>
+						<c:when test="${dto.score eq 5}">
+							<td>★★★★★</td>
+						</c:when>
+					</c:choose>
 					<td>${dto.writer}</td>
 				</tr>
-		</c:forEach>
+			</c:forEach>
+		</tbody>
 	</table>
 </div>
 
@@ -78,8 +97,12 @@
 		</div> --%>
 
 		<c:if test="${not empty sessionMember}">
+		<div class="row my-3">
 			<div class="col-md-7">
-				<button class="btn btn-primary add" data-comment-num="${pager.studyNum}" data-bs-toggle="modal" data-bs-target="#contentsModal">리뷰쓰기</button>
-			</div>			
-		</c:if>
+				<button class="btn btn-primary add"
+					data-comment-num="${pager.studyNum}" data-bs-toggle="modal"
+					data-bs-target="#contentsModal">리뷰쓰기</button>
+			</div>
+		</div>
+	</c:if>
 </div>

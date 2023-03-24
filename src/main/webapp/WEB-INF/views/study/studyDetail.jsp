@@ -9,6 +9,17 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <c:import url="../template/common_css.jsp"></c:import>
+ <link href="/resources/css/star.css" rel="stylesheet"/>
+     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+ 
+ <style>
+ .my-hr2 {
+ border: 0;
+ height: 2px;
+ background: #ccc;
+ }
+ </style>
 
  </head>
  <body>
@@ -64,19 +75,26 @@
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
-			<form>
+			
 				<div class="form-floating">
 					<textarea class="form-control" placeholder="Leave a comment here" id="contents"></textarea>
 					<label for="contents">Comments</label>
 				</div>
-				<div id="fileList">
-				<!-- <div class="mb-3">
-					<label for="files" class="form-label">이미지</label>
-					<input type="file" class="form-control" id="files" name="pic">
-				</div> -->
-				<button type="button" id="fileAdd">ADD</button>
-			</div>
-			</form>
+						<form class="mb-3" name="myform" id="myform" method="post">
+							<fieldset>
+								<span class="text-bold">별점을 선택해주세요</span> 
+									<input type="radio" name="reviewStar" value="5" id="rate1" class="star">
+									<label for="rate1">★</label> 
+									<input type="radio" name="reviewStar" value="4" id="rate2" class="star">
+									<label for="rate2">★</label> 
+									<input type="radio" name="reviewStar" value="3" id="rate3" class="star">
+									<label for="rate3">★</label> 
+									<input type="radio" name="reviewStar" value="2" id="rate4" class="star">
+									<label for="rate4">★</label> 
+									<input type="radio" name="reviewStar" value="1" id="rate5" class="star">
+									<label for="rate5">★</label>
+							</fieldset>
+						</form>					
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">Cancel</button>
@@ -91,20 +109,74 @@
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
- <style>
- .my-hr2 {
- border: 0;
- height: 2px;
- background: #ccc;
- }
- </style>
+
  
-<script type="text/javascript" src="/resources/js/fileManager.js"></script>
-	<script>
-		setMax(3);
+ <script>
+		$('#contents').summernote({
+			
+				  callbacks: {
+				    onImageUpload: function(file) {
+				      // upload image to server and create imgNode...
+				  	/* uploadFile(files) */
+						const formData = new FormData();
+						//<input type="file"
+						formData.append('files', file[0])
+						$.ajax({
+							type:"POST",
+							url:"summerFile",
+							data:formData,
+							//header
+							cache:false,
+							processData:false,
+							contentType:false,
+							enctype:'multipart/form-data',
+							success:function(img){
+								console.log("Image => ", img)
+								// img = '<img src="'+img+'">'
+								// $("#contents").summernote('pasteHTML', img);
+								$("#contents").summernote('insertImage', img);
+								 
+							},
+							error:function(){
+								console.log('Image upload Fail')
+							}
+						});
+				    }
+				  }
+		});//
 		
-		//setParam('f');
+		  function uploadFile(file){
+				console.log("file", file);
+				console.log("fileName => ", file[0].name);
+				//<form>
+				const formData = new FormData();
+				//<input type="file"
+				formData.append('files', file[0])
+				$.ajax({
+					type:"POST",
+					url:"summerFile",
+					data:formData,
+					//header
+					cache:false,
+					processData:false,
+					contentType:false,
+					enctype:'multipart/form-data',
+					success:function(img){
+						console.log("Image => ", img)
+						// img = '<img src="'+img+'">'
+						// $("#contents").summernote('pasteHTML', img);
+						$("#contents").summernote('insertNode', img);
+						 
+					},
+					error:function(){
+						console.log('Image upload Fail')
+					}
+				});
+			  }
+		
+		
 	</script>
+ 
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/studyQna.js"></script>

@@ -125,7 +125,6 @@ $('#studyQnaInfo').click(function(){
 $("#studyListResult").on('click',".add",function(e){
     //console.log(updateButton.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling);
     let num = $(this).attr("data-comment-num");
-   
 
     $("#contentsConfirm").attr("data-comment-num",num);
 e.preventDefault();
@@ -135,14 +134,13 @@ e.preventDefault();
 $("#contentsConfirm").click(function(){
     console.log('Add Post');
 
-    $("#contents").text();
 
     fetch('/studyReview/add', {
         method:'POST',
         headers:{
             "Content-type":"application/x-www-form-urlencoded"
         },
-        body: "num="+$(this).attr("data-comment-num")+"&contents="+$("#contents").val()+"&pic="+$("#pic").val()
+        body: "studyNum="+$(this).attr("data-comment-num")+"&contents="+$(".note-editable").html()+"&score="+$('input[name=reviewStar]:checked').val()
     }).then( (response) => response.text())
       .then( (res) => {
         if(res.trim()>0){

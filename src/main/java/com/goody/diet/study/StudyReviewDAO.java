@@ -5,10 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.goody.diet.board.BbsDTO;
 import com.goody.diet.util.Pager;
-import com.goody.diet.board.BoardFileDTO;
+
 
 @Repository
 public class StudyReviewDAO {
@@ -31,12 +29,25 @@ public class StudyReviewDAO {
 		return sqlSession.insert(NAMESPACE+"setBoardAdd", studyReviewDTO);
 	}
 	
-	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception {
+	public StudyReviewDTO getBoardDetail(StudyReviewDTO studyReviewDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE+"setBoardFileAdd", boardFileDTO);
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", studyReviewDTO);
 	}
 	
+	public int setHitUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE+"setHitUpdate", studyReviewDTO);
+	}
 	
+	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardUpdate", studyReviewDTO);
+	}
+	
+	public int setBoardDelete(StudyReviewDTO studyReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", studyReviewDTO);
+	}
 //
 //	//리뷰댓글 수정 
 //	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {

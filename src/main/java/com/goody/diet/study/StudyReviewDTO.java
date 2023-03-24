@@ -15,7 +15,7 @@ public class StudyReviewDTO {
 	private Long hit;
 	private Double score;
 	
-	private List<BoardFileDTO> boardFileDTOs;
+	private List<StudyDTO> studyDTOs;
 
 		
 	public Long getStudyNum() {
@@ -60,15 +60,10 @@ public class StudyReviewDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public List<BoardFileDTO> getBoardFileDTOs() {
-		return boardFileDTOs;
+	public List<StudyDTO> getStudyDTOs() {
+		return studyDTOs;
 	}
-	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
-		this.boardFileDTOs = boardFileDTOs;
+	public void setStudyDTOs(List<StudyDTO> studyDTOs) {
+		this.studyDTOs = studyDTOs;
 	}
-	
-	
-	
-
-
 }

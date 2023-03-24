@@ -79,11 +79,13 @@
 			<button type="button" class="btn btn-primary mb-3" id="searchbutton">검색</button>
 		</div>
 		
+		<c:if test="${not empty sessionMember}">
 		<div class="row my-3">
 			<form class="col-md-7" action="/studyQna/add">
 			<input type="hidden" name="studyNum" value="${pager.studyNum}">
 			<button class="btn btn-primary" type="submit">상품문의</button> 
 			</form>			
 		</div>
+		</c:if>
 </div>
 

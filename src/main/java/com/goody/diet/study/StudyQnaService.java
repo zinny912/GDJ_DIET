@@ -23,11 +23,6 @@ public class StudyQnaService{
 		return qnaDAO.setBoardUpdate(qnaDTO);
 	}
 
-	public int setBoardDelete(StudyQnaDTO qnaDTO, HttpSession httpSession) throws Exception {
-		// TODO Auto-generated method stub
-		return qnaDAO.setBoardDelete(qnaDTO);
-	}
-	
 	public int setBoardDelete(StudyQnaDTO qnaDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDAO.setBoardDelete(qnaDTO);
