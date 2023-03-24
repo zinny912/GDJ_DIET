@@ -22,6 +22,7 @@
 		<typeAlias type="com.goody.diet.healthMachine.HealthMachineDTO" alias="HealthMachineDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.HealthMachineImgDTO" alias="HealthMachineImgDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.RealHealthMachineDTO" alias="RealHealthMachineDTO"/>
+		<typeAlias type="com.goody.diet.healthMachine.CategoryDTO" alias="CategoryDTO"/>
 		
 
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
