@@ -21,10 +21,17 @@
 		VALUES (ORDERDETAIL_SEQ.NEXTVAL, #{machineNum}, #{studyNum},#{orderNum},#{count},#{price});
 	</insert>
 
-<resultMap type="OrderDetailDTO" id="OrderDetails">
-
-	<collection property=""></collection>
-</resultMap>
+<!-- <resultMap type="OrderDetailDTO" id="OrderDetails">
+	
+	<collection property="orderDetailDTOs" javaType="list" ofType="OrderDetailDTO">
+		<id column="ORDERDETAILNUM" property="orderDetailNum"/>
+		<result column="MACHINENUM" property="machineNum"/>
+		<result column="" property=""/>
+		<result column="" property=""/>
+		<result column="" property=""/>
+		<result column="" property=""/>
+	</collection>
+</resultMap> -->
 
 
 </mapper>
