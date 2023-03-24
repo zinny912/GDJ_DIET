@@ -10,6 +10,8 @@ let max=0;
 let idx=0;
 let optioncount=1;
 let notification = "상세정보파일";
+let toggleStatus = "off";
+let toggleFlag=false;
 function setCount(c){
  count = c;
 }
@@ -85,7 +87,15 @@ $(".deleteCheck").click(function(e){
         $(this).prop('checked',false)
     }
 })
-
+$("#categorySelect").change(function(){
+    $("#categoryId").val($("#categorySelect").val())
+    console.log($(this).val())
+    console.log($("#categoryId").val())
+})
+$("#submitbtn").click(function(){
+    $("#submitbtn").attr("type","submit");
+    $("#submitbtn").click()
+})
 // ---option--------------------------------------
 $("#optionAdd").click(function(e){
     if(optioncount>=4){
@@ -109,23 +119,49 @@ $("#optionDelete").click(function(e){
     optioncount--;
 })
 
+// ---optionAddPage--------------------------------------
+$(".container-fluid").click(function () {
+    
+    if (toggleFlag==true&&toggleStatus != "") {
+        
+        toggleFlag=false
+        return;
+    }
+    else if(toggleFlag==false){
+    $(this).find('.dropdown').removeClass('show')
+        $(this).find('.dropdown-menu').removeClass('show');
+        toggleStatus=""
+    }
+})
 $(".dropdown").on("focus",".optInput",function(){
+    let parent = $(this).parents("#optionSelect")
+    parent.find('.dropdown').removeClass('show')
+    parent.find('.dropdown-menu').removeClass('show');
 
     let $this = $(this).parents(".dropdown");
     $this.addClass('show');
     $this.find('.dropdown-menu').addClass('show');
-})
-$(".dropdown").on("blur",".optInput",function(){
 
-    let parent = $(this).parents("#optionSelect")
-    parent.find('.dropdown').removeClass('show')
-    parent.find('.dropdown-menu').removeClass('show');
+    toggleStatus = $(this).attr("id");
+    toggleFlag=true;
 })
 $(".dropdown").on("click", ".dropdown-item", function () {
     let $this = $(this).parents(".dropdown");
     $this.find(".optInput").val($(this).attr("data-name"))
     $this.find(".optInputId").val($(this).attr("data-id"))
+    let parent = $(this).parents("#optionSelect")
+    parent.find('.dropdown').removeClass('show')
+    parent.find('.dropdown-menu').removeClass('show');
+    toggleFlag=false
+    toggleStatus = "";
 })
+// $(".dropdown").on("blur",".optInput",function(){
+
+//     let parent = $(this).parents("#optionSelect")
+//     parent.find('.dropdown').removeClass('show')
+//     parent.find('.dropdown-menu').removeClass('show');
+// })
+
 // $('#input1').on("focus",function(e){
 //     let $this = $(this).parents(".dropdown");
 //     $this.addClass('show');

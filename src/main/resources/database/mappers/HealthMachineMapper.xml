@@ -24,6 +24,10 @@
 			
 		</trim> 
 	</sql>
+	<select id="getCategoryList" resultType="CategoryDTO">
+		select * from Category
+		order by categoryNum
+	</select>
 	<select id="getHealthMachineTypeList" resultMap="getHealthMachineResult" parameterType="CategoryDTO">
 	SELECT * FROM HEALTHMACHINE h 
 	LEFT OUTER JOIN
@@ -95,7 +99,10 @@
 		INSERT INTO MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
 		VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
 	</insert>
-	
+	<insert id="setCategoryType" parameterType="HealthMachineDTO">
+	insert into categoryType(machineNum,categoryNum)
+	values(#(machineNum),#(CategoryDTO.categoryNum))
+	</insert>
 	<!-- REALHEALTHMACHINE ADD DETAIL IMG ADD -->
 	<insert id="setOptionAdd" parameterType="realHealthMachineDTO">
 		INSERT INTO REALHEALTHMACHINE (REALMACHINENUM,MACHINENUM,STOCK,OPTNAME1,OPTID1,OPTNAME2,OPTID2,OPTNAME3,OPTID3,OPTNAME4,OPTID4)

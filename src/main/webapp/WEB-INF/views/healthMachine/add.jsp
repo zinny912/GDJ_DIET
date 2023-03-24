@@ -18,8 +18,14 @@
 		<div class="row col-md-7 mx-auto">
 			<form action="./add" method="POST" enctype="multipart/form-data">
 				<div class="mb-3">
-					<label for="categoryNum" class="form-label">카테고리번호</label> <input
-						type="text" class="form-control" name="categoryNum">
+					<label for="categoryNum" class="form-label">카테고리</label> 
+					<input type="hidden" class="form-control" name="categoryNum" id="categoryId" value="">
+					<select class="form-select" id="categorySelect">
+					<c:forEach items="${category }" var="dto">
+					<option value="${dto.categoryNum }">${dto.categoryName }</option>
+					</c:forEach>
+					
+					</select>
 				</div>
 
 				<div class="mb-3">
@@ -56,7 +62,7 @@
 
 
 
-				<button type="submit"
+				<button type="button" id="submitbtn"
 					class="btn btn-outline-primary col col-md-2 offset-md-10">add
 				</button>
 			</form>
