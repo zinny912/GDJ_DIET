@@ -10,6 +10,7 @@
 		
 		<typeAlias type="com.goody.diet.study.StudyDTO" alias="StudyDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyReviewDTO" alias="StudyReviewDTO"/>
+		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 		
 		
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
@@ -28,7 +29,6 @@
   	  	<typeAlias type="java.lang.Long" alias="Long" />
 		<typeAlias type="java.util.List" alias="List"/>
 		
-		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 	
 	</typeAliases>
 
