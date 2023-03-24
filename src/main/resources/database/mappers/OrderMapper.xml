@@ -3,11 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<!-- <mapper namespace="com.goody.diet.order.OrderDAO">
-	<select id="getOrderList" resultType="OrderDTO">
-		
-	</select>
-</mapper> -->
+<!--  <mapper namespace="sample">
+  </mapper> -->
+<mapper namespace="com.goody.diet.order.OrderDAO">
+	
+	<insert id="setOrderList" parameterType="OrderDTO">
+		INSERT INTO "ORDER" VALUES (ORDER_SEQ.NEXTVAL, 3, SYSDATE, '결제완료')
+	</insert>
+	
+<!-- 	<select id="getOrderDetail" parameterType="OrderDTO" resultMap="OrderDetails"> -->
+	
+<!-- 	</select> -->
 
- <mapper namespace="sample">
-  </mapper>
+
+	<insert id="setOrderDetail" parameterType="OrderDetailDTO">
+		INSERT INTO ORDERDETAIL (orderDetailNum, machineNum, studyNum, orderNum, count, price) 
+		VALUES (ORDERDETAIL_SEQ.NEXTVAL, #{machineNum}, #{studyNum},#{orderNum},#{count},#{price});
+	</insert>
+
+<resultMap type="OrderDetailDTO" id="OrderDetails">
+
+	<collection property=""></collection>
+</resultMap>
+
+
+</mapper>
