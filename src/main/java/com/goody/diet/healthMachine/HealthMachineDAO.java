@@ -13,6 +13,7 @@ public class HealthMachineDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.goody.diet.healthMachine.HealthMachineDAO.";
 
+	
 	public List<HealthMachineDTO> getHealthMachineList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
 

@@ -9,6 +9,7 @@ let count=0;
 let max=0;
 let idx=0;
 let optioncount=1;
+let notification = "상세정보파일";
 function setCount(c){
  count = c;
 }
@@ -18,7 +19,11 @@ function setParam(p){
 }
  
 function setMax(m){
+    
     max=m;
+    if(max==1){
+        notification="썸네일";
+    }
 }
 
 $("#fileList").on("click",".dels",function(e){
@@ -31,10 +36,10 @@ $("#fileList").on("click",".dels",function(e){
 
 $("#fileAdd").click(()=>{
     // alert("add");
-    
+   
     if(count>=max){
         
-        alert('첨부파일은 최대 '+max+ ' 까지만 가능');
+        alert(notification+'은 최대 '+max+ ' 까지만 가능');
         return;
     }
     
@@ -90,8 +95,7 @@ $("#optionAdd").click(function(e){
     optioncount++;
     let child ='<div class="mb-3" id="option'+optioncount+'"'
     child=child + '<label for="option'+optioncount+'" class="form-label">'
-    child = child+optioncount+' 번째 옵션 이름</label>'
-    child = child+'<input type = "text" class="form-control" name="option'+optioncount+'">'
+    child = childs+'<input type = "text" class="form-control" name="option'+optioncount+'">'
     child = child+"</div>";
     $("#optionList").append(child);
     
@@ -104,3 +108,31 @@ $("#optionDelete").click(function(e){
     $("#option"+optioncount).remove();
     optioncount--;
 })
+$('#input1').on("focus",function(e){
+    let $this = $(this).parents(".dropdown");
+    $this.addClass('show');
+    $this.find('> a').attr('aria-expanded', true);
+    
+    $this.find('.dropdown-menu').addClass('show');
+})
+$('.dropdown-item').on("click",function(){
+    let $this=$(this).parents(".dropdown");
+    
+})
+// $("#optAdd1").hover(function(e){
+//     var $this = $(this);
+//     $this.addClass('show');
+//     $this.attr('aria-expanded',true)
+// 	$this.find('> a').attr('aria-expanded', true);
+//     $this.find('.dropdown-menu').addClass('show');
+//     $this.find('.dropdown-menu').attr('style',"position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);");
+//     $this.find('.dropdown-menu').attr('data-popper-placement',"bottom-start")
+// },function(e){
+//     var $this = $(this);
+// 	$this.removeClass('show');
+// 	$this.find('> a').attr('aria-expanded', false);
+// 	$this.find('.dropdown-menu').removeClass('show');
+		
+
+// }
+// )

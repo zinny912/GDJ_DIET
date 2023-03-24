@@ -92,7 +92,11 @@ public class HealthMachineController {
 	@GetMapping("optionAdd")
 	public ModelAndView setOptionAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO)throws Exception{
 		healthMachineDTO= healthMachineService.getHealthMachineDetail(healthMachineDTO);
+		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
+		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
+		List<RealHealthMachineDTO> ar = healthMachineService.getOption1(realHealthMachineDTO);
 		mv.addObject("dto", healthMachineDTO);
+		mv.addObject("optList", ar);
 		mv.setViewName("healthMachine/optionAdd");
 		return mv;
 	}

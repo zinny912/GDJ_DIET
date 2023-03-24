@@ -6,14 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row mb-4 mt-4 md-7">
-			<h1 class="col-md-5 mx-auto text-center border border-primary pb-3">HealthMachine
+			<h1 class="col-md-5 mx-auto text-center pb-3">HealthMachine
 				detail And OptionAdd page</h1>
 
 			<div class="row">
@@ -36,16 +34,21 @@
 					</tbody>
 				</table>
 
-				<div class="row" id="optionSelect"
+				<div class="row text-center" id="optionSelect"
 					data-machineNum="${dto.machineNum}">
-					<div id="opt1" data-optName="${dto.option1 }">
-						<select class="form-select mb-3" id="optSelect1">
-							<option class="option" id="default">${dto.option1}선택</option>
-						</select>
+					<div class="dropdown" id="opt1" data-optName="${dto.option1 }">
+					
+						<button class="btn dropdown-toggle" id="optbtn1"
+							data-optName="${dto.option1 }">${dto.option1}을 선택해 주세요              </button>
+						<div class="dropdown-menu">
+							<ul style="list-style: none;" id='optSelect1'>
+								
+							</ul>
+						</div>
 					</div>
-					<div id="opt2" data-optName="${dto.option2 }"></div>
-					<div id="opt3" data-optName="${dto.option3 }"></div>
-					<div id="opt4" data-optName="${dto.option4 }"></div>
+					<div class="dropdown" id="opt2" data-optName="${dto.option2 }"></div>
+					<div class="dropdown" id="opt3" data-optName="${dto.option3 }"></div>
+					<div class="dropdown" id="opt4" data-optName="${dto.option4 }"></div>
 				</div>
 
 			</div>
@@ -91,12 +94,11 @@
   				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
   			</div>
   	</div> --%>
-<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
+	<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
 
 
 
+	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/getOption.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
