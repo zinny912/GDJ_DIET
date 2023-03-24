@@ -1,4 +1,4 @@
-
+let verificationChecked="";
 let checkCount = [];
 // $('#terms').click(()=>{
 
@@ -99,23 +99,50 @@ $('#email').blur(()=>{
 	})
 	.then((res)=>{
 
+		$('#emailLabel').remove()
+		$('#emailDiv').after('<label class=" form-label" id="emailLabel" for="email"></label>')
+		
 		if(res.trim()=="사용가능"){
-			// $('#idLabel').prop("hidden", "false")
-			$('#emailLabel').prop("class", "form-label blueResult")
-			$('#emailLabel').text("사용가능 "+$('#email').attr('id'))
-			console.log('사용가능 '+$('#email').attr('id'))
-			checkCount[0]=true;
+
+
+			// //이메일 인증 form
+			// $('#emailSendDiv').remove()
+			// let emailSendDiv = '<div id="emailSendDiv" class="hstack gap-3">';
+			// emailSendDiv=emailSendDiv+'<input class="col form-control " type="text" placeholder="인증번호">'
+			// emailSendDiv=emailSendDiv+'<button type="button" class="col-2 btn btn-secondary text-nowrap">제출</button>'
+			// emailSendDiv=emailSendDiv+'<div class="vr "></div>'
+			// emailSendDiv=emailSendDiv+'<button type="button" class="col-2 btn btn-outline-danger text-nowrap">다시</button>'
+			// emailSendDiv=emailSendDiv+'</div>'
+			// $('#emailDiv').after(emailSendDiv)
+
+			
+			console.log($('#email').val())
+			$.get("/member/verificationCode?emailVer="+$('#email').val(), function(res){
+
+				if(res==1){
+
+					//인증메시지를 보낸 이메일주소 저장
+					verificationChecked=$('#email').val();
+					
+					$('#emailLabel').prop("class", "form-label blueResult")
+					$('#emailLabel').text("보냈어용^^ "+$('#email').attr('id'))
+				}
+			})
+
+			// console.log('사용가능 '+$('#email').attr('id'))
+			// checkCount[0]=true;
+
 
 		}else if(res.trim()=="중복"){
 			// $('#idLabel').prop("hidden", "false")
 			$('#emailLabel').prop("class", "form-label redResult")
 			$('#emailLabel').text($('#email').attr('id')+" 중복")
 			console.log('중복'+$('#email').attr('id'))
-			checkCount[0]=false;
+			checkCount[2]=false;
 		}else{
 			$('#emailLabel').prop("class", "form-label redResult")
 			$('#emailLabel').text("필수정보")
-			checkCount[0]=false;
+			checkCount[2]=false;
 		}
 	})
 
@@ -168,5 +195,49 @@ $('#passwordCheck').blur(()=>{
 	}else{
 		$('#passwordCheckLabel').text("")
 		checkCount[1]=true;
+	}
+})
+
+
+
+function verificationRe(){
+	$.get("/member/verificationCode", function(res){
+		if(res==1){
+			$('#emailLabel').remove()
+			$('#emailDiv').after('<label class=" form-label" id="emailLabel" for="email"></label>')
+			$('#emailLabel').prop("class", "form-label blueResult")
+			$('#emailLabel').text("다시 보냈어용^^ "+$('#email').attr('id'))
+		}
+	})
+}
+function verificationSubmit(){
+	$.get("/member/verificationCodeCheck?verificationCode="+$('#verification_val').val(), function(res){
+		console.log(res)
+		if(res.trim()=="yes"){
+			$('#verificationLabel').remove()
+			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
+			$('#verificationLabel').prop("class", "form-label blueResult")
+			$('#verificationLabel').text("굳^^ "+$('#email').attr('id'))
+			checkCount[2]=true;//바까...
+			
+		}else{
+			$('#verificationLabel').remove()
+			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
+			$('#verificationLabel').prop("class", "form-label redResult")
+			$('#verificationLabel').text("불일치")
+			checkCount[2]=false;
+			
+
+		}
+	})
+}
+
+$('#email').change(()=>{
+
+	//도중에 email이 조작되고, 인증받은 이메일과 틀릴 때.
+	if(verificationChecked!=$('#email').val()){
+		checkCount[2]=false;
+	}else if(verificationChecked==$('#email').val()){ //같을때
+		checkCount[2]=true;
 	}
 })

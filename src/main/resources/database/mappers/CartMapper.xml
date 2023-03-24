@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.goody.diet.cart.CartDAO">
+	
+	<insert id="setAddToCart" parameterType="com.goody.diet.cart.CartDTO">
+		INSERT INTO CART (NUM, ID, MACHINENUM, STUDYNUM, COUNT) 
+		VALUES(#{num}, #{id}, #{machineNum}, #{studyNum}, #{count})
+	</insert>
+		 
+ </mapper>

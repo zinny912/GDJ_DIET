@@ -1,5 +1,7 @@
 package com.goody.diet.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,4 +44,35 @@ public class MemberDAO {
 	public int setMemberRoleDelete(MemberDTO memberDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setMemberRoleDelete", memberDTO);
 	}	
+	
+	
+	//주소설정
+	public DeliveryDTO getDeliveryDetail(DeliveryDTO deliveryDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getDeliveryDetail", deliveryDTO);
+	}
+	public int setEmailUpdate(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setEmailUpdate", memberDTO);
+	}
+	public int setMemberAddressUpdate(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setMemberAddressUpdate", memberDTO);
+	}
+	public int setDeliveryAdd(DeliveryDTO deliveryDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setDeliveryAdd", deliveryDTO);
+	}
+	public int setDeliveryDelete(DeliveryDTO deliveryDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setDeliveryDelete", deliveryDTO);
+	}
+	public int setdeliveryUpdate(DeliveryDTO deliveryDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setdeliveryUpdate", deliveryDTO);
+	}
+	
+	
+	public int setPasswordUpdate(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setPasswordUpdate", memberDTO);
+	}
+	public List<DeliveryDTO> getDeliveryPage (MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getDeliveryPage", memberDTO);
+	}
+	
+	
 }
