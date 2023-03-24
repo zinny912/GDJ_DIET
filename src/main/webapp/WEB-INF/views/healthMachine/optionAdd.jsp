@@ -18,20 +18,18 @@
 		<div class="row col-md-7 mx-auto">
 			<form action="./optionAdd" method="POST"
 				enctype="multipart/form-data">
-				<input type="hidden" name="machineNum" value="${dto.machineNum}">
+				<input type="hidden" name="machineNum" value="${dto.machineNum}" data-machineNum="${dto.machineNum}">
 
 				<div class="mb-3 col-4">
 					<label for="optName1" class="form-label">${dto.option1} 작성</label>
 
-					<div class="dropdown">
+					<div class="dropdown" id="opt1" data-optName="${dto.option1 }">
 						<input type="text" class=""
-							name="optName1" id="input1">
+							name="optName1" id="optInput1">
 							
 						<div class="dropdown-menu">
-							<ul style="list-style: none">
-								<c:forEach items="${optList}" var="opt">
-								<li class="dropdown-item" value="${opt.optId1}"><a>${opt.optName1}</a></li>
-								</c:forEach>
+							<ul style="list-style: none" id='optSelect1'>
+								
 							</ul>
 						</div>
 					</div>
@@ -40,28 +38,34 @@
 					<label for="optId1" class="form-label">option1 id 작성(영문)</label> <input
 						type="text" class="form-control" name="optId1">
 				</div>
-				<div class="col-3"></div>
+				
 				<c:if test="${not empty dto.option2}">
+				<div class="mb-3 col-4">
 					<label for="optName2" class="form-label">${dto.option2} 작성</label>
 					<input type="text" class="form-control" name="optName2">
 					<label for="optId2" class="form-label">option2 id 작성(영문)</label>
 					<input type="text" class="form-control" name="optId2">
+				</div>
 				</c:if>
 				<c:if test="${not empty dto.option3}">
+				<div class="mb-3 col-4">
 					<label for="optName3" class="form-label">${dto.option3} 작성</label>
 					<input type="text" class="form-control" name="optName3">
 					<label for="optId3" class="form-label">option3 id 작성(영문)</label>
 					<input type="text" class="form-control" name="optId3">
+				</div>
 				</c:if>
 				<c:if test="${not empty dto.option4}">
+				<div class="mb-3 col-4">
 					<label for="optName4" class="form-label">${dto.option4} 작성</label>
 					<input type="text" class="form-control" name="optName4">
 					<label for="optId4" class="form-label">option4 id 작성(영문)</label>
 					<input type="text" class="form-control" name="optId4">
+				</div>
 				</c:if>
 
 
-				<div class="mb-3">
+				<div class="mb-3 col-4">
 					<label for="stock" class="form-label">재고</label> <input type="text"
 						class="form-control" name="stock">
 				</div>

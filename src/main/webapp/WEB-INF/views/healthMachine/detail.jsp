@@ -39,7 +39,7 @@
 					<div class="dropdown" id="opt1" data-optName="${dto.option1 }">
 					
 						<button class="btn dropdown-toggle" id="optbtn1"
-							data-optName="${dto.option1 }">${dto.option1}을 선택해 주세요              </button>
+							>${dto.option1}을 선택해 주세요              </button>
 						<div class="dropdown-menu">
 							<ul style="list-style: none;" id='optSelect1'>
 								

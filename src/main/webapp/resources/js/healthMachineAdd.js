@@ -108,17 +108,18 @@ $("#optionDelete").click(function(e){
     $("#option"+optioncount).remove();
     optioncount--;
 })
-$('#input1').on("focus",function(e){
-    let $this = $(this).parents(".dropdown");
-    $this.addClass('show');
-    $this.find('> a').attr('aria-expanded', true);
+
+// $('#input1').on("focus",function(e){
+//     let $this = $(this).parents(".dropdown");
+//     $this.addClass('show');
+//     $this.find('> a').attr('aria-expanded', true);
+//     // $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
+//     $this.find('.dropdown-menu').addClass('show');
+// })
+// $('.dropdown-item').on("click",function(){
+//     let $this=$(this).parents(".dropdown");
     
-    $this.find('.dropdown-menu').addClass('show');
-})
-$('.dropdown-item').on("click",function(){
-    let $this=$(this).parents(".dropdown");
-    
-})
+// })
 // $("#optAdd1").hover(function(e){
 //     var $this = $(this);
 //     $this.addClass('show');

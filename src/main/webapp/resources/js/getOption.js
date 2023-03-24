@@ -1,8 +1,5 @@
 
 let machineNum = $("#optionSelect").attr("data-machineNum");
-if(machineNum!=null){
-    let machineNum = $("#optionSelect").attr("data-machineNum");
-}
 let idx = 0;
 let optId1 = "";
 let optId2 = "";
@@ -99,7 +96,7 @@ $("#optionSelect").on("click", "#op2", function (e) {
 
 })
 
-$("#optionSelect").on("change", "#op3", function (e) {
+$("#optionSelect").on("click", "#op3", function (e) {
     optId3 = $(this).attr("data-id");
     getOption(4);
     
