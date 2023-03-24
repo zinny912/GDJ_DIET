@@ -1,5 +1,7 @@
 package com.goody.diet.member;
 
+import java.util.List;
+
 public class MemberDTO {
 
 	private String id;
@@ -11,9 +13,16 @@ public class MemberDTO {
 	private String address;
 	private String loginType;
 	private RoleDTO roleDTO;
+	private List<DeliveryDTO> deliveryDTOs;
 	
 	
 	
+	public List<DeliveryDTO> getDeliveryDTOs() {
+		return deliveryDTOs;
+	}
+	public void setDeliveryDTOs(List<DeliveryDTO> deliveryDTOs) {
+		this.deliveryDTOs = deliveryDTOs;
+	}
 	public RoleDTO getRoleDTO() {
 		return roleDTO;
 	}
