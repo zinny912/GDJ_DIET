@@ -4,7 +4,26 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
-	
+	<sql id="optionCondition">
+	  	<trim prefix="where" suffixOverrides="and">
+			MACHINENUM=#{machineNum} 
+			
+			<if test="optId1 !=null and !optId1.equals('')">
+				AND OPTID1=#{optId1}
+			</if>
+			
+			<if test="optId2 !=null and !optId2.equals('')">
+				AND OPTID2=#{optId2}
+			</if>
+			<if test="optId3 !=null and !optId3.equals('')">
+				AND OPTID3=#{optId3}
+			</if>
+			<if test="optId4 !=null and !optId4.equals('')">
+				AND OPTID4=#{optId4}
+			</if>
+			
+		</trim> 
+	</sql>
 	<select id="getHealthMachineTypeList" resultMap="getHealthMachineResult" parameterType="CategoryDTO">
 	SELECT * FROM HEALTHMACHINE h 
 	LEFT OUTER JOIN
@@ -90,19 +109,20 @@
 	</select>
 	<select id="getOption2" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
 	SELECT DISTINCT OPTNAME2,OPTID2 FROM REALHEALTHMACHINE 
-		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1}
+		<include refid="optionCondition"></include>
 		order by optname2
 		</select>
 	<select id="getOption3" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
 		SELECT DISTINCT OPTNAME3,OPTID3 FROM REALHEALTHMACHINE 
-		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1} and OPTID2=#{optId2}
+		<include refid="optionCondition"></include>
 		order by optname3
 		
 		</select>
 		<select id="getOption4" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
 	SELECT DISTINCT OPTNAME4,OPTID4 FROM REALHEALTHMACHINE 
-		WHERE MACHINENUM = #{machineNum} and OPTID1=#{optId1} and OPTID2=#{optId2} and OPTID3=#{optId3}
+		<include refid="optionCondition"></include>
 		order by optname4
 		</select>
+		
 		<!-- 옵션 -->
 </mapper>

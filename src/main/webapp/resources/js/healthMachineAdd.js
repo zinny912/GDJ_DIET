@@ -95,7 +95,7 @@ $("#optionAdd").click(function(e){
     optioncount++;
     let child ='<div class="mb-3" id="option'+optioncount+'"'
     child=child + '<label for="option'+optioncount+'" class="form-label">'
-    child = childs+'<input type = "text" class="form-control" name="option'+optioncount+'">'
+    child = child+'<input type = "text" class="form-control" name="option'+optioncount+'">'
     child = child+"</div>";
     $("#optionList").append(child);
     
@@ -109,6 +109,23 @@ $("#optionDelete").click(function(e){
     optioncount--;
 })
 
+$(".dropdown").on("focus",".optInput",function(){
+
+    let $this = $(this).parents(".dropdown");
+    $this.addClass('show');
+    $this.find('.dropdown-menu').addClass('show');
+})
+$(".dropdown").on("blur",".optInput",function(){
+
+    let parent = $(this).parents("#optionSelect")
+    parent.find('.dropdown').removeClass('show')
+    parent.find('.dropdown-menu').removeClass('show');
+})
+$(".dropdown").on("click", ".dropdown-item", function () {
+    let $this = $(this).parents(".dropdown");
+    $this.find(".optInput").val($(this).attr("data-name"))
+    $this.find(".optInputId").val($(this).attr("data-id"))
+})
 // $('#input1').on("focus",function(e){
 //     let $this = $(this).parents(".dropdown");
 //     $this.addClass('show');

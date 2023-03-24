@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
 
@@ -64,9 +62,7 @@
 			</form>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/healthMachineAdd.js"></script>
 	<script>
 		setMax(1);
