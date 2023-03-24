@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<c:import url="../template/header.jsp"></c:import>
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
@@ -26,11 +27,11 @@
 			<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
-				<c:if test="${not empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly>
+				<c:if test="${not empty sessionMember}">
+					<input type="text" name="writer" class="form-control" id="writer" value="${sessionMember.id}" readonly>
 				</c:if>
-				<c:if test="${empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}">
+				<c:if test="${empty sessionMember}">
+					<input type="text" name="writer" class="form-control" id="writer" value="${sessionMember.id}" disabled>
 				</c:if>
 			</div>
 			
@@ -43,14 +44,6 @@
 				<label for="contents" class="form-label">상세내용</label>
 				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
-			
-			<div id="fileList">
-<!-- 				<div class="input-group mb-3", id="f'+idx+'">
-						<input type="file" class="form-control" name="'+param+'">
-						<button type="button class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button>
-					</div> -->
-				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
-			</div>
 		
 			<div class="mb-3">
 				<button class="btn btn-primary" type="submit">글쓰기</button> 
@@ -59,7 +52,8 @@
 	</div>
 </div>
 
-	<c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/footer.jsp"></c:import>
 	<script>
 		$('#contents').summernote();
 	</script>

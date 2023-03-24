@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 
-  <script src="/resources/js/jquery.min.js"></script>
+ <!--  <script src="/resources/js/jquery.min.js"></script> -->
   <script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="/resources/js/popper.min.js"></script>
   <script src="/resources/js/bootstrap.min.js"></script>
@@ -26,4 +26,4 @@
   <!-- 카카오 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script><!-- kakaoAPI -->
 <script src="/resources/js/member/kakaoLogin.js"></script>
-<script src="/resources/js/member/memberDeleteJSON.js"></script><!--kakaoLogin.js에서 del기능호출-->
+

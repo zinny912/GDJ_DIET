@@ -8,29 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <c:import url="../template/common_css.jsp"></c:import>
-     
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/resources/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/animate.css">
-    
-    <link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/resources/css/magnific-popup.css">
-
-    <link rel="stylesheet" href="/resources/css/aos.css">
-
-    <link rel="stylesheet" href="/resources/css/ionicons.min.css">
-
-    <link rel="stylesheet" href="/resources/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/resources/css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="/resources/css/flaticon.css">
-    <link rel="stylesheet" href="/resources/css/icomoon.css">
-    <link rel="stylesheet" href="/resources/css/style.css">
     
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -38,6 +15,7 @@
 </head>
 
 <body>
+<c:import url="../template/header.jsp"></c:import>
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
@@ -69,13 +47,6 @@
 				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
 			
-			<div id="fileList">
-<!-- 				<div class="input-group mb-3", id="f'+idx+'">
-						<input type="file" class="form-control" name="'+param+'">
-						<button type="button class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button>
-					</div> -->
-				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
-			</div>
 		
 			<div class="mb-3">
 				<button class="btn btn-primary" type="submit">글쓰기</button> 
@@ -84,7 +55,8 @@
 	</div>
 </div>
 
-	<c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/common_js.jsp"></c:import>
+<c:import url="../template/footer.jsp"></c:import>
 	<script>
 		$('#contents').summernote();
 	</script>

@@ -1,5 +1,10 @@
 package com.goody.diet.exercise;
 
+import java.util.List;
+
+import com.goody.diet.board.BoardFileDTO;
+import com.goody.diet.healthMachine.HealthMachineDTO;
+
 public class ExerciseDTO {
 	
 	private Long num;
@@ -10,16 +15,32 @@ public class ExerciseDTO {
 	private Long power;
 	private String bodyPart;
 	private String time;
-	private String thumbNail;
+	
+	private List<BoardFileDTO> boardFileDTOs;
+	private List<HealthMachineDTO> healthMachineDTOs;
 	
 	
-	
-	public String getThumbNail() {
-		return thumbNail;
+//	private String machineName;
+//	
+//	public String getMachineName() {
+//		return machineName;
+//	}
+//	public void setMachineName(String machineName) {
+//		this.machineName = machineName;
+//	}
+	public List<HealthMachineDTO> getHealthMachineDTOs() {
+		return healthMachineDTOs;
 	}
-	public void setThumbNail(String thumbNail) {
-		this.thumbNail = thumbNail;
+	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
+		this.healthMachineDTOs = healthMachineDTOs;
 	}
+	public List<BoardFileDTO> getBoardFileDTOs() {
+		return boardFileDTOs;
+	}
+	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
+		this.boardFileDTOs = boardFileDTOs;
+	}
+	
 	public Long getNum() {
 		return num;
 	}
