@@ -99,10 +99,12 @@
 		INSERT INTO MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
 		VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
 	</insert>
-	<insert id="setCategoryType" parameterType="HealthMachineDTO">
+	<!-- <insert id="setCategoryType" parameterType="HealthMachineDTO">
 	insert into categoryType(machineNum,categoryNum)
 	values(#(machineNum),#(CategoryDTO.categoryNum))
-	</insert>
+	</insert> -->
+	
+	
 	<!-- REALHEALTHMACHINE ADD DETAIL IMG ADD -->
 	<insert id="setOptionAdd" parameterType="realHealthMachineDTO">
 		INSERT INTO REALHEALTHMACHINE (REALMACHINENUM,MACHINENUM,STOCK,OPTNAME1,OPTID1,OPTNAME2,OPTID2,OPTNAME3,OPTID3,OPTNAME4,OPTID4)
