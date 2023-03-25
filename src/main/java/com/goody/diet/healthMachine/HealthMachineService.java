@@ -47,10 +47,11 @@ public class HealthMachineService {
 		return healthMachineDAO.getOption4(realHealthMachineDTO);
 	}
 	//
-	public int setHealthMachineAdd(HealthMachineDTO healthMachineDTO, MultipartFile [] multipartFiles, HttpSession httpSession)throws Exception{
+	public int setHealthMachineAdd(HealthMachineDTO healthMachineDTO, MultipartFile [] multipartFiles, HttpSession httpSession,CategoryDTO categoryDTO)throws Exception{
 		
 		
 		int result = healthMachineDAO.setHealthMachineAdd(healthMachineDTO);
+		
 		String realPath = httpSession.getServletContext().getRealPath("resources/images");
 		System.out.println(realPath);
 		for(MultipartFile multipartFile : multipartFiles) {
@@ -87,6 +88,9 @@ public class HealthMachineService {
 			result = healthMachineDAO.setMachineImg(healthMachineImgDTO);
 		}
 		return result;
+	}
+	public List<CategoryDTO>getCategoryList()throws Exception{
+		return healthMachineDAO.getCategoryList();
 	}
 	
 
