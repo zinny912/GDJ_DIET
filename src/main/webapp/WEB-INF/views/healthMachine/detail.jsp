@@ -9,40 +9,32 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<div class="container-fluid">
-		<div class="row mb-4 mt-4 md-7">
-			<h1 class="col-md-5 mx-auto text-center pb-3">HealthMachine
-				detail And OptionAdd page</h1>
-
-			<div class="row">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>NUM</th>
-							<th>category</th>
-							<th>machinename</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>${dto.machineNum}</td>
-							<td>${dto.categoryNum}</td>
-							<td>${dto.machineName}</td>
-
-
-						</tr>
-					</tbody>
-				</table>
-
-				<div class="row text-center" id="optionSelect"
+		<!-- Heading Row-->
+		<div class="row gx-4 gx-lg-5 align-items-center my-5 border border-secondary-subtle">
+			<div class="col-lg-7">
+				<img class="img-fluid rounded mb-4 mb-lg-0"
+					src="/resources/images/${dto.healthMachineImgDTOs[0].oriName}"
+					alt="..." />
+			</div>
+			<div class="col-lg-5 text-center">
+				<h2><strong>${dto.machineName}</strong></h2>
+				<h6 class="font-weight-light" style="text-decoration:line-through;">${dto.price}원</h6>
+				<h1 class="font-weight-light" style="color:red">${dto.salePrice}원</h1>
+				<hr class="my-hr2">
+				<div class="text-center" id="optionSelect"
 					data-machineNum="${dto.machineNum}">
+					<h6 class="font-weight-light">
+						옵션선택
+					</h6>
 					<div class="dropdown" id="opt1" data-optName="${dto.option1 }">
-					
-						<button class="btn dropdown-toggle" id="optbtn1"
-							data-optName="${dto.option1 }">${dto.option1}을 선택해 주세요              </button>
+
+						<button class="btn dropdown-toggle" id="optbtn1">${dto.option1}을
+							선택해 주세요</button>
 						<div class="dropdown-menu">
 							<ul style="list-style: none;" id='optSelect1'>
-								
+
 							</ul>
 						</div>
 					</div>
@@ -50,50 +42,12 @@
 					<div class="dropdown" id="opt3" data-optName="${dto.option3 }"></div>
 					<div class="dropdown" id="opt4" data-optName="${dto.option4 }"></div>
 				</div>
-
+				<br> <a class="btn btn-primary" href="#">장바구니에 담기</a>
 			</div>
 		</div>
+
 	</div>
-	<%-- <div class="container px-4 px-lg-5">
-            <!-- Heading Row-->
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyclass.jpg" alt="..." /></div>
-                <div class="col-lg-5">
-                    <h2 class="font-weight-light">${dto.studyName}</h2>
-                    <h3 class="font-weight-light">${dto.studyCost}원</h3>
-                    <hr class="my-hr2">
-            		<div class="text-center">
-                    <h6><strong>스터디 일정안내</strong></h6>
-                    ${dto.studyPeriod} 스터디 기간
-                    <br>반배정 문자 일괄 발송
-                    <br>문의:010-0000-1111
-                    </div>
-                    <br>
-                    <a class="btn btn-primary" href="#!">장바구니에 담기</a>
-                </div>
-            </div>
-            <!-- Call to Action-->
-            
-            <div class="col-12 w-100 text-center">
-			        <div class="row">
-			        <div class="col-md-4">
-			          <div class="nav-link" id="studyQnaInfo" style="cursor: pointer">상세정보</div>
-			        </div>
-			        <div class="col-md-4">
-			         <div class="nav-link" style="cursor: pointer">구매평</div>
-			        </div>
-			        <div class="col-md-4">
-			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}" style="cursor: pointer">Q&amp;A</div>
-			        </div>
-			        <hr class="my-hr2">
-			        </div>
-  			</div>
-  			
-  			<div class="my-5" id="studyQnaListResult">
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
-  			</div>
-  	</div> --%>
+
 	<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
 
 

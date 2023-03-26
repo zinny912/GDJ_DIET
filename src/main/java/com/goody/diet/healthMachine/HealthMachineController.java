@@ -38,13 +38,15 @@ public class HealthMachineController {
 	@GetMapping("add")
 	public ModelAndView setHealthMachineAdd(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<CategoryDTO> ar= healthMachineService.getCategoryList();
+		mv.addObject("category",ar);
 		mv.setViewName("healthMachine/add");
 		return mv;
 	}
 
 	@PostMapping("add")
-	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO, MultipartFile [] Files, HttpSession session)throws Exception{
-		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, Files, session);
+	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO,CategoryDTO categoryDTO, MultipartFile [] Files, HttpSession session)throws Exception{
+		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, Files, session, categoryDTO);
 		String message="실패";
 		if(result>0) {
 			message="성공";
@@ -94,9 +96,17 @@ public class HealthMachineController {
 		healthMachineDTO= healthMachineService.getHealthMachineDetail(healthMachineDTO);
 		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
 		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
-		List<RealHealthMachineDTO> ar = healthMachineService.getOption1(realHealthMachineDTO);
+		
+		List<RealHealthMachineDTO> ar1 = healthMachineService.getOption1(realHealthMachineDTO);
+		List<RealHealthMachineDTO> ar2 = healthMachineService.getOption2(realHealthMachineDTO);
+		List<RealHealthMachineDTO> ar3 = healthMachineService.getOption3(realHealthMachineDTO);
+		List<RealHealthMachineDTO> ar4 = healthMachineService.getOption4(realHealthMachineDTO);
+
 		mv.addObject("dto", healthMachineDTO);
-		mv.addObject("optList", ar);
+		mv.addObject("optList1", ar1);
+		mv.addObject("optList2", ar2);
+		mv.addObject("optList3", ar3);
+		mv.addObject("optList4", ar4);
 		mv.setViewName("healthMachine/optionAdd");
 		return mv;
 	}
