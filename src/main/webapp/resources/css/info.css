@@ -1,0 +1,413 @@
+@media (min-width: 900px) {
+    body {
+      margin: 0;
+    }
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+        box-sizing: border-box;
+        cursor:default;
+      }
+      
+      #box {
+          width: 900px;
+          border-radius: 30px;
+          overflow: hidden;
+          margin: 100px auto;
+          transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+        
+        /* #box:hover {
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          transform: translateY(-10px);
+        } */
+      li {
+        margin: 0;
+        padding: 0;
+      }
+      
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+      }
+      
+      .container {
+        position: relative;
+        padding: 5% auto;
+      } /*폭을 일정하게 담기 위한 css*/
+      
+      
+      .first {
+        width: 50%;
+        margin-right: 5px;
+      } /* 화면을 이분할하기 위해 width에 50% 적용 */
+      
+      .second {
+        width: 50%;
+      } /* 화면을 이분할하기 위해 width에 50% 적용 */
+      
+      .left {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      #machineName {
+          position: relative;
+          font-weight: 200;
+          margin-top : 30px;
+          margin-left : 15px;
+          border:0;
+          height:23px;
+          background-color:  rgb(243, 240, 240);
+          text-align: center;
+      }   
+      
+      .detail1{
+        margin-left: 15px;
+        float:left;
+        font-size: 23px;
+        font-weight: 700;
+      }
+      
+      #one {
+        display: flex;
+        clear: both;
+      } /* container div중 하나를 선택하기 위한 id태그*/
+      
+      #one img {
+        width: 95%;
+        margin-left: 15px;
+        margin-bottom: 8%;
+        border-radius:5px;
+      }
+      .power {
+      font-weight: 500;
+      font-size: 20px;
+      align-items: center;
+      justify-content: center;
+      }
+      .star {
+      font-size: 30px;
+      font-weight: 500;
+      margin-left: 5px;
+      color: tomato;
+      align-items: center;
+      justify-content: center;
+      }
+      
+      .time {
+      font-weight: 500;
+      font-size: 20px;
+      padding-right:5px;
+      align-items: center;
+      justify-content: center;
+      }
+      
+      .mmss {
+      font-size: 30px;
+      font-weight: 500;
+      margin-right: 5px;
+      color: tomato;
+      align-items: center;
+      justify-content: center;
+      }
+      
+      
+      div:hover .highlight:after{
+        width:100%;
+      }
+      .highlight{
+        display: inline-block; 
+        position: relative;
+      }
+      .highlight:after{
+        content:"";
+        width: 0;
+        height: 20px;
+        display: inline-block;
+        background: #D9FCDB;
+        position: absolute;
+        bottom:3px;
+        font-weight: 200;
+        font-size: 15px;
+        left:0;
+        z-index:-1;
+        transition: 0.2s all;
+      } 
+      .highlight{
+      display: inline-block; 
+      } 
+      .detail2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+        padding-right: 3%;
+        margin: 0;
+      } 
+      .detail2 span {
+        font-size: 17px;
+        font-weight: 500 ;
+        margin-top: -5px;
+        margin-bottom: 0;
+      }
+      .detail3 {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        margin: 0;
+      }
+      .detail4  {
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-start;
+          padding-right: 3%;
+          margin: 0;
+        }
+      .boxone {
+        width: 50%;
+        border-right: 2px dotted gray;
+        justify-content: center;
+      }
+      .boxtwo {
+        width: 50%;
+        justify-content: center;
+      }
+      
+      .detail3 ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .detail3 li {
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+      } /* productdetail2 의 ul과 ㅣi 모두 화면과 같은 레이아웃을 적용해주기 위해 
+      위와 같이 Flex가 주된 css 적용*/
+      
+      .golink {
+        display: flex;
+        position:relative;
+        background-color: rgb(243, 240, 240);
+        height: 40px;
+        width: 110px;
+        align-items: center;
+        padding-left: 10px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+}
+
+@media (min-width: 900px) {
+    body {
+      margin: 0;
+    }
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+        box-sizing: border-box;
+        cursor:default;
+      }
+      
+      #box {
+          width: 900px;
+          border-radius: 30px;
+          overflow: hidden;
+          margin: 100px auto;
+          transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+        
+        /* #box:hover {
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          transform: translateY(-10px);
+        } */
+      li {
+        margin: 0;
+        padding: 0;
+      }
+      
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+      }
+      
+      .container {
+        position: relative;
+        padding: 5% auto;
+      } /*폭을 일정하게 담기 위한 css*/
+      
+      
+      .first {
+        width: 50%;
+        margin-right: 5px;
+      } /* 화면을 이분할하기 위해 width에 50% 적용 */
+      
+      .second {
+        width: 50%;
+      } /* 화면을 이분할하기 위해 width에 50% 적용 */
+      
+      .left {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      #machineName {
+          position: relative;
+          font-weight: 200;
+          margin-top : 30px;
+          margin-left : 15px;
+          border:0;
+          height:23px;
+          background-color:  rgb(243, 240, 240);
+          text-align: center;
+      }   
+      
+      .detail1{
+        margin-left: 15px;
+        float:left;
+        font-size: 23px;
+        font-weight: 700;
+      }
+      
+      #one {
+        display: flex;
+        clear: both;
+      } /* container div중 하나를 선택하기 위한 id태그*/
+      
+      #one img {
+        width: 95%;
+        margin-left: 15px;
+        margin-bottom: 8%;
+        border-radius:5px;
+      }
+      .power {
+      font-weight: 500;
+      font-size: 20px;
+      align-items: center;
+      justify-content: center;
+      }
+      .star {
+      font-size: 30px;
+      font-weight: 500;
+      margin-left: 5px;
+      color: tomato;
+      align-items: center;
+      justify-content: center;
+      }
+      
+      .time {
+      font-weight: 500;
+      font-size: 20px;
+      padding-right:5px;
+      align-items: center;
+      justify-content: center;
+      }
+      
+      .mmss {
+      font-size: 30px;
+      font-weight: 500;
+      margin-right: 5px;
+      color: tomato;
+      align-items: center;
+      justify-content: center;
+      }
+      
+      
+      div:hover .highlight:after{
+        width:100%;
+      }
+      .highlight{
+        display: inline-block; 
+        position: relative;
+      }
+      .highlight:after{
+        content:"";
+        width: 0;
+        height: 20px;
+        display: inline-block;
+        background: #D9FCDB;
+        position: absolute;
+        bottom:3px;
+        font-weight: 200;
+        font-size: 15px;
+        left:0;
+        z-index:-1;
+        transition: 0.2s all;
+      } 
+      .highlight{
+      display: inline-block; 
+      } 
+      .detail2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+        padding-right: 3%;
+        margin: 0;
+      } 
+      .detail2 span {
+        font-size: 17px;
+        font-weight: 500 ;
+        margin-top: -5px;
+        margin-bottom: 0;
+      }
+      .detail3 {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        margin: 0;
+      }
+      .detail4  {
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-start;
+          padding-right: 3%;
+          margin: 0;
+        }
+      .boxone {
+        width: 50%;
+        border-right: 2px dotted gray;
+        justify-content: center;
+      }
+      .boxtwo {
+        width: 50%;
+        justify-content: center;
+      }
+      
+      .detail3 ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .detail3 li {
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+      } /* productdetail2 의 ul과 ㅣi 모두 화면과 같은 레이아웃을 적용해주기 위해 
+      위와 같이 Flex가 주된 css 적용*/
+      
+      .golink {
+        display: flex;
+        position:relative;
+        background-color: rgb(243, 240, 240);
+        height: 40px;
+        width: 110px;
+        align-items: center;
+        padding-left: 10px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+}

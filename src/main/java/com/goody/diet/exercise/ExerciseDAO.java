@@ -46,5 +46,9 @@ public class ExerciseDAO {
 		
 	}
 	
+	public ExerciseDTO getExerciseInfo() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getExerciseInfo");
+	}
+	
 	
 }

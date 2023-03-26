@@ -57,8 +57,8 @@
 
 <map name="allbody">
     <area target="" alt="faceVideo" title="faceVideo" href="/exercise/detail/face" coords="712,609,793,797" shape="rect">
-    <area target="" alt="armfitVideo" title="armfitVideo" href="/exercise/detail/armpit" coords="722,901,981,964" shape="rect">
-    <area target="" alt="armsVideo" title="armsVideo" href="/exercise/detail/arms" coords="515,936,718,1004" shape="rect">
+    <area target="" alt="armfitVideo" title="armfitVideo" href="/exercise/info" coords="722,901,981,964" shape="rect">
+    <area target="" alt="armsVideo" title="armsVideo" href="./info?num=${dto.bodyNum}" coords="515,936,718,1004" shape="rect">
     <area target="" alt="hipVideo" title="hipVideo" href="/exercise/detail/hip" coords="484,1073,689,1141" shape="rect">
     <area target="" alt="legsVideo" title="legsVideo" href="/exercise/detail/legs" coords="320,1122,427,1250" shape="rect">
     <area target="" alt="frontlegVideo" title="frontlegVideo" href="/exercise/detail/frontleg" coords="584,1197,693,1326" shape="rect">

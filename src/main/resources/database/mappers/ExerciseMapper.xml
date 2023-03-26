@@ -63,6 +63,7 @@
 	  			<result column="oriName" property="oriName"/>
 		</collection>
 	</resultMap>-->
+	
   	<insert id="setExerciseAdd" parameterType="ExerciseDTO">
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 		  			SELECT EXERCISE_SEQ.NEXTVAL FROM DUAL
@@ -107,6 +108,9 @@
   	</select>
     <select id="getExerciseFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
   		SELECT * FROM EXERCISEFILES WHERE FILENUM=#{fileNum}
+  	</select>
+  	<select id="getExerciseInfo" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+  		SELECT * FROM EXERCISE
   	</select>
   	
 	

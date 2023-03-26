@@ -1,3 +1,5 @@
+<%@page import="com.goody.diet.calendar.CalendarDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -17,16 +19,88 @@
       document.addEventListener('DOMContentLoaded', function() {
         const calendarEl = document.getElementById('calendar');
         const calendar = new FullCalendar.Calendar(calendarEl, {
-    	      headerToolbar: {
-    	        right: 'today prev,next',
-    	        center: 'title', 
-    	      },
+        	  locale : 'ko',
     	      initialView: 'dayGridMonth', 
     	      navLinks: true, // can click day/week names to navigate views
     	      selectable: true,
     	      selectMirror: true,
+    	      droppable : true,
+    	  	  editable : true,
+    	  	  events : [/calendar] // 서버에서 json 데이터를 반환하는 URL
+    	  	  headerToolbar: {
+       	        right: 'today prev,next',
+       	        center: 'addEventButton' // headerToolbar에 버튼을 추가
+        	    },
+    	      ,customButtons: {
+                addEventButton: { // 추가한 버튼 설정
+                    text : "일정 추가",  // 버튼 내용
+                    click : function(){ // 버튼 클릭 시 이벤트 추가
+                        $("#calendarModal").modal("show"); // modal 나타내기
+
+                        $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
+                            const content = $("#title").val();
+                            const start = $("#start").val();
+                            const end = $("#end").val();
+                            
+                            //내용 입력 여부 확인
+                            if(content == null || content == ""){
+                                alert("내용을 입력하세요.");
+                            }else if(start_date == "" || end_date ==""){
+                                alert("날짜를 입력하세요.");
+                            }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
+                                alert("종료일이 시작일보다 먼저입니다.");
+                            }else{ // 정상적인 입력 시
+                                const obj = {
+                                    "title" : title,
+                                    "start" : start,
+                                    "end" : end
+                                }//전송할 객체 생성
+
+                                console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
+                            }
+                        });
+                      }
+                  }
+              },
+              editable: true, // false로 변경 시 draggable 작동 x 
+              displayEventTime: false // 시간 표시 x
+          });
+          calendar.render();
+       // Ajax 요청으로 calendarList 데이터 받아오기 
+       $.ajax({
+		    type: 'GET',
+		    url: '/calendar/getCalendar',
+		    dataType: 'json',
+		    success: function(data) {
+		      // 받아온 데이터를 FullCalendar의 events 속성에 추가
+		      calendar.addEventSource(data);
+		    }
+  		});
+       
+       $.ajax({
+  		    type: "POST",
+  		    url: "/calendar/add",
+  		    data: JSON.stringify({
+  		        "title": $("#title").val(),
+  		        "start": $("#start").val(),
+  		        "end": $("#end").val()
+  		    }),
+  		    contentType: "application/json; charset=UTF-8",
+  		    success: function(data) {
+  		        alert("일정이 추가되었습니다.");
+  		        // 추가된 일정을 FullCalendar에 적용
+  		        calendar.refetchEvents();
+  		        // modal 창 닫기
+  		        $("#calendarModal").modal("hide");
+  		    },
+  		    error: function() {
+  		        alert("일정 추가에 실패하였습니다.");
+  		    }
+  		});
+
+
     	      // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
-    	      select: function(arg) {
+    	      /* select: function(arg) {
     	    	  console.log(arg);
 
     	        const title = prompt('입력할 일정:');
@@ -64,12 +138,45 @@
     	          }
     	              });
     	    calendar.render();
-    	  });
+    	  }); */
     </script>
  
  </head>
  
  <body>
+ <!-- modal 추가 -->
+    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">루틴을 등록하세요</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title" class="col-form-label">루틴 제목</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                        <label for="taskId" class="col-form-label">시작 날짜</label>
+                        <input type="date" class="form-control" id="start" name="start">
+                        <label for="taskId" class="col-form-label">종료 날짜</label>
+                        <input type="date" class="form-control" id="end" name="end">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="sprintSettingModalClose">취소</button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+
+ 
 
  <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
  <div class="overlay"></div>
@@ -182,6 +289,12 @@
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 <script src="/resources/js/video.js"></script>
 <script src="/resources/js/routine.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    
+</body>
+</html>
+ 
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import> 
  </body>

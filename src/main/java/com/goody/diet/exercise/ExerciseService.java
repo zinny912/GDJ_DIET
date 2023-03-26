@@ -41,6 +41,9 @@ public class ExerciseService {
 	public List<HealthMachineDTO> getExerciseMachine() throws Exception {
 		return exerciseDAO.getExerciseMachine();
 	}
+	public ExerciseDTO getExerciseInfo() throws Exception{
+		return exerciseDAO.getExerciseInfo();
+	}
 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session) throws Exception{
 		int result = exerciseDAO.setExerciseAdd(exerciseDTO);

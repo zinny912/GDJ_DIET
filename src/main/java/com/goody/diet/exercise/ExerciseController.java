@@ -47,13 +47,11 @@ public class ExerciseController {
 		return mv;
 	}
 		
-//	@GetMapping("body")
-//	public ModelAndView getExerciseBody(ModelAndView mv,ExerciseDTO exerciseDTO)throws Exception{
-//		exerciseDTO =exerciseService.getExerciseBody(exerciseDTO);
-//		mv.addObject("dto", exerciseDTO);
-//		mv.setViewName("exercise/body");
-//		return mv;
-//	}
+	@GetMapping("info")
+	public ModelAndView getExerciseInfo(ModelAndView mv)throws Exception{
+		mv.setViewName("exercise/detail/info");
+		return mv;
+	}
 	
 	//add
 	@GetMapping("add")
