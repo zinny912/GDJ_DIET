@@ -10,7 +10,7 @@
 
 
 	<select id="getOrderList" parameterType="MemberDTO" resultMap="OrderDetails">
-		SELECT * FROM ORDERDETAIL WHERE ORDERNUM=(SELECT ORDERNUM FROM ORDER WHERE ID=#{id})
+		SELECT ORDERNUM FROM ORDER WHERE ID=#{id}
 	</select>
 
 <!-- 	<select id="getOrderDetailList" parameterType="OrderDTO" resultMap="OrderDetails"> -->
@@ -31,7 +31,7 @@
 	</insert>
 	
 <resultMap type="OrderDTO" id="OrderDetails">
-	<id column="" property="orderNum"/>
+	<id column="orderNum" property="orderNum"/>
 	<result column="ID" property="id"/>
 	<result column="orderDate" property="orderDate"/>
 	<result column="orderStatus" property="orderStatus"/>

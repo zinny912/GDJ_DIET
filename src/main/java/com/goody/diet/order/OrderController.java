@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.cart.CartDAO;
 import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.member.MemberDTO;
@@ -27,14 +28,21 @@ public class OrderController {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		
-		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);
+		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);	//여기 다 resultmap으로 detail까지 다 담김.
+		CartDAO cartDAO = new CartDAO();
+
+		for(OrderDTO orderDTO:orderDTOs) {
+			
 		//페이지에 표시할 상품들의 정보들을 받아와야해..
 		//cartmapper에서 
 		//getHealthMachineForCartAndOrder
+		cartDAO.getHealthMachineForCartAndOrder(null);
 		//getRealHealthMachineForCartAndOrder
 		//getStudyForCartAndOrder
+		cartDAO.getStudyForCartAndOrder(null);
 		//들 받아오는데, JS에서 해도댐.
 		
+		}
 		
 		return mv;
 	}
