@@ -4,10 +4,56 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.goody.diet.cart.CartDAO">
-	
+
 	<insert id="setAddToCart" parameterType="com.goody.diet.cart.CartDTO">
 		INSERT INTO CART (NUM, ID, MACHINENUM, STUDYNUM, COUNT) 
-		VALUES(#{num}, #{id}, #{machineNum}, #{studyNum}, #{count})
+		VALUES(CART_SEQ.NEXTVAL, #{id}, #{machineNum}, #{studyNum}, #{count})
 	</insert>
-		 
+	
+	<select id="getCartList" parameterType="MemberDTO">
+		SELECT * FROM CART WHERE ID=#{id}
+	</select>
+	
+	<!-- 장바구니에서 (반복반복) healthMachine과 대표이미지 불러오기 -->
+	<select id="getHealthMachineForCartAndOrder" parameterType="CartDTO" resultMap="getHealthMachineResult">
+		SELECT * FROM HEALTHMACHINE h 
+		LEFT OUTER JOIN
+		(
+		SELECT * FROM (
+		SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
+		FROM MACHINEIMG m2 
+		) WHERE ranknum=1) t
+		on(h.MACHINENUM=t.machinenum)
+		WHERE h.MACHINENUM=(
+		SELECT MACHINENUM FROM CART c WHERE NUM=#{num})
+	</select>
+
+	<!-- 장바구니를 통해서 healthMachine 옵션찾아오기 -->
+	<select id="getRealHealthMachineForCartAndOrder" parameterType="com.goody.diet.cart.CartDTO" resultType="com.goody.diet.healthMachine.RealHealthMachineDTO">
+		SELECT * FROM REALHEALTHMACHINE r WHERE MACHINENUM=#{machineNum}
+	</select>
+	
+	<select id="getStudyForCartAndOrder" parameterType="CartDTO" resultType="StudyDTO">
+		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
+	</select>
+
+	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
+		<id column="MACHINENUM" property="machineNum"/>
+		<result column="categoryNum" property="categoryNum"/>
+		<result column="machineName" property="machineName"/>
+		<result column="machineScore" property="machineScore"/>
+		<result column="price" property="price"/>
+		<result column="salePrice" property="salePrice"/>
+		<result column="option1" property="option1"/>
+		<result column="option2" property="option2"/>
+		<result column="option3" property="option3"/>
+		<result column="option4" property="option4"/>
+		
+		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
+			<id column="fileNum" property="fileNum"/>
+	  			<result column="FILENAME" property="fileName"/>
+	  			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
+		
  </mapper>

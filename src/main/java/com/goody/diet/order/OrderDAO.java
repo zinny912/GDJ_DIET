@@ -18,17 +18,19 @@ public class OrderDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.goody.diet.order.OrderDAO.";
 
-	public OrderDTO getOrderList(MemberDTO memberDTO) {
-		
-		return null;
+	public List<OrderDTO> getOrderList (MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getOrderList", memberDTO);
 	}
+//	public List<OrderDetailDTO> getOrderDetailList(OrderDTO orderDTO) {		
+//		return sqlSession.selectList(NAMESPACE+"getOrderDetailList", orderDTO);
+//	}
 	
-	public int setOrderList(OrderDTO orderDTO) throws Exception {
-		return 0;
+	
+
+	public int setOrder(OrderDTO orderDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setOrder", orderDTO);
 	}
-	
 	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
-		
 		return sqlSession.insert(NAMESPACE+"setOrderDetail", orderDetailDTO);
 	}
 	

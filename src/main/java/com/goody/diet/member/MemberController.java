@@ -160,14 +160,18 @@ public class MemberController {
 	public ModelAndView setMemberJoin(MemberDTO memberDTO, ModelAndView mv) throws Exception {
 		int result = memberService.setMemberJoin(memberDTO);
 	
+		System.out.println("join result값: "+result);
+		
 		//주소록에도 복제
+		if(result==1) {
 		DeliveryDTO deliveryDTO = new DeliveryDTO();
 		deliveryDTO.setId(memberDTO.getId());
-		deliveryDTO.setAddressNum(memberDTO.getAddress());
+		deliveryDTO.setAddress(memberDTO.getAddress());
 		deliveryDTO.setRecipient(memberDTO.getNames());
 		deliveryDTO.setRecipientTel(memberDTO.getPhone());
 		memberService.setDeliveryAdd(deliveryDTO);
 //		System.out.println(memberDTO.getAddress());
+		}
 		
 		mv.setViewName("redirect:../");
 		mv.addObject("result", result);

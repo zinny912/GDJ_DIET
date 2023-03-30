@@ -7,31 +7,43 @@
   </mapper> -->
 <mapper namespace="com.goody.diet.order.OrderDAO">
 	
-	<insert id="setOrderList" parameterType="OrderDTO">
-		INSERT INTO "ORDER" VALUES (ORDER_SEQ.NEXTVAL, 3, SYSDATE, '결제완료')
-	</insert>
-	
-<!-- 	<select id="getOrderDetail" parameterType="OrderDTO" resultMap="OrderDetails"> -->
-	
+
+
+	<select id="getOrderList" parameterType="MemberDTO" resultMap="OrderDetails">
+		SELECT * FROM ORDERDETAIL WHERE ORDERNUM=(SELECT ORDERNUM FROM ORDER WHERE ID=#{id})
+	</select>
+
+<!-- 	<select id="getOrderDetailList" parameterType="OrderDTO" resultMap="OrderDetails"> -->
+<!-- 		SELECT * FROM ORDERDETAIL WHERE ORDERNUM=#{orderNum} -->
 <!-- 	</select> -->
 
-
+	
+	
+	<!-- 장바구니 주문 시, CHECKED된 상품(장바구니번호)의 번호를 받아서,
+	Order를 만들고, setOrderDetail을 [여러번] 작성할것.  -->
+	<insert id="setOrder" parameterType="OrderDTO">
+		INSERT INTO "ORDER" VALUES (ORDER_SEQ.NEXTVAL, #{id}, SYSDATE, '결제중')
+	</insert>
+	
 	<insert id="setOrderDetail" parameterType="OrderDetailDTO">
 		INSERT INTO ORDERDETAIL (orderDetailNum, machineNum, studyNum, orderNum, count, price) 
 		VALUES (ORDERDETAIL_SEQ.NEXTVAL, #{machineNum}, #{studyNum},#{orderNum},#{count},#{price});
 	</insert>
-
-<!-- <resultMap type="OrderDetailDTO" id="OrderDetails">
 	
+<resultMap type="OrderDTO" id="OrderDetails">
+	<id column="" property="orderNum"/>
+	<result column="ID" property="id"/>
+	<result column="orderDate" property="orderDate"/>
+	<result column="orderStatus" property="orderStatus"/>
 	<collection property="orderDetailDTOs" javaType="list" ofType="OrderDetailDTO">
 		<id column="ORDERDETAILNUM" property="orderDetailNum"/>
 		<result column="MACHINENUM" property="machineNum"/>
-		<result column="" property=""/>
-		<result column="" property=""/>
-		<result column="" property=""/>
-		<result column="" property=""/>
+		<result column="STUDYNUM" property="studyNum"/>
+		<result column="ORDERNUM" property="orderNum"/>
+		<result column="COUNT" property="count"/>
+		<result column="PRICE" property="price"/>
 	</collection>
-</resultMap> -->
+</resultMap>
 
 
 </mapper>

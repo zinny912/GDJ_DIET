@@ -25,7 +25,7 @@
 				<div class="col-md-4">
 					<div class="classes w-100 ftco-animate">
 						<a href="./detail?machineNum=${dto.machineNum }" class="img w-100 mb-3"
-							style="background-image: url(/resources/images/${dto.healthMachineImgDTOs[0].oriName});"></a>
+							style="background-image: url(/resources/images/${dto.healthMachineImgDTOs[0].fileName});"></a>
 						<div class="text w-100 text-center">
 							<h3>
 								<a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a>
