@@ -16,14 +16,9 @@ public class HealthMachineDTO {
 	private String option4;
 	
 	private List<HealthMachineImgDTO> healthMachineImgDTOs;
-	private CategoryDTO categoryDTO;
 	
-	public CategoryDTO getCategoryDTO() {
-		return categoryDTO;
-	}
-	public void setCategoryDTO(CategoryDTO categoryDTO) {
-		this.categoryDTO = categoryDTO;
-	}
+	
+	
 	public Long getMachineNum() {
 		return machineNum;
 	}

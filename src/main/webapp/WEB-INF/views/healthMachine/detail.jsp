@@ -42,7 +42,20 @@
 					<div class="dropdown" id="opt3" data-optName="${dto.option3 }"></div>
 					<div class="dropdown" id="opt4" data-optName="${dto.option4 }"></div>
 				</div>
-				<br> <a class="btn btn-primary" href="#">장바구니에 담기</a>
+				<br>
+				<form id="frm">
+					<input type="hidden" name="machineNum" value="${dto.machineNum}">
+					<input type="hidden" id="optId1" name="optId1">
+					<input type="hidden" id="optId2" name="optId2">
+					<input type="hidden" id="optId3" name="optId3">
+					<input type="hidden" id="optId4" name="optId4">
+					<!-- <a class="btn btn-primary" href="#">장바구니에 담기</a> -->
+					<div id="btn">
+					<button id="cartAdd" type="button" class="btn btn-primary">장바구니에
+						담기</button>
+					<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+				</div>
+				</form>
 			</div>
 		</div>
 

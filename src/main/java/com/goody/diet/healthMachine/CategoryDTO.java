@@ -5,7 +5,14 @@ public class CategoryDTO {
 	private Long categoryNum;
 	private String categoryName;
 	
+	private Long machineNum;
 	
+	public Long getMachineNum() {
+		return machineNum;
+	}
+	public void setMachineNum(Long machineNum) {
+		this.machineNum = machineNum;
+	}
 	public Long getCategoryNum() {
 		return categoryNum;
 	}
