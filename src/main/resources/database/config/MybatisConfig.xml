@@ -10,6 +10,7 @@
 		
 		<typeAlias type="com.goody.diet.study.StudyDTO" alias="StudyDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyReviewDTO" alias="StudyReviewDTO"/>
+		<typeAlias type="com.goody.diet.study.StudyReviewCommentDTO" alias="StudyReviewCommentDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 		
 		

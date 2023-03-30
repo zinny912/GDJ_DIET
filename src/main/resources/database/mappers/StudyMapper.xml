@@ -15,4 +15,5 @@
 	<select id="getBoardDetail" parameterType="Pager" resultType="StudyDTO">
 		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
 	</select>
+
   </mapper>

@@ -71,7 +71,7 @@
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">리뷰 쓰기</h1>
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
@@ -179,6 +179,6 @@
  
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
-<script src="/resources/js/studyQna.js"></script>
+<script src="/resources/js/studyBoard.js"></script>
  </body>
 </html>

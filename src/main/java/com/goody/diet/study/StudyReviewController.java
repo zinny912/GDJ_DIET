@@ -20,38 +20,38 @@ import com.goody.diet.member.MemberDTO;
 @Controller
 @RequestMapping("/studyReview/**")
 public class StudyReviewController {
-	
+
 	@Autowired
 	private StudyReviewService studyReviewService;
-	
+
 	@GetMapping("list")
-	public ModelAndView getBoardList(Pager pager) throws Exception{
+	public ModelAndView getBoardList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<StudyReviewDTO> ar = studyReviewService.getBoardList(pager);
-		
-		mv.addObject("list",ar);
+
+		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("studyReview/list");
-		
+
 		return mv;
 	}
-	
+
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(StudyReviewDTO studyReviewDTO,HttpSession session) throws Exception{
+	public ModelAndView setBoardAdd(StudyReviewDTO studyReviewDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("sessionMember");
 		System.out.println(memberDTO.getId());
-		//bankBookCommentDTO.setWriter(memberDTO.getId());
+		
 		studyReviewDTO.setWriter(memberDTO.getId());
 		int result = studyReviewService.setBoardAdd(studyReviewDTO);
-		
-		mv.addObject("result",result);
+
+		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
-	
+
 	@GetMapping("detail")
-	public ModelAndView getBoardDetail(StudyReviewDTO studyReviewDTO) throws Exception{
+	public ModelAndView getBoardDetail(StudyReviewDTO studyReviewDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = studyReviewService.setHitUpdate(studyReviewDTO);
 		StudyReviewDTO qnaDTO = studyReviewService.getBoardDetail(studyReviewDTO);
@@ -60,45 +60,71 @@ public class StudyReviewController {
 		mv.setViewName("studyReview/detail");
 		return mv;
 	}
+
+	/*
+	 * @GetMapping("update") public ModelAndView setBoardUpdate(StudyReviewDTO
+	 * studyReviewDTO, ModelAndView mv) throws Exception{ studyReviewDTO =
+	 * studyReviewService.getBoardDetail(studyReviewDTO);
+	 * 
+	 * mv.addObject("dto", studyReviewDTO);
+	 * 
+	 * mv.setViewName("studyReview/update");
+	 * 
+	 * return mv; }
+	 */
 	
-	@GetMapping("update")
-	public ModelAndView setBoardUpdate(StudyReviewDTO studyReviewDTO, ModelAndView mv) throws Exception{
-		studyReviewDTO = studyReviewService.getBoardDetail(studyReviewDTO);
-		
-		mv.addObject("dto", studyReviewDTO);
-		
-		mv.setViewName("studyReview/update");
-		
-		return mv;
-	}
-	
+//	
+//	@PostMapping("update")
+//	public ModelAndView setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = studyReviewService.setBoardUpdate(studyReviewDTO);
+//		String message="수정 실패";
+//		if(result>0) {
+//			message="글이 수정 되었습니다";
+//		}
+//		mv.addObject("result", message);
+//		mv.addObject("url", "/study/studyDetail?studyNum="+studyReviewDTO.getStudyNum());
+//		mv.setViewName("common/result");
+//		
+//		return mv;
+//	}
+
 	@PostMapping("update")
-	public ModelAndView setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception{
+	public ModelAndView setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("sessionMember");
+//		System.out.println(memberDTO.getId());
+//		
+//		studyReviewDTO.setWriter(memberDTO.getId());
 		int result = studyReviewService.setBoardUpdate(studyReviewDTO);
-		String message="수정 실패";
-		if(result>0) {
-			message="글이 수정 되었습니다";
-		}
-		mv.addObject("result", message);
-		mv.addObject("url", "/study/studyDetail?studyNum="+studyReviewDTO.getStudyNum());
-		mv.setViewName("common/result");
-		
+
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
-	
+
 	@PostMapping("delete")
-	public ModelAndView setBoardDelete(StudyReviewDTO studyReviewDTO) throws Exception{
+	public ModelAndView setBoardDelete(StudyReviewDTO studyReviewDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = studyReviewService.setBoardDelete(studyReviewDTO);
-		String message="삭제 실패";
-		if(result>0) {
-			message="글이 삭제 되었습니다";
+		String message = "삭제 실패";
+		if (result > 0) {
+			message = "글이 삭제 되었습니다";
 		}
 		System.out.println(studyReviewDTO.getStudyNum());
 		mv.addObject("result", message);
-		mv.addObject("url", "/study/studyDetail?studyNum="+studyReviewDTO.getStudyNum());
+		mv.addObject("url", "/study/studyDetail?studyNum=" + studyReviewDTO.getStudyNum());
 		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@PostMapping("summerFile")
+	public ModelAndView setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(files.getOriginalFilename());
+		String file = studyReviewService.setBoardFileAdd(files, session);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", file);
 		return mv;
 	}
 
