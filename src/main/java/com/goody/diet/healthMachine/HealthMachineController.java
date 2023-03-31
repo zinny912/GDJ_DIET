@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +31,7 @@ public class HealthMachineController {
 	@GetMapping("detail")
 	public ModelAndView getHealthMachineDetail(ModelAndView mv,HealthMachineDTO healthMachineDTO)throws Exception{
 		healthMachineDTO =healthMachineService.getHealthMachineDetail(healthMachineDTO);
+		
 		mv.addObject("dto", healthMachineDTO);
 		mv.setViewName("healthMachine/detail");
 		return mv;
@@ -43,10 +44,21 @@ public class HealthMachineController {
 		mv.setViewName("healthMachine/add");
 		return mv;
 	}
-
+	@GetMapping("categoryAdd")
+	public ModelAndView getCategoryList(ModelAndView mv)throws Exception{
+		List<CategoryDTO> ar = healthMachineService.getCategoryList();
+		for(CategoryDTO categoryDTO:ar) {
+			System.out.println(categoryDTO.getCategoryName());
+		}
+		mv.addObject("list",ar);
+		mv.setViewName("common/categoryResult");
+		return mv;
+	}
 	@PostMapping("add")
-	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO,CategoryDTO categoryDTO, MultipartFile [] Files, HttpSession session)throws Exception{
-		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, Files, session, categoryDTO);
+	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO,Long []  categoryDTOs, MultipartFile [] Files, HttpSession session)throws Exception{
+		int result = healthMachineService.setHealthMachineAdd(healthMachineDTO, Files, session, categoryDTOs);
+//		System.out.println("카테고리 머신 : " + categoryDTO.getMachineNum());
+//		System.out.println("헬스머신 넘 : "+healthMachineDTO.getMachineNum());
 		String message="실패";
 		if(result>0) {
 			message="성공";
@@ -57,7 +69,22 @@ public class HealthMachineController {
 		return mv;
 	}
 
+	@PostMapping("delete")
+	public ModelAndView setHealthMachineDelete(ModelAndView mv, HealthMachineDTO healthMachineDTO, HttpSession session)throws Exception{
+		int result = healthMachineService.setHealthMachineDelete(healthMachineDTO, session);
+		String mes = "삭제실패";
+		if(result>0) {
+			mes = "삭제성공";
 
+		}
+		mv.addObject("result", mes);
+		mv.addObject("url", "./list");
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+
+	
 	//	----------------option-----------------------------------
 	@PostMapping("option1")
 	public ModelAndView getOption1(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
@@ -119,9 +146,32 @@ public class HealthMachineController {
 			message="성공";
 		}
 		mv.addObject("url","./detail?machineNum="+realHealthMachineDTO.getMachineNum());
+		//post여도 파라미터 값 넘기기 가능
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
 		return mv;
 		
+	}
+	
+	@PostMapping("optionDelete")
+	public ModelAndView setOptionDelete(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO) throws Exception{
+		
+		int result =healthMachineService.setRealHealthMachineDelete(realHealthMachineDTO);
+		
+		String message="실패";
+		if(result>0) {
+			message="성공";
+		}
+		mv.addObject("url","./detail?machineNum="+realHealthMachineDTO.getMachineNum());
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		return mv;
+		
+	}
+	@GetMapping("optionUpdate")
+	public ModelAndView setOptionUpdate(ModelAndView mv,HealthMachineDTO healthMachineDTO) throws Exception{
+		
+		
+		return mv;
 	}
 }

@@ -12,6 +12,7 @@ let optioncount=1;
 let notification = "상세정보파일";
 let toggleStatus = "off";
 let toggleFlag=false;
+let categorycount=2;
 function setCount(c){
  count = c;
 }
@@ -87,15 +88,66 @@ $(".deleteCheck").click(function(e){
         $(this).prop('checked',false)
     }
 })
-$("#categorySelect").change(function(){
-    $("#categoryId").val($("#categorySelect").val())
-    console.log($(this).val())
-    console.log($("#categoryId").val())
-})
+// $("#categorySelect").change(function(){
+//     $("#categoryId").val($("#categorySelect").val())
+//     console.log($(this).val())
+//     console.log($("#categoryId").val())
+// })
 $("#submitbtn").click(function(){
-    $("#submitbtn").attr("type","submit");
-    $("#submitbtn").click()
+    
+    $("#frm").submit();
 })
+
+
+//--caregoryAddbtn---------------------
+let categoryAdd = ""
+let categoryMax=0;
+$("#categorybtn").on("click","#categoryAdd",function(e){
+    categoryAdd='<div class=""> <select class="form-select" id="categorySelect'+categorycount+'" name="categoryDTOs"></select></div>';
+    let categoryList = $("#categoryList")
+    
+    categoryList.append(categoryAdd);
+    $(this).parent
+    $.ajax({
+        type:"GET",
+        url:"./categoryAdd",
+        success:function(response){
+            
+            if(response.trim().length>0){
+                // console.log(response.trim())
+                categoryList.find("#categorySelect"+categorycount).append(response.trim())
+                categoryMax = categoryList.find("#categorySelect"+categorycount+" option").length;
+                categorycount++
+                if(categoryMax<categorycount){
+                    $("#categoryAdd").remove();
+                }
+                if($("#categorybtn").find("#categoryDelete").length==0){
+                    $("#categorybtn").append('<button type="button" class="btn btn-danger" id="categoryDelete">카테고리삭제</button>');
+                }
+               
+            }
+        },
+        error:function(){
+            console.log("error")
+        }
+    })
+    
+})
+
+$("#categorybtn").on("click","#categoryDelete",function(e){
+    categorycount--
+    console.log($("#categorybtn").find("#categoryAdd").length)
+    if($("#categorybtn").find("#categoryAdd").length==0){
+        $("#categorybtn").prepend('<button type="button" class="btn btn-primary" id="categoryAdd">카테고리추가</button>');
+    }
+    let categorySelect=$("#categoryList").find("#categorySelect"+categorycount)
+    categorySelect.parent().remove();
+    if(categorycount==2){
+        $("#categoryDelete").remove();
+    }
+})
+
+
 // ---option--------------------------------------
 $("#optionAdd").click(function(e){
     if(optioncount>=4){
