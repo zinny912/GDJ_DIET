@@ -42,36 +42,36 @@ function onPlayerStateChange(event) {
     swal('오늘운동완료!', day.getAttribute('data-day-days'), 'success')
     .then(function() {
       location.href="/exercise/routine";
-      // changeImage();
+      changeImage();
     });
   }
   function stopVideo (){
     player.stopVideo();
     
   }
-  // function changeImage() {
-    //   let img = parent.document.querySelector('#changeimg${dto.num}');
-    //   img.src = '/resources/images/successred.jpg';
-    //   addClickHandler();
-    //   }
-    
-    swal('출석체크하세요!','info')
-    .then(function(){
+  function changeImage() {
       let img = parent.document.querySelector('#changeimg${dto.num}');
-      img.src='/resources/images/successred.jpg';
+      img.src = '/resources/images/successred.jpg';
       addClickHandler();
-    });
+      }
     
- };
-
-
-
-
-
-
-
-
-
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // swal('출석체크하세요!','info')
+    // .then(function(){
+    //   let img = parent.document.querySelector('#changeimg${dto.num}');
+    //   img.src='/resources/images/successred.jpg';
+    //   addClickHandler();
+    // });
+    
 // const xhttp = new XMLHttpRequest();
 // xhttp.open('POST', '/routine');
 // xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
