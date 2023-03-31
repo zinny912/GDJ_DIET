@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans:400" rel="stylesheet">
-
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<nav class="navbar navbar-expand-lg ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   		<div class="container">
   			<div class="row m-auto">
   				<div class="col-12 w-100 text-center">
-  					<a class="navbar-brand w-100" href="/"><img src="/resources/images/headLogo.png"></a>
+  					<a class="navbar-brand w-100" href="/">GOODEE DIET</a>
 			      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			        <span class="oi oi-menu"></span> Menu
+			        <span class="oi oi-menu"></span> 
+			        Menu
 			      </button>
-  				</div>
-  				<div class="col-12 w-100 text-center">
+  				
+  				<div class="w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
-			        <ul class="navbar-nav m-auto">
+			        <ul class="navbar-nav">
 			          <li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
 			          <li class="nav-item"><a href="/exercise/body" class="nav-link">짧강효확</a></li>
@@ -33,6 +33,8 @@
 											
 										</div>
 									</li>
+						</ul>
+						<ul class="navbar-nav m-auto">			
 			          <li class="nav-item">
 			<c:choose>
 				<c:when test="${sessionMember eq null}"><a href="/member/login" class="nav-link">로그인/가입</a>	</c:when>
@@ -47,6 +49,7 @@
 			      </div>
   				</div>
   			</div>
+  		</div>
   		</div>
 	  </nav>
 <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">

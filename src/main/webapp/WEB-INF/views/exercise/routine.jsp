@@ -4,15 +4,13 @@
 <!DOCTYPE html>
 <html>
  <head>
- <title>Meditative - Free Bootstrap 4 Template by Colorlib</title>
+ <title>이달의 루틴</title>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <c:import url="../template/common_css.jsp"></c:import>
- 
  <c:import url="../template/header.jsp"></c:import>
  <link rel="stylesheet" href="/resources/css/routine.css">
- 
- 
+ <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
  </head>
  
  <body>
@@ -28,7 +26,7 @@
  </div>
  </div>
  </section>
-
+ 
  <section class="ftco-section">
  <div class="container">
  <div class="row justify-content-center mb-5 pb-3">
@@ -36,8 +34,7 @@
  <h3 class="mb-1">이달의 루틴 </h3><br><h3>Calendar</h3>
  </div>
  </div>
- 
- 
+  
  <div class="row">
  <div class="col-md-12">
  <div class="table-responsive">
@@ -64,7 +61,7 @@
  </thead>
  
   <tbody>
-  <c:forEach items="${routine}" var="dto" varStatus="status">
+  <c:forEach items="${exercise}" var="dto" varStatus="status">
     <c:if test="${dto.days == '1일차'}">
      	 <c:set var="colspan" value="true" /> <!-- 맨 앞에 3칸의 빈 셀을 만듦 -->
     </c:if>
@@ -117,12 +114,13 @@
  </div>
  </div>
  </div>
- </section>
+ </section> 
  
  
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 <script src="/resources/js/video.js"></script>
+<script src="/resources/js/routine.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import> 
  </body>

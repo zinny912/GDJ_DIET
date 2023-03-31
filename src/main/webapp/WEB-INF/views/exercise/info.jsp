@@ -21,35 +21,28 @@
 </head>
 
 <body>
-
- 	<c:forEach items="{detailList}" var="dto">
-	
     <section id="box"> <!--레이아웃-->
-               
-                <p class="maintitle" id="detail1" name="detail1">${dto.detail1}</p> 
-				<c:forEach items="{machineList}" var="dto">
-				<button id="machine">${dto.machineName}</button>
-				</c:forEach>
-				
+                <p class="detail1">팔뚝 사정없이 돌려깎기</p> 
+				<button id="machineName">덤벨</button>
         <div class="container" id="one"> <!-- 전체를 감싸는 div 태그-->
             <div class="first"> <!--두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
-                <img src="/resources/images/${dto.boardFileDTOs[1].oriName}" alt="">
+                <img src="/resources/images/hellarms5.png" alt="">
             </div>
           <div class="second"> <!-- 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
-                    <div class="productdetail">
-                        <span class="l">${dto.detail2}</span> 
+                    <div class="detail2">
+                        <span class="l">오랫동안 사랑받은 일자팔뚝 루틴의 초강력 업그레이드 버전으로, 영상 하나로 팔뚝 관리를 끝낼 수 있는 루틴입니다</span> 
                     </div>
-                    <div class="productdetail3">
-                  <p class="highlight">${dto.highLight}</p>
+                    <div class="detail4">
+                  <p class="highlight">추천: 팔뚝 근육 굵어짐 없이 살만 쏙 빼고 탄력을 높이고 싶은 지키미</p>
                   </div>
-                  <div class="productdetail2"> 
+                  <div class="detail3"> 
                         <div class="boxone"> 
                             <ul>							
 							<li>
                                     <span class="power">난이도</span>
                             </li>
                             <li>        
-                                    <span class="star">${dto.power}</span>
+                                    <span class="star">★★★★★</span>
                             </li>
                             </ul>
                         </div>
@@ -60,19 +53,21 @@
                                     <span class="time">운동소요시간 </span>
                                     </li>
                                     <li>
-                                    <span class="mmss">${dto.time}</span>
+                                    <span class="mmss">17:05</span>
                                 </li>
                             </ul>
                         </div>
 
                     </div>
-                    <div class="golink" src="/video?num=${dto.num}">루틴 보러가기</div>
+                    <div class="golink">루틴 보러가기</div>
 	
 				</div>
 				</div>
                     
     		</section>
-    	</c:forEach>
-    
+
 </body>
+
+
+
 </html>
