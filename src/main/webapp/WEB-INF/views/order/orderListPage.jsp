@@ -21,51 +21,8 @@
 		<div class="orderStatus">
 			처리상태: ${orderDTO.orderStatus}
 		</div>
-		<div class="orderDetail">
+		<div class="orderDetail ${orderDTO}" data-orderDTO="${orderDTO}">
 		<!-- 여기에 deatailDTO를 보내고 상품DTO를 받아야함. -->
-
-<div id="orderDTO_${i.index}" data-detail="${orderDTO}">
-		
-
-
-
-<!-- ajax융합 -->
-<c:if test="${orderDetailDTO.orderNum eq orderDTO.orderNum}">
-
-	<div id="orderDetailDTO_${j.index}" data-detail="${orderDetailDTO}">
-		
-	</div>
-	
-</c:if>
-<!-- ajax융합 -->
-
-
-
-
-
-<%-- 			<c:forEach items="${orderDetailDTOs}" var="orderDetailDTO"> --%>
-<%-- 				<c:forEach items="${studyDTOs}" var="studyDTO"> --%>
-<%-- 					<c:if test="${orderDetailDTO.studyNum eq studyDTO.studyNum}"> --%>
-<%-- 						수업이름: ${studyDTO.studyName} --%>
-<%-- 						가격: ${studyDTO.studyCost} --%>
-<%-- 					</c:if> --%>
-<%-- 				</c:forEach> --%>
-
-<%-- 				<c:forEach items="${healthMachineDTOs}" var="healthMachineDTO"> --%>
-<%-- 					<c:if test="${healthMachineDTO.machineNum eq orderDetailDTO.machineNum}"> --%>
-<%-- 						상품정보: ${healthMachineDTO.machineName},  --%>
-<%-- 						<c:forEach items="${realHealthMachineDTOs}" var="realHealthMachineDTO"> --%>
-<%-- 							<c:if test="${realHealthMachineDTO.machineNum eq healthMachineDTO.machineNum}"> --%>
-								
-<%-- 							</c:if> --%>
-<%-- 						</c:forEach> --%>
-<%-- 					</c:if> --%>
-<%-- 				</c:forEach> --%>
-<%-- 			</c:forEach> --%>
-			
-			
-</div>			
-
 		</div>	
 	</div>
 
