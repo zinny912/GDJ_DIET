@@ -126,7 +126,7 @@ $("#optionSelect").on("click", ".op3", function (e) {
             else{
                 if($("#btn").find('#optionDelete').length<=0)
                 $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            }
+            }   
         },
         error: function () {
             console.log("error");
@@ -267,6 +267,7 @@ $("#del").click(function(){
         $("#frm").submit();
     }
 })
+//개별옵션 삭제
 $("#btn").on("click","#optionDelete",function(){
     
     $("#frm").attr("action","./optionDelete")

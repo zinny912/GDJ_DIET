@@ -64,6 +64,7 @@ public class HealthMachineDAO {
 	public List<CategoryDTO> getCategoryList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getCategoryList");
 	}
+	
 	public int setCategoryAdd(CategoryDTO categoryDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCategoryAdd", categoryDTO);	
 	}

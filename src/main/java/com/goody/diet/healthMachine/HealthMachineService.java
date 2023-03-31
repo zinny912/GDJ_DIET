@@ -99,9 +99,12 @@ public class HealthMachineService {
 		}
 		return result;
 	}
+	
+	//카테고리
 	public List<CategoryDTO>getCategoryList()throws Exception{
 		return healthMachineDAO.getCategoryList();
 	}
+	
 	//delete
 	public int setHealthMachineDelete(HealthMachineDTO healthMachineDTO,HttpSession session)throws Exception{
 		Long machineNum= healthMachineDTO.getMachineNum();

@@ -62,6 +62,8 @@
 	</div>
 
 	<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
+	<a href="optionUpdate?machineNum=${dto.machineNum}">update</a>
+	
 
 
 
