@@ -1,13 +1,18 @@
 package com.goody.diet.study;
 
+import java.sql.Date;
+import java.util.List;
+
 public class StudyDTO {
 	
 	private Long studyNum;
 	private String studyName;
 	private Long studyCost;
-	private String studyPeriod;
+	private Date studyStartPeriod;
+	private Date studyEndPeriod;
 	private Long studyStock;
 	
+	private List<StudyBoardFileDTO> studyBoardFileDTOs;
 	
 	public Long getStudyNum() {
 		return studyNum;
@@ -27,11 +32,18 @@ public class StudyDTO {
 	public void setStudyCost(Long studyCost) {
 		this.studyCost = studyCost;
 	}
-	public String getStudyPeriod() {
-		return studyPeriod;
+
+	public Date getStudyStartPeriod() {
+		return studyStartPeriod;
 	}
-	public void setStudyPeriod(String studyPeriod) {
-		this.studyPeriod = studyPeriod;
+	public void setStudyStartPeriod(Date studyStartPeriod) {
+		this.studyStartPeriod = studyStartPeriod;
+	}
+	public Date getStudyEndPeriod() {
+		return studyEndPeriod;
+	}
+	public void setStudyEndPeriod(Date studyEndPeriod) {
+		this.studyEndPeriod = studyEndPeriod;
 	}
 	public Long getStudyStock() {
 		return studyStock;
@@ -39,8 +51,11 @@ public class StudyDTO {
 	public void setStudyStock(Long studyStock) {
 		this.studyStock = studyStock;
 	}
-	
-	
-	
+	public List<StudyBoardFileDTO> getStudyBoardFileDTOs() {
+		return studyBoardFileDTOs;
+	}
+	public void setStudyBoardFileDTOs(List<StudyBoardFileDTO> studyBoardFileDTOs) {
+		this.studyBoardFileDTOs = studyBoardFileDTOs;
+	}
 
 }

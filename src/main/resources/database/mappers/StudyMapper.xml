@@ -8,12 +8,63 @@
  		SELECT COUNT(STUDYNUM) FROM STUDY
  	</select>
   	
-	<select id="getBoardList" parameterType="Pager" resultType="StudyDTO">
-		SELECT * FROM STUDY ORDER BY STUDYNUM ASC
+	<select id="getBoardList" parameterType="Pager" resultMap="getBoardResult">
+		SELECT S.*, SF.*
+		FROM STUDY S
+			LEFT JOIN
+			STUDYFILE SF
+		ON (S.STUDYNUM = SF.STUDYNUM) 
+		ORDER BY S.STUDYNUM ASC
 	</select>
 	
-	<select id="getBoardDetail" parameterType="Pager" resultType="StudyDTO">
-		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
+	<select id="getBoardDetail" parameterType="StudyDTO" resultMap="getBoardResult">
+		SELECT S.*,SF.*
+		FROM STUDY S
+			LEFT JOIN
+			STUDYFILE SF
+		ON (S.STUDYNUM = SF.STUDYNUM) 
+		WHERE S.STUDYNUM=#{studyNum}
+		ORDER BY S.STUDYNUM ASC
 	</select>
 
+ 	<resultMap type="StudyDTO" id="getBoardResult">
+  		<id column="studyNum" property="studyNum"/>
+	  		<result column="studyName" property="studyName"/>
+	  		<result column="studyCost" property="studyCost"/>
+	  		<result column="studyStartPeriod" property="studyStartPeriod"/>
+	  		<result column="studyEndPeriod" property="studyEndPeriod"/>
+	  		<result column="studyStock" property="studyStock"/>
+		<collection property="studyBoardFileDTOs" javaType="List" ofType="StudyBoardFileDTO">
+			<id column="fileNum" property="fileNum"/>
+				<result column="fileName" property="fileName"/>
+				<result column="oriName" property="oriName"/>
+		</collection>  		
+  	</resultMap>
+	
+	<insert id="setBoardAdd" parameterType="StudyDTO">
+		<selectKey keyProperty="studyNum" resultType="Long" order="BEFORE">
+  			SELECT STUDYNUM_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO STUDY (STUDYNUM,STUDYNAME,STUDYCOST,STUDYSTARTPERIOD,STUDYENDPERIOD,STUDYSTOCK)
+  		VALUES (#{studyNum},#{studyName},#{studyCost}, #{studyStartPeriod},#{studyEndPeriod},#{studyStock})
+  	</insert>
+  	
+  	<insert id="setBoardFileAdd" parameterType="StudyBoardFileDTO">
+ 		INSERT INTO STUDYFILE (FILENUM, STUDYNUM, FILENAME, ORINAME)
+ 		VALUES (FILE_SEQ.NEXTVAL ,#{studyNum}, #{fileName}, #{oriName})
+ 	</insert>
+ 		
+	<update id="setBoardUpdate" parameterType="StudyDTO">
+ 		UPDATE STUDY SET STUDYNAME=#{studyName},STUDYCOST=#{studyCost},STUDYSTARTPERIOD=#{studyStartPeriod},STUDYENDPERIOD=#{studyEndPeriod},STUDYSTOCK=#{studyStock}
+ 		WHERE studyNum=#{studyNum}
+ 	</update>
+ 	
+ 	<delete id="setBoardFileDelete" parameterType="Long">
+ 		DELETE STUDYFILE WHERE FILENUM=#{fileNum}
+ 	</delete> 
+ 	
+ 	<delete id="setBoardDelete" parameterType="StudyDTO">
+  		DELETE STUDY WHERE STUDYNUM=#{studyNum}
+  	</delete>
+ 	
   </mapper>

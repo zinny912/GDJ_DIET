@@ -26,8 +26,8 @@
 					<input type="hidden" name="studyNum" value="${dto.studyNum}">
 					<input type="hidden" name="num" value="${dto.num}">
 					<c:if test="${dto.writer eq sessionMember.id}">
-						<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
-						<button id="delete" type="button" class="btn btn-primary">DELETE</button>
+						<button id="update" type="submit" class="btn btn-primary">QNA수정</button>
+						<button id="delete" type="button" class="btn btn-primary">QNA삭제</button>
 					</c:if>
 				</form>
 			</div>

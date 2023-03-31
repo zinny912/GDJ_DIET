@@ -27,7 +27,7 @@ public class StudyController {
 	public ModelAndView getBoardList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		List<BbsDTO> ar  = studyService.getBoardList(pager);
+		List<StudyDTO> ar  = studyService.getBoardList(pager);
 		
 		mv.setViewName("study/studyList");
 		mv.addObject("list", ar);
@@ -36,13 +36,13 @@ public class StudyController {
 	}
 	
 	@GetMapping("studyDetail")
-	public ModelAndView getBoardDetail(Pager pager) throws Exception{
+	public ModelAndView getBoardDetail(StudyDTO studyDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		StudyDTO studyDTO = studyService.getBoardDetail(pager);
+		studyDTO = studyService.getBoardDetail(studyDTO);
 		
-		mv.setViewName("study/studyDetail");
 		mv.addObject("dto", studyDTO);
+		mv.setViewName("study/studyDetail");
 		
 		return mv;
 	}
@@ -58,4 +58,60 @@ public class StudyController {
 		return mv;
 	}
 	
+	@GetMapping("studyAdd")
+	public ModelAndView setBoardAdd() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("study/studyAdd");
+		return mv;
+	}
+	
+	@PostMapping("studyAdd")
+	public ModelAndView setBoardAdd(StudyDTO studyDTO, MultipartFile[] addFiles,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = studyService.setBoardAdd(studyDTO,addFiles,session);
+		
+		String message="등록 실패";
+		if(result>0) {
+			message="글이 등록 되었습니다";
+		}
+		
+		mv.addObject("result",message);
+		mv.addObject("url","./studyList");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("studyUpdate")
+	public ModelAndView setBoardUpdate(StudyDTO studyDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		studyDTO = studyService.getBoardDetail(studyDTO);
+		
+		mv.addObject("dto", studyDTO);
+		
+		mv.setViewName("study/studyUpdate");
+		
+		return mv;
+	}
+	
+	@PostMapping("studyUpdate")
+	public ModelAndView setBoardUpdate(StudyDTO studyDTO, MultipartFile[] addFiles, HttpSession session, Long fileNum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(fileNum);
+		int result = studyService.setBoardUpdate(studyDTO, addFiles, session, fileNum);
+		mv.setViewName("common/result");
+		mv.addObject("result", "수정성공");
+		mv.addObject("url", "./studyList");
+		
+		return mv;
+	}
+	
+	@PostMapping("studyDelete")
+	public ModelAndView setBoardDelete(StudyDTO studyDTO, Long fileNum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = studyService.setBoardDelete(studyDTO, fileNum);
+		mv.setViewName("common/result");
+		mv.addObject("result", "삭제성공");
+		mv.addObject("url", "./studyList");
+		return mv;
+	}
 } 
