@@ -1,14 +1,11 @@
 
 let machineNum = $("#optionSelect").attr("data-machineNum");
-if(machineNum!=null){
-    let machineNum = $("#optionSelect").attr("data-machineNum");
-}
 let idx = 0;
-let optId1 = "";
-let optId2 = "";
-let optId3 = "";
-let optId4 = "";
-let optId5 = "";
+let optId1 = null;
+let optId2 = null;
+let optId3 = null;
+let optId4 = null;
+let optId5 = null;
 let url = "";
 let select = "";
 let toggleStatus = "off";
@@ -64,6 +61,7 @@ $("#optionSelect").on("click", "#op1", function (e) {
 $("#optionSelect").on("click", "#op2", function (e) {
 
     optId2 = $(this).attr("data-id")
+    console.log(optId2)
     // idx=3;
     // optName=$("#opt3").attr("data-optName")
     // select ='<select class="form-select mb-3" id="optSelect3">'
@@ -99,7 +97,7 @@ $("#optionSelect").on("click", "#op2", function (e) {
 
 })
 
-$("#optionSelect").on("change", "#op3", function (e) {
+$("#optionSelect").on("click", "#op3", function (e) {
     optId3 = $(this).attr("data-id");
     getOption(4);
     
@@ -160,6 +158,8 @@ function getOption(optSelectNum) {
         $("#optbtn" + i).remove()
     }
 }
+
+
 $(".container-fluid").click(function () {
     
     if (toggleFlag==true&&toggleStatus != "") {
@@ -198,12 +198,73 @@ $(".dropdown").on("click", ".dropdown-item", function () {
     let $this = $(this).parents(".dropdown");
 
     $this.find(".btn").html($(this).attr("data-name")+"을 선택하였습니다.")
+    
     $this.removeClass('show');
     // $this.find('> a').attr('aria-expanded', false);
     $this.find('.dropdown-menu').removeClass('show');
     toggleFlag=false
     toggleStatus = "";
 })
+
+// optionAdd
+
+
+// for(i=1;i<5;i++){
+//     ul='<div class="dropdown-menu"><ul style="list-style: none;" id=optSelect' + i + '></ul></div>'
+//     $.ajax({
+//         type:"POST",
+//         url:"./option"+i,
+//         data:{machineNum:machineNum},
+//         success: function (response) {
+//             console.log(response.trim);
+//             if (response.trim().length > 20) {
+//                 $("#opt" + i).append(ul);
+//                 $("#optSelect" + i).append(response.trim())
+//             }
+//         },
+//         error: function () {
+//             console.log("error");
+//         }
+//     })
+// }
+
+// $(".dropdown").on("click",".optInput",function(){
+
+//     let $this = $(this).parents(".dropdown");
+//     $this.addClass('show');
+//     $this.find('.dropdown-menu').addClass('show');
+// })
+// $(".dropdown").on("click",".optInput",function(){
+//     idx=$(this).attr("data-index")
+//     url="./option"+idx
+//     ul='<div class="dropdown-menu"><ul style="list-style: none;" id=optSelect' + idx + '></ul></div>'
+//     console.log(url)
+    
+//     $.ajax({
+
+//         type: "POST",
+//         url: url,
+//         data: {
+//             machineNum: machineNum,
+            
+//         },
+//         success: function (response) {
+
+//             if (response.trim().length > 20) {
+//                 $("#opt" + idx).append(ul);
+//                 $("#optSelect"+idx).append(response.trim())
+//             }
+//         },
+//         error: function () {
+//             console.log("error");
+//         }
+//     })
+
+//     let $this = $(this).parents(".dropdown");
+//     $this.addClass('show');
+//     $this.find('.dropdown-menu').addClass('show');
+
+// })
 
 
 

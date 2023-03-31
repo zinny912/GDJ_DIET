@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
 
@@ -20,8 +18,14 @@
 		<div class="row col-md-7 mx-auto">
 			<form action="./add" method="POST" enctype="multipart/form-data">
 				<div class="mb-3">
-					<label for="categoryNum" class="form-label">카테고리번호</label> <input
-						type="text" class="form-control" name="categoryNum">
+					<label for="categoryNum" class="form-label">카테고리</label> 
+					<input type="hidden" class="form-control" name="categoryNum" id="categoryId" value="">
+					<select class="form-select" id="categorySelect">
+					<c:forEach items="${category }" var="dto">
+					<option value="${dto.categoryNum }">${dto.categoryName }</option>
+					</c:forEach>
+					
+					</select>
 				</div>
 
 				<div class="mb-3">
@@ -58,15 +62,13 @@
 
 
 
-				<button type="submit"
+				<button type="button" id="submitbtn"
 					class="btn btn-outline-primary col col-md-2 offset-md-10">add
 				</button>
 			</form>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/healthMachineAdd.js"></script>
 	<script>
 		setMax(1);

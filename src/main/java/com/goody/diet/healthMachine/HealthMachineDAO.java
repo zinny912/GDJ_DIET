@@ -50,6 +50,10 @@ public class HealthMachineDAO {
 	public int setOptionAdd(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setOptionAdd", realHealthMachineDTO);
 	}
-	
-	
-}
+	public List<CategoryDTO> getCategoryList()throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCategoryList");
+	}
+	public int setCategoryType(HealthMachineDTO healthMachineDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setCategoryType", healthMachineDTO);
+	}
+} 
