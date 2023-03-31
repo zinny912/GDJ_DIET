@@ -21,13 +21,14 @@ $.ajax({
     success: function (response) {
 
         $("#optSelect1").append(response.trim())
+        
     },
     error: function () {
         console.log("error");
     }
 })
 
-$("#optionSelect").on("click", "#op1", function (e) {
+$("#optionSelect").on("click", ".op1", function (e) {
     idx = 2;
 
     optId1 = $(this).attr("data-id");
@@ -44,10 +45,14 @@ $("#optionSelect").on("click", "#op1", function (e) {
             optId1: optId1
         },
         success: function (response) {
-            console.log(response.trim().length)
-            if (response.trim().length > 5) {
+            
+            if (response.trim().length > 20) {
                 $("#opt2").append(select);
                 $("#optSelect2").append(response.trim())
+            }
+            else{
+                if($("#btn").find('#optionDelete').length<=0)
+                $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
             }
         },
         error: function () {
@@ -58,7 +63,7 @@ $("#optionSelect").on("click", "#op1", function (e) {
 
 
 })
-$("#optionSelect").on("click", "#op2", function (e) {
+$("#optionSelect").on("click", ".op2", function (e) {
 
     optId2 = $(this).attr("data-id")
     console.log(optId2)
@@ -69,9 +74,6 @@ $("#optionSelect").on("click", "#op2", function (e) {
     // select=select+'을 선택해주세요</option></select>'
     getOption(3);
     idx = 3;
-    // for(i=3;i<=5;i++){
-    //     $("#optSelect"+i).remove()
-    // }
     $.ajax({
 
         type: "POST",
@@ -82,11 +84,15 @@ $("#optionSelect").on("click", "#op2", function (e) {
             optId2: optId2
         },
         success: function (response) {
-
             if (response.trim().length > 20) {
                 $("#opt" + idx).append(select);
                 $("#optSelect3").append(response.trim())
             }
+            else{
+                if($("#btn").find('#optionDelete').length<=0)
+                $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
+            }
+            
         },
         error: function () {
             console.log("error");
@@ -97,7 +103,7 @@ $("#optionSelect").on("click", "#op2", function (e) {
 
 })
 
-$("#optionSelect").on("click", "#op3", function (e) {
+$("#optionSelect").on("click", ".op3", function (e) {
     optId3 = $(this).attr("data-id");
     getOption(4);
     
@@ -117,11 +123,55 @@ $("#optionSelect").on("click", "#op3", function (e) {
                 $("#opt" + idx).append(select);
                 $("#optSelect4").append(response.trim())
             }
+            else{
+                if($("#btn").find('#optionDelete').length<=0)
+                $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
+            }   
         },
         error: function () {
             console.log("error");
         }
     })
+
+})
+$("#optionSelect").on("click", ".op4", function (e) {
+    optId4 = $(this).attr("data-id");
+    
+        
+    $("#opt" + 5).children().remove()
+                
+            
+    $("#btn").find("#optionDelete").remove()
+    $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
+    // $.ajax({
+
+    //     type: "POST",
+    //     url: url,
+    //     data: {
+    //         machineNum: machineNum,
+    //         optId1: optId1,
+    //         optId2: optId2,
+    //         optId3: optId3,
+    //         optId4: optId4
+    //     },
+    //     success: function (response) {
+
+    //         if (response.trim().length > 20) {
+    //             $("#opt" + idx).append(select);
+    //             $("#optSelect4").append(response.trim())
+    //         }
+    //         else{
+    //             if($("#btn").find('#optionDelete').length<=0){
+
+    //             }
+                
+    //         }
+           
+    //     },
+    //     error: function () {
+    //         console.log("error");
+    //     }
+    // })
 
 })
 
@@ -154,9 +204,11 @@ function getOption(optSelectNum) {
     select = select + optName + '을 선택해주세요</button><div class="dropdown-menu"><ul style="list-style: none;" id=optSelect' + optSelectNum + '>'
     select = select + '</ul></div>'
     for (i = optSelectNum; i <= 5; i++) {
-        $("#optSelect" + i).remove()
-        $("#optbtn" + i).remove()
+        
+        $("#opt" + i).children().remove()
+        
     }
+    $("#btn").find("#optionDelete").remove()
 }
 
 
@@ -198,13 +250,61 @@ $(".dropdown").on("click", ".dropdown-item", function () {
     let $this = $(this).parents(".dropdown");
 
     $this.find(".btn").html($(this).attr("data-name")+"을 선택하였습니다.")
-    
+
     $this.removeClass('show');
     // $this.find('> a').attr('aria-expanded', false);
     $this.find('.dropdown-menu').removeClass('show');
     toggleFlag=false
     toggleStatus = "";
 })
+
+$("#del").click(function(){
+    $("#frm").attr("action","./delete")
+    
+    let check=window.confirm("정말 삭제 하시겠습니까?");
+    if(check){
+        $("#frm").attr("method","post");
+        $("#frm").submit();
+    }
+})
+//개별옵션 삭제
+$("#btn").on("click","#optionDelete",function(){
+    
+    $("#frm").attr("action","./optionDelete")
+    $("#frm").find("#optId1").val(optId1)
+    $("#frm").find("#optId2").val(optId2)
+    $("#frm").find("#optId3").val(optId3)
+    $("#frm").find("#optId4").val(optId4)
+
+    let check=window.confirm("정말 옵션을 삭제 하시겠습니까?");
+    if(check){
+        $("#frm").attr("method","post");
+        $("#frm").submit();
+    }
+})
+
+// // 딜리트 버튼 누르면 메서드는 포스트로 바꿈
+
+// const frm= window.document.getElementById("frm");
+// const del = window.document.getElementById("del");
+
+// del.addEventListener("click",function(){
+//     frm.setAttribute("action","./delete")
+
+//     // let attr = document.createAttribute("method");
+//     // attr.value='post'
+//     // frm.setAttributeNode(attr);
+//     // del.setAttribute("type","submit");
+//     let check=window.confirm("정말 삭제 하시겠습니까?");
+//     if(check){
+     
+//     frm.setAttribute("action","delete");
+//     frm.setAttribute("method","post");
+//     frm.submit();
+   
+//     }    
+// })
+
 
 // optionAdd
 

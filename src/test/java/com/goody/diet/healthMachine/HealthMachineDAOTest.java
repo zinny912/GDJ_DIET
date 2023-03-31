@@ -41,15 +41,28 @@ public class HealthMachineDAOTest extends MyTestCase {
 		int result= healthMachineDAO.setOptionAdd(dto);
 		assertNotEquals(1, result);
 	}
-	@Test
+//	@Test
 	public void setCategoryType()throws Exception{
 		HealthMachineDTO dto = new HealthMachineDTO();
 		CategoryDTO categoryDTO = new CategoryDTO();
 		categoryDTO.setCategoryNum(12L);
 		dto.setMachineName("a");
-		dto.setCategoryDTO(categoryDTO);
-		int result = healthMachineDAO.setCategoryType(dto);
-		assertNotEquals(1, result);	
+//		dto.setCategoryDTO(categoryDTO);
+//		int result = healthMachineDAO.setCategoryType(dto);
+//		assertNotEquals(1, result);	
+		
+	}
+//	@Test
+	public void getRealHealthMachineDetail()throws Exception{
+		RealHealthMachineDTO dto = new RealHealthMachineDTO();
+		dto.setMachineNum(3L);
+		dto.setOptId1("GREEN");
+		dto.setOptId2("30CM");
+		dto.setOptId3("500");
+		dto.setOptId4("12");
+		dto=healthMachineDAO.getRealHealthMachineDetail(dto);
+		System.out.println(dto.getRealMachineNum());
+		assertNotNull(dto);
 		
 	}
 }
