@@ -11,7 +11,7 @@
 	LEFT OUTER JOIN 
 	EXERCISEIMG EXI
 	ON(EX.NUM=EXI.NUM)
-	ORDER BY EX.NUM
+	ORDER BY EXI.FILENUM
 	</select>
 	<resultMap type="ExerciseDTO" id="getExerciseResult">
 		<id column="NUM" property="num"/>
@@ -55,12 +55,14 @@
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 		  			SELECT EXERCISE_SEQ.NEXTVAL FROM DUAL
 	  	</selectKey>
-		INSERT INTO EXERCISE (NUM, MACHINENUM, TITLE, DAYS, URLID, POWER, BODYPART, TIME, DETAIL1)
-		VALUES(#{num}, #{machineNum}, #{title}, #{days}, #{urlId}, #{power}, #{bodyPart}, #{time}, #{detail1})
+		INSERT INTO EXERCISE (NUM, MACHINENUM, TITLE, DAYS, URLID, POWER, BODYPART, TIME, DETAILTITLE)
+		VALUES(#{num}, #{machineNum}, #{title}, #{days}, #{urlId}, #{power}, #{bodyPart}, #{time}, #{detailTitle})
+		
 		</insert>
 		<insert id="setExerciseImg" parameterType="BoardFileDTO">
 			INSERT INTO EXERCISEIMG(FILENUM, NUM, FILENAME, ORINAME)
 			VALUES(IMG_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
+			
 		</insert>
 		<select id = "getExerciseMachine" resultMap="getHealthMachineResult">
 			SELECT H.MACHINENUM, H.MACHINENAME FROM HEALTHMACHINE H 
