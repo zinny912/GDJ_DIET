@@ -134,7 +134,7 @@
 			    <label for="title" class="form-label">루틴이름</label>
 			    <div class="selectbox">
 			    <select id="selbox" name="selbox">
-						<c:forEach items="${exerciseList}" var="dto">
+						<c:forEach items="${machineList}" var="dto">
 							<option value="${dto.title}">${dto.title}</option>
 						</c:forEach>
 				</select>
@@ -145,7 +145,7 @@
 				<label for="days" class="form-label">DAYS</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
-						<c:forEach items="${exerciseList}" var="dto">
+						<c:forEach items="${machineList}" var="dto">
 							<option value="${dto.days}">${dto.days}</option>
 						</c:forEach>
 				</select>
@@ -156,8 +156,8 @@
 			     <label for="urlId" class="form-label">루틴영상</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
-						<c:forEach items="${exerciseList}" var="dto">
-							<option value="${dto.urlId}">${dto.detail1}</option>
+						<c:forEach items="${machineList}" var="dto">
+							<option value="${dto.urlId}">${dto.detailTitle}</option>
 						</c:forEach>
 				</select>
 			      	<div class="selectbox__arrow"></div>

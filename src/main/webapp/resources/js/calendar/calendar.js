@@ -18,7 +18,7 @@ window.onload = function () {
     buildCalendar();
     function buildCalendar() {
       let firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
-      const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const monthList = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
       const leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
       const notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
       const headerYear = document.querySelector('.current-year-month');
@@ -33,14 +33,6 @@ window.onload = function () {
       showMain();
       currentDateget();
       resetInsert();
-    }
-    
-    function showMain() {
-      const mainDay = document.querySelector('.main-day');
-      const mainDate = document.querySelector('.main-date');
-      const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      mainDay.innerHTML = dayList[today.getDay()];
-      mainDate.innerHTML = today.getDate();
     }
     
     function makeElement(firstDate) {
@@ -86,7 +78,7 @@ window.onload = function () {
     function showMain() {
       const mainDay = document.querySelector('.main-day');
       const mainDate = document.querySelector('.main-date');
-      const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const dayList = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
       mainDay.innerHTML = dayList[today.getDay()];
       mainDate.innerHTML = today.getDate();
     }

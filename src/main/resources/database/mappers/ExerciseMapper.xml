@@ -11,7 +11,7 @@
 	LEFT OUTER JOIN 
 	EXERCISEIMG EXI
 	ON(EX.NUM=EXI.NUM)
-	ORDER BY EX.NUM
+	ORDER BY EXI.FILENUM
 	</select>
 	<resultMap type="ExerciseDTO" id="getExerciseResult">
 		<id column="NUM" property="num"/>
@@ -63,14 +63,14 @@
 			VALUES(IMG_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
 		</insert>
 		<select id = "getExerciseMachine" resultMap="getHealthMachineResult">
-			SELECT H.MACHINENUM, H.MACHINENAME FROM HEALTHMACHINE H 
+			SELECT DISTINCT * FROM HEALTHMACHINE H 
 			LEFT OUTER JOIN
 			EXERCISE EX
 			ON (EX.MACHINENUM = H.MACHINENUM)
 		</select>
 		<resultMap type="ExerciseDTO" id="getHealthMachineResult">
 			<id column="num" property="num"/>
-			<result column="machineNum" property="machineNum"/>
+			<result column="machineNum" property="machineNum"/> 
 			<result column="title" property="title"/>
 			<result column="days" property="days"/>
 			<result column="urlId" property="urlId"/>

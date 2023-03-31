@@ -28,7 +28,6 @@ public class ExerciseController {
 	@GetMapping("routine")
 	public ModelAndView getExerciseList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
 		List<ExerciseDTO> ar = exerciseService.getExerciseList();
 		mv.setViewName("exercise/routine");
 		mv.addObject("exercise", ar);
@@ -81,11 +80,14 @@ public class ExerciseController {
 	public ModelAndView setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO)throws Exception{
 	    ModelAndView mv = new ModelAndView();
 	    List<ExerciseDTO> ar = exerciseService.getExerciseMachine(); 
-	    List<ExerciseDTO> ar2= exerciseService.getExerciseList();
+	    //List<ExerciseDTO> ar2= exerciseService.getExerciseList();
 	    for(int i=0; i<ar.size(); i++) {
 	    	System.out.println(ar.get(i).getMachineName());
+	    	System.out.println(ar.get(i).getMachineNum());
+	    	System.out.println(ar.get(i).getBodyPart());
+	    	System.out.println(ar.get(i).getCoordinate());
 	    }
-	    mv.addObject("exerciseList",ar2);
+	    //mv.addObject("exerciseList",ar2);
 	    mv.addObject("machineList", ar);
 	    mv.setViewName("exercise/add");
 	    return mv;
@@ -126,32 +128,7 @@ public class ExerciseController {
 //		return mv;
 //	}
 
-//	@GetMapping("machineAdd")
-//	public ModelAndView setOptionAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO, ExerciseDTO exerciseDTO)throws Exception{
-//		exerciseDTO= exerciseService.getExerciseBody(exerciseDTO);
-//		healthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
-//		
-//		List<HealthMachineDTO> ar1 = exerciseService.getExerciseMachine(healthMachineDTO);
-//		
-//		mv.addObject("dto", healthMachineDTO);
-//		mv.addObject("machine", ar1);
-//		mv.setViewName("healthMachine/optionAdd");
-//		return mv;
-//	}
-//	@PostMapping("optionAdd")
-//	public ModelAndView setOptionAdd(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO,MultipartFile [] Files, HttpSession session)throws Exception{
-//		int result = healthMachineService.setOptionAdd(realHealthMachineDTO, Files, session);
-//		
-//		String message="실패";
-//		if(result>0) {
-//			message="성공";
-//		}
-//		mv.addObject("url","./detail?machineNum="+realHealthMachineDTO.getMachineNum());
-//		mv.addObject("result", message);
-//		mv.setViewName("common/result");
-//		return mv;
-//		
-//	}
+//	
 
 	
 	// 이달의 루틴 add

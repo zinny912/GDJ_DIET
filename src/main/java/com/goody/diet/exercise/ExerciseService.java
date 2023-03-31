@@ -48,17 +48,18 @@ public class ExerciseService {
 			if (healthMachineDTOs != null && !healthMachineDTOs.isEmpty()) {
 				exerciseDTO.setMachineName(healthMachineDTOs.get(0).getMachineName());
 				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
+				System.out.println("machineNum : " + exerciseDTO.getMachineNum());
 				System.out.println("machineName : " + exerciseDTO.getMachineName());
-				
 			}
+	
 		}
-		
 		return exerciseDTOs;
 	}
 
 	// add 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session, HealthMachineDTO healthMachineDTO) throws Exception{
 		int result = exerciseDAO.setExerciseAdd(exerciseDTO);
+		
 		String realPath = session.getServletContext().getRealPath("resources/routine/");
 		System.out.println(realPath);
 		for(MultipartFile multipartFile : multipartFiles) {
