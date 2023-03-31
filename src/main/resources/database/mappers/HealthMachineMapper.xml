@@ -5,131 +5,221 @@
 
 <mapper namespace="com.goody.diet.healthMachine.HealthMachineDAO">
 	<sql id="optionCondition">
-	  	<trim prefix="where" suffixOverrides="and">
-			MACHINENUM=#{machineNum} 
-			
+		<trim prefix="where" suffixOverrides="and">
+			MACHINENUM=#{machineNum} AND
+
 			<if test="optId1 !=null and !optId1.equals('')">
-				AND OPTID1=#{optId1}
+				OPTID1=#{optId1} AND
 			</if>
-			
+
 			<if test="optId2 !=null and !optId2.equals('')">
-				AND OPTID2=#{optId2}
+				OPTID2=#{optId2} AND
 			</if>
 			<if test="optId3 !=null and !optId3.equals('')">
-				AND OPTID3=#{optId3}
+				OPTID3=#{optId3} AND
 			</if>
 			<if test="optId4 !=null and !optId4.equals('')">
-				AND OPTID4=#{optId4}
+				OPTID4=#{optId4} AND
 			</if>
-			
-		</trim> 
+
+		</trim>
 	</sql>
+	
+	<select id="getRealHealthMachineDetail"
+		parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
+		select * FROM REALHEALTHMACHINE
+		<include refid="optionCondition"></include>
+		
+	</select>
 	<select id="getCategoryList" resultType="CategoryDTO">
 		select * from Category
 		order by categoryNum
 	</select>
-	<select id="getHealthMachineTypeList" resultMap="getHealthMachineResult" parameterType="CategoryDTO">
-	SELECT * FROM HEALTHMACHINE h 
-	LEFT OUTER JOIN
-	(
-	SELECT * FROM (
-	SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
-	FROM MACHINEIMG m2 
-	) WHERE ranknum=1) t
-	on(h.MACHINENUM=t.machinenum)
-	INNER JOIN 
-	CATEGORYTYPE T 
-	on(T.MACHINENUM=h.MACHINENUM)
-	WHERE T.categorynum=#{categoryNum}
-	
+	<select id="getMachineImgList" resultType="HealthMachineImgDTO">
+		SELECT * FROM
+		MACHINEIMG
+		WHERE machineNum=#{machineNum}
 	</select>
-	<select id="getHealthMachineList" resultMap="getHealthMachineResult">
-	SELECT * FROM HEALTHMACHINE h 
-	LEFT OUTER JOIN
-	(
-	SELECT * FROM (
-	SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
-	FROM MACHINEIMG m2 
-	) WHERE ranknum=1) t
-	on(h.MACHINENUM=t.machinenum)
+	<select id="getHealthMachineTypeList"
+		resultMap="getHealthMachineResult" parameterType="CategoryDTO">
+		SELECT * FROM
+		HEALTHMACHINE h
+		LEFT OUTER JOIN
+		(
+		SELECT * FROM (
+		SELECT
+		m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
+		FROM MACHINEIMG m2
+		) WHERE ranknum=1) t
+		on(h.MACHINENUM=t.machinenum)
+		INNER JOIN
+		CATEGORYTYPE T
+		on(T.MACHINENUM=h.MACHINENUM)
+		WHERE
+		T.categorynum=#{categoryNum}
+
 	</select>
-	<!-- <select id="getMachineThumnail" resultType="HealthMachineImgDTO" parameterType="HealthMachineDTO">
-		SELECT * FROM MACHINEIMG m2 
-		WHERE MACHINENUM =#{machineNum} AND rownum=1
-		ORDER BY FILENUM 
-	</select> -->
-	<select id="getHealthMachineDetail" parameterType="HealthMachineDTO" resultMap="getHealthMachineResult">
-	
-	SELECT * FROM HEALTHMACHINE h
-	LEFT OUTER JOIN 
-	MACHINEIMG m 
-	on(h.MACHINENUM=m.MACHINENUM)
-	WHERE h.MACHINENUM =#{machineNum}
-	ORDER BY FILENUM
+	<select id="getHealthMachineList"
+		resultMap="getHealthMachineResult">
+		SELECT * FROM HEALTHMACHINE h
+		LEFT OUTER JOIN
+		(
+		SELECT * FROM (
+		SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC)
+		ranknum
+		FROM MACHINEIMG m2
+		) WHERE ranknum=1) t
+		on(h.MACHINENUM=t.machinenum)
 	</select>
-	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
-		<id column="MACHINENUM" property="machineNum"/>
-		<result column="categoryNum" property="categoryNum"/>
-		<result column="machineName" property="machineName"/>
-		<result column="machineScore" property="machineScore"/>
-		<result column="price" property="price"/>
-		<result column="salePrice" property="salePrice"/>
-		<result column="option1" property="option1"/>
-		<result column="option2" property="option2"/>
-		<result column="option3" property="option3"/>
-		<result column="option4" property="option4"/>
-		
-		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
-			<id column="fileNum" property="fileNum"/>
-	  			<result column="FILENAME" property="fileName"/>
-	  			<result column="ORINAME" property="oriName"/>
+	<!-- <select id="getMachineThumnail" resultType="HealthMachineImgDTO" parameterType="HealthMachineDTO"> 
+		SELECT * FROM MACHINEIMG m2 WHERE MACHINENUM =#{machineNum} AND rownum=1 
+		ORDER BY FILENUM </select> -->
+	<select id="getHealthMachineDetail"
+		parameterType="HealthMachineDTO" resultMap="getHealthMachineResult">
+
+		SELECT * FROM HEALTHMACHINE
+		h
+		LEFT OUTER JOIN
+		MACHINEIMG m
+		on(h.MACHINENUM=m.MACHINENUM)
+		WHERE
+		h.MACHINENUM =#{machineNum}
+		ORDER BY FILENUM
+	</select>
+	<resultMap type="HealthMachineDTO"
+		id="getHealthMachineResult">
+		<id column="MACHINENUM" property="machineNum" />
+		<result column="categoryNum" property="categoryNum" />
+		<result column="machineName" property="machineName" />
+		<result column="machineScore" property="machineScore" />
+		<result column="price" property="price" />
+		<result column="salePrice" property="salePrice" />
+		<result column="option1" property="option1" />
+		<result column="option2" property="option2" />
+		<result column="option3" property="option3" />
+		<result column="option4" property="option4" />
+
+		<collection property="healthMachineImgDTOs" javaType="list"
+			ofType="HealthMachineImgDTO">
+			<id column="fileNum" property="fileNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORINAME" property="oriName" />
 		</collection>
 	</resultMap>
-	
-	
-	<!-- HEALTHMACHINE  AND  IMG  ADD -->
-	<insert id="setHealthMachineAdd" parameterType="HealthMachineDTO">
-		<selectKey keyProperty="machineNum" resultType="Long" order="BEFORE">
-  			SELECT MACHINE_SEQ.NEXTVAL FROM DUAL
-  		</selectKey>
-  		INSERT INTO HEALTHMACHINE (MACHINENUM,CATEGORYNUM,MACHINENAME,PRICE,SALEPRICE,OPTION1,OPTION2,OPTION3,OPTION4)
-		VALUES(#{machineNum},#{categoryNum},#{machineName},#{price},#{salePrice},#{option1,jdbcType=VARCHAR},#{option2,jdbcType=VARCHAR},#{option3,jdbcType=VARCHAR},#{option4,jdbcType=VARCHAR})
+
+
+	<!-- HEALTHMACHINE AND IMG ADD -->
+	<insert id="setHealthMachineAdd"
+		parameterType="HealthMachineDTO">
+		<selectKey keyProperty="machineNum" resultType="Long"
+			order="BEFORE">
+			SELECT MACHINE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO HEALTHMACHINE
+		(MACHINENUM,MACHINENAME,PRICE,SALEPRICE,OPTION1,OPTION2,OPTION3,OPTION4)
+		VALUES(#{machineNum},#{machineName},#{price},#{salePrice},#{option1,jdbcType=VARCHAR},#{option2,jdbcType=VARCHAR},#{option3,jdbcType=VARCHAR},#{option4,jdbcType=VARCHAR})
 	</insert>
 	<insert id="setMachineImg" parameterType="HealthMachineImgDTO">
-		INSERT INTO MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
+		INSERT INTO
+		MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
 		VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
 	</insert>
-	<insert id="setCategoryType" parameterType="HealthMachineDTO">
-	insert into categoryType(machineNum,categoryNum)
-	values(#(machineNum),#(CategoryDTO.categoryNum))
+
+	<!-- 카테고리 -->
+	
+	<insert id="setCategoryAdd" parameterType="CategoryDTO">
+		INSERT INTO CATEGORY
+		VALUES(CATEGORY_SEQ.NEXTVAL,#{categoryName})
 	</insert>
+
+	<insert id="setCategoryType" parameterType="CategoryDTO">
+		insert into
+		categoryType(machineNum,categoryNum)
+		values(#{machineNum},#{categoryNum})
+	</insert>
+	<delete id="setCategoryDelete" parameterType="CategoryDTO">
+		DELETE CATEGORY
+		WHERE CATEGORYNUM=#{categoryNum}
+	</delete>
+
+	<!-- HealthMachine delete -->
+	<delete id="setHealthMachineDelete"
+		parameterType="HealthMachineDTO">
+		DELETE HEALTHMACHINE WHERE MACHINENUM =#{machineNum}
+	</delete>
+
+	<delete id="setRealMachineDelete"
+		parameterType="RealHealthMachineDTO">
+		DELETE REALHEALTHMACHINE where
+		<trim suffixOverrides="and">
+			<if test="machineNum !=null and !machineNum.equals('')">
+				MACHINENUM=#{machineNum} and
+			</if>
+			<if test="realMachineNum !=null and !realMachineNum.equals('')">
+				REALMACHINENUM=#{realMachineNum} and
+			</if>
+		</trim>
+	</delete>
+	<delete id="setMachineImgDelete"
+		parameterType="HealthMachineImgDTO">
+		DELETE machineimg
+		<trim prefix="where" suffixOverrides="and">
+			<if test="machineNum !=null and !machineNum.equals('')">
+				MACHINENUM=#{machineNum} and
+			</if>
+			<if test="fileNum !=null and !fileNum.equals('')">
+				FILENUM=#{fileNum} and
+			</if>
+		</trim>
+	</delete>
+
+	<delete id="setCategoryTypeDelete" parameterType="CategoryDTO">
+		DELETE CATEGORYTYPE
+		<trim prefix="where" suffixOverrides="and">
+			<if test="machineNum !=null and !machineNum.equals('')">
+				MACHINENUM=#{machineNum} and
+			</if>
+			<if test="categoryNum !=null and !categoryNum.equals('')">
+				categoryNum=#{categoryNum} and
+			</if>
+		</trim>
+	</delete>
+
+
 	<!-- REALHEALTHMACHINE ADD DETAIL IMG ADD -->
-	<insert id="setOptionAdd" parameterType="realHealthMachineDTO">
-		INSERT INTO REALHEALTHMACHINE (REALMACHINENUM,MACHINENUM,STOCK,OPTNAME1,OPTID1,OPTNAME2,OPTID2,OPTNAME3,OPTID3,OPTNAME4,OPTID4)
-		VALUES (OPTION_SEQ.NEXTVAL,#{machineNum},#{stock},#{optName1},#{optId1},#{optName2,jdbcType=VARCHAR},#{optId2,jdbcType=VARCHAR},#{optName3,jdbcType=VARCHAR},#{optId3,jdbcType=VARCHAR},#{optName4,jdbcType=VARCHAR},#{optId4,jdbcType=VARCHAR})
+	<insert id="setOptionAdd" parameterType="RealHealthMachineDTO">
+		INSERT INTO
+		REALHEALTHMACHINE
+		(REALMACHINENUM,MACHINENUM,STOCK,OPTNAME1,OPTID1,OPTNAME2,OPTID2,OPTNAME3,OPTID3,OPTNAME4,OPTID4)
+		VALUES
+		(OPTION_SEQ.NEXTVAL,#{machineNum},#{stock},#{optName1},#{optId1},#{optName2,jdbcType=VARCHAR},#{optId2,jdbcType=VARCHAR},#{optName3,jdbcType=VARCHAR},#{optId3,jdbcType=VARCHAR},#{optName4,jdbcType=VARCHAR},#{optId4,jdbcType=VARCHAR})
 	</insert>
 	<!-- 옵션 -->
-	<select id="getOption1" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-	SELECT DISTINCT OPTNAME1,OPTID1 FROM REALHEALTHMACHINE 
+	<select id="getOption1" parameterType="RealHealthMachineDTO"
+		resultType="RealHealthMachineDTO">
+		SELECT DISTINCT OPTNAME1,OPTID1 FROM REALHEALTHMACHINE
 		WHERE MACHINENUM = #{machineNum}
 		order by optname1
 	</select>
-	<select id="getOption2" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-	SELECT DISTINCT OPTNAME2,OPTID2 FROM REALHEALTHMACHINE 
+	<select id="getOption2" parameterType="RealHealthMachineDTO"
+		resultType="RealHealthMachineDTO">
+		SELECT DISTINCT OPTNAME2,OPTID2 FROM REALHEALTHMACHINE
 		<include refid="optionCondition"></include>
 		order by optname2
-		</select>
-	<select id="getOption3" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-		SELECT DISTINCT OPTNAME3,OPTID3 FROM REALHEALTHMACHINE 
+	</select>
+	<select id="getOption3" parameterType="RealHealthMachineDTO"
+		resultType="RealHealthMachineDTO">
+		SELECT DISTINCT OPTNAME3,OPTID3 FROM REALHEALTHMACHINE
 		<include refid="optionCondition"></include>
 		order by optname3
-		
-		</select>
-		<select id="getOption4" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
-	SELECT DISTINCT OPTNAME4,OPTID4 FROM REALHEALTHMACHINE 
+
+	</select>
+	<select id="getOption4" parameterType="RealHealthMachineDTO"
+		resultType="RealHealthMachineDTO">
+		SELECT DISTINCT OPTNAME4,OPTID4 FROM REALHEALTHMACHINE
 		<include refid="optionCondition"></include>
 		order by optname4
-		</select>
-		
-		<!-- 옵션 -->
+	</select>
+
+	<!-- -->
 </mapper>

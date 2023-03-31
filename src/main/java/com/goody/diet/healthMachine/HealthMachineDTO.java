@@ -16,13 +16,14 @@ public class HealthMachineDTO {
 	private String option4;
 	
 	private List<HealthMachineImgDTO> healthMachineImgDTOs;
-	private CategoryDTO categoryDTO;
+	private RealHealthMachineDTO realHealthMachineDTO;
 	
-	public CategoryDTO getCategoryDTO() {
-		return categoryDTO;
+	
+	public RealHealthMachineDTO getRealHealthMachineDTO() {
+		return realHealthMachineDTO;
 	}
-	public void setCategoryDTO(CategoryDTO categoryDTO) {
-		this.categoryDTO = categoryDTO;
+	public void setRealHealthMachineDTO(RealHealthMachineDTO realHealthMachineDTO) {
+		this.realHealthMachineDTO = realHealthMachineDTO;
 	}
 	public Long getMachineNum() {
 		return machineNum;
