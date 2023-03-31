@@ -3,14 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans:400" rel="stylesheet">
 
-<!-- 카카오 토큰있으면 로그인 -->
-<form hidden="" class="mx-1 mx-md-4" id="kloginForm" action="/member/kakaoLogin" method="post">
-<input type="text" hidden="" id="kid" name="id" class="form-control" placeholder="아이디"/>
-<input type="text" hidden="" id="kemail" name="email" class="form-control"/>
-<input type="text" hidden="" id="kname" name="names" class="form-control"/>
-<input type="text" hidden="" id="dummi" value="${sessionMember.id}">
-</form>
-
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   		<div class="container">
   			<div class="row m-auto">
