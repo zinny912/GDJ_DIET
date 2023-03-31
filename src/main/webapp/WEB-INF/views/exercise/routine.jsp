@@ -9,11 +9,60 @@
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <c:import url="../template/common_css.jsp"></c:import>
  <c:import url="../template/header.jsp"></c:import>
- <link rel="stylesheet" href="/resources/css/routine.css">
+ <link rel="stylesheet" href="/resources/css/calendar/calendar.css">
+ <link rel="stylesheet" href="/resources/css/calendar/reset.css">
  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
  </head>
  
  <body>
+
+<!-- <body>
+<header>
+  <h1>
+    <i class="far fa-calendar-check"></i>
+    <span>캘린더</span>
+  </h1>
+  <div class="calendar_title">
+    <button class="prev">&#60;</button>
+    <span class="current-year-month"></span>
+    <button class="next">&#62;</button>
+  </div>
+</header>
+<section class="content-left">
+  <div class="left-main">
+    <div class="main-wrap">
+      <div class="main-day"></div>
+      <div class="main-date"></div>
+    </div>
+    <div class="todo-wrap">
+      <div class="todo-title">Todo List</div>
+      <form class="input-form">
+        <input type="text" placeholder="write here!!" class="input-box" />
+        <button type="submit" class="input-btn clickBtn">INPUT</button>
+      </form>
+      <ul class="todoList"></ul>
+      <div class="showList">
+        <span class="listText"></span>
+        <span class="createDate"></span>
+        <button class="closed">close</button>
+      </div>
+      <div class="bgblack"></div>
+    </div>
+  </div>
+</section>
+<section class="content-right">
+    <div class="day-of-week">
+      <div class="dayHeader sun">Sun</div>
+      <div class="dayHeader">Mon</div>
+      <div class="dayHeader">Tue</div>
+      <div class="dayHeader">Wed</div>
+      <div class="dayHeader">Thu</div>
+      <div class="dayHeader">Fri</div>
+      <div class="dayHeader sat">Sat</div>
+    </div>
+    <div class="calendar-body"></div>
+</section>
+ -->
 
  <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
  <div class="overlay"></div>
@@ -120,7 +169,8 @@
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 <script src="/resources/js/video.js"></script>
-<script src="/resources/js/routine.js"></script>
+<script src="/resources/js/calendar/calendar.js"></script>
+<script src="/resources/js/calendar/data.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import> 
  </body>
