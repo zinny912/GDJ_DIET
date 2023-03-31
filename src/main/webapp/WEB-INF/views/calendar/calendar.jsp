@@ -26,7 +26,7 @@
     	      selectMirror: true,
     	      droppable : true,
     	  	  editable : true,
-    	  	  events : [/calendar] // 서버에서 json 데이터를 반환하는 URL
+    	  	  events : /calendar, // 서버에서 json 데이터를 반환하는 URL
     	  	  headerToolbar: {
        	        right: 'today prev,next',
        	        center: 'addEventButton' // headerToolbar에 버튼을 추가

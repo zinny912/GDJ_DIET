@@ -1,5 +1,6 @@
 package com.goody.diet.calendar;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,34 +28,34 @@ public class CalendarController {
 	    List<CalendarDTO> list = calendarService.getCalendar();
 	    return list;
 	}
-}
 	//일정보기
 		
-//	@GetMapping("routine")
+//	@GetMapping("calendar")
 //	public ModelAndView getCalendar(HttpSession session) throws Exception{
 //			ModelAndView mv = new ModelAndView();
 //			
 //			List<CalendarDTO> ar = calendarService.getCalendar();
 //			session.setAttribute("calendarList", ar);
 //			
-//			mv.setViewName("calendar/routine");
+//			mv.setViewName("calendar/calendar");
 //			mv.addObject("list", ar);
 //			mv.setViewName("/common/ajaxResult");
 //			return mv;
 //		}
-//}
 
-////일정보기
-//		@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-//		public ModelAndView getCalendarList(ModelAndView mv, HttpServletRequest request) {
-//			String viewpage = "calendar";
-//			List<Calendar> calendar = null;
-//			try {
-//				calendar = calendarService.getCalendar();
-//				request.setAttribute("calendarList", calendar);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			mv.setViewName(viewpage);
-//			return mv;
-//		}
+
+//일정보기
+		@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+		public ModelAndView getCalendarList(ModelAndView mv, HttpServletRequest request) {
+			String viewpage = "calendar";
+			List<CalendarDTO> calendar = null;
+			try {
+			calendar = calendarService.getCalendar();
+				request.setAttribute("calendarList", calendar);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			mv.setViewName(viewpage);
+			return mv;
+		}
+}
