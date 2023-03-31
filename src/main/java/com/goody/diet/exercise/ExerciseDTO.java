@@ -5,7 +5,7 @@ import java.util.List;
 import com.goody.diet.board.BoardFileDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 
-public class ExerciseDTO {
+public class ExerciseDTO extends HealthMachineDTO {
 	
 	private Long num;
 	private Long machineNum;
@@ -15,19 +15,40 @@ public class ExerciseDTO {
 	private Long power;
 	private String bodyPart;
 	private String time;
+	private String detailTitle;
+	private String highLight;
+	private String info;
+	private String coordinate;
 	
+	
+	public String getCoordinate() {
+		return coordinate;
+	}
+	public void setCoordinate(String coordinate) {
+		this.coordinate = coordinate;
+	}
+	public String getHighLight() {
+		return highLight;
+	}
+	public void setHighLight(String highLight) {
+		this.highLight = highLight;
+	}
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public String getDetailTitle() {
+		return detailTitle;
+	}
+	public void setDetailTitle(String detailTitle) {
+		this.detailTitle = detailTitle;
+	}
 	private List<BoardFileDTO> boardFileDTOs;
 	private List<HealthMachineDTO> healthMachineDTOs;
 	
 	
-//	private String machineName;
-//	
-//	public String getMachineName() {
-//		return machineName;
-//	}
-//	public void setMachineName(String machineName) {
-//		this.machineName = machineName;
-//	}
 	public List<HealthMachineDTO> getHealthMachineDTOs() {
 		return healthMachineDTOs;
 	}
@@ -89,8 +110,5 @@ public class ExerciseDTO {
 	public void setUrlId(String urlId) {
 		this.urlId = urlId;
 	}
-	
-	
-	
 
 }
