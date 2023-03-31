@@ -1,5 +1,10 @@
 package com.goody.diet.cart;
 
+import java.util.List;
+
+import com.goody.diet.healthMachine.HealthMachineDTO;
+import com.goody.diet.study.StudyDTO;
+
 public class CartDTO {
 
 	private Long num;
@@ -7,6 +12,9 @@ public class CartDTO {
 	private Long machineNum;
 	private Long studyNum;
 	private Long count;
+	
+	private List<StudyDTO> studyDTOs;
+	private List<HealthMachineDTO> healthMachineDTOs; 
 	
 	public Long getNum() {
 		return num;
@@ -20,7 +28,6 @@ public class CartDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	public Long getMachineNum() {
 		return machineNum;
 	}
@@ -39,8 +46,17 @@ public class CartDTO {
 	public void setCount(Long count) {
 		this.count = count;
 	}
-	
-	
-	
+	public List<StudyDTO> getStudyDTOs() {
+		return studyDTOs;
+	}
+	public void setStudyDTOs(List<StudyDTO> studyDTOs) {
+		this.studyDTOs = studyDTOs;
+	}
+	public List<HealthMachineDTO> getHealthMachineDTOs() {
+		return healthMachineDTOs;
+	}
+	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
+		this.healthMachineDTOs = healthMachineDTOs;
+	}
 	
 }

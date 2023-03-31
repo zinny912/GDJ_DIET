@@ -43,7 +43,7 @@
 			</c:choose>
 					  </li>
 			          <li class="nav-item"><a href="/member/myPage" class="nav-link">마이페이지</a></li>
-			          <li class="nav-item"><a href="/cart/cart" class="nav-link">장바구니</a></li>
+			          <li class="nav-item"><a href="/cart/cartList" class="nav-link">장바구니</a></li>
 			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
 			        </ul>
 			      </div>

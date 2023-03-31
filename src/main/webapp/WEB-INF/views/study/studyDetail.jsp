@@ -42,11 +42,7 @@
                     <br>문의:010-0000-1111
                     </div>
                     <br>
-                    <a class="btn btn-primary" href="#!">장바구니에 담기</a>
-<%--                     <div class="my-2" id="button"><c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
-                    	<a href="./studyUpdate?studyNum=${dto.studyNum}" class="btn btn-primary">스터디 수정하기</a> 
-                    	<button id="delete" type="button" class="btn btn-primary">스터디 삭제하기</button>
-                    </c:if></div> --%>
+                    <a class="btn btn-primary" href="/cart/cartList">장바구니에 담기</a>
                     
                     <form action="./studyUpdate" id="frm">
 					<input type="hidden" name="studyNum" value="${dto.studyNum}">
