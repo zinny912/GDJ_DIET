@@ -15,8 +15,8 @@
 		<tbody>
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><c:forEach begin="1" end="${dto.depth}">--</c:forEach>
-					<a href="/studyQna/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.title}</a></td>
+					<td><c:forEach begin="1" end="${dto.depth}"><img src="/resources/images/reply.png" style="margin-left:15px;"></c:forEach>
+					<a href="/studyQna/detail?studyNum=${dto.studyNum}&num=${dto.num}" >${dto.title}</a></td>
 					<td>${dto.writer}</td>
 					<td>${dto.regDate}</td>
 					<td>${dto.hit}</td>

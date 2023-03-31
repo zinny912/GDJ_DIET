@@ -28,19 +28,36 @@
 	<div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyclass.jpg" alt="..." /></div>
+            	<c:forEach items="${dto.studyBoardFileDTOs}" var="fileDTO">
+                	<div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="../resources/upload/study/${fileDTO.fileName}" alt="..." /></div>
+                </c:forEach>
                 <div class="col-lg-5">
                     <h2 class="font-weight-light">${dto.studyName}</h2>
                     <h3 class="font-weight-light">${dto.studyCost}원</h3>
                     <hr class="my-hr2">
             		<div class="text-center">
                     <h6><strong>스터디 일정안내</strong></h6>
-                    ${dto.studyPeriod} 스터디 기간
+                   	${dto.studyStartPeriod}~${dto.studyEndPeriod} 스터디 기간
                     <br>반배정 문자 일괄 발송
                     <br>문의:010-0000-1111
                     </div>
                     <br>
                     <a class="btn btn-primary" href="#!">장바구니에 담기</a>
+<%--                     <div class="my-2" id="button"><c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
+                    	<a href="./studyUpdate?studyNum=${dto.studyNum}" class="btn btn-primary">스터디 수정하기</a> 
+                    	<button id="delete" type="button" class="btn btn-primary">스터디 삭제하기</button>
+                    </c:if></div> --%>
+                    
+                    <form action="./studyUpdate" id="frm">
+					<input type="hidden" name="studyNum" value="${dto.studyNum}">
+					<c:forEach items="${dto.studyBoardFileDTOs}" var="fileDTO">
+						<input type="hidden" name="fileNum" value="${fileDTO.fileNum}">
+					</c:forEach>
+					<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
+						<button id="update" type="submit" class="btn btn-primary">스터디 수정하기</button>
+						<button id="delete" type="button" class="btn btn-primary">스터디 삭제하기</button>
+					</c:if>
+				</form>
                 </div>
             </div>
             <!-- Call to Action-->
@@ -71,7 +88,7 @@
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">리뷰 쓰기</h1>
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
@@ -173,12 +190,21 @@
 					}
 				});
 			  }
-		
-		
+		  const frm = document.getElementById('frm');
+		  const del = document.getElementById('delete');
+
+		  del.addEventListener('click',function(){
+		      let check = window.confirm("정말 삭제 하시겠습니까?");
+		      if(check){
+		    	  frm.setAttribute("action", "./studyDelete")
+		          frm.setAttribute("method","post")
+		          frm.submit();
+		      }
+		  })
 	</script>
  
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
-<script src="/resources/js/studyQna.js"></script>
+<script src="/resources/js/studyBoard.js"></script>
  </body>
 </html>

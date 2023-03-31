@@ -53,7 +53,7 @@
 	</update>
 
   	<update id="setBoardUpdate" parameterType="StudyReviewDTO">
- 		UPDATE STUDYREVIEW SET CONTENTS=#{contents} WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
+ 		UPDATE STUDYREVIEW SET CONTENTS=#{contents},SCORE=#{score},REGDATE=SYSDATE WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
  	</update>
   	
   	<delete id="setBoardDelete" parameterType="StudyReviewDTO">
