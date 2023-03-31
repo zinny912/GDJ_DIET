@@ -12,7 +12,6 @@
 		<typeAlias type="com.goody.diet.study.StudyReviewDTO" alias="StudyReviewDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 		
-		
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseImgDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseRoleDTO" alias="ExerciseRoleDTO"/>

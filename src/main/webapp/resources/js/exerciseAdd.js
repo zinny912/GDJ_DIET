@@ -48,6 +48,7 @@ $("#fileAdd").click(()=>{
     idx++;
 });
 
+
 $(".deleteCheck").click(function(e){
     let result  = confirm("파일이 영구 삭제 됩니다.")
     let ch =$(this);
@@ -81,17 +82,20 @@ $(".deleteCheck").click(function(e){
     }
 })
 
-$.ajax({
-    type: "POST",
-    url: "./routineName",
-    data: {
-        machineNum: machineNum
-    },
-    success: function (response) {
-
-        $("#optSelect1").append(response.trim())
-    },
-    error: function () {
-        console.log("error");
-    }
-})
+// $(document).ready(function() {
+//   $.ajax({
+//     url: "./machine",
+//     type: "POST",
+//     dataType: "json",
+//     success: function(data) {
+//       var options = "";
+//       for (var i = 0; i < data.length; i++) {
+//         options += "<option value='" + data[i].machineNum + "'>" + data[i].machineName + "</option>";
+//       }
+//       $("#machineSelect").html(options);
+//     },
+//     error: function(xhr, status, error) {
+//       alert("에러 발생");
+//     }
+//   });
+// });

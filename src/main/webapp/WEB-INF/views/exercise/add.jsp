@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="/resources/css/selectbox.css">
   
 <!-- radio box style -->				
-
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
 <style>
 
 .l1 {
@@ -102,10 +103,6 @@
 </style>  
   </head>
   <body>  
-	<div class="container-fluid">
-		<div class="row mb-4 mt-4 md-7">
-			<h1 class="h1">이달의 루틴 등록 페이지</h1>
-		</div>
 	 <script type="text/javascript">
 		$(function(){
 		    $("#selboxDirect").hide();
@@ -118,87 +115,53 @@
 		    })
 		});
 		</script>
-		<div class="row col-md-7 mx-auto">
-			<form action="./add" method="POST" enctype="multipart/form-data">
-				
-			<label for="machineNum" class="form-label">운동기구</label>
-			   <div class="selectbox"></div>			
-				<div class="row" id="machineSelect" data-machineNum="${machineList.machineNum}">
-					<div id="opt1" data-optName="${machineList.machineName}">
-						<select class="form-select mb-3" id="optSelect1">
-							<option class="option" id="default">${machineList.machineName}선택</option>
-						</select>
-					</div>
-					
-				</div>
-					<div class="selectbox__arrow"></div>
-				
+	<div class="container-fluid">
+		<div class="row mb-4 mt-4 md-7">
+			<h1 class="h1">이달의 루틴 등록 페이지</h1>
+		</div>
+		<form action="./add" method="POST" enctype="multipart/form-data" class ="col-8 mx-auto"> 
 
-						
-						
-					   	<%--  <option value="">-선택-</option>
-					    	<c:forEach items="${healthMachineList}" var="healthMachineDTO">
-					      	  <option value="${healthMachineDTOs[0].machineNum}">
-					         	   ${healthMachineDTOs[0].machineName}
-					       	 </option>
-					   		 </c:forEach> 
-						</select>--%>
-			      
-	
-			   	<label for="machineNum" class="form-label">운동기구</label>
-			    <div class="selectbox">
-			      <select id="machineNum" name="machinNum">
-			        <option value="">-선택-</option>
-			        <option value="1">덤벨</option>
-			        <option value="2">폼롤러</option>
-			      </select>
-			      	<div class="selectbox__arrow"></div>
-				</div>
-			
-			
-			    <label for="title" class="form-label">루틴이름</label>
+			  <label for="machineNum" class="form-label">운동기구</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
-			        <option value="">선택</option>
-			        <option value="1">승마살 싹뚝루틴</option>
-			        <option value="2">허벅지 잘라내기</option>
-			        <option value="direct">직접입력</option>
-			      </select>
+						<c:forEach items="${machineList}" var="dto">
+							<option value="${dto.machineNum}">${dto.machineName}</option>
+						</c:forEach>
+				</select>
+			      	<div class="selectbox__arrow"></div>
+				</div> 
+
+			    <label for="title" class="form-label">루틴이름</label>
+			    <div class="selectbox">
+			    <select id="selbox" name="selbox">
+						<c:forEach items="${exerciseList}" var="dto">
+							<option value="${dto.title}">${dto.title}</option>
+						</c:forEach>
+				</select>
 			      	<div class="selectbox__arrow"></div>
 						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="루틴제목 입력"/>
 			    	</div>
-			
-<!-- 
-					<select id="selbox" name="selbox">
-					<option value="">선택</option>			
-					<option value="1">하나</option>
-					<option value="2">둘</option>
-					<option value="3">셋</option>
-					<option value="direct">직접입력</option>
-				</select> -->
 
 				<label for="days" class="form-label">DAYS</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
-			        <option value="">선택</option>
-			        <option value="1일차">1일차</option>
-			        <option value="2일차">2일차</option>
-			        <option value="direct">직접입력</option>
-			      </select>
-				<div class="selectbox__arrow"></div>
-						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="일차 입력"/>
+						<c:forEach items="${exerciseList}" var="dto">
+							<option value="${dto.days}">${dto.days}</option>
+						</c:forEach>
+				</select>
+			      	<div class="selectbox__arrow"></div>
+						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="루틴제목 입력"/>
 			    	</div>
 			    	
-				<label for="days" class="form-label">루틴영상</label>
+			     <label for="urlId" class="form-label">루틴영상</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
-			        <option value="">선택</option>
-			        <option value="1일차">1일차</option>
-			        <option value="2일차">2일차</option>
-			        <option value="direct">직접입력</option>
-			      </select>
-				<div class="selectbox__arrow"></div>
-						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="http://youtube.com/ /부터 입력"/>
+						<c:forEach items="${exerciseList}" var="dto">
+							<option value="${dto.urlId}">${dto.detail1}</option>
+						</c:forEach>
+				</select>
+			      	<div class="selectbox__arrow"></div>
+						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="루틴제목 입력"/>
 			    	</div>
 				
 				 <div class="container-fluid">
@@ -299,17 +262,14 @@
 					    <input class="ty1" type="radio" name="time" value="5분" checked />
 					    <span class="s1">5분</span>
 					  </label>
-					
 					  <label class="l2">
 					    <input class="ty1" type="radio" name="time" value="10분" />
 					    <span class="s1">10분</span>
 					  </label>
-					
 					  <label class="l2">
 					    <input class="ty1" type="radio" name="time" value="15분" />
 					    <span class="s1">15분</span>
 					  </label>
-					
 					  <label class="l2">
 					    <input class="ty1" type="radio" name="time" value="20분" />
 					    <span class="s1">20분</span>
@@ -330,11 +290,10 @@
 				</div>
 
 				<button type="submit"
-					class="btn btn-outline-primary col col-md-4 offset-md-10">이달의 루틴 등록
+					class="btn btn-outline-primary col col-md-4 offset-md-10" >이달의 루틴 등록
 				</button>
-			</form>
+		</form>
 		</div>
-	</div>
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
