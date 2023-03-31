@@ -44,17 +44,23 @@ function onPlayerStateChange(event) {
       location.href="/exercise/routine";
       // changeImage();
     });
-    
   }
   function stopVideo (){
     player.stopVideo();
-
-}
+    
+  }
   // function changeImage() {
-  //   let img = parent.document.querySelector('#changeimg${dto.num}');
-  //   img.src = '/resources/images/successred.jpg';
-  //   addClickHandler();
-  //   }
+    //   let img = parent.document.querySelector('#changeimg${dto.num}');
+    //   img.src = '/resources/images/successred.jpg';
+    //   addClickHandler();
+    //   }
+    
+    swal('출석체크하세요!','info')
+    .then(function(){
+      let img = parent.document.querySelector('#changeimg${dto.num}');
+      img.src='/resources/images/successred.jpg';
+      addClickHandler();
+    });
     
  };
 

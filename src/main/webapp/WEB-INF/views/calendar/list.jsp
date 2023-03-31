@@ -15,8 +15,9 @@
  <link rel="stylesheet" href="/resources/css/routine.css">
  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
  <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
+ // 서버로부터 데이터를 가져와서 FullCalendar에 추가
+	    
+ document.addEventListener('DOMContentLoaded', function() {
         const calendarEl = document.getElementById('calendar');
         const calendar = new FullCalendar.Calendar(calendarEl, {
         	  locale : 'ko',
@@ -26,17 +27,28 @@
     	      selectMirror: true,
     	      droppable : true,
     	  	  editable : true,
-    	  	  events : [/calendar] // 서버에서 json 데이터를 반환하는 URL
-    	  	  headerToolbar: {
+    	  	  events : [ 
+    	    	    <%List<CalendarDTO> list = (List<CalendarDTO>) request.getAttribute("list");%>
+    	            <%if (list != null) {%>
+    	            <%for (CalendarDTO dto : list) {%>
+    	            {
+    	            	title : '<%=dto.getTitle()%>',
+    	                start : '<%=dto.getStart()%>',
+    	                end : '<%=dto.getEnd()%>',
+    	                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+    	             },
+    		<%}
+    	}%>
+    		],
+    		headerToolbar: {
        	        right: 'today prev,next',
        	        center: 'addEventButton' // headerToolbar에 버튼을 추가
         	    },
-    	      ,customButtons: {
+    	      customButtons: {
                 addEventButton: { // 추가한 버튼 설정
                     text : "일정 추가",  // 버튼 내용
                     click : function(){ // 버튼 클릭 시 이벤트 추가
                         $("#calendarModal").modal("show"); // modal 나타내기
-
                         $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
                             const content = $("#title").val();
                             const start = $("#start").val();
@@ -57,92 +69,34 @@
                                 }//전송할 객체 생성
 
                                 console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
-                            }
-                        });
-                      }
-                  }
-              },
+                           		 }
+	                        });
+	                      }
+	                  }
+	              },
               editable: true, // false로 변경 시 draggable 작동 x 
               displayEventTime: false // 시간 표시 x
-          });
-          calendar.render();
-       // Ajax 요청으로 calendarList 데이터 받아오기 
-       $.ajax({
-		    type: 'GET',
-		    url: '/calendar/getCalendar',
-		    dataType: 'json',
-		    success: function(data) {
-		      // 받아온 데이터를 FullCalendar의 events 속성에 추가
-		      calendar.addEventSource(data);
-		    }
-  		});
-       
-       $.ajax({
-  		    type: "POST",
-  		    url: "/calendar/add",
-  		    data: JSON.stringify({
-  		        "title": $("#title").val(),
-  		        "start": $("#start").val(),
-  		        "end": $("#end").val()
-  		    }),
-  		    contentType: "application/json; charset=UTF-8",
-  		    success: function(data) {
-  		        alert("일정이 추가되었습니다.");
-  		        // 추가된 일정을 FullCalendar에 적용
-  		        calendar.refetchEvents();
-  		        // modal 창 닫기
-  		        $("#calendarModal").modal("hide");
-  		    },
-  		    error: function() {
-  		        alert("일정 추가에 실패하였습니다.");
-  		    }
-  		});
+    	  	  
+        });
+		calendar.render();
+	});
 
 
-    	      // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
-    	      /* select: function(arg) {
-    	    	  console.log(arg);
-
-    	        const title = prompt('입력할 일정:');
-    	    // title 값이 있을때, 화면에 calendar.addEvent() json형식으로 일정을 추가
-    	        if (title) {
-    	          calendar.addEvent({
-    	            title: title,
-    	            start: arg.start,
-    	            end: arg.end,
-    	            allDay: arg.allDay,
-    	            backgroundColor:"yellow",
-    	            textColor:"blue"
-    	          })
-    	        }
-    	        calendar.unselect()
-    	      },
-    	      eventClick: function(arg) {
-    	    	  // 있는 일정 클릭시,
-    	    	  console.log("#등록된 일정 클릭#");
-    	    	  console.log(arg.event);
-    	    	  
-    	        if (confirm('Are you sure you want to delete this event?')) {
-    	          arg.event.remove()
-    	        }
-    	      },
-    	      editable: true,
-    	      dayMaxEvents: true, // allow "more" link when too many events
-    	    	  events: function(info, successCallback, failureCallback){
-    	        	  // ajax 처리로 데이터를 로딩 시킨다.
-    	        	  $.ajax({
-    	        		 type:"get",
-    	        		 url:"${path}/routine?method=data",
-    	        		dataType:"json"  
-    	        	    });
-    	          }
-    	              });
-    	    calendar.render();
-    	  }); */
     </script>
- 
+    <style>
+        #calendarBox{
+           position:relative;
+           width:100%;
+           padding:5%;
+           justify-content: center;  
+        }
+        .calendar{
+        	font-weight:bold;
+        	font-size: 20px;
+        }
+
+    </style>
  </head>
- 
  <body>
  <!-- modal 추가 -->
     <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -175,10 +129,7 @@
         </div>
     </div>
 
-
- 
-
- <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+ <section class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
  <div class="overlay"></div>
  <div class="container">
  <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -190,8 +141,18 @@
  </div>
  </section>
  
- <div id='calendar'></div>
- 
+ <section class="ftco-section">
+ <div class="container">
+ <div class="row justify-content-center mb-5 pb-3">
+ <div class="col-md-12 heading-section ftco-animate text-center" style="line-height:5%">
+ <h3 class="mb-1">이달의 루틴 </h3><br><h3>Calendar</h3>
+ </div>
+ </div>
+ <div id="calendarBox">
+	 <div id='calendar'></div>
+ </div>
+ </div>
+ </section>
  
 
 <%--  <section class="ftco-section">
@@ -287,14 +248,10 @@
  
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-<script src="/resources/js/video.js"></script>
-<script src="/resources/js/routine.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    
-</body>
-</html>
+<!-- <script src="/resources/js/video.js"></script>
+<script src="/resources/js/routine.js"></script> -->  
  
+
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import> 
  </body>

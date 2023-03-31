@@ -8,65 +8,9 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <c:import url="../template/common_css.jsp"></c:import>
- 
  <c:import url="../template/header.jsp"></c:import>
  <link rel="stylesheet" href="/resources/css/routine.css">
  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
- <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        const calendarEl = document.getElementById('calendar');
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-    	      headerToolbar: {
-    	        right: 'today prev,next',
-    	        center: 'title', 
-    	      },
-    	      initialView: 'dayGridMonth', 
-    	      navLinks: true, // can click day/week names to navigate views
-    	      selectable: true,
-    	      selectMirror: true,
-    	      // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
-    	      select: function(arg) {
-    	    	  console.log(arg);
-
-    	        const title = prompt('입력할 일정:');
-    	    // title 값이 있을때, 화면에 calendar.addEvent() json형식으로 일정을 추가
-    	        if (title) {
-    	          calendar.addEvent({
-    	            title: title,
-    	            start: arg.start,
-    	            end: arg.end,
-    	            allDay: arg.allDay,
-    	            backgroundColor:"yellow",
-    	            textColor:"blue"
-    	          })
-    	        }
-    	        calendar.unselect()
-    	      },
-    	      eventClick: function(arg) {
-    	    	  // 있는 일정 클릭시,
-    	    	  console.log("#등록된 일정 클릭#");
-    	    	  console.log(arg.event);
-    	    	  
-    	        if (confirm('Are you sure you want to delete this event?')) {
-    	          arg.event.remove()
-    	        }
-    	      },
-    	      editable: true,
-    	      dayMaxEvents: true, // allow "more" link when too many events
-    	    	  events: function(info, successCallback, failureCallback){
-    	        	  // ajax 처리로 데이터를 로딩 시킨다.
-    	        	  $.ajax({
-    	        		 type:"get",
-    	        		 url:"${path}/routine?method=data",
-    	        		dataType:"json"  
-    	        	    });
-    	          }
-    	              });
-    	    calendar.render();
-    	  });
-    </script>
- 
  </head>
  
  <body>
@@ -83,19 +27,14 @@
  </div>
  </section>
  
- <div id='calendar'></div>
- 
- 
-
-<%--  <section class="ftco-section">
+ <section class="ftco-section">
  <div class="container">
  <div class="row justify-content-center mb-5 pb-3">
  <div class="col-md-12 heading-section ftco-animate text-center" style="line-height:5%">
  <h3 class="mb-1">이달의 루틴 </h3><br><h3>Calendar</h3>
  </div>
  </div>
- 
- 
+  
  <div class="row">
  <div class="col-md-12">
  <div class="table-responsive">
@@ -122,7 +61,7 @@
  </thead>
  
   <tbody>
-  <c:forEach items="${routine}" var="dto" varStatus="status">
+  <c:forEach items="${exercise}" var="dto" varStatus="status">
     <c:if test="${dto.days == '1일차'}">
      	 <c:set var="colspan" value="true" /> <!-- 맨 앞에 3칸의 빈 셀을 만듦 -->
     </c:if>

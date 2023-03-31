@@ -7,7 +7,14 @@ public class CalendarDTO {
 		private String video;
 		private String start;
 		private String end;
+		private String days;
 	   
+		public String getDays() {
+			return days;
+		}
+		public void setDays(String days) {
+			this.days = days;
+		}
 		public Long getNum() {
 			return num;
 		}

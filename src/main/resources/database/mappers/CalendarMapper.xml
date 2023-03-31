@@ -5,7 +5,10 @@
 
 <mapper namespace="com.goody.diet.calendar.CalendarDAO">
 
-  <resultMap id="getCalendarResult" type="CalendarDTO">
+	<select id="getCalendar" resultMap="getCalendarR">
+		SELECT * FROM CALENDAR
+	</select>
+  <resultMap id="getCalendarR" type="CalendarDTO">
     <id property="num" column="NUM" />
     <result property="title" column="TITLE" />
     <result property="video" column="VIDEO" />
@@ -13,8 +16,5 @@
     <result property="end" column="END" />
   </resultMap>
 	
-	<select id="getCalendar" resultMap="getCalendarResult">
-		SELECT * FROM CALENDAR
-	</select>
 	
 </mapper>

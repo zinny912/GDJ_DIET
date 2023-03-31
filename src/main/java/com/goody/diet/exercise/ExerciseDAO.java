@@ -22,27 +22,34 @@ public class ExerciseDAO {
 //	}
 //	
 //	
+	//List - 영상 리스트 
 	public List<ExerciseDTO> getExerciseList () throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getExerciseList");	
 	}
 	
-	public List<HealthMachineDTO> getExerciseMachine () throws Exception {
+	//List - 머신이름 리스트 
+	public List<ExerciseDTO> getExerciseMachine () throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getExerciseMachine");
 	}
-	
+
+
+	//add - 영상등록 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setExerciseAdd", exerciseDTO);
 	}
+	//add - file 등록 
 	public int setExerciseImg(BoardFileDTO boardFileDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setExerciseImg", boardFileDTO);
 	}
 
+	// detail - video 영상 출력 페이지 
 	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getExerciseVideo", exerciseDTO);
 	}
 	
-	public ExerciseDTO getExerciseBody(ExerciseDTO exerciseDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getExerciseBody",exerciseDTO);
+	// detail - 짧강효확 페이지 
+	public List<ExerciseDTO> getExerciseBody() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getExerciseBody");
 		
 	}
 	

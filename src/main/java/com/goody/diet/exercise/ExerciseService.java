@@ -25,31 +25,42 @@ public class ExerciseService {
 	
 	//private FileManager fileManager;
 	
+	// List - 이달의 루틴 영상 / 짧강효확 영상 리스트 
 	public List<ExerciseDTO> getExerciseList() throws Exception {
 		return exerciseDAO.getExerciseList();
 	}
 	
-	//detail
-	public ExerciseDTO getExerciseBody(ExerciseDTO exerciseDTO) throws Exception {
-		return exerciseDAO.getExerciseBody(exerciseDTO);
+	//detail - 짧강효확 페이지 
+	public List<ExerciseDTO> getExerciseBody() throws Exception {
+		return exerciseDAO.getExerciseBody();
 	}
 	
+	//detail - 영상출력 페이지 
 	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) throws Exception {
 		return exerciseDAO.getExerciseVideo(exerciseDTO);
 	}
 	
-	public List<HealthMachineDTO> getExerciseMachine() throws Exception {
-		return exerciseDAO.getExerciseMachine();
-	}
-	public ExerciseDTO getExerciseInfo() throws Exception{
-		return exerciseDAO.getExerciseInfo();
+	// 머신 이름 리스트 불러오기 
+	public List<ExerciseDTO> getExerciseMachine() throws Exception {
+		List<ExerciseDTO> exerciseDTOs = exerciseDAO.getExerciseMachine();
+		for (ExerciseDTO exerciseDTO : exerciseDTOs) {
+			List<HealthMachineDTO> healthMachineDTOs = exerciseDTO.getHealthMachineDTOs();
+			if (healthMachineDTOs != null && !healthMachineDTOs.isEmpty()) {
+				exerciseDTO.setMachineName(healthMachineDTOs.get(0).getMachineName());
+				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
+				System.out.println("machineName : " + exerciseDTO.getMachineName());
+				
+			}
+		}
+		
+		return exerciseDTOs;
 	}
 
-	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session) throws Exception{
+	// add 
+	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session, HealthMachineDTO healthMachineDTO) throws Exception{
 		int result = exerciseDAO.setExerciseAdd(exerciseDTO);
 		String realPath = session.getServletContext().getRealPath("resources/routine/");
 		System.out.println(realPath);
-		
 		for(MultipartFile multipartFile : multipartFiles) {
 			if(multipartFile.isEmpty()) {
 				System.out.println("실패");
@@ -68,4 +79,5 @@ public class ExerciseService {
 		}
 		return result;
 	}
+	
 }
