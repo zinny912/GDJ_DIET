@@ -38,6 +38,7 @@ public class MemberController {
 //        return "redirect:"+loginUrl.toString();
 //    }	
 
+
 	@PostMapping("kakaoLogin")
 	public ModelAndView getKakaoLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
 		System.out.println("카카오왓니?");

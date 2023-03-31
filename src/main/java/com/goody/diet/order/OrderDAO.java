@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
+import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
 
@@ -33,5 +35,19 @@ public class OrderDAO {
 	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setOrderDetail", orderDetailDTO);
 	}
+
+	
+	
+	
+
+	public HealthMachineDTO getHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getHealthMachineForCartAndOrder", orderDetailDTO);
+	}
+	public RealHealthMachineDTO getRealHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachineForCartAndOrder", orderDetailDTO);
+	}
+	public StudyDTO getStudyForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getStudyForCartAndOrder", orderDetailDTO);
+	}	
 	
 }

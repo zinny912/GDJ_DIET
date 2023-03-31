@@ -102,4 +102,16 @@ public class OrderService {
 		}		
 	}	
 	
+	
+
+	public HealthMachineDTO getHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return orderDAO.getHealthMachineForCartAndOrder(orderDetailDTO);
+	}
+	public RealHealthMachineDTO getRealHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return orderDAO.getRealHealthMachineForCartAndOrder(orderDetailDTO);
+	}
+	public StudyDTO getStudyForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return orderDAO.getStudyForCartAndOrder(orderDetailDTO);
+	}	
+	
 }
