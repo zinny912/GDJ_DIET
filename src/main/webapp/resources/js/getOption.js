@@ -173,7 +173,7 @@ $("#optionSelect").on("click", ".op4", function (e) {
     //     }
     // })
 
-})
+});
 
 // function getOption(optSelectNum) {
 //     optName = $("#opt" + optSelectNum).attr("data-optName")
