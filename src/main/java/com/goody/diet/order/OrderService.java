@@ -102,7 +102,9 @@ public class OrderService {
 		}		
 	}	
 	
-	
+	public OrderDetailDTO getOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
+		return orderDAO.getOrderDetail(orderDetailDTO);
+	}	
 
 	public HealthMachineDTO getHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
 		return orderDAO.getHealthMachineForCartAndOrder(orderDetailDTO);

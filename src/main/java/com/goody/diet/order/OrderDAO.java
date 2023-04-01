@@ -35,7 +35,9 @@ public class OrderDAO {
 	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setOrderDetail", orderDetailDTO);
 	}
-
+	public OrderDetailDTO getOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getOrderDetail", orderDetailDTO);
+	}
 	
 	
 	

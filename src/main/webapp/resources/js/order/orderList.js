@@ -1,20 +1,23 @@
-// let count=0;
-// getListDetail()
-// function getListDetail(){
 
-//     $.ajax({
-//         type:"GET",
-//         url:"/order/listDetail",
-//         data:{
-//             orderDetailDTO:$('#orderDetailDTO_'+count)
-//         },
-//         success: (res)=>{
-//             console.log(res)
-//             count++
-//         },
-//         error   : ()=>{
-//             console.log('실패')
-//         }
-//     })
+let orderDetails = document.getElementsByClassName("orderDetails")
 
-// }
+for(let i=0; i<orderDetails.length;i++){
+
+
+    $.ajax({
+        type:"GET",
+        url:"/order/listDetail",
+        data:{
+            orderDetailNum:orderDetails[i].getAttribute("data-orderDetailDTO")
+        },
+        success: (res)=>{
+            // console.log(res.trim())
+
+            orderDetails[i].innerHTML=res.trim()
+        },
+        error: ()=>{
+            console.log('실패')
+        }
+    })
+
+}
