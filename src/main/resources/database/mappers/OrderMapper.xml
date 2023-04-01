@@ -2,9 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<!--  <mapper namespace="sample">
-  </mapper> -->
+
 <mapper namespace="com.goody.diet.order.OrderDAO">
 	
 
@@ -34,6 +32,10 @@
 		INSERT INTO ORDERDETAIL (orderDetailNum, machineNum, studyNum, orderNum, count, price) 
 		VALUES (ORDERDETAIL_SEQ.NEXTVAL, #{machineNum}, #{studyNum},#{orderNum},#{count},#{price});
 	</insert>
+	
+	<select id="getOrderDetail" parameterType="OrderDetailDTO" resultType="OrderDetailDTO">
+		SELECT * FROM ORDERDETAIL WHERE ORDERDETAILNUM=#{orderDetailNum}
+	</select>
 	
 <resultMap type="OrderDTO" id="OrderDetails">
 	<id column="orderNum" property="orderNum"/>

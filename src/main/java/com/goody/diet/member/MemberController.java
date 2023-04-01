@@ -119,19 +119,19 @@ public class MemberController {
 	}
 	
 	@GetMapping("myPage")
-	public void getMyPage(ModelAndView mv, HttpSession session) throws Exception {
+	public ModelAndView getMyPage(ModelAndView mv, HttpSession session) throws Exception {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		
 		System.out.println("로그인타입: "+memberDTO.getLoginType());
 		
 		
-//		if(memberDTO!=null) {
-//			memberDTO = memberService.getMyPage(memberDTO);
-//		}
-//		mv.addObject("mypage",memberDTO );
-//		mv.setViewName("/member/myPage");
-//		return mv;
+		if(memberDTO!=null) {
+			memberDTO = memberService.getMyPage(memberDTO);
+		}
+		mv.addObject("mypage",memberDTO );
+		mv.setViewName("/member/myPage");
+		return mv;
 	}
 
 	@PostMapping("idCheck")
@@ -208,8 +208,13 @@ public class MemberController {
 	//--업데이트--
 	@GetMapping("update")
 	public String setMyPageUpdate() {
-		return "/member/update";
+		return "/member/updateCheck";
 	}
+	@GetMapping("update2")
+	public String setUpdateCheck() {
+		return "/member/update";
+	}	
+	
 	@GetMapping("emailUpdate")
 	public ModelAndView setEmailUpdate(DeliveryDTO deliveryDTO, MemberDTO memberDTO, ModelAndView mv) throws Exception {
 		int result=memberService.setEmailUpdate(memberDTO);
@@ -222,9 +227,14 @@ public class MemberController {
 	@GetMapping("delivery")
 	public ModelAndView getDeliveryPage(HttpSession session, ModelAndView mv) throws Exception {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		
+		if(memberDTO.getId()!=null) {
+			mv.addObject("deliveryList", memberService.getDeliveryPage(memberDTO));
+			mv.setViewName("/member/delivery");			
+		}else {
+			mv.setViewName("/member/login");	
+		}
 
-		mv.addObject("deliveryList", memberService.getDeliveryPage(memberDTO));
-		mv.setViewName("/member/delivery");
 		
 		return mv;
 	}
