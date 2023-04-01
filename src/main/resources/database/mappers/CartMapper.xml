@@ -4,56 +4,84 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.goody.diet.cart.CartDAO">
-
-	<insert id="setAddToCart" parameterType="com.goody.diet.cart.CartDTO">
-		INSERT INTO CART (NUM, ID, MACHINENUM, STUDYNUM, COUNT) 
-		VALUES(CART_SEQ.NEXTVAL, #{id}, #{machineNum}, #{studyNum}, #{count})
-	</insert>
 	
-	<select id="getCartList" parameterType="MemberDTO">
-		SELECT * FROM CART WHERE ID=#{id}
-	</select>
-	
-	<!-- 장바구니에서 (반복반복) healthMachine과 대표이미지 불러오기 -->
-	<select id="getHealthMachineForCartAndOrder" parameterType="CartDTO" resultMap="getHealthMachineResult">
-		SELECT * FROM HEALTHMACHINE h 
-		LEFT OUTER JOIN
-		(
-		SELECT * FROM (
-		SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
-		FROM MACHINEIMG m2 
-		) WHERE ranknum=1) t
-		on(h.MACHINENUM=t.machinenum)
-		WHERE h.MACHINENUM=(
-		SELECT MACHINENUM FROM CART c WHERE NUM=#{num})
+	<select id="getCartList" parameterType="CartDTO" resultMap="CartDTOMap">
+		SELECT C.*,S.*
+		FROM CART C
+			LEFT JOIN
+			STUDY S
+		ON (C.STUDYNUM = S.STUDYNUM) 
+		WHERE C.ID=#{id}
+		ORDER BY C.NUM ASC
 	</select>
 
-	<!-- 장바구니를 통해서 healthMachine 옵션찾아오기 -->
-	<select id="getRealHealthMachineForCartAndOrder" parameterType="com.goody.diet.cart.CartDTO" resultType="com.goody.diet.healthMachine.RealHealthMachineDTO">
-		SELECT * FROM REALHEALTHMACHINE r WHERE MACHINENUM=#{machineNum}
-	</select>
-	
-	<select id="getStudyForCartAndOrder" parameterType="CartDTO" resultType="StudyDTO">
-		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
-	</select>
-
-	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
-		<id column="MACHINENUM" property="machineNum"/>
-		<result column="categoryNum" property="categoryNum"/>
-		<result column="machineName" property="machineName"/>
-		<result column="machineScore" property="machineScore"/>
-		<result column="price" property="price"/>
-		<result column="salePrice" property="salePrice"/>
-		<result column="option1" property="option1"/>
-		<result column="option2" property="option2"/>
-		<result column="option3" property="option3"/>
-		<result column="option4" property="option4"/>
-		
-		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
-			<id column="fileNum" property="fileNum"/>
-	  			<result column="FILENAME" property="fileName"/>
-	  			<result column="ORINAME" property="oriName"/>
+	<resultMap id="CartDTOMap" type="CartDTO">
+		<id column="num" property="num" />
+			<result column="id" property="id" />
+			<result column="machineNum" property="machineNum" />
+			<result column="studyNum" property="studyNum" />
+			<result column="count" property="count" />
+		<collection property="studyDTOs" ofType="StudyDTO">
+			<id column="studyNum" property="studyNum" />
+				<result column="studyName" property="studyName" />
+				<result column="studyCost" property="studyCost" />
+				<result column="studyStartPeriod" property="studyStartPeriod" />
+				<result column="studyEndPeriod" property="studyEndPeriod" />
+				<result column="studyStock" property="studyStock" />
+			<collection property="studyBoardFileDTOs" javaType="List"  ofType="StudyBoardFileDTO">
+				<id column="fileNum" property="fileNum" />
+					<result column="fileName" property="fileName" />
+					<result column="oriName" property="oriName"/>
+			</collection>
 		</collection>
 	</resultMap>
-		
+
+	<!-- <resultMap id="cartMap" type="CartDTO">
+		<id property="num" column="num" />
+		<result property="id" column="id" />
+		<result property="machineNum" column="machineNum" />
+		<result property="studyNum" column="studyNum" />
+		<result property="count" column="count" />
+		<association property="healthMachineDTO" column="machineNum" javaType="HealthMachineDTO" resultMap="healthMachineMap" />
+		<association property="studyDTO" column="studyNum" javaType="StudyDTO" resultMap="studyMap" />
+	</resultMap>
+
+	<resultMap id="healthMachineMap" type="HealthMachineDTO">
+		<id property="machineNum" column="machineNum" />
+		<result property="categoryNum" column="categoryNum" />
+		<result property="machineName" column="machineName" />
+		<result property="machineScore" column="machineScore" />
+		<result property="price" column="price" />
+		<result property="salePrice" column="salePrice" />
+		<result property="option1" column="option1" />
+		<result property="option2" column="option2" />
+		<result property="option3" column="option3" />
+		<result property="option4" column="option4" />
+		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
+			<id column="fileNum" property="fileNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORINAME" property="oriName" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="studyMap" type="StudyDTO">
+		<id property="studyNum" column="studyNum" />
+		<result property="studyName" column="studyName" />
+		<result property="studyCost" column="studyCost" />
+		<result property="studyStartPeriod" column="studyStartPeriod" />
+		<result property="studyEndPeriod" column="studyEndPeriod" />
+		<result property="studyStock" column="studyStock" />
+		<collection property="studyBoardFileDTOs" javaType="List" ofType="StudyBoardFileDTO">
+			<id column="fileNum" property="fileNum"/>
+				<result column="fileName" property="fileName"/>
+				<result column="oriName" property="oriName"/>
+		</collection>  	
+	</resultMap> -->
+	
+	
+	<!-- <insert id="setAddToCart" parameterType="com.goody.diet.cart.CartDTO">
+		INSERT INTO CART (NUM, ID, MACHINENUM, STUDYNUM, COUNT) 
+		VALUES(#{num}, #{id}, #{machineNum}, #{studyNum}, #{count})
+	</insert> -->
+		 
  </mapper>
