@@ -1,6 +1,14 @@
 
 console.log("AccessToken: "+Kakao.Auth.getAccessToken())
 
+//자동로그인
+// console.log($('#dummi').val())
+// if (Kakao.Auth.getAccessToken()&& $('#dummi').val()=="") {
+
+//     kakaoLogin()
+
+// }
+
 function kakaoInfo() {
     if (Kakao.Auth.getAccessToken()) {
         $('#dum').append('<a href="javascript:kakaoLogout()">카카오 로그아웃</a>')

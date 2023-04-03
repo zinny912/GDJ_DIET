@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goody.diet.order.OrderDAO">
+	
+
+
+	<select id="getOrderList" parameterType="MemberDTO" resultMap="OrderDetails">
+		SELECT *
+		FROM "ORDER" o
+		LEFT JOIN ORDERDETAIL od
+		on(o.ORDERNUM=od.ORDERNUM)
+		WHERE ID=#{id}
+	</select>
+
+<!-- 	<select id="getOrderDetailList" parameterType="OrderDTO" resultMap="OrderDetails"> -->
+<!-- 		SELECT * FROM ORDERDETAIL WHERE ORDERNUM=#{orderNum} -->
+<!-- 	</select> -->
+
+	
+	
+	<!-- 장바구니 주문 시, CHECKED된 상품(장바구니번호)의 번호를 받아서,
+	Order를 만들고, setOrderDetail을 [여러번] 작성할것.  -->
+	<insert id="setOrder" parameterType="OrderDTO">
+		INSERT INTO "ORDER" VALUES (ORDER_SEQ.NEXTVAL, #{id}, SYSDATE, '결제중')
+	</insert>
+	
+	<!-- price입력해줘야해.. -->
+	<insert id="setOrderDetail" parameterType="OrderDetailDTO">
+		INSERT INTO ORDERDETAIL (orderDetailNum, machineNum, studyNum, orderNum, count, price) 
+		VALUES (ORDERDETAIL_SEQ.NEXTVAL, #{machineNum}, #{studyNum},#{orderNum},#{count},#{price});
+	</insert>
+	
+	<select id="getOrderDetail" parameterType="OrderDetailDTO" resultType="OrderDetailDTO">
+		SELECT * FROM ORDERDETAIL WHERE ORDERDETAILNUM=#{orderDetailNum}
+	</select>
+	
+<resultMap type="OrderDTO" id="OrderDetails">
+	<id column="orderNum" property="orderNum"/>
+	<result column="ID" property="id"/>
+	<result column="orderDate" property="orderDate"/>
+	<result column="orderStatus" property="orderStatus"/>
+	<collection property="orderDetailDTOs" javaType="list" ofType="OrderDetailDTO">
+		<id column="ORDERDETAILNUM" property="orderDetailNum"/>
+		<result column="MACHINENUM" property="machineNum"/>
+		<result column="STUDYNUM" property="studyNum"/>
+		<result column="ORDERNUM" property="orderNum"/>
+		<result column="COUNT" property="count"/>
+		<result column="PRICE" property="price"/>
+	</collection>
+</resultMap>
+
+
+
+
+
+
+	<!-- 장바구니에서 (반복반복) healthMachine과 대표이미지 불러오기 -->
+	<select id="getHealthMachineForCartAndOrder" parameterType="OrderDetailDTO" resultMap="getHealthMachineResult">
+		SELECT * FROM HEALTHMACHINE h 
+		LEFT OUTER JOIN
+		(
+		SELECT * FROM (
+		SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
+		FROM MACHINEIMG m2 
+		) WHERE ranknum=1) t
+		on(h.MACHINENUM=t.machinenum)
+		WHERE h.MACHINENUM=(
+		SELECT MACHINENUM FROM ORDERDETAIL WHERE ORDERDETAILNUM=#{orderDetailNum})
+	</select>
+
+	<!-- 장바구니를 통해서 healthMachine 옵션찾아오기 -->
+	<select id="getRealHealthMachineForCartAndOrder" parameterType="OrderDetailDTO" resultType="com.goody.diet.healthMachine.RealHealthMachineDTO">
+		SELECT * FROM REALHEALTHMACHINE r WHERE MACHINENUM=#{machineNum}
+	</select>
+	
+	<select id="getStudyForCartAndOrder" parameterType="OrderDetailDTO" resultType="StudyDTO">
+		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
+	</select>
+
+	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
+		<id column="MACHINENUM" property="machineNum"/>
+		<result column="categoryNum" property="categoryNum"/>
+		<result column="machineName" property="machineName"/>
+		<result column="machineScore" property="machineScore"/>
+		<result column="price" property="price"/>
+		<result column="salePrice" property="salePrice"/>
+		<result column="option1" property="option1"/>
+		<result column="option2" property="option2"/>
+		<result column="option3" property="option3"/>
+		<result column="option4" property="option4"/>
+		
+		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
+			<id column="fileNum" property="fileNum"/>
+	  			<result column="FILENAME" property="fileName"/>
+	  			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
+
+
+</mapper>

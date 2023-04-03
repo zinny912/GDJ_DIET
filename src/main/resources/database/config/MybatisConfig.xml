@@ -4,9 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="com.goody.diet.cart.CartDTO" alias="CartDTO"/>	
 		<typeAlias type="com.goody.diet.order.OrderDTO" alias="OrderDTO"/>	
 		<typeAlias type="com.goody.diet.order.OrderDetailDTO" alias="OrderDetailDTO"/>
+		
 		<typeAlias type="com.goody.diet.member.MemberDTO" alias="MemberDTO"/>	
+		<typeAlias type="com.goody.diet.member.DeliveryDTO" alias="DeliveryDTO"/>
 		
 		<typeAlias type="com.goody.diet.study.StudyDTO" alias="StudyDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyReviewDTO" alias="StudyReviewDTO"/>
@@ -27,6 +30,7 @@
 		<typeAlias type="com.goody.diet.healthMachine.RealHealthMachineDTO" alias="RealHealthMachineDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.CategoryDTO" alias="CategoryDTO"/>
 		
+		<typeAlias type="com.goody.diet.cart.CartDTO" alias="CartDTO"/>
 
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
   	  	<typeAlias type="java.lang.Long" alias="Long" />

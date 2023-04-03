@@ -30,75 +30,73 @@
 
 
 
-<input type="hidden" id="originId" value="${sessionScope.sessionMember.id}">
+<input type="hidden" id="originId" name="id" value="${sessionScope.sessionMember.id}">
 
 
 
 <div class="container-fluid">
 	<div class="row">
 
-<%-- <div class="col-2 border border-primary" style="background-color: rgb(169, 167, 167);">
-<ul class="nav flex-column">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">주문/배송</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">문의</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./myPage">개인정보</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="./delivery?id=${sessionMember.id}">배송지</a>
-  </li>
-</ul>
-</div> --%>
 
 <c:import url="./memberHeader.jsp"></c:import>
 
 
-
 <div class="col-8">
 
-    <h1 class="usermodify-title">회원정보 수정</h1>
+<c:if test="${sessionMember.loginType eq 'general'}">
+	    <h1 class="usermodify-title">회원정보 수정</h1>
 
-    <table class="usermodify-table table table-striped">    
-		<tbody>
-		<tr>
-			<th scope="row">비밀번호변경</th>
-			<td><div class="usermodify-password">
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-3 border-end border-3" style="text-align: center;">비밀번호 변경</div>
+<div class="col">
+	<div class="row">1</div>
+	<div class="row">2</div>
+	<div class="row">3</div>	
+</div>
+</div>
+</div>
 
 
-<table class="table usermodify-input-table">
-	<tbody>		
-		<tr>
-		    <th class="col-2">현재 비밀번호</th>
-		    <td class="col-4">
-		        <input type="password" class="password-change1"><div class="member__input-guide-area_set member__input-guide-area1"></div>
-		    </td>
-		</tr>
-		<tr>
-		    <th>새 비밀번호</th>
-		    <td>
-		        <input type="password" class="password-change2"><div class="member__input-guide-area_set member__input-guide-area2"></div>
-		    </td>
-		</tr>
-		<tr>
-		    <th>비밀번호 다시 입력</th>
-		    <td>
-		        <input type="password" class="password-change3"><div class="member__input-guide-area_set member__input-guide-area3"></div>
-		    </td>
-		</tr>
-		<tr>
-			<td>
-			    <button type="button" class="password-submit">비밀번호 변경</button>
-			</td>
-		</tr>
-					</tbody></table>
-				</div></td>
-		</tr>
-    </tbody>
-</table>
+	    <table class="usermodify-table table table-striped">    
+			<tbody>
+
+			<tr>
+				<th nowrap="nowrap" scope="row"> <div style="padding">비밀번호 변경</div> </th>
+				
+				<td ><div class="usermodify-password">
+	<table class="table usermodify-input-table">
+		<tbody>		
+			<tr>
+			    <th class="col-2">현재 비밀번호</th>
+			    <td class="col-4">
+			        <input type="password" class="password-change1"><div class="member__input-guide-area_set member__input-guide-area1"></div>
+			    </td>
+			</tr>
+			<tr>
+			    <th>새 비밀번호</th>
+			    <td>
+			        <input type="password" class="password-change2"><div class="member__input-guide-area_set member__input-guide-area2"></div>
+			    </td>
+			</tr>
+			<tr>
+			    <th>비밀번호 다시 입력</th>
+			    <td>
+			        <input type="password" class="password-change3"><div class="member__input-guide-area_set member__input-guide-area3"></div>
+			    </td>
+			</tr>
+			<tr>
+				<td>
+				    <button type="button" class="password-submit">비밀번호 변경</button>
+				</td>
+			</tr>
+						</tbody></table>
+					</div></td>
+			</tr>
+	    </tbody>
+	</table>
+</c:if>
 
 </div>
 
@@ -238,6 +236,8 @@
 <!--     </div> -->
 <!--   </div> -->
 <!-- </section> -->
+
+
 
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>

@@ -73,23 +73,23 @@ public class MemberService {
 //		System.out.println("서비스왔니..?");
 //		System.out.println("서비스 check: "+memberDTO.getPw());
 		
+		//---------------id검사---------------------
+//		memberDTO.getId()
+		
+		//---------------pw검사---------------------
 		if(memberDTO.getPw()!=null||memberDTO.getPw()!="") {	//최소 pw는 입력해야댐.
 			MemberDTO result=memberDAO.getMemberLogin(memberDTO);	//id: 일치 or null
-			System.out.println("비교용 result: "+result);
-			System.out.println(memberDTO.getPw());
-			System.out.println(result.getPw());
+			System.out.println("result(id불일치 시 null): "+result);
 			if(result!=null && result.getPw().equals(memberDTO.getPw())) { //로그인 정보 일치 시
 				System.out.println("서비스아이디일치하나2");
+				result.setPw(null);
 				memberDTO = result;
 			}else { //DB와 pw가 안맞을 때
 				memberDTO=null;
-				System.out.println("null맞니..?: "+memberDTO);
 			}
 		}else { //web에서 pw입력을 안했을 때
 			memberDTO=null;
-			System.out.println("null맞니2..?: "+memberDTO);
 		}//비번 null이면 null받음
-//		System.out.println("서비스 나왔니..?");
 		return memberDTO;
 	}
 
