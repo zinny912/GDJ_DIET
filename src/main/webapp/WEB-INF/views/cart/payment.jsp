@@ -81,11 +81,16 @@
         </div> 
       </div>
       <div class="col-md-6">
-        <div class="bordered">
-          <h3 class="text-center mb-4">주문 요약</h3>
-          <c:set var="totalCost" value="0" />
-          <c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
-          <p class="info"><strong>총합계:${totalCost}원</strong> </p>
+		<div class="bordered my-5">
+			<h3 class="text-center mb-2">주문 요약</h3>
+			 <c:set var="totalCost" value="0" />
+			 <c:forEach items="${list}" var="dto">
+				 <c:forEach items="${dto.studyDTOs}" var="studyDTO">
+					<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
+				</c:forEach>
+			</c:forEach>
+			<p class="info"><strong>총합계:${totalCost}원</strong> </p>
+			<p class="info"><strong>배송비 무료</strong> </p>
         </div>
         
       </div>

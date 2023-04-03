@@ -91,9 +91,9 @@
         </table>
        
         <div class="cart__mainbtns">
-        	<form action="/cart/payment" method="get">
-            <button class="cart__bigorderbtn right btn btn-primary" type="submit">주문하기</button>
-        	</form>
+        	<!-- <form action="/cart/payment" method="get"> -->
+            <button class="cart__bigorderbtn right btn btn-primary" type="submit" onclick="checkOrder()">주문하기</button>
+        	<!-- </form> -->
         </div>
     </section>
 
@@ -129,6 +129,28 @@ for(let i=0;i<checks.length;i++){
         frm.submit();
 	}
 } */
+function checkOrder(){
+	    let checkedItems = [];
+	    $('input[name="checkedItems"]:not(:checked)').each(function() {
+	      checkedItems.push($(this).val());
+	    });
+	    
+	    $.ajax({
+	    	  type: 'POST',
+	 	      url: './cartDelete',
+	 	      traditional:true,
+	 	      data: { checkedItems: checkedItems },
+	 	      success: function() {
+	 	        location.href='/cart/payment'
+	 	        // 처리 결과에 따라 적절한 동작 수행
+	 	      },
+	 	      error: function() {
+	 	    	 location.href='/cart/payment'
+	 	        // 에러 처리
+	 	      }
+	 	    });
+	}
+	
 function checkDelete(){
 	  let check = window.confirm("정말 삭제 하시겠습니까?");
 	  if(check){
