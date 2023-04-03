@@ -18,16 +18,24 @@ public class HealthMachineDAO {
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
 
 	}
+	
 	public List<HealthMachineDTO> getHealthMachineTypeList(CategoryDTO categoryDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineTypeList",categoryDTO);
 	}
 	public List<HealthMachineImgDTO> getMachineImgList(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getMachineImgList", healthMachineImgDTO);
 	}
+	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getRealHealthMachineList", realHealthMachineDTO);
+	}
+	
 	public RealHealthMachineDTO getRealHealthMachineDetail(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachineDetail", realHealthMachineDTO);
 	}
 	
+	public List<CategoryDTO> getCategoryDetail(HealthMachineDTO healthMachineDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCategoryDetail", healthMachineDTO);
+	}
 	//getDetail(getOption)
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getHealthMachineDetail", healthMachineDTO);

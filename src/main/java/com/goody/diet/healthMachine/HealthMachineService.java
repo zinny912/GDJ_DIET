@@ -1,7 +1,8 @@
 package com.goody.diet.healthMachine;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-
 
 import javax.servlet.http.HttpSession;
 
@@ -29,8 +30,23 @@ public class HealthMachineService {
 		return ar;
 
 	}
+	//getRealHealthMachineDetailList
+	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception {
+		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
+		
+	}
+	//오버로딩
+	public List<RealHealthMachineDTO> getRealHealthMachineList(HealthMachineDTO healthMachineDTO)throws Exception {
+		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
+		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
+		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
+	}
+	
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO) throws Exception{
-		return healthMachineDAO.getHealthMachineDetail(healthMachineDTO);
+		healthMachineDTO= healthMachineDAO.getHealthMachineDetail(healthMachineDTO);// healthmachine정보 및 img정보
+		healthMachineDTO.setCategoryDTO(healthMachineDAO.getCategoryDetail(healthMachineDTO));// 해당 머신의 카테고리 리스트
+		
+		return healthMachineDTO;
 	}
 	
 	//option
@@ -52,17 +68,21 @@ public class HealthMachineService {
 
 
 		int result = healthMachineDAO.setHealthMachineAdd(healthMachineDTO);
-
+		//중복제거
+		HashSet<Long> hashSet = new HashSet<Long>(Arrays.asList(categoryDTOs));//배열 -> 리스트  파라미터로 받는 것들은 리스트로 받지못함.
+		categoryDTOs=hashSet.toArray(new Long[0]);
+		
 		for(Long categoryNum : categoryDTOs) {
 			CategoryDTO categoryDTO = new CategoryDTO();
 			categoryDTO.setCategoryNum(categoryNum);
 			categoryDTO.setMachineNum(healthMachineDTO.getMachineNum());
 			result = healthMachineDAO.setCategoryType(categoryDTO);
+//			System.out.println(categoryNum);
 		}
 		//		---------------------------
 		//		System.out.println(healthMachineDTO.getMachineNum());
 		String realPath = httpSession.getServletContext().getRealPath("resources/images");
-		//		System.out.println(realPath);
+		//	System.out.println(realPath);
 		for(MultipartFile multipartFile : multipartFiles) {
 			if(multipartFile.isEmpty()) {
 				System.out.println("실패");
@@ -145,7 +165,7 @@ public class HealthMachineService {
 	
 		realHealthMachineDTO = healthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
 		
-		System.out.println("HealthMachineNum : "+realHealthMachineDTO.getMachineNum());
+//		System.out.println("HealthMachineNum : "+realHealthMachineDTO.getMachineNum());
 		return healthMachineDAO.setRealMachineDelete(realHealthMachineDTO);
 	}
 

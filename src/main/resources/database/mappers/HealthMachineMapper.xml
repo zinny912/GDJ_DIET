@@ -24,12 +24,12 @@
 
 		</trim>
 	</sql>
-	
+
 	<select id="getRealHealthMachineDetail"
 		parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
 		select * FROM REALHEALTHMACHINE
 		<include refid="optionCondition"></include>
-		
+
 	</select>
 	<select id="getCategoryList" resultType="CategoryDTO">
 		select * from Category
@@ -39,7 +39,9 @@
 		SELECT * FROM
 		MACHINEIMG
 		WHERE machineNum=#{machineNum}
+		order by filenum
 	</select>
+	<!-- catgory search -> machine -->
 	<select id="getHealthMachineTypeList"
 		resultMap="getHealthMachineResult" parameterType="CategoryDTO">
 		SELECT * FROM
@@ -59,6 +61,7 @@
 		T.categorynum=#{categoryNum}
 
 	</select>
+	<!-- -->
 	<select id="getHealthMachineList"
 		resultMap="getHealthMachineResult">
 		SELECT * FROM HEALTHMACHINE h
@@ -89,7 +92,6 @@
 	<resultMap type="HealthMachineDTO"
 		id="getHealthMachineResult">
 		<id column="MACHINENUM" property="machineNum" />
-		<result column="categoryNum" property="categoryNum" />
 		<result column="machineName" property="machineName" />
 		<result column="machineScore" property="machineScore" />
 		<result column="price" property="price" />
@@ -105,9 +107,22 @@
 			<result column="FILENAME" property="fileName" />
 			<result column="ORINAME" property="oriName" />
 		</collection>
+
 	</resultMap>
 
-
+	<!-- update용 getDetailList들 parameter = machinenum -->
+	<select id="getCategoryDetail" parameterType="HealthMachineDTO"
+		resultType="CategoryDTO">
+		SELECT * FROM CATEGORY
+		WHERE CATEGORYNUM in(SELECT CATEGORYNUM FROM CATEGORYTYPE c WHERE
+		machinenum=#{machineNum}
+		)
+	</select>
+	<select id="getRealHealthMachineList" parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
+	select * FROM REALHEALTHMACHINE
+		<include refid="optionCondition"></include>
+	ORDER BY optid1,optid2,optid3
+	</select>
 	<!-- HEALTHMACHINE AND IMG ADD -->
 	<insert id="setHealthMachineAdd"
 		parameterType="HealthMachineDTO">
@@ -126,7 +141,7 @@
 	</insert>
 
 	<!-- 카테고리 -->
-	
+
 	<insert id="setCategoryAdd" parameterType="CategoryDTO">
 		INSERT INTO CATEGORY
 		VALUES(CATEGORY_SEQ.NEXTVAL,#{categoryName})
@@ -185,7 +200,11 @@
 		</trim>
 	</delete>
 
-
+	<!-- update -->
+	<update id="setHealthMachineUpdate" parameterType="HealthMachineDTO">
+		UPDATE HEALTHMACHINE SET machinename=#{machineName}, price=#{price}, saleprice=#{salePrice}, option1=#{option1},
+		OPTION2=#{option2,jdbcType=VARCHAR}, option3=#{option3,jdbcType=VARCHAR}, option4=#{option4,jdbcType=VARCHAR} WHERE machinenum=#{machineNum}
+	</update>
 	<!-- REALHEALTHMACHINE ADD DETAIL IMG ADD -->
 	<insert id="setOptionAdd" parameterType="RealHealthMachineDTO">
 		INSERT INTO

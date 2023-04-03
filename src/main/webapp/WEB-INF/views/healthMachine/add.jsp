@@ -15,32 +15,25 @@
 			<h1 class="col-md-5 mx-auto text-center border border-primary pb-3">HealthMachine
 				Addpage</h1>
 		</div>
-		<div class="row col-md-7 mx-auto">
+		<div class="col-md-7 mx-auto">
 			<form action="./add" method="POST" enctype="multipart/form-data"
 				id="frm">
 				<div class="mb-3" id="categoryList">
 					<label for="categoryNum" class="form-label">카테고리</label>
-					<!-- <input type="hidden" class="form-control" name="categoryNum" id="categoryId" value=""> -->
-					<select class="form-select" id="categorySelect" name="categoryDTOs">
+					
+					 <select class="form-select" id="categorySelect" name="categoryDTOs">
+					
 						<c:forEach items="${category }" var="dto">
-							<option value="${dto.categoryNum }">${dto.categoryName }</option>
+						
+							<option value="${dto.categoryNum}">${dto.categoryName}</option>
 						</c:forEach>
 					</select>
 				</div>
 				<div id="categorybtn">
-				<button type="button" class="btn btn-primary" id="categoryAdd">카테고리추가</button>
-				<!-- <button type="button" class="btn btn-danger" id="categoryDelete">카테고리 삭제</button> -->
-				</div>
-				<!-- <div class="mb-3">
-					<label for="categoryNum" class="form-label">카테고리</label>
-					<select class="form-select" id="categorySelect2"
-						name="categoryDTOs">
-						<c:forEach items="${category }" var="dto">
-							<option value="${dto.categoryNum }">${dto.categoryName }</option>
-						</c:forEach>
+					<button type="button" class="btn btn-primary" id="categoryAdd">카테고리추가</button>
 
-					</select>
-				</div> -->
+				</div>
+
 				<div class="mb-3">
 					<label for="machineName" class="form-label">기구명</label> <input
 						type="text" class="form-control" name="machineName">
