@@ -33,28 +33,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                
-                	<c:forEach items="${list}" var="dto"> 
-                        <c:forEach items="${dto.studyDTOs}" var="studyDTO">
-						<c:forEach items="${studyDTO.studyBoardFileDTOs}" var="studyFileDTO">
+                	
+                	<c:set var="totalCost" value="0" />
+
+				<c:forEach items="${list}" var="dto">
+					<c:forEach items="${dto.studyDTOs}" var="studyDTO">
+						<c:forEach items="${studyDTO.studyBoardFileDTOs}"
+							var="studyFileDTO">
 							<tr class="cart__list__detail">
-								<td style="width: 2%;"><input type="checkbox" value="${dto.num}" class="checks" name="checkedItems"></td>
-								<td style="width: 13%;">
-									<img src="../resources/upload/study/${studyFileDTO.fileName}" alt="magic mouse"></td>
-								<td style="width: 41%;">
-									<span class="cart__list__studyname">${studyDTO.studyName}</span>
+								<td style="width: 2%;"><input type="checkbox"
+									value="${dto.num}" class="checks" name="checkedItems"></td>
+								<td style="width: 13%;"><img
+									src="../resources/upload/study/${studyFileDTO.fileName}"
+									alt="magic mouse"></td>
+								<td style="width: 41%;"><span class="cart__list__studyname">${studyDTO.studyName}</span>
 									<div class=" price">${studyDTO.studyCost}원</div>
-									<div class=" price">스터디 기간: ${studyDTO.studyStartPeriod}~${studyDTO.studyEndPeriod}</div></td>
+									<div class=" price">스터디 기간:
+										${studyDTO.studyStartPeriod}~${studyDTO.studyEndPeriod}</div></td>
 								<td style="width: 29%;"><span class="price">${studyDTO.studyCost}원</span></td>
 								<td style="width: 29%;">무료</td>
 							</tr>
+							<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
 						</c:forEach>
 					</c:forEach>
-                     </c:forEach>
-                     
-                </tbody>
-                <tfoot>
-                    <tr>
+				</c:forEach>
+				</tbody>
+				<tfoot>
+				   <tr>
                         <td colspan="3">
                         	<%-- <form action="./cartDelete" id="frm" method="post">
                         	<c:forEach items="${list}" var="dto">
@@ -67,10 +72,28 @@
                         <td></td>
                         <td></td>
                     </tr>
-                </tfoot>
+				</tfoot>
+		 </table>
+		
+		 <table>
+                <!-- <thead>
+                	<tr class="my-5">
+                		<th>
+                		총 주문 상품
+                		</th>
+                	</tr>
+                </thead> -->
+                <tbody>
+						<tr>
+							<td style="text-align: center"><span class="price">총합계:${totalCost}원</span></td>
+						</tr>
+				</tbody>
         </table>
+       
         <div class="cart__mainbtns">
-            <button class="cart__bigorderbtn right btn btn-primary">주문하기</button>
+        	<form action="/cart/payment" id="frm">
+            <button class="cart__bigorderbtn right btn btn-primary" type="submit">주문하기</button>
+        	</form>
         </div>
     </section>
 

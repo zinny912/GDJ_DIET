@@ -74,5 +74,17 @@ public class CartController {
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
+	
+	@GetMapping("payment")
+	public ModelAndView setCartPayment(CartDTO cartDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		System.out.println(memberDTO.getId());
+		cartDTO.setId(memberDTO.getId());
+		List<CartDTO> ar = cartService.getCartList(cartDTO);
+		mv.setViewName("cart/payment");
+		mv.addObject("list", ar);
+		return mv;
+	}
 
 }
