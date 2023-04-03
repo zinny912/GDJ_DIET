@@ -11,22 +11,31 @@
  <c:import url="../template/common_css.jsp"></c:import>
  <link href="/resources/css/cartList.css" rel="stylesheet"/>
 
+  <style>
+    .bordered {
+      border: 3px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      margin: 10px;
+    }
+    .info {
+    	font-size: 14px;
+    	font-weight: bold;
+    	color: lightslategrey;
+    }
+  </style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-    <section class="cart">
-        <div class="cart__information">
-            <ul>
-                <li>얼리버드는 매월 마지막 날, 오후 8시 (4시간)</li>
-                <li>얼리버드는 선착순이므로, 결제 도중 마감 될 수 있습니다.</li>
-                <li>${sessionMember.id}님의 장바구니</li>
-            </ul>
+    <div class="cart">
+        <div class="text-center my-3">
+            <h3>결제하기</h3>
         </div>
         <table class="cart__list">
                 <thead>
                     <tr>
-                        <td><input type="checkbox" value="" id="checkAll"></td>
+                        <td></td>
                         <td colspan="2">상품정보</td>
                         <td>상품금액</td>
                         <td>배송비</td>
@@ -41,8 +50,7 @@
 						<c:forEach items="${studyDTO.studyBoardFileDTOs}"
 							var="studyFileDTO">
 							<tr class="cart__list__detail">
-								<td style="width: 2%;"><input type="checkbox"
-									value="${dto.num}" class="checks" name="checkedItems"></td>
+								<td style="width: 2%;"></td>
 								<td style="width: 13%;"><img
 									src="../resources/upload/study/${studyFileDTO.fileName}"
 									alt="magic mouse"></td>
@@ -58,77 +66,39 @@
 					</c:forEach>
 				</c:forEach>
 				</tbody>
-				<tfoot>
-				   <tr>
-                        <td colspan="3">
-                        	<%-- <form action="./cartDelete" id="frm" method="post">
-                        	<c:forEach items="${list}" var="dto">
-								<input type="hidden" name="num" value="${dto.num}">
-							</c:forEach> --%>
-                        	<button id="delete" type="submit" class="cart__list__optionbtn" onclick="checkDelete()">스터디 삭제하기</button>
-                        	<!-- </form> -->
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-				</tfoot>
 		 </table>
-		
-		 <table>
-                <!-- <thead>
-                	<tr class="my-5">
-                		<th>
-                		총 주문 상품
-                		</th>
-                	</tr>
-                </thead> -->
-                <tbody>
-						<tr>
-							<td style="text-align: center"><span class="price">총합계:${totalCost}원</span></td>
-						</tr>
-				</tbody>
-        </table>
-       
+		 
+
+<div class="container my-3">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="bordered">
+          <h3 class="text-center mb-4">주문자 정보</h3>
+          <p class="info"><strong>${sessionMember.names}</strong> </p>
+          <p class="info"><strong>${sessionMember.phone}</strong> </p>
+          <p class="info"><strong>${sessionMember.email}</strong></p>
+          <p class="info"><strong>${sessionMember.address}</strong> </p>
+        </div> 
+      </div>
+      <div class="col-md-6">
+        <div class="bordered">
+          <h3 class="text-center mb-4">주문 요약</h3>
+          <c:set var="totalCost" value="0" />
+          <c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
+          <p class="info"><strong>총합계:${totalCost}원</strong> </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
         <div class="cart__mainbtns">
-        	<form action="/cart/payment" method="get">
-            <button class="cart__bigorderbtn right btn btn-primary" type="submit">주문하기</button>
+        	<form action="/cart/payment" id="frm">
+            <button class="cart__bigorderbtn right btn btn-primary" type="submit">결제하기</button>
         	</form>
         </div>
-    </section>
+    </div>
 
 <script>
-const checkAll = document.getElementById("checkAll")
-const checks = document.getElementsByClassName("checks")
-
-checkAll.addEventListener("click",function(){
-    for(let i=0;i<checks.length;i++){
-        checks[i].checked=checkAll.checked;
-    }
-});
-
-for(let i=0;i<checks.length;i++){
-    checks[i].addEventListener("click", function(){
-        //for문을 중간에 종료하기 위해 boolean 타입 사용
-        let result = true;
-        for(let j=0;j<checks.length;j++){
-            if(!checks[j].checked){
-                //result = checks[j].checked
-                //result = false;
-                result = !result;
-                break;
-            }
-        }
-        checkAll.checked=result;
-    })
-};
-
-/* function checkDelete(){
-	let check = window.confirm("정말 삭제 하시겠습니까?");
-	if(check){
-        frm.submit();
-	}
-} */
 function checkDelete(){
 	  let check = window.confirm("정말 삭제 하시겠습니까?");
 	  if(check){
