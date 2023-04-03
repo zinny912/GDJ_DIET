@@ -225,8 +225,12 @@ public class MemberController {
 	}
 	
 	@GetMapping("delivery")
-	public ModelAndView getDeliveryPage(HttpSession session, ModelAndView mv) throws Exception {
+	public ModelAndView getDeliveryPage(HttpSession session, ModelAndView mv, boolean popUp) throws Exception {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		
+		if(popUp) {
+			mv.addObject("popUp", popUp);
+		}
 		
 		if(memberDTO.getId()!=null) {
 			mv.addObject("deliveryList", memberService.getDeliveryPage(memberDTO));

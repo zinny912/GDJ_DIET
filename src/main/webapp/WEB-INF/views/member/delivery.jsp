@@ -25,13 +25,17 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+<c:if test="${popUp eq true}">
 <c:import url="../template/header.jsp"></c:import>
+</c:if>
 <input type="hidden" id="originId" value="${sessionScope.sessionMember.id}">
 
 <div class="container-fluid">
 	<div class="row">
-	<c:import url="./memberHeader.jsp"></c:import>
 	
+<c:if test="${popUp eq true}">	
+	<c:import url="./memberHeader.jsp"></c:import>
+</c:if>	
 	
     <div class="col-10">
       <div class="row">
@@ -64,7 +68,7 @@
 		멤버id:${sessionMember.id}
 	  	멤버: ${sessionMember.address}
 	  	<br>
-	    델리: ${i.address}
+	    주소: ${i.address}
 
 	    <p class="card-text">${i.address}</p>
 	    <p class="card-text">${i.recipientTel}</p>
@@ -72,6 +76,10 @@
 
 	    <a href="./deliveryDelete?addressNum=${i.addressNum}" class="card-link">삭제</a>
 
+		<c:if test="${popUp eq true}">
+			<button class="btn btn-scondary">선택</button>
+			<a href="./deliveryDelete?addressNum=${i.addressNum}" class="">선택2</a>
+		</c:if>
 	    
 	  </div>
 	</div>		
@@ -89,8 +97,9 @@
 	</div>
 </div>
 
-
+<c:if test="${popUp eq true}">
 <c:import url="../template/footer.jsp"></c:import>
+</c:if>
 
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/member/memberUpdate.js"></script>

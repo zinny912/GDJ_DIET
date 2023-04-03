@@ -88,7 +88,7 @@ public class OrderController {
 	  
 	 
 	
-	@GetMapping("setOrder")
+	@GetMapping("checkout")
 	public ModelAndView setOrder(ModelAndView mv) throws Exception {
 
 		mv.setViewName("/order/paymentPage");
