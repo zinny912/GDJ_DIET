@@ -90,8 +90,8 @@
                     </div>
                   </div>
 
-                  <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" readonly type="checkbox" value="" id="agree" />
+                  <div readonly class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2"  type="checkbox" value="" id="agree" />
                     <label class="form-check-label" for="agree">
                       I agree all statements in <a id="terms" href="javascript:mAgree()">Terms of service</a>
                     </label>
@@ -112,6 +112,31 @@
     </div>
   </div>
 </section>
+
+
+<!-- 약관동의 모달창 -->
+<!-- Button trigger modal -->
+<button type="button" id="modalBtn" hidden class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-scrollable"  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="agreeModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="modalSubmit">Save changes</button>
+        <button type="button" class="btn btn-secondary" id="modalCancel" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <c:import url="./common_js.jsp"></c:import>
 

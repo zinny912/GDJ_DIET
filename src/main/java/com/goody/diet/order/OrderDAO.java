@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
+import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
 
@@ -18,18 +20,36 @@ public class OrderDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.goody.diet.order.OrderDAO.";
 
-	public OrderDTO getOrderList(MemberDTO memberDTO) {
-		
-		return null;
+	public List<OrderDTO> getOrderList (MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getOrderList", memberDTO);
 	}
+//	public List<OrderDetailDTO> getOrderDetailList(OrderDTO orderDTO) {		
+//		return sqlSession.selectList(NAMESPACE+"getOrderDetailList", orderDTO);
+//	}
 	
-	public int setOrderList(OrderDTO orderDTO) throws Exception {
-		return 0;
+	
+
+	public int setOrder(OrderDTO orderDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setOrder", orderDTO);
 	}
-	
 	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
-		
 		return sqlSession.insert(NAMESPACE+"setOrderDetail", orderDetailDTO);
 	}
+	public OrderDetailDTO getOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getOrderDetail", orderDetailDTO);
+	}
+	
+	
+	
+
+	public HealthMachineDTO getHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getHealthMachineForCartAndOrder", orderDetailDTO);
+	}
+	public RealHealthMachineDTO getRealHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachineForCartAndOrder", orderDetailDTO);
+	}
+	public StudyDTO getStudyForCartAndOrder(OrderDetailDTO orderDetailDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getStudyForCartAndOrder", orderDetailDTO);
+	}	
 	
 }
