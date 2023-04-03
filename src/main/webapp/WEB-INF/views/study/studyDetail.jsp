@@ -42,9 +42,19 @@
                     <br>문의:010-0000-1111
                     </div>
                     <br>
-                    <a class="btn btn-primary" href="/cart/cartList">장바구니에 담기</a>
-                    
-                    <form action="./studyUpdate" id="frm">
+				<c:choose>
+					<c:when test="${sessionMember eq null}">
+						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">장바구니에 담기</a>
+					</c:when>
+					<c:when test="${sessionMember ne null}">
+						<form action="/cart/cartAdd" method="post">
+							<input type="hidden" name="studyNum" value="${dto.studyNum}">	
+							<button class="btn btn-primary" type="submit">장바구니에 담기</button>
+						</form>
+					</c:when>
+				</c:choose>
+
+				<form action="./studyUpdate" id="frm">
 					<input type="hidden" name="studyNum" value="${dto.studyNum}">
 					<c:forEach items="${dto.studyBoardFileDTOs}" var="fileDTO">
 						<input type="hidden" name="fileNum" value="${fileDTO.fileNum}">
@@ -64,7 +74,7 @@
 			          <div class="nav-link" id="studyQnaInfo" style="cursor: pointer">상세정보</div>
 			        </div>
 			        <div class="col-md-4">
-			         <div class="nav-link" id="studyReviewList" data-review-studyNum="${dto.studyNum}" style="cursor: pointer">구매평</div>
+			         <div class="nav-link" id="studyReviewList" data-review-studyNum="${dto.studyNum}" style="cursor: pointer">구매평(${count})</div>
 			        </div>
 			        <div class="col-md-4">
 			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}" style="cursor: pointer">Q&amp;A</div>
@@ -198,7 +208,26 @@
 		      }
 		  })
 	</script>
- 
+     
+    <div class="modal fade" id="loginModal" tabindex="-1"
+	aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="loginModalLabel">로그인이 필요합니다</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">로그인 후 이용해주세요.</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+				<a href="/member/login" class="btn btn-primary">로그인</a>
+			</div>
+		</div>
+	</div>
+</div>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/studyBoard.js"></script>

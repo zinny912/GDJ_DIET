@@ -6,14 +6,26 @@
   <mapper namespace="com.goody.diet.cart.CartDAO">
 	
 	<select id="getCartList" parameterType="CartDTO" resultMap="CartDTOMap">
-		SELECT C.*,S.*
+		SELECT C.*,S.*,SF.*
 		FROM CART C
 			LEFT JOIN
 			STUDY S
-		ON (C.STUDYNUM = S.STUDYNUM) 
+			ON (C.STUDYNUM = S.STUDYNUM)
+			LEFT JOIN
+			STUDYFILE SF
+			ON (S.STUDYNUM = SF.STUDYNUM) 
 		WHERE C.ID=#{id}
 		ORDER BY C.NUM ASC
 	</select>
+	
+	<insert id="setCartStudyAdd" parameterType="CartDTO">
+		INSERT INTO CART (NUM,ID,STUDYNUM)
+		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum})
+	</insert>
+	
+	<delete id="setCartDelete" parameterType="Long">
+		DELETE CART WHERE NUM=#{num}
+	</delete>
 
 	<resultMap id="CartDTOMap" type="CartDTO">
 		<id column="num" property="num" />
@@ -35,53 +47,5 @@
 			</collection>
 		</collection>
 	</resultMap>
-
-	<!-- <resultMap id="cartMap" type="CartDTO">
-		<id property="num" column="num" />
-		<result property="id" column="id" />
-		<result property="machineNum" column="machineNum" />
-		<result property="studyNum" column="studyNum" />
-		<result property="count" column="count" />
-		<association property="healthMachineDTO" column="machineNum" javaType="HealthMachineDTO" resultMap="healthMachineMap" />
-		<association property="studyDTO" column="studyNum" javaType="StudyDTO" resultMap="studyMap" />
-	</resultMap>
-
-	<resultMap id="healthMachineMap" type="HealthMachineDTO">
-		<id property="machineNum" column="machineNum" />
-		<result property="categoryNum" column="categoryNum" />
-		<result property="machineName" column="machineName" />
-		<result property="machineScore" column="machineScore" />
-		<result property="price" column="price" />
-		<result property="salePrice" column="salePrice" />
-		<result property="option1" column="option1" />
-		<result property="option2" column="option2" />
-		<result property="option3" column="option3" />
-		<result property="option4" column="option4" />
-		<collection property="healthMachineImgDTOs" javaType="list" ofType="HealthMachineImgDTO">
-			<id column="fileNum" property="fileNum" />
-			<result column="FILENAME" property="fileName" />
-			<result column="ORINAME" property="oriName" />
-		</collection>
-	</resultMap>
-
-	<resultMap id="studyMap" type="StudyDTO">
-		<id property="studyNum" column="studyNum" />
-		<result property="studyName" column="studyName" />
-		<result property="studyCost" column="studyCost" />
-		<result property="studyStartPeriod" column="studyStartPeriod" />
-		<result property="studyEndPeriod" column="studyEndPeriod" />
-		<result property="studyStock" column="studyStock" />
-		<collection property="studyBoardFileDTOs" javaType="List" ofType="StudyBoardFileDTO">
-			<id column="fileNum" property="fileNum"/>
-				<result column="fileName" property="fileName"/>
-				<result column="oriName" property="oriName"/>
-		</collection>  	
-	</resultMap> -->
-	
-	
-	<!-- <insert id="setAddToCart" parameterType="com.goody.diet.cart.CartDTO">
-		INSERT INTO CART (NUM, ID, MACHINENUM, STUDYNUM, COUNT) 
-		VALUES(#{num}, #{id}, #{machineNum}, #{studyNum}, #{count})
-	</insert> -->
 		 
  </mapper>

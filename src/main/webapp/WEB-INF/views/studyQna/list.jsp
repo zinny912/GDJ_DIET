@@ -5,12 +5,14 @@
 <div class="row">
 	<table class="table table-striped">
 		<thead>
+			<c:if test="${not empty list}">
 			<tr>
 				<th>TITLE</th>
 				<th>WRITER</th>
 				<th>DATE</th>
 				<th>HIT</th>
 			</tr>
+			</c:if>
 		</thead>
 		<tbody>
 			<c:forEach items="${list}" var="dto">

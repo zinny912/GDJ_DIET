@@ -44,8 +44,13 @@
   		VALUES(#{num},#{studyNum},#{contents}, #{writer},SYSDATE,0,#{score})
   </insert>
   
-	<select id="getBoardDetail" resultType="StudyReviewDTO" parameterType="StudyReviewDTO">
-  		SELECT * FROM STUDYREVIEW WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
+	<select id="getBoardDetail" resultMap="StudyDTOMap" parameterType="StudyReviewDTO">
+  		SELECT SR.*,S.*
+		FROM STUDYREVIEW SR
+			LEFT JOIN
+			STUDY S
+			ON (S.STUDYNUM = SR.STUDYNUM)
+		WHERE SR.STUDYNUM=#{studyNum} AND SR.NUM=#{num}
   	</select>
   	
 	<update id="setHitUpdate" parameterType="StudyReviewDTO">
@@ -60,17 +65,23 @@
   		DELETE STUDYREVIEW WHERE NUM=#{num} AND STUDYNUM=#{studyNum}
   	</delete> 
   	
-  
-<!--   
-  <update id="setBoardUpdate" parameterType="StudyReviewDTO">
-  		UPDATE STUDYREVIEW 
-  		SET CONTENTS = #{contents}
-  		WHERE NUM = #{num}
-  </update>
-  
-  <delete id="setBoardDelete" parameterType="StudyReviewDTO">
-  		DELETE STUDYREVIEW WHERE NUM=#{num}
-  </delete> -->
+	<resultMap id="StudyDTOMap" type="StudyReviewDTO">
+		<id column="num" property="num" />
+			<result column="studyNum" property="studyNum" />
+			<result column="contents" property="contents" />
+			<result column="writer" property="writer" />
+			<result column="regDate" property="regDate" />
+			<result column="hit" property="hit" />
+			<result column="score" property="score" />
+		<collection property="studyDTOs" ofType="StudyDTO">
+			<id column="studyNum" property="studyNum" />
+				<result column="studyName" property="studyName" />
+				<result column="studyCost" property="studyCost" />
+				<result column="studyStartPeriod" property="studyStartPeriod" />
+				<result column="studyEndPeriod" property="studyEndPeriod" />
+				<result column="studyStock" property="studyStock" />
+		</collection>
+	</resultMap>
   
   
   </mapper>

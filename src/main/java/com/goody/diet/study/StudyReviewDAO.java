@@ -48,16 +48,5 @@ public class StudyReviewDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"setBoardDelete", studyReviewDTO);
 	}
-//
-//	//리뷰댓글 수정 
-//	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
-//		return sqlSession.update(NAMESPACE+"setBoardUpdate", studyReviewDTO);
-//		}
-//	
-//	//리뷰삭제 
-//	public int setBoardDelete(StudyReviewDTO studyReviewDTO) throws Exception {
-//		return sqlSession.delete(NAMESPACE+"setBoardDelete", studyReviewDTO);
-//		
-//	}
 
 }

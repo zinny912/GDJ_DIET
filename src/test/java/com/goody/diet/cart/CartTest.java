@@ -2,7 +2,10 @@ package com.goody.diet.cart;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.goody.diet.MyTestCase;
 import com.goody.diet.healthMachine.HealthMachineDTO;
@@ -11,26 +14,16 @@ import com.goody.diet.member.MemberDAO;
 
 public class CartTest extends MyTestCase{
 
+	@Autowired
+	private CartDAO cartDAO;
+	
 	@Test
 	public void test() throws Exception {
-		MemberDAO memberDAO = new MemberDAO();
-		DeliveryDTO deliveryDTO = new DeliveryDTO();
-		// TODO Auto-generated method stub
-		CartDAO cartDAO = new CartDAO();
 		CartDTO cartDTO = new CartDTO();
-		cartDTO.setCount(2L);
-		cartDTO.setMachineNum(2L);
-		cartDTO.setId("test어드민");
+		cartDTO.setId("admin");
+		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
+		assertNotEquals(0, ar.size());
 		
-		HealthMachineDTO healthMachineDTO = new HealthMachineDTO();
-		healthMachineDTO.setMachineNum(2L);
-		
-		
-//		memberDAO.getDeliveryDetail(deliveryDTO);
-		int result=cartDAO.setAddToCart(cartDTO);
-		System.out.println(result);
-		System.out.println("뭐");
-		assertEquals(1, result);
 	}
 
 }
