@@ -48,6 +48,9 @@
 					</c:choose>
 			</strong></h5>
 		</div>
+			<c:forEach items="${dto.studyDTOs}" var="study">	
+				<h6><strong>${study.studyName}<strong></h6>
+			</c:forEach>
 			<p>${dto.contents}</p>
 			<div class="col-lg-5">
 			<h6><strong>${dto.writer}</strong></h6>

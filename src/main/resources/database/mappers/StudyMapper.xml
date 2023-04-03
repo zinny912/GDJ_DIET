@@ -7,6 +7,15 @@
   	<select id="getStudyCount" parameterType="Pager" resultType="Long">
  		SELECT COUNT(STUDYNUM) FROM STUDY
  	</select>
+ 	
+ 	<select id="getStudyReivewCount" parameterType="StudyDTO" resultMap="getStudyCounts">
+ 		SELECT COUNT(SR.NUM)
+		FROM STUDY S
+			LEFT JOIN
+			STUDYREVIEW SR
+			ON (S.STUDYNUM = SR.STUDYNUM)
+		WHERE S.STUDYNUM=8
+ 	</select>
   	
 	<select id="getBoardList" parameterType="Pager" resultMap="getBoardResult">
 		SELECT S.*, SF.*
@@ -38,6 +47,19 @@
 			<id column="fileNum" property="fileNum"/>
 				<result column="fileName" property="fileName"/>
 				<result column="oriName" property="oriName"/>
+		</collection>  		
+  	</resultMap>
+  	
+  	<resultMap type="StudyDTO" id="getStudyCounts">
+  		<id column="studyNum" property="studyNum"/>
+	  		<result column="studyName" property="studyName"/>
+	  		<result column="studyCost" property="studyCost"/>
+	  		<result column="studyStartPeriod" property="studyStartPeriod"/>
+	  		<result column="studyEndPeriod" property="studyEndPeriod"/>
+	  		<result column="studyStock" property="studyStock"/>
+		<collection property="studyReviewDTOs" javaType="List" ofType="StudyReviewDTO">
+			<id column="num" property="num"/>
+				<result column="studyNum" property="studyNum"/>
 		</collection>  		
   	</resultMap>
 	

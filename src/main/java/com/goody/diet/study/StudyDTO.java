@@ -13,6 +13,7 @@ public class StudyDTO {
 	private Long studyStock;
 	
 	private List<StudyBoardFileDTO> studyBoardFileDTOs;
+	private List<StudyReviewDTO> studyReviewDTOs;
 	
 	public Long getStudyNum() {
 		return studyNum;
@@ -57,5 +58,12 @@ public class StudyDTO {
 	public void setStudyBoardFileDTOs(List<StudyBoardFileDTO> studyBoardFileDTOs) {
 		this.studyBoardFileDTOs = studyBoardFileDTOs;
 	}
+	public List<StudyReviewDTO> getStudyReviewDTOs() {
+		return studyReviewDTOs;
+	}
+	public void setStudyReviewDTOs(List<StudyReviewDTO> studyReviewDTOs) {
+		this.studyReviewDTOs = studyReviewDTOs;
+	}
+	
 
 }

@@ -61,33 +61,7 @@ public class StudyReviewController {
 		return mv;
 	}
 
-	/*
-	 * @GetMapping("update") public ModelAndView setBoardUpdate(StudyReviewDTO
-	 * studyReviewDTO, ModelAndView mv) throws Exception{ studyReviewDTO =
-	 * studyReviewService.getBoardDetail(studyReviewDTO);
-	 * 
-	 * mv.addObject("dto", studyReviewDTO);
-	 * 
-	 * mv.setViewName("studyReview/update");
-	 * 
-	 * return mv; }
-	 */
-	
-//	
-//	@PostMapping("update")
-//	public ModelAndView setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		int result = studyReviewService.setBoardUpdate(studyReviewDTO);
-//		String message="수정 실패";
-//		if(result>0) {
-//			message="글이 수정 되었습니다";
-//		}
-//		mv.addObject("result", message);
-//		mv.addObject("url", "/study/studyDetail?studyNum="+studyReviewDTO.getStudyNum());
-//		mv.setViewName("common/result");
-//		
-//		return mv;
-//	}
+
 
 	@PostMapping("update")
 	public ModelAndView setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
