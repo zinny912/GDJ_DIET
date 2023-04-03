@@ -39,12 +39,16 @@ $('#modalSubmit').click(()=>{
 
 //@회원가입버튼
 $('#submitBtn').click(()=>{
-	if(! $('.form-check-input').attr("checked")=="checked"){
+	console.log("체크박스값: "+$('.form-check-input').is(':checked'))
+
+
+	if($('.form-check-input').is(':checked')==false){
 		alert("약관동의점..")
 
 	}else if(checkCount.includes(false)){
 		alert("필수정보 입력점")
-	}else{
+	}
+	else{
 		$('#submitBtn').attr("type", "submit")
 	}
 

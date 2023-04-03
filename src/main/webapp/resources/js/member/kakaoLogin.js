@@ -84,26 +84,47 @@ function kakaoLogin() {
             var email = res.kakao_account.email;
             var nickname = res.kakao_account.profile.nickname;
             var kakao_id = res.id
-            console.log(email, nickname);
+            console.log(email, nickname, kakao_id);
+
+            //ajax로 바로 보내자.. //새로고침해야댐...
+            kakaoConstant(email, nickname, kakao_id)
 
             //parameter
-            $('#id').val(kakao_id)
-            $('#email').val(email)
-            $('#name').val(nickname)
+            $('#kid').val(kakao_id)
+            $('#kemail').val(email)
+            $('#kname').val(nickname)
             // $('#loginType').val('kakao')
 
             //제출
-            $('#loginForm').attr("action","./kakaoLogin")
+        //    $('#loginForm').attr("action","./kakaoLogin")
             // $('#submitBtn').attr("type", "submit")
             // $('#submitBtn').click();
             //제출v2
-            $('#loginForm').submit()
+            $('#kloginForm').submit()
 
         },
         fail: function (error) {
             alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
         }
     });
+}
+function kakaoConstant(email, nickname,kakao_id){
+    $.ajax({
+        type:"POST",
+        url:"/member/kakaoLogin",
+        data:{
+            id:kakao_id,
+            name:nickname,
+            email:email
+        },
+        success:()=>{
+            
+        }
+        
+    })
+
+
+
 }
 
 //회원탈퇴
@@ -121,3 +142,4 @@ function kakaoDelete(){
     });
 
 }
+
