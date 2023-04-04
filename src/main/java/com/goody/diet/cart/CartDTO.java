@@ -3,6 +3,7 @@ package com.goody.diet.cart;
 import java.util.List;
 
 import com.goody.diet.healthMachine.HealthMachineDTO;
+import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.study.StudyDTO;
 
 public class CartDTO {
@@ -15,7 +16,15 @@ public class CartDTO {
 	
 	private List<StudyDTO> studyDTOs;
 	private List<HealthMachineDTO> healthMachineDTOs; 
+	private List<RealHealthMachineDTO> realHealthMachineDTOs;
 	
+	
+	public List<RealHealthMachineDTO> getRealHealthMachineDTOs() {
+		return realHealthMachineDTOs;
+	}
+	public void setRealHealthMachineDTOs(List<RealHealthMachineDTO> realHealthMachineDTOs) {
+		this.realHealthMachineDTOs = realHealthMachineDTOs;
+	}
 	public Long getNum() {
 		return num;
 	}

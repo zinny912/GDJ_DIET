@@ -50,10 +50,13 @@ $("#optionSelect").on("click", ".op1", function (e) {
                 $("#opt2").append(select);
                 $("#optSelect2").append(response.trim())
             }
-            // else{
+            else{
+                $("#cartAdd").removeClass("btn-outline-primary")
+                $("#cartAdd").addClass("btn-primary")
+                $("#cartAdd").attr("disabled","false")
             //     if($("#btn").find('#optionDelete').length<=0)
             //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            // }
+            }
         },
         error: function () {
             console.log("error");
@@ -88,10 +91,13 @@ $("#optionSelect").on("click", ".op2", function (e) {
                 $("#opt" + idx).append(select);
                 $("#optSelect3").append(response.trim())
             }
-            // else{
+            else{
+                $("#cartAdd").removeClass("btn-outline-primary")
+                $("#cartAdd").addClass("btn-primary")
+                $("#cartAdd").attr("disabled","false")
             //     if($("#btn").find('#optionDelete').length<=0)
             //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            // }
+            }
             
         },
         error: function () {
@@ -123,10 +129,13 @@ $("#optionSelect").on("click", ".op3", function (e) {
                 $("#opt" + idx).append(select);
                 $("#optSelect4").append(response.trim())
             }
-            // else{
+            else{
+                $("#cartAdd").removeClass("btn-outline-primary")
+                $("#cartAdd").addClass("btn-primary")
+                $("#cartAdd").attr("disabled","false")
             //     if($("#btn").find('#optionDelete').length<=0)
             //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            // }   
+            }   
         },
         error: function () {
             console.log("error");
@@ -282,7 +291,21 @@ $("#btn").on("click","#optionDelete",function(){
         $("#frm").submit();
     }
 })
+//장바구니
+$("#btn").on("click","#cartAdd",function(){
+    
+    $("#frm").attr("action","./optionDelete")
+    $("#frm").find("#optId1").val(optId1)
+    $("#frm").find("#optId2").val(optId2)
+    $("#frm").find("#optId3").val(optId3)
+    $("#frm").find("#optId4").val(optId4)
 
+    let check=window.confirm("정말 옵션을 삭제 하시겠습니까?");
+    if(check){
+        $("#frm").attr("method","post");
+        $("#frm").submit();
+    }
+})
 // // 딜리트 버튼 누르면 메서드는 포스트로 바꿈
 
 // const frm= window.document.getElementById("frm");

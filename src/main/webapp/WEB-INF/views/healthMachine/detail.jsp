@@ -11,23 +11,24 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container-fluid">
-		
-		<div class="row gx-4 gx-lg-5 align-items-center my-5 border border-secondary-subtle">
+
+		<div
+			class="row gx-4 gx-lg-5 align-items-center my-5 border border-secondary-subtle">
 			<div class="col-lg-7">
 				<img class="img-fluid rounded mb-4 mb-lg-0"
 					src="/resources/images/${dto.healthMachineImgDTOs[0].oriName}"
 					alt="..." />
 			</div>
 			<div class="col-lg-5 text-center">
-				<h2><strong>${dto.machineName}</strong></h2>
-				<h6 class="font-weight-light" style="text-decoration:line-through;">${dto.price}원</h6>
-				<h1 class="font-weight-light" style="color:red">${dto.salePrice}원</h1>
+				<h2>
+					<strong>${dto.machineName}</strong>
+				</h2>
+				<h6 class="font-weight-light" style="text-decoration: line-through;">${dto.price}원</h6>
+				<h1 class="font-weight-light" style="color: red">${dto.salePrice}원</h1>
 				<hr class="my-hr2">
 				<div class="text-center" id="optionSelect"
 					data-machineNum="${dto.machineNum}">
-					<h6 class="font-weight-light">
-						옵션선택
-					</h6>
+					<h6 class="font-weight-light">옵션선택</h6>
 					<div class="dropdown" id="opt1" data-optName="${dto.option1 }">
 
 						<button class="btn dropdown-toggle" id="optbtn1">${dto.option1}을
@@ -45,16 +46,18 @@
 				<br>
 				<form id="frm">
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
-					<input type="hidden" id="optId1" name="optId1">
-					<input type="hidden" id="optId2" name="optId2">
-					<input type="hidden" id="optId3" name="optId3">
-					<input type="hidden" id="optId4" name="optId4">
+					<input type="hidden" id="optId1" name="optId1"> <input
+						type="hidden" id="optId2" name="optId2"> <input
+						type="hidden" id="optId3" name="optId3"> <input
+						type="hidden" id="optId4" name="optId4">
 					<!-- <a class="btn btn-primary" href="#">장바구니에 담기</a> -->
 					<div id="btn">
-					<button id="cartAdd" type="button" class="btn btn-primary">장바구니에
-						담기</button>
-					<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
-				</div>
+						<button id="cartAdd" type="button" class="btn btn-outline-primary"
+							disabled="disabled">장바구니에 담기</button>
+						<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+							<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+						</c:if>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -63,7 +66,7 @@
 
 	<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
 	<a href="update?machineNum=${dto.machineNum}">update</a>
-	
+
 
 
 

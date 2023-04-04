@@ -31,7 +31,11 @@ public class CartController {
 		System.out.println(memberDTO.getId());
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.getCartList(cartDTO);
-		System.out.println(ar.size());
+		
+//		태현 MachineList넣기
+		
+		
+//		System.out.println(ar.size());
 		mv.setViewName("cart/cartList");
 		mv.addObject("list", ar);
 		return mv;
