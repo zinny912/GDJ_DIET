@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,15 +31,24 @@ public class HealthMachineController {
 		return mv;
 	}
 	@PostMapping("RealMachineList")
-	public ModelAndView getRealHealthMachineList(ModelAndView mv,RealHealthMachineDTO realHealthMachineDTO)throws Exception{
-		List<RealHealthMachineDTO> ar  = healthMachineService.getRealHealthMachineList(realHealthMachineDTO);
-		for(RealHealthMachineDTO reaDto:ar) {
-			System.out.println(reaDto.getRealMachineNum());
-			
-		}
-		mv.addObject("list",ar);
+	public ModelAndView getRealHealthMachineList(ModelAndView mv,HealthMachineDTO healthMachineDTO)throws Exception{
+		healthMachineDTO = healthMachineService.getRealHealthMachineList(healthMachineDTO);
+		
+		mv.addObject("dto",healthMachineDTO);
 		mv.setViewName("common/realHealthMachineList");
 		return mv;
+	}
+	@PostMapping("filterOption")//옵션 선택해서 리스트 뽑아오기
+	public ModelAndView getRealHealthMachineFilterList(ModelAndView mv,RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		List<RealHealthMachineDTO> ar= healthMachineService.getRealHealthMachineList(realHealthMachineDTO);
+		HealthMachineDTO healthMachineDTO = new HealthMachineDTO();
+		healthMachineDTO.setMachineNum(realHealthMachineDTO.getMachineNum());
+		healthMachineDTO= healthMachineService.getHealthMachineDetail(healthMachineDTO);
+		healthMachineDTO.setRealHealthMachineDTOs(ar);
+		mv.addObject("dto",healthMachineDTO);
+		mv.setViewName("common/realHealthMachineList");
+		return mv;
+		
 	}
 	@GetMapping("detail")
 	public ModelAndView getHealthMachineDetail(ModelAndView mv,HealthMachineDTO healthMachineDTO)throws Exception{
@@ -64,6 +74,7 @@ public class HealthMachineController {
 		mv.setViewName("common/categoryResult");
 		return mv;
 	}
+	
 	@PostMapping("add")
 	public ModelAndView setHealthMachineAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO,Long []  categoryDTOs, MultipartFile [] Files, HttpSession session)throws Exception{
 		
@@ -94,16 +105,37 @@ public class HealthMachineController {
 
 		return mv;
 	}
+	@PostMapping("categoryTypeDelete")
+	public ModelAndView setcategoryTypeDelete(ModelAndView mv, CategoryDTO categoryDTO)throws Exception{
+		int result = healthMachineService.setcategoryTypeDelete(categoryDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
 	@GetMapping("update")
-	public ModelAndView setOptionUpdate(ModelAndView mv,HealthMachineDTO healthMachineDTO) throws Exception{
+	public ModelAndView setHealthMachineUpdate(ModelAndView mv,HealthMachineDTO healthMachineDTO) throws Exception{
 		healthMachineDTO = healthMachineService.getHealthMachineDetail(healthMachineDTO);
-		 
+		
 		mv.addObject("dto", healthMachineDTO);
+		
 		
 		mv.setViewName("healthMachine/update");
 		return mv;
 	}
+	@PostMapping("update")
+	public ModelAndView  setHealthMachineUpdate(ModelAndView mv, HealthMachineDTO healthMachineDTO,Long []  categoryDTOs, Long thumnailNum, MultipartFile [] Files, Long [] fileNum, HttpSession session)throws Exception{
+		int result = healthMachineService.setHealthMachineUpdate(healthMachineDTO, categoryDTOs, thumnailNum, Files, fileNum,session);
+		String mes = "업데이트 실패";
+		if(result>0) {
+			mes = "업데이트 성공";
 
+		}
+		mv.addObject("result", mes);
+		mv.addObject("url", "./list");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 	//	----------------option-----------------------------------
 	@PostMapping("option1")
 	public ModelAndView getOption1(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
@@ -181,9 +213,11 @@ public class HealthMachineController {
 		if(result>0) {
 			message="성공";
 		}
-		mv.addObject("url","./detail?machineNum="+realHealthMachineDTO.getMachineNum());
-		mv.addObject("result", message);
-		mv.setViewName("common/result");
+//		mv.addObject("url","./detail?machineNum="+realHealthMachineDTO.getMachineNum());
+////		mv.addObject("result", message);
+////		mv.setViewName("common/result");
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 
 	}

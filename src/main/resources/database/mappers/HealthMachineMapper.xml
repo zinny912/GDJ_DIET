@@ -123,6 +123,7 @@
 		<include refid="optionCondition"></include>
 	ORDER BY optid1,optid2,optid3
 	</select>
+	
 	<!-- HEALTHMACHINE AND IMG ADD -->
 	<insert id="setHealthMachineAdd"
 		parameterType="HealthMachineDTO">
@@ -139,7 +140,11 @@
 		MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
 		VALUES(FILE_SEQ.NEXTVAL,#{machineNum},#{fileName},#{oriName})
 	</insert>
-
+	<insert id="setMachineThumnailAdd" parameterType="HealthMachineImgDTO">
+	INSERT INTO
+		MACHINEIMG(FILENUM, MACHINENUM, FILENAME, ORINAME)
+		VALUES(#{fileNum},#{machineNum},#{fileName},#{oriName})
+	</insert>
 	<!-- 카테고리 -->
 
 	<insert id="setCategoryAdd" parameterType="CategoryDTO">
@@ -152,11 +157,13 @@
 		categoryType(machineNum,categoryNum)
 		values(#{machineNum},#{categoryNum})
 	</insert>
+	
+	<!-- categoryDelete -->
 	<delete id="setCategoryDelete" parameterType="CategoryDTO">
 		DELETE CATEGORY
 		WHERE CATEGORYNUM=#{categoryNum}
 	</delete>
-
+	
 	<!-- HealthMachine delete -->
 	<delete id="setHealthMachineDelete"
 		parameterType="HealthMachineDTO">
@@ -187,7 +194,9 @@
 			</if>
 		</trim>
 	</delete>
-
+	<delete id="setMachineFileDelete" parameterType="Long">
+		DELETE machineimg where FILENUM=#{fileNum}
+	</delete><!-- 파라미터 long 인거-->
 	<delete id="setCategoryTypeDelete" parameterType="CategoryDTO">
 		DELETE CATEGORYTYPE
 		<trim prefix="where" suffixOverrides="and">

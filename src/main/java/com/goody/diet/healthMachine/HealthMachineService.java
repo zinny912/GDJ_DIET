@@ -1,7 +1,9 @@
 package com.goody.diet.healthMachine;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goody.diet.util.FileManager;
+
+import oracle.net.aso.c;
 
 @Service
 public class HealthMachineService {
@@ -30,25 +34,28 @@ public class HealthMachineService {
 		return ar;
 
 	}
-	//getRealHealthMachineDetailList
+//	getRealHealthMachineDetailList
 	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception {
 		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
-		
+
 	}
 	//오버로딩
-	public List<RealHealthMachineDTO> getRealHealthMachineList(HealthMachineDTO healthMachineDTO)throws Exception {
+	public HealthMachineDTO getRealHealthMachineList(HealthMachineDTO healthMachineDTO)throws Exception {
 		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
 		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
-		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
-	}
-	
-	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO) throws Exception{
-		healthMachineDTO= healthMachineDAO.getHealthMachineDetail(healthMachineDTO);// healthmachine정보 및 img정보
-		healthMachineDTO.setCategoryDTO(healthMachineDAO.getCategoryDetail(healthMachineDTO));// 해당 머신의 카테고리 리스트
+		healthMachineDTO=healthMachineDAO.getHealthMachineDetail(healthMachineDTO);
+		healthMachineDTO.setRealHealthMachineDTOs(healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO));
 		
 		return healthMachineDTO;
 	}
-	
+
+	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO) throws Exception{
+		healthMachineDTO= healthMachineDAO.getHealthMachineDetail(healthMachineDTO);// healthmachine정보 및 img정보
+		healthMachineDTO.setCategoryDTO(healthMachineDAO.getCategoryDetail(healthMachineDTO));// 해당 머신의 카테고리 리스트
+
+		return healthMachineDTO;
+	}
+
 	//option
 	public List<RealHealthMachineDTO> getOption1(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return healthMachineDAO.getOption1(realHealthMachineDTO);
@@ -71,13 +78,13 @@ public class HealthMachineService {
 		//중복제거
 		HashSet<Long> hashSet = new HashSet<Long>(Arrays.asList(categoryDTOs));//배열 -> 리스트  파라미터로 받는 것들은 리스트로 받지못함.
 		categoryDTOs=hashSet.toArray(new Long[0]);
-		
+
 		for(Long categoryNum : categoryDTOs) {
 			CategoryDTO categoryDTO = new CategoryDTO();
 			categoryDTO.setCategoryNum(categoryNum);
 			categoryDTO.setMachineNum(healthMachineDTO.getMachineNum());
 			result = healthMachineDAO.setCategoryType(categoryDTO);
-//			System.out.println(categoryNum);
+			//			System.out.println(categoryNum);
 		}
 		//		---------------------------
 		//		System.out.println(healthMachineDTO.getMachineNum());
@@ -100,7 +107,7 @@ public class HealthMachineService {
 		}
 		return result;
 	}
-	
+
 	public int setOptionAdd(RealHealthMachineDTO realHealthMachineDTO, MultipartFile [] multipartFiles, HttpSession session)throws Exception{
 		int result = healthMachineDAO.setOptionAdd(realHealthMachineDTO);
 		String realPath = session.getServletContext().getRealPath("resources/images");//임시저장소
@@ -119,12 +126,14 @@ public class HealthMachineService {
 		}
 		return result;
 	}
-	
+
 	//카테고리
 	public List<CategoryDTO>getCategoryList()throws Exception{
 		return healthMachineDAO.getCategoryList();
 	}
-	
+	public int setcategoryTypeDelete(CategoryDTO categoryDTO)throws Exception{
+		return healthMachineDAO.setCategoryTypeDelete(categoryDTO);
+	}
 	//delete
 	public int setHealthMachineDelete(HealthMachineDTO healthMachineDTO,HttpSession session)throws Exception{
 		Long machineNum= healthMachineDTO.getMachineNum();
@@ -160,13 +169,77 @@ public class HealthMachineService {
 
 		return result;
 	}
+
 	//옵션 1개만 삭제
 	public int setRealHealthMachineDelete(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
-	
-		realHealthMachineDTO = healthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
-		
-//		System.out.println("HealthMachineNum : "+realHealthMachineDTO.getMachineNum());
+
+//		realHealthMachineDTO = healthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
+
+		//		System.out.println("HealthMachineNum : "+realHealthMachineDTO.getMachineNum());
 		return healthMachineDAO.setRealMachineDelete(realHealthMachineDTO);
+	}
+	//update
+	public int setHealthMachineUpdate(HealthMachineDTO healthMachineDTO,Long []  categoryDTOs, Long thumnailNum, MultipartFile [] Files, Long [] fileNums, HttpSession session) throws Exception{
+		int result=0;
+		//1. healthMachine update
+		healthMachineDAO.setHealthMachineUpdate(healthMachineDTO);
+		//2. 카테고리 무결성 검사 후 넣기
+		HashSet<Long> hashSet = new HashSet<Long>(Arrays.asList(categoryDTOs));//배열 -> 리스트  파라미터로 받는 것들은 리스트로 받지못함.
+		categoryDTOs=hashSet.toArray(new Long[0]);
+
+		ArrayList<Long> array = new ArrayList<Long>(Arrays.asList(categoryDTOs));
+		List<CategoryDTO> ar= healthMachineDAO.getCategoryDetail(healthMachineDTO);
+		for(int i=0; i<array.size(); i++) {
+			for(int j=0; j<ar.size();j++) {
+				if(array.get(i)==ar.get(j).getCategoryNum()) {
+					array.remove(i);
+					break;
+				}
+			}
+		}
+		categoryDTOs=array.toArray(new Long[0]);
+		for(Long categoryNum : categoryDTOs) {
+			CategoryDTO categoryDTO = new CategoryDTO();
+			categoryDTO.setCategoryNum(categoryNum);
+			categoryDTO.setMachineNum(healthMachineDTO.getMachineNum());
+			result = healthMachineDAO.setCategoryType(categoryDTO);
+		}
+		//3.파일 및 썸네일 넣기
+		//3.1 삭제에 선택한 파일 삭제
+		boolean thumnailcheck = false;
+		if(fileNums!=null) {
+			for(Long fileNum : fileNums) {
+				healthMachineDAO.setMachineFileDelete(fileNum);
+				if(fileNum==thumnailNum){//썸네일이 삭제되면 구분하기
+					thumnailcheck=true;
+				}
+			}
+		}
+		
+		String realPath = session.getServletContext().getRealPath("/resources/images/");
+		for(int i=0; i<Files.length; i++) {
+			if(Files[i].isEmpty()) {
+				System.out.println("실패");
+				continue;
+			}
+
+			String fileName = fileManager.fileSave(Files[i], realPath);
+			//3-2 db에 저장
+			HealthMachineImgDTO healthMachineImgDTO = new HealthMachineImgDTO();
+			healthMachineImgDTO.setFileName(fileName);
+			healthMachineImgDTO.setMachineNum(healthMachineDTO.getMachineNum());
+			healthMachineImgDTO.setOriName(Files[i].getOriginalFilename());
+			//3-3 썸네일검사
+			if(thumnailcheck==true) {
+				healthMachineImgDTO.setFileNum(thumnailNum);
+				result = healthMachineDAO.setMachineThumnailAdd(healthMachineImgDTO);
+				thumnailcheck=false;
+			}
+			else {
+				result = healthMachineDAO.setMachineImg(healthMachineImgDTO);
+			}
+		}
+		return result;
 	}
 
 

@@ -67,7 +67,9 @@ public class HealthMachineDAO {
 	public int setOptionAdd(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setOptionAdd", realHealthMachineDTO);
 	}
-
+	public int setMachineThumnailAdd(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setMachineThumnailAdd", healthMachineImgDTO);
+	}
 	//Category
 	public List<CategoryDTO> getCategoryList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getCategoryList");
@@ -93,9 +95,15 @@ public class HealthMachineDAO {
 	public int setMachineImgDelete(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setMachineImgDelete", healthMachineImgDTO);
 	}
+	public int setMachineFileDelete(Long fileNum)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setMachineFileDelete", fileNum);
+	}
 	public int setCategoryTypeDelete(CategoryDTO categoryDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setCategoryTypeDelete", categoryDTO);
 	}
-
-
+	//healthmAchine update
+	public int setHealthMachineUpdate(HealthMachineDTO healthMachineDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setHealthMachineUpdate", healthMachineDTO);
+	}
+	
 } 
