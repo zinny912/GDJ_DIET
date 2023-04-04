@@ -1,5 +1,6 @@
 package com.goody.diet.exercise;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.goody.diet.board.BoardFileDTO;
@@ -19,8 +20,25 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private String highLight;
 	private String info;
 	private String coordinate;
+	private Date startDay;
+	private Date endDay;
 	
 	
+	
+	
+	
+	public Date getStartDay() {
+		return startDay;
+	}
+	public void setStartDay(Date startDay) {
+		this.startDay = startDay;
+	}
+	public Date getEndDay() {
+		return endDay;
+	}
+	public void setEndDay(Date endDay) {
+		this.endDay = endDay;
+	}
 	public String getCoordinate() {
 		return coordinate;
 	}

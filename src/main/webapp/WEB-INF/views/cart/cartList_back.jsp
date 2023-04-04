@@ -162,7 +162,7 @@
                                     
                                 
                             
-                            <p><a href="https://store.coupang.com/vp/vendors/A00737326/products?vendorName=&amp;productId=6675315822&amp;outboundShippingPlaceId=12013894&amp;freeShipOverAmount=0&amp;sourceType=CART" class="add-product-link sc-link metric-add-product-link" data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;open_scp_cart&quot;}">묶음배송추가 &gt;</a></p>
+                            <p><a href="https://store.coupang.com/vp/vendors/A00737326/products?vendorName=&amp;productId=6675315822&amp;outboundShippingPlaceId=12013894&amp;freeShipOverAmount=0&amp;sourceType=CART" class="add-product-link sc-link metric-add-product-link" data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;open_scp_cart&quot;}">묶음배송추가 ></a></p>
                         </td>
                     
                 </tr>
@@ -308,7 +308,7 @@
                                     
                                 
                             
-                            <p><a href="https://store.coupang.com/vp/vendors/A00077089/products?vendorName=&amp;productId=2080286008&amp;outboundShippingPlaceId=18673&amp;freeShipOverAmount=0&amp;sourceType=CART" class="add-product-link sc-link metric-add-product-link" data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;open_scp_cart&quot;}">묶음배송추가 &gt;</a></p>
+                            <p><a href="https://store.coupang.com/vp/vendors/A00077089/products?vendorName=&amp;productId=2080286008&amp;outboundShippingPlaceId=18673&amp;freeShipOverAmount=0&amp;sourceType=CART" class="add-product-link sc-link metric-add-product-link" data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;open_scp_cart&quot;}">묶음배송추가 ></a></p>
                         </td>
                     
                 </tr>

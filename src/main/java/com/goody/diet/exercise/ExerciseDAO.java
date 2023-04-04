@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.goody.diet.board.BoardFileDTO;
+import com.goody.diet.healthMachine.CategoryDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.util.Pager;
 
@@ -20,11 +21,14 @@ public class ExerciseDAO {
 //	public Long getExerciseCount(Pager pager) throws Exception{
 //		return sqlSession.selectOne(NANMESPACE+"getExerciseCount", pager);
 //	}
-//	
-//	
+
 	//List - 영상 리스트 
 	public List<ExerciseDTO> getExerciseList () throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getExerciseList");	
+	}
+	//List - 부위별 리스트
+	public List<ExerciseDTO> getExerciseBodyList(ExerciseRoleDTO exerciseRoleDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getExerciseBodyList",exerciseRoleDTO);
 	}
 	
 	//List - 머신이름 리스트 
@@ -32,8 +36,7 @@ public class ExerciseDAO {
 		return sqlSession.selectList(NAMESPACE+"getExerciseMachine");
 	}
 
-
-	//add - 영상등록 
+	//add - 영상등록 (routine) 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setExerciseAdd", exerciseDTO);
 	}
@@ -52,7 +55,7 @@ public class ExerciseDAO {
 		return sqlSession.selectList(NAMESPACE+"getExerciseBody");
 		
 	}
-	
+	// detail - 상세페이지
 	public ExerciseDTO getExerciseInfo() throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getExerciseInfo");
 	}

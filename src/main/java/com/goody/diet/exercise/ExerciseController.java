@@ -2,6 +2,7 @@ package com.goody.diet.exercise;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.healthMachine.RealHealthMachineDTO;
@@ -24,15 +28,43 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 	
+	
+	//AJAX로 데이터 저장
+//    @PostMapping("/add")
+//    public void setExerciseAdd(@RequestBody Routine routine) {
+//        exerciseService.setExerciseAdd();
+//    }
+
+	
 	//list : 이달의 루틴 테이블에 list 출력 
 	@GetMapping("routine")
-	public ModelAndView getExerciseList() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<ExerciseDTO> ar = exerciseService.getExerciseList();
-		mv.setViewName("exercise/routine");
-		mv.addObject("exercise", ar);
-		return mv;
-	}
+	public ModelAndView getCalendarList(ModelAndView mv) {
+		  List<ExerciseDTO> calendar = null;
+		  try {
+		    calendar = exerciseService.getExerciseList();
+		    mv.addObject("exerciseList", calendar);
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  }
+		  mv.setViewName("exercise/routine");
+		  return mv;
+		}
+//	@RequestMapping(value="routine", method=RequestMethod.GET)
+//	public ModelAndView getExerciseList() throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<ExerciseDTO> ar = exerciseService.getExerciseList();
+//		mv.setViewName("exercise/routine");
+//		mv.addObject("exercise", ar);
+//		return mv;
+//	}
+	
+	    
+
+	   
+
+	
+	
+	
 	//이달의 루틴영상 play page  
 	@GetMapping("video")
 	public ModelAndView getExerciseVideo(ModelAndView mv, ExerciseDTO exerciseDTO) throws Exception {
@@ -71,7 +103,7 @@ public class ExerciseController {
 		if(result>0) {
 			message="성공";
 		}
-		mv.addObject("url","./routine");
+		mv.addObject("url","./calendar");
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
 		return mv;

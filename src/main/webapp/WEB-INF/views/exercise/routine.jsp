@@ -1,20 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.util.List"%>
+<%@page import="com.goody.diet.exercise.ExerciseDTO"%>
 <!DOCTYPE html>
 <html>
  <head>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
  <title>이달의 루틴</title>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <c:import url="../template/common_css.jsp"></c:import>
  <c:import url="../template/header.jsp"></c:import>
-
- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
  </head>
- 
  <body>
+ <div id='calendar'></div>
+ 
+  <!-- modal 추가 -->
+    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="taskId" class="col-form-label">루틴 제목</label>
+                        <input type="text" class="form-control" id="routinetitle" name="routinetitle">
+                        <label for="taskId" class="col-form-label">시작 날짜</label>
+                        <input type="date" class="form-control" id="startDay" name="startDay">
+                        <label for="taskId" class="col-form-label">종료 날짜</label>
+                        <input type="date" class="form-control" id="endDay" name="endDay">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="sprintSettingModalClose">취소</button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
 
+ 
+ 
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView : 'dayGridMonth',
+      locale : 'ko', // 한국어 설정
+      headerToolbar : {
+        start : "",
+        center : "prev title next",
+        end : 'dayGridMonth,dayGridWeek,dayGridDay'
+      },
+      selectable : true,
+      droppable : true,
+      editable : true,
+      events : [
+        <c:forEach var="dto" items="${exerciseList}">
+          {
+            title : '${dto.title}',
+            start : '${dto.startDay}',
+            end : '${dto.endDay}',
+            color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+          },
+        </c:forEach>
+      ],
+      
+                      }
+                  });
+              }
+          }
+      },
+      editable: true, // false로 변경 시 draggable 작동 x 
+      displayEventTime: false // 시간 표시 x
+  });
+  calendar.render();
+
+  });
+	
+ </script>
+ 
+
+ 
+ 
+ 
  <section class="hero-wrap hero-wrap-2" style="background-image: url('/resources/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
  <div class="overlay"></div>
  <div class="container">
@@ -34,6 +115,19 @@
  <h3 class="mb-1">이달의 루틴 </h3><br><h3>Calendar</h3>
  </div>
  </div>
+ <table>
+  <thead>
+    <tr>
+      <th>일</th>
+      <th>월</th>
+      <th>화</th>
+      <th>수</th>
+      <th>목</th>
+      <th>금</th>
+      <th>토</th>
+    </tr>
+  </thead>
+ 
   
  <div class="row">
  <div class="col-md-12">
@@ -59,6 +153,42 @@
  <th>하체 올케어</th>
  </tr>
  </thead>
+ <tbody>
+ <tr>
+ <td class="text-center">
+ <strong> </strong>
+ <div class="img rounded-circle mb-2" style="background-image: "></div>
+ <a href="" class="videoId" data-day="1"><strong> </strong></a>
+ </td>
+ <td class="text-center">
+ <strong> </strong>
+ <div class="img rounded-circle mb-2" style="background-image: "></div>
+ <a href="" class="videoId" data-day="1"><strong> </strong></a>
+ </td>
+ <td class="text-center">
+ <strong> </strong>
+ <div class="img rounded-circle mb-2" style="background-image: "></div>
+ <a href="" class="videoId" data-day="1"><strong> </strong></a>
+ </td>
+ <td class="text-center">
+ <strong>1일차</strong>
+ <div class="img rounded-circle mb-2" style="background-image: url(/resources/images/leg1.png);"></div>
+ <a href="./video?num=${dto.num}" class="videoId" data-day="1"><strong>{dto.title}</strong></a>
+ </td>
+ <td class="text-center">
+ <strong class="day">2일차</strong>
+ <div class="img rounded-circle mb-2" style ="background-image: url(/resources/images/classes-2.jpg);"></div>
+ <a href="/exercise/video?days=2일차" class="videoId" data-day="2"><strong>승마살 싹뚝루틴</strong></a>
+ </td>
+ 
+ <div class="mb-3">
+				<label for="studyName" class="form-label">스터디 이름</label> 
+				<input type="text" name="studyName" class="form-control" id="studyName" placeholder="온라인 스터디 입력">
+			</div>
+ 
+ 
+ 
+ </tbody>
  
   <tbody>
   <c:forEach items="${exercise}" var="dto" varStatus="status">

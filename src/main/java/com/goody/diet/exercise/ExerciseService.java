@@ -19,7 +19,7 @@ public class ExerciseService {
 	
 	@Autowired
 	private ExerciseDAO exerciseDAO;
-	
+    
 	//@Autowired
 	//private ServletContext servletContext;
 	

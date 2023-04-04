@@ -14,6 +14,8 @@
 		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyBoardFileDTO" alias="StudyBoardFileDTO"/>	
 		
+		<typeAlias alias="Datedata" type="com.goody.diet.exercise.DateData"/>
+		
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseImgDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseRoleDTO" alias="ExerciseRoleDTO"/>
@@ -34,6 +36,5 @@
 		
 	
 	</typeAliases>
-
 
 </configuration>
