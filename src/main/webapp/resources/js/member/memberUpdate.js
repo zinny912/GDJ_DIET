@@ -42,6 +42,10 @@ $('.password-change3').click(()=>{
 })
 
 $('.password-submit').click(()=>{
+
+    //3개 중 하나라도 입력안할 경우
+    
+
     console.log($('.password-change1').val())
     $.ajax({
         type:"POST",

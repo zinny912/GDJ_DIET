@@ -131,6 +131,7 @@ public class MemberController {
 		}
 		mv.addObject("mypage",memberDTO );
 		mv.setViewName("/member/myPage");
+//		mv.setViewName("/order/orderListPage");
 		return mv;
 	}
 
@@ -207,8 +208,13 @@ public class MemberController {
 	
 	//--업데이트--
 	@GetMapping("update")
-	public String setMyPageUpdate() {
-		return "/member/updateCheck";
+	public ModelAndView setMyPageUpdate(ModelAndView mv, HttpSession session) {
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		if(memberDTO.getLoginType().equals("general")) {			
+			mv.setViewName("/member/updateCheck");
+		}else {mv.setViewName("/member/update2");}
+		
+		return mv;
 	}
 	@GetMapping("update2")
 	public String setUpdateCheck() {
