@@ -65,4 +65,12 @@ public class HealthMachineDAOTest extends MyTestCase {
 		assertNotNull(dto);
 		
 	}
+	@Test
+	public void getCategoryDetail()throws Exception{
+		HealthMachineDTO dto = new HealthMachineDTO();
+		dto.setMachineNum(62L);
+		List<CategoryDTO> ar =  healthMachineDAO.getCategoryDetail(dto);
+		System.out.println(ar.get(0).getCategoryName());
+		assertNotNull(ar);
+	}
 }
