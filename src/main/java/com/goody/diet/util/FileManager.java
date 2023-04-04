@@ -40,7 +40,7 @@ public class FileManager {
 		//4. 확장자 추가
 		//OriginalName에서 subString을 이용해서 확장자를 추출
 		name = name+"_"+multipartFile.getOriginalFilename();
-		System.out.println(name);
+//		System.out.println(name);
 		
 		//5. 파일 저장
 		file = new File(file, name);
