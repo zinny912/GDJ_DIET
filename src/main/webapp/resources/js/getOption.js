@@ -50,10 +50,10 @@ $("#optionSelect").on("click", ".op1", function (e) {
                 $("#opt2").append(select);
                 $("#optSelect2").append(response.trim())
             }
-            else{
-                if($("#btn").find('#optionDelete').length<=0)
-                $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            }
+            // else{
+            //     if($("#btn").find('#optionDelete').length<=0)
+            //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
+            // }
         },
         error: function () {
             console.log("error");
@@ -88,10 +88,10 @@ $("#optionSelect").on("click", ".op2", function (e) {
                 $("#opt" + idx).append(select);
                 $("#optSelect3").append(response.trim())
             }
-            else{
-                if($("#btn").find('#optionDelete').length<=0)
-                $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            }
+            // else{
+            //     if($("#btn").find('#optionDelete').length<=0)
+            //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
+            // }
             
         },
         error: function () {
@@ -123,10 +123,10 @@ $("#optionSelect").on("click", ".op3", function (e) {
                 $("#opt" + idx).append(select);
                 $("#optSelect4").append(response.trim())
             }
-            else{
-                if($("#btn").find('#optionDelete').length<=0)
-                $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
-            }   
+            // else{
+            //     if($("#btn").find('#optionDelete').length<=0)
+            //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
+            // }   
         },
         error: function () {
             console.log("error");
@@ -173,7 +173,7 @@ $("#optionSelect").on("click", ".op4", function (e) {
     //     }
     // })
 
-})
+});
 
 // function getOption(optSelectNum) {
 //     optName = $("#opt" + optSelectNum).attr("data-optName")

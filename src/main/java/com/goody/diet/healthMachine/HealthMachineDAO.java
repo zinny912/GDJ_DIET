@@ -18,16 +18,24 @@ public class HealthMachineDAO {
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
 
 	}
+	
 	public List<HealthMachineDTO> getHealthMachineTypeList(CategoryDTO categoryDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getHealthMachineTypeList",categoryDTO);
 	}
 	public List<HealthMachineImgDTO> getMachineImgList(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getMachineImgList", healthMachineImgDTO);
 	}
+	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getRealHealthMachineList", realHealthMachineDTO);
+	}
+	
 	public RealHealthMachineDTO getRealHealthMachineDetail(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachineDetail", realHealthMachineDTO);
 	}
 	
+	public List<CategoryDTO> getCategoryDetail(HealthMachineDTO healthMachineDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCategoryDetail", healthMachineDTO);
+	}
 	//getDetail(getOption)
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getHealthMachineDetail", healthMachineDTO);
@@ -59,7 +67,9 @@ public class HealthMachineDAO {
 	public int setOptionAdd(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setOptionAdd", realHealthMachineDTO);
 	}
-
+	public int setMachineThumnailAdd(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setMachineThumnailAdd", healthMachineImgDTO);
+	}
 	//Category
 	public List<CategoryDTO> getCategoryList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getCategoryList");
@@ -85,9 +95,15 @@ public class HealthMachineDAO {
 	public int setMachineImgDelete(HealthMachineImgDTO healthMachineImgDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setMachineImgDelete", healthMachineImgDTO);
 	}
+	public int setMachineFileDelete(Long fileNum)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setMachineFileDelete", fileNum);
+	}
 	public int setCategoryTypeDelete(CategoryDTO categoryDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setCategoryTypeDelete", categoryDTO);
 	}
-
-
+	//healthmAchine update
+	public int setHealthMachineUpdate(HealthMachineDTO healthMachineDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setHealthMachineUpdate", healthMachineDTO);
+	}
+	
 } 
