@@ -11,8 +11,7 @@
 		ORDER BY BODYNUM
 	</select>
 	
-	<select id="getBodyPartList"
-		resultMap="getBodyPartResult" parameterType="exerciseRoleDTO">
+	<select id="getBodyPartList" resultMap="getExerciseResult" parameterType="exerciseRoleDTO">
 		SELECT * FROM
 		EXERCISE EX
 		LEFT OUTER JOIN

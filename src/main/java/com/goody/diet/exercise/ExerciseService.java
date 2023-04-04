@@ -35,6 +35,10 @@ public class ExerciseService {
 		return exerciseDAO.getExerciseBody();
 	}
 	
+	public List<ExerciseDTO> getExerciseBodyList(ExerciseRoleDTO exerciseRoleDTO) throws Exception {
+		return exerciseDAO.getExerciseBodyList(exerciseRoleDTO);
+	}
+	
 	//detail - 영상출력 페이지 
 	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) throws Exception {
 		return exerciseDAO.getExerciseVideo(exerciseDTO);
