@@ -102,36 +102,40 @@ $("#submitbtn").click(function(){
 //--caregoryAddbtn---------------------
 let categoryAdd = ""
 let categoryMax=0;
-$("#categorybtn").on("click","#categoryAdd",function(e){
-    categoryAdd='<div class=""> <select class="form-select" id="categorySelect'+categorycount+'" name="categoryDTOs"></select></div>';
-    let categoryList = $("#categoryList")
-    
-    categoryList.append(categoryAdd);
-    $(this).parent
-    $.ajax({
-        type:"GET",
-        url:"./categoryAdd",
-        success:function(response){
+let categoryData=""
+let categoryList = $("#categoryList")
+$.ajax({
+    type:"GET",
+    url:"./categoryAdd",
+    success:function(response){
+        
+        if(response.trim().length>0){
+            console.log(response.trim())
+            categoryData=response.trim();
+            categoryMax=categoryList.find("#categorySelect option").length;
+            console.log("categorySelect"+categorycount+" MAX : "+categoryMax)
             
-            if(response.trim().length>0){
-                // console.log(response.trim())
-                categoryList.find("#categorySelect"+categorycount).append(response.trim())
-                categoryMax = categoryList.find("#categorySelect"+categorycount+" option").length;
-                categorycount++
-                if(categoryMax<categorycount){
-                    $("#categoryAdd").remove();
-                }
-                if($("#categorybtn").find("#categoryDelete").length==0){
-                    $("#categorybtn").append('<button type="button" class="btn btn-danger" id="categoryDelete">카테고리삭제</button>');
-                }
-               
-            }
-        },
-        error:function(){
-            console.log("error")
+           
         }
-    })
-    
+    },
+    error:function(){
+        console.log("error")
+    }
+})
+$("#categorybtn").on("click", "#categoryAdd", function (e) {
+    categoryAdd = '<div class=""> <select class="form-select" id="categorySelect' + categorycount + '" name="categoryDTOs"></select></div>';
+    categoryList.append(categoryAdd);
+    categoryList.find("#categorySelect" + categorycount).append(categoryData)
+    categorycount++
+
+    if (categoryMax < categorycount) {
+        $("#categoryAdd").remove();
+    }
+    if ($("#categorybtn").find("#categoryDelete").length == 0) {
+        $("#categorybtn").append('<button type="button" class="btn btn-danger" id="categoryDelete">카테고리삭제</button>');
+    }
+
+
 })
 
 $("#categorybtn").on("click","#categoryDelete",function(e){
@@ -207,38 +211,3 @@ $(".dropdown").on("click", ".dropdown-item", function () {
     toggleFlag=false
     toggleStatus = "";
 })
-// $(".dropdown").on("blur",".optInput",function(){
-
-//     let parent = $(this).parents("#optionSelect")
-//     parent.find('.dropdown').removeClass('show')
-//     parent.find('.dropdown-menu').removeClass('show');
-// })
-
-// $('#input1').on("focus",function(e){
-//     let $this = $(this).parents(".dropdown");
-//     $this.addClass('show');
-//     $this.find('> a').attr('aria-expanded', true);
-//     // $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
-//     $this.find('.dropdown-menu').addClass('show');
-// })
-// $('.dropdown-item').on("click",function(){
-//     let $this=$(this).parents(".dropdown");
-    
-// })
-// $("#optAdd1").hover(function(e){
-//     var $this = $(this);
-//     $this.addClass('show');
-//     $this.attr('aria-expanded',true)
-// 	$this.find('> a').attr('aria-expanded', true);
-//     $this.find('.dropdown-menu').addClass('show');
-//     $this.find('.dropdown-menu').attr('style',"position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);");
-//     $this.find('.dropdown-menu').attr('data-popper-placement',"bottom-start")
-// },function(e){
-//     var $this = $(this);
-// 	$this.removeClass('show');
-// 	$this.find('> a').attr('aria-expanded', false);
-// 	$this.find('.dropdown-menu').removeClass('show');
-		
-
-// }
-// )
