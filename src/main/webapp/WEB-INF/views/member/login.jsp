@@ -20,6 +20,13 @@
 
 </head>
 <body>
+<!-- 카카오 토큰있으면 로그인 -->
+<form hidden="" class="mx-1 mx-md-4" id="kloginForm" action="/member/kakaoLogin" method="post">
+<input type="text" hidden="" id="kid" name="id" class="form-control" placeholder="아이디"/>
+<input type="text" hidden="" id="kemail" name="email" class="form-control"/>
+<input type="text" hidden="" id="kname" name="names" class="form-control"/>
+<input type="text" hidden="" id="dummi" value="${sessionMember.id}">
+</form>
 
   <div class="container-fluid">
     <div class="row d-flex justify-content-center align-items-center h-100">

@@ -21,7 +21,7 @@ public class StudyReviewService {
 	
 	@Autowired
 	private FileManager fileManager;
-
+	
 	public List<StudyReviewDTO> getBoardList(Pager pager) throws Exception {
 		pager.makeRow();
 		pager.makeNum(studyReviewDAO.getTotalCount(pager));

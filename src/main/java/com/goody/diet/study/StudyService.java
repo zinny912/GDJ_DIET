@@ -106,10 +106,14 @@ public class StudyService {
 	
 	public int setBoardDelete(StudyDTO studyDTO, Long fileNum) throws Exception {
 		//studyFile Delete
-		int result =  studyDAO.setBoardFileDelete(fileNum);
+		int result = studyDAO.setBoardFileDelete(fileNum);
 		
 		//study Delete
 		result = studyDAO.setBoardDelete(studyDTO);
 		return result;
+	}
+	
+	public Long getStudyReivewCount(StudyDTO studyDTO) throws Exception {
+		return studyDAO.getStudyReivewCount(studyDTO);
 	}
 }

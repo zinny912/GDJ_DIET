@@ -5,8 +5,47 @@
   
  <mapper namespace="com.goody.diet.cart.CartDAO">
 	
-	<insert id="setAddToCart" parameterType="com.goody.diet.cart.CartDTO">
-		INSERT INTO CART (NUM, ID, MACHINENUM, STUDYNUM, COUNT) 
-		VALUES(#{num}, #{id}, #{machineNum}, #{studyNum}, #{count})
+	<select id="getCartList" parameterType="CartDTO" resultMap="CartDTOMap">
+		SELECT C.*,S.*,SF.*
+		FROM CART C
+			LEFT JOIN
+			STUDY S
+			ON (C.STUDYNUM = S.STUDYNUM)
+			LEFT JOIN
+			STUDYFILE SF
+			ON (S.STUDYNUM = SF.STUDYNUM) 
+		WHERE C.ID=#{id}
+		ORDER BY C.NUM ASC
+	</select>
+	
+	<insert id="setCartStudyAdd" parameterType="CartDTO">
+		INSERT INTO CART (NUM,ID,STUDYNUM)
+		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum})
 	</insert>
-</mapper>
+	
+	<delete id="setCartDelete" parameterType="Long">
+		DELETE CART WHERE NUM=#{num}
+	</delete>
+
+	<resultMap id="CartDTOMap" type="CartDTO">
+		<id column="num" property="num" />
+			<result column="id" property="id" />
+			<result column="machineNum" property="machineNum" />
+			<result column="studyNum" property="studyNum" />
+			<result column="count" property="count" />
+		<collection property="studyDTOs" ofType="StudyDTO">
+			<id column="studyNum" property="studyNum" />
+				<result column="studyName" property="studyName" />
+				<result column="studyCost" property="studyCost" />
+				<result column="studyStartPeriod" property="studyStartPeriod" />
+				<result column="studyEndPeriod" property="studyEndPeriod" />
+				<result column="studyStock" property="studyStock" />
+			<collection property="studyBoardFileDTOs" javaType="List"  ofType="StudyBoardFileDTO">
+				<id column="fileNum" property="fileNum" />
+					<result column="fileName" property="fileName" />
+					<result column="oriName" property="oriName"/>
+			</collection>
+		</collection>
+	</resultMap>
+		 
+ </mapper>

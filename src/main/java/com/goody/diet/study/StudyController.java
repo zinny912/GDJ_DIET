@@ -40,7 +40,9 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		
 		studyDTO = studyService.getBoardDetail(studyDTO);
+		Long count = studyService.getStudyReivewCount(studyDTO);
 		
+		mv.addObject("count", count);
 		mv.addObject("dto", studyDTO);
 		mv.setViewName("study/studyDetail");
 		

@@ -37,13 +37,21 @@
 						<ul class="navbar-nav m-auto">			
 			          <li class="nav-item">
 			<c:choose>
-				<c:when test="${sessionMember eq null}"><a href="/member/login" class="nav-link">로그인/가입</a>	</c:when>
-				<c:when test="${sessionMember ne null}"><a class="nav-link" onclick="kakaoLogout()" 
-				href="#" >로그아웃</a></c:when>
+				<c:when test="${sessionMember eq null}">
+					<a href="/member/login" class="nav-link">로그인/가입</a>	
+					<li class="nav-item">
+            			<a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">장바구니</a>
+        			</li>
+				</c:when>
+				<c:when test="${sessionMember ne null}">
+					<a class="nav-link" onclick="kakaoLogout()" href="#" >로그아웃</a>
+					<li class="nav-item">
+            			<a href="/cart/cartList" class="nav-link">장바구니</a>
+        			</li>
+				</c:when>
 			</c:choose>
 					  </li>
 			          <li class="nav-item"><a href="/member/myPage" class="nav-link">마이페이지</a></li>
-			          <li class="nav-item"><a href="/cart/cart" class="nav-link">장바구니</a></li>
 			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
 			        </ul>
 			      </div>
@@ -52,6 +60,26 @@
   		</div>
   		</div>
 	  </nav>
+
+<div class="modal fade" id="loginModal" tabindex="-1"
+	aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="loginModalLabel">로그인이 필요합니다</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">로그인 후 이용해주세요.</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+				<a href="/member/login" class="btn btn-primary">로그인</a>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
   
