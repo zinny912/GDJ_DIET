@@ -32,7 +32,6 @@ public class CartService {
 //	}
 	
 	public int[] setCartDelete(Long[] checkedItems) throws Exception{
-		long[] longArray = new long[checkedItems.length];
 		int[] result = new int[checkedItems.length];
 		for(int i=0; i<checkedItems.length; i++) {			
 //	        longArray[i] = Long.parseLong(checkedItems[i]);
