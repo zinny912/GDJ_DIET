@@ -38,8 +38,8 @@
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" id="id" name="id" class="form-control" placeholder="아이디"/>
                            <label class="form-label" id="idLabel" for="id"></label>
-					<div class="hstack gap-3" id="emailDiv">
-                      <input type="email" id="email" name="email" class="col form-control" placeholder="이메일"/>
+					<div  class="hstack gap-3" id="emailDiv">
+                      <input  type="email" id="email" name="email" class="col form-control" placeholder="이메일"/>
 <!--                       <button type="button" class="col-2 btn btn-secondary text-nowrap">인증</button> -->
 					</div>
                     
@@ -90,8 +90,8 @@
                     </div>
                   </div>
 
-                  <div readonly class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2"  type="checkbox" value="" id="agree" />
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" onClick="return false;" type="checkbox" value="" id="agree" />
                     <label class="form-check-label" for="agree">
                       I agree all statements in <a id="terms" href="javascript:mAgree()">Terms of service</a>
                     </label>
@@ -116,7 +116,7 @@
 
 <!-- 약관동의 모달창 -->
 <!-- Button trigger modal -->
-<button type="button" id="modalBtn" hidden class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal">
+<button type="button" id="modalBtn" hidden="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal">
 </button>
 
 <!-- Modal -->
@@ -132,6 +132,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="modalSubmit">Save changes</button>
         <button type="button" class="btn btn-secondary" id="modalCancel" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" id="modalClose" data-bs-dismiss="modal" hidden=""></button>
       </div>
     </div>
   </div>

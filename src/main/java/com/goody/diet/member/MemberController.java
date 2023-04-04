@@ -212,7 +212,7 @@ public class MemberController {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		if(memberDTO.getLoginType().equals("general")) {			
 			mv.setViewName("/member/updateCheck");
-		}else {mv.setViewName("/member/update2");}
+		}else {mv.setViewName("/member/update");}
 		
 		return mv;
 	}
@@ -253,14 +253,16 @@ public class MemberController {
 		return "/member/deliveryNew";
 	}
 	@PostMapping("deliveryAdd")
-	public ModelAndView setDeliveryAdd(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
+	public ModelAndView setDeliveryAdd(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv,HttpSession session) throws Exception {
 		
 		//member address 업데이트.(대표주소)
+		System.out.println("primaryAddress: "+primaryAddress);
 		if(primaryAddress!=null&&primaryAddress.equals("1")) {
 			MemberDTO memberDTO= new MemberDTO();
 			memberDTO.setId(deliveryDTO.getId());
 			memberDTO.setAddress(deliveryDTO.getAddress());
-			memberService.setMemberAddressUpdate(memberDTO);
+			memberDTO=memberService.setMemberAddressUpdate(memberDTO);
+			session.setAttribute("sessionMember", memberDTO);
 		}
 		
 		int result = memberService.setDeliveryAdd(deliveryDTO);
@@ -316,11 +318,12 @@ public class MemberController {
 	
 	//대표주소 변경 어떤 dto로 받을지.
 	@GetMapping("addressUpdate")
-	public ModelAndView setMemberAddressUpdate(MemberDTO memberDTO, ModelAndView mv) throws Exception {
-		int result = memberService.setMemberAddressUpdate(memberDTO);
+	public ModelAndView setMemberAddressUpdate(MemberDTO memberDTO, ModelAndView mv, HttpSession session) throws Exception {
+		session.setAttribute("sessionMember", memberService.setMemberAddressUpdate(memberDTO));
+//		int result = memberService.setMemberAddressUpdate(memberDTO);
+//		mv.addObject("result", result);
+		//ajax로 deliveryDTO중 대표 주소 정하기. 결과 return //session으로 정할께..
 		mv.setViewName("redirect:../");
-		mv.addObject("result", result);
-		//ajax로 deliveryDTO중 대표 주소 정하기. 결과 return
 		return mv;
 	}
 	@GetMapping("primaryAddress")

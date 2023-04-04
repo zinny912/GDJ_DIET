@@ -48,10 +48,10 @@
 					<li class="nav-item">
             			<a href="/cart/cartList" class="nav-link">장바구니</a>
         			</li>
+			        <li class="nav-item"><a href="/order/list" class="nav-link">마이페이지</a></li>
 				</c:when>
 			</c:choose>
 					  </li>
-			          <li class="nav-item"><a href="/order/list" class="nav-link">마이페이지</a></li>
 			          <li class="nav-item"><a href="contact" class="nav-link">search</a></li>
 			        </ul>
 			      </div>

@@ -17,7 +17,7 @@
 
 	<h3>customer</h3>
 	<table class="table">
-
+		<colgroup> <col width="35%"> <col width="65%"> </colgroup>
 	
 		<tbody>
 <tr>
@@ -44,34 +44,28 @@
 			
 		</tbody>
 	</table>
-	
+		
 	<div>
 		<h2>배송지
 			<button class="btn btn-secondary btn_delivery_change" style="margin-left: 80%;">변경</button>
 		</h2>
 	</div>
 
-	<table class="table">
-
+	<table class="table table-delivery">
+		<colgroup> <col width="35%"> <col width="65%"> </colgroup>
 	
 		<tbody>
 <tr>
-	<td>아이디
-	</td>
-	<td>XX
-	</td>
+	<td>아이디</td>
+	<td class="pay-deliver-ajax-recipient"></td>
 </tr>
 <tr>
-	<td>이메일
-	</td>
-	<td>XX
-	</td>
+	<td>배송주소</td>
+	<td class="pay-deliver-ajax-address"></td>
 </tr>
 <tr>
-	<td>휴대폰 번호
-	</td>
-	<td>XX
-	</td>
+	<td>연락처</td>
+	<td class="pay-deliver-ajax-recipientTel"></td>
 </tr>
 
 

@@ -16,6 +16,7 @@ import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.healthMachine.HealthMachineImgDTO;
 import com.goody.diet.healthMachine.RealHealthMachineDTO;
+import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
 
@@ -86,8 +87,12 @@ public class OrderController {
 	}
 	  
 	  
-	 
-	
+	@GetMapping("paymentOrder")
+	public ModelAndView getPaymentOrder(DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
+		mv.addObject("result", deliveryDTO);
+		mv.setViewName("../common/ajaxResult");
+		return mv;
+	}
 	@GetMapping("checkout")
 	public ModelAndView setOrder(ModelAndView mv) throws Exception {
 

@@ -25,7 +25,7 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-<c:if test="${popUp eq true}">
+<c:if test="${popUp eq null}">
 <c:import url="../template/header.jsp"></c:import>
 </c:if>
 <input type="hidden" id="originId" value="${sessionScope.sessionMember.id}">
@@ -33,7 +33,7 @@
 <div class="container-fluid">
 	<div class="row">
 	
-<c:if test="${popUp eq true}">	
+<c:if test="${popUp eq null}">	
 	<c:import url="./memberHeader.jsp"></c:import>
 </c:if>	
 	
@@ -49,14 +49,15 @@
 
 	    <h6 class="card-subtitle mb-2 text-muted">대표주소</h6>
 	    
-	    <p class="card-text">${prime.address}</p>
-	    <p class="card-text">${prime.recipientTel}</p>
+	    <p class="card-text">주소:	${prime.address}</p>
+	    <p class="card-text">연락처:	${prime.recipientTel}</p>
 	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}" class="card-link">수정</a>
 	    
 	  </div>
 	</div>		
 </div>
 </c:if>
+
 </c:forEach>
 
 <c:forEach items="${deliveryList}" var="i">
@@ -76,8 +77,8 @@
 
 	    <a href="./deliveryDelete?addressNum=${i.addressNum}" class="card-link">삭제</a>
 
-		<c:if test="${popUp eq true}">
-			<button class="btn btn-scondary">선택</button>
+		<c:if test="${popUp ne null}">
+			<button class="btn btn-scondary toPayment">선택</button>
 			<a href="./deliveryDelete?addressNum=${i.addressNum}" class="">선택2</a>
 		</c:if>
 	    
@@ -97,7 +98,7 @@
 	</div>
 </div>
 
-<c:if test="${popUp eq true}">
+<c:if test="${popUp eq null}">
 <c:import url="../template/footer.jsp"></c:import>
 </c:if>
 

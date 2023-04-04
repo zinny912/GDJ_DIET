@@ -103,3 +103,8 @@ console.log("클리크")
 
 // }
 
+
+//선택버튼 누르면 payment에 deliveryDTO 전달
+$('.toPayment').click(()=>{
+
+})

@@ -105,7 +105,7 @@
 <c:import url="../template/footer.jsp"></c:import>
 
 <script src="/resources/js/order/orderList.js"></script>
-<script src="/resources/js/member/memberDeleteJSON.js"></script>
+<script src="/resources/js/member/memberDelete.js"></script>
 
 
 

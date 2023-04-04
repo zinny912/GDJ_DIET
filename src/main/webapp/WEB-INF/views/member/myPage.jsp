@@ -55,7 +55,7 @@
 
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
-<script src="/resources/js/member/memberDeleteJSON.js"></script><!--kakaoLogin.js에서 del기능호출-->
+<script src="/resources/js/member/memberDelete.js"></script><!--kakaoLogin.js에서 del기능호출-->
 <script src="/resources/js/member/kakaoInfo.js"></script>
 
 </body>

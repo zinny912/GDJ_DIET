@@ -13,9 +13,9 @@
 		ON (mr.ROLENUM = r.ROLENUM)
 		WHERE m.ID=#{id}
 	</select>
-	<select id="getKakaoLogin" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT * FROM MEMBERAUTH WHERE ID=#{id}
-	</select>
+<!-- 	<select id="getKakaoLogin" parameterType="MemberDTO" resultType="MemberDTO"> -->
+<!-- 		SELECT * FROM MEMBERAUTH WHERE ID=#{id} -->
+<!-- 	</select> -->
 		
 	<select id="getEmailCheck" parameterType="MemberDTO" resultType="MemberDTO">
 		SELECT * FROM "MEMBER" WHERE EMAIL=#{email}
