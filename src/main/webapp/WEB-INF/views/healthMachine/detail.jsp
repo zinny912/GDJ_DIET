@@ -11,7 +11,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container-fluid">
-		<!-- Heading Row-->
+		
 		<div class="row gx-4 gx-lg-5 align-items-center my-5 border border-secondary-subtle">
 			<div class="col-lg-7">
 				<img class="img-fluid rounded mb-4 mb-lg-0"
@@ -62,7 +62,7 @@
 	</div>
 
 	<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
-	<a href="optionUpdate?machineNum=${dto.machineNum}">update</a>
+	<a href="update?machineNum=${dto.machineNum}">update</a>
 	
 
 
