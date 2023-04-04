@@ -25,13 +25,10 @@ public class CartController {
 	
 	@GetMapping("cartList")
 	public ModelAndView setBoardAdd(CartDTO cartDTO,HttpSession session) throws Exception{
-		System.out.println("list");
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
-		System.out.println(memberDTO.getId());
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.getCartList(cartDTO);
-		System.out.println(ar.size());
 		mv.setViewName("cart/cartList");
 		mv.addObject("list", ar);
 		return mv;
@@ -39,10 +36,8 @@ public class CartController {
 	
 	@PostMapping("cartAdd")
 	public ModelAndView setCartStudyAdd(CartDTO cartDTO,HttpSession session,HttpServletRequest request) throws Exception{
-		System.out.println("add");
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
-		System.out.println(memberDTO.getId());
 		cartDTO.setId(memberDTO.getId());
 		String studyNum = request.getParameter("studyNum");
 		
@@ -63,10 +58,6 @@ public class CartController {
 	@PostMapping("cartDelete")
 	public ModelAndView setCartDelete(Long[] checkedItems) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("test");
-		for (Long long1 : checkedItems) {			
-			System.out.println(long1);
-		}
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
 		int[] result = cartService.setCartDelete(checkedItems);
 			
@@ -79,7 +70,6 @@ public class CartController {
 	public ModelAndView setCartPayment(CartDTO cartDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
-		System.out.println(memberDTO.getId());
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.getCartList(cartDTO);
 		mv.setViewName("cart/payment");
