@@ -65,6 +65,8 @@
 	<select id="getDeliveryPage" parameterType="MemberDTO" resultType="com.goody.diet.member.DeliveryDTO">
 		SELECT * FROM DELIVERY WHERE ID=#{id}
 	</select>
+
+	
 	<update id="setdeliveryUpdate" parameterType="com.goody.diet.member.DeliveryDTO">
 		UPDATE DELIVERY SET ADDRESS=#{address}, RECIPIENT=#{recipient}, RECIPIENTTEL=#{recipientTel} WHERE ADDRESSNUM=#{addressNum}
 	</update>
