@@ -335,7 +335,7 @@ public class MemberController {
 		MemberDTO memberCheck=(MemberDTO)httpSession.getAttribute("sessionMember");
 //		System.out.println("보낸pw: "+memberDTO.getPw());
 		mv.setViewName("member/ajaxResult");
-		if(memberCheck.getPw().equals(memberDTO.getPw())) { //로그인안해서 null보내면 오류
+		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())   ) { //로그인안해서 null보내면 오류
 //			System.out.println("마자마자");
 			mv.addObject("result", 1);
 			
