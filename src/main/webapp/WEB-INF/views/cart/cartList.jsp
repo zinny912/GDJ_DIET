@@ -42,7 +42,7 @@
 							var="studyFileDTO">
 							<tr class="cart__list__detail">
 								<td style="width: 2%;"><input type="checkbox"
-									value="${dto.num}" class="checks" name="checkedItems"></td>
+									value="${dto.num}" class="checks" name="checkedItems" id="checkboxs"></td>
 								<td style="width: 13%;"><img
 									src="../resources/upload/study/${studyFileDTO.fileName}"
 									alt="magic mouse"></td>
@@ -91,9 +91,9 @@
         </table>
        
         <div class="cart__mainbtns">
-        	<!-- <form action="/cart/payment" method="get"> -->
+        	<c:if test="${list ne null}">
             <button class="cart__bigorderbtn right btn btn-primary" type="submit" onclick="checkOrder()">주문하기</button>
-        	<!-- </form> -->
+        	</c:if>
         </div>
     </section>
 
@@ -130,25 +130,28 @@ for(let i=0;i<checks.length;i++){
 	}
 } */
 function checkOrder(){
+		let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+	 	 if (checkboxes.length === 0) {
+	 	   alert("주문할 스터디를 선택해주세요.");
+	 	   return false;
+		  } else {
 	    let checkedItems = [];
-	    $('input[name="checkedItems"]:not(:checked)').each(function() {
-	      checkedItems.push($(this).val());
-	    });
-	    
-	    $.ajax({
-	    	  type: 'POST',
-	 	      url: './cartDelete',
-	 	      traditional:true,
-	 	      data: { checkedItems: checkedItems },
-	 	      success: function() {
-	 	        location.href='/cart/payment'
-	 	        // 처리 결과에 따라 적절한 동작 수행
-	 	      },
-	 	      error: function() {
-	 	    	 location.href='/cart/payment'
-	 	        // 에러 처리
-	 	      }
-	 	    });
+	    let uncheckedCheckboxes = $('input[name="checkedItems"]:not(:checked)');
+	    if (uncheckedCheckboxes.length > 0) {
+	    	uncheckedCheckboxes.each(function() {
+	   	      checkedItems.push($(this).val());
+	   	    });
+	   	    
+	   	    $.ajax({
+	   	    	  type: 'POST',
+	   	 	      url: './cartDelete',
+	   	 	      traditional:true,
+	   	 	      data: { checkedItems: checkedItems },
+	   	 	    });
+	    }
+	    location.href='/cart/payment'
+	 	   return true;
+		  }
 	}
 	
 function checkDelete(){
