@@ -11,26 +11,26 @@ $('.btn_delivery_change').click(()=>{
 
 //기본적으로 호출(처음엔 대표주소), delivery에서 선택누르면 return값 대입.
 deliveryCall()
-function deliveryCall(){}
-console.log('go to newPaymentOrder')
-$.ajax({
-    type:"GET",
-    url:"/order/newPaymentOrder", 
-    data:{
-        // addressNum:
-        // address:
-        // recipient:
-        // recipientTel:
-    },
-    success:(res)=>{
-        console.log(res.trim())
-        $('.pay-deliver-ajax').html(res.trim())
-        
-        
-    },
-    error:()=>{}
-})
-
+function deliveryCall(){
+    console.log('go to newPaymentOrder')
+    $.ajax({
+        type:"GET",
+        url:"/order/newPaymentOrder", 
+        data:{
+            // addressNum:
+            // address:
+            // recipient:
+            // recipientTel:
+        },
+        success:(res)=>{
+            console.log(res.trim())
+            $('.pay-deliver-ajax').html(res.trim())
+            
+            
+        },
+        error:()=>{}
+    })
+}
 
 function openChild() {
     // window.name = "부모창 이름"; 

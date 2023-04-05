@@ -47,7 +47,7 @@
 <div class="col-12">
 	<div class="card">
 	  <div class="card-body">
-	  	<div hidden="" class="addressNum" data-id="${prime.addressNum}"></div>
+	  	<div hidden="" class="addressNum" data-addressNum="${prime.addressNum}"></div>
 	    <h5 class="card-title recipient" data-recipient="${prime.recipient}">${prime.recipient}</h5>
 
 	    <h6 class="card-subtitle mb-2 text-muted">대표주소</h6>
