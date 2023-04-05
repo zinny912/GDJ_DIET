@@ -16,9 +16,18 @@ public class CartDAO {
 		return sqlSession.selectList(NAMESPACE+"getCartList", cartDTO);
 	}
 	
+	
 	public int setCartStudyAdd(CartDTO cartDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCartStudyAdd", cartDTO);
 	}
+//	태현
+	public int setCartMachineAdd(CartDTO cartDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setCartMachineAdd",cartDTO);
+	}
+	public int setCartMachineCount(CartDTO cartDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setCartMachineCount", cartDTO);
+	}
+	
 	
 	public int setCartDelete(Long item) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setCartDelete", item);

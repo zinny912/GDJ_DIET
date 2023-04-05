@@ -92,9 +92,9 @@ public class OrderService {
 		//checked된 cartDTO -> orderDetailDTO 복사
 		for(CartDTO cartDTO:cartDTOs) {
 			OrderDetailDTO orderDetailDTO = new OrderDetailDTO();			
-			if(cartDTO.getMachineNum()!=null) {
-				orderDetailDTO.setMachineNum(cartDTO.getMachineNum());
-			}
+//			if(cartDTO.getMachineNum()!=null) {
+//				orderDetailDTO.setMachineNum(cartDTO.getMachineNum());
+//			}
 			if(cartDTO.getStudyNum()!=null) {
 				orderDetailDTO.setStudyNum(cartDTO.getStudyNum());			
 			}			
