@@ -17,7 +17,30 @@
 		WHERE C.ID=#{id}
 		ORDER BY C.NUM ASC
 	</select>
+	<!-- 태현 리스트 machine에선 saleprice,image필요-->
+	<!-- id : cart-N   /cart : realMachine / machinenum: realmachine -N -->
+	<!-- &lt; 는 < ///  &gt;는 >  -->
+	<select id="getCartMachineList" parameterType="CartDTO" resultMap="CartMachineMap">
+	SELECT * FROM cart c
+	LEFT OUTER JOIN
+	REALHEALTHMACHINE r 
+	on(c.REALMACHINENUM=r.REALMACHINENUM)
+	LEFT OUTER JOIN 
+	HEALTHMACHINE h 
+	on(r.MACHINENUM=h.MACHINENUM)
+	LEFT OUTER JOIN 
+	(
+			SELECT * FROM (
+			SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC)
+			ranknum
+			FROM MACHINEIMG m2
+			) WHERE ranknum=1) t
+	on(h.MACHINENUM=t.machinenum)
+	WHERE c.ID =#{id} AND c.status &lt; 2
 	
+	</select>
+	
+	<!--  -->
 	<insert id="setCartStudyAdd" parameterType="CartDTO">
 		INSERT INTO CART (NUM,ID,STUDYNUM)
 		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum})
@@ -25,8 +48,8 @@
 	
 	<!-- 태현 -->
 	<insert id="setCartMachineAdd" parameterType="CartDTO">
-		insert into Cart(num,id,studynum,realmachinenum, COUNT)
-		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum,jdbcType=INTEGER},#{realMachineNum,jdbcType=INTEGER},#{count})
+		insert into Cart(num,id,studynum,realmachinenum, COUNT,cartprice)
+		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum,jdbcType=INTEGER},#{realMachineNum,jdbcType=INTEGER},#{count},#{cartPrice})
 	</insert>
 	<update id="setCartMachineCount" parameterType="CartDTO">
 	UPDATE CART SET "COUNT"="COUNT"+1 WHERE REALMACHINENUM=#{realMachineNum}
@@ -35,7 +58,46 @@
 	<delete id="setCartDelete" parameterType="Long">
 		DELETE CART WHERE NUM=#{num}
 	</delete>
-
+<!--태현  -->
+	<resultMap type="CartDTO" id="CartMachineMap">
+	<id column="num" property="num" />
+			<result column="id" property="id" />
+			<result column="REALMACHINENUM" property="realMachineNum" />
+			<result column="studyNum" property="studyNum" />
+			<result column="count" property="count" />
+			<result column="status" property="status"/>
+			<result column="cartprice" property="cartPrice"/>
+			<association property="realHealthMachineDTO" javaType="RealHealthMachineDTO" >
+			<id column="REALMACHINENUM" property="realMachineNum"/>
+			<result column="MACHINENUM" property="machineNum"/>
+			<result column="stock" property="machineNum"/>
+			<result column="optName1" property="optName1"/>
+			<result column="optid1" property="optId1"/>
+			<result column="optName2" property="optName2"/>
+			<result column="optid2" property="optId2"/>
+			<result column="optName3" property="optName3"/>
+			<result column="optid3" property="optId3"/>
+			<result column="optName4" property="optName4"/>
+			<result column="optid4" property="optId4"/>
+			</association>
+			<association property="healthMachineDTO" javaType="HealthMachineDTO">
+			<id column="MACHINENUM" property="machineNum"/>
+			<result column="machinescore" property="machineScore"/>
+			<result column="price" property="price"/>
+			<result column="saleprice" property="salePrice"/>
+			<result column="option1" property="option1"/>
+			<result column="option2" property="option2"/>
+			<result column="option3" property="option3"/>
+			<result column="option4" property="option4"/>
+				<collection property="healthMachineImgDTOs" javaType="list"
+				ofType="HealthMachineImgDTO">
+				<id column="fileNum" property="fileNum" />
+				<result column="FILENAME" property="fileName" />
+				<result column="ORINAME" property="oriName" />
+				</collection>
+			</association>
+	</resultMap>
+<!-- -->
 	<resultMap id="CartDTOMap" type="CartDTO">
 		<id column="num" property="num" />
 			<result column="id" property="id" />

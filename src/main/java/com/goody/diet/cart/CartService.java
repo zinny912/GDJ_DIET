@@ -9,6 +9,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import com.goody.diet.healthMachine.HealthMachineDAO;
+import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.MemberDTO;
 
@@ -22,7 +23,12 @@ public class CartService {
 	HealthMachineDAO helHealthMachineDAO;
 	
 	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
-		return cartDAO.getCartList(cartDTO);
+		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
+		List<CartDTO> machines = cartDAO.getCartMachineList(cartDTO);
+		for(CartDTO dto:machines) {
+			ar.add(dto);
+		}
+		return ar;
 	}
 	
 	public int setCartStudyAdd(CartDTO cartDTO) throws Exception{
@@ -34,10 +40,14 @@ public class CartService {
 		
 		realHealthMachineDTO= helHealthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
 		//realMachineNum
+		HealthMachineDTO healthMachineDTO= helHealthMachineDAO.getHealthMachineDetail(realHealthMachineDTO);
+//		System.out.println(healthMachineDTO.getPrice());
+		cartDTO.setCartPrice(healthMachineDTO.getSalePrice());
+		cartDTO.getCartPrice();
 		cartDTO.setRealMachineNum(realHealthMachineDTO.getRealMachineNum());
 		
-		//
-		List<CartDTO> dtos = cartDAO.getCartList(cartDTO);
+		//중복이면 count+1
+		List<CartDTO> dtos = cartDAO.getCartMachineList(cartDTO);
 		for(CartDTO dto : dtos) {
 			if(cartDTO.getRealMachineNum()==dto.getRealMachineNum()) {
 				return cartDAO.setCartMachineCount(cartDTO);
