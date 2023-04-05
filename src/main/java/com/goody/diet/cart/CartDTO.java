@@ -8,6 +8,7 @@ import com.goody.diet.study.StudyDTO;
 
 public class CartDTO {
 
+
 	private Long num;
 	private String id;
 	private Long realMachineNum;
@@ -15,7 +16,10 @@ public class CartDTO {
 	private Long count;
 	private Long status;
 	private Long cartPrice;
-	
+
+	private RealHealthMachineDTO realHealthMachineDTO;
+	private HealthMachineDTO healthMachineDTO;
+
 	private List<StudyDTO> studyDTOs;
 
 	public Long getNum() {
@@ -104,31 +108,5 @@ public class CartDTO {
 	public void setStudyDTOs(List<StudyDTO> studyDTOs) {
 		this.studyDTOs = studyDTOs;
 	}
-	public List<HealthMachineDTO> getHealthMachineDTOs() {
-		return healthMachineDTOs;
-	}
-	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
-		this.healthMachineDTOs = healthMachineDTOs;
-	}
-	public List<RealHealthMachineDTO> getRealHealthMachineDTOs() {
-		return realHealthMachineDTOs;
-	}
-	public void setRealHealthMachineDTOs(List<RealHealthMachineDTO> realHealthMachineDTOs) {
-		this.realHealthMachineDTOs = realHealthMachineDTOs;
-	}
-	public Long getStatus() {
-		if(this.status==null || this.status<1) {
-			this.status=0L;
-		}
-		return status;
-	}
-	public void setStatus(Long status) {
-		this.status = status;
-	}
-	public Long getCartPrice() {
-		return cartPrice;
-	}
-	public void setCartPrice(Long cartPrice) {
-		this.cartPrice = cartPrice;
-	}
+
 	}

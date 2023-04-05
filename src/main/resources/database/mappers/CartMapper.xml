@@ -37,6 +37,7 @@
 			) WHERE ranknum=1) t
 	on(h.MACHINENUM=t.machinenum)
 	WHERE c.ID =#{id} AND c.status &lt; 2
+	</select>
 	
 	<select id="getPaymentList" parameterType="CartDTO" resultMap="CartDTOMap">
 		SELECT C.*,S.*,SF.*

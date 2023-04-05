@@ -15,29 +15,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-    <section class="cart">
-        <div class="cart__information">
-            <ul>
-                <li>얼리버드는 매월 마지막 날, 오후 8시 (4시간)</li>
-                <li>얼리버드는 선착순이므로, 결제 도중 마감 될 수 있습니다.</li>
-                <li>${sessionMember.id}님의 장바구니</li>
-            </ul>
-        </div>
-        
-        <table class="cart__list">
-                <thead>
-                    <tr>
-                        <td><input type="checkbox" value="" id="checkAll"></td>
-                        <td colspan="2">상품정보</td>
-                        <td>상품금액</td>
-                        <td>배송비</td>
-                    </tr>
-                </thead>
-                <tbody>
-                	
-                	<c:set var="totalCost" value="0" />
-	<c:import url="../template/header.jsp"></c:import>
-
+]
 	<section class="cart">
 		<div class="cart__information">
 			<ul>
@@ -97,23 +75,7 @@
 				</tfoot>
 
 		 </table>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3">
-						<%-- <form action="./cartDelete" id="frm" method="post">
-                        	<c:forEach items="${list}" var="dto">
-								<input type="hidden" name="num" value="${dto.num}">
-							</c:forEach> --%>
-						<button id="delete" type="submit" class="cart__list__optionbtn"
-							onclick="checkDelete()">스터디 삭제하기</button> <!-- </form> -->
-					</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tfoot>
-		</table>
+			
 		
 		<!-- machineCart -->
 		<table class="cart__list">

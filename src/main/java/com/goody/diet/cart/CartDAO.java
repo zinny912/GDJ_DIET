@@ -33,6 +33,10 @@ public class CartDAO {
 		return sqlSession.delete(NAMESPACE+"setCartUnCheckUpdate", item);
 	}
 //	태현
+	public List<CartDTO> getCartMachineList(CartDTO cartDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCartMachineList", cartDTO);
+	}
+	
 	public int setCartMachineAdd(CartDTO cartDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCartMachineAdd",cartDTO);
 	}
