@@ -17,6 +17,7 @@
 		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyBoardFileDTO" alias="StudyBoardFileDTO"/>	
 		
+		<typeAlias type="com.goody.diet.exercise.RoutineDTO" alias="RoutineDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseImgDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseRoleDTO" alias="ExerciseRoleDTO"/>
@@ -30,7 +31,6 @@
 		<typeAlias type="com.goody.diet.healthMachine.RealHealthMachineDTO" alias="RealHealthMachineDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.CategoryDTO" alias="CategoryDTO"/>
 		
-		<typeAlias type="com.goody.diet.cart.CartDTO" alias="CartDTO"/>
 
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
   	  	<typeAlias type="java.lang.Long" alias="Long" />
@@ -38,6 +38,5 @@
 		
 	
 	</typeAliases>
-
 
 </configuration>

@@ -3,7 +3,7 @@ package com.goody.diet.exercise;
 public class ExerciseRoleDTO {
 	
 	private Long num;
-	private Long studyNum;
+	private Long bodyNum;
 	
 	
 	
@@ -13,11 +13,11 @@ public class ExerciseRoleDTO {
 	public void setNum(Long num) {
 		this.num = num;
 	}
-	public Long getStudyNum() {
-		return studyNum;
+	public Long getBodyNum() {
+		return bodyNum;
 	}
-	public void setStudyNum(Long studyNum) {
-		this.studyNum = studyNum;
+	public void setBodyNum(Long bodyNum) {
+		this.bodyNum = bodyNum;
 	}
 	
 	

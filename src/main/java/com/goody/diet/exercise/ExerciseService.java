@@ -1,12 +1,14 @@
 package com.goody.diet.exercise;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goody.diet.board.BoardFileDTO;
@@ -19,7 +21,7 @@ public class ExerciseService {
 	
 	@Autowired
 	private ExerciseDAO exerciseDAO;
-	
+    
 	//@Autowired
 	//private ServletContext servletContext;
 	
@@ -35,6 +37,10 @@ public class ExerciseService {
 		return exerciseDAO.getExerciseBody();
 	}
 	
+	public List<ExerciseDTO> getExerciseBodyList(ExerciseRoleDTO exerciseRoleDTO) throws Exception {
+		return exerciseDAO.getExerciseBodyList(exerciseRoleDTO);
+	}
+	
 	//detail - 영상출력 페이지 
 	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) throws Exception {
 		return exerciseDAO.getExerciseVideo(exerciseDTO);
@@ -48,17 +54,18 @@ public class ExerciseService {
 			if (healthMachineDTOs != null && !healthMachineDTOs.isEmpty()) {
 				exerciseDTO.setMachineName(healthMachineDTOs.get(0).getMachineName());
 				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
+				System.out.println("machineNum : " + exerciseDTO.getMachineNum());
 				System.out.println("machineName : " + exerciseDTO.getMachineName());
-				
 			}
+	
 		}
-		
 		return exerciseDTOs;
 	}
-
+	
 	// add 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session, HealthMachineDTO healthMachineDTO) throws Exception{
 		int result = exerciseDAO.setExerciseAdd(exerciseDTO);
+		
 		String realPath = session.getServletContext().getRealPath("resources/routine/");
 		System.out.println(realPath);
 		for(MultipartFile multipartFile : multipartFiles) {
@@ -79,5 +86,6 @@ public class ExerciseService {
 		}
 		return result;
 	}
+
 	
 }

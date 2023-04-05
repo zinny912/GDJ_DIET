@@ -6,7 +6,7 @@
 <html>
   <head>
     
-    <title>이달의 루틴 ${dto.days}</title>
+    <title>이달의 루틴 ${dto.startDay.date}</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,8 +19,9 @@
 
 	   <section class="ftco-section">
           <div class="col-md-12 ftco-animate text-center">
-            <h1 class="mb-3 bread" id='days' data-day-days='${dto.days}'>루틴 ${dto.days} </h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="/exercise/routine">이달의 루틴</a></span> <span>${dto.days}</span></p>
+            <h1 class="mb-3 bread" id='days' data-day-days='${dto.startDay.date}'>루틴 ${dto.startDay.date}일차</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/exercise/routine">이달의 루틴</a></span> <span>${dto.startDay.date}일차</span></p>
+            
           </div>
  	  </section>
   
@@ -28,7 +29,7 @@
 <div class = "container-fluid">
 	<div class = "row mx-auto ">
 		<div class="form-group">            	
-				<div class="video-container">
+				<div class="video-container" id="videoId" data-video-id='${dto.videoId}'>
 				<div id="player"></div>
 			    
        			</div>
@@ -40,7 +41,7 @@
   
 <section class="ftco-section">
           <div class="col-md-12 ftco-animate text-center">
-            <h1 class="mb-3 bread">루틴 ${dto.days}</h1> 
+            <h1 class="mb-3 bread">루틴 ${dto.startDay.date}일차</h1> 
             <img id=thumbsup src="../resources/images/thumbsup.png" width="200px" height="200px" alt="">
           </div>
 </section>

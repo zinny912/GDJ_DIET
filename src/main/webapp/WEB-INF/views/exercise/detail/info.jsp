@@ -26,7 +26,7 @@
 	
     <section id="box"> <!--레이아웃-->
                
-                <p class="maintitle" id="detail1" name="detail1">${dto.detail1}</p> 
+                <p class="maintitle" id="detailTitle" name="detailTitle">${dto.detailTitle}</p> 
 				<c:forEach items="{machineList}" var="dto">
 				<button id="machine">${dto.machineName}</button>
 				</c:forEach>
