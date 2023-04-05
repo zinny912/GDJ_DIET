@@ -2,7 +2,7 @@
 
 
 function modalMemberDelete(){
-
+    kakaoDelete()
     $.ajax({
         type:"POST",
         url:"/member/delete",
@@ -10,8 +10,9 @@ function modalMemberDelete(){
             
         },
         success:function(res){
+            console.log(res.trim())
             if(res.trim()>0){
-                kakaoDelete()
+                
                 console.log("res: "+res)
                 $('#modalClose').click()
                 location.href="/"
