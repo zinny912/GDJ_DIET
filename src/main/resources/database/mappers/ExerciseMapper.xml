@@ -4,20 +4,41 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.goody.diet.exercise.ExerciseDAO">
+   
+  <select id="getBodyList" resultType="exerciseRoleDTO">
+		SELECT * FROM EXERCISEROLE
+		ORDER BY BODYNUM
+	</select>
+	
+	<select id="getBodyPartList" resultMap="getExerciseResult" parameterType="exerciseRoleDTO">
+		SELECT * FROM
+		EXERCISE EX
+		LEFT OUTER JOIN
+		(
+		SELECT * FROM (
+		SELECT
+		EXI.*,rank()over(PARTITION BY NUM ORDER BY FILENUM ASC) RANKNUM
+		FROM EXERCISEIMG EXI
+		) WHERE RANKNUM=1) B
+		on(EX.NUM=B.NUM)
+		INNER JOIN
+		BODY B
+		ON(B.NUM=EX.NUM)
+		WHERE
+		B.BODYNUM=#{bodyNum};
+	</select>
  
-<!-- routine에서 일차별로 영상 가져오기 -->	
+<!-- 영상 가져오기 -->	
 	<select id="getExerciseList" resultMap="getExerciseResult">
 	SELECT * FROM EXERCISE EX
 	LEFT OUTER JOIN 
 	EXERCISEIMG EXI
 	ON(EX.NUM=EXI.NUM)
-	ORDER BY EX.NUM
+	ORDER BY EXI.FILENUM
 	</select>
 	<resultMap type="ExerciseDTO" id="getExerciseResult">
 		<id column="NUM" property="num"/>
 		<result column="machineNum" property="machineNum"/>
-		<result column="title" property="title"/>
-		<result column="days" property="days"/>
 		<result column="urlId" property="urlId"/>
 		<result column="power" property="power"/>
 		<result column="bodyPart" property="bodyPart"/>
@@ -26,8 +47,7 @@
 		<result column="info" property="info"/>
 		<result column="coordinate" property="coordinate"/>
 		<result column="highLight" property="highLight"/>
-		
-		
+
 		<collection property="boardFileDTOs" javaType="list" ofType="BoardFileDTO">
 			<id column="fileNum" property="fileNum"/>
 	  			<result column="fileName" property="fileName"/>
@@ -35,12 +55,6 @@
 		</collection>
 	</resultMap>
 	
-
-<!-- video링크 -->
-	<select id="getExerciseVideo" parameterType="ExerciseDTO" resultType="ExerciseDTO">
-		SELECT * FROM EXERCISE WHERE NUM = #{num}
-	</select>
-
 	<select id="getExerciseBody"  resultMap="getExerciseResult">
 		SELECT DISTINCT * FROM EXERCISE EX
 		LEFT OUTER JOIN
@@ -50,34 +64,33 @@
 		WHERE NUM=#{num}
 	
 	</select> 
-
+	
+ 
   	<insert id="setExerciseAdd" parameterType="ExerciseDTO">
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 		  			SELECT EXERCISE_SEQ.NEXTVAL FROM DUAL
 	  	</selectKey>
-		INSERT INTO EXERCISE (NUM, MACHINENUM, TITLE, DAYS, URLID, POWER, BODYPART, TIME, DETAIL1)
-		VALUES(#{num}, #{machineNum}, #{title}, #{days}, #{urlId}, #{power}, #{bodyPart}, #{time}, #{detail1})
+		INSERT INTO EXERCISE (NUM, MACHINENUM, URLID, POWER, BODYPART, TIME, detailTitle, COORDINATE, INFO)
+		VALUES(#{num}, #{machineNum}, #{urlId}, #{power}, #{bodyPart}, #{time}, #{detailTitle}),#{coordinate}, #{info})
 		</insert>
 		<insert id="setExerciseImg" parameterType="BoardFileDTO">
 			INSERT INTO EXERCISEIMG(FILENUM, NUM, FILENAME, ORINAME)
 			VALUES(IMG_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
 		</insert>
 		<select id = "getExerciseMachine" resultMap="getHealthMachineResult">
-			SELECT H.MACHINENUM, H.MACHINENAME FROM HEALTHMACHINE H 
+			SELECT DISTINCT * FROM HEALTHMACHINE H 
 			LEFT OUTER JOIN
 			EXERCISE EX
 			ON (EX.MACHINENUM = H.MACHINENUM)
 		</select>
 		<resultMap type="ExerciseDTO" id="getHealthMachineResult">
 			<id column="num" property="num"/>
-			<result column="machineNum" property="machineNum"/>
-			<result column="title" property="title"/>
-			<result column="days" property="days"/>
+			<result column="machineNum" property="machineNum"/> 
 			<result column="urlId" property="urlId"/>
 			<result column="power" property="power"/>
 			<result column="bodyPart" property="bodyPart"/>
 			<result column="time" property="time"/>
-			<result column="detail1" property="detail1"/>
+			<result column="detailTitle" property="detailTitle"/>
 			<result column="highLight" property="highLight"/>
 			<result column="info" property="info"/>
 			
@@ -86,8 +99,7 @@
 		  			<result column="machineName" property="machineName"/>
 			</collection>
 		</resultMap> 
-	
-	
+
 	<delete id="setExercsieDelete" parameterType="ExerciseDTO">
   		DELETE EXERCISE WHERE NUM=#{num}
   	</delete>
@@ -101,8 +113,7 @@
   	<select id="getExerciseInfo" parameterType="ExerciseDTO" resultType="ExerciseDTO">
   		SELECT * FROM EXERCISE
   	</select>
-  	
-	
+ 	
  </mapper>
 <!-- detail : urlId만 뽑아오기-->
 	<!-- <select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">

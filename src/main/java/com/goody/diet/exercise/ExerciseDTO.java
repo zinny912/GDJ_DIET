@@ -9,8 +9,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 	
 	private Long num;
 	private Long machineNum;
-	private String title;
-	private String days;
 	private String urlId;
 	private Long power;
 	private String bodyPart;
@@ -20,6 +18,8 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private String info;
 	private String coordinate;
 	
+	private List<BoardFileDTO> boardFileDTOs;
+	private List<HealthMachineDTO> healthMachineDTOs;
 	
 	public String getCoordinate() {
 		return coordinate;
@@ -45,8 +45,7 @@ public class ExerciseDTO extends HealthMachineDTO {
 	public void setDetailTitle(String detailTitle) {
 		this.detailTitle = detailTitle;
 	}
-	private List<BoardFileDTO> boardFileDTOs;
-	private List<HealthMachineDTO> healthMachineDTOs;
+	
 	
 	
 	public List<HealthMachineDTO> getHealthMachineDTOs() {
@@ -92,18 +91,7 @@ public class ExerciseDTO extends HealthMachineDTO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getDays() {
-		return days;
-	}
-	public void setDays(String days) {
-		this.days = days;
-	}
+	
 	public String getUrlId() {
 		return urlId;
 	}
