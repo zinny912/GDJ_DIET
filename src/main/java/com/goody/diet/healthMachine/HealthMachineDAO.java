@@ -40,6 +40,13 @@ public class HealthMachineDAO {
 	public HealthMachineDTO getHealthMachineDetail(HealthMachineDTO healthMachineDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getHealthMachineDetail", healthMachineDTO);
 	}
+	public HealthMachineDTO getHealthMachineDetail(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		HealthMachineDTO healthMachineDTO = new HealthMachineDTO();
+		healthMachineDTO.setMachineNum(realHealthMachineDTO.getMachineNum());
+		
+		return sqlSession.selectOne(NAMESPACE+"getHealthMachineDetail", healthMachineDTO);
+	}
+	
 	public List<RealHealthMachineDTO> getOption1(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
 
 		return sqlSession.selectList(NAMESPACE+"getOption1", realHealthMachineDTO);
