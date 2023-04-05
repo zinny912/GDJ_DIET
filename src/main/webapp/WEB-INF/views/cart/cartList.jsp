@@ -17,6 +17,7 @@
 <c:import url="../template/header.jsp"></c:import>
 ]
 	<section class="cart">
+	<c:set var="totalCost" value="0" />
 		<div class="cart__information">
 			<ul>
 				<li>얼리버드는 매월 마지막 날, 오후 8시 (4시간)</li>
@@ -89,14 +90,13 @@
 			</thead>
 			<tbody>
 
-				<%-- <c:set var="totalCost" value="0" /> --%>
-
+				 <c:set var="machineTotalCost" value="0" />
 				<c:forEach items="${list}" var="dto">
 					<c:if test="${not empty dto.realMachineNum }">
 						<%-- <c:forEach items="${dto.studyDTOs}" var="studyDTO"> --%>
 							<c:forEach items="${dto.healthMachineDTO.healthMachineImgDTOs}"
 								var="machineFileDTO">
-								<tr class="cart__list__detail">
+								<tr class="cart__list__machine__detail">
 									<td style="width: 2%;"><input type="checkbox"
 										value="${dto.num}" class="checks" name="checkedItems"
 										id="checkboxs"></td>
@@ -104,8 +104,8 @@
 										src="/resources/images/${dto.healthMachineDTO.healthMachineImgDTOs[0].fileName}"
 										alt="magic mouse"></td>
 									<td style="width: 41%;"><span
-										class="cart__list__machineName">${dto.healthMachineDTO.machineName}</span>
-										<div class=" price">${dto.cartPrice}원</div>
+										class="cart__list__studyname">${dto.healthMachineDTO.machineName}</span>
+										
 										<div class=" price">옵션 정보</div>
 										<c:if test="${not empty dto.healthMachineDTO.option1 }">
 										<div>${dto.healthMachineDTO.option1 } : ${dto.realHealthMachineDTO.optName1}</div>
@@ -121,7 +121,7 @@
 										</c:if>
 										
 									</td>
-									<td style="width: 29%;"><span class="price">원</span></td>
+									<td style="width: 29%;"><span class="price">${dto.cartPrice}원</span></td>
 									<td style="width: 29%;">무료</td>
 								</tr>
 								<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />

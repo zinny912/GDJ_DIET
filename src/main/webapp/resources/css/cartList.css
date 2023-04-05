@@ -123,6 +123,16 @@ body {
     font-size: 12px;
     margin-top: 5px;
   }
+  /* 태현 */
+  .cart__list__machine__detail :nth-child(3),
+  .cart__list__machine__detail :nth-child(4),
+  .cart__list__machine__detail :nth-child(5),
+  .cart__list__machine__detail :nth-child(6){
+    border-left: 2px solid whitesmoke;
+    text-align: center;
+  }
+
+  
   
   .price {
     font-weight: bold;
