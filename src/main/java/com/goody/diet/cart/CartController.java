@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.healthMachine.HealthMachineDTO;
+import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
 
@@ -63,7 +65,17 @@ public class CartController {
 		mv.setViewName("redirect:./cartList");
 		return mv;
 	}
-	
+	//태현
+	@PostMapping("cartMachineAdd")
+	public ModelAndView setCartMachineAdd(ModelAndView mv,CartDTO cartDTO,RealHealthMachineDTO realHealthMachineDTO, HttpSession session)throws Exception{
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		cartDTO.setId(memberDTO.getId());
+		int result = cartService.setCartMachineAdd(cartDTO, realHealthMachineDTO, session);
+		mv.addObject("result",result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+		
+	}
 	@PostMapping("cartDelete")
 	public ModelAndView setCartDelete(Long[] checkedItems) throws Exception{
 		ModelAndView mv = new ModelAndView();

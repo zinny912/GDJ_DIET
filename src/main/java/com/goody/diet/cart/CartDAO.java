@@ -24,7 +24,9 @@ public class CartDAO {
 	public int setCartMachineAdd(CartDTO cartDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCartMachineAdd",cartDTO);
 	}
-	
+	public int setCartMachineCount(CartDTO cartDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setCartMachineCount", cartDTO);
+	}
 	
 	
 	public int setCartDelete(Long item) throws Exception{

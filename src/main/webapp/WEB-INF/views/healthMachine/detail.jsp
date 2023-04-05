@@ -46,10 +46,10 @@
 				<br>
 				<form id="frm">
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
-					<input type="hidden" id="optId1" name="optId1"> <input
+					<!-- <input type="hidden" id="optId1" name="optId1"> <input
 						type="hidden" id="optId2" name="optId2"> <input
 						type="hidden" id="optId3" name="optId3"> <input
-						type="hidden" id="optId4" name="optId4">
+						type="hidden" id="optId4" name="optId4"> -->
 					<!-- <a class="btn btn-primary" href="#">장바구니에 담기</a> -->
 					<div id="btn">
 						<button id="cartAdd" type="button" class="btn btn-outline-primary"

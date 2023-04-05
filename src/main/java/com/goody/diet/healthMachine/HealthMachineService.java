@@ -178,6 +178,7 @@ public class HealthMachineService {
 		//		System.out.println("HealthMachineNum : "+realHealthMachineDTO.getMachineNum());
 		return healthMachineDAO.setRealMachineDelete(realHealthMachineDTO);
 	}
+	
 	//update
 	public int setHealthMachineUpdate(HealthMachineDTO healthMachineDTO,Long []  categoryDTOs, Long thumnailNum, MultipartFile [] Files, Long [] fileNums, HttpSession session) throws Exception{
 		int result=0;
