@@ -48,8 +48,8 @@
 	
 	<!-- 태현 -->
 	<insert id="setCartMachineAdd" parameterType="CartDTO">
-		insert into Cart(num,id,studynum,realmachinenum, COUNT,cartprice)
-		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum,jdbcType=INTEGER},#{realMachineNum,jdbcType=INTEGER},#{count},#{cartPrice})
+		insert into Cart(num,id,studynum,realmachinenum, COUNT,status,cartprice)
+		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum,jdbcType=INTEGER},#{realMachineNum,jdbcType=INTEGER},#{count},#{status},#{cartPrice})
 	</insert>
 	<update id="setCartMachineCount" parameterType="CartDTO">
 	UPDATE CART SET "COUNT"="COUNT"+1 WHERE REALMACHINENUM=#{realMachineNum}
@@ -82,6 +82,7 @@
 			</association>
 			<association property="healthMachineDTO" javaType="HealthMachineDTO">
 			<id column="MACHINENUM" property="machineNum"/>
+			<result column="machineName" property="machineName"/>
 			<result column="machinescore" property="machineScore"/>
 			<result column="price" property="price"/>
 			<result column="saleprice" property="salePrice"/>

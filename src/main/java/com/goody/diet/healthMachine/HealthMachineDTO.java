@@ -5,7 +5,7 @@ import java.util.List;
 public class HealthMachineDTO {
 
 	private Long machineNum;
-	private Long categoryNum;
+	
 	private String machineName;
 	private Double machineScore;
 	private Long price;
@@ -38,12 +38,7 @@ public class HealthMachineDTO {
 	public void setMachineNum(Long machineNum) {
 		this.machineNum = machineNum;
 	}
-	public Long getCategoryNum() {
-		return categoryNum;
-	}
-	public void setCategoryNum(Long categoryNum) {
-		this.categoryNum = categoryNum;
-	}
+	
 	public String getMachineName() {
 		return machineName;
 	}

@@ -66,6 +66,9 @@ public class CartDTO {
 	}
 
 	public Long getStatus() {
+		if(this.status==null || this.status<1) {
+			this.status=0L;
+		}
 		return status;
 	}
 
