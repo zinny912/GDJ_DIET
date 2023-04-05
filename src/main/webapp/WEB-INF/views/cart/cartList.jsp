@@ -136,24 +136,20 @@ function checkOrder(){
 	 	   return false;
 		  } else {
 	    let checkedItems = [];
-	    $('input[name="checkedItems"]:not(:checked)').each(function() {
-	      checkedItems.push($(this).val());
-	    });
-	    
-	    $.ajax({
-	    	  type: 'POST',
-	 	      url: './cartDelete',
-	 	      traditional:true,
-	 	      data: { checkedItems: checkedItems },
-	 	      success: function() {
-	 	        location.href='/cart/payment'
-	 	        // 처리 결과에 따라 적절한 동작 수행
-	 	      },
-	 	      error: function() {
-	 	    	 location.href='/cart/payment'
-	 	        // 에러 처리
-	 	      }
-	 	    });
+	    let uncheckedCheckboxes = $('input[name="checkedItems"]:not(:checked)');
+	    if (uncheckedCheckboxes.length > 0) {
+	    	uncheckedCheckboxes.each(function() {
+	   	      checkedItems.push($(this).val());
+	   	    });
+	   	    
+	   	    $.ajax({
+	   	    	  type: 'POST',
+	   	 	      url: './cartDelete',
+	   	 	      traditional:true,
+	   	 	      data: { checkedItems: checkedItems },
+	   	 	    });
+	    }
+	    location.href='/cart/payment'
 	 	   return true;
 		  }
 	}

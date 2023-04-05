@@ -2,6 +2,9 @@ package com.goody.diet.order;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -84,8 +87,9 @@ public class OrderService {
 //	}
 	
 	
-	public void setOrder(MemberDTO memberDTO, List<CartDTO> cartDTOs) throws Exception {
+	public void setOrder( List<CartDTO> cartDTOs,HttpSession session) throws Exception {
 		//orderDTO 어디서 만들지..
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		OrderDTO orderDTO=new OrderDTO();
 		orderDAO.setOrder(orderDTO);
 		

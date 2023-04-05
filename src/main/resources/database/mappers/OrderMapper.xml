@@ -24,13 +24,18 @@
 	<!-- 장바구니 주문 시, CHECKED된 상품(장바구니번호)의 번호를 받아서,
 	Order를 만들고, setOrderDetail을 [여러번] 작성할것.  -->
 	<insert id="setOrder" parameterType="OrderDTO">
-		INSERT INTO "ORDER" VALUES (ORDER_SEQ.NEXTVAL, #{id}, SYSDATE, '결제중')
+		INSERT INTO "ORDER" VALUES (ORDER_SEQ.NEXTVAL, #{id}, SYSDATE, '결제완료')
 	</insert>
 	
 	<!-- price입력해줘야해.. -->
 	<insert id="setOrderDetail" parameterType="OrderDetailDTO">
 		INSERT INTO ORDERDETAIL (orderDetailNum, machineNum, studyNum, orderNum, count, price) 
-		VALUES (ORDERDETAIL_SEQ.NEXTVAL, #{machineNum}, #{studyNum},#{orderNum},#{count},#{price});
+		VALUES (ORDERDETAIL_SEQ.NEXTVAL, 
+        CASE WHEN #{machineNum} IS NULL THEN NULL ELSE #{machineNum} END, 
+        CASE WHEN #{studyNum} IS NULL THEN NULL ELSE #{studyNum} END, 
+        #{orderNum}, 
+        CASE WHEN #{count} IS NULL THEN NULL ELSE #{count} END, 
+        #{price});
 	</insert>
 	
 	<select id="getOrderDetail" parameterType="OrderDetailDTO" resultType="OrderDetailDTO">
