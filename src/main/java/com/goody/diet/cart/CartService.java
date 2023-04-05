@@ -2,8 +2,15 @@ package com.goody.diet.cart;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
+
+import com.goody.diet.healthMachine.HealthMachineDAO;
+import com.goody.diet.healthMachine.RealHealthMachineDTO;
+import com.goody.diet.member.MemberDTO;
 
 @Service
 public class CartService {
@@ -11,12 +18,33 @@ public class CartService {
 	@Autowired
 	CartDAO cartDAO;
 	
+	@Autowired
+	HealthMachineDAO helHealthMachineDAO;
+	
 	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
 		return cartDAO.getCartList(cartDTO);
 	}
 	
 	public int setCartStudyAdd(CartDTO cartDTO) throws Exception{
 		return cartDAO.setCartStudyAdd(cartDTO);
+	}
+	//태현
+	//		cart에 넣기
+	public int setCartMachineAdd(CartDTO cartDTO,RealHealthMachineDTO realHealthMachineDTO, HttpSession session)throws Exception{
+		
+		realHealthMachineDTO= helHealthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
+		//realMachineNum
+		cartDTO.setRealMachineNum(realHealthMachineDTO.getRealMachineNum());
+		
+		//
+		List<CartDTO> dtos = cartDAO.getCartList(cartDTO);
+		for(CartDTO dto : dtos) {
+			if(cartDTO.getRealMachineNum()==dto.getRealMachineNum()) {
+				return cartDAO.setCartMachineCount(cartDTO);
+			}
+		}
+		
+		return cartDAO.setCartMachineAdd(cartDTO);
 	}
 	
 //	public int[] setCartDelete(String[] checkedItems) throws Exception{

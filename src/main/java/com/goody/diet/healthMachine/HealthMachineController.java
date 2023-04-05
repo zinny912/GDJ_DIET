@@ -206,7 +206,11 @@ public class HealthMachineController {
 
 	@PostMapping("optionDelete")
 	public ModelAndView setOptionDelete(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO) throws Exception{
-
+		System.out.println(realHealthMachineDTO.getOptId1());
+		System.out.println(realHealthMachineDTO.getOptId2());
+		System.out.println(realHealthMachineDTO.getOptId3());
+		System.out.println(realHealthMachineDTO.getOptId4());
+		
 		int result =healthMachineService.setRealHealthMachineDelete(realHealthMachineDTO);
 
 		String message="실패";
