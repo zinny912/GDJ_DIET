@@ -1,20 +1,41 @@
 
+let openWin;
 
 $('.btn_delivery_change').click(()=>{
-    open("/member/delivery?popUp=true", "_blank", "width=500 height=500")
+    console.log('새창')
+    // open("/member/delivery?popUp=true", "_blank", "width=500 height=500")
+
+    openChild()
+
 })
 
 //기본적으로 호출(처음엔 대표주소), delivery에서 선택누르면 return값 대입.
-function deliveryCall(){}
-$.ajax({
-    type:"GET",
-    url:"/order/paymentOrder",
-    data:{
-        addressNum:
-        address:
-        recipient:
-        recipientTel:
-    },
-    success:()=>{},
-    error:()=>{}
-})
+deliveryCall()
+function deliveryCall(){
+    console.log('go to newPaymentOrder')
+    $.ajax({
+        type:"GET",
+        url:"/order/newPaymentOrder", 
+        data:{
+            // addressNum:
+            // address:
+            // recipient:
+            // recipientTel:
+        },
+        success:(res)=>{
+            console.log(res.trim())
+            $('.pay-deliver-ajax').html(res.trim())
+            
+            
+        },
+        error:()=>{}
+    })
+}
+
+function openChild() {
+    // window.name = "부모창 이름"; 
+    window.name = "parentForm";
+    
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+    openWin = window.open("/member/delivery?popUp=true", "childForm", "width=570, height=570, resizable = no, scrollbars = no");    
+}

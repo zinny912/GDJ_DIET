@@ -54,23 +54,9 @@
 	<table class="table table-delivery">
 		<colgroup> <col width="35%"> <col width="65%"> </colgroup>
 	
-		<tbody>
-<tr>
-	<td>아이디</td>
-	<td class="pay-deliver-ajax-recipient"></td>
-</tr>
-<tr>
-	<td>배송주소</td>
-	<td class="pay-deliver-ajax-address"></td>
-</tr>
-<tr>
-	<td>연락처</td>
-	<td class="pay-deliver-ajax-recipientTel"></td>
-</tr>
+		<tbody class="pay-deliver-ajax">
 
 
-
-			
 		</tbody>
 	</table>	
 
@@ -80,8 +66,8 @@
 	
 </div>
 
+<c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/order/payment.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
-<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

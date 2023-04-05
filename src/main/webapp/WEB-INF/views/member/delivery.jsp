@@ -38,41 +38,39 @@
 </c:if>	
 	
     <div class="col-10">
-      <div class="row">
+      <div class="row toPayment-mother">
 
+
+<!-- 맨 앞에 출력하려면 따로 -->
 <c:forEach items="${deliveryList}" var="prime">
 <c:if test="${sessionMember.address eq prime.address}">
 <div class="col-12">
 	<div class="card">
 	  <div class="card-body">
-	    <h5 class="card-title">${prime.recipient}</h5>
+	  	<div hidden="" class="addressNum" data-addressNum="${prime.addressNum}"></div>
+	    <h5 class="card-title recipient" data-recipient="${prime.recipient}">${prime.recipient}</h5>
 
 	    <h6 class="card-subtitle mb-2 text-muted">대표주소</h6>
 	    
-	    <p class="card-text">주소:	${prime.address}</p>
-	    <p class="card-text">연락처:	${prime.recipientTel}</p>
+	    <p class="card-text address" data-address="${prime.address}">주소:	${prime.address}</p>
+	    <p class="card-text recipientTel" data-recipientTel="${prime.recipientTel}">연락처:		${prime.recipientTel}</p>
 	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}" class="card-link">수정</a>
 	    
 	  </div>
 	</div>		
 </div>
-</c:if>
-
-</c:forEach>
+</c:if></c:forEach>
 
 <c:forEach items="${deliveryList}" var="i">
+<c:if test="${sessionMember.address ne i.address}">
 <div class="col-12">
 	<div class="card">
 	  <div class="card-body">
-	    <h5 class="card-title">${i.recipient}</h5>
-	    
-		멤버id:${sessionMember.id}
-	  	멤버: ${sessionMember.address}
-	  	<br>
-	    주소: ${i.address}
+	 	<div hidden="" class="id" data-id="${i.addressNum}"></div>
+	    <h5 class="card-title recipient" data-recipient="${i.recipient}">${i.recipient}</h5>
 
-	    <p class="card-text">${i.address}</p>
-	    <p class="card-text">${i.recipientTel}</p>
+	    <p class="card-text address" data-address="${i.address}">주소:	${i.address}</p>
+	    <p class="card-text recipientTel" data-recipientTel="${i.recipientTel}">연락처:	${i.recipientTel}</p>
 	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${i.addressNum}" class="card-link">수정</a>
 
 	    <a href="./deliveryDelete?addressNum=${i.addressNum}" class="card-link">삭제</a>
@@ -85,7 +83,7 @@
 	  </div>
 	</div>		
 </div>
-</c:forEach>
+</c:if></c:forEach>
 
 <div class="col-12">
 	<button type="button" onclick="location.href='./deliveryNew';">추가</button>
@@ -98,13 +96,12 @@
 	</div>
 </div>
 
+<c:import url="../template/common_js.jsp"></c:import>
 <c:if test="${popUp eq null}">
 <c:import url="../template/footer.jsp"></c:import>
 </c:if>
-
-<c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/member/memberUpdate.js"></script>
 <script src="/resources/js/member/memberAgree.js"></script>
-
+<script src="/resources/js/member/delivery.js"></script>
 </body>
 </html>

@@ -87,10 +87,20 @@ public class OrderController {
 	}
 	  
 	  
-	@GetMapping("paymentOrder")
-	public ModelAndView getPaymentOrder(DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
-		mv.addObject("result", deliveryDTO);
-		mv.setViewName("../common/ajaxResult");
+	@GetMapping("newPaymentOrder")
+	public ModelAndView getPaymentOrder(HttpSession session, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
+		System.out.println("-------------------getPaymentOrder-------------------");
+		System.out.println(deliveryDTO.getId());
+		
+		
+		//세션에서 뽑기 복잡한듯?
+		if(deliveryDTO.getId()==null) {
+			MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+			deliveryDTO=orderService.getPrimeDelivery(memberDTO);			
+		}
+		
+		mv.addObject("deliveryDTO", deliveryDTO);
+		mv.setViewName("/order/paymentPageAddressAjax");
 		return mv;
 	}
 	@GetMapping("checkout")
