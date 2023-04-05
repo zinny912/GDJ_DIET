@@ -148,5 +148,8 @@ public class MemberService {
 	public List<DeliveryDTO> getDeliveryPage (MemberDTO memberDTO) throws Exception {
 		return memberDAO.getDeliveryPage(memberDTO);
 	}
-	
+
+	public int setDeliveryDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
+		return memberDAO.setDeliveryDeleteOnMemberDelete(memberDTO);
+	}
 }

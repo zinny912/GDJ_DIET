@@ -90,11 +90,10 @@ public class OrderController {
 	@GetMapping("newPaymentOrder")
 	public ModelAndView getPaymentOrder(HttpSession session, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
 		System.out.println("-------------------getPaymentOrder-------------------");
-		System.out.println(deliveryDTO.getId());
-		
+		System.out.println(deliveryDTO.getAddressNum());
 		
 		//세션에서 뽑기 복잡한듯?
-		if(deliveryDTO.getId()==null) {
+		if(deliveryDTO.getAddressNum()==null) {
 			MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 			deliveryDTO=orderService.getPrimeDelivery(memberDTO);			
 		}

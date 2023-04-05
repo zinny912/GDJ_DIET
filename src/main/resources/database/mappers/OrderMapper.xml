@@ -87,7 +87,25 @@
 	<select id="getStudyForCartAndOrder" parameterType="OrderDetailDTO" resultType="StudyDTO">
 		SELECT * FROM STUDY WHERE STUDYNUM=#{studyNum}
 	</select>
+	
+	<!-- @@@@@@@@@@@@@@@@@@신버전@@@@@@@@@@@@@@@@@@@@@@ -->
 
+	<!-- 뿌릴 때 id로 orderS를 받아온다음, orderNum으로 cart의 Mnum Snum을 통해 상품들을 부름. -->
+	<select id="">
+		SELECT * FROM REALHEALTHMACHINE r 
+		LEFT OUTER JOIN HEALTHMACHINE h
+		on(r.MACHINENUM=h.machinenum)
+				LEFT OUTER JOIN
+				(
+				SELECT * FROM (
+				SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC) ranknum
+				FROM MACHINEIMG m2 
+				) WHERE ranknum=1) t
+				on(h.MACHINENUM=t.machinenum)
+		WHERE REALMACHINENUM = (SELECT REALMACHINENUM FROM CART c WHERE STATUS=3 AND NUM=( SELECT NUM FROM ORDERDETAIL WHERE ORDERNUM = 
+		(SELECT ordernum FROM "ORDER" WHERE id = #{id}	) ));
+	</select>
+	
 	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
 		<id column="MACHINENUM" property="machineNum"/>
 		<result column="categoryNum" property="categoryNum"/>
@@ -104,6 +122,20 @@
 			<id column="fileNum" property="fileNum"/>
 	  			<result column="FILENAME" property="fileName"/>
 	  			<result column="ORINAME" property="oriName"/>
+		</collection>
+		<collection property="realHealthMachineDTOs" javaType="list" ofType="RealHealthMachineDTO">
+			<id column="REALMACHINENUM" property="realMachineNum"/>
+	  			<result column="MACHINENUM" property="machineNum"/>
+	  			<result column="STOCK" property="stock"/>
+	  			
+	  			<result column="OPTNAME1" property="optName1"/>
+	  			<result column="OPTID1" property="optId1"/>
+	  			<result column="OPTNAME2" property="optName2"/>
+	  			<result column="OPTID2" property="optId2"/>
+	  			<result column="OPTNAME3" property="optName3"/>
+	  			<result column="OPTID3" property="optId3"/>
+	  			<result column="OPTNAME4" property="optName4"/>
+	  			<result column="OPTID4" property="optId4"/>
 		</collection>
 	</resultMap>
 

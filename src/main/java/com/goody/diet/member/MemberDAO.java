@@ -74,5 +74,9 @@ public class MemberDAO {
 		return sqlSession.selectList(NAMESPACE+"getDeliveryPage", memberDTO);
 	}
 	
+	public int setDeliveryDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setDeliveryDeleteOnMemberDelete", memberDTO);
+	}
+	
 	
 }
