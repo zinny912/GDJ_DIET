@@ -23,6 +23,15 @@
 		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum})
 	</insert>
 	
+	<!-- 태현 -->
+	<insert id="setCartMachineAdd" parameterType="CartDTO">
+		insert into Cart(num,id,studynum,realmachinenum, COUNT)
+		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum,jdbcType=INTEGER},#{realMachineNum,jdbcType=INTEGER},#{count})
+	</insert>
+	<update id="setCartMachineCount" parameterType="CartDTO">
+	UPDATE CART SET "COUNT"="COUNT"+1 WHERE REALMACHINENUM=#{realMachineNum}
+	</update>
+	
 	<delete id="setCartDelete" parameterType="Long">
 		DELETE CART WHERE NUM=#{num}
 	</delete>
