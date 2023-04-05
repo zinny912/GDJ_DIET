@@ -48,7 +48,8 @@
 					</c:when>
 					<c:when test="${sessionMember ne null}">
 						<form action="/cart/cartAdd" method="post">
-							<input type="hidden" name="studyNum" value="${dto.studyNum}">	
+							<input type="hidden" name="studyNum" value="${dto.studyNum}">
+							<input type="hidden" name="studyCost" value="${dto.studyCost}">	
 							<button class="btn btn-primary" type="submit">장바구니에 담기</button>
 						</form>
 					</c:when>

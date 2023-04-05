@@ -21,6 +21,7 @@ public class CartService {
 	@Autowired
 	HealthMachineDAO helHealthMachineDAO;
 	
+	//민지
 	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
 		return cartDAO.getCartList(cartDTO);
 	}
@@ -28,6 +29,41 @@ public class CartService {
 	public int setCartStudyAdd(CartDTO cartDTO) throws Exception{
 		return cartDAO.setCartStudyAdd(cartDTO);
 	}
+	
+	public List<CartDTO> getPaymentList(CartDTO cartDTO) throws Exception{
+		return cartDAO.getPaymentList(cartDTO); 
+	}
+	
+	public int[] setCartCheckUpdate(Long[] checkedItems) throws Exception{
+		int[] result = new int[checkedItems.length];
+		for(int i=0; i<checkedItems.length; i++) {			
+//	        longArray[i] = Long.parseLong(checkedItems[i]);
+	        int result2 = cartDAO.setCartCheckUpdate(checkedItems[i]);
+	        result[i] = result2;
+	    }
+		return result;
+	}
+	
+	public int[] setUnCartCheckUpdate(Long[] uncheckedItems) throws Exception{
+		int[] result = new int[uncheckedItems.length];
+		for(int i=0; i<uncheckedItems.length; i++) {			
+//	        longArray[i] = Long.parseLong(checkedItems[i]);
+	        int result2 = cartDAO.setCartUnCheckUpdate(uncheckedItems[i]);
+	        result[i] = result2;
+	    }
+		return result;
+	}
+	
+	public int[] setCartDelete(Long[] checkedItems) throws Exception{
+		int[] result = new int[checkedItems.length];
+		for(int i=0; i<checkedItems.length; i++) {			
+//	        longArray[i] = Long.parseLong(checkedItems[i]);
+	        int result2 = cartDAO.setCartDelete(checkedItems[i]);
+	        result[i] = result2;
+	    }
+		return result;
+	}
+	
 	//태현
 	//		cart에 넣기
 	public int setCartMachineAdd(CartDTO cartDTO,RealHealthMachineDTO realHealthMachineDTO, HttpSession session)throws Exception{
@@ -59,13 +95,5 @@ public class CartService {
 //		return result;
 //	}
 	
-	public int[] setCartDelete(Long[] checkedItems) throws Exception{
-		int[] result = new int[checkedItems.length];
-		for(int i=0; i<checkedItems.length; i++) {			
-//	        longArray[i] = Long.parseLong(checkedItems[i]);
-	        int result2 = cartDAO.setCartDelete(checkedItems[i]);
-	        result[i] = result2;
-	    }
-		return result;
-	}
+
 }

@@ -18,10 +18,32 @@
 		ORDER BY C.NUM ASC
 	</select>
 	
+	<select id="getPaymentList" parameterType="CartDTO" resultMap="CartDTOMap">
+		SELECT C.*,S.*,SF.*
+		FROM CART C
+			LEFT JOIN
+			STUDY S
+			ON (C.STUDYNUM = S.STUDYNUM)
+			LEFT JOIN
+			STUDYFILE SF
+			ON (S.STUDYNUM = SF.STUDYNUM) 
+		WHERE C.ID=#{id} AND C.STATUS=1
+		ORDER BY C.NUM ASC
+	</select>
+
+	
 	<insert id="setCartStudyAdd" parameterType="CartDTO">
-		INSERT INTO CART (NUM,ID,STUDYNUM)
-		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum})
+		INSERT INTO CART (NUM,ID,STUDYNUM,COUNT,STATUS,CARTPRICE)
+		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum},#{count},#{status}, #{cartPrice})
 	</insert>
+	
+	<update id="setCartCheckUpdate" parameterType="long">
+		UPDATE CART SET STATUS=1 WHERE  NUM=#{num}
+	</update>
+	
+	<update id="setCartUnCheckUpdate" parameterType="long">
+		UPDATE CART SET STATUS=0 WHERE  NUM=#{num}
+	</update>
 	
 	<!-- 태현 -->
 	<insert id="setCartMachineAdd" parameterType="CartDTO">
@@ -39,9 +61,11 @@
 	<resultMap id="CartDTOMap" type="CartDTO">
 		<id column="num" property="num" />
 			<result column="id" property="id" />
-			<result column="machineNum" property="machineNum" />
+			<result column="realMachineNum" property="realMachineNum" />
 			<result column="studyNum" property="studyNum" />
 			<result column="count" property="count" />
+			<result column="status" property="status" />
+			<result column="cartPrice" property="cartPrice" />
 		<collection property="studyDTOs" ofType="StudyDTO">
 			<id column="studyNum" property="studyNum" />
 				<result column="studyName" property="studyName" />

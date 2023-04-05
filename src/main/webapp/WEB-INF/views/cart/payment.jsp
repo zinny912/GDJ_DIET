@@ -116,7 +116,7 @@ function checkPayment(){
     buyer_tel : $('#ordererPhone').text().trim(),   //필수 파라미터 입니다.
     buyer_addr : $('#ordererName').text().trim(),
     buyer_postcode : '123-456',
-    m_redirect_url : '/order/list',
+    m_redirect_url : '/order/list'/* ,
     escrow : true, //에스크로 결제인 경우 설
     bypass : {
         acceptmethod : "noeasypay" // 간편결제 버튼을 통합결제창에서 제외(PC)
@@ -127,8 +127,8 @@ function checkPayment(){
     period : {
        from : "20200101", //YYYYMMDD
        to : "20201231"   //YYYYMMDD
-    }
-}, function(rsp) { // callback 로직
+    } */
+},/*  function(rsp) { // callback 로직
 	 if (rsp.success) {
 		// 결제 성공 시 로직
 		 	console.log("success")
@@ -136,7 +136,7 @@ function checkPayment(){
 	        // 결제 실패 시 로직
 	        console.log("fail")
 	      }
-	    })
+	    } */);
 };
 </script>
 

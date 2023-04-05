@@ -46,6 +46,9 @@ public class CartController {
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
+		cartDTO.setStatus(0L);
+		String studyCost = request.getParameter("studyCost");
+		cartDTO.setCartPrice(Long.parseLong(studyCost));
 		String studyNum = request.getParameter("studyNum");
 		
 		List<CartDTO> dtos = cartService.getCartList(cartDTO);
@@ -61,6 +64,28 @@ public class CartController {
 		mv.setViewName("redirect:./cartList");
 		return mv;
 	}
+	
+	@PostMapping("cartCheckedUpdate")
+	public ModelAndView setCartCheckUpdate(Long[] checkedItems) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
+		int[] result = cartService.setCartCheckUpdate(checkedItems);
+			
+		mv.addObject("result", result[0]);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	@PostMapping("uncartCheckedUpdate")
+	public ModelAndView setUnCartCheckUpdate(Long[] uncheckedItems) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
+		int[] result = cartService.setUnCartCheckUpdate(uncheckedItems);
+			
+		mv.addObject("result", result[0]);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
 	//태현
 	@PostMapping("cartMachineAdd")
 	public ModelAndView setCartMachineAdd(ModelAndView mv,CartDTO cartDTO,RealHealthMachineDTO realHealthMachineDTO, HttpSession session)throws Exception{
@@ -83,12 +108,13 @@ public class CartController {
 		return mv;
 	}
 	
+
 	@GetMapping("payment")
 	public ModelAndView setCartPayment(CartDTO cartDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
-		List<CartDTO> ar = cartService.getCartList(cartDTO);
+		List<CartDTO> ar = cartService.getPaymentList(cartDTO);
 		mv.setViewName("cart/payment");
 		mv.addObject("list", ar);
 		return mv;

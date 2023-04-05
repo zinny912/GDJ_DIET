@@ -14,7 +14,6 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-
     <section class="cart">
         <div class="cart__information">
             <ul>
@@ -23,6 +22,7 @@
                 <li>${sessionMember.id}님의 장바구니</li>
             </ul>
         </div>
+        
         <table class="cart__list">
                 <thead>
                     <tr>
@@ -35,7 +35,6 @@
                 <tbody>
                 	
                 	<c:set var="totalCost" value="0" />
-
 				<c:forEach items="${list}" var="dto">
 					<c:forEach items="${dto.studyDTOs}" var="studyDTO">
 						<c:forEach items="${studyDTO.studyBoardFileDTOs}"
@@ -61,18 +60,14 @@
 				<tfoot>
 				   <tr>
                         <td colspan="3">
-                        	<%-- <form action="./cartDelete" id="frm" method="post">
-                        	<c:forEach items="${list}" var="dto">
-								<input type="hidden" name="num" value="${dto.num}">
-							</c:forEach> --%>
-                        	<button id="delete" type="submit" class="cart__list__optionbtn" onclick="checkDelete()">스터디 삭제하기</button>
-                        	<!-- </form> -->
+                        	<button id="delete" type="button" class="cart__list__optionbtn" onclick="checkDelete()">스터디 삭제하기</button>
                         </td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
 				</tfoot>
+
 		 </table>
 		
 		 <table>
@@ -97,89 +92,7 @@
         </div>
     </section>
 
-<script>
-const checkAll = document.getElementById("checkAll")
-const checks = document.getElementsByClassName("checks")
-
-checkAll.addEventListener("click",function(){
-    for(let i=0;i<checks.length;i++){
-        checks[i].checked=checkAll.checked;
-    }
-});
-
-for(let i=0;i<checks.length;i++){
-    checks[i].addEventListener("click", function(){
-        //for문을 중간에 종료하기 위해 boolean 타입 사용
-        let result = true;
-        for(let j=0;j<checks.length;j++){
-            if(!checks[j].checked){
-                //result = checks[j].checked
-                //result = false;
-                result = !result;
-                break;
-            }
-        }
-        checkAll.checked=result;
-    })
-};
-
-/* function checkDelete(){
-	let check = window.confirm("정말 삭제 하시겠습니까?");
-	if(check){
-        frm.submit();
-	}
-} */
-function checkOrder(){
-		let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-	 	 if (checkboxes.length === 0) {
-	 	   alert("주문할 스터디를 선택해주세요.");
-	 	   return false;
-		  } else {
-	    let checkedItems = [];
-	    let uncheckedCheckboxes = $('input[name="checkedItems"]:not(:checked)');
-	    if (uncheckedCheckboxes.length > 0) {
-	    	uncheckedCheckboxes.each(function() {
-	   	      checkedItems.push($(this).val());
-	   	    });
-	   	    
-	   	    $.ajax({
-	   	    	  type: 'POST',
-	   	 	      url: './cartDelete',
-	   	 	      traditional:true,
-	   	 	      data: { checkedItems: checkedItems },
-	   	 	    });
-	    }
-	    location.href='/cart/payment'
-	 	   return true;
-		  }
-	}
-	
-function checkDelete(){
-	  let check = window.confirm("정말 삭제 하시겠습니까?");
-	  if(check){
-	    let checkedItems = [];
-	    $('input[name="checkedItems"]:checked').each(function() {
-	      checkedItems.push($(this).val());
-	    });
-	    
-	    $.ajax({
-	      type: 'POST',
-	      url: './cartDelete',
-	      traditional:true,
-	      data: { checkedItems: checkedItems },
-	      success: function() {
-	        location.reload();
-	        // 처리 결과에 따라 적절한 동작 수행
-	      },
-	      error: function(xhr, status, error) {
-	        console.log(xhr.responseText);
-	        console.log(checkedItems);
-	        // 에러 처리
-	      }
-	    });
-	  }
-	}
-</script>
+<script type="text/javascript" src="/resources/js/cartPayment.js"></script>
 
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>

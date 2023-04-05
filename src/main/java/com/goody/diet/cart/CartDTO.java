@@ -13,6 +13,8 @@ public class CartDTO {
 	private Long realMachineNum;
 	private Long studyNum;
 	private Long count;
+	private Long status;
+	private Long cartPrice;
 	
 	private List<StudyDTO> studyDTOs;
 	private List<HealthMachineDTO> healthMachineDTOs; 
@@ -70,6 +72,19 @@ public class CartDTO {
 	public void setRealHealthMachineDTOs(List<RealHealthMachineDTO> realHealthMachineDTOs) {
 		this.realHealthMachineDTOs = realHealthMachineDTOs;
 	}
-	
-	
+	public Long getStatus() {
+		if(this.status==null || this.status<1) {
+			this.status=0L;
+		}
+		return status;
+	}
+	public void setStatus(Long status) {
+		this.status = status;
+	}
+	public Long getCartPrice() {
+		return cartPrice;
+	}
+	public void setCartPrice(Long cartPrice) {
+		this.cartPrice = cartPrice;
+	}
 	}
