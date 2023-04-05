@@ -1,5 +1,6 @@
 let verificationChecked="";
 let checkCount = [];
+let formCheckInput=document.getElementsByClassName('form-check-input')
 // $('#terms').click(()=>{
 
 
@@ -33,8 +34,13 @@ function mAgree(){
 }
 
 $('#modalSubmit').click(()=>{
-	$('.form-check-input').attr("checked", "checked")
-	$('#modalCancel').click();
+	$('.form-check-input').prop("checked", true)
+	$('#modalClose').click();
+})
+$('#modalCancel').click(()=>{
+	$('.form-check-input').prop("checked", false)
+	// formCheckInput.checked=false;
+	// $('.form-check-input').checked=false
 })
 
 //@회원가입버튼

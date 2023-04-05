@@ -13,9 +13,9 @@ public class MemberDAO {
 	private SqlSession sqlSession; 
 	private final String NAMESPACE = "com.goody.diet.member.MemberDAO.";
 	
-	public MemberDTO getKakaoLogin (MemberDTO memberDTO) {
-		return sqlSession.selectOne(NAMESPACE+"getKakaoLogin", memberDTO);
-	}
+//	public MemberDTO getKakaoLogin (MemberDTO memberDTO) {
+//		return sqlSession.selectOne(NAMESPACE+"getKakaoLogin", memberDTO);
+//	}
 	public int setKakaoJoin (MemberDTO memberDTO) {
 		return sqlSession.insert(NAMESPACE+"setKakaoJoin", memberDTO);
 	}

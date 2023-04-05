@@ -5,7 +5,10 @@
 
 <mapper namespace="com.goody.diet.order.OrderDAO">
 	
-
+	
+	<select id="getPrimeDelivery" parameterType="MemberDTO" resultType="com.goody.diet.member.DeliveryDTO">
+		SELECT * FROM DELIVERY d WHERE ADDRESS=(SELECT ADDRESS FROM "MEMBER" m WHERE ID=#{id})
+	</select>
 
 	<select id="getOrderList" parameterType="MemberDTO" resultMap="OrderDetails">
 		SELECT *

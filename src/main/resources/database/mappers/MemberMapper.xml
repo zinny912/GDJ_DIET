@@ -13,9 +13,9 @@
 		ON (mr.ROLENUM = r.ROLENUM)
 		WHERE m.ID=#{id}
 	</select>
-	<select id="getKakaoLogin" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT * FROM MEMBERAUTH WHERE ID=#{id}
-	</select>
+<!-- 	<select id="getKakaoLogin" parameterType="MemberDTO" resultType="MemberDTO"> -->
+<!-- 		SELECT * FROM MEMBERAUTH WHERE ID=#{id} -->
+<!-- 	</select> -->
 		
 	<select id="getEmailCheck" parameterType="MemberDTO" resultType="MemberDTO">
 		SELECT * FROM "MEMBER" WHERE EMAIL=#{email}
@@ -65,6 +65,8 @@
 	<select id="getDeliveryPage" parameterType="MemberDTO" resultType="com.goody.diet.member.DeliveryDTO">
 		SELECT * FROM DELIVERY WHERE ID=#{id}
 	</select>
+
+	
 	<update id="setdeliveryUpdate" parameterType="com.goody.diet.member.DeliveryDTO">
 		UPDATE DELIVERY SET ADDRESS=#{address}, RECIPIENT=#{recipient}, RECIPIENTTEL=#{recipientTel} WHERE ADDRESSNUM=#{addressNum}
 	</update>

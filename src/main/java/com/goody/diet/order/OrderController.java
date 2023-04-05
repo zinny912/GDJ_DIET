@@ -16,6 +16,7 @@ import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.healthMachine.HealthMachineImgDTO;
 import com.goody.diet.healthMachine.RealHealthMachineDTO;
+import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
 
@@ -86,8 +87,22 @@ public class OrderController {
 	}
 	  
 	  
-	 
-	
+	@GetMapping("newPaymentOrder")
+	public ModelAndView getPaymentOrder(HttpSession session, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
+		System.out.println("-------------------getPaymentOrder-------------------");
+		System.out.println(deliveryDTO.getId());
+		
+		
+		//세션에서 뽑기 복잡한듯?
+		if(deliveryDTO.getId()==null) {
+			MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+			deliveryDTO=orderService.getPrimeDelivery(memberDTO);			
+		}
+		
+		mv.addObject("deliveryDTO", deliveryDTO);
+		mv.setViewName("/order/paymentPageAddressAjax");
+		return mv;
+	}
 	@GetMapping("checkout")
 	public ModelAndView setOrder(ModelAndView mv) throws Exception {
 

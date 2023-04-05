@@ -125,8 +125,13 @@ public class MemberService {
 	public int setEmailUpdate(MemberDTO memberDTO) throws Exception {
 		return memberDAO.setEmailUpdate(memberDTO);
 	}
-	public int setMemberAddressUpdate(MemberDTO memberDTO) throws Exception {
-		return memberDAO.setMemberAddressUpdate(memberDTO);
+	public MemberDTO setMemberAddressUpdate(MemberDTO memberDTO) throws Exception {
+		memberDAO.setMemberAddressUpdate(memberDTO);
+		
+		//대표주소에 쓰는 세션업데이트 해줘야댐
+		memberDTO=memberDAO.getMemberLogin(memberDTO);
+		memberDTO.setPw(null);
+		return memberDTO;
 	}
 	public int setDeliveryAdd(DeliveryDTO deliveryDTO) throws Exception {
 		return memberDAO.setDeliveryAdd(deliveryDTO);
