@@ -15,7 +15,7 @@
   				<div class="w-100 text-center">
   					<div class="collapse navbar-collapse" id="ftco-nav">
 			        <ul class="navbar-nav">
-			          <li class="nav-item active"><a href="/exercise/routine" class="nav-link">이달의루틴</a></li>
+			          <li class="nav-item active"><a href="/routine/calendar" class="nav-link">이달의루틴</a></li>
 			          <li class="nav-item"><a href="/study/studyList" class="nav-link">루틴스터디</a></li>
 			          <li class="nav-item"><a href="/exercise/body" class="nav-link">짧강효확</a></li>
 			          

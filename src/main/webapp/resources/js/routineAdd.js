@@ -12,7 +12,7 @@
 //     }
 //   });
 
-//  $(routinebtn).addEventButton() { // 추가한 버튼 설정
+//  $(routinebtn).click { // 추가한 버튼 설정
 //     text : "일정 추가",  // 버튼 내용
 //     click : function(){ // 버튼 클릭 시 이벤트 추가
 //         $("#calendarModal").modal("show"); // modal 나타내기
@@ -41,6 +41,4 @@
 //         });
 //     }
 // };
-
-
 

@@ -1,6 +1,5 @@
 package com.goody.diet.exercise;
 
-import java.sql.Date;
 import java.util.List;
 
 import com.goody.diet.board.BoardFileDTO;
@@ -10,8 +9,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 	
 	private Long num;
 	private Long machineNum;
-	private String title;
-	private String days;
 	private String urlId;
 	private Long power;
 	private String bodyPart;
@@ -20,25 +17,10 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private String highLight;
 	private String info;
 	private String coordinate;
-	private Date startDay;
-	private Date endDay;
 	
+	private List<BoardFileDTO> boardFileDTOs;
+	private List<HealthMachineDTO> healthMachineDTOs;
 	
-	
-	
-	
-	public Date getStartDay() {
-		return startDay;
-	}
-	public void setStartDay(Date startDay) {
-		this.startDay = startDay;
-	}
-	public Date getEndDay() {
-		return endDay;
-	}
-	public void setEndDay(Date endDay) {
-		this.endDay = endDay;
-	}
 	public String getCoordinate() {
 		return coordinate;
 	}
@@ -63,8 +45,7 @@ public class ExerciseDTO extends HealthMachineDTO {
 	public void setDetailTitle(String detailTitle) {
 		this.detailTitle = detailTitle;
 	}
-	private List<BoardFileDTO> boardFileDTOs;
-	private List<HealthMachineDTO> healthMachineDTOs;
+	
 	
 	
 	public List<HealthMachineDTO> getHealthMachineDTOs() {
@@ -110,18 +91,7 @@ public class ExerciseDTO extends HealthMachineDTO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getDays() {
-		return days;
-	}
-	public void setDays(String days) {
-		this.days = days;
-	}
+	
 	public String getUrlId() {
 		return urlId;
 	}

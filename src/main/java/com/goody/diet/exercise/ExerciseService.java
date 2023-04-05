@@ -1,12 +1,14 @@
 package com.goody.diet.exercise;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goody.diet.board.BoardFileDTO;
@@ -59,7 +61,7 @@ public class ExerciseService {
 		}
 		return exerciseDTOs;
 	}
-
+	
 	// add 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session, HealthMachineDTO healthMachineDTO) throws Exception{
 		int result = exerciseDAO.setExerciseAdd(exerciseDTO);
@@ -84,5 +86,6 @@ public class ExerciseService {
 		}
 		return result;
 	}
+
 	
 }

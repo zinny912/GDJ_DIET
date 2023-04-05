@@ -257,10 +257,13 @@
                         <div>
                             <!-- 운동 리스트 출력 -->
                             <c:forEach var="exercise" items="${exerciseList}" varStatus="exercise_status">
-                                <c:if test="${exercise.day == date.date}">
+                                <c:if test="${exercise.startDay == date.date}">
                                     <div>${exercise.title}</div>
                                 </c:if>
                             </c:forEach>
+                            <div>
+                            ${date.value}
+                        </div>
                         </div>
                     </td>
                 </c:when>
@@ -272,8 +275,8 @@
                         <div>
                             <!-- 운동 리스트 출력 -->
                             <c:forEach var="exercise" items="${exerciseList}" varStatus="exercise_status">
-                                <c:if test="${exercise.day == date.date}">
-                                    <div>${exercise.title}</div>
+                                <c:if test="${exercise.startDay == date.date}">
+                                    <div>랄랄</div>
                                 </c:if>
                             </c:forEach>
                         </div>
@@ -289,7 +292,7 @@
                         <div>
                             <!-- 운동 리스트 출력 -->
                             <c:forEach var="exercise" items="${exerciseList}" varStatus="exercise_status">
-                                <c:if test="${exercise.day == date.date}">
+                                <c:if test="${exercise.startDay == date.date}">
                                     <div>${exercise.title}</div>
                                 </c:if>
                             </c:forEach>
@@ -304,7 +307,7 @@
                         <div>
                             <!-- 운동 리스트 출력 -->
                             <c:forEach var="exercise" items="${exerciseList}" varStatus="exercise_status">
-                                <c:if test="${exercise.day == date.date}">
+                                <c:if test="${exercise.startDay == date.date}">
                                     <div>${exercise.title}</div>
                                 </c:if>
                             </c:forEach>
@@ -316,7 +319,7 @@
     </tr>
 </tbody>
 
-<%-- <tbody>
+ <tbody>
 	<tr>
 		<c:forEach var="dateList" items="${dateList}" varStatus="date_status"> 
 			<c:choose>
@@ -367,7 +370,7 @@
 			</c:choose>
 		</c:forEach>
 </tbody>
- --%>
+
 </table>
 <div class="schudule_button_div">
 	<button type="button" class="board_move openMask_board_move pointer">일정추가</button>

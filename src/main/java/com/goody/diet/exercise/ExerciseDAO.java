@@ -1,10 +1,13 @@
 package com.goody.diet.exercise;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.goody.diet.board.BoardFileDTO;
 import com.goody.diet.healthMachine.CategoryDTO;
@@ -59,6 +62,11 @@ public class ExerciseDAO {
 	public ExerciseDTO getExerciseInfo() throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getExerciseInfo");
 	}
+//	public int setRoutineAdd(ExerciseDTO exerciseDTO) {
+//		return sqlSession.insert(NAMESPACE+"setRoutineAdd");
+//	}
+	
+//	public int writeTest(HashMap<String, Object> parameterMap);
 	
 	
 }
