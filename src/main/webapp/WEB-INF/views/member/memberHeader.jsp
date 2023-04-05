@@ -9,7 +9,7 @@
     <a class="nav-link" href="#">문의</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/member/myPage">개인</a>
+    <a class="nav-link" href="/order/list">my page</a>
   </li>
    <li class="nav-item">
     <a class="nav-link" href="/member/update">개인정보</a>

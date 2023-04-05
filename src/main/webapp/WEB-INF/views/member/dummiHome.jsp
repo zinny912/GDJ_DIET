@@ -6,12 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="./common_css.jsp"></c:import>
+
+<!-- <c:import url="../template/common_css.jsp"></c:import> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </head>
 <body>
+<!-- <c:import url="../template/header.jsp"></c:import> -->
+
 더미홈홈
 <a href="/member/myPage">마이페이지</a>
 <a href="/member/join">가입</a>
+
 
 <div id="dum">
 </div>
@@ -54,24 +63,83 @@
 </div>
 
 
-<a href="javascript:kakaoInfo()">카카오 info</a>
-<a href="javascript:kakaoInfo2()">카카오 info2</a>
-<a href="javascript:kakaoInfoLoginPage()">카카오 info login page</a>
-
-<c:import url="./common_js.jsp"></c:import>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script><!-- kakaoAPI -->
-<script src="/resources/js/member/kakaoLogin.js"></script>
-<script src="/resources/js/member/memberDeleteJSON.js"></script><!--kakaoLogin.js에서 del기능호출-->
-<script src="/resources/js/member/kakaoInfo.js"></script>
 
 
-<!-- <script src="/resources/js/member/kakao.js"></script> -->
+
+
+<div class="flex-center" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+  <button class="btn btn-primary ex-popover" tabindex="0" data-toggle="popover" data-trigger="focus" data-popover-content="#a2">Popover Example</button>
+  </div>
+  
+  
+
+  
+  <div id="a2" class="hidden" hidden>
+    <div class="popover-heading">This is the heading for #2</div>
+  
+    <div class="popover-body">
+    This is the body for #2<br> With <b>html</b> content
+    <button class="btn btn-primary mx-auto">Button</button>
+    </div>
+  </div>
+
+
+
+  
+<!-- <script>
+$(function() {
+  $("[data-toggle=popover]").popover({
+    html: true,
+    placement:"bottom",
+    content: function() {
+      var content = $('.ex-popover').attr("data-popover-content");
+      console.log($('.ex-popover').attr("data-popover-content"))
+      return $('#a2').children(".popover-body").html();
+    },
+    title: function() {
+      var title = $('.ex-popover').attr("data-popover-content");
+      console.log('.ex-popover')
+      return $('#a2').children(".popover-heading").html();
+    }
+  });
+});
+
+
+</script> -->
+
+
+
+
+
+
+<!--popover함수 내에서-->
+
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="">Click to toggle popover</button>
+
+<!-- <script>
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl,{html: true}))
+</script> -->
 
 <script>
-
-
-
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
+  title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1><br><a href='/' type='button'>버튼</a>", content:'  <a href="" class="btn btn-danger">나야나</a>', html: true, placement: "right"}))
 </script>
+
+<!-- <script>
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
+  title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1><br><a href='/' type='button'>버튼</a>", content: "<button class='btn'>장장</button>", html: true, placement: "right"}))
+</script> -->
+
+<!-- <button class='btn btn-danger'>장장</button>
+<a href='' type='button'>버튼</a> -->
+
+<!-- <c:import url="../template/footer.jsp"></c:import>
+<c:import url="../template/common_js.jsp"></c:import> -->
+
+
 
 </body>
 </html>

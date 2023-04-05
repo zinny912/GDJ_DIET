@@ -40,26 +40,40 @@
 
 <c:import url="./memberHeader.jsp"></c:import>
 
-
 <div class="col-8">
+<div class="mt-3"><h2 class="usermodify-title">회원정보</h2></div>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<td class="col-3">아이디</td>
+				<td class="col-9">${sessionMember.id }</td>
+			</tr>
+			<tr>
+				<td class="col-3">이메일</td>
+				<td class="col-9">${sessionMember.email }</td>
+			</tr>
+			<tr>
+				<td class="col-3">연락처</td>
+				<td class="col-9">${sessionMember.phone }</td>
+
+			</tr>
+			<tr>
+			    <td class="col-3">연락처</td>
+			    <td>
+			        <input type="text" class="phone-change" value="${sessionMember.phone }">
+			        <button type="button" class="phone-submit">변경/+</button>
+			        <div class="member__input-guide-area_set member__input-guide-area4"></div>
+			    </td>
+			</tr>
+			<tr>
+			</tr>
+		</tbody>	
+	</table>
 
 <c:if test="${sessionMember.loginType eq 'general'}">
-	    <h1 class="usermodify-title">회원정보 수정</h1>
 
-<div class="container-fluid">
-<div class="row">
-
-<div class="col-3 border-end border-3" style="text-align: center;">비밀번호 변경</div>
-<div class="col">
-	<div class="row">1</div>
-	<div class="row">2</div>
-	<div class="row">3</div>	
-</div>
-</div>
-</div>
-
-
-	    <table class="usermodify-table table table-striped">    
+	    <table class=" table " >    
 			<tbody>
 
 			<tr>
@@ -70,7 +84,7 @@
 		<tbody>		
 			<tr>
 			    <th class="col-2">현재 비밀번호</th>
-			    <td class="col-4">
+			    <td class="col-10">
 			        <input type="password" class="password-change1"><div class="member__input-guide-area_set member__input-guide-area1"></div>
 			    </td>
 			</tr>
@@ -100,7 +114,7 @@
 
 </div>
 
-
+<div class="col-2"></div>
 <!-- container, row -->
 	</div>
 </div>
@@ -239,10 +253,10 @@
 
 
 
-<c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/member/memberUpdate.js"></script>
-<script src="/resources/js/member/memberAgree.js"></script>
+<c:import url="../template/footer.jsp"></c:import>
+<!-- <script src="/resources/js/member/memberAgree.js"></script> -->
 
 </body>
 </html>
