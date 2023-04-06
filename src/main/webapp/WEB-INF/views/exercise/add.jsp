@@ -121,7 +121,7 @@
 		</div>
 		<form action="./add" method="POST" enctype="multipart/form-data" class ="col-8 mx-auto"> 
 
-			  <label for="machineNum" class="form-label">운동기구</label>
+			  <%-- <label for="machineNum" class="form-label">운동기구</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
 						<c:forEach items="${machineList}" var="dto">
@@ -129,7 +129,7 @@
 						</c:forEach>
 				</select>
 			      	<div class="selectbox__arrow"></div>
-				</div> 
+				</div>  --%>
 
 			    <label for="title" class="form-label">루틴이름</label>
 			    <div class="selectbox">
@@ -141,19 +141,8 @@
 			      	<div class="selectbox__arrow"></div>
 						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="루틴제목 입력"/>
 			    	</div>
-
-				<label for="days" class="form-label">DAYS</label>
-			    <div class="selectbox">
-			      <select id="selbox" name="selbox">
-						<c:forEach items="${machineList}" var="dto">
-							<option value="${dto.days}">${dto.days}</option>
-						</c:forEach>
-				</select>
-			      	<div class="selectbox__arrow"></div>
-						<input  type="text" id="selboxDirect" name="selboxDirect" placeholder="루틴제목 입력"/>
-			    	</div>
 			    	
-			     <label for="urlId" class="form-label">루틴영상</label>
+			     <label for="urlId" class="form-label">영상</label>
 			    <div class="selectbox">
 			      <select id="selbox" name="selbox">
 						<c:forEach items="${machineList}" var="dto">
@@ -190,21 +179,6 @@
 					    </fieldset>
 					    </div>
 					    
-		<!-- 			   
-         <label for="taskId" class="col-form-label">상세제목</label>
-         <input type="text" class="form-control" id="detailTitle" name="detailTitle" value="detailTitle"> 
-         <label for="taskId" class="col-form-label">상세설명</label>
-         <input type="text" class="form-control" id="info" name="info" value="info">
-         <label for="taskId" class="col-form-label">추천</label>
-         <input type="text" class="form-control" id="highLight" name="highLight" value="highLight"> 
-         <label for="taskId" class="col-form-label">좌표</label>
-         <input type="text" class="form-control" id="coordinate" name="coordinate" value="coordinate"> 
-         <label for="taskId" class="col-form-label">운동부위</label>
-         <input type="text" class="form-control" id="bodyPart" name="bodyPart" value="bodyPart">  
-         <label for="taskId" class="col-form-label">운동강도</label>
-         <input type="text" class="form-control" id="power" name="power" value="power">  
-         <label for="taskId" class="col-form-label">운동시간</label>
-         <input type="text" class="form-control" id="time" name="time" value="time">  -->
 				<div class="container-fluid">
 				<label class="l1" for="bodyPart" id="bodyPart"> 운동부위 </label>					
 				<fieldset class="f1">
@@ -304,7 +278,7 @@
 				</div>
 
 				<button type="submit"
-					class="btn btn-outline-primary col col-md-4 offset-md-10" >이달의 루틴 등록
+					class="btn btn-outline-primary col col-md-4 offset-md-10" > 짧강효확 상세페이지 등록
 				</button>
 		</form>
 		</div>

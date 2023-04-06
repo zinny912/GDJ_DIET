@@ -6,11 +6,13 @@
 <!DOCTYPE html>
 <html>
  <head>
- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
 
  <title>이달의 루틴</title>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <c:import url="../template/common_css.jsp"></c:import>
  <c:import url="../template/header.jsp"></c:import>
  </head>
@@ -24,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const calendarEl = document.getElementById('calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView : 'dayGridMonth',
-      initialDate : '2022-12-31',
       locale : 'ko', // 한국어 설정
       customButtons: {
     	    myCustomButton: {
@@ -33,10 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
     	        alert('clicked the custom button!');}
     	    }
       },
-      
-      
       headerToolbar : {
-        start : "today myCustomButton",
+        start : "today",
         center : "title",
         end : "prev next",
         
@@ -50,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <c:forEach var="dto" items="${routine}">
           {
             title : '${dto.title}',
-            start : '${dto.startDay}',
-            end : '${dto.endDay}',
+            start : '${dto.startDate}',
+            end : '${dto.endDate}',
             url : 'http://localhost/routine/video?num=${dto.num}',
             color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
           },
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       dateClick: function() {
     	    alert('출석체크하시겠습니까?');
     	  },
-    	  select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+    	 /*  select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
     		  var title = prompt('일정을 입력해주세요.');
               if (title) {
                   calendar.addEvent({
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
               $(function saveData(jsondata) {
                   $.ajax({
-                      url: "/add",
+                      url: "/routineAdd",
                       method: "POST",
                       dataType: "json",
                       data: JSON.stringify(events),
@@ -108,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
                            alert("에러 발생" + error);
                       });
                   calendar.unselect()
-              });
-          },
+              }); */
+          //},
 
   	});
   calendar.render();
@@ -117,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
  </script>
-  
+ 
+
  <div class="container">
  <div class="row justify-content-center mb-5 pb-3">
  <div class="col-md-12 heading-section ftco-animate text-center" style="line-height:5%">
@@ -125,11 +125,13 @@ document.addEventListener('DOMContentLoaded', function() {
  </div>
  </div>
  
+  <button id="openModalBtn">모달 열기</button>
 
 
- <form action="./add" method="POST" enctype="multipart/form-data">
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">루틴일정 추가</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="modalButtons">
+ <button type="button" id="routineBtn"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">+</button>
+ <button type="button" id="updateBtn"class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">@</button>
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -137,61 +139,65 @@ document.addEventListener('DOMContentLoaded', function() {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <label for="title" class="col-form-label">루틴 제목</label>
-         <input type="text" class="form-control" id="title" name="title" value="title">
+         <label for="title" class="col-form-label">루틴 제목</label>
+         <input type="text" class="form-control" id="title" name="title">	
          <label for="startDay" class="col-form-label">시작 날짜</label>
-         <input type="date" class="form-control" id="startDay" name="startDay" value="startDay">
+         <input type="date" class="form-control" id="startDay" name="startDay">
          <label for="endDay" class="col-form-label">종료 날짜</label>
-         <input type="date" class="form-control" id="endDay" name="endDay" value="endDay">
+         <input type="date" class="form-control" id="endDay" name="endDay">
          <label for="videoId" class="col-form-label">루틴영상URL</label>
-         <input type="text" class="form-control" id="videoId" name="videoId" value="videoId"> 
+         <input type="text" class="form-control" id="videoId" name="videoId"> 
          <label for="machineNum" class="col-form-label">운동기구</label>
-         <input type="text" class="form-control" id="machineNum" name="machineNum" value="machineNum"> 
+         <input type="text" class="form-control" id="machineNum" name="machineNum"> 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">일정추가 확인</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">취소</button>
+        <button type="submit" class="btn btn-primary" id="routineConfirm">등록</button>
       </div>
+      
     </div>
   </div>
 </div> 
-</form>
+</div>
+
 
  <div>
  
 <div id='calendar'></div>
  </div>
  </div>
-
-
-<!--  
- <td class="text-center">
- <strong class="day">2일차</strong>
- <div class="img rounded-circle mb-2" style ="background-image: url(/resources/images/classes-2.jpg);"></div>
- <a href="/exercise/video?days=2일차" class="videoId" data-day="2"><strong>승마살 싹뚝루틴</strong></a>
- </td> -->
  
-<!--  <div class="mb-3">
-				<label for="studyName" class="form-label">스터디 이름</label> 
-				<input type="text" name="studyName" class="form-control" id="studyName" placeholder="온라인 스터디 입력">
+ 
+ <!-- 로그인 모달  -->
+    <div class="modal fade" id="loginModal" tabindex="-1"
+	aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="loginModalLabel">로그인이 필요합니다</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
- 
-  -->
-        
-        <%-- <td class="text-center">
-          <strong>${dto.days}</strong>
-          <div class="img rounded-circle mb-2" id="changeimg" style="background-image: url(/resources/routine/${dto.boardFileDTOs[0].oriName});"></div>
-          <a href="./video?num=${dto.num}"><strong>${dto.title}</strong></a>
-        </td> --%>
-      
+			<div class="modal-body text-center">로그인 후 이용해주세요.</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+				<a href="/member/login" class="btn btn-primary">로그인</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 
  
  
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-<script src="/resources/js/video.js"></script>
-<script src="/resources/js/routineAdd.js"></script>
+<!-- <script src="/resources/js/video.js"></script> -->
+ <script src="/resources/js/routineAdd.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import> 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

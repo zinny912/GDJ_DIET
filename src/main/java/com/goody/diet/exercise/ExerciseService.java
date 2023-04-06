@@ -56,6 +56,7 @@ public class ExerciseService {
 				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
 				System.out.println("machineNum : " + exerciseDTO.getMachineNum());
 				System.out.println("machineName : " + exerciseDTO.getMachineName());
+				System.out.println("exercise: " + exerciseDTO.getBodyPart());
 			}
 	
 		}

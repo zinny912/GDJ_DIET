@@ -1,18 +1,29 @@
 package com.goody.diet.exercise;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
-public class RoutineDTO {
+import com.goody.diet.healthMachine.HealthMachineDTO;
+
+
+public class RoutineDTO extends HealthMachineDTO {
 	
 	private Long num;
 	private String title;
 	private Date startDay;
 	private Date endDay;
 	private String videoId;
-	private String machineNum;
+	private Long machineNum;
+	private List<HealthMachineDTO> healthMachineDTOs;
 	
 	
-	
+	public List<HealthMachineDTO> getHealthMachineDTOs() {
+		return healthMachineDTOs;
+	}
+	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
+		this.healthMachineDTOs = healthMachineDTOs;
+	}
 	public Long getNum() {
 		return num;
 	}
@@ -44,14 +55,22 @@ public class RoutineDTO {
 	public void setVideoId(String videoId) {
 		this.videoId = videoId;
 	}
-	public String getMachineNum() {
+	
+	public Long getMachineNum() {
 		return machineNum;
 	}
-	public void setMachineNum(String machineNum) {
+	public void setMachineNum(Long machineNum) {
 		this.machineNum = machineNum;
 	}
-	
-	
-	
+	public String getStartDate() {
+	    SimpleDateFormat startDay = new SimpleDateFormat("yyyy-MM-dd");
+	    return startDay.format(this.startDay);
+	}
 
+	public String getEndDate() {
+	    SimpleDateFormat endDay = new SimpleDateFormat("yyyy-MM-dd");
+	    return endDay.format(this.endDay);
+	}
+	
 }
+	
