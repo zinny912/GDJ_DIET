@@ -34,8 +34,7 @@
 
 		<!-- detail page -->
 		<c:forEach items="${orderDTOs}" var="orderDTO">
-			<div hidden="" class="orderNum" data-orderNum="${orderDTO.orderNum}"></div>
-			<div class="col-12 cartListIn">
+			<div class="col-12 order_number cartListIn_${orderDTO.orderNum}" data-orderNum="${orderDTO.orderNum}">
 			
 			</div>	
 		</c:forEach>
@@ -86,6 +85,9 @@
 <div class="container container-fluid">
  
 </div>
+
+
+
 
 <c:import url="../template/common_js.jsp"></c:import>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
