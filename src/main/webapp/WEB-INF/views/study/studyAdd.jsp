@@ -47,7 +47,7 @@
 			</div>
 			
 			<div id="fileList">
-				<div class="input-group mb-3", id="f'+idx+'">
+				<div class="input-group mb-3" id="f'+idx+'">
 					<input type="file" class="form-control" name="addFiles">
 					<button type="button" class="btn btn-outline-danger dels">X</button>
 				</div>

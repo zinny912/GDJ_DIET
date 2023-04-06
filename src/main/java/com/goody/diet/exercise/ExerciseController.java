@@ -55,27 +55,27 @@ public class ExerciseController {
 		return mv;
 		
 	}
-//	@PostMapping("add")
-//	public ModelAndView setRoutineAdd(ModelAndView mv, ExerciseDTO exerciseDTO, MultipartFile [] Files, HttpSession session)throws Exception{
-//		int result = exerciseService.setRoutineAdd(exerciseDTO);
-//		String message="실패";
-//		if(result>0) {
-//			message="성공";
-//		}
-//		mv.addObject("url","./routine");
-//		mv.addObject("result", message);
-//		mv.setViewName("common/result");
-//		return mv;
-//	}
-//	@GetMapping("add")
-//	public ModelAndView setRoutineAdd(HttpSession session, ExerciseDTO exerciseDTO)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//	    mv.setViewName("exercise/add");
-//	    return mv;
-//	}
-//	
-	
 	@PostMapping("add")
+	public ModelAndView setRoutineAdd(ModelAndView mv, ExerciseDTO exerciseDTO, MultipartFile [] Files, HttpSession session)throws Exception{
+		int result = exerciseService.setExerciseAdd(exerciseDTO, Files, session, exerciseDTO);
+		String message="실패";
+		if(result>0) {
+			message="성공";
+		}
+		mv.addObject("url","./routine");
+		mv.addObject("result", message);
+		mv.setViewName("common/result");
+		return mv;
+	}
+	@GetMapping("add")
+	public ModelAndView setRoutineAdd(HttpSession session, ExerciseDTO exerciseDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+	    mv.setViewName("exercise/add");
+	    return mv;
+	}
+	
+	
+	@PostMapping("routineAdd")
 	public ModelAndView setExerciseAdd(ModelAndView mv, ExerciseDTO exerciseDTO, MultipartFile [] Files, HttpSession session, HealthMachineDTO healthMachineDTO)throws Exception{
 		int result = exerciseService.setExerciseAdd(exerciseDTO, Files, session, healthMachineDTO);
 		String message="실패";
@@ -87,7 +87,7 @@ public class ExerciseController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-	@GetMapping("add")
+	@GetMapping("routineAdd")
 	public ModelAndView setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO)throws Exception{
 	    ModelAndView mv = new ModelAndView();
 	    List<ExerciseDTO> ar = exerciseService.getExerciseMachine(); 
@@ -100,7 +100,7 @@ public class ExerciseController {
 	    }
 	    //mv.addObject("exerciseList",ar2);
 	    mv.addObject("machineList", ar);
-	    mv.setViewName("exercise/add");
+	    mv.setViewName("exercise/routineAdd");
 	    return mv;
 	}
 //

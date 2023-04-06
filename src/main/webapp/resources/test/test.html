@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="modal fade" id="contentsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">루틴추가</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="contents"></textarea>
+                        <label for="contents">Comments</label>
+                    </div>
+                            <form class="mb-3" name="myform" id="myform" method="post">
+                                <fieldset>
+                                    <span class="text-bold">별점을 선택해주세요</span> 
+                                        <input type="radio" name="reviewStar" value="5" id="rate1" class="star">
+                                        <label for="rate1">★</label> 
+                                        <input type="radio" name="reviewStar" value="4" id="rate2" class="star">
+                                        <label for="rate2">★</label> 
+                                        <input type="radio" name="reviewStar" value="3" id="rate3" class="star">
+                                        <label for="rate3">★</label> 
+                                        <input type="radio" name="reviewStar" value="2" id="rate4" class="star">
+                                        <label for="rate4">★</label> 
+                                        <input type="radio" name="reviewStar" value="1" id="rate5" class="star">
+                                        <label for="rate5">★</label>
+                                </fieldset>
+                            </form>					
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="contentsConfirm" data-comment-num="">확인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script src="./test.js"></script>
+</body>
+</html>
+

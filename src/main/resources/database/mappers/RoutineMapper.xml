@@ -12,11 +12,35 @@
 	<select id="getRoutineVideo" parameterType="RoutineDTO" resultType="RoutineDTO">
 		SELECT * FROM ROUTINE WHERE NUM = #{num}
 	</select>
-	
+	<select id = "getRoutineMachine" resultMap="getHealthMachineResult">
+			SELECT DISTINCT * FROM ROUTINE R 
+			LEFT OUTER JOIN
+			HEALTHMACHINE H
+			ON (R.MACHINENUM = H.MACHINENUM)
+		</select>
+		<resultMap type="RoutineDTO" id="getHealthMachineResult">
+			<id column="num" property="num"/>
+			<result column="machineNum" property="machineNum"/> 
+			<result column="title" property="title"/>
+			<result column="startDay" property="startDay"/>
+			<result column="endDay" property="endDay"/>
+			<result column="videoId" property="videoId"/>
+			
+			<collection property="healthMachineDTOs" javaType="list" ofType="healthMachineDTO">
+				<id column="machineNum" property="machineNum"/>
+		  			<result column="machineName" property="machineName"/>
+			</collection>
+		</resultMap> 
+		
 	<insert id="setRoutineAdd" parameterType="RoutineDTO">
-		INSERT INTO ROUTINE (NUM,TITLE,VIDEOID,STARTDAY,ENDDAY,MACHINENUM)
-		VALUES (ROU_SEQ.NEXTVAL,#{title},#{videoId},#{startDay},#{endDay},#{machineNum})
+		INSERT INTO ROUTINE (NUM,TITLE,VIDEOID,MACHINENUM,STARTDAY,ENDDAY)
+		VALUES (ROU_SEQ.NEXTVAL,#{title},#{videoId},#{machineNum},#{startDay},#{endDay})
 	</insert>
+	
+	<update id="setRoutineUpdate" parameterType="RoutineDTO">
+ 		UPDATE ROUTINE SET TITLE=#{title},STARTDAY=#{startDay},ENDDAY=#{endDay},VIDEOID=#{videoId},machineNum=#{machineNum}
+ 		WHERE NUM=#{num}
+ 	</update>
 	
 	<delete id="setRoutineDelete" parameterType="Long">
 		DELETE ROUTINE WHERE NUM=#{num}

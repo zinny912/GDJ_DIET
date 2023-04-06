@@ -1,44 +1,129 @@
-// $.ajax({
-//     url: '/exerciseData/', // exercise 데이터를 가져올 url
-//     type: 'GET', // HTTP 요청 방식
-//     dataType: 'json', // 응답 데이터 형식
-//     success: function(data) {
-//         $('#routineList').html(data);
-//       console.log(data); // 가져온 exercise 데이터를 콘솔에 출력
-//     },
-//     error: function(jqXHR, textStatus, errorThrown) {
-//       // 요청이 실패했을 때 실행할 코드
-//       console.error(textStatus, errorThrown);
-//     }
+
+//routineAdd 
+$('#modalButtons').ready(function() {
+    // 등록 버튼 클릭시
+    $('#routineConfirm').click(function() {
+      // 입력된 데이터 가져오기
+      const title = $('#title').val();
+      const startDay = new Date($('#startDay').val()); // Date 객체로 변환
+      const endDay = new Date($('#endDay').val()); // Date 객체로 변환
+      const videoId = $('#videoId').val();
+      const machineNum = $('#machineNum').val();
+  
+      console.log(title);
+      console.log(startDay);
+      console.log(endDay);
+      console.log(videoId);
+      console.log(machineNum);
+  
+      // 데이터 전송
+      $.ajax({
+        url: '/routine/add',
+        type: 'POST',
+        data: {
+          title: title,
+          startDay: startDay, 
+          endDay: endDay, 
+          videoId: videoId,
+          machineNum: machineNum
+        },
+        success: function(data) {
+          console.log('성공');
+          // 등록이 성공하면 모달을 닫고 화면을 리다이렉트
+          $('#exampleModal').modal('hide');
+           location.href = './calendar';
+        },
+        error: function() {
+          console.log('실패');
+          // 등록이 실패하면 에러 메시지 출력
+          alert('등록에 실패했습니다.');
+        }
+      });
+    });
+});
+$('#modalButtons').ready(function() {
+
+    $('#updateBtn').click(function() {
+        alert("수정하기");
+     });
+ });
+
+$(document).ready(function(){
+  // 모달 열기 버튼 클릭 이벤트
+  $("#openModalBtn").click(function(){
+    // 모달창을 생성할 HTML 코드
+    var modalHtml = '<div id="myModal" class="modal">' +
+                      '<div class="modal-dialog">' +
+                        '<div class="modal-content">' +
+                          '<div class="modal-header">' +
+                            '<h4 class="modal-title">모달 제목</h4>' +
+                            '<button type="button" class="close" data-dismiss="modal">&times;</button>' +
+                          '</div>' +
+                          '<div class="modal-body">' +
+                            '<p>모달 내용</p>' +
+                          '</div>' +
+                          '<div class="modal-footer">' +
+                            '<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>' +
+                    '</div>';
+    // 모달창을 body에 추가
+    $("body").append(modalHtml);
+    // 모달 엘리먼트를 jQuery로 선택하여 show() 메소드를 이용하여 보여줌
+    $("#myModal").modal("show");
+  });
+});
+
+  // $("#categorySelect").change(function(){
+//     $("#categoryId").val($("#categorySelect").val())
+//     console.log($(this).val())
+//     console.log($("#categoryId").val())
+// })
+
+// $(document).ready(function() {
+//     // 등록 버튼 클릭시
+//     $('#routineConfirm').click(function() {
+//       // 입력된 데이터 가져오기
+//       const title = $('#title').val();
+//       const startDay = $('#startDay').val();
+//       const endDay = $('#endDay').val();
+//       const videoId = $('#videoId').val();
+//       const machineNum = $('#machineNum').val();
+//         console.log(title)
+//         console.log(endDay)
+//         console.log(machineNum)
+//       // 데이터 전송
+//       $.ajax({
+//         url: '/routine/add',
+//         type: 'POST',
+//         data: {
+//           title: title,
+//           startDay: startDay,
+//           endDay: endDay,
+//           videoId: videoId,
+//           machineNum: machineNum
+//         },
+//         success: function(data) {
+//             console.log('성공')
+//           // 등록이 성공하면 모달을 닫고 화면을 리다이렉트
+//           $('#exampleModal').modal('hide');
+//           location.href = './calendar';
+//         },
+//         error: function() {
+//             console.log('실패')
+//           // 등록이 실패하면 에러 메시지 출력
+//           alert('등록에 실패했습니다.');
+//         }
+//       });
+//     });
 //   });
 
-//  $(routinebtn).click { // 추가한 버튼 설정
-//     text : "일정 추가",  // 버튼 내용
-//     click : function(){ // 버튼 클릭 시 이벤트 추가
-//         $("#calendarModal").modal("show"); // modal 나타내기
+// $('#routineBtn').click(function(){
+//     location.href="./add";
+// });
 
-//         $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
-//             var content = $("#calendar_content").val();
-//             var start_date = $("#calendar_start_date").val();
-//             var end_date = $("#calendar_end_date").val();
-            
-//             //내용 입력 여부 확인
-//             if(content == null || content == ""){
-//                 alert("내용을 입력하세요.");
-//             }else if(start_date == "" || end_date ==""){
-//                 alert("날짜를 입력하세요.");
-//             }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
-//                 alert("종료일이 시작일보다 먼저입니다.");
-//             }else{ // 정상적인 입력 시
-//                 var obj = {
-//                     "title" : content,
-//                     "start" : start_date,
-//                     "end" : end_date
-//                 }//전송할 객체 생성
-
-//                 console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
-//             }
-//         });
-//     }
-// };
-
+  
+  
+  
+  

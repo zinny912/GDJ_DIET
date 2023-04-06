@@ -42,24 +42,8 @@
         </div>
     </div>
 
-<!-- <div class="mb-3">
-				<label for="studyName" class="form-label">스터디 이름</label> 
-				<input type="text" name="studyName" class="form-control" id="studyName" placeholder="온라인 스터디 입력">
-			</div> -->
- <tr>
- <td class="text-center">
- <strong></strong>
- <div class="img rounded-circle mb-2" style="background-image: "></div>
- <a href="" class="videoId" data-day="1"><strong></strong></a>
- </td>
- <td class="text-center"></td>
- <td class="text-center"></td>
- 
-<td class="text-center">
- <strong>${dto.days}</strong>
- <div class="img rounded-circle mb-2" style="background-image: url(/resources/images/leg1.png);"></div>
- <a href="./exercise/video?days=1일차" class="videoId" data-day="1"><strong>승마살 싹뚝루틴</strong></a>
- </td>
 
+
+ <script src="/resources/js/studyBoard.js"></script>
  </body>
 </html>
