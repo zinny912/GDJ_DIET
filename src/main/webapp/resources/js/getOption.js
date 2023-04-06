@@ -323,7 +323,7 @@ $("#btn").on("click","#cartAdd",function(){
                     alert("장바구니에 추가되었습니다.")
                     redirect = window.confirm("장바구니로 이동 하시겠습니까?");
                     if (redirect) {
-                        $("#frm").attr("action", "redirect:/cart/cartList")
+                        $("#frm").attr("action", "../../cart/cartList")
                         $("#frm").attr("method", "get");
                         $("#frm").submit();
                     }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.healthMachine.HealthMachineDTO;
@@ -61,6 +62,23 @@ public class CartController {
 		mv.setViewName("redirect:./cartList");
 		return mv;
 	}
+	
+	@PostMapping("cartCheckedUpdate")
+	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
+		int[] result = cartService.setCartCheckUpdate(cartDTO,checkedItems,session);
+		String mes = "결제 창 이동 실패";
+		if(result[0]>0) {
+			mes = "결제 창으로 이동합니다.";
+
+		}	
+		mv.addObject("result", mes);
+		mv.addObject("url", "./payment");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 	//태현
 	@PostMapping("cartMachineAdd")
 	public ModelAndView setCartMachineAdd(ModelAndView mv,CartDTO cartDTO,RealHealthMachineDTO realHealthMachineDTO, HttpSession session)throws Exception{
@@ -83,12 +101,13 @@ public class CartController {
 		return mv;
 	}
 	
+
 	@GetMapping("payment")
 	public ModelAndView setCartPayment(CartDTO cartDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
-		List<CartDTO> ar = cartService.getCartList(cartDTO);
+		List<CartDTO> ar = cartService.getPaymentList(cartDTO);
 		mv.setViewName("cart/payment");
 		mv.addObject("list", ar);
 		return mv;
