@@ -9,6 +9,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import com.goody.diet.healthMachine.HealthMachineDAO;
+import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.MemberDTO;
 
@@ -21,23 +22,61 @@ public class CartService {
 	@Autowired
 	HealthMachineDAO helHealthMachineDAO;
 	
+	//민지
 	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
-		return cartDAO.getCartList(cartDTO);
+		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
+		List<CartDTO> machines = cartDAO.getCartMachineList(cartDTO);
+		for(CartDTO dto:machines) {
+			ar.add(dto);
+		}
+		return ar;
 	}
 	
 	public int setCartStudyAdd(CartDTO cartDTO) throws Exception{
 		return cartDAO.setCartStudyAdd(cartDTO);
 	}
+	
+	public List<CartDTO> getPaymentList(CartDTO cartDTO) throws Exception{
+		return cartDAO.getPaymentList(cartDTO); 
+	}
+	
+	public int[] setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session) throws Exception{
+		int[] result = new int[checkedItems.length];
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		cartDTO.setId(memberDTO.getId());
+		int result1 = cartDAO.setCartCheckDefaultUpdate(cartDTO);
+		for(int i=0; i<checkedItems.length; i++) {			
+			int result2 = cartDAO.setCartCheckUpdate(checkedItems[i]);
+	        result[i] = result2;
+	    }
+		return result;
+	}
+	
+	
+	public int[] setCartDelete(Long[] checkedItems) throws Exception{
+		int[] result = new int[checkedItems.length];
+		for(int i=0; i<checkedItems.length; i++) {			
+//	        longArray[i] = Long.parseLong(checkedItems[i]);
+	        int result2 = cartDAO.setCartDelete(checkedItems[i]);
+	        result[i] = result2;
+	    }
+		return result;
+	}
+	
 	//태현
 	//		cart에 넣기
 	public int setCartMachineAdd(CartDTO cartDTO,RealHealthMachineDTO realHealthMachineDTO, HttpSession session)throws Exception{
 		
 		realHealthMachineDTO= helHealthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
 		//realMachineNum
+		HealthMachineDTO healthMachineDTO= helHealthMachineDAO.getHealthMachineDetail(realHealthMachineDTO);
+//		System.out.println(healthMachineDTO.getPrice());
+		cartDTO.setCartPrice(healthMachineDTO.getSalePrice());
+		cartDTO.getCartPrice();
 		cartDTO.setRealMachineNum(realHealthMachineDTO.getRealMachineNum());
 		
-		//
-		List<CartDTO> dtos = cartDAO.getCartList(cartDTO);
+		//중복이면 count+1
+		List<CartDTO> dtos = cartDAO.getCartMachineList(cartDTO);
 		for(CartDTO dto : dtos) {
 			if(cartDTO.getRealMachineNum()==dto.getRealMachineNum()) {
 				return cartDAO.setCartMachineCount(cartDTO);
@@ -59,13 +98,5 @@ public class CartService {
 //		return result;
 //	}
 	
-	public int[] setCartDelete(Long[] checkedItems) throws Exception{
-		int[] result = new int[checkedItems.length];
-		for(int i=0; i<checkedItems.length; i++) {			
-//	        longArray[i] = Long.parseLong(checkedItems[i]);
-	        int result2 = cartDAO.setCartDelete(checkedItems[i]);
-	        result[i] = result2;
-	    }
-		return result;
-	}
+
 }

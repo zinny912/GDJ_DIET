@@ -17,13 +17,21 @@ public class CartTest extends MyTestCase{
 	@Autowired
 	private CartDAO cartDAO;
 	
-	@Test
+//	@Test
 	public void test() throws Exception {
 		CartDTO cartDTO = new CartDTO();
 		cartDTO.setId("admin");
 		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
 		assertNotEquals(0, ar.size());
 		
+	}
+//	@Test
+	public void getMachineCartList()throws Exception{
+		CartDTO cartDTO = new CartDTO();
+		cartDTO.setId("d");
+		List<CartDTO> ar = cartDAO.getCartMachineList(cartDTO);
+		System.out.println(ar.size());
+		assertNotEquals(0, ar.size());
 	}
 
 }

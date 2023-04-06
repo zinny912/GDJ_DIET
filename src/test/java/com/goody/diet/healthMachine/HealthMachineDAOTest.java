@@ -22,7 +22,7 @@ public class HealthMachineDAOTest extends MyTestCase {
 //	@Test
 	public void setHealthmachinieAdd()throws Exception{
 		HealthMachineDTO dto = new HealthMachineDTO();
-		dto.setCategoryNum(3L);
+//		dto.setCategoryNum(3L);
 		dto.setMachineName("test");
 		dto.setSalePrice(3L);
 		dto.setPrice(3L);

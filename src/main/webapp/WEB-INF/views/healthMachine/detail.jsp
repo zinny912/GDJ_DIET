@@ -16,7 +16,7 @@
 			class="row gx-4 gx-lg-5 align-items-center my-5 border border-secondary-subtle">
 			<div class="col-lg-7">
 				<img class="img-fluid rounded mb-4 mb-lg-0"
-					src="/resources/images/${dto.healthMachineImgDTOs[0].oriName}"
+					src="/resources/images/${dto.healthMachineImgDTOs[0].fileName}"
 					alt="..." />
 			</div>
 			<div class="col-lg-5 text-center">
