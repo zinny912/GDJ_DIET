@@ -25,7 +25,7 @@
 <input type="text" hidden="" id="kid" name="id" class="form-control" placeholder="아이디"/>
 <input type="text" hidden="" id="kemail" name="email" class="form-control"/>
 <input type="text" hidden="" id="kname" name="names" class="form-control"/>
-<input type="text" hidden="" id="dummi" value="${sessionMember.id}">
+<%-- <input type="text" hidden="" id="dummi" value="${sessionMember.id}"> --%>
 </form>
 
   <div class="container-fluid">
@@ -50,8 +50,8 @@
                   </div>
                   
                   <!-- 카카오용 -->
-                  <input type="text" hidden="" id="email" name="email" class="form-control"/>
-                  <input type="text" hidden="" id="name" name="names" class="form-control"/>
+<!--                   <input type="text" hidden="" id="email" name="email" class="form-control"/> -->
+<!--                   <input type="text" hidden="" id="name" name="names" class="form-control"/> -->
                   <!-- <input type="text" id="loginType" name="loginType" hidden="" value="general" class="form-control"/> -->
                   
                   <div class="d-flex flex-row align-items-center mb-4">

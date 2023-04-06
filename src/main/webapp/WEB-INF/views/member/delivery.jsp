@@ -66,17 +66,17 @@
 <div class="col-12">
 	<div class="card">
 	  <div class="card-body">
-	 	<div hidden="" class="id" data-id="${i.addressNum}"></div>
-	    <h5 class="card-title recipient" data-recipient="${i.recipient}">${i.recipient}</h5>
+	    <h5 class="card-title recipient" >${i.recipient}</h5>
 
-	    <p class="card-text address" data-address="${i.address}">주소:	${i.address}</p>
-	    <p class="card-text recipientTel" data-recipientTel="${i.recipientTel}">연락처:	${i.recipientTel}</p>
+	    <p class="card-text address" >주소:	${i.address}</p>
+	    <p class="card-text recipientTel" >연락처:	${i.recipientTel}</p>
 	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${i.addressNum}" class="card-link">수정</a>
 
 	    <a href="./deliveryDelete?addressNum=${i.addressNum}" class="card-link">삭제</a>
 
 		<c:if test="${popUp ne null}">
-			<button class="btn btn-scondary toPayment">선택</button>
+			<button class="btn btn-scondary toPayment" data-addressNum="${i.addressNum}" data-recipient="${i.recipient}" data-address="${i.address}" data-recipientTel="${i.recipientTel}" 
+			>선택</button>
 			<a href="./deliveryDelete?addressNum=${i.addressNum}" class="">선택2</a>
 		</c:if>
 	    
@@ -86,7 +86,7 @@
 </c:if></c:forEach>
 
 <div class="col-12">
-	<button type="button" onclick="location.href='./deliveryNew';">추가</button>
+	<button type="button" onclick="location.href='./deliveryNew'">추가</button>
 </div>
 
       </div>
@@ -102,6 +102,6 @@
 </c:if>
 <script src="/resources/js/member/memberUpdate.js"></script>
 <script src="/resources/js/member/memberAgree.js"></script>
-<script src="/resources/js/member/delivery.js"></script>
+<script src="/resources/js/member/deliveryToPayment.js"></script>
 </body>
 </html>

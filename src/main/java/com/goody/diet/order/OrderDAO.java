@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.DeliveryDTO;
@@ -26,21 +27,23 @@ public class OrderDAO {
 	public List<OrderDTO> getOrderList (MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getOrderList", memberDTO);
 	}
-//	public List<OrderDetailDTO> getOrderDetailList(OrderDTO orderDTO) {		
-//		return sqlSession.selectList(NAMESPACE+"getOrderDetailList", orderDTO);
-//	}
+	public List<CartDTO> getCartList(OrderDTO orderDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getOrderDetail", orderDTO);
+	}
+	public StudyDTO getStudy(CartDTO cartDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getStudy", cartDTO);
+	}	
+	public HealthMachineDTO getHealthMachine(CartDTO cartDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachine", cartDTO);
+	}	
 	
-	
-
 	public int setOrder(OrderDTO orderDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setOrder", orderDTO);
 	}
 	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setOrderDetail", orderDetailDTO);
 	}
-	public OrderDetailDTO getOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getOrderDetail", orderDetailDTO);
-	}
+
 	
 	
 	

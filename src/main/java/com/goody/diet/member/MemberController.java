@@ -63,8 +63,12 @@ public class MemberController {
 
 	@PostMapping("delete")
 	public ModelAndView setMemberDelete(ModelAndView mv, HttpSession session) throws Exception {
-		System.out.println("post delete 왓니?");
+		System.out.println("-------------회원탈퇴------------");
+		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		//주소삭제
+		memberService.setDeliveryDeleteOnMemberDelete(memberDTO);
+
 		int delResult=memberService.setMemberDelete(memberDTO);
 		session.invalidate();
 		
@@ -255,6 +259,9 @@ public class MemberController {
 	@PostMapping("deliveryAdd")
 	public ModelAndView setDeliveryAdd(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv,HttpSession session) throws Exception {
 		
+		//member에 주소가 없으면 prime 주소가 없을시 DELIVERY 강제로 대표주소로 CHECKED
+		MemberDTO address_result=(MemberDTO)session.getAttribute("sessionMember");
+		if(address_result.getAddress()==null) {primaryAddress="1";}
 		//member address 업데이트.(대표주소)
 		System.out.println("primaryAddress: "+primaryAddress);
 		if(primaryAddress!=null&&primaryAddress.equals("1")) {
@@ -357,6 +364,5 @@ public class MemberController {
 		mv.addObject("result", result);
 		return mv;
 	}
-	
 
 }
