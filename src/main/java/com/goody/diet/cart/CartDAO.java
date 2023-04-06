@@ -43,6 +43,9 @@ public class CartDAO {
 	public int setCartMachineCount(CartDTO cartDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCartMachineCount", cartDTO);
 	}
+	public List<CartDTO> getPaymentMachineList(CartDTO cartDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getPaymentMachineList", cartDTO);
+	}
 	
 	
 	public int setCartDelete(Long item) throws Exception{

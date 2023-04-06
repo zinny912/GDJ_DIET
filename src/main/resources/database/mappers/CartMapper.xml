@@ -13,7 +13,7 @@
 			LEFT JOIN
 			STUDYFILE SF
 			ON (S.STUDYNUM = SF.STUDYNUM) 
-		WHERE C.ID=#{id}
+		WHERE C.ID=#{id} AND c.status &lt; 2
 		ORDER BY C.NUM ASC
 	</select>
 	<!-- 태현 리스트 machine에선 saleprice,image필요-->
@@ -50,7 +50,24 @@
 		WHERE C.ID=#{id} AND C.STATUS=1
 		ORDER BY C.NUM ASC
 	</select>
-
+	<select id="getPaymentMachineList" parameterType="CartDTO" resultMap="CartMachineMap">
+	SELECT * FROM cart c
+	LEFT OUTER JOIN
+	REALHEALTHMACHINE r 
+	on(c.REALMACHINENUM=r.REALMACHINENUM)
+	LEFT OUTER JOIN 
+	HEALTHMACHINE h 
+	on(r.MACHINENUM=h.MACHINENUM)
+	LEFT OUTER JOIN 
+	(
+			SELECT * FROM (
+			SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC)
+			ranknum
+			FROM MACHINEIMG m2
+			) WHERE ranknum=1) t
+	on(h.MACHINENUM=t.machinenum)
+	WHERE c.ID =#{id} AND c.status=1
+	</select>
 	
 	<insert id="setCartStudyAdd" parameterType="CartDTO">
 		INSERT INTO CART (NUM,ID,STUDYNUM,COUNT,STATUS,CARTPRICE)

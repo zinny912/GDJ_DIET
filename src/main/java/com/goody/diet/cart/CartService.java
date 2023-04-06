@@ -37,7 +37,12 @@ public class CartService {
 	}
 	
 	public List<CartDTO> getPaymentList(CartDTO cartDTO) throws Exception{
-		return cartDAO.getPaymentList(cartDTO); 
+		List<CartDTO> ar = cartDAO.getPaymentList(cartDTO);
+		List<CartDTO> machines = cartDAO.getPaymentMachineList(cartDTO);
+		for(CartDTO dto:machines) {
+			ar.add(dto);
+		}
+		return ar;  
 	}
 	
 	public int[] setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session) throws Exception{
