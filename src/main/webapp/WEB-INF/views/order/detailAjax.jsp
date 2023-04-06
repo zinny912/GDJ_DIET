@@ -42,11 +42,12 @@
 <span>${cartDTO.count}개</span>
 <div>
 <button type="button" class="btn btn-secondary btn-addCart-machine to-cart-popper" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover"
-	data-addCart="${cartDTO.realMachineNum}" data-addCart-price="${cartDTO.cartPrice}">장바구니 담기</button>
+	data-addCart="${cartDTO.realMachineNum}" data-addCart-price="${cartDTO.cartPrice}" 
+	data-addCart-machineNum="${realHealthMachineDTO.machineNum}" data-addCart-op1="${realHealthMachineDTO.optId1}" data-addCartop-2="${realHealthMachineDTO.optId2}" data-addCartop-3="${realHealthMachineDTO.optId3}" data-addCartop-4="${realHealthMachineDTO.optId4}"
+	>장바구니 담기</button>
 <button type="button" class="btn btn-secondary">리뷰 작성하기</button>
 
-<!-- dummi -->
-<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="">Click to toggle popover</button>
+
 
 </div>
 

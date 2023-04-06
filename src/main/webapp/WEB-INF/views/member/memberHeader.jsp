@@ -9,19 +9,15 @@
     <a class="nav-link" href="#">문의</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/order/list">my page</a>
+    <a class="nav-link" href="/order/list">주문목록</a>
   </li>
    <li class="nav-item">
     <a class="nav-link" href="/member/update">개인정보</a>
   </li> 
-  
-  
   <li class="nav-item">
     <a class="nav-link" href="/member/delivery">배송지</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/">나야나</a>
-  </li>
+
 </ul>
 </div>
 <!-- container안-row안에 널 것. -->
