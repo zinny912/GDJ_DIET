@@ -1,9 +1,13 @@
 
 //orderNum으로 cartList불러오기
+let orderLeng = document.getElementsByClassName("orderNum")
+for(let i=0; i<orderLeng.length;i++){}
 $.ajax({
     type:"GET",
     url:"/order/cartList",
-    data:{orderNum:$('.orderNum').attr("data-orderNum")},
+    data:{
+        orderNum:orderLeng[i].getAttribute("data-orderNum")
+    },
     success: (res)=>{
         $('.cartListIn').html(res.trim())
     }

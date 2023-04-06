@@ -21,7 +21,7 @@
     <div class="col-10">
       <div class="row">
       		
-	<c:forEach items="${orderList}" var="orderDTO" varStatus="i">
+	<c:forEach items="${orderDTOs}" var="orderDTO" varStatus="i">
 <div class="orderList">
 
 

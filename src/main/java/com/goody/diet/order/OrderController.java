@@ -44,15 +44,21 @@ public class OrderController {
 		List<CartDTO> cartDTOs = orderService.getCartList(orderDTO);
 		List<StudyDTO> studyDTOs = new ArrayList<StudyDTO>(); 
 		List<HealthMachineDTO> HealthMachineDTOs = new ArrayList<HealthMachineDTO>();
-		for(CartDTO cartDTO:cartDTOs) {
-			studyDTOs.add(orderService.getStudy(cartDTO));
-			HealthMachineDTOs.add(orderService.getHealthMachine(cartDTO));
-			//밖에서 cartDTO랑 어떻게 매치시킴? if문으로 num이랑 하자..
+		if(cartDTOs.size()!=0) {
+			for(CartDTO cartDTO:cartDTOs) {
+				if(orderService.getStudy(cartDTO)!=null) {
+					studyDTOs.add(orderService.getStudy(cartDTO));				
+				}
+				if(orderService.getHealthMachine(cartDTO)!=null) {				
+					HealthMachineDTOs.add(orderService.getHealthMachine(cartDTO));
+				}
+				//밖에서 cartDTO랑 어떻게 매치시킴? if문으로 num이랑 하자..
+			}
+			mv.addObject("cartDTOs", cartDTOs);
+			mv.addObject("studyDTOs", studyDTOs);
+			mv.addObject("HealthMachineDTOs", HealthMachineDTOs);
 		}
 		mv.setViewName("../common/ajaxResult");
-		mv.addObject("cartDTOs", cartDTOs);
-		mv.addObject("studyDTOs", studyDTOs);
-		mv.addObject("HealthMachineDTOs", HealthMachineDTOs);
 		return mv;
 	}
 //	public ModelAndView getStudy(ModelAndView mv, CartDTO cartDTO) throws Exception {
