@@ -237,7 +237,7 @@ public class MemberController {
 	@GetMapping("delivery")
 	public ModelAndView getDeliveryPage(HttpSession session, ModelAndView mv, boolean popUp) throws Exception {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
-		
+
 		if(popUp) {
 			mv.addObject("popUp", popUp);
 		}
@@ -253,13 +253,19 @@ public class MemberController {
 		return mv;
 	}
 	@GetMapping("deliveryNew")
-	public String setDeliveryAdd() throws Exception {
-		return "/member/deliveryNew";
+	public ModelAndView setDeliveryAdd(ModelAndView mv, boolean popUp) throws Exception {
+		
+		if(popUp) {
+			mv.addObject("popUp", popUp);
+		}
+		mv.setViewName("/member/deliveryNew");
+		return mv;
 	}
 	@PostMapping("deliveryAdd")
-	public ModelAndView setDeliveryAdd(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv,HttpSession session) throws Exception {
+	public ModelAndView setDeliveryAdd(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv,HttpSession session
+			, boolean popUp) throws Exception {
 		
-		//member에 주소가 없으면 prime 주소가 없을시 DELIVERY 강제로 대표주소로 CHECKED
+		//member에 주소가 없으면 prime 주소가 없을시 DELIVERY 강제로 대표주소로 CHECKED (member.address 업데이트)
 		MemberDTO address_result=(MemberDTO)session.getAttribute("sessionMember");
 		if(address_result.getAddress()==null) {primaryAddress="1";}
 		//member address 업데이트.(대표주소)
@@ -273,19 +279,26 @@ public class MemberController {
 		}
 		
 		int result = memberService.setDeliveryAdd(deliveryDTO);
-		mv.setViewName("redirect:./delivery");
+		mv.setViewName("redirect:./delivery");	//redirect:./delivery //popUp에서 추가했을시 "/member/delivery?popUp=true" 로 가야헤..
+		if(popUp) {
+			mv.addObject("popUp", popUp);
+		}
 		mv.addObject("result", result);
-		//memberDTO ID를 session에서 꺼내든 parameter로 받아오든, deliveryDTO를 추가.
+		//memberDTO ID를 session에서 꺼내든 parameter로 받아오든, deliveryDTO를 추가. 
 		return mv;
 	}
 	@GetMapping("deliveryDelete")
-	public String setDeliveryDelete(DeliveryDTO deliveryDTO) throws Exception {
+	public ModelAndView setDeliveryDelete(ModelAndView mv, DeliveryDTO deliveryDTO, boolean popUp) throws Exception {
 		int result=memberService.setDeliveryDelete(deliveryDTO);
-		return "/member/delivery";
+		mv.setViewName("/member/delivery");
+		if(popUp) {
+			mv.addObject("popUp", popUp);
+		}
+		return mv;
 	}
 	
 	@GetMapping("deliveryUpdate")
-	public ModelAndView setdeliveryUpdate(DeliveryDTO deliveryDTO) throws Exception {
+	public ModelAndView setdeliveryUpdate(DeliveryDTO deliveryDTO, boolean popUp) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
 		deliveryDTO=memberService.getDeliveryDetail(deliveryDTO);
@@ -296,6 +309,10 @@ public class MemberController {
 		String addressDetail=address.substring(address.indexOf(",")+1);
 		mv.addObject("addressPost", addressPost);
 		mv.addObject("addressDetail", addressDetail);
+		
+		if(popUp) {
+			mv.addObject("popUp", popUp);
+		}
 		
 		mv.setViewName("/member/deliveryUpdate");
 		mv.addObject("deliveryDTO",deliveryDTO);

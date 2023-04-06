@@ -53,7 +53,7 @@
 				FROM MACHINEIMG m2 
 				) WHERE ranknum=1) t
 				on(h.MACHINENUM=t.machinenum)
-		WHERE REALMACHINENUM IN (SELECT REALMACHINENUM FROM CART c WHERE STATUS=2 AND NUM IN #{realMachineNum});
+		WHERE r.REALMACHINENUM = (SELECT REALMACHINENUM FROM CART c WHERE STATUS=2 AND NUM =#{num})
 	</select>
 	
 	<select id="getStudy" parameterType="CartDTO" resultMap="getBoardResult">
@@ -68,7 +68,6 @@
 	
 	<resultMap type="HealthMachineDTO" id="getHealthMachineResult">
 		<id column="MACHINENUM" property="machineNum"/>
-		<result column="categoryNum" property="categoryNum"/>
 		<result column="machineName" property="machineName"/>
 		<result column="machineScore" property="machineScore"/>
 		<result column="price" property="price"/>

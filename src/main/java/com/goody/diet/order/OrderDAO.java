@@ -34,7 +34,7 @@ public class OrderDAO {
 		return sqlSession.selectOne(NAMESPACE+"getStudy", cartDTO);
 	}	
 	public HealthMachineDTO getHealthMachine(CartDTO cartDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachine", cartDTO);
+		return sqlSession.selectOne(NAMESPACE+"getHealthMachine", cartDTO);
 	}	
 	
 	public int setOrder(OrderDTO orderDTO) throws Exception {

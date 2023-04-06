@@ -41,24 +41,35 @@ public class OrderController {
 	}
 	@GetMapping("cartList")
 	public ModelAndView getCartList(ModelAndView mv, OrderDTO orderDTO) throws Exception {
+		System.out.println("-----------------getCartList-------------------");
+		System.out.println(orderDTO.getOrderNum());
+		
 		List<CartDTO> cartDTOs = orderService.getCartList(orderDTO);
 		List<StudyDTO> studyDTOs = new ArrayList<StudyDTO>(); 
-		List<HealthMachineDTO> HealthMachineDTOs = new ArrayList<HealthMachineDTO>();
+		List<HealthMachineDTO> healthMachineDTOs = new ArrayList<HealthMachineDTO>();
+		
+		System.out.println("cartDTOs.size(): "+cartDTOs.size());
+		
 		if(cartDTOs.size()!=0) {
 			for(CartDTO cartDTO:cartDTOs) {
-				if(orderService.getStudy(cartDTO)!=null) {
+				System.out.println("cartDTO.getStudyNum(): "+cartDTO.getStudyNum());
+				System.out.println("cartDTO.getRealHealthMachine: "+cartDTO.getRealMachineNum());
+				if(cartDTO.getStudyNum()!=null) {
 					studyDTOs.add(orderService.getStudy(cartDTO));				
 				}
-				if(orderService.getHealthMachine(cartDTO)!=null) {				
-					HealthMachineDTOs.add(orderService.getHealthMachine(cartDTO));
+				if(cartDTO.getRealMachineNum()!=null) {				
+					healthMachineDTOs.add(orderService.getHealthMachine(cartDTO));
 				}
 				//밖에서 cartDTO랑 어떻게 매치시킴? if문으로 num이랑 하자..
 			}
 			mv.addObject("cartDTOs", cartDTOs);
 			mv.addObject("studyDTOs", studyDTOs);
-			mv.addObject("HealthMachineDTOs", HealthMachineDTOs);
+			mv.addObject("healthMachineDTOs", healthMachineDTOs);
 		}
-		mv.setViewName("../common/ajaxResult");
+		System.out.println("studyDTOs.size(): "+studyDTOs.size());
+		System.out.println("healthMachineDTOs.size(): "+healthMachineDTOs.size());
+		
+		mv.setViewName("/order/detailAjax");
 		return mv;
 	}
 //	public ModelAndView getStudy(ModelAndView mv, CartDTO cartDTO) throws Exception {
@@ -121,12 +132,12 @@ public class OrderController {
 //	}
 	  
 	///////////////////////배송지///////////////////////
-	@GetMapping("newPaymentOrder")
+	@GetMapping("newPaymentOrder")	//처음 기본주소호출
 	public ModelAndView getPaymentOrder(HttpSession session, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
 		System.out.println("-------------------getPaymentOrder-------------------");
 		System.out.println(deliveryDTO.getAddressNum());
 		
-		//세션에서 뽑기 복잡한듯?
+		//받아오는 deliveryDTO가 없으면 대표주소로
 		if(deliveryDTO.getAddressNum()==null) {
 			MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 			deliveryDTO=orderService.getPrimeDelivery(memberDTO);			
