@@ -6,6 +6,8 @@ public class Pager {
 	
 	private Long studyNum;
 	
+	private Long machineNum;
+	
 	//검색 종류(사용할 column)
 	private String kind;
 	//검색어
@@ -223,6 +225,17 @@ public class Pager {
 	public void setStudyNum(Long studyNum) {
 		this.studyNum = studyNum;
 	}
+
+
+	public Long getMachineNum() {
+		return machineNum;
+	}
+
+
+	public void setMachineNum(Long machineNum) {
+		this.machineNum = machineNum;
+	}
+	
 	
 	
 	
