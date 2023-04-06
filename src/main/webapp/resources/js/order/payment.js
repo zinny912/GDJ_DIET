@@ -9,7 +9,7 @@ $('.btn_delivery_change').click(()=>{
 
 })
 
-//기본적으로 호출(처음엔 대표주소), delivery에서 선택누르면 return값 대입.
+//기본적으로 호출(처음 대표주소)
 deliveryCall()
 function deliveryCall(){
     console.log('go to newPaymentOrder')
@@ -38,4 +38,9 @@ function openChild() {
     
     // window.open("open할 window", "자식창 이름", "팝업창 옵션");
     openWin = window.open("/member/delivery?popUp=true", "childForm", "width=570, height=570, resizable = no, scrollbars = no");    
+}
+
+//새창에서 바뀐주소 받아옴.
+function secDeliveryCall(html){
+    $('.pay-deliver-ajax').html(html);
 }

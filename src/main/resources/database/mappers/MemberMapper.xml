@@ -58,6 +58,9 @@
 	<delete id="setDeliveryDelete" parameterType="com.goody.diet.member.DeliveryDTO">
 		DELETE DELIVERY WHERE ADDRESSNUM=#{addressNum}
 	</delete>
+	<delete id="setDeliveryDeleteOnMemberDelete" parameterType="MemberDTO">
+		DELETE DELIVERY WHERE ID=(SELECT ID FROM MEMBER WHERE ID=#{id})
+	</delete>
 	<update id="setPasswordUpdate" parameterType="MemberDTO">
 		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
 	</update>

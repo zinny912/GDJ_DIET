@@ -33,22 +33,11 @@
 	    <h5 class="card-title">${orderDTO.orderDate} 주문</h5>
 
 		<!-- detail page -->
-		<c:forEach items="${orderDTO.orderDetailDTOs}" var="orderDetailDTO">
-			<!-- detail card -->
-			<div class="col-12">
-				<div class="card">
-				  <div class="card-body orderDetails" id="${orderDetailDTO.orderDetailNum}" data-orderDetailDTO="${orderDetailDTO.orderDetailNum}">
-<%-- 				    <h5 class="card-title">${prime.recipient}</h5> --%>
+		<c:forEach items="${orderDTOs}" var="orderDTO">
+			<div hidden="" class="orderNum" data-orderNum="${orderDTO.orderNum}"></div>
+			<div class="col-12 cartListIn">
 			
-<!-- 				    <h6 class="card-subtitle mb-2 text-muted">대표주소</h6> -->
-				    
-<%-- 				    <p class="card-text">${prime.address}</p> --%>
-<%-- 				    <p class="card-text">${prime.recipientTel}</p> --%>
-<%-- 				    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}" class="card-link">수정</a> --%>
-				    
-				  </div>
-				</div>		
-			</div>		
+			</div>	
 		</c:forEach>
 		<!-- detail page -->
 	    
