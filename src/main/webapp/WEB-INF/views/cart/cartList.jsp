@@ -17,6 +17,7 @@
 <c:import url="../template/header.jsp"></c:import>
 ]
 	<section class="cart">
+	<c:set var="totalCost" value="0" />
 		<div class="cart__information">
 			<ul>
 				<li>얼리버드는 매월 마지막 날, 오후 8시 (4시간)</li>
@@ -44,7 +45,7 @@
 								var="studyFileDTO">
 								<tr class="cart__list__detail">
 									<td style="width: 2%;"><input type="checkbox"
-										value="${dto.num}" class="checks" name="checkedItems"
+										value="${dto.num}" class="checks machineChecks" name="checkedItems"
 										id="checkboxs"></td>
 									<td style="width: 13%;"><img
 										src="../resources/upload/study/${studyFileDTO.fileName}"
@@ -78,35 +79,35 @@
 			
 		
 		<!-- machineCart -->
-		<table class="cart__list">
+		<table class="cart__list" id="cartMachineList">
 			<thead>
 				<tr>
 					<td><input type="checkbox" value="" id="checkAll"></td>
+					<td ></td>
 					<td colspan="2">상품정보</td>
 					<td>상품금액</td>
-					<td>배송비</td>
+					<td>개수</td>
 				</tr>
 			</thead>
 			<tbody>
 
-				<%-- <c:set var="totalCost" value="0" /> --%>
-
+				 
 				<c:forEach items="${list}" var="dto">
 					<c:if test="${not empty dto.realMachineNum }">
 						<%-- <c:forEach items="${dto.studyDTOs}" var="studyDTO"> --%>
 							<c:forEach items="${dto.healthMachineDTO.healthMachineImgDTOs}"
 								var="machineFileDTO">
-								<tr class="cart__list__detail">
+								<tr class="cart__list__machine__detail" >
 									<td style="width: 2%;"><input type="checkbox"
-										value="${dto.num}" class="checks" name="checkedItems"
+										value="${dto.num}" class="checks" name="checkedItems" 
 										id="checkboxs"></td>
 									<td style="width: 13%;"><img
 										src="/resources/images/${dto.healthMachineDTO.healthMachineImgDTOs[0].fileName}"
 										alt="magic mouse"></td>
-									<td style="width: 41%;"><span
-										class="cart__list__machineName">${dto.healthMachineDTO.machineName}</span>
-										<div class=" price">${dto.cartPrice}원</div>
-										<div class=" price">옵션 정보</div>
+									<td style="width: 59%;" colspan="2"><span
+										class="cart__list__studyname">${dto.healthMachineDTO.machineName}</span>
+										
+										<div class="price">옵션 정보</div>
 										<c:if test="${not empty dto.healthMachineDTO.option1 }">
 										<div>${dto.healthMachineDTO.option1 } : ${dto.realHealthMachineDTO.optName1}</div>
 										</c:if>
@@ -121,8 +122,18 @@
 										</c:if>
 										
 									</td>
-									<td style="width: 29%;"><span class="price">원</span></td>
-									<td style="width: 29%;">무료</td>
+									<!-- <td></td> -->
+									<td style="width: 13%;">
+									<%-- <span class="price" style="text-decoration: line-through;">${dto.healthMachineDTO.price}원</span> --%>
+									<span class="price" style="font-size: 15px" id="cartPrice" >${dto.cartPrice*dto.count}</span>원
+									
+									</td>
+									<td style="width: 13%;"><span class="price" style="font-size: 15px;" id="count">${dto.count}</span>
+									<div class="countBtn">
+										<button class="btn btn-primary plusbtn" style="border:none">+</button>
+										<button class="btn btn-primary minusbtn" style="border:none">-</button>
+									</div>
+									</td>
 								</tr>
 								<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
 							</c:forEach>
@@ -138,8 +149,9 @@
 								<input type="hidden" name="num" value="${dto.num}">
 							</c:forEach> --%>
 						<button id="delete" type="submit" class="cart__list__optionbtn"
-							onclick="checkDelete()">스터디 삭제하기</button> <!-- </form> -->
+							onclick="checkDelete()">상품삭제하기</button> <!-- </form> -->
 					</td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -150,6 +162,7 @@
 		
 		
 		<!-- --------------------합계----------------- -->
+		<c:set var="deliveryPrice" value="3000" />
 		<table>
 			<!-- <thead>
                 	<tr class="my-5">
@@ -160,7 +173,8 @@
                 </thead> -->
 			<tbody>
 				<tr>
-					<td style="text-align: center"><span class="price">총합계:${totalCost}원</span></td>
+					<td style="text-align: center">상품가격 : <span class="price" id="totalPrice">${totalCost}</span>원 + 배송비 : <span class="price" id="deliveryPrice" data-deliveryPrice=${deliveryPrice }>${deliveryPrice}원</span></td>
+					<td style="text-align: center" class="cart__list__studyname">총 합계 : <span class="price" id="totalCost"></span></td>
 				</tr>
 			</tbody>
 		</table>
@@ -176,6 +190,7 @@
 
 	
 	<script type="text/javascript" src="/resources/js/cartPayment.js"></script>
+	
 	<c:import url="../template/footer.jsp"></c:import>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>
