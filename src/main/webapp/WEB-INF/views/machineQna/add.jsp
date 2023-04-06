@@ -7,7 +7,7 @@
     <title>구디다이어트</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <c:import url="../template/common_css.jsp"></c:import>
+     <c:import url="../template/common_css.jsp"></c:import>
     
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -24,7 +24,7 @@
 	
 	<div class="row justify-content-center">
 		<form class="col-md-7" action="./add" method="post">
-			<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 	
+			<input type="hidden" name="machineNum" value="${pager.machineNum}" id="machineNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
 				<c:if test="${not empty sessionMember}">

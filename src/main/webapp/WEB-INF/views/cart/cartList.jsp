@@ -25,10 +25,10 @@
 				<li>${sessionMember.id}님의장바구니</li>
 			</ul>
 		</div>
-		<table class="cart__list">
+		<table class="cart__list" id="cartStudyList">
 			<thead>
 				<tr>
-					<td><input type="checkbox" value="" id="checkAll"></td>
+					<td><input type="checkbox" value="" id="studyCheckAll" class="checkAll" data-this-check="studyCheckAll"></td>
 					<td colspan="2">상품정보</td>
 					<td>상품금액</td>
 					<td>배송비</td>
@@ -36,7 +36,7 @@
 			</thead>
 			<tbody>
 
-				<c:set var="totalCost" value="0" />
+				
 
 				<c:forEach items="${list}" var="dto">
 					<c:if test="${not empty dto.studyNum }">
@@ -53,10 +53,10 @@
 										<div class=" price">${studyDTO.studyCost}원</div>
 										<div class=" price">스터디 기간:
 											${studyDTO.studyStartPeriod}~${studyDTO.studyEndPeriod}</div></td>
-									<td style="width: 29%;"><span class="price">${studyDTO.studyCost}원</span></td>
+									<td style="width: 29%;"><span class="price cartPrice" id="cartPrice">${studyDTO.studyCost}</span>원</td>
 									<td style="width: 29%;">무료</td>
 								</tr>
-								<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
+								<%-- <c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" /> --%>
 							</c:forEach>
 						</c:forEach>
 					</c:if>
@@ -80,7 +80,10 @@
 		<table class="cart__list" id="cartMachineList">
 			<thead>
 				<tr>
-					<td><input type="checkbox" value="" id="checkAll"></td>
+					<td>
+					<input type="checkbox" value="" id="machineCheckAll"  class="checkAll" data-this-check="machineCheckAll">
+					
+					</td>
 					<td ></td>
 					<td colspan="2">상품정보</td>
 					<td>상품금액</td>
@@ -96,9 +99,13 @@
 							<c:forEach items="${dto.healthMachineDTO.healthMachineImgDTOs}"
 								var="machineFileDTO">
 								<tr class="cart__list__machine__detail" >
-									<td style="width: 2%;"><input type="checkbox"
+									<td style="width: 2%;">
+									<input type="checkbox"
 										value="${dto.num}" class="checks" name="checkedItems" 
-										id="checkboxs"></td>
+										id="checkboxs">
+									
+										
+										</td>
 									<td style="width: 13%;"><img
 										src="/resources/images/${dto.healthMachineDTO.healthMachineImgDTOs[0].fileName}"
 										alt="magic mouse"></td>
@@ -123,10 +130,11 @@
 									<!-- <td></td> -->
 									<td style="width: 13%;">
 									<%-- <span class="price" style="text-decoration: line-through;">${dto.healthMachineDTO.price}원</span> --%>
-									<span class="price" style="font-size: 15px" id="cartPrice" >${dto.cartPrice*dto.count}</span>원
+									<span class="price cartPrice" style="font-size: 15px" id="cartPrice" >${dto.cartPrice*dto.count}</span>원
 									
 									</td>
 									<td style="width: 13%;"><span class="price" style="font-size: 15px;" id="count">${dto.count}</span>
+									
 									<div class="countBtn">
 										<button type="button" class="btn btn-primary plusbtn" style="border:none">+</button>
 										<button type="button" class="btn btn-primary minusbtn" style="border:none">-</button>

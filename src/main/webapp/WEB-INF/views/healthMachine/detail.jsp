@@ -7,17 +7,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
+
+ <style>
+ .my-hr2 {
+ border: 0;
+ height: 2px;
+ background: #ccc;
+ }
+
+ </style>
+
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<div class="container-fluid">
+	<div class="container px-4 px-lg-5">
 
 		<div
-			class="row gx-4 gx-lg-5 align-items-center my-5 border border-secondary-subtle">
-			<div class="col-lg-7">
-				<img class="img-fluid rounded mb-4 mb-lg-0"
-					src="/resources/images/${dto.healthMachineImgDTOs[0].fileName}"
-					alt="..." />
+			class="row gx-4 gx-lg-5 align-items-center my-3 border border-secondary-subtle" >
+			<div class="col-lg-7 d-flex justify-content-center align-items-center">
+		  <img class="img-fluid rounded mb-4 mb-lg-0"
+		    src="/resources/images/${dto.healthMachineImgDTOs[0].fileName}"
+		    alt="..." />
 			</div>
 			<div class="col-lg-5 text-center">
 				<h2>
@@ -61,16 +71,40 @@
 				</form>
 			</div>
 		</div>
-
+	
+	<div style="text-align: right;">
+	  <a href="optionAdd?machineNum=${dto.machineNum}" class="btn btn-primary" style="margin-right: 10px;">add</a>
+	  <a href="update?machineNum=${dto.machineNum}" class="btn btn-primary">update</a>
 	</div>
 
-	<a href="optionAdd?machineNum=${dto.machineNum}">add</a>
-	<a href="update?machineNum=${dto.machineNum}">update</a>
+	  <div class="col-12 w-100 text-center">
+			        <div class="row">
+			        <div class="col-md-4">
+			          <div class="nav-link" id="machineQnaInfo" style="cursor: pointer">상세정보</div>
+			        </div>
+			        <div class="col-md-4">
+			         <div class="nav-link" id="machineReviewList" data-review-machineNum="${dto.machineNum}" style="cursor: pointer">구매평</div>
+			        </div>
+			        <div class="col-md-4">
+			          <div class="nav-link" id="machineQnaList" data-qna-machineNum="${dto.machineNum}" style="cursor: pointer">Q&amp;A</div>
+			        </div>
+			        <hr class="my-hr2">
+			        </div>
+  		</div>
+  		<div class="my-5" id="machineListResult">
+  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
+  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
+  			</div>
+	</div>
+	
+			
+
+	
 
 
-
-
+	<c:import url="../template/footer.jsp"></c:import>
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/getOption.js"></script>
+	<script src="/resources/js/machineBoard.js"></script>
 </body>
 </html>
