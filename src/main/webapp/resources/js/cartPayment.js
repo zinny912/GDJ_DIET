@@ -146,7 +146,7 @@ $(".countBtn").on("click", ".minusbtn", function () {
 		let cartPrice=body.find("#cartPrice").html()*1;
 		cartPrice=cartPrice/(count+1)*count
 		body.find("#cartPrice").html(cartPrice);
-		
+		Checked = $(this).parent().parent().parent().find(".checks").prop("checked");
 		if(Checked==true){
 			TotalPrice=TotalPrice- cartPrice/count;
 			$("#totalPrice").html(TotalPrice);
