@@ -100,7 +100,7 @@ public class MemberService {
 
 		}else if(memberDTO.getLoginType().equals("general")) {
 			memberDTO = memberDAO.getMemberLogin(memberDTO);
-			memberDTO.setPw(null);
+//			memberDTO.setPw(null); //일반 로그인은 getMemberLogin로 해... pw필요해..
 			
 		}
 

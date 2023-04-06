@@ -360,15 +360,21 @@ public class MemberController {
 	@PostMapping("pwUpCheck")
 	public ModelAndView passwordChangeCheck(MemberDTO memberDTO, ModelAndView mv, HttpSession httpSession) throws Exception {
 		MemberDTO memberCheck=(MemberDTO)httpSession.getAttribute("sessionMember");
-//		System.out.println("보낸pw: "+memberDTO.getPw());
-		mv.setViewName("member/ajaxResult");
-		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())   ) { //로그인안해서 null보내면 오류
-//			System.out.println("마자마자");
+		memberCheck=memberService.getMyPage(memberCheck);
+		System.out.println("보낸pw: "+memberDTO.getPw());
+		
+		System.out.println(memberCheck.getPw());
+		System.out.println(memberDTO.getPw());
+		
+		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())   ) {
+
 			mv.addObject("result", 1);
 			
 		}else {
 			mv.addObject("result", 0);
 		}
+		
+		mv.setViewName("member/ajaxResult");
 		return mv;
 	}
 	@PostMapping("pwChange")

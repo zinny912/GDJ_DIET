@@ -1,18 +1,28 @@
 
 let htmlGuide="";
-let pwUpCheckCount = [];
+let pwUpCheckCount = [false,true,true];
 
 function passwordGuide(){}
 
 $('.password-change3').change(()=>{
-    if($('.password-change3').val()!=""&&$('.password-change2').val()!=$('.password-change3').val()
+    if($('.password-change3').val()!="" &&$('.password-change2').val()!=$('.password-change3').val()
+    ){
+        pwUpCheckCount[0] = false;
+        htmlGuide='<div class="member__input-guide-line member__input-guide-line" style="color: red;font-size: 12px;">';
+        htmlGuide=htmlGuide+'<span><i class="icon-cross-gray"></i></span>'
+        htmlGuide=htmlGuide+'<span>새 비밀번호가 일치하지 않습니다.</span></div>'
+        $('.member__input-guide-area3').html(htmlGuide)
+    }else{pwUpCheckCount[0] = true;}
+})
+$('.password-change2').change(()=>{
+    if($('.password-change3').val()!="" &&$('.password-change2').val()!=$('.password-change3').val()
     ){
         pwUpCheckCount[0] = false;
         htmlGuide='<div class="member__input-guide-line member__input-guide-line" style="color: red;font-size: 12px;">';
         htmlGuide=htmlGuide+'<span><i class="icon-cross-gray"></i></span>'
         htmlGuide=htmlGuide+'<span>새 비밀번호가 일치하지 않습니다.</span></div>'
         $('.member__input-guide-area2').html(htmlGuide)
-    }
+    }else{pwUpCheckCount[0] = true;}
 })
 
 $('.password-change2').click(()=>{
@@ -41,23 +51,27 @@ $('.password-change3').click(()=>{
     $('.member__input-guide-area3').html(htmlGuide2)
 })
 
+
 $('.password-submit').click(()=>{
-    let check=false;
+    let check=[true,true,true];
     //3개 중 하나라도 입력안할 경우
     if($('.password-change1').val()==""){
         warn("입력하세요", 1)
-        check=false
-    }if($('.password-change2').val()==""){
+        check[1]=false
+    }else{check[1]=true}
+    if($('.password-change2').val()==""){
         warn("입력하세요", 2)
-        check=false
-    }if($('.password-change3').val()==""){
+        check[2]=false
+    }else{check[2]=true}
+    if($('.password-change3').val()==""){
         warn("입력하세요", 3)
-        check=false
-    }
+        check[3]=false
+    }else{check[3]=true}
 
     console.log($('.password-change1').val())
     console.log(check)
-    if(!check==false){
+
+    if(!check.includes(false)){
         $.ajax({
             type:"POST",
             url:"/member/pwUpCheck",
