@@ -97,7 +97,7 @@ public class CartService {
 //		int[] result = new int[checkedItems.length];
 //		for(String str : checkedItems) {			
 //			longArray[i++] = Long.parseLong(str);
-//			int result2 = cartDAO.setCartDelete(longArray[i]);
+//		s	int result2 = cartDAO.setCartDelete(longArray[i]);
 //			result[i] = result2;
 //		}
 //		return result;

@@ -44,7 +44,9 @@
 							<c:forEach items="${studyDTO.studyBoardFileDTOs}"
 								var="studyFileDTO">
 								<tr class="cart__list__detail">
-									<td style="width: 2%;"><input type="checkbox" value="${dto.num}" class="checks" name="checkedItems" id="checkboxs"></td>
+									<td style="width: 2%;"><input type="checkbox" value="${dto.num}" class="checks" name="checkedItems" id="checkboxs">
+									<input type="hidden" value="${dto.num }" name="realMachineNum">
+									</td>
 									<td style="width: 13%;"><img
 										src="../resources/upload/study/${studyFileDTO.fileName}"
 										alt="magic mouse"></td>
@@ -133,8 +135,9 @@
 									<span class="price cartPrice" style="font-size: 15px" id="cartPrice" >${dto.cartPrice*dto.count}</span>원
 									
 									</td>
-									<td style="width: 13%;"><span class="price" style="font-size: 15px;" id="count">${dto.count}</span>
-									
+									<td style="width: 13%;">
+									<span class="price" style="font-size: 15px;" id="count">${dto.count}</span>
+									<input type="hidden" value="${dto.count }" name="count">
 									<div class="countBtn">
 										<button type="button" class="btn btn-primary plusbtn" style="border:none">+</button>
 										<button type="button" class="btn btn-primary minusbtn" style="border:none">-</button>
@@ -168,7 +171,7 @@
 		
 		
 		<!-- --------------------합계----------------- -->
-		<c:set var="deliveryPrice" value="3000" />
+		<c:set var="deliveryPrice" value="0" />
 		<table>
 			<!-- <thead>
                 	<tr class="my-5">
@@ -179,7 +182,17 @@
                 </thead> -->
 			<tbody>
 				<tr>
-					<td style="text-align: center">상품가격 : <span class="price" id="totalPrice">${totalCost}</span>원 + 배송비 : <span class="price" id="deliveryPrice" data-deliveryPrice=${deliveryPrice }>${deliveryPrice}원</span></td>
+					<td style="text-align: center">상품가격 : <span class="price" id="totalPrice">${totalCost}</span>원 + 배송비 : 
+					<c:choose>
+						<c:when test="${deliveryPrice != 0}">
+							<span class="price" id="deliveryPrice" data-deliveryPrice=${deliveryPrice }>${deliveryPrice}원</span>
+						</c:when>
+						<c:otherwise>
+						<span class="price" id="deliveryPrice" data-deliveryPrice=${deliveryPrice }>무료</span>
+						</c:otherwise>
+					</c:choose>
+					
+					</td>
 					<td style="text-align: center" class="cart__list__studyname">총 합계 : <span class="price" id="totalCost"></span></td>
 				</tr>
 			</tbody>

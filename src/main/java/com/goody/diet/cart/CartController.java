@@ -64,7 +64,7 @@ public class CartController {
 	}
 	
 	@PostMapping("cartCheckedUpdate")
-	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session) throws Exception{
+	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] realMachineNum,Long [] count) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
 		int[] result = cartService.setCartCheckUpdate(cartDTO,checkedItems,session);
