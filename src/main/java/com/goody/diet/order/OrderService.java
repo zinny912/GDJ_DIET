@@ -28,8 +28,16 @@ public class OrderService {
 	
 	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
 	return orderDAO.getOrderList(memberDTO);
-}
-	
+	}
+	public List<CartDTO> getCartList(OrderDTO orderDTO) throws Exception {
+		return orderDAO.getCartList(orderDTO);
+	}
+	public StudyDTO getStudy(CartDTO cartDTO) throws Exception {
+		return orderDAO.getStudy(cartDTO);
+	}	
+	public HealthMachineDTO getHealthMachine(CartDTO cartDTO) throws Exception {
+		return orderDAO.getHealthMachine(cartDTO);
+	}		
 //	public int setOrderList(OrderDTO orderDTO, List<CartDTO> cartDTOs) throws Exception {
 //		StudyDTO studyDTO = new StudyDTO();
 //		RealHealthMachineDTO healthMachineDTO = new RealHealthMachineDTO();
@@ -109,19 +117,6 @@ public class OrderService {
 			orderDAO.setOrderDetail(orderDetailDTO);
 		}		
 	}	
-	
-	public OrderDetailDTO getOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
-		return orderDAO.getOrderDetail(orderDetailDTO);
-	}	
 
-	public HealthMachineDTO getHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
-		return orderDAO.getHealthMachineForCartAndOrder(orderDetailDTO);
-	}
-	public RealHealthMachineDTO getRealHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
-		return orderDAO.getRealHealthMachineForCartAndOrder(orderDetailDTO);
-	}
-	public StudyDTO getStudyForCartAndOrder(OrderDetailDTO orderDetailDTO) {
-		return orderDAO.getStudyForCartAndOrder(orderDetailDTO);
-	}	
-	
+
 }

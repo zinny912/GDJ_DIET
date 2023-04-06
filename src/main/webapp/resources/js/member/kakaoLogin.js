@@ -9,11 +9,11 @@ Kakao.isInitialized();
 console.log(Kakao.isInitialized());
 
 //카카오로그인 버튼 누르면 호출
-function loginWithKakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://localhost/login/oauth',
-    });
-  }
+// function loginWithKakao() {
+//     Kakao.Auth.authorize({
+//       redirectUri: 'http://localhost/login/oauth',
+//     });
+//   }
 
 // 3. 데모버전으로 들어가서 카카오로그인 코드를 확인.
 function loginWithKakao() {
@@ -87,7 +87,7 @@ function kakaoLogin() {
             console.log(email, nickname, kakao_id);
 
             //ajax로 바로 보내자.. //새로고침해야댐...
-            kakaoConstant(email, nickname, kakao_id)
+            // kakaoConstant(email, nickname, kakao_id)
 
             //parameter
             $('#kid').val(kakao_id)
