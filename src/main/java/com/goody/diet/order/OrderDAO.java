@@ -28,13 +28,13 @@ public class OrderDAO {
 		return sqlSession.selectList(NAMESPACE+"getOrderList", memberDTO);
 	}
 	public List<CartDTO> getCartList(OrderDTO orderDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getOrderDetail", orderDTO);
+		return sqlSession.selectList(NAMESPACE+"getCartList", orderDTO);
 	}
 	public StudyDTO getStudy(CartDTO cartDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getStudy", cartDTO);
 	}	
 	public HealthMachineDTO getHealthMachine(CartDTO cartDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachine", cartDTO);
+		return sqlSession.selectOne(NAMESPACE+"getHealthMachine", cartDTO);
 	}	
 	
 	public int setOrder(OrderDTO orderDTO) throws Exception {
