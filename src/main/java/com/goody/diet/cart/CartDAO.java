@@ -12,7 +12,7 @@ public class CartDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.goody.diet.cart.CartDAO.";
 	
-//	민지
+//	민지	
 	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getCartList", cartDTO);
 	}
@@ -26,11 +26,11 @@ public class CartDAO {
 	}
 	
 	public int setCartCheckUpdate(Long item) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setCartCheckUpdate", item);
+		return sqlSession.update(NAMESPACE+"setCartCheckUpdate", item);
 	}
 	
-	public int setCartUnCheckUpdate(Long item) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setCartUnCheckUpdate", item);
+	public int setCartCheckDefaultUpdate(CartDTO cartDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setCartCheckDefaultUpdate", cartDTO);
 	}
 //	태현
 	public List<CartDTO> getCartMachineList(CartDTO cartDTO)throws Exception{

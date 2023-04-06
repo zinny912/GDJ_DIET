@@ -22,70 +22,48 @@ for(let i=0;i<checks.length;i++){
         checkAll.checked=result;
     })
 };
+$("#submitbtn").click(function(){
+    
+    $("#frm").submit();
+})
 
 
-/* function checkOrder(){
-		let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-	 	 if (checkboxes.length === 0) {
-	 	   alert("주문할 스터디를 선택해주세요.");
-	 	   return false;
-		  } else {
-	    let checkedItems = [];
-	    let uncheckedCheckboxes = $('input[name="checkedItems"]:not(:checked)');
-	    if (uncheckedCheckboxes.length > 0) {
-	    	uncheckedCheckboxes.each(function() {
-	   	      checkedItems.push($(this).val());
-	   	    });
-	   	    
-	   	    $.ajax({
-	   	    	  type: 'GET',
-	   	 	      url: './cartDelete',
-	   	 	      traditional:true,
-	   	 	      data: { checkedItems: checkedItems },
-	   	 	    });
-	    }
-	    location.href='/cart/payment'
-	 	   return true;
-		  } 
-	} */
-	
-	
-	function checkOrder() {
-		  let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-		  if (checkboxes.length === 0) {
-		    alert("주문할 스터디를 선택해주세요.");
-		    return false;
-		  } else {
-		    let checkedItems = [];
-		    let uncheckedItems = [];
+	// function checkOrder() {
+	// 	  let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+	// 	  if (checkboxes.length === 0) {
+	// 	    alert("주문할 스터디를 선택해주세요.");
+	// 	    return false;
+	// 	  } else {
+	// 	    let checkedItems = [];
+	// 	    let uncheckedItems = [];
 
-		    $('input[name="checkedItems"]:checked').each(function() {
-		      checkedItems.push($(this).val());
-		    });
-		    $('input[name="checkedItems"]:not(:checked)').each(function() {
-		      uncheckedItems.push($(this).val());
-		    });
+	// 	    $('input[name="checkedItems"]:checked').each(function() {
+	// 	      checkedItems.push($(this).val());
+	// 	    });
+	// 	    $('input[name="checkedItems"]:not(:checked)').each(function() {
+	// 	      uncheckedItems.push($(this).val());
+	// 	    });
 
-		    if (uncheckedItems.length > 0) {
-		      $.ajax({
-		        type: 'POST',
-		        url: './uncartCheckedUpdate',
-		        traditional:true,
-		        data: { uncheckedItems: uncheckedItems },
-		      });
-		    } 
-		    if (checkedItems.length > 0) {
-		      $.ajax({
-		        type: 'POST',
-		        url: './cartCheckedUpdate',
-		        traditional:true,
-		        data: { checkedItems: checkedItems },
-		      });
-		    }
-		   	location.href='/cart/payment'
-		    return true;
-		  }
-		} 
+	// 	    if (uncheckedItems.length > 0) {
+	// 	      $.ajax({
+	// 	        type: 'POST',
+	// 	        url: './uncartCheckedUpdate',
+	// 	        traditional:true,
+	// 	        data: { uncheckedItems: uncheckedItems },
+	// 	      });
+	// 	    } 
+	// 	    if (checkedItems.length > 0) {
+	// 	      $.ajax({
+	// 	        type: 'POST',
+	// 	        url: './cartCheckedUpdate',
+	// 	        traditional:true,
+	// 	        data: { checkedItems: checkedItems },
+	// 	      });
+	// 	    }
+	// 	   	location.href='/cart/payment'
+	// 	    return true;
+	// 	  }
+	// 	} 
 	
 function checkDelete(){
 	  let check = window.confirm("정말 삭제 하시겠습니까?");

@@ -15,7 +15,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-]
+	<form action="./cartCheckedUpdate" method="POST" enctype="multipart/form-data" id=frm>
 	<section class="cart">
 		<div class="cart__information">
 			<ul>
@@ -44,7 +44,7 @@
 								var="studyFileDTO">
 								<tr class="cart__list__detail">
 									<td style="width: 2%;"><input type="checkbox"
-										value="${dto.num}" class="checks" name="checkedItems"
+										value="${dto.num}" class="checks" name="num"
 										id="checkboxs"></td>
 									<td style="width: 13%;"><img
 										src="../resources/upload/study/${studyFileDTO.fileName}"
@@ -166,14 +166,14 @@
 		</table>
 
 
-		<div class="cart__mainbtns">
-			<c:if test="${list ne null}">
-				<button class="cart__bigorderbtn right btn btn-primary"
-					type="submit" onclick="checkOrder()">주문하기</button>
-			</c:if>
-		</div>
-	</section>
-
+			<div class="cart__mainbtns">
+				<c:if test="${list ne null}">
+					<button class="cart__bigorderbtn right btn btn-primary"
+						id="submitbtn" type="button">주문하기</button>
+				</c:if>
+			</div>
+		</section>
+	</form>
 	
 	<script type="text/javascript" src="/resources/js/cartPayment.js"></script>
 	<c:import url="../template/footer.jsp"></c:import>

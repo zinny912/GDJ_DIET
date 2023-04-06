@@ -4,7 +4,6 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.goody.diet.cart.CartDAO">
-	
 	<select id="getCartList" parameterType="CartDTO" resultMap="CartDTOMap">
 		SELECT C.*,S.*,SF.*
 		FROM CART C
@@ -62,8 +61,8 @@
 		UPDATE CART SET STATUS=1 WHERE  NUM=#{num}
 	</update>
 	
-	<update id="setCartUnCheckUpdate" parameterType="long">
-		UPDATE CART SET STATUS=0 WHERE  NUM=#{num}
+	<update id="setCartCheckDefaultUpdate" parameterType="CartDTO">
+		UPDATE CART SET STATUS=0 WHERE id=#{id} AND STATUS=1
 	</update>
 	
 	<!-- 태현 -->
