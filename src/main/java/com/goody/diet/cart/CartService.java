@@ -40,13 +40,13 @@ public class CartService {
 		return cartDAO.getPaymentList(cartDTO); 
 	}
 	
-	public int[] setCartCheckUpdate(CartDTO cartDTO, Long[] num,HttpSession session) throws Exception{
-		int[] result = new int[num.length];
+	public int[] setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session) throws Exception{
+		int[] result = new int[checkedItems.length];
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
 		int result1 = cartDAO.setCartCheckDefaultUpdate(cartDTO);
-		for(int i=0; i<num.length; i++) {			
-			int result2 = cartDAO.setCartCheckUpdate(num[i]);
+		for(int i=0; i<checkedItems.length; i++) {			
+			int result2 = cartDAO.setCartCheckUpdate(checkedItems[i]);
 	        result[i] = result2;
 	    }
 		return result;

@@ -44,7 +44,7 @@
 							<c:forEach items="${studyDTO.studyBoardFileDTOs}"
 								var="studyFileDTO">
 								<tr class="cart__list__detail">
-									<td style="width: 2%;"><input type="checkbox" value="${dto.num}" class="checks" name="num" id="checkboxs"></td>
+									<td style="width: 2%;"><input type="checkbox" value="${dto.num}" class="checks" name="checkedItems" id="checkboxs"></td>
 									<td style="width: 13%;"><img
 										src="../resources/upload/study/${studyFileDTO.fileName}"
 										alt="magic mouse"></td>
@@ -128,8 +128,8 @@
 									</td>
 									<td style="width: 13%;"><span class="price" style="font-size: 15px;" id="count">${dto.count}</span>
 									<div class="countBtn">
-										<button class="btn btn-primary plusbtn" style="border:none">+</button>
-										<button class="btn btn-primary minusbtn" style="border:none">-</button>
+										<button type="button" class="btn btn-primary plusbtn" style="border:none">+</button>
+										<button type="button" class="btn btn-primary minusbtn" style="border:none">-</button>
 									</div>
 									</td>
 								</tr>

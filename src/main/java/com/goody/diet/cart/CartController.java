@@ -64,10 +64,10 @@ public class CartController {
 	}
 	
 	@PostMapping("cartCheckedUpdate")
-	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] num,HttpSession session) throws Exception{
+	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
-		int[] result = cartService.setCartCheckUpdate(cartDTO,num,session);
+		int[] result = cartService.setCartCheckUpdate(cartDTO,checkedItems,session);
 		String mes = "결제 창 이동 실패";
 		if(result[0]>0) {
 			mes = "결제 창으로 이동합니다.";
