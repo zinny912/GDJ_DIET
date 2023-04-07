@@ -62,20 +62,27 @@ public class CartController {
 		mv.setViewName("redirect:./cartList");
 		return mv;
 	}
-	
 	@PostMapping("cartCheckedUpdate")
-	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] realMachineNum,Long [] count) throws Exception{
+	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] cartNum,Long [] count,Long totalCost) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println(totalCost);
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
-		int[] result = cartService.setCartCheckUpdate(cartDTO,checkedItems,session);
-		String mes = "결제 창 이동 실패";
-		if(result[0]>0) {
-			mes = "결제 창으로 이동합니다.";
-
-		}	
-		mv.addObject("result", mes);
-		mv.addObject("url", "./payment");
-		mv.setViewName("common/result");
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		cartDTO.setId(memberDTO.getId());
+		List<CartDTO> ar = cartService.setCartCheckUpdate(cartDTO,checkedItems,session,cartNum,count);
+		mv.addObject("list", ar);
+		mv.addObject("totalCost", totalCost);
+		mv.setViewName("cart/payment");
+		
+		
+//		String mes = "결제 창 이동 실패";
+//		if(result[0]>0) {
+//			mes = "결제 창으로 이동합니다.";
+//
+//		}	
+//		mv.addObject("result", mes);
+//		mv.addObject("url", "./payment");
+//		mv.setViewName("common/result");
 		return mv;
 	}
 	
@@ -102,15 +109,17 @@ public class CartController {
 	}
 	
 
-	@GetMapping("payment")
-	public ModelAndView setCartPayment(CartDTO cartDTO,HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
-		cartDTO.setId(memberDTO.getId());
-		List<CartDTO> ar = cartService.getPaymentList(cartDTO);
-		mv.setViewName("cart/payment");
-		mv.addObject("list", ar);
-		return mv;
-	}
+//	@GetMapping("payment")
+//	public ModelAndView setCartPayment(CartDTO cartDTO,HttpSession session) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+//		
+//		cartDTO.setId(memberDTO.getId());
+//		
+//		List<CartDTO> ar = cartService.getPaymentList(cartDTO);
+//		mv.setViewName("cart/payment");
+//		mv.addObject("list", ar);
+//		return mv;
+//	}
 
 }

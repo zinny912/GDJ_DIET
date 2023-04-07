@@ -45,7 +45,7 @@
 								var="studyFileDTO">
 								<tr class="cart__list__detail">
 									<td style="width: 2%;"><input type="checkbox" value="${dto.num}" class="checks" name="checkedItems" id="checkboxs">
-									<input type="hidden" value="${dto.num }" name="realMachineNum">
+									
 									</td>
 									<td style="width: 13%;"><img
 										src="../resources/upload/study/${studyFileDTO.fileName}"
@@ -105,6 +105,7 @@
 									<input type="checkbox"
 										value="${dto.num}" class="checks" name="checkedItems" 
 										id="checkboxs">
+										<input type="hidden" value="${dto.num }" name="cartNum">
 									
 										
 										</td>
@@ -136,8 +137,8 @@
 									
 									</td>
 									<td style="width: 13%;">
-									<span class="price" style="font-size: 15px;" id="count">${dto.count}</span>
-									<input type="hidden" value="${dto.count }" name="count">
+									<span class="price machineval" style="font-size: 15px;" id="count">${dto.count}</span>
+									<input class="machineCount" type="hidden" value="" name="count">
 									<div class="countBtn">
 										<button type="button" class="btn btn-primary plusbtn" style="border:none">+</button>
 										<button type="button" class="btn btn-primary minusbtn" style="border:none">-</button>
@@ -193,7 +194,9 @@
 					</c:choose>
 					
 					</td>
-					<td style="text-align: center" class="cart__list__studyname">총 합계 : <span class="price" id="totalCost"></span></td>
+					<td style="text-align: center" class="cart__list__studyname">총 합계 : <span class="price" id="totalCost"></span>
+					<input id="p" type="hidden" value="" name="totalCost">
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -201,7 +204,7 @@
 
 			<div class="cart__mainbtns">
 				<c:if test="${list ne null}">
-					<button class="cart__bigorderbtn right btn btn-primary"
+					<button  class="cart__bigorderbtn right btn btn-primary"
 						id="submitbtn" type="button">주문하기</button>
 				</c:if>
 			</div>

@@ -83,6 +83,10 @@
 	</update>
 	
 	<!-- 태현 -->
+	<update id="setCartCountUpdate" parameterType="CartDTO">
+	UPDATE cart SET "COUNT"=#{count} WHERE num=#{num}
+	
+	</update>
 	<insert id="setCartMachineAdd" parameterType="CartDTO">
 		insert into Cart(num,id,studynum,realmachinenum, COUNT,status,cartprice)
 		VALUES (CART_SEQ.NEXTVAL,#{id},#{studyNum,jdbcType=INTEGER},#{realMachineNum,jdbcType=INTEGER},#{count},#{status},#{cartPrice})

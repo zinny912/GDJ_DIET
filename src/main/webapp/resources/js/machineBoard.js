@@ -1,4 +1,4 @@
-
+const STATUS=$("#machineListResult").html();
 //machineQna목록
 $('#machineQnaList').click(function getList(){
     fetch("/machineQna/list?machineNum="+machineQnaList.getAttribute('data-qna-machineNum'),{
@@ -55,7 +55,7 @@ $('#machineListResult').on("click","#searchbutton",function(e){
 })
 
 $('#machineQnaInfo').click(function(){
-    $('#machineListResult').html("<img class='img-fluid rounded mb-4 mb-lg-0' src='/resources/images/studyDetailinfomation.jpg'/>");
-    $('#machineListResult').append("<img class='img-fluid rounded mb-4 mb-lg-0' src='/resources/images/studyDetailinfomation2.jpg'/>");
-
+    // $('#machineListResult').html("<img class='img-fluid rounded mb-4 mb-lg-0' src='/resources/images/studyDetailinfomation.jpg'/>");
+    // $('#machineListResult').append("<img class='img-fluid rounded mb-4 mb-lg-0' src='/resources/images/studyDetailinfomation2.jpg'/>");
+    $('#machineListResult').html(STATUS);
 })
