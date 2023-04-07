@@ -20,11 +20,9 @@
 //     }
 // }
 
-// $(document).ajaxComplete(function(){
-//         let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
-//         let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
-//         title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
-//   });
+$(document).ajaxComplete(function(e){
+    e.preventDefault()
+  });
 
 let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
 let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',

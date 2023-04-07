@@ -15,6 +15,7 @@ import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
+import com.goody.diet.util.Pager;
 
 @Service
 public class OrderService {
@@ -27,6 +28,8 @@ public class OrderService {
 	}
 	
 	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
+		
+		
 	return orderDAO.getOrderList(memberDTO);
 	}
 

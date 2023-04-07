@@ -144,23 +144,19 @@
 		</div>
 	</div>
 
-	<div class="container container-fluid"></div>
 
 
-	<c:import url="../template/common_js.jsp"></c:import>
-	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/resources/js/order/orderList.js"></script>
 
-	<c:import url="../template/footer.jsp"></c:import>
 
 	<script src="/resources/js/member/memberDelete.js"></script>
 
-
-	<script type="text/javascript">
-
-</script>
+	<c:import url="../template/footer.jsp"></c:import>
+	<c:import url="../template/common_js.jsp"></c:import>
 
 </body>
 </html>

@@ -13,7 +13,11 @@ $('#submitBtnLogin').click(()=>{
 })
 
 
-
+$(document).on("keyup",function(key){
+    if(key.keyCode==13) {
+        enter_or_click ()
+    }
+});
 
 
 function enter_or_click (){

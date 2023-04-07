@@ -38,16 +38,8 @@
 				LEFT JOIN
 				STUDYFILE SF
 				ON (S.STUDYNUM = SF.STUDYNUM) 
-		WHERE O.ID  =#{id} AND c.status =2
-		
-<!-- 		SELECT * FROM "ORDER" O -->
-<!-- 		LEFT OUTER JOIN       -->
-<!-- 		ORDERDETAIL od -->
-<!-- 		on(O.ORDERNUM=od.ORDERNUM) -->
-<!-- 		LEFT OUTER JOIN -->
-<!-- 		cart C  -->
-<!-- 		on(od.NUM=c.NUM) -->
-<!-- 		WHERE O.ID  =#{id} -->
+		WHERE O.ID  =#{id} AND c.status =2 AND O.ORDERSTATUS=1
+
 	</select>
 
 	<resultMap id="OrderDTOMap" type="OrderDTO">
