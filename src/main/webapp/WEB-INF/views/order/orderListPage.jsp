@@ -86,12 +86,6 @@
  
 </div>
 
-<button type="button" class="btn btn-secondary to-cart-popper" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover"
-	>장바구니 담기</button>
-
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
-  외안대..
-</button>
 
 <c:import url="../template/common_js.jsp"></c:import>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
