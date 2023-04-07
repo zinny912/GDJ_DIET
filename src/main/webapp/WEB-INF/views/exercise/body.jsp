@@ -54,8 +54,8 @@
 <img src="/resources/images/allbody.jpeg" usemap="#allbody" class="reponsive-img">
 <map name="allbody">
 
-	<c:forEach items="${exercise}" var="dto">
-		<area href="/exercise/detail/info?num=${dto.num}" title="${dto.title}" coords="${dto.coordinate}" shape="rect" class="text-center">
+	<c:forEach items="${bodyList}" var="dto">
+		<area href="/exercise/detail/info?bodyNum=${dto.bodyNum}" title="${dto.bodyName}" coords="${dto.coordinate}" shape="rect" class="text-center">
 	</c:forEach>
  
 </map>
@@ -78,7 +78,7 @@
     <area target="" alt="bellyfat" title="bellyfatVideo" href="/exercise/detail/bellyfat" coords="1527,1027,1734,1094" shape="rect">
     <area target="" alt="stomach" title="stomachVideo" href="//exercise/detail/stomach" coords="1500,1097,1709,1160" shape="rect">
     <area target="" alt="sideleg" title="sidelegVideo" href="/exercise/detail/sideleg" coords="1259,1127,1417,1194" shape="rect">
-    <area target="" alt="lower" title="lowerVideo" href="/exercise/detail/lowerBody" coords="1224,1268,1356,1346" shape="rect">
+    <area target="" alt="lower" title="lowerVideo" href="/exercise/detail/lowerBody" coords="1259,1127,1417,1194" shape="rect">
     <area target="" alt="series" title="seriesVideo" href="/exercise/detail/seires" coords="74,512,201,561" shape="rect">
     <area target="" alt="stretching" title="stretchingVideo" href="/exercise/detail/stertching" coords="75,583,198,707" shape="rect">
 </map>

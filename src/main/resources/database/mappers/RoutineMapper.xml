@@ -8,6 +8,9 @@
 	<select id="getRoutineList" parameterType="RoutineDTO" resultType="RoutineDTO">
 		SELECT * FROM ROUTINE ORDER BY NUM
 	</select>
+	<select id="getSelectList" parameterType="RoutineDTO" resultType="RoutineDTO">
+		SELECT * FROM ROUTINE WHERE STARTDAY = #{startDay}
+	</select>
 		<!-- video링크 -->
 	<select id="getRoutineVideo" parameterType="RoutineDTO" resultType="RoutineDTO">
 		SELECT * FROM ROUTINE WHERE NUM = #{num}
@@ -33,6 +36,9 @@
 		</resultMap> 
 		
 	<insert id="setRoutineAdd" parameterType="RoutineDTO">
+		 <selectKey resultType="java.lang.Long" keyProperty="num" order="BEFORE">
+        SELECT ROU_SEQ.NEXTVAL FROM DUAL
+   		 </selectKey>
 		INSERT INTO ROUTINE (NUM,TITLE,VIDEOID,MACHINENUM,STARTDAY,ENDDAY)
 		VALUES (ROU_SEQ.NEXTVAL,#{title},#{videoId},#{machineNum},#{startDay},#{endDay})
 	</insert>

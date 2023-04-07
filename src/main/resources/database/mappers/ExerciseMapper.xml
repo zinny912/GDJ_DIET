@@ -5,12 +5,14 @@
   
   <mapper namespace="com.goody.diet.exercise.ExerciseDAO">
    
-  <select id="getBodyList" resultType="exerciseRoleDTO">
-		SELECT * FROM EXERCISEROLE
+  <!-- 부위별 리스트 --> 
+  <select id="getBodyList" resultType="bodyDTO" parameterType="bodyDTO">
+		SELECT * FROM BODY
 		ORDER BY BODYNUM
 	</select>
 	
-	<select id="getBodyPartList" resultMap="getExerciseResult" parameterType="exerciseRoleDTO">
+	<!-- 부위별 리스트 + IMG + 영상 조인 리스트 -->
+	<select id="getBodyDetailList" resultMap="getExerciseResult">
 		SELECT * FROM
 		EXERCISE EX
 		LEFT OUTER JOIN
@@ -25,16 +27,7 @@
 		BODY B
 		ON(B.NUM=EX.NUM)
 		WHERE
-		B.BODYNUM=#{bodyNum};
-	</select>
- 
-<!-- 영상 가져오기 -->	
-	<select id="getExerciseList" resultMap="getExerciseResult">
-	SELECT * FROM EXERCISE EX
-	LEFT OUTER JOIN 
-	EXERCISEIMG EXI
-	ON(EX.NUM=EXI.NUM)
-	ORDER BY EXI.FILENUM
+		B.BODYNUM=#{param1}
 	</select>
 	<resultMap type="ExerciseDTO" id="getExerciseResult">
 		<id column="NUM" property="num"/>
@@ -45,39 +38,33 @@
 		<result column="time" property="time"/>
 		<result column="detailTitle" property="detailTitle"/>
 		<result column="info" property="info"/>
-		<result column="coordinate" property="coordinate"/>
 		<result column="highLight" property="highLight"/>
-
+	<collection property="bodyDTOs" javaType="list" ofType="BodyDTO">
+		<id column = "bodyNum" property = "bodyNum"/>
+		<result column="bodyName" property="bodyName"/>
+	</collection>
 		<collection property="boardFileDTOs" javaType="list" ofType="BoardFileDTO">
 			<id column="fileNum" property="fileNum"/>
 	  			<result column="fileName" property="fileName"/>
 	  			<result column="oriName" property="oriName"/>
 		</collection>
 	</resultMap>
-	
-	<select id="getExerciseBody"  resultMap="getExerciseResult">
-		SELECT DISTINCT * FROM EXERCISE EX
-		LEFT OUTER JOIN
-		EXERCISEIMG EXI
-		ON(EX.NUM = EXI.NUM)
-		ORDER BY EX.BODYPART
-		WHERE NUM=#{num}
-	
-	</select> 
-	
+  	<select id="getExerciseInfo" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+  		SELECT * FROM EXERCISE WHERE NUM=#{num}
+  	</select>
  
-  	<insert id="setExerciseAdd" parameterType="ExerciseDTO">
+  		<insert id="setExerciseAdd" parameterType="ExerciseDTO">
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 		  			SELECT EXERCISE_SEQ.NEXTVAL FROM DUAL
 	  	</selectKey>
-		INSERT INTO EXERCISE (NUM, MACHINENUM, URLID, POWER, BODYPART, TIME, detailTitle, COORDINATE, INFO)
-		VALUES(#{num}, #{machineNum}, #{urlId}, #{power}, #{bodyPart}, #{time}, #{detailTitle}),#{coordinate}, #{info})
+		INSERT INTO EXERCISE (NUM, MACHINENUM, URLID, POWER, BODYPART, TIME, detailTitle, INFO)
+		VALUES(#{num}, #{machineNum}, #{urlId}, #{power}, #{bodyPart}, #{time}, #{detailTitle}), #{info})
 		</insert>
 		<insert id="setExerciseImg" parameterType="BoardFileDTO">
 			INSERT INTO EXERCISEIMG(FILENUM, NUM, FILENAME, ORINAME)
 			VALUES(IMG_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
 		</insert>
-		<select id = "getExerciseMachine" resultMap="getHealthMachineResult">
+		<select id ="getExerciseMachine" resultMap="getHealthMachineResult">
 			SELECT DISTINCT * FROM HEALTHMACHINE H 
 			LEFT OUTER JOIN
 			EXERCISE EX
@@ -110,15 +97,11 @@
     <select id="getExerciseFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
   		SELECT * FROM EXERCISEFILES WHERE FILENUM=#{fileNum}
   	</select>
-  	<select id="getExerciseInfo" parameterType="ExerciseDTO" resultType="ExerciseDTO">
-  		SELECT * FROM EXERCISE
-  	</select>
- 	
  </mapper>
 <!-- detail : urlId만 뽑아오기-->
 	<!-- <select id="getExerciseBody" parameterType="ExerciseDTO" resultType="ExerciseDTO">
 		SELECT * FROM EXERCISE WHERE BODYPART = #{bodyPart}
 	</select>	
  -->
-
-		 
+<!-- 영상 가져오기 -->	
+ 	

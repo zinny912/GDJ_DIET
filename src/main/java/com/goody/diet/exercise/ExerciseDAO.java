@@ -22,20 +22,23 @@ public class ExerciseDAO {
 	private final String NAMESPACE = "com.goody.diet.exercise.ExerciseDAO.";
 	
 
-	//List - 영상 리스트 
-	public List<ExerciseDTO> getExerciseList () throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getExerciseList");	
+	//List - 짧강효확 첫 화면 부위별 리스트 
+	public List<BodyDTO> getBodyList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getBodyList");
 	}
-	//List - 부위별 리스트
-	public List<ExerciseDTO> getExerciseBodyList(ExerciseRoleDTO exerciseRoleDTO)throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getExerciseBodyList",exerciseRoleDTO);
+	// detail - 상세페이지
+	public ExerciseDTO getExerciseInfo() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getExerciseInfo");
 	}
-	
-	//List - 머신이름 리스트 
-	public List<ExerciseDTO> getExerciseMachine () throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getExerciseMachine");
+	public List<ExerciseDTO> getExerciseByBodyNum() {
+		return sqlSession.selectList(NAMESPACE+"getExerciseByBodyNum");
 	}
 
+	// detail - 짧강효확 클릭한 부위별 리스트 
+	public List<ExerciseDTO> getBodyDetailList(Long bodyNum) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getBodyDetailList", bodyNum);	
+	}
+	
 	//add - 영상등록 (짧강효확) 
 	public int setExerciseAdd(ExerciseDTO exerciseDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setExerciseAdd", exerciseDTO);
@@ -45,18 +48,10 @@ public class ExerciseDAO {
 		return sqlSession.insert(NAMESPACE+"setExerciseImg", boardFileDTO);
 	}
 	
-	// detail - 짧강효확 페이지 
-	public List<ExerciseDTO> getExerciseBody() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getExerciseBody");
-		
-	}
-	// detail - 상세페이지
-	public ExerciseDTO getExerciseInfo() throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getExerciseInfo");
-	}
 	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
 }
