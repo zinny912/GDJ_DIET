@@ -1,9 +1,8 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,14 +19,16 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
  	<c:forEach items="{exerciseList}" var="dto">
 	
-    <section id="box"> 
-               <p class="maintitle" id="detailTitle" name="detailTitle">${dto.detailTitle}</p> 
-				 <c:forEach items="{exerciseList}" var="dto">
+    <section id="box"> <!--레이아웃-->    
+                <p class="maintitle" id="detailTitle" name="detailTitle">${dto.detailTitle}</p> 
+				<c:forEach items="{exerciseList}" var="dto">
 					<button id="machine">${dto.machineNum}</button>
-				</c:forEach> 
+				</c:forEach>
 				
         <div class="container" id="one"> <!-- 전체를 감싸는 div 태그-->
             <div class="first"> <!--두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->

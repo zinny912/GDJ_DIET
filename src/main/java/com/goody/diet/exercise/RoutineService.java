@@ -1,5 +1,7 @@
 package com.goody.diet.exercise;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,10 @@ public class RoutineService {
 	public List<RoutineDTO> getRoutineList() throws Exception {
 		return routineDAO.getRoutineList();
 	}
+	public List<RoutineDTO> getSelectList(Date startDay) throws Exception {
+		return routineDAO.getSelectList(startDay);
+	}
+	
 	// Detail - 이달의 루틴 영상 재생 
 	public RoutineDTO getRoutineVideo(RoutineDTO routineDTO) throws Exception {
 		return routineDAO.getRoutineVideo(routineDTO);
@@ -37,6 +43,13 @@ public class RoutineService {
 	// 루틴 수정
 	public int setRoutineUpdate(RoutineDTO routineDTO, HttpSession session) {
 		return routineDAO.setRoutineUpdate(routineDTO);
+	}
+	public void saveRoutine(RoutineDTO routineDTO) {
+        routineDAO.setRoutineAdd(routineDTO);
+    }
+	public List<RoutineDTO> getRoutineUpdate() {
+		// TODO Auto-generated method stub
+		return routineDAO.getRoutineUpdate();
 	}
 	
 //	public int setRoutineAdd(HttpSession httpSession) throws Exception{

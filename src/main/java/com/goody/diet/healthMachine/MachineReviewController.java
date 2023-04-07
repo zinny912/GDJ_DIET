@@ -48,5 +48,53 @@ public class MachineReviewController {
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
+	
+	@GetMapping("detail")
+	public ModelAndView getBoardDetail(MachineReviewDTO machineReviewDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = machineReviewService.setHitUpdate(machineReviewDTO);
+		MachineReviewDTO qnaDTO = machineReviewService.getBoardDetail(machineReviewDTO);
+
+		mv.addObject("dto", qnaDTO);
+		mv.setViewName("machineReview/detail");
+		return mv;
+	}
+	
+	@PostMapping("update")
+	public ModelAndView setBoardUpdate(MachineReviewDTO machineReviewDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("sessionMember");
+//		System.out.println(memberDTO.getId());
+//		
+//		studyReviewDTO.setWriter(memberDTO.getId());
+		int result = machineReviewService.setBoardUpdate(machineReviewDTO);
+
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(MachineReviewDTO machineReviewDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = machineReviewService.setBoardDelete(machineReviewDTO);
+		String message = "삭제 실패";
+		if (result > 0) {
+			message = "글이 삭제 되었습니다";
+		}
+		mv.addObject("result", message);
+		mv.addObject("url", "/healthMachine/detail?machineNum=" + machineReviewDTO.getMachineNum());
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@PostMapping("summerFile")
+	public ModelAndView setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		String file = machineReviewService.setBoardFileAdd(files, session);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", file);
+		return mv;
+	}
 
 }

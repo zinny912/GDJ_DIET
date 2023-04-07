@@ -63,20 +63,6 @@ public class StudyReviewService {
 			String fileName = fileManager.fileSave(files, realPath);
 			return "/resources/upload/studyReviewFile/"+fileName;
 	}
-//
-//	
-//	public int setBoardUpdate(StudyReviewDTO studyReviewDTO) throws Exception {
-//		
-//		return studyReviewDAO.setBoardUpdate(studyReviewDTO);
-//	}
-//
-//	
-//	public int setBoardDelete(StudyReviewDTO studyReviewDTO, HttpSession httpSession) throws Exception {
-//		// TODO Auto-generated method stub
-//		return studyReviewDAO.setBoardDelete(studyReviewDTO);
-//	}
-	
-	
 	
 
 }

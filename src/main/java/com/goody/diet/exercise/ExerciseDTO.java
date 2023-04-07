@@ -16,17 +16,27 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private String detailTitle;
 	private String highLight;
 	private String info;
-	private String coordinate;
 	
 	private List<BoardFileDTO> boardFileDTOs;
-	private List<HealthMachineDTO> healthMachineDTOs;
+	private Long machinName;
+	private List<BodyDTO> bodyDTOs;
 	
-	public String getCoordinate() {
-		return coordinate;
+	
+	
+	
+	public List<BodyDTO> getBodyDTOs() {
+		return bodyDTOs;
 	}
-	public void setCoordinate(String coordinate) {
-		this.coordinate = coordinate;
+	public void setBodyDTOs(List<BodyDTO> bodyDTOs) {
+		this.bodyDTOs = bodyDTOs;
 	}
+	public Long getMachinName() {
+		return machinName;
+	}
+	public void setMachinName(Long machinName) {
+		this.machinName = machinName;
+	}
+	
 	public String getHighLight() {
 		return highLight;
 	}
@@ -46,14 +56,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 		this.detailTitle = detailTitle;
 	}
 	
-	
-	
-	public List<HealthMachineDTO> getHealthMachineDTOs() {
-		return healthMachineDTOs;
-	}
-	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
-		this.healthMachineDTOs = healthMachineDTOs;
-	}
 	public List<BoardFileDTO> getBoardFileDTOs() {
 		return boardFileDTOs;
 	}

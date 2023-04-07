@@ -43,5 +43,47 @@
   		INSERT INTO MACHINEREVIEW (NUM,MACHINENUM,CONTENTS,WRITER,REGDATE,HIT,SCORE)
   		VALUES(#{num},#{machineNum},#{contents}, #{writer},SYSDATE,0,#{score})
   </insert>
+  
+  	<select id="getBoardDetail" resultMap="MachineDTOMap" parameterType="MachineReviewDTO">
+  		SELECT MR.*,H.*
+		FROM MACHINEREVIEW MR
+			LEFT JOIN
+			HEALTHMACHINE H
+			ON (H.MACHINENUM = MR.MACHINENUM)
+		WHERE MR.MACHINENUM=#{machineNum} AND MR.NUM=#{num}
+  	</select>
+  	
+  	<resultMap id="MachineDTOMap" type="MachineReviewDTO">
+		<id column="num" property="num" />
+			<result column="machineNum" property="machineNum" />
+			<result column="contents" property="contents" />
+			<result column="writer" property="writer" />
+			<result column="regDate" property="regDate" />
+			<result column="hit" property="hit" />
+			<result column="score" property="score" />
+		<collection property="healthMachineDTOs" ofType="HealthMachineDTO">
+			<id column="MACHINENUM" property="machineNum" />
+				<result column="machineName" property="machineName" />
+				<result column="machineScore" property="machineScore" />
+				<result column="price" property="price" />
+				<result column="salePrice" property="salePrice" />
+				<result column="option1" property="option1" />
+				<result column="option2" property="option2" />
+				<result column="option3" property="option3" />
+				<result column="option4" property="option4" />
+		</collection>
+	</resultMap>
+	
+	<update id="setHitUpdate" parameterType="MachineReviewDTO">
+		UPDATE MACHINEREVIEW SET HIT=HIT+1 WHERE NUM=#{num}
+	</update>
+	
+	<update id="setBoardUpdate" parameterType="MachineReviewDTO">
+ 		UPDATE MACHINEREVIEW SET CONTENTS=#{contents},SCORE=#{score},REGDATE=SYSDATE WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
+ 	</update>
+  	
+  	<delete id="setBoardDelete" parameterType="MachineReviewDTO">
+  		DELETE MACHINEREVIEW WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
+  	</delete> 
  
  </mapper>

@@ -29,4 +29,24 @@ public class MachineReviewDAO {
 	public int setBoardAdd(MachineReviewDTO machineReviewDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setBoardAdd", machineReviewDTO);
 	}
+	
+	public MachineReviewDTO getBoardDetail(MachineReviewDTO machineReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", machineReviewDTO);
+	}
+	
+	public int setHitUpdate(MachineReviewDTO machineReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE+"setHitUpdate", machineReviewDTO);
+	}
+	
+	public int setBoardUpdate(MachineReviewDTO machineReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setBoardUpdate", machineReviewDTO);
+	}
+	
+	public int setBoardDelete(MachineReviewDTO machineReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", machineReviewDTO);
+	}
 }

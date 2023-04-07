@@ -17,10 +17,11 @@
 		<typeAlias type="com.goody.diet.study.StudyQnaDTO" alias="StudyQnaDTO"/>
 		<typeAlias type="com.goody.diet.study.StudyBoardFileDTO" alias="StudyBoardFileDTO"/>	
 		
+		<typeAlias type="com.goody.diet.exercise.BodyDTO" alias="BodyDTO"/>
 		<typeAlias type="com.goody.diet.exercise.RoutineDTO" alias="RoutineDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseDTO"/>
 		<typeAlias type="com.goody.diet.exercise.ExerciseDTO" alias="ExerciseImgDTO"/>
-		<typeAlias type="com.goody.diet.exercise.ExerciseRoleDTO" alias="ExerciseRoleDTO"/>
+	
 		
 		<typeAlias type="com.goody.diet.board.BbsDTO" alias="BbsDTO"/>
   	  	<typeAlias type="com.goody.diet.board.BoardDTO" alias="BoardDTO"/>
@@ -32,6 +33,7 @@
 		<typeAlias type="com.goody.diet.healthMachine.CategoryDTO" alias="CategoryDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.MachineQnaDTO" alias="MachineQnaDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.MachineReviewDTO" alias="MachineReviewDTO"/>
+		<typeAlias type="com.goody.diet.healthMachine.MachineReviewCommentDTO" alias="MachineReviewCommentDTO"/>
 
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
   	  	<typeAlias type="java.lang.Long" alias="Long" />

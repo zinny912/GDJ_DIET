@@ -1,5 +1,6 @@
 package com.goody.diet.exercise;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +21,10 @@ public class RoutineDAO {
 	public List<RoutineDTO> getRoutineList () throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getRoutineList");	
 	}
+	
+	public List<RoutineDTO> getSelectList (Date startDay) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSelectList");
+	}
 	//routine 영상재생 화면
 	public RoutineDTO getRoutineVideo(RoutineDTO routineDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getRoutineVideo", routineDTO);
@@ -36,6 +41,11 @@ public class RoutineDAO {
 	// 루틴 수정 
 	public int setRoutineUpdate(RoutineDTO routineDTO) {
 		return sqlSession.update(NAMESPACE+"setRoutineUpdate", routineDTO);
+	}
+
+	public List<RoutineDTO> getRoutineUpdate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
