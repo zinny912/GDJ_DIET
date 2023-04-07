@@ -1,5 +1,6 @@
 package com.goody.diet.exercise;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -32,6 +34,14 @@ public class RoutineController {
 		mv.addObject("routine", ar);
 		return mv;
 	}
+	@GetMapping("/list")
+	public ModelAndView getSelectList(RoutineDTO routineDTO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<RoutineDTO> ar = routineService.getSelectList();
+		mv.setViewName("routine/list");
+		return mv;
+	}
+	
 	
 	//이달의 루틴영상 play page  - routine detail 
 	@GetMapping("video")
@@ -71,15 +81,17 @@ public class RoutineController {
 		}
 		mv.addObject("result", message);
 		mv.setViewName("common/result");
-		return mv;
-		
+		return mv;	
 	}
+	
 	@GetMapping("update")
 	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
 		routineDTO = routineService.getRoutineVideo(routineDTO);
-		mv.addObject("dto", routineDTO);
+		List<RoutineDTO> ar = routineService.getSelectList();
+		//mv.addObject("dto", routineDTO);
+		System.out.println(ar);
+		mv.addObject("list", ar);
 		mv.setViewName("routine/update");
-		
 		return mv;
 	}
 	
@@ -90,7 +102,6 @@ public class RoutineController {
 		String msg = "업데이트 실패";
 		if(result>0) {
 			msg = "업데이트 성공";
-
 		}
 		mv.addObject("result", msg);
 		mv.addObject("url", "./calendar");

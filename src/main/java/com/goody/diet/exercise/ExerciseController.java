@@ -4,6 +4,7 @@ package com.goody.diet.exercise;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +32,10 @@ public class ExerciseController {
 		return mv;
 	}
 	//bodyNum별 detail List 
-	@GetMapping("info")
-	public ModelAndView getExerciseByBodyNum() {
+	@GetMapping("info2")
+	public ModelAndView getBodyDetailList(@Param("bodyNum")Long bodyNum) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		List<ExerciseDTO> exerciseList = exerciseService.getExerciseByBodyNum();
+		List<ExerciseDTO> exerciseList = exerciseService.getBodyDetailList(bodyNum);
 		mav.setViewName("detail/info");
 		mav.addObject("exerciseList", exerciseList);
 		return mav;

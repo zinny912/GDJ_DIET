@@ -20,6 +20,10 @@ public class RoutineDAO {
 	public List<RoutineDTO> getRoutineList () throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getRoutineList");	
 	}
+	
+	public List<RoutineDTO> getSelectList () throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSelectList");
+	}
 	//routine 영상재생 화면
 	public RoutineDTO getRoutineVideo(RoutineDTO routineDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getRoutineVideo", routineDTO);

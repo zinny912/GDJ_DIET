@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     	    }
       },
       headerToolbar : {
-        start : "today",
+        start : "today myCustomButton",
         center : "title",
         end : "prev next",
         
@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     	    	  return containerEl;
     	    	} */
     	  },
-    	  
     	  /* eventDrop: function (info) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
     		  console.log(info);
     		  if(confirm("'"+ info.event.title +"' 매니저의 일정을 수정하시겠습니까 ?")){
@@ -107,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
                   })
               })
           },
-
               $(function saveData(jsondata) {
                   $.ajax({
                       url: "/add",
@@ -124,30 +122,28 @@ document.addEventListener('DOMContentLoaded', function() {
                       });
                   calendar.unselect()
               });
-          }, */
-
+          }, 
+ */
   	});
   calendar.render();
 
   });
 
  </script>
- 
-
  <div class="container">
- <div class="row justify-content-center mb-5 pb-3">
- <div class="col-md-12 heading-section ftco-animate text-center" style="line-height:5%">
- <h3 class="mb-1">이달의 루틴 </h3><br><h3>Calendar</h3>
- </div>
- </div>
+	 <div class="row justify-content-center mb-5 pb-3">
+ 	 <div class="col-md-12 heading-section ftco-animate text-center" style="line-height:5%">
+ 	 <h3 class="mb-1">이달의 루틴 </h3><br><h3>Calendar</h3>
+ 	</div>
+ 	</div>
  
-  <button id="openModalBtn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" >모달 열기</button>
-
-
-<div id="modalButtons">
+  <button id="openModalBtn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" data-bs-whatever="@getbootstrap" >모달 열기</button>
+	<div id="modalButtons">
  <button type="button" id="routineBtn"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">+</button>
- <button type="button" id="updateBtn"class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">@</button>
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <button type="button" id="updateBtn"class="btn btn-warning" data-bs-toggle="modal2" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">@</button>
+ 
+ 
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -170,19 +166,49 @@ document.addEventListener('DOMContentLoaded', function() {
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">취소</button>
         <button type="submit" class="btn btn-primary" id="routineConfirm">등록</button>
       </div>
-      
     </div>
   </div>
-</div> 
+ </div>
 </div>
 
+<%-- <div class="modal fade" id="upModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+         <div class="modal-dialog">
+         <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">루틴을 수정하세요!</h1>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <label for="startDay">수정할 날짜</label>
+           <input type="date" id="${list.startDay}" name ="startDay">${list.startDay}</input>
+           <c:forEach items="${list}" var="dto">
+           <div id="scheduleList">  </div>
+           </c:forEach>
+           <div class="modal-body">
+           <label for="title" class="col-form-label">루틴 제목</label>
+              <input type="text" class="form-control" id="title" name="title">'
+              <label for="startDay" class="col-form-label">시작 날짜</label>
+               <input type="date" class="form-control" id="startDay" name="startDay">
+               <label for="endDay" class="col-form-label">종료 날짜</label>
+              <input type="date" class="form-control" id="endDay" name="endDay">
+               <label for="videoId" class="col-form-label">루틴영상URL</label>
+               <input type="text" class="form-control" id="videoId" name="videoId">
+               <label for="machineNum" class="col-form-label">운동기구</label>
+              <input type="text" class="form-control" id="machineNum" name="machineNum">
+            </div>
+            <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">취소</button>
+              <button type="submit" class="btn btn-primary" id="updateConfirm">수정하기</button>
+              <button type="submit" class="btn btn-primary" id="deleteConfirm">삭제하기</button>
+           </div>
+        </div>
+       </div>
+ --%>
 
- <div>
  
+ <div>
 <div id='calendar'></div>
  </div>
- </div>
- 
+</div>
  
  <!-- 로그인 모달  -->
     <div class="modal fade" id="loginModal" tabindex="-1"
@@ -206,14 +232,12 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 
-
-
- 
  
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 <!-- <script src="/resources/js/video.js"></script> -->
  <script src="/resources/js/routineAdd.js"></script>
+ <script src="/resources/js/update.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import> 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
