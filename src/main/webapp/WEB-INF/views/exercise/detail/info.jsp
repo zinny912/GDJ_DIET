@@ -22,22 +22,21 @@
 
 <body>
 
- 	<c:forEach items="{detailList}" var="dto">
+ 	<c:forEach items="{exerciseList}" var="dto">
 	
-    <section id="box"> <!--레이아웃-->
-               
+    <section id="box"> <!--레이아웃-->    
                 <p class="maintitle" id="detailTitle" name="detailTitle">${dto.detailTitle}</p> 
-				<c:forEach items="{machineList}" var="dto">
-				<button id="machine">${dto.machineName}</button>
+				<c:forEach items="{exerciseList}" var="dto">
+					<button id="machine">${dto.machineNum}</button>
 				</c:forEach>
 				
         <div class="container" id="one"> <!-- 전체를 감싸는 div 태그-->
             <div class="first"> <!--두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
-                <img src="/resources/images/${dto.boardFileDTOs[1].oriName}" alt="">
+                <img src="/resources/images/${dto.boardFileDTOs[0].oriName}" alt="">
             </div>
           <div class="second"> <!-- 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
                     <div class="productdetail">
-                        <span class="l">${dto.detail2}</span> 
+                        <span class="l">${dto.info}</span> 
                     </div>
                     <div class="productdetail3">
                   <p class="highlight">${dto.highLight}</p>

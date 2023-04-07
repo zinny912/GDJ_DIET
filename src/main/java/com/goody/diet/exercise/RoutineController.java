@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,18 @@ public class RoutineController {
 		return mv;
 	}
 	// 루틴 등록 
+	// JSON 데이터를 받아서 Java 객체로 변환하고 MyBatis를 사용하여 DB에 저장하는 메소드
+//    @PostMapping("/routineAdd")
+//    @ResponseBody
+//    public String saveData(@RequestBody List<RoutineDTO> routineDTOs) {
+//        for (RoutineDTO routineDTO : routineDTOs) {
+//            routineService.saveRoutine(routineDTO);
+//        }
+//        return "success";
+//    }
+	
+
+	
 	@GetMapping("add")
 	public ModelAndView setRoutineAdd() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -95,6 +108,7 @@ public class RoutineController {
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
 	
 	
 //	@PostMapping("add")

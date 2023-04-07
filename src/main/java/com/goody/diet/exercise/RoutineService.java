@@ -38,6 +38,9 @@ public class RoutineService {
 	public int setRoutineUpdate(RoutineDTO routineDTO, HttpSession session) {
 		return routineDAO.setRoutineUpdate(routineDTO);
 	}
+	public void saveRoutine(RoutineDTO routineDTO) {
+        routineDAO.setRoutineAdd(routineDTO);
+    }
 	
 //	public int setRoutineAdd(HttpSession httpSession) throws Exception{
 //		List<RoutineDTO> routineDTOs = routineDAO.getRoutineMachine();

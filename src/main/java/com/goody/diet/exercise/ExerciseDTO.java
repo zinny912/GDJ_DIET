@@ -16,17 +16,10 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private String detailTitle;
 	private String highLight;
 	private String info;
-	private String coordinate;
 	
 	private List<BoardFileDTO> boardFileDTOs;
 	private List<HealthMachineDTO> healthMachineDTOs;
 	
-	public String getCoordinate() {
-		return coordinate;
-	}
-	public void setCoordinate(String coordinate) {
-		this.coordinate = coordinate;
-	}
 	public String getHighLight() {
 		return highLight;
 	}

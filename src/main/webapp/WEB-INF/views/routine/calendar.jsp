@@ -20,6 +20,7 @@
 
 <script type="text/javascript">
 
+
 document.addEventListener('DOMContentLoaded', function() {
 	
 	const draggableEl = document.getElementById('mydraggable');
@@ -42,8 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       selectable : true,
       droppable : true,
-      draggbable: true,
-     	
+      draggbable: true,	
       editable : true,
       events : [
         <c:forEach var="dto" items="${routine}">
@@ -63,38 +63,54 @@ document.addEventListener('DOMContentLoaded', function() {
     	  }, 
     
       displayEventTime: false, // 시간 표시 x
-      dateClick: function() {
+      dateClick: function(check) {
     	    alert('출석체크하시겠습니까?');
+    	    check.dayEl.style.backgroundImage = "url('../resources/images/redcheck.png')";
+    	    check.dayEl.style.backgroundColor = 'yellow';
+    	   /*  eventRender: function(info) {
+    	    	  // 이벤트와 이미지를 감싸는 부모 요소 생성
+    	    	  var containerEl = document.createElement('div');
+    	    	  containerEl.classList.add('event-container');
+    	    	  // 이미지 요소 생성 및 추가
+    	    	  var imageEl = document.createElement('div');
+    	    	  imageEl.classList.add('event-image');
+    	    	  imageEl.style.backgroundImage = "url('path/to/image.png')";
+    	    	  containerEl.appendChild(imageEl);
+    	    	  // 이벤트 요소 추가
+    	    	  var eventEl = info.el;
+    	    	  containerEl.appendChild(eventEl);
+    	    	  // 렌더링 결과 반환
+    	    	  return containerEl;
+    	    	} */
     	  },
-    	 /*  select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-    		  var title = prompt('일정을 입력해주세요.');
-              if (title) {
-                  calendar.addEvent({
-                      title: title,
-                      start: arg.start,
-                      end: arg.end,
-                      allDay: arg.allDay,
-                  })
+    	  
+    	  /* eventDrop: function (info) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+    		  console.log(info);
+    		  if(confirm("'"+ info.event.title +"' 매니저의 일정을 수정하시겠습니까 ?")){
               }
-              var allEvent = calendar.getEvents(); // .getEvents() 함수로 모든 이벤트를 Array 형식으로 가져온다. (FullCalendar 기능 참조)
-
               var events = new Array(); // Json 데이터를 받기 위한 배열 선언
-              for (var i = 0; i < allEvent.length; i++) {
-                  var obj = new Object();     // Json 을 담기 위해 Object 선언
-                  // alert(allEvent[i]._def.title); // 이벤트 명칭 알람
-                  obj.title = allEvent[i]._def.title; // 이벤트 명칭  ConsoleLog 로 확인 가능.
-                  obj.start = allEvent[i]._instance.range.start; // 시작
-                  obj.end = allEvent[i]._instance.range.end; // 끝
+              var obj = new Object();
 
-                  events.push(obj);
-              }
-              var jsondata = JSON.stringify(events);
-              console.log(jsondata);
-              // saveData(jsondata);
+              obj.title = info.event._def.title;
+              obj.start = info.event._instance.range.start;
+              obj.end = info.event._instance.range.end;
+              events.push(obj);
+
+              console.log(events);
+              $(function deleteData() {
+                  $.ajax({
+                      url: "/full-calendar/calendar-admin-update",
+                      method: "PATCH",
+                      dataType: "json",
+                      data: JSON.stringify(events),
+                      contentType: 'application/json',
+                  })
+              })
+          },
 
               $(function saveData(jsondata) {
                   $.ajax({
-                      url: "/routineAdd",
+                      url: "/add",
                       method: "POST",
                       dataType: "json",
                       data: JSON.stringify(events),
@@ -107,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
                            alert("에러 발생" + error);
                       });
                   calendar.unselect()
-              }); */
-          //},
+              });
+          }, */
 
   	});
   calendar.render();
@@ -125,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </div>
  </div>
  
-  <button id="openModalBtn">모달 열기</button>
+  <button id="openModalBtn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" >모달 열기</button>
 
 
 <div id="modalButtons">
