@@ -27,7 +27,7 @@
 		BODY B
 		ON(B.NUM=EX.NUM)
 		WHERE
-		B.BODYNUM=#{param1}
+		B.BODYNUM={#bodyNum};
 	</select>
 	<resultMap type="ExerciseDTO" id="getExerciseResult">
 		<id column="NUM" property="num"/>
@@ -39,10 +39,10 @@
 		<result column="detailTitle" property="detailTitle"/>
 		<result column="info" property="info"/>
 		<result column="highLight" property="highLight"/>
-	<collection property="bodyDTOs" javaType="list" ofType="BodyDTO">
-		<id column = "bodyNum" property = "bodyNum"/>
-		<result column="bodyName" property="bodyName"/>
-	</collection>
+		<collection property="bodyDTOs" javaType="list" ofType="BodyDTO">
+			<id column="bodyNum" property="bodyNum"/>
+			<result column="bodyName" property="bodyName"/>
+		</collection>
 		<collection property="boardFileDTOs" javaType="list" ofType="BoardFileDTO">
 			<id column="fileNum" property="fileNum"/>
 	  			<result column="fileName" property="fileName"/>

@@ -43,8 +43,6 @@ $('#modalButtons').ready(function() {
 });
 
 
-
-
 // UPDATE!!!!!!!!!! DELETE!!!!!!!!!!!!
 $('#modalButtons').ready(function() {
     $('#updateBtn').click(function() {
@@ -78,32 +76,85 @@ $('#modalButtons').ready(function() {
       
         // 선택된 날짜에 해당하는 일정 목록 가져오기
         $('#selectedDay').on('change', function() {
-          let selectedDay = $(this).val();
-          console.log(selectedDay);
-          $.ajax({
-            url: '/routine/list',
-            type: 'GET',
-            data: {
-              startDay : selectedDay,
-            },
-            success: function(data) {
-              // 일정 목록을 HTML로 변환하여 화면에 출력
-              let html = '';
-              for (let i = 0; i < data.length; i++) {
-                html += '<div class="mb-3">'
-                    + '<label class="form-label">' + data[i].title + '</label>'
-                    + '<p>' + data[i].videoId + '</p>'
-                    + '</div>';
-              }
-              $('#scheduleList').html(html);
-            },
-            error: function() {
-              alert('일정 목록을 불러오는데 실패했습니다.');
-            }
-          });
-        });
+          //let startDay = $(this).val();
+        let startDay = $(this).val(); // yyyy-MM-dd 형태의 문자열
+        // let formattedDate = moment(startDay).format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
+        // let encodedStartDay = encodeURIComponent(startDay.toISOString());
+        //     console.log(formattedDate);
+          console.log(startDay);
+         // console.log(selectedDay);
+          fetch("/routine/list?startDay="+startDay,{
+            method:'GET'
+            
+        })
+        .then((response)=>response.text())
+        .then((res)=>{
+            $('#scheduleList').html(res.trim());
+        })
       });
     });
+});
+// // UPDATE!!!!!!!!!! DELETE!!!!!!!!!!!!
+// $('#modalButtons').ready(function() {
+//     $('#updateBtn').click(function() {
+//         // 모달창을 생성할 HTML 코드
+//         let modalSelect = `
+//           <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+//             <div class="modal-dialog">
+//               <div class="modal-content">
+//                 <div class="modal-header">
+//                   <h5 class="modal-title" id="scheduleModalLabel">일정 수정</h5>
+//                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//                 </div>
+//                 <div class="modal-body">
+//                   <input type="date" id="selectedDay" name="selectedDay" class="form-control mb-3" required>
+//                   <div id="scheduleList"></div>
+//                 </div>
+//                 <div class="modal-footer">
+//                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+//                   <button type="submit" class="btn btn-primary">수정</button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         `;
+      
+//         // 모달창을 HTML로 추가
+//         $('body').append(modalSelect);
+      
+//         // 모달창을 활성화
+//         $('#scheduleModal').modal('show');
+      
+//         // 선택된 날짜에 해당하는 일정 목록 가져오기
+//         $('#selectedDay').on('change', function() {
+//           let selectedDay = $(this).val();
+//           console.log(selectedDay);
+//           $.ajax({
+//             url: '/routine/calendar',
+//             type: 'GET',
+//             data: {  
+//               startDay : selectedDay
+//             },
+//             success: function(data) {
+//               // 일정 목록을 HTML로 변환하여 화면에 출력
+//               let html = '';
+//               for (let i = 0; i < data.length; i++) {
+//                 html += '<div class="mb-3">'
+//                     + '<label class="form-label">' + data[i].title + '</label>'
+//                     + '<p>' + data[i].videoId + '</p>'
+//                     + '<p>' + data[i].machineNum + '</p>'
+//                     + '</div>';
+//               }
+//               $('#scheduleList').html(html);
+//             },
+//             error: function() {
+//               alert('일정 목록을 불러오는데 실패했습니다.');
+//             }
+//           });
+//         });
+//       });
+//     });
+
     // $('#updateBtn').click(function() {
     //     alert("수정하기");
     //         //모달창을 생성할 HTML 코드

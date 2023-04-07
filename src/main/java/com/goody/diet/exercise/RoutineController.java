@@ -1,5 +1,6 @@
 package com.goody.diet.exercise;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,18 +33,27 @@ public class RoutineController {
 	public ModelAndView getRoutineList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<RoutineDTO> ar = routineService.getRoutineList();
+		
 		mv.setViewName("routine/calendar");
 		mv.addObject("routine", ar);
+		
 		return mv;
 	}
-	@GetMapping("/list")
-	public ModelAndView getSelectList(RoutineDTO routineDTO, HttpSession session) throws Exception{
+	@GetMapping("list")
+	public ModelAndView getSelectList(@RequestParam("startDay") Date startDay) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<RoutineDTO> ar = routineService.getSelectList();
+		List<RoutineDTO> ar = routineService.getSelectList(startDay);
+		
 		mv.setViewName("routine/list");
+		mv.addObject("list", ar);
 		return mv;
 	}
 	
+//	@GetMapping("routine/list")
+//	public ResponseEntity<List<RoutineDTO>> getSelectList(@RequestParam("startDay") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDay) throws Exception {
+//	    List<RoutineDTO> ar = routineService.getSelectList(startDay);
+//	    return ResponseEntity.ok(ar);
+//	}
 	
 	//이달의 루틴영상 play page  - routine detail 
 	@GetMapping("video")
@@ -87,7 +99,7 @@ public class RoutineController {
 	@GetMapping("update")
 	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
 		routineDTO = routineService.getRoutineVideo(routineDTO);
-		List<RoutineDTO> ar = routineService.getSelectList();
+		List<RoutineDTO> ar = routineService.getRoutineUpdate();
 		//mv.addObject("dto", routineDTO);
 		System.out.println(ar);
 		mv.addObject("list", ar);

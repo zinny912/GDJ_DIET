@@ -35,8 +35,8 @@ public class ExerciseDAO {
 	}
 
 	// detail - 짧강효확 클릭한 부위별 리스트 
-	public List<ExerciseDTO> getBodyDetailList(Long bodyNum) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getBodyDetailList", bodyNum);	
+	public List<ExerciseDTO> getBodyDetailList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getBodyDetailList");	
 	}
 	
 	//add - 영상등록 (짧강효확) 

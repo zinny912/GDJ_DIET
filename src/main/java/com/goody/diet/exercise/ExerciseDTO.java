@@ -19,18 +19,24 @@ public class ExerciseDTO extends HealthMachineDTO {
 	
 	private List<BoardFileDTO> boardFileDTOs;
 	private Long machinName;
-	private Long bodyNum;
+	private List<BodyDTO> bodyDTOs;
 	
 	
+	
+	
+	public List<BodyDTO> getBodyDTOs() {
+		return bodyDTOs;
+	}
+	public void setBodyDTOs(List<BodyDTO> bodyDTOs) {
+		this.bodyDTOs = bodyDTOs;
+	}
 	public Long getMachinName() {
 		return machinName;
 	}
 	public void setMachinName(Long machinName) {
 		this.machinName = machinName;
 	}
-	public void setBodyNum(Long bodyNum) {
-		this.bodyNum = bodyNum;
-	}
+	
 	public String getHighLight() {
 		return highLight;
 	}
@@ -93,11 +99,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 	}
 	public void setUrlId(String urlId) {
 		this.urlId = urlId;
-	}
-
-	public Long getBodyNum() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

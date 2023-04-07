@@ -32,8 +32,8 @@ public class ExerciseService {
 		return exerciseDAO.getBodyList();
 	}
 	
-	public List<ExerciseDTO> getBodyDetailList(Long bodyNum) throws Exception {
-		return exerciseDAO.getBodyDetailList(bodyNum);
+	public List<ExerciseDTO> getBodyDetailList() throws Exception {
+		return exerciseDAO.getBodyDetailList();
 	}
 	
 	//detail - 짧강효확 페이지 
