@@ -20,5 +20,10 @@ $('.toPayment-mother').on("click", '.toPayment', function(){
     })
     
     //창닫기
-    close()
+    // close()
+    $(document).ajaxComplete(function(){
+        close()
+    });
+
+
 })

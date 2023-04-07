@@ -1,13 +1,25 @@
 package com.goody.diet.member;
 
+import java.util.List;
+
+import com.goody.diet.cart.CartDTO;
+
 public class DeliveryDTO {
 	private String addressNum;
 	private String id;
 	private String address;
 	private String recipient;
 	private String recipientTel;
+	List<CartDTO> cartDTOs;
 	
 
+	
+	public List<CartDTO> getCartDTOs() {
+		return cartDTOs;
+	}
+	public void setCartDTOs(List<CartDTO> cartDTOs) {
+		this.cartDTOs = cartDTOs;
+	}
 	public String getAddressNum() {
 		return addressNum;
 	}

@@ -15,6 +15,7 @@ import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyDTO;
+import com.goody.diet.util.Pager;
 
 @Service
 public class OrderService {
@@ -27,96 +28,11 @@ public class OrderService {
 	}
 	
 	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
+		
+		
 	return orderDAO.getOrderList(memberDTO);
 	}
-	public List<CartDTO> getCartList(OrderDTO orderDTO) throws Exception {
-		return orderDAO.getCartList(orderDTO);
-	}
-	public StudyDTO getStudy(CartDTO cartDTO) throws Exception {
-		return orderDAO.getStudy(cartDTO);
-	}	
-	public HealthMachineDTO getHealthMachine(CartDTO cartDTO) throws Exception {
-		return orderDAO.getHealthMachine(cartDTO);
-	}		
-//	public int setOrderList(OrderDTO orderDTO, List<CartDTO> cartDTOs) throws Exception {
-//		StudyDTO studyDTO = new StudyDTO();
-//		RealHealthMachineDTO healthMachineDTO = new RealHealthMachineDTO();
-//		//주문리스트 
-//		orderDAO.setOrderList(orderDTO);
-//		//주문리스트 상세
-//		Long totalPrice=0L;
-//		//장바구니 mapper에서 불러오면 안댐.. checked만 불러와야대.... 
-//		for(CartDTO cartDTO:cartDTOs) {
-//			OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
-//			orderDetailDTO.setOrderNum(orderDTO.getOrderNum());
-//			
-//			if(cartDTO.getMachineNum()!=null) {
-//				orderDetailDTO.setMachineNum(cartDTO.getMachineNum());			
-//				orderDetailDTO.setCount(cartDTO.getCount());
-//				totalPrice=totalPrice + 
-//			}
-//			if(cartDTO.getStudyNum()!=null) {
-//				orderDetailDTO.setStudyNum(cartDTO.getStudyNum());				
-//			}
-//			
-//		}
-//		orderDTO.setOrderDetailDTOs(null);
-//
-//		
-//		return 0;
-//	}
-	
-	
-//	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
-//		return orderDAO.setOrderDetail(orderDetailDTO);
-//	}
 
-//	public int setOrder(MemberDTO memberDTO, List<CartDTO> cartDTOs) throws Exception {
-//		StudyDTO studyDTO = new StudyDTO();
-//
-//		//orderDTO 어디서 만들지..
-//		OrderDTO orderDTO=new OrderDTO();
-//		
-//		orderDAO.setOrder(orderDTO);
-//		
-//		for(CartDTO cartDTO:cartDTOs) {
-//			OrderDetailDTO orderDetailDTO=new OrderDetailDTO();
-//			
-//			if(cartDTO.getMachineNum()!=null) {
-//				HealthMachineDTO healthMachineDTO=cartDAO.getHealthMachineForCartAndOrder(cartDTO);
-//				orderDetailDTO.setMachineNum(healthMachineDTO.getMachineNum());
-//			}
-//			if(cartDTO.getStudyNum()!=null) {
-//				cartDAO.getStudyForCartAndOrder(cartDTO);			
-//			}			
-//			
-//			orderDAO.setOrderDetail(orderDetailDTO);
-//		}		
-//		
-//		
-//		
-//		return 0;
-//	}
-	
-	
-	public void setOrder( List<CartDTO> cartDTOs,HttpSession session) throws Exception {
-		//orderDTO 어디서 만들지..
-		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
-		OrderDTO orderDTO=new OrderDTO();
-		orderDAO.setOrder(orderDTO);
-		
-		//checked된 cartDTO -> orderDetailDTO 복사
-		for(CartDTO cartDTO:cartDTOs) {
-			OrderDetailDTO orderDetailDTO = new OrderDetailDTO();			
-//			if(cartDTO.getMachineNum()!=null) {
-//				orderDetailDTO.setMachineNum(cartDTO.getMachineNum());
-//			}
-			if(cartDTO.getStudyNum()!=null) {
-				orderDetailDTO.setStudyNum(cartDTO.getStudyNum());			
-			}			
-			orderDAO.setOrderDetail(orderDetailDTO);
-		}		
-	}	
 
 
 }

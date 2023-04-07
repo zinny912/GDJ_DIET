@@ -7,7 +7,7 @@
 				<c:forEach items="${studyDTOs}" var="studyDTO">
 				<c:if test="${cartDTO.studyNum eq studyDTO.studyNum}">
 
-						<div class="card">
+						<div class="card order_number">
 						  <div class="card-body">
 								<a href="/study/studyDetail?studyNum=${cartDTO.studyNum}" class="moveProduct">
 								    <img src="/resources/images/${studyDTO.studyBoardFileDTOs[0].fileName}" width="78" height="78" class="product-img img">
