@@ -6,7 +6,17 @@ $('#submitBtnJoin').click(()=>{
 
 
 $('#submitBtnLogin').click(()=>{
+    enter_or_click ()
 
+
+
+})
+
+
+
+
+
+function enter_or_click (){
     console.log($('#id').val())
 
     // $.ajax({
@@ -39,5 +49,4 @@ $('#submitBtnLogin').click(()=>{
             location.href="/";
         }
     })
-
-})
+}

@@ -22,7 +22,7 @@
 				<div class="row">
 
 					<c:forEach items="${orderDTOs}" var="orderDTO">
-						<div class="orderList">
+						<div class="orderList order_number">
 
 
 <c:forEach items="${orderDTO.cartDTOs}" var="cartDTO">
@@ -37,7 +37,7 @@
 				width="78" height="78" class="product-img img">
 			</a> <span class="option-item-name" style="font-size: 25px">${cartDTO.studyDTOs[0].studyName}</span>
 			<div>
-				<button type="button" class="btn btn-secondary btn-addCart"
+				<button type="button" class="btn btn-secondary btn-addCart to-cart-popper"
 					data-addCart-price="${cartDTO.cartPrice}"
 					data-addCart="${cartDTO.studyNum}" data-bs-container="body"
 					data-bs-toggle="popover" data-bs-placement="top"

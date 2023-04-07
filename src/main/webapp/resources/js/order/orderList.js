@@ -1,6 +1,6 @@
 
-//orderNum으로 cartList불러오기
-let orderLeng = document.getElementsByClassName("order_number")
+// //orderNum으로 cartList불러오기
+// let orderLeng = document.getElementsByClassName("order_number")
 
 // //장바구니에 추가하기
 // {
@@ -20,12 +20,15 @@ let orderLeng = document.getElementsByClassName("order_number")
 //     }
 // }
 
-$(document).ajaxComplete(function(){
-        let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
-        let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
-        title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
-  });
+// $(document).ajaxComplete(function(){
+//         let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
+//         let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
+//         title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
+//   });
 
+let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
+let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
+title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
 
 
 ///장바구니 추가버튼
