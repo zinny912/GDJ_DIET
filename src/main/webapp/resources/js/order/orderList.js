@@ -2,23 +2,23 @@
 //orderNum으로 cartList불러오기
 let orderLeng = document.getElementsByClassName("order_number")
 
-// //장바구니에 추가하기
-// {
-//     for(let i=0; i<orderLeng.length;i++){
-//         $.ajax({
-//             type:"GET",
-//             url:"/order/cartList",
-//             data:{
-//                 orderNum:orderLeng[i].getAttribute("data-orderNum")
-//             },
-//             success: (res)=>{
+//장바구니에 추가하기
+{
+    for(let i=0; i<orderLeng.length;i++){
+        $.ajax({
+            type:"GET",
+            url:"/order/cartList",
+            data:{
+                orderNum:orderLeng[i].getAttribute("data-orderNum")
+            },
+            success: (res)=>{
 
-//                 $('.cartListIn_'+orderLeng[i].getAttribute("data-orderNum")).html(res.trim())
-//             }
-//         })
+                $('.cartListIn_'+orderLeng[i].getAttribute("data-orderNum")).html(res.trim())
+            }
+        })
 
-//     }
-// }
+    }
+}
 
 $(document).ajaxComplete(function(){
         let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
