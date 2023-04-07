@@ -34,11 +34,14 @@ public class ExerciseController {
 	//bodyNum별 detail List 
 	@GetMapping("info")
 	public ModelAndView getBodyDetailList() throws Exception {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mv = new ModelAndView();
 		List<ExerciseDTO> exerciseList = exerciseService.getBodyDetailList();
-		mav.setViewName("exercise/info");
-		mav.addObject("exerciseList", exerciseList);
-		return mav;
+		List<BodyDTO> ar = exerciseService.getBodyList();
+		
+		
+		mv.setViewName("exercise/info");
+		mv.addObject("exerciseList", exerciseList);
+		return mv;
 	}
 
 	

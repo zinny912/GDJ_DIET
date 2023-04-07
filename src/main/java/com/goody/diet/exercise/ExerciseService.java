@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goody.diet.board.BoardFileDTO;
+import com.goody.diet.cart.CartDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
 import com.goody.diet.util.FileManager;
 import com.goody.diet.util.Pager;
@@ -33,7 +34,18 @@ public class ExerciseService {
 	}
 	
 	public List<ExerciseDTO> getBodyDetailList() throws Exception {
-		return exerciseDAO.getBodyDetailList();
+		List<ExercsieDTO> ar = exerciseDAO.getBodyDetailList(exerciseDTO);
+		
+		
+		return exerciseDAO.getBodyDetailList(bodyNum);
+	}
+	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
+		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
+		List<CartDTO> machines = cartDAO.getCartMachineList(cartDTO);
+		for(CartDTO dto:machines) {
+			ar.add(dto);
+		}
+		return ar;
 	}
 	
 	//detail - 짧강효확 페이지 
