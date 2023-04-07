@@ -95,8 +95,9 @@
 			        </div>
   		</div>
   		<div class="my-5" id="machineListResult">
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation.jpg" alt="..." />
-  				<img class="img-fluid rounded mb-4 mb-lg-0" src="/resources/images/studyDetailinfomation2.jpg" alt="..." />
+	  		<c:forEach items="${dto.healthMachineImgDTOs}" var="images" begin="1">
+	  			<img class="img-fluid rounded mb-4 mb-lg-0" style="width=100%;" src="/resources/images/${images.fileName}" alt="..." />
+	  		</c:forEach>
   			</div>
 	</div>
 	
