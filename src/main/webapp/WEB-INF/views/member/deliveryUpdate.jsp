@@ -12,8 +12,9 @@
 <c:import url="../template/header.jsp"></c:import>
 
 
-
-<form action="./deliveryUpdate" method="post">
+<c:if test="${popUp eq true}"><form action="./deliveryUpdate?popUp=true" method="post"></c:if>
+<c:if test="${popUp eq null or popUp eq false}"><form action="./deliveryUpdate" method="post"></c:if>
+<!-- <form action="./deliveryUpdate" method="post"> -->
 
 <input type="text" hidden="" name="id" value="${sessionMember.id}">
 <input type="text" hidden="" name="addressNum" value="${deliveryDTO.addressNum}">

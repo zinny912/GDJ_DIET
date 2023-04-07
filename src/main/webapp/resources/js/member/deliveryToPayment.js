@@ -2,7 +2,7 @@
 //선택버튼 누르면 payment에 deliveryDTO 전달
 $('.toPayment-mother').on("click", '.toPayment', function(){
  
-    opener.document.getElementsByClassName('pay-deliver-ajax-recipient').innerText=$(this).find($('.addressNum')).attr("data-id")
+    opener.document.getElementsByClassName('pay-deliver-ajax').innerText=$(this).find($('.addressNum')).attr("data-id")
 
     $.ajax({
         type:"GET",

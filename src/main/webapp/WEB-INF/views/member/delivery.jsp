@@ -25,7 +25,7 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-<c:if test="${popUp eq null}">
+<c:if test="${popUp eq null or popUp eq false}">
 <c:import url="../template/header.jsp"></c:import>
 </c:if>
 <input type="hidden" id="originId" value="${sessionScope.sessionMember.id}">
@@ -33,7 +33,7 @@
 <div class="container-fluid">
 	<div class="row">
 	
-<c:if test="${popUp eq null}">	
+<c:if test="${popUp eq null or popUp eq false}">	
 	<c:import url="./memberHeader.jsp"></c:import>
 </c:if>	
 	
@@ -54,8 +54,16 @@
 	    
 	    <p class="card-text address" data-address="${prime.address}">주소:	${prime.address}</p>
 	    <p class="card-text recipientTel" data-recipientTel="${prime.recipientTel}">연락처:		${prime.recipientTel}</p>
-	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}" class="card-link">수정</a>
 	    
+	    <c:if test="${popUp eq null or popUp eq false}">
+	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}" class="card-link">수정</a>
+	    </c:if>
+	    
+		<c:if test="${popUp eq true}">
+			<a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${prime.addressNum}&popUp=true" class="card-link">수정</a>
+			<button class="btn btn-scondary toPayment" data-addressNum="${prime.addressNum}" data-recipient="${prime.recipient}" data-address="${prime.address}" data-recipientTel="${prime.recipientTel}" 
+			>선택</button>
+		</c:if>	    
 	  </div>
 	</div>		
 </div>
@@ -70,14 +78,16 @@
 
 	    <p class="card-text address" >주소:	${i.address}</p>
 	    <p class="card-text recipientTel" >연락처:	${i.recipientTel}</p>
+	    
+	    <c:if test="${popUp eq null or popUp eq false}">
 	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${i.addressNum}" class="card-link">수정</a>
-
 	    <a href="./deliveryDelete?addressNum=${i.addressNum}" class="card-link">삭제</a>
-
-		<c:if test="${popUp ne null}">
+		</c:if>
+		<c:if test="${popUp eq true}">
+	    <a href="./deliveryUpdate?id=${sessionMember.id}&addressNum=${i.addressNum}&popUp=true" class="card-link">수정</a>
+	    <a href="./deliveryDelete?addressNum=${i.addressNum}&popUp=true" class="card-link">삭제</a>
 			<button class="btn btn-scondary toPayment" data-addressNum="${i.addressNum}" data-recipient="${i.recipient}" data-address="${i.address}" data-recipientTel="${i.recipientTel}" 
 			>선택</button>
-			<a href="./deliveryDelete?addressNum=${i.addressNum}" class="">선택2</a>
 		</c:if>
 	    
 	  </div>
@@ -85,9 +95,17 @@
 </div>
 </c:if></c:forEach>
 
+<c:if test="${popUp eq null or popUp eq false}">
 <div class="col-12">
 	<button type="button" onclick="location.href='./deliveryNew'">추가</button>
 </div>
+</c:if>
+<c:if test="${popUp eq true}">
+<div class="col-12">
+	<a class="btn btn-primary" href="./deliveryNew?popUp=true">추가</a>
+</div>
+</c:if>
+
 
       </div>
     </div>	
@@ -97,7 +115,7 @@
 </div>
 
 <c:import url="../template/common_js.jsp"></c:import>
-<c:if test="${popUp eq null}">
+<c:if test="${popUp eq null or popUp eq false}">
 <c:import url="../template/footer.jsp"></c:import>
 </c:if>
 <script src="/resources/js/member/memberUpdate.js"></script>

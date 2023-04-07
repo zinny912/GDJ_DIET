@@ -7,7 +7,7 @@
     <title>구디다이어트</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <c:import url="../template/common_css.jsp"></c:import>
+     <c:import url="../template/common_css.jsp"></c:import>
     
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -19,12 +19,13 @@
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<h1 class="col-md-7 text-center my-5">Q&amp;A 상품문의</h1>
+		<h1 class="col-md-7 text-center my-5">Q&amp;A 상품답변</h1>
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./add" method="post">
-			<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 	
+		<form class="col-md-7" action="./reply" method="post">
+				<input type="hidden" name="machineNum" value="${machineQnaDTO.machineNum}">
+				<input type="hidden" name="num" value="${machineQnaDTO.num}">
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
 				<c:if test="${not empty sessionMember}">
@@ -44,6 +45,14 @@
 				<label for="contents" class="form-label">상세내용</label>
 				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
+			
+			<!-- <div id="fileList">
+				<div class="mb-3">
+					<label for="files" class="form-label">이미지</label>
+					<input type="file" class="form-control" id="files" name="pic">
+				</div>
+				<button type="button" id="fileAdd">ADD</button>
+			</div> -->
 		
 			<div class="mb-3">
 				<button class="btn btn-primary" type="submit">글쓰기</button> 
@@ -51,7 +60,7 @@
 		</form>
 	</div>
 </div>
-
+  
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
 	<script>

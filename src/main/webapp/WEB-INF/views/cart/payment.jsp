@@ -10,6 +10,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <c:import url="../template/common_css.jsp"></c:import>
  <link href="/resources/css/cartList.css" rel="stylesheet"/>
+ <script src="https://service.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
   <style>
     .bordered {
@@ -78,6 +79,10 @@
           <p class="info" id="ordererPhone"><strong>${sessionMember.phone}</strong> </p>
           <p class="info" id="ordererEmail"><strong>${sessionMember.email}</strong></p>
           <p class="info" id="ordererAddress"><strong>${sessionMember.address}</strong> </p>
+          <form action="/member/deliveryNew" method="get">
+          <input type="hidden" name="email" value="${sessionMember.email}">	
+          <button type="submit" class="btn btn-primary" >배송지 추가</button>
+          </form>
         </div> 
       </div>
       <div class="col-md-6">
@@ -102,7 +107,7 @@
     </div>
 
 
-<script src="https://service.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
 <script type="text/javascript" src="/resources/js/payment.js"></script>
 <!-- <script src="https://cdn.iamport.kr/v1/iamport.js"></script> -->
 <c:import url="../template/footer.jsp"></c:import>

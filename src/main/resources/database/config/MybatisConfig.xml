@@ -31,7 +31,7 @@
 		<typeAlias type="com.goody.diet.healthMachine.HealthMachineImgDTO" alias="HealthMachineImgDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.RealHealthMachineDTO" alias="RealHealthMachineDTO"/>
 		<typeAlias type="com.goody.diet.healthMachine.CategoryDTO" alias="CategoryDTO"/>
-		
+		<typeAlias type="com.goody.diet.healthMachine.MachineQnaDTO" alias="MachineQnaDTO"/>
 
   	  	<typeAlias type="com.goody.diet.util.Pager" alias="Pager"/>
   	  	<typeAlias type="java.lang.Long" alias="Long" />

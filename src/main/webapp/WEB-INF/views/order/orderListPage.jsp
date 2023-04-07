@@ -21,7 +21,7 @@
     <div class="col-10">
       <div class="row">
       		
-	<c:forEach items="${orderList}" var="orderDTO" varStatus="i">
+	<c:forEach items="${orderDTOs}" var="orderDTO" varStatus="i">
 <div class="orderList">
 
 
@@ -34,8 +34,7 @@
 
 		<!-- detail page -->
 		<c:forEach items="${orderDTOs}" var="orderDTO">
-			<div hidden="" class="orderNum" data-orderNum="${orderDTO.orderNum}"></div>
-			<div class="col-12 cartListIn">
+			<div class="col-12 order_number cartListIn_${orderDTO.orderNum}" data-orderNum="${orderDTO.orderNum}">
 			
 			</div>	
 		</c:forEach>
@@ -87,22 +86,26 @@
  
 </div>
 
+<button type="button" class="btn btn-secondary to-cart-popper" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover"
+	>장바구니 담기</button>
+
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+  외안대..
+</button>
+
 <c:import url="../template/common_js.jsp"></c:import>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/js/order/orderList.js"></script>
 
 <c:import url="../template/footer.jsp"></c:import>
 
-<script src="/resources/js/order/orderList.js"></script>
 <script src="/resources/js/member/memberDelete.js"></script>
 
 
+<script type="text/javascript">
 
-<!-- <script>
-  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
-  title: "<h1><strong>HTML</strong> inside <code>the</code> <em>popover</em></h1><br><a href='/' type='button'>버튼</a>", content:'  <a href="" class="btn btn-danger">나야나</a>', html: true, placement: "right"}))
-</script> -->
+</script>
 
 </body>
 </html>

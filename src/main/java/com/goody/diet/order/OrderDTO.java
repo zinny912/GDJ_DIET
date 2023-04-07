@@ -8,7 +8,7 @@ public class OrderDTO {
 	private Long orderNum;
 	private String id;
 	private Date orderDate;
-	private String orderStatus;
+	private Long orderStatus;
 	private List<OrderDetailDTO> orderDetailDTOs;
 	
 	
@@ -37,12 +37,13 @@ public class OrderDTO {
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public String getOrderStatus() {
+	public Long getOrderStatus() {
 		return orderStatus;
 	}
-	public void setOrderStatus(String orderStatus) {
+	public void setOrderStatus(Long orderStatus) {
 		this.orderStatus = orderStatus;
 	}
+
 	
 	
 	
