@@ -33,4 +33,13 @@ public class MachineReviewService {
 		
 	}
 	
+	public MachineReviewDTO getBoardDetail(MachineReviewDTO machineReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return machineReviewDAO.getBoardDetail(machineReviewDTO);
+	}
+	
+	public int setHitUpdate(MachineReviewDTO machineReviewDTO) throws Exception{
+		return machineReviewDAO.setHitUpdate(machineReviewDTO);
+	}
+	
 }

@@ -48,5 +48,16 @@ public class MachineReviewController {
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
+	
+	@GetMapping("detail")
+	public ModelAndView getBoardDetail(MachineReviewDTO machineReviewDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = machineReviewService.setHitUpdate(machineReviewDTO);
+		MachineReviewDTO qnaDTO = machineReviewService.getBoardDetail(machineReviewDTO);
+
+		mv.addObject("dto", qnaDTO);
+		mv.setViewName("machineReview/detail");
+		return mv;
+	}
 
 }
