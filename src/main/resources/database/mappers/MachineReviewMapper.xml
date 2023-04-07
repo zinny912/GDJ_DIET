@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.goody.diet.healthMachine.MachineReviewDAO">
+ 
+   <sql id="reviewCondition">
+	  	<trim prefix="where" suffixOverrides="and">
+			MACHINENUM=#{machineNum} AND
+			
+			<if test="kind == 'contents'">
+				CONTENTS LIKE '%'|| #{search} || '%'
+			</if>
+			
+			<if test="kind == 'writer'">
+				WRITER LIKE '%'|| #{search} || '%'
+			</if>
+		</trim> 
+	</sql>
+	
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+  		SELECT COUNT(NUM) FROM MACHINEREVIEW 
+  			<include refid="reviewCondition"></include>
+  	</select>
+  
+  <select id="getBoardList" resultType="MachineReviewDTO" parameterType="Pager">
+		SELECT * FROM
+  		(	
+  			SELECT ROWNUM R, C.* FROM
+  				(	SELECT * FROM MACHINEREVIEW 
+  					<include refid="reviewCondition"></include>
+					ORDER BY NUM DESC
+				) C
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}  
+  </select>
+  
+   <insert id="setBoardAdd" parameterType="MachineReviewDTO">
+  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO MACHINEREVIEW (NUM,MACHINENUM,CONTENTS,WRITER,REGDATE,HIT,SCORE)
+  		VALUES(#{num},#{machineNum},#{contents}, #{writer},SYSDATE,0,#{score})
+  </insert>
+ 
+ </mapper>

@@ -53,7 +53,6 @@ public class StudyController {
 	@PostMapping("summerFile")
 	public ModelAndView setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(files.getOriginalFilename());
 		String file = studyService.setBoardFileAdd(files, session);
 		mv.setViewName("common/ajaxResult");
 		mv.addObject("result", file);
