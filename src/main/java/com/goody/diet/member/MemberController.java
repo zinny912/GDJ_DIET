@@ -288,12 +288,18 @@ public class MemberController {
 		return mv;
 	}
 	@GetMapping("deliveryDelete")
-	public ModelAndView setDeliveryDelete(ModelAndView mv, DeliveryDTO deliveryDTO, boolean popUp) throws Exception {
+	public ModelAndView setDeliveryDelete(HttpSession session,ModelAndView mv, DeliveryDTO deliveryDTO, boolean popUp) throws Exception {
 		int result=memberService.setDeliveryDelete(deliveryDTO);
 		mv.setViewName("/member/delivery");
 		if(popUp) {
 			mv.addObject("popUp", popUp);
 		}
+		
+
+		//delivery불러옴
+		mv.addObject("deliveryList", memberService.getDeliveryPage((MemberDTO)session.getAttribute("sessionMember")));
+		mv.setViewName("/member/delivery");			
+		
 		return mv;
 	}
 	

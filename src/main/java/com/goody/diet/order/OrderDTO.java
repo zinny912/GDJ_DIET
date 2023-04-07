@@ -3,21 +3,24 @@ package com.goody.diet.order;
 import java.sql.Date;
 import java.util.List;
 
+import com.goody.diet.cart.CartDTO;
+
 public class OrderDTO {
 
 	private Long orderNum;
 	private String id;
 	private Date orderDate;
 	private Long orderStatus;
-	private List<OrderDetailDTO> orderDetailDTOs;
+	private List<CartDTO> cartDTOs;
 	
 	
 	
-	public List<OrderDetailDTO> getOrderDetailDTOs() {
-		return orderDetailDTOs;
+
+	public List<CartDTO> getCartDTOs() {
+		return cartDTOs;
 	}
-	public void setOrderDetailDTOs(List<OrderDetailDTO> orderDetailDTOs) {
-		this.orderDetailDTOs = orderDetailDTOs;
+	public void setCartDTOs(List<CartDTO> cartDTOs) {
+		this.cartDTOs = cartDTOs;
 	}
 	public Long getOrderNum() {
 		return orderNum;

@@ -80,7 +80,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="sample3_address" onclick="sample3_execDaumPostcode()" name="address" class="form-control" placeholder="주소"/>
+                      <input readonly="readonly" type="text" id="sample3_address" onclick="sample3_execDaumPostcode()" name="address" class="form-control" placeholder="주소"/>
 <!--                       <label class="form-label" for="address">주소</label> -->
 <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">

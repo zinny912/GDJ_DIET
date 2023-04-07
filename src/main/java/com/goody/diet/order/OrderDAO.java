@@ -27,35 +27,6 @@ public class OrderDAO {
 	public List<OrderDTO> getOrderList (MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getOrderList", memberDTO);
 	}
-	public List<CartDTO> getCartList(OrderDTO orderDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getCartList", orderDTO);
-	}
-	public StudyDTO getStudy(CartDTO cartDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getStudy", cartDTO);
-	}	
-	public HealthMachineDTO getHealthMachine(CartDTO cartDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getHealthMachine", cartDTO);
-	}	
 	
-	public int setOrder(OrderDTO orderDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"setOrder", orderDTO);
-	}
-	public int setOrderDetail(OrderDetailDTO orderDetailDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"setOrderDetail", orderDetailDTO);
-	}
-
-	
-	
-	
-
-	public HealthMachineDTO getHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
-		return sqlSession.selectOne(NAMESPACE+"getHealthMachineForCartAndOrder", orderDetailDTO);
-	}
-	public RealHealthMachineDTO getRealHealthMachineForCartAndOrder(OrderDetailDTO orderDetailDTO) {
-		return sqlSession.selectOne(NAMESPACE+"getRealHealthMachineForCartAndOrder", orderDetailDTO);
-	}
-	public StudyDTO getStudyForCartAndOrder(OrderDetailDTO orderDetailDTO) {
-		return sqlSession.selectOne(NAMESPACE+"getStudyForCartAndOrder", orderDetailDTO);
-	}	
 	
 }
