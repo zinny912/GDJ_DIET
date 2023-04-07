@@ -136,6 +136,7 @@ public class HealthMachineController {
 		return mv;
 	}
 	
+	
 	//	----------------option-----------------------------------
 	@PostMapping("option1")
 	public ModelAndView getOption1(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO)throws Exception{
@@ -224,6 +225,15 @@ public class HealthMachineController {
 		mv.setViewName("common/ajaxResult");
 		return mv;
 
+	}
+	
+	@PostMapping("summerFile")
+	public ModelAndView setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		String file = healthMachineService.setBoardFileAdd(files, session);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", file);
+		return mv;
 	}
 
 }

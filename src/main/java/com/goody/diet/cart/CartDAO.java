@@ -29,6 +29,9 @@ public class CartDAO {
 		return sqlSession.update(NAMESPACE+"setCartCheckUpdate", item);
 	}
 	
+	public int setCartCountUpdate(CartDTO cartDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setCartCountUpdate", cartDTO);
+	}
 	public int setCartCheckDefaultUpdate(CartDTO cartDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setCartCheckDefaultUpdate", cartDTO);
 	}
