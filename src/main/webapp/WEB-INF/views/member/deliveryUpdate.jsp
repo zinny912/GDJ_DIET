@@ -9,12 +9,9 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+
+<c:if test="${popUp eq null or popUp eq false}"><form action="./deliveryUpdate" method="post">
 <c:import url="../template/header.jsp"></c:import>
-
-
-<c:if test="${popUp eq true}"><form action="./deliveryUpdate?popUp=true" method="post"></c:if>
-<c:if test="${popUp eq null or popUp eq false}"><form action="./deliveryUpdate" method="post"></c:if>
-<!-- <form action="./deliveryUpdate" method="post"> -->
 
 <input type="text" hidden="" name="id" value="${sessionMember.id}">
 <input type="text" hidden="" name="addressNum" value="${deliveryDTO.addressNum}">
@@ -68,6 +65,68 @@
 
 
 <button type="submit" class="btn btn-primary">제출</button>
+<a href="/member/delivery" class="btn btn-primary">취소</a>
+</c:if>
+
+<c:if test="${popUp eq true}"><form action="./deliveryUpdate?popUp=true" method="post">
+
+<input type="text" hidden="" name="id" value="${sessionMember.id}">
+<input type="text" hidden="" name="addressNum" value="${deliveryDTO.addressNum}">
+
+<div class="input-group mb-3">
+  <span class="input-group-text">@</span>
+  <div class="form-floating">
+    <input type="text" name="recipient" class="form-control" id="floatingInputGroup1" value="${deliveryDTO.recipient}" placeholder="받는사람">
+    <label for="floatingInputGroup1" style="color: graytext;">받는사람</label>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text">@</span>
+  <div class="form-floating">
+    <input type="text" name="recipientTel" class="form-control" id="floatingInputGroup2" value="${deliveryDTO.recipientTel}" placeholder="휴대폰">
+    <label for="floatingInputGroup2" style="color: gray;">휴대폰</label>
+  </div>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text">@</span>
+  <div class="form-floating">
+	<input type="text" name="address" class="form-control" id="sample3_address" onclick="sample3_execDaumPostcode()" value="${addressPost}" placeholder="우편번호 찾기">
+  <label for="sample3_address" style="color: gray;">우편번호 찾기</label>
+    </div>
+  <div class="form-floating">  
+	<input type="text" name="address" class="form-control" id="sample3_detailAddress" value="${addressDetail}" placeholder="상세주소">
+  <label for="sample3_detailAddress" style="color: gray;">상세주소</label>
+  </div>
+</div>
+
+<c:choose>
+	<c:when test="${sessionMember.address eq deliveryDTO.address}">
+		<div class="form-check">
+		  <input class="form-check-input" readonly checked="checked" type="checkbox" name="primaryAddress" value="1" id="flexCheckChecked">
+		  <label class="form-check-label" for="flexCheckChecked">
+		    기본 배송지로
+		  </label>
+		</div>		
+	</c:when>
+	<c:otherwise>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" name="primaryAddress" value="1" id="flexCheckChecked">
+		  <label class="form-check-label" for="flexCheckChecked">
+		    기본 배송지로
+		  </label>
+		</div>		
+	</c:otherwise>
+
+</c:choose>
+
+
+<button type="submit" class="btn btn-primary">제출</button>
+<a href="/member/delivery?popUp=true" class="btn btn-primary">취소</a>
+</c:if>
+<!-- <form action="./deliveryUpdate" method="post"> -->
+
+
 </form>
 
 <!-- <input type="text" id="sample3_postcode" placeholder="우편번호"> -->
@@ -138,7 +197,10 @@
 </script>
 
 <c:import url="../template/common_js.jsp"></c:import>
+
+<c:if test="${popUp eq null or popUp eq false}">
 <c:import url="../template/footer.jsp"></c:import>
+</c:if>
 
 </body>
 </html>

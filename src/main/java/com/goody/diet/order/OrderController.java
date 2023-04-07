@@ -26,60 +26,77 @@ public class OrderController {
 
 	@Autowired
 	OrderService orderService;
+
 	
 	@GetMapping("list")
 	public ModelAndView getOrderList(ModelAndView mv, HttpSession session) throws Exception {
-		System.out.println("------------------오더리스트-----------------");
-		//ajax나, sql문 아니면 order랑 cart랑 연결이 안댐..
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
-		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);	
-
+		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);
+		
+		System.out.println("------------------오더리스트-----------------");
+		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
+		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
 		
 		mv.addObject("orderDTOs", orderDTOs);
 		mv.setViewName("/order/orderListPage");
 		return mv;
 	}
-	@GetMapping("cartList")
-	public ModelAndView getCartList(ModelAndView mv, OrderDTO orderDTO) throws Exception {
-		System.out.println("-----------------getCartList-------------------");
-		System.out.println(orderDTO.getOrderNum());
-		
-		List<CartDTO> cartDTOs = orderService.getCartList(orderDTO);
-		List<StudyDTO> studyDTOs = new ArrayList<StudyDTO>(); 
-		List<HealthMachineDTO> healthMachineDTOs = new ArrayList<HealthMachineDTO>();
-		
-		System.out.println("cartDTOs.size(): "+cartDTOs.size());
-		
-		if(cartDTOs.size()!=0) {
-			for(CartDTO cartDTO:cartDTOs) {
-				System.out.println("cartDTO.getStudyNum(): "+cartDTO.getStudyNum());
-				System.out.println("cartDTO.getRealHealthMachine: "+cartDTO.getRealMachineNum());
-				if(cartDTO.getStudyNum()!=null) {
-					studyDTOs.add(orderService.getStudy(cartDTO));				
-				}
-				if(cartDTO.getRealMachineNum()!=null) {				
-					healthMachineDTOs.add(orderService.getHealthMachine(cartDTO));
-				}
-				//밖에서 cartDTO랑 어떻게 매치시킴? if문으로 num이랑 하자..
-			}
-			mv.addObject("cartDTOs", cartDTOs);
-			mv.addObject("studyDTOs", studyDTOs);
-			mv.addObject("healthMachineDTOs", healthMachineDTOs);
-		}
-		System.out.println("studyDTOs.size(): "+studyDTOs.size());
-		System.out.println("healthMachineDTOs.size(): "+healthMachineDTOs.size());
-		
-		mv.setViewName("/order/detailAjax");
-		return mv;
-	}
-//	public ModelAndView getStudy(ModelAndView mv, CartDTO cartDTO) throws Exception {
-//		orderService.getStudy(cartDTO);
-//		return 
-//	}	
-//	public ModelAndView getRealHealthMachine(ModelAndView mv, CartDTO cartDTO) throws Exception {
-//		orderService.getRealHealthMachine(cartDTO);
-//		return
-//	}		
+	
+////구////구////구////구////구////구////구////구////구////구////구////구////구////구////구
+	
+//	@GetMapping("list")
+//	public ModelAndView getOrderList(ModelAndView mv, HttpSession session) throws Exception {
+//		System.out.println("------------------오더리스트-----------------");
+//		//ajax나, sql문 아니면 order랑 cart랑 연결이 안댐..
+//		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+//		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);	
+//
+//		
+//		mv.addObject("orderDTOs", orderDTOs);
+//		mv.setViewName("/order/orderListPage");
+//		return mv;
+//	}
+//	@GetMapping("cartList")
+//	public ModelAndView getCartList(ModelAndView mv, OrderDTO orderDTO) throws Exception {
+//		System.out.println("-----------------getCartList-------------------");
+//		System.out.println(orderDTO.getOrderNum());
+//		
+//		List<CartDTO> cartDTOs = orderService.getCartList(orderDTO);
+//		List<StudyDTO> studyDTOs = new ArrayList<StudyDTO>(); 
+//		List<HealthMachineDTO> healthMachineDTOs = new ArrayList<HealthMachineDTO>();
+//		
+//		System.out.println("cartDTOs.size(): "+cartDTOs.size());
+//		
+//		if(cartDTOs.size()!=0) {
+//			for(CartDTO cartDTO:cartDTOs) {
+//				System.out.println("cartDTO.getStudyNum(): "+cartDTO.getStudyNum());
+//				System.out.println("cartDTO.getRealHealthMachine: "+cartDTO.getRealMachineNum());
+//				if(cartDTO.getStudyNum()!=null) {
+//					studyDTOs.add(orderService.getStudy(cartDTO));				
+//				}
+//				if(cartDTO.getRealMachineNum()!=null) {				
+//					healthMachineDTOs.add(orderService.getHealthMachine(cartDTO));
+//				}
+//				//밖에서 cartDTO랑 어떻게 매치시킴? if문으로 num이랑 하자..
+//			}
+//			mv.addObject("cartDTOs", cartDTOs);
+//			mv.addObject("studyDTOs", studyDTOs);
+//			mv.addObject("healthMachineDTOs", healthMachineDTOs);
+//		}
+//		System.out.println("studyDTOs.size(): "+studyDTOs.size());
+//		System.out.println("healthMachineDTOs.size(): "+healthMachineDTOs.size());
+//		
+//		mv.setViewName("/order/detailAjax");
+//		return mv;
+//	}
+////	public ModelAndView getStudy(ModelAndView mv, CartDTO cartDTO) throws Exception {
+////		orderService.getStudy(cartDTO);
+////		return 
+////	}	
+////	public ModelAndView getRealHealthMachine(ModelAndView mv, CartDTO cartDTO) throws Exception {
+////		orderService.getRealHealthMachine(cartDTO);
+////		return
+////	}		
 
 	
 ////구////구////구////구////구////구////구////구////구////구////구////구////구////구////구

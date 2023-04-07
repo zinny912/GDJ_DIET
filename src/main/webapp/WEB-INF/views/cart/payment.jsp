@@ -156,6 +156,10 @@
 							<input type="hidden" name="email" value="${sessionMember.email}">
 							<button type="submit" class="btn btn-primary">배송지 추가</button>
 						</form>
+						
+						<button class="btn btn-secondary btn_delivery_change" style="margin-left: 80%;">변경</button>
+						<div class="pay-deliver-ajax"></div>
+						
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -182,6 +186,7 @@
 
 
 	<script type="text/javascript" src="/resources/js/payment.js"></script>
+	<script type="text/javascript" src="/resources/js/order/payment.js"></script> <!-- 배송지 -->
 	<!-- <script src="https://cdn.iamport.kr/v1/iamport.js"></script> -->
 	<c:import url="../template/footer.jsp"></c:import>
 	<c:import url="../template/common_js.jsp"></c:import>
