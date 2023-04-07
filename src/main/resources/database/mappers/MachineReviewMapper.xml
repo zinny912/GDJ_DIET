@@ -55,7 +55,7 @@
   	
   	<resultMap id="MachineDTOMap" type="MachineReviewDTO">
 		<id column="num" property="num" />
-			<result column="studyNum" property="studyNum" />
+			<result column="machineNum" property="machineNum" />
 			<result column="contents" property="contents" />
 			<result column="writer" property="writer" />
 			<result column="regDate" property="regDate" />
@@ -78,5 +78,12 @@
 		UPDATE MACHINEREVIEW SET HIT=HIT+1 WHERE NUM=#{num}
 	</update>
 	
+	<update id="setBoardUpdate" parameterType="MachineReviewDTO">
+ 		UPDATE MACHINEREVIEW SET CONTENTS=#{contents},SCORE=#{score},REGDATE=SYSDATE WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
+ 	</update>
+  	
+  	<delete id="setBoardDelete" parameterType="MachineReviewDTO">
+  		DELETE MACHINEREVIEW WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
+  	</delete> 
  
  </mapper>

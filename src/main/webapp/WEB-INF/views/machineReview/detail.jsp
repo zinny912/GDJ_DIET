@@ -79,7 +79,7 @@
 			</c:if>
 		</div>
 		
-		<div class="my-2" id="studyQnaReplyResult" data-study-reply="${dto.num}">
+		<div class="my-2" id="MachineReplyResult" data-machine-reply="${dto.num}">
 			
 		</div>
 			
@@ -194,9 +194,9 @@
 		
 	</script>
 <c:import url="../template/footer.jsp"></c:import>
-<script src="../resources/js/studyReviewUpdate.js"></script>
+<script src="../resources/js/machineReviewUpdate.js"></script>
 <script src="../resources/js/boardForm.js"></script>
-<script src="../resources/js/studyReviewReply.js"></script>
+<script src="../resources/js/machineReviewReply.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

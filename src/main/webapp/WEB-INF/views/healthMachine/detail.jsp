@@ -76,8 +76,10 @@
 		</div>
 	
 	<div style="text-align: right;">
+	<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
 	  <a href="optionAdd?machineNum=${dto.machineNum}" class="btn btn-primary" style="margin-right: 10px;">add</a>
 	  <a href="update?machineNum=${dto.machineNum}" class="btn btn-primary">update</a>
+	</c:if>
 	</div>
 
 	  <div class="col-12 w-100 text-center">

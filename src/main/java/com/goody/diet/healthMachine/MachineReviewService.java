@@ -42,4 +42,23 @@ public class MachineReviewService {
 		return machineReviewDAO.setHitUpdate(machineReviewDTO);
 	}
 	
+	public int setBoardUpdate(MachineReviewDTO machineReviewDTO) throws Exception {
+		return machineReviewDAO.setBoardUpdate(machineReviewDTO);
+	}
+	
+	public int setBoardDelete(MachineReviewDTO machineReviewDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return machineReviewDAO.setBoardDelete(machineReviewDTO);
+	}
+	
+	public String setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
+		String realPath = session.getServletContext().getRealPath("resources/upload/machineReviewFile/");
+	
+			if(files.isEmpty()) {
+				//파일 업로드가 안된 게시물은 continue로 처음으로 올라감
+				return null;
+			}
+			String fileName = fileManager.fileSave(files, realPath);
+			return "/resources/upload/machineReviewFile/"+fileName;
+	}
 }
