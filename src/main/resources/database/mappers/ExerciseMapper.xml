@@ -35,7 +35,24 @@
   	</select>
  	
 <!-- 영상 가져오기 -->	
-	<select id="getExerciseByBodyNum" resultMap="getExerciseResult" parameterType="Long">
+	<select id="getExerciseByBodyNum" resultMap="getExerciseResult" parameterType="BodyDTO">
+    SELECT * FROM
+		EXERCISE EX
+		LEFT OUTER JOIN
+		(
+		SELECT * FROM (
+		SELECT
+		EXI.*,RANK()OVER(PARTITION BY NUM ORDER BY FILENUM ASC) RANKNUM
+		FROM EXERCISEIMG EXI
+		) WHERE RANKNUM=1) T
+		ON(EX.NUM=T.NUM)
+		INNER JOIN
+		CATEGORYTYPE T
+		on(T.MACHINENUM=h.MACHINENUM)
+		WHERE
+		T.categorynum=#{categoryNum
+    
+    
     SELECT EX.*, FILENUM, FILENAME, ORINAME
     FROM EXERCISE EX
     LEFT JOIN EXERCISEIMG IMG

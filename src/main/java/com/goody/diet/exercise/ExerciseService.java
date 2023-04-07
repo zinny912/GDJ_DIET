@@ -33,7 +33,6 @@ public class ExerciseService {
 	}
 	
 	public List<ExerciseDTO> getExerciseByBodyNum() {
-		// TODO Auto-generated method stub
 		return exerciseDAO.getExerciseByBodyNum();
 	}
 	
