@@ -32,7 +32,25 @@ public class OrderService {
 		
 	return orderDAO.getOrderList(memberDTO);
 	}
-
+	public int setUpdateCart(OrderDTO orderDTO,Long [] num,Long totalCost, HttpSession session)throws Exception{
+		//1. order생성
+		orderDTO.setPrice(totalCost);
+		int result= orderDAO.setOrder(orderDTO); 
+		
+		//2. CartUpdate
+		for(Long cartNum:num) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setNum(cartNum);
+			cartDTO.setOrderNum(orderDTO.getOrderNum());
+			
+			//cart status 2로 설정
+			cartDAO.setCartStatusUpdate(cartDTO);
+			//detail생성
+			orderDAO.setOrderDetail(cartDTO);
+			
+		}
+		return result;
+	}
 
 
 }

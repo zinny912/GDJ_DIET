@@ -23,7 +23,7 @@
   <script src="/resources/js/google-map.js"></script> -->
   <script src="/resources/js/main.js"></script>
 
-  <!-- 카카오 -->
+  <!-- 카카오 --> 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script><!-- kakaoAPI -->
 <script src="/resources/js/member/kakaoLogin.js"></script>
 

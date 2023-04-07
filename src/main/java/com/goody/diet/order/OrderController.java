@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,6 +40,21 @@ public class OrderController {
 		
 		mv.addObject("orderDTOs", orderDTOs);
 		mv.setViewName("/order/orderListPage");
+		return mv;
+	}
+	
+	@PostMapping("success")
+	public ModelAndView getOrderSuccess(ModelAndView mv)throws Exception{
+		mv.addObject("result", 1);
+		mv.setViewName("/common/ajaxResult");
+		return mv;
+	}
+	@PostMapping("paymentUpdate")
+	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num,Long totalCost, HttpSession session) throws Exception{
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		orderDTO.setId(memberDTO.getId());
+		int result = orderService.setUpdateCart(orderDTO, num, totalCost, session);
+		
 		return mv;
 	}
 	
