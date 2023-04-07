@@ -35,7 +35,6 @@ public class StudyService {
 	
 	public String setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
 		String realPath = session.getServletContext().getRealPath("resources/upload/studyReviewFile/");
-		System.out.println(realPath);
 	
 			if(files.isEmpty()) {
 				//파일 업로드가 안된 게시물은 continue로 처음으로 올라감

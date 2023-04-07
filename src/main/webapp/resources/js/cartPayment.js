@@ -78,8 +78,30 @@ $(".checkAll").click(function (e) {
 })
 
 $("#submitbtn").click(function () {
+	let i=0;
+	$(".checks").each(function(index,checkitem){
+		if($(checkitem).prop("checked")==true){
+			i++;
+		}
+	})
+	if(i==0){
+		alert("상품을 선택해주세요")
+		return;
+	}
+	//countUpdate
+	$(".machineval").each(function(index,countnum){
+		$(countnum).parent().find(".machineCount").val($(countnum).html()*1)
+		
+	})
+	//totalCost보내기 payment에서 계산 귀찮
+	$("#p").val($("#totalCost").text()*1);
+	
 
 	$("#frm").submit();
+	$("#frm").find(".checkAll").prop("checked",false)
+	$("#frm").find(".checks").prop("checked",false)
+
+	
 })
 
 
