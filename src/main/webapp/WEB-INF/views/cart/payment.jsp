@@ -156,7 +156,7 @@
 							</p>
 							<form action="/member/deliveryNew" method="get">
 								<input type="hidden" name="email" value="${sessionMember.email}">
-								<button type="submit" class="btn btn-primary">배송지 추가</button>
+								<button type="button" class="btn btn-primary">배송지 추가</button>
 							</form>
 
 							<button class="btn btn-secondary btn_delivery_change"
