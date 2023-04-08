@@ -32,9 +32,8 @@ public class OrderService {
 		
 	return orderDAO.getOrderList(memberDTO);
 	}
-	public int setUpdateCart(OrderDTO orderDTO,Long [] num,Long totalCost, HttpSession session)throws Exception{
+	public int setUpdateCart(OrderDTO orderDTO,Long [] num, HttpSession session)throws Exception{
 		//1. order생성
-		orderDTO.setPrice(totalCost);
 		int result= orderDAO.setOrder(orderDTO); 
 		
 		//2. CartUpdate

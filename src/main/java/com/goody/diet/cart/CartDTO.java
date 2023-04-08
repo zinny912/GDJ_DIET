@@ -16,11 +16,19 @@ public class CartDTO {
 	private Long count;
 	private Long status;
 	private Long cartPrice;
-
+	private Long orderNum;
 	private RealHealthMachineDTO realHealthMachineDTO;
 	private HealthMachineDTO healthMachineDTO;
 
 	private List<StudyDTO> studyDTOs;
+
+	public Long getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(Long orderNum) {
+		this.orderNum = orderNum;
+	}
 
 	public Long getNum() {
 		return num;

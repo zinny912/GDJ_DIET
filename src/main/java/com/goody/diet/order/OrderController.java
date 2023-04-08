@@ -34,10 +34,10 @@ public class OrderController {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);
 		
-		System.out.println("------------------오더리스트-----------------");
-		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
-		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
-		
+//		System.out.println("------------------오더리스트-----------------");
+//		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
+//		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
+//		
 		mv.addObject("orderDTOs", orderDTOs);
 		mv.setViewName("/order/orderListPage");
 		return mv;
@@ -45,17 +45,22 @@ public class OrderController {
 	
 	@PostMapping("success")
 	public ModelAndView getOrderSuccess(ModelAndView mv)throws Exception{
-		mv.addObject("result", 1);
+		mv.addObject("result",1);
 		mv.setViewName("/common/ajaxResult");
 		return mv;
 	}
 	@PostMapping("paymentUpdate")
-	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num,Long totalCost, HttpSession session) throws Exception{
+	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num, HttpSession session) throws Exception{
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		orderDTO.setId(memberDTO.getId());
-		int result = orderService.setUpdateCart(orderDTO, num, totalCost, session);
-		
-		return mv;
+		int result = orderService.setUpdateCart(orderDTO, num, session);
+		if(result>0) {
+			mv.setViewName("/order/orderSuccessPage");
+		}
+		else {
+			mv.setViewName("/order/orderFaildPage");
+		}
+		return mv; 
 	}
 	
 ////구////구////구////구////구////구////구////구////구////구////구////구////구////구////구

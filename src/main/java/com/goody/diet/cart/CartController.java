@@ -65,11 +65,14 @@ public class CartController {
 	@PostMapping("cartCheckedUpdate")
 	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] cartNum,Long [] count,Long totalCost) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(totalCost);
+//		System.out.println(totalCost);
+		
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.setCartCheckUpdate(cartDTO,checkedItems,session,cartNum,count);
+		
+		
 		mv.addObject("list", ar);
 		mv.addObject("totalCost", totalCost);
 		mv.setViewName("cart/payment");
