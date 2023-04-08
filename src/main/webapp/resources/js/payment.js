@@ -1,3 +1,8 @@
+let TotalCost=$("#totalCost").attr("data-totalCost")
+
+
+TotalCost=100
+
 var today = new Date();   
         var hours = today.getHours(); // 시
         var minutes = today.getMinutes();  // 분
@@ -12,11 +17,12 @@ function checkPayment(){
     pay_method : 'card',
     merchant_uid:"IMP"+makeMerchantUid, //상점에서 생성한 고유 주문번호
     name : '결제:결제테스트',
-    amount : 100,
+    amount : TotalCost,
     buyer_email : $('#ordererEmail').text().trim(),
     buyer_name : $('#ordererEmail').text().trim(),
     buyer_tel : $('#ordererPhone').text().trim(),   //필수 파라미터 입니다.
     buyer_addr : $('#ordererName').text().trim(),
+    
     buyer_postcode : '123-456'
     //m_redirect_url : '/order/list',
     // escrow : true, //에스크로 결제인 경우 설
@@ -31,11 +37,52 @@ function checkPayment(){
     // //    to : "20201231"   //YYYYMMDD
     // // } 
 }, function (rsp) { // callback
-    console.log(rsp);
+    // console.log(rsp);
     if (rsp.success) {
-        console.log(rsp);
+        jQuery.ajax({
+            url: "/order/success", 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            data: {
+              imp_uid: rsp.imp_uid,            // 결제 고유번호
+              merchant_uid: rsp.merchant_uid   // 주문번호
+            }
+          }).done(function (data) {
+            console.log(data.trim())
+            if(data.trim().length>0){
+                $("#frm").attr("action","/order/paymentUpdate")
+                $("#frm").attr("method","post");
+                $("#frm").submit();
+            }
+          })
     } else {
-        console.log(rsp);
+        alert("알수없는 오류가 발생하였습니다. 홈으로 이동합니다.");
+        $("#formTag").submit()
+        
     }
     });
 };
+
+function paysuccess(result){
+    $(".container-fluid").html(result);
+}
+// IMP.request_pay(rep,
+//   function (rsp) {
+//     if (rsp.success) {
+//       // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+//       // jQuery로 HTTP 요청
+//       jQuery.ajax({
+//         url: "{서버의 결제 정보를 받는 가맹점 endpoint}", 
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         data: {
+//           imp_uid: rsp.imp_uid,            // 결제 고유번호
+//           merchant_uid: rsp.merchant_uid   // 주문번호
+//         }
+//       }).done(function (data) {
+//         console.log("성공")
+//       })
+//     } else {
+//       alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+//     }
+//   });
