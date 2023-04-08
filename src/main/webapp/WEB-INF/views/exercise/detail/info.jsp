@@ -21,11 +21,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <body>
- 	<c:forEach items="{exerciseList}" var="dto">
+ 	<c:forEach items="{dto}" var="dto">
 	
     <section id="box"> 
                <p class="maintitle" id="detailTitle" name="detailTitle">${dto.detailTitle}</p> 
-				 <c:forEach items="{exerciseList}" var="dto">
+				 <c:forEach items="{dto}" var="dto">
 					<button id="machine">${dto.machineNum}</button>
 				</c:forEach> 
 				

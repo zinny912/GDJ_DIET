@@ -6,7 +6,7 @@
 <html>
   <head>
     
-    <title>이달의 루틴 ${dto.days}</title>
+    <title>짧강효확 상세페이지</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
 
 	   <section class="ftco-section">
           <div class="col-md-12 ftco-animate text-center">
-            <h1 class="mb-3 bread" id='days' data-day-days='${dto.days}'>${dto.detail1}</h1>
+            <h1 class="mb-3 bread" id='days' data-day-days='${dto.days}'>${dto.detailTitle}</h1>
             <p class="breadcrumbs"><span class="mr-2">운동하기</span></p>
           </div>
  	  </section>
@@ -28,7 +28,7 @@
 <div class = "container-fluid">
 	<div class = "row mx-auto ">
 		<div class="form-group">            	
-				<div class="video-container">
+				<div class="video-container" id="videoId" data-video-id='${dto.urlId}'>
 				<div id="player"></div>
 			    
        			</div>

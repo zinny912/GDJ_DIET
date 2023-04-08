@@ -13,7 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goody.diet.board.BoardFileDTO;
 import com.goody.diet.cart.CartDTO;
+import com.goody.diet.healthMachine.CategoryDTO;
 import com.goody.diet.healthMachine.HealthMachineDTO;
+import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.util.FileManager;
 import com.goody.diet.util.Pager;
 
@@ -25,34 +27,46 @@ public class ExerciseService {
     
 	//@Autowired
 	//private ServletContext servletContext;
+	@Autowired
+	private FileManager fileManager;
 	
-	//private FileManager fileManager;
+
+	public List<ExerciseDTO> getExerciseTypeList(ExerciseDTO exerciseDTO) throws Exception{
+		
+		return exerciseDAO.getExerciseTypeList(exerciseDTO);
+	}
+	
+	
+	public ExerciseDTO getExerciseDetail(ExerciseDTO exerciseDTO) throws Exception{
+		BodyDTO bodyDTO = new BodyDTO();
+		exerciseDTO = exerciseDAO.getExerciseDetail(exerciseDTO);
+		exerciseDTO.setBodyDTO(exerciseDAO.getBodyDetail(exerciseDTO));
+		exerciseDTO.setBodyNum(bodyDTO.getBodyNum());
+		return exerciseDTO;
+	}
+	
+////	getRealHealthMachineDetailList
+//	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception {
+//		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
+//
+//	}
+//	//오버로딩
+//	public HealthMachineDTO getRealHealthMachineList(HealthMachineDTO healthMachineDTO)throws Exception {
+//		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
+//		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
+//		healthMachineDTO=healthMachineDAO.getHealthMachineDetail(healthMachineDTO);
+//		healthMachineDTO.setRealHealthMachineDTOs(healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO));
+//		
+//		return healthMachineDTO;
+//	}
+
+	
 	
 	//짧강효확 첫 페이지 부위별 링크 걸기 
-	public List<BodyDTO> getBodyList() throws Exception {
+	public List<BodyDTO> getBodyList() throws Exception {	
 		return exerciseDAO.getBodyList();
 	}
-	
-	public List<ExerciseDTO> getBodyDetailList() throws Exception {
-		List<ExercsieDTO> ar = exerciseDAO.getBodyDetailList(exerciseDTO);
-		
-		
-		return exerciseDAO.getBodyDetailList(bodyNum);
-	}
-	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
-		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
-		List<CartDTO> machines = cartDAO.getCartMachineList(cartDTO);
-		for(CartDTO dto:machines) {
-			ar.add(dto);
-		}
-		return ar;
-	}
-	
-	//detail - 짧강효확 페이지 
-//	public List<ExerciseDTO> getDetail() throws Exception {
-//		return exerciseDAO.getExerciseBody();
-//	}
-	
+    
 	//detail - 영상출력 페이지 
 	public ExerciseDTO getExerciseVideo(ExerciseDTO exerciseDTO) throws Exception {
 		return exerciseDAO.getExerciseVideo(exerciseDTO);

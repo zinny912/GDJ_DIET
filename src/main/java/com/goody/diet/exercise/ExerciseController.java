@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import com.goody.diet.healthMachine.HealthMachineDTO;
+
 
 
 @Controller
@@ -22,29 +22,91 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 	
-	//부위별 링크 짧강효확 보내기 
 	@GetMapping("body")
-	public ModelAndView getBodyList(BodyDTO bodyDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView getBodyList(ModelAndView mv, BodyDTO bodyDTO) throws Exception{
 		List<BodyDTO> ar = exerciseService.getBodyList();
+		mv.addObject("body", ar);
 		mv.setViewName("exercise/body");
-		mv.addObject("bodyList", ar);
 		return mv;
 	}
-	//bodyNum별 detail List 
-	@GetMapping("info")
-	public ModelAndView getBodyDetailList() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		List<ExerciseDTO> exerciseList = exerciseService.getBodyDetailList();
-		List<BodyDTO> ar = exerciseService.getBodyList();
-		
-		
-		mv.setViewName("exercise/info");
-		mv.addObject("exerciseList", exerciseList);
+	
+	
+	
+	
+	@GetMapping("detail/info")
+	public ModelAndView getExerciseTypeList(ModelAndView mv, ExerciseDTO exerciseDTO) throws Exception{
+		exerciseDTO=exerciseService.getExerciseDetail(exerciseDTO);
+		List<ExerciseDTO> ar = exerciseService.getExerciseTypeList(exerciseDTO);
+		mv.addObject("body",ar);
+		mv.setViewName("exercise/detail/info");
 		return mv;
 	}
 
+//	@GetMapping("detail/info")
+//	public ModelAndView getExerciseDetail(ModelAndView mv, ExerciseDTO exerciseDTO)throws Exception{
+//		exerciseDTO = exerciseService.getExerciseDetail(exerciseDTO);
+//		
+//		mv.addObject("dto", exerciseDTO);
+//		mv.setViewName("exercise/detail/info");
+//		return mv;
+//	}
+//	
+}		
 	
+	
+	
+//	@PostMapping("RealMachineList")
+//	public ModelAndView getRealHealthMachineList(ModelAndView mv,HealthMachineDTO healthMachineDTO)throws Exception{
+//		healthMachineDTO = healthMachineService.getRealHealthMachineList(healthMachineDTO);
+//		
+//		mv.addObject("dto",healthMachineDTO);
+//		mv.setViewName("common/realHealthMachineList");
+//		return mv;
+//	}
+//	@PostMapping("filterOption")//옵션 선택해서 리스트 뽑아오기
+//	public ModelAndView getRealHealthMachineFilterList(ModelAndView mv,RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+//		List<RealHealthMachineDTO> ar= healthMachineService.getRealHealthMachineList(realHealthMachineDTO);
+//		HealthMachineDTO healthMachineDTO = new HealthMachineDTO();
+//		healthMachineDTO.setMachineNum(realHealthMachineDTO.getMachineNum());
+//		healthMachineDTO= healthMachineService.getHealthMachineDetail(healthMachineDTO);
+//		healthMachineDTO.setRealHealthMachineDTOs(ar);
+//		mv.addObject("dto",healthMachineDTO);
+//		mv.setViewName("common/realHealthMachineList");
+//		return mv;
+//		
+//	}
+//	@GetMapping("add")
+//	public ModelAndView setHealthMachineAdd(HttpSession session)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<CategoryDTO> ar= healthMachineService.getCategoryList();
+//		mv.addObject("category",ar);
+//		mv.setViewName("healthMachine/add");
+//		return mv;
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 //	@GetMapping("info")
 //	public ModelAndView getExerciseInfo(ModelAndView mv, ExerciseDTO exerciseDTO)throws Exception{
 //		//exerciseDTO = exerciseService.getExerciseVideo(exerciseDTO);
@@ -107,7 +169,7 @@ public class ExerciseController {
 //	}
 
 
-}
+//}
 	
 
 
