@@ -12,10 +12,16 @@ public class OrderDTO {
 	private Date orderDate;
 	private Long orderStatus;
 	private List<CartDTO> cartDTOs;
-	
+	private Long price;
 	
 	
 
+	public Long getPrice() {
+		return price;
+	}
+	public void setPrice(Long price) {
+		this.price = price;
+	}
 	public List<CartDTO> getCartDTOs() {
 		return cartDTOs;
 	}

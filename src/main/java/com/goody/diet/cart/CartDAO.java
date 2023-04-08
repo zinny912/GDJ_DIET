@@ -49,7 +49,9 @@ public class CartDAO {
 	public List<CartDTO> getPaymentMachineList(CartDTO cartDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getPaymentMachineList", cartDTO);
 	}
-	
+	public int setCartStatusUpdate(CartDTO cartDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setCartStatusUpdate", cartDTO);
+	}
 	
 	public int setCartDelete(Long item) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setCartDelete", item);

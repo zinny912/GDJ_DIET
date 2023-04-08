@@ -4,8 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.goody.diet.order.OrderDAO">
+
+<insert id="setOrder" parameterType="OrderDTO">
+	<selectKey keyProperty="orderNum" order="BEFORE" resultType="Long">
+	SELECT ORDER_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+		INSERT INTO "ORDER" VALUES (#{orderNum}, #{id}, SYSDATE, 1,#{price})
+	</insert>
 	
 	
+	 <insert id="setOrderDetail" parameterType="CartDTO">
+		INSERT INTO ORDERDETAIL (ORDERNUM,num)
+		values(#{orderNum},#{num})
+	</insert>
 	<select id="getPrimeDelivery" parameterType="MemberDTO" resultType="com.goody.diet.member.DeliveryDTO">
 		SELECT * FROM DELIVERY d WHERE ADDRESS=(SELECT ADDRESS FROM "MEMBER" m WHERE ID=#{id})
 	</select>
