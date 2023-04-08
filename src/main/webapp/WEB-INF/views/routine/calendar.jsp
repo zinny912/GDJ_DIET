@@ -169,6 +169,27 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
  </div>
+ 
+ <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="scheduleModalLabel">일정 수정</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <input type="date" id="selectedDay" name="selectedDay" class="form-control mb-3" required>
+                  <div id="scheduleList">
+                  	
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">닫기</button>
+                  <button type="submit" class="btn btn-primary" id="contentsConfirm" data-update-num="">수정</button>
+                </div>
+              </div>
+            </div>
+          </div>
 </div>
 
 <%-- <div class="modal fade" id="upModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 

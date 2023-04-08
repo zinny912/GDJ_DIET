@@ -22,8 +22,8 @@ public class RoutineDAO {
 		return sqlSession.selectList(NAMESPACE+"getRoutineList");	
 	}
 	
-	public List<RoutineDTO> getSelectList (Date startDay) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getSelectList");
+	public List<RoutineDTO> getSelectList (RoutineDTO routineDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSelectList", routineDTO);
 	}
 	//routine 영상재생 화면
 	public RoutineDTO getRoutineVideo(RoutineDTO routineDTO) throws Exception{

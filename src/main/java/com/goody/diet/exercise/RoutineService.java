@@ -22,8 +22,8 @@ public class RoutineService {
 	public List<RoutineDTO> getRoutineList() throws Exception {
 		return routineDAO.getRoutineList();
 	}
-	public List<RoutineDTO> getSelectList(Date startDay) throws Exception {
-		return routineDAO.getSelectList(startDay);
+	public List<RoutineDTO> getSelectList(RoutineDTO routineDTO) throws Exception {
+		return routineDAO.getSelectList(routineDTO);
 	}
 	
 	// Detail - 이달의 루틴 영상 재생 

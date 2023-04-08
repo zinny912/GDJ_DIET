@@ -1,6 +1,7 @@
 package com.goody.diet.exercise;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -37,15 +38,31 @@ public class RoutineController {
 		
 		return mv;
 	}
+
 	@GetMapping("list")
-	public ModelAndView getSelectList(@RequestParam("startDay") Date startDay) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<RoutineDTO> ar = routineService.getSelectList(startDay);
-		
-		mv.setViewName("routine/list");
-		mv.addObject("list", ar);
-		return mv;
+	public ModelAndView getSelectList(@RequestParam("startDay") String startDay) throws Exception{
+	    ModelAndView mv = new ModelAndView();
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    LocalDate localDate = LocalDate.parse(startDay, formatter);
+	    java.sql.Date date = java.sql.Date.valueOf(localDate);
+	    RoutineDTO routineDTO = new RoutineDTO();
+	    routineDTO.setStartDay(date);
+	    System.out.println(routineDTO.getStartDate());
+	    List<RoutineDTO> ar = routineService.getSelectList(routineDTO);
+	    mv.setViewName("routine/list");
+	    mv.addObject("list", ar);
+	    return mv;
 	}
+	
+//	@GetMapping("list")
+//	public ModelAndView getSelectList(@RequestParam("startDay") Date startDay) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<RoutineDTO> ar = routineService.getSelectList(startDay);
+//		
+//		mv.setViewName("routine/list");
+//		mv.addObject("list", ar);
+//		return mv;
+//	}
 	
 //	@GetMapping("routine/list")
 //	public ResponseEntity<List<RoutineDTO>> getSelectList(@RequestParam("startDay") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDay) throws Exception {
@@ -114,7 +131,6 @@ public class RoutineController {
 			msg = "업데이트 성공";
 		}
 		mv.addObject("result", msg);
-		mv.addObject("url", "./calendar");
 		mv.setViewName("common/result");
 		return mv;
 	}

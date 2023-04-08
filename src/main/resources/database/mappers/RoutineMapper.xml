@@ -8,7 +8,7 @@
 	<select id="getRoutineList" parameterType="RoutineDTO" resultType="RoutineDTO">
 		SELECT * FROM ROUTINE ORDER BY NUM
 	</select>
-	<select id="getSelectList" parameterType="java.util.Date" resultType="RoutineDTO">
+	<select id="getSelectList" parameterType="RoutineDTO" resultType="RoutineDTO">
 		SELECT * FROM ROUTINE WHERE TRUNC(STARTDAY) = #{startDay}
 	</select>
 		<!-- video링크 -->
