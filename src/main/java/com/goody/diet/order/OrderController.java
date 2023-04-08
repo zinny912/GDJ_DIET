@@ -34,8 +34,8 @@ public class OrderController {
 		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);
 		
 		System.out.println("------------------오더리스트-----------------");
-		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
-		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
+//		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
+//		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
 		
 		mv.addObject("orderDTOs", orderDTOs);
 		mv.setViewName("/order/orderListPage");

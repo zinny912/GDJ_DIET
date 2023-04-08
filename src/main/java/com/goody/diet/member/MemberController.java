@@ -190,6 +190,7 @@ public class MemberController {
 		SendEmail sendEmail= new SendEmail();
 		System.out.println("-----------------");
 		System.out.println(emailVer);
+		System.out.println("보낸 번호: "+httpSession.getAttribute("verificationCode"));
 		String result = sendEmail.generateEmail(httpSession, emailVer);
 		mv.addObject("result", result);
 		mv.setViewName("/member/ajaxResult");
