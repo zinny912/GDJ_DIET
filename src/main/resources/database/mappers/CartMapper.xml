@@ -81,8 +81,11 @@
 	<update id="setCartCheckDefaultUpdate" parameterType="CartDTO">
 		UPDATE CART SET STATUS=0 WHERE id=#{id} AND STATUS=1
 	</update>
-	
+	<update id="setCartStatusUpdate" parameterType="CartDTO">
+	UPDATE CART SET STATUS =2 WHERE num=#{num}
+	</update>
 	<!-- 태현 -->
+	
 	<update id="setCartCountUpdate" parameterType="CartDTO">
 	UPDATE cart SET "COUNT"=#{count} WHERE num=#{num}
 	
