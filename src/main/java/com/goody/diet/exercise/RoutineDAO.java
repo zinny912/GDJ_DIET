@@ -42,10 +42,15 @@ public class RoutineDAO {
 	public int setRoutineUpdate(RoutineDTO routineDTO) {
 		return sqlSession.update(NAMESPACE+"setRoutineUpdate", routineDTO);
 	}
+	// 루틴 삭제
+	public int setRoutineDelete(RoutineDTO routineDTO) {
+		return sqlSession.update(NAMESPACE+"setRoutineDelete", routineDTO);
+	}
 
 	public List<RoutineDTO> getRoutineUpdate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -44,6 +44,12 @@ public class RoutineService {
 	public int setRoutineUpdate(RoutineDTO routineDTO, HttpSession session) {
 		return routineDAO.setRoutineUpdate(routineDTO);
 	}
+	
+	// 루틴 삭제
+	public int setRoutineDelete(RoutineDTO routineDTO) {
+		return routineDAO.setRoutineDelete(routineDTO);
+	}
+	
 	public void saveRoutine(RoutineDTO routineDTO) {
         routineDAO.setRoutineAdd(routineDTO);
     }

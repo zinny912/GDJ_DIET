@@ -137,10 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
  	</div>
  	</div>
  
-  <button id="openModalBtn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal" data-bs-whatever="@getbootstrap" >모달 열기</button>
 	<div id="modalButtons">
- <button type="button" id="routineBtn"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">+</button>
- <button type="button" id="updateBtn"class="btn btn-warning" data-bs-toggle="modal2" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">@</button>
+ <button type="button" id="routineBtn"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">루틴일정추가</button>
+ <button type="button" id="updateBtn"class="btn btn-warning" data-bs-toggle="modal2" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">루틴일정수정</button>
  
  
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 

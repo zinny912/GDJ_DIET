@@ -12,14 +12,19 @@
 		SELECT * FROM ROUTINE WHERE TRUNC(STARTDAY) = #{startDay}
 	</select>
 		<!-- video링크 -->
-	<select id="getRoutineVideo" parameterType="RoutineDTO" resultType="RoutineDTO">
-		SELECT * FROM ROUTINE WHERE NUM = #{num}
+	<select id="getRoutineVideo" parameterType="RoutineDTO" resultMap="getHealthMachineResult">
+		SELECT DISTINCT * FROM ROUTINE R 
+			LEFT OUTER JOIN
+			HEALTHMACHINE H
+			ON (R.MACHINENUM = H.MACHINENUM)
+			WHERE NUM = #{num}
 	</select>
-	<select id = "getRoutineMachine" resultMap="getHealthMachineResult">
+	<select id = "getRoutineMachine" parameterType="RoutineDTO" resultMap="getHealthMachineResult">
 			SELECT DISTINCT * FROM ROUTINE R 
 			LEFT OUTER JOIN
 			HEALTHMACHINE H
 			ON (R.MACHINENUM = H.MACHINENUM)
+			WHERE TRUNC(STARTDAY) = #{startDay}
 		</select>
 		<resultMap type="RoutineDTO" id="getHealthMachineResult">
 			<id column="num" property="num"/>
@@ -29,19 +34,33 @@
 			<result column="endDay" property="endDay"/>
 			<result column="videoId" property="videoId"/>
 			
-			<collection property="healthMachineDTOs" javaType="list" ofType="healthMachineDTO">
+			<association property="healthMachineDTO" javaType="HealthMachineDTO">
 				<id column="machineNum" property="machineNum"/>
 		  			<result column="machineName" property="machineName"/>
-			</collection>
-		</resultMap> 
-		
+			</association>
+		</resultMap>
+
 	<insert id="setRoutineAdd" parameterType="RoutineDTO">
+		<selectKey resultType="java.lang.Long" keyProperty="num"
+			order="BEFORE">
+			SELECT ROU_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO ROUTINE (NUM, TITLE, VIDEOID, MACHINENUM, STARTDAY,
+		ENDDAY)
+		SELECT ROU_SEQ.NEXTVAL, #{title}, #{videoId}, M.MACHINENUM, #{startDay},
+		#{endDay}
+		FROM HEALTHMACHINE M
+		JOIN ROUTINE R ON M.MACHINENUM = R.MACHINENUM
+		WHERE M.MACHINENAME = #{machineName}
+	</insert>
+		
+<!-- 	<insert id="setRoutineAdd" parameterType="RoutineDTO">
 		 <selectKey resultType="java.lang.Long" keyProperty="num" order="BEFORE">
         SELECT ROU_SEQ.NEXTVAL FROM DUAL
    		 </selectKey>
 		INSERT INTO ROUTINE (NUM,TITLE,VIDEOID,MACHINENUM,STARTDAY,ENDDAY)
 		VALUES (ROU_SEQ.NEXTVAL,#{title},#{videoId},#{machineNum},#{startDay},#{endDay})
-	</insert>
+	</insert> -->
 	
 	<update id="setRoutineUpdate" parameterType="RoutineDTO">
  		UPDATE ROUTINE SET TITLE=#{title},STARTDAY=#{startDay},ENDDAY=#{endDay},VIDEOID=#{videoId},machineNum=#{machineNum}

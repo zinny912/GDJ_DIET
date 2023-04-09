@@ -111,17 +111,6 @@ public class RoutineController {
 		return mv;	
 	}
 	
-	@GetMapping("update")
-	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
-		routineDTO = routineService.getRoutineVideo(routineDTO);
-		List<RoutineDTO> ar = routineService.getRoutineUpdate();
-		//mv.addObject("dto", routineDTO);
-		System.out.println(ar);
-		mv.addObject("list", ar);
-		mv.setViewName("routine/update");
-		return mv;
-	}
-	
 	@PostMapping("update")
 	public ModelAndView  setRoutineUpdate(RoutineDTO routineDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -134,6 +123,33 @@ public class RoutineController {
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@PostMapping("delete")
+	public ModelAndView  setRoutineDelete(RoutineDTO routineDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = routineService.setRoutineDelete(routineDTO);
+		String msg = "삭제 실패";
+		if(result>0) {
+			msg = "삭제 성공";
+		}
+		mv.addObject("result", msg);
+		mv.addObject("url", "/routine/calendar");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+//	@GetMapping("update")
+//	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
+//		routineDTO = routineService.getRoutineVideo(routineDTO);
+//		List<RoutineDTO> ar = routineService.getRoutineUpdate();
+//		//mv.addObject("dto", routineDTO);
+//		System.out.println(ar);
+//		mv.addObject("list", ar);
+//		mv.setViewName("routine/update");
+//		return mv;
+//	}
+	
+	
 	
 	
 	

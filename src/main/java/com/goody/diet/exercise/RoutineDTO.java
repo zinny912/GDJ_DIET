@@ -16,8 +16,16 @@ public class RoutineDTO extends HealthMachineDTO {
 	private String videoId;
 	private Long machineNum;
 	private List<HealthMachineDTO> healthMachineDTOs;
+	private HealthMachineDTO healthMachineDTO;
+
 	
 	
+	public HealthMachineDTO getHealthMachineDTO() {
+		return healthMachineDTO;
+	}
+	public void setHealthMachineDTO(HealthMachineDTO healthMachineDTO) {
+		this.healthMachineDTO = healthMachineDTO;
+	}
 	public List<HealthMachineDTO> getHealthMachineDTOs() {
 		return healthMachineDTOs;
 	}
