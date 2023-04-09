@@ -52,6 +52,9 @@ public class OrderController {
 	@PostMapping("paymentUpdate")
 	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num, HttpSession session) throws Exception{
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		
+		System.out.println(orderDTO.getRecipientTel());
+		
 		orderDTO.setId(memberDTO.getId());
 		int result = orderService.setUpdateCart(orderDTO, num, session);
 		if(result>0) {
