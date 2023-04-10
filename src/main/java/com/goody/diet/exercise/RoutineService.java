@@ -22,8 +22,8 @@ public class RoutineService {
 	public List<RoutineDTO> getRoutineList() throws Exception {
 		return routineDAO.getRoutineList();
 	}
-	public List<RoutineDTO> getSelectList(Date startDay) throws Exception {
-		return routineDAO.getSelectList(startDay);
+	public List<RoutineDTO> getSelectList(RoutineDTO routineDTO) throws Exception {
+		return routineDAO.getSelectList(routineDTO);
 	}
 	
 	// Detail - 이달의 루틴 영상 재생 
@@ -44,6 +44,22 @@ public class RoutineService {
 	public int setRoutineUpdate(RoutineDTO routineDTO, HttpSession session) {
 		return routineDAO.setRoutineUpdate(routineDTO);
 	}
+	
+	// 루틴 삭제
+	public int setRoutineDelete(RoutineDTO routineDTO) {
+		return routineDAO.setRoutineDelete(routineDTO);
+	}
+	
+	// 머신 불러오기
+	public List<HealthMachineDTO> getMachineName() {
+		return routineDAO.getMachineName();
+	}
+	
+	// 루틴 체크 1 
+	public int setRoutineChecked(RoutineDTO routineDTO) {
+			return routineDAO.setRoutineChecked(routineDTO);
+	}		
+	
 	public void saveRoutine(RoutineDTO routineDTO) {
         routineDAO.setRoutineAdd(routineDTO);
     }

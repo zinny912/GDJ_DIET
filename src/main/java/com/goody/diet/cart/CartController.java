@@ -48,19 +48,32 @@ public class CartController {
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
-		String studyNum = request.getParameter("studyNum");
-		
-		List<CartDTO> dtos = cartService.getCartList(cartDTO);
-		for (CartDTO dto : dtos) {
-			if(studyNum.equals(String.valueOf(dto.getStudyNum()))) {
+		List<CartDTO> ar = cartService.getCartList(cartDTO);
+		for (CartDTO cartDTO2 : ar) {
+			System.out.println(cartDTO2.getStatus());
+			if(cartDTO2.getStatus()==0) {
 				mv.setViewName("common/result");
-				mv.addObject("result", "이미 존재하는 상품입니다");
+				mv.addObject("result", "이미 장바구니에 클래스가 존재합니다. 장바구니를 확인하세요.");
 				mv.addObject("url", "./cartList");
 				return mv;
 			}
 		}
+		
+//		String studyNum = request.getParameter("studyNum");
+//		
+//		List<CartDTO> dtos = cartService.getCartList(cartDTO);
+//		for (CartDTO dto : dtos) {
+//			if(studyNum.equals(String.valueOf(dto.getStudyNum()))) {
+//				mv.setViewName("common/result");
+//				mv.addObject("result", "이미 존재하는 상품입니다");
+//				mv.addObject("url", "./cartList");
+//				return mv;
+//			}
+//		}
 		int result = cartService.setCartStudyAdd(cartDTO);
-		mv.setViewName("redirect:./cartList");
+		mv.setViewName("common/result");
+		mv.addObject("result", "장바구니로 이동합니다.");
+		mv.addObject("url", "./cartList");
 		return mv;
 	}
 	@PostMapping("cartCheckedUpdate")

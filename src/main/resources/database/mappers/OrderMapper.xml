@@ -9,7 +9,8 @@
 	<selectKey keyProperty="orderNum" order="BEFORE" resultType="Long">
 	SELECT ORDER_SEQ.NEXTVAL FROM DUAL
 	</selectKey>
-		INSERT INTO "ORDER" VALUES (#{orderNum}, #{id}, SYSDATE, 1,#{price})
+		INSERT INTO "ORDER" (ORDERNUM, ID, ORDERDATE, ORDERSTATUS, PRICE, ADDRESS, RECIPIENTTEL, RECIPIENT)
+		VALUES (#{orderNum}, #{id}, SYSDATE, 1,#{price}, #{address}, #{recipientTel}, #{recipient})
 	</insert>
 	
 	

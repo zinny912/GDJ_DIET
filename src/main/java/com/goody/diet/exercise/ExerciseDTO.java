@@ -11,24 +11,44 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private Long machineNum;
 	private String urlId;
 	private Long power;
-	private String bodyPart;
 	private String time;
 	private String detailTitle;
 	private String highLight;
 	private String info;
 	
 	private List<BoardFileDTO> boardFileDTOs;
+	private List<HealthMachineDTO> healthMachineDTOs;
 	private Long machinName;
-	private List<BodyDTO> bodyDTOs;
+	
+	private List<BodyDTO> bodyDTO;
+	private Long bodyNum;
 	
 	
 	
-	
-	public List<BodyDTO> getBodyDTOs() {
-		return bodyDTOs;
+
+    public List<HealthMachineDTO> getHealthMachineDTOs() {
+		return healthMachineDTOs;
 	}
-	public void setBodyDTOs(List<BodyDTO> bodyDTOs) {
-		this.bodyDTOs = bodyDTOs;
+
+	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
+		this.healthMachineDTOs = healthMachineDTOs;
+	}
+
+	public Long getBodyNum() {
+        return bodyNum;
+    }
+
+    public void setBodyNum(Long bodyNum) {
+        this.bodyNum = bodyNum;
+    }
+
+	
+	
+	public List<BodyDTO> getBodyDTO() {
+		return bodyDTO;
+	}
+	public void setBodyDTO(List<BodyDTO> bodyDTO) {
+		this.bodyDTO = bodyDTO;
 	}
 	public Long getMachinName() {
 		return machinName;
@@ -80,12 +100,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 	}
 	public void setPower(Long power) {
 		this.power = power;
-	}
-	public String getBodyPart() {
-		return bodyPart;
-	}
-	public void setBodyPart(String bodyPart) {
-		this.bodyPart = bodyPart;
 	}
 	public String getTime() {
 		return time;

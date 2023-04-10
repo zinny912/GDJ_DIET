@@ -13,16 +13,17 @@ public class MemberDTO {
 	private String address;
 	private String loginType;
 	private RoleDTO roleDTO;
-	private List<DeliveryDTO> deliveryDTOs;
+	
+//뭐엿지 이거..
+//	private List<DeliveryDTO> deliveryDTOs;
+//	public List<DeliveryDTO> getDeliveryDTOs() {
+//		return deliveryDTOs;
+//	}
+//	public void setDeliveryDTOs(List<DeliveryDTO> deliveryDTOs) {
+//		this.deliveryDTOs = deliveryDTOs;
+//	}
 	
 	
-	
-	public List<DeliveryDTO> getDeliveryDTOs() {
-		return deliveryDTOs;
-	}
-	public void setDeliveryDTOs(List<DeliveryDTO> deliveryDTOs) {
-		this.deliveryDTOs = deliveryDTOs;
-	}
 	public RoleDTO getRoleDTO() {
 		return roleDTO;
 	}

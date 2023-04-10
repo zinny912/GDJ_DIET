@@ -22,14 +22,14 @@ public class RoutineDAO {
 		return sqlSession.selectList(NAMESPACE+"getRoutineList");	
 	}
 	
-	public List<RoutineDTO> getSelectList (Date startDay) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getSelectList");
+	public List<RoutineDTO> getSelectList (RoutineDTO routineDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSelectList", routineDTO);
 	}
 	//routine 영상재생 화면
 	public RoutineDTO getRoutineVideo(RoutineDTO routineDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getRoutineVideo", routineDTO);
 	}
-	// add페이지에 머신 리스트 불러오기 - 미완성
+	// add페이지에 머신 리스트 불러오기
 	public List<HealthMachineDTO> getRoutineMachine () throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getRoutineMachine");
 	}
@@ -42,10 +42,22 @@ public class RoutineDAO {
 	public int setRoutineUpdate(RoutineDTO routineDTO) {
 		return sqlSession.update(NAMESPACE+"setRoutineUpdate", routineDTO);
 	}
-
+	// 루틴 삭제
+	public int setRoutineDelete(RoutineDTO routineDTO) {
+		return sqlSession.update(NAMESPACE+"setRoutineDelete", routineDTO);
+	}
+	//머신 불러오기
+	public List<HealthMachineDTO> getMachineName() {
+		return sqlSession.selectList(NAMESPACE+"getMachineName");
+	}
+	// 루틴 체크 1 
+	public int setRoutineChecked(RoutineDTO routineDTO) {
+			return sqlSession.update(NAMESPACE+"setRoutineChecked", routineDTO);
+	}	
 	public List<RoutineDTO> getRoutineUpdate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
