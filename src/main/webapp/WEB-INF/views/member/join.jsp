@@ -31,7 +31,7 @@
           
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                <form class="mx-1 mx-md-4" action="./join" method="post">
+                <form id="login_form" class="mx-1 mx-md-4" action="./join" method="post">
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -91,7 +91,7 @@
                   </div>
 
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" onClick="return false;" type="checkbox" value="" id="agree" />
+                    <input class="form-check-input me-2 form-control" onClick="return false;" type="checkbox" value="" id="agree" />
                     <label class="form-check-label" for="agree">
                       I agree all statements in <a id="terms" href="javascript:mAgree()">Terms of service</a>
                     </label>

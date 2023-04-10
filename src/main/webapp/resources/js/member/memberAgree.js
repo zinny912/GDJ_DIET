@@ -43,26 +43,10 @@ $('#modalCancel').click(()=>{
 	// $('.form-check-input').checked=false
 })
 
-//@회원가입버튼
-$('#submitBtn').click(()=>{
-	console.log("체크박스값: "+$('.form-check-input').is(':checked'))
 
-
-	if($('.form-check-input').is(':checked')==false){
-		alert("약관동의점..")
-
-	}else if(checkCount.includes(false)){
-		alert("필수정보 입력점")
-	}
-	else{
-		$('#submitBtn').attr("type", "submit")
-	}
-
-})
 
 //@idCheck
-$('#id').blur(()=>{
-	console.log($('#id').val())
+function idCheck(){
 	fetch('/member/idCheck', {
 		method:"POST",
 		headers:{"Content-type":"application/x-www-form-urlencoded"},
@@ -92,6 +76,13 @@ $('#id').blur(()=>{
 			checkCount[0]=false;
 		}
 	})
+}
+
+$('#id').blur(()=>{
+	console.log($('#id').val())
+
+	idCheck()
+
 
 })
 
@@ -129,70 +120,45 @@ $('#password').change(()=>{
    if(passwordCheck.value!=""&&password.value!=passwordCheck.value){
 	   $('#passwordCheckLabel').text('비밀번호가 다름')
 	   $('#passwordCheckLabel').prop("class", "form-label redResult")
-	   checkCount[1]=false;
+	   checkCount[3]=false;
    }else if(passwordCheck.value!=""&&password.value==passwordCheck.value){
 	   $('#passwordCheckLabel').text("")
-	   checkCount[1]=true;
+	   checkCount[3]=true;
    }
 })
 $('#passwordCheck').blur(()=>{
    if(password.value!=passwordCheck.value){
 	   $('#passwordCheckLabel').text('비밀번호가 다름')
 	   $('#passwordCheckLabel').prop("class", "form-label redResult")
-	   checkCount[1]=false;
+	   checkCount[4]=false;
    }else{
 	   $('#passwordCheckLabel').text("")
-	   checkCount[1]=true;
+	   checkCount[4]=true;
    }
 })
 
 
+//---------------------------- Email ---------------------------//
+//이메일 형식 xx@xx.xx
 function validateEmail(email) {
 	const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	return regex.test(email);
   }
-//---------------------------- Email ---------------------------//
+
+  //도중에 email이 조작되고, 인증받은 이메일과 틀릴 때.
+$('#email').change(()=>{
+	if(verificationChecked!=$('#email').val()){
+		checkCount[2]=false;
+	}else if(verificationChecked==$('#email').val()){ //같을때
+		checkCount[2]=true;
+	}
+})
 
 $('#verification_re').click(()=>{
 
 	if(validateEmail($('#email').val())){
-
-		fetch('/member/emailCheck', {
-			method:"POST",
-			headers:{"Content-type":"application/x-www-form-urlencoded"},
-			body:"email="+$('#email').val(),
-		}).then((response)=>{
-	
-			return response.text()
-		})
-		.then((res)=>{
-	
-			$('#emailLabel').remove()
-			$('#emailDiv').after('<label class=" form-label" id="emailLabel" for="email"></label>')
-			
-			if(res.trim()=="사용가능"){
-	
-				
-				console.log($('#email').val())
-				//인증메시지를 보낸 이메일주소 저장
-				verificationChecked=$('#email').val();
-	
-				verificationRe()
-	
-	
-			}else if(res.trim()=="중복"){
-				// $('#idLabel').prop("hidden", "false")
-				$('#emailLabel').prop("class", "form-label redResult")
-				$('#emailLabel').text($('#email').attr('id')+" 중복")
-				console.log('중복'+$('#email').attr('id'))
-				checkCount[2]=false;
-			}else{
-				$('#emailLabel').prop("class", "form-label redResult")
-				$('#emailLabel').text("필수정보")
-				checkCount[2]=false;
-			}
-		})
-
+		verificationChecked=$('#email').val();
+		verificationRe()
 	}else{
 		alert('불가능한 이메일 형식')
 	}
@@ -276,6 +242,7 @@ function verificationRe(){
 
 	$.get("/member/verificationCode?emailVer="+$('#email').val(), function(res){
 		if(res==1){
+			$('#emailDiv').after('<label class=" form-label" id="emailLabel" for="email"></label>')
 			$('#emailLabel').prop("class", "form-label blueResult")
 			$('#emailLabel').text("보냈어용^^ "+$('#email').attr('id'))
 
@@ -318,12 +285,47 @@ function verificationSubmit(){
 	})
 }
 
-$('#email').change(()=>{
 
-	//도중에 email이 조작되고, 인증받은 이메일과 틀릴 때.
-	if(verificationChecked!=$('#email').val()){
-		checkCount[2]=false;
-	}else if(verificationChecked==$('#email').val()){ //같을때
-		checkCount[2]=true;
+
+
+//@회원가입버튼
+$('#submitBtn').click(()=>{
+	console.log("체크박스값: "+$('.form-check-input').is(':checked'))
+
+	idCheck() //아이디첵한번더
+
+	if($('.form-check-input').is(':checked')==false){
+		alert("약관동의점..")
+
+	}else if(checkCount.includes(false)){
+		alert("필수정보 입력점")
+		if(checkCount[2]=false){
+			$('#verificationLabel').remove()
+			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
+			$('#verificationLabel').prop("class", "form-label redResult")
+			$('#verificationLabel').text("이메일 중간에 바뀜")
+		}
 	}
+	else{
+		$('#submitBtn').attr("type", "submit")
+		//input val비우기.
+		$('.form-control').removeAttr("value")
+		$('#emailLabel').remove()
+	}
+
 })
+//뒤로가기 했을 때.
+// history.pushState(null, null, '');
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
+        // 이벤트 추가하는 곳
+        console.log('back button event5');
+
+		document.getElementById('login_form').reset();
+		$('#emailLabel').remove()
+		$('#idLabel').text("")
+		checkCount=false;
+		console.log(checkCount);
+    }
+}

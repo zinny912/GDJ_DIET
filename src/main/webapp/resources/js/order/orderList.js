@@ -1,4 +1,6 @@
 
+
+
 // //orderNum으로 cartList불러오기
 // let orderLeng = document.getElementsByClassName("order_number")
 

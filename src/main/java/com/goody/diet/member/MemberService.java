@@ -55,19 +55,21 @@ public class MemberService {
 		}
 		return result;
 	}
-	public String getEmailCheck (MemberDTO memberDTO) throws Exception {
-		String result = "사용불가";
-		if(memberDTO.getEmail()!=null&&memberDTO.getEmail()!=""&&memberDAO.getEmailCheck(memberDTO)==null) {
-			result = "사용가능";
-		}
-		if(memberDTO.getEmail()=="") {
-			result = "필수정보";
-		}
-		if(memberDAO.getEmailCheck(memberDTO)!=null) {
-			result = "중복";
-		}
-		return result;
-	}
+	
+	//0410 이메일 중복허용
+//	public String getEmailCheck (MemberDTO memberDTO) throws Exception {
+//		String result = "사용불가";
+//		if(memberDTO.getEmail()!=null&&memberDTO.getEmail()!=""&&memberDAO.getEmailCheck(memberDTO)==null) {
+//			result = "사용가능";
+//		}
+//		if(memberDTO.getEmail()=="") {
+//			result = "필수정보";
+//		}
+//		if(memberDAO.getEmailCheck(memberDTO)!=null) {
+//			result = "중복";
+//		}
+//		return result;
+//	}
 	
 	public MemberDTO getMemberLogin(MemberDTO memberDTO) throws Exception {
 //		System.out.println("서비스왔니..?");

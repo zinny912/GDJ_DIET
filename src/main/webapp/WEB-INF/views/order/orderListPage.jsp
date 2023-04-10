@@ -31,11 +31,24 @@
 
 	<div class="card">
 		<div class="card-body"> 		<!-- 아니면, ${cartDTO.studyNum}, ${cartDTO.studyDTOs[0].studyNum} -->
+			<div class="row">
+				<div class="col-2">
+				
 			<a href="/study/studyDetail?studyNum=${cartDTO.studyNum}" 
 				class="moveProduct"> <img
 				src="/resources/images/${cartDTO.studyDTOs[0].studyBoardFileDTOs[0].fileName}"
 				width="78" height="78" class="product-img img">
-			</a> <span class="option-item-name" style="font-size: 25px">${cartDTO.studyDTOs[0].studyName}</span>
+			</a> 
+				
+				</div>
+
+	<div class="col">
+			<div class="row">
+			<span class="option-item-name" style="font-size: 25px">${cartDTO.studyDTOs[0].studyName}</span>
+			<span>${cartDTO.studyDTOs[0].studyCost}원</span>
+	</div></div>
+				
+			</div>
 			<div>
 				<button type="button" class="btn btn-secondary btn-addCart to-cart-popper"
 					data-addCart-price="${cartDTO.cartPrice}"
@@ -93,8 +106,8 @@
 					${cartDTO.realHealthMachineDTO.optName2},
 					${cartDTO.realHealthMachineDTO.optName3},
 					${cartDTO.realHealthMachineDTO.optName4} </span>
-				<span>${cartDTO.count}개</span>
-				<p>${cartDTO.cartPrice}원
+				<span>${healthMachineDTO.price}원 ${cartDTO.count}개</span>
+			
 			</div>
 	</div>
 </div>
@@ -151,9 +164,10 @@
 		data-bs-target="#deleteModal">회원탈퇴</button>
 
 	<!-- Modal -->
+
 	<div class="modal fade" id="deleteModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable mx-auto">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title fs-5" id="exampleModalLabel">회원탈퇴</h1>
