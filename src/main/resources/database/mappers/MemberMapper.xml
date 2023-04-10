@@ -87,13 +87,13 @@
 			<id column="ROLENUM" property="roleNum"/>
 			<result column="ROLENAME" property="roleName"/>
 		</association>
-		<collection property="deliveryDTOs" javaType="List" ofType="com.goody.diet.member.DeliveryDTO">
-			<id column="ADDRESSNUM" property="addressNum"/>
-			<result column="ID" property="id"/>
-			<result column="DELIVERY" property="delivery"/>
-			<result column="RECIPIENT" property="recipient"/>
-			<result column="RECIPIENTTEL" property="recipientTel"/>
-		</collection>
+<!-- 		<collection property="deliveryDTOs" javaType="List" ofType="com.goody.diet.member.DeliveryDTO"> -->
+<!-- 			<id column="ADDRESSNUM" property="addressNum"/> -->
+<!-- 			<result column="ID" property="id"/> -->
+<!-- 			<result column="DELIVERY" property="delivery"/> -->
+<!-- 			<result column="RECIPIENT" property="recipient"/> -->
+<!-- 			<result column="RECIPIENTTEL" property="recipientTel"/> -->
+<!-- 		</collection> -->
 	</resultMap>
 	
 </mapper>
