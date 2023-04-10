@@ -95,5 +95,8 @@
 		SELECT MachineName FROM HEALTHMACHINE
 	</select>
 
+	<update id="setRoutineChecked" parameterType="RoutineDTO">
+		UPDATE ROUTINE SET CHECKED=1 WHERE NUM=#{num}
+	</update>
 	
  </mapper>

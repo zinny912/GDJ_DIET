@@ -63,11 +63,26 @@ document.addEventListener('DOMContentLoaded', function() {
     	  }, 
     
       displayEventTime: false, // 시간 표시 x
-      dateClick: function(check) {
+      dateClick: function(info) {
+    	  // 출석체크 확인 메시지를 띄우기
+    	  alert('출석체크하시겠습니까?');
+    	  
+    	  // 해당 일자의 배경 이미지를 추가하기
+    	  info.dayEl.style.backgroundImage = "url('../resources/images/redcheck.png')";
+    	  info.dayEl.style.backgroundRepeat = 'no-repeat';
+    	  info.dayEl.style.backgroundPosition = 'center';
+    	  info.dayEl.style.backgroundColor = 'transparent';
+    	  
+    	  <c:forEach var="dto" items="${routine}">
+    	  	
+    	  </c:forEach>
+    	  
+    	},
+    	/* dateClick: function(check) {
     	    alert('출석체크하시겠습니까?');
     	    check.dayEl.style.backgroundImage = "url('../resources/images/redcheck.png')";
     	    check.dayEl.style.backgroundColor = 'yellow';
-    	   /*  eventRender: function(info) {
+    	     eventRender: function(info) {
     	    	  // 이벤트와 이미지를 감싸는 부모 요소 생성
     	    	  var containerEl = document.createElement('div');
     	    	  containerEl.classList.add('event-container');
@@ -81,8 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
     	    	  containerEl.appendChild(eventEl);
     	    	  // 렌더링 결과 반환
     	    	  return containerEl;
-    	    	} */
-    	  },
+    	    	} 
+    	  },*/
     	  
     	  /* eventDrop: function (info) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
     		  console.log(info);

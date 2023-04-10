@@ -50,10 +50,15 @@ public class RoutineService {
 		return routineDAO.setRoutineDelete(routineDTO);
 	}
 	
-	// 머신 부럴오기
+	// 머신 불러오기
 	public List<HealthMachineDTO> getMachineName() {
 		return routineDAO.getMachineName();
 	}
+	
+	// 루틴 체크 1 
+	public int setRoutineChecked(RoutineDTO routineDTO) {
+			return routineDAO.setRoutineChecked(routineDTO);
+	}		
 	
 	public void saveRoutine(RoutineDTO routineDTO) {
         routineDAO.setRoutineAdd(routineDTO);

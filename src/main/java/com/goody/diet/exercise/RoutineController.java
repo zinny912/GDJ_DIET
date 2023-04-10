@@ -149,6 +149,19 @@ public class RoutineController {
 		return mv;
 	}
 	
+	@PostMapping("checked")
+	public ModelAndView  setRoutineChecked(RoutineDTO routineDTO, HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = routineService.setRoutineChecked(routineDTO);
+		String msg = "출석체크 실패";
+		if(result>0) {
+			msg = "출석체크 성공";
+		}
+		mv.addObject("result", msg);
+		mv.setViewName("common/result");
+		return mv;
+	}	
+	
 //	@GetMapping("update")
 //	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
 //		routineDTO = routineService.getRoutineVideo(routineDTO);

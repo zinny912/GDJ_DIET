@@ -50,7 +50,10 @@ public class RoutineDAO {
 	public List<HealthMachineDTO> getMachineName() {
 		return sqlSession.selectList(NAMESPACE+"getMachineName");
 	}
-	
+	// 루틴 체크 1 
+	public int setRoutineChecked(RoutineDTO routineDTO) {
+			return sqlSession.update(NAMESPACE+"setRoutineChecked", routineDTO);
+	}	
 	public List<RoutineDTO> getRoutineUpdate() {
 		// TODO Auto-generated method stub
 		return null;

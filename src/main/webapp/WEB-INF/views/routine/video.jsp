@@ -22,9 +22,9 @@
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-3 bread" id='days' data-day-days='${dto.startDay.date}'>루틴 ${dto.startDay.date}일차</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="/exercise/routine">이달의 루틴</a></span> <span>${dto.startDay.date}일차</span></p>
-            <h4 id='machineNum'>필요한 운동기구 : ${dto.healthMachineDTO.machineName}</h4>
+            <h4><a href="/healthMachine/detail?machineNum=${dto.machineNum}" style="color:black;">필요한 운동기구 : ${dto.healthMachineDTO.machineName}</a></h4>
             <form action="./delete" id="frm">
-            <c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
+            <c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
             	<input type="hidden" name="num" value="${dto.num}">
 				<button id="delete" type="button" class="btn btn-primary">루틴 삭제하기</button>
 			</c:if>
