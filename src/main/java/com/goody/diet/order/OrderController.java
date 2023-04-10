@@ -34,7 +34,6 @@ public class OrderController {
 //		System.out.println("------------------오더리스트-----------------");
 //		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
 //		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
-//		
 		mv.addObject("orderDTOs", orderDTOs);
 		mv.setViewName("/order/orderListPage");
 		return mv;
@@ -47,9 +46,6 @@ public class OrderController {
 		 * System.out.println(jsonString); JSONParser jsonParser =new JSONParser();
 		 * JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
 		 */
-		
-		
-		
 		mv.addObject("result",1);
 		mv.setViewName("/common/ajaxResult");
 		return mv;

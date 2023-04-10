@@ -133,7 +133,7 @@
 		</selectKey>
 		INSERT INTO HEALTHMACHINE
 		(MACHINENUM,MACHINENAME,PRICE,SALEPRICE,OPTION1,OPTION2,OPTION3,OPTION4)
-		VALUES(#{machineNum},#{machineName},#{price},#{salePrice},#{option1,jdbcType=VARCHAR},#{option2,jdbcType=VARCHAR},#{option3,jdbcType=VARCHAR},#{option4,jdbcType=VARCHAR})
+		VALUES(#{machineNum},#{machineName},#{price},#{salePrice,jdbcType=INTEGER},#{option1,jdbcType=VARCHAR},#{option2,jdbcType=VARCHAR},#{option3,jdbcType=VARCHAR},#{option4,jdbcType=VARCHAR})
 	</insert>
 	<insert id="setMachineImg" parameterType="HealthMachineImgDTO">
 		INSERT INTO
