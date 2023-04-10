@@ -85,7 +85,7 @@
 		<div class="row my-3">
 			<form class="col-md-7" action="/studyQna/add">
 			<input type="hidden" name="studyNum" value="${pager.studyNum}">
-			<button class="btn btn-primary" type="submit">상품문의</button> 
+			<button class="btn btn-primary float-start" type="submit">상품문의</button> 
 			</form>			
 		</div>
 		</c:if>

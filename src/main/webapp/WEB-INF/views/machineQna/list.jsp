@@ -85,7 +85,7 @@
 		<div class="row my-3">
 			<form class="col-md-7" action="/machineQna/add">
 			<input type="hidden" name="machineNum" value="${pager.machineNum}">
-			<button class="btn btn-primary" type="submit">상품문의</button> 
+			<button class="btn btn-primary float-start" type="submit">상품문의</button> 
 			</form>			
 		</div>
 		</c:if>
