@@ -43,9 +43,10 @@ public class OrderController {
 	@PostMapping("success")
 	public ModelAndView getOrderSuccess(ModelAndView mv,String jsonString)throws Exception{
 		
-		System.out.println(jsonString);
-		JSONParser jsonParser =new JSONParser();
-		JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
+		/*
+		 * System.out.println(jsonString); JSONParser jsonParser =new JSONParser();
+		 * JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
+		 */
 		
 		
 		

@@ -85,11 +85,11 @@ public class CartController {
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.setCartCheckUpdate(cartDTO,checkedItems,session,cartNum,count);
-		String token = getToken.getpaymentToken();
+//		String token = getToken.getpaymentToken();
 		
 		mv.addObject("list", ar);
 		mv.addObject("totalCost", totalCost);
-		mv.addObject("token", token);
+//		mv.addObject("token", token);
 		mv.setViewName("cart/payment");
 		
 		
