@@ -164,3 +164,42 @@ $("#contentsConfirm").click(function(){
 
 })
 
+// let studyNum = $("#studyNum").val();
+// let studyCost = $("#studyCost").val();
+
+// //장바구니
+// $("#btnCart").on("click","#cartAdd",function(){
+//     let check=window.confirm("장바구니에 추가 하시겠습니까?");
+//     let redirect;
+//     if(check){
+  
+//         $.ajax({
+//             type:"POST",
+//             url:"/cart/cartAdd",
+//             data:{
+//                 studyNum:studyNum,
+//                 studyCost:studyCost
+//             },
+//             success : function(response){
+//                 console.log(response.trim())
+//                 if (response.trim() > 0) {
+//                     alert("장바구니에 추가되었습니다.")
+//                     redirect = window.confirm("장바구니로 이동 하시겠습니까?");
+//                     if (redirect) {
+//                         $("#frmCart").attr("action", "../../cart/cartList")
+//                         $("#frmCart").attr("method", "get");
+//                         $("#frmCart").submit();
+//                     }
+//                 } else {
+//                     alert("실패하였습니다.")
+//                 }
+//             },
+//             error: function () {
+
+//             }
+//         })
+        
+//     }
+    
+// })
+

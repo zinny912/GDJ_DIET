@@ -37,6 +37,11 @@
 				</div>
 				</c:forEach>
 			</div>
+			<div>
+				<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+					<a href="./add" class="btn btn-primary">운동기구 추가하기</a>
+				</c:if>
+			</div>
 		</div>
 	</section>
 
@@ -70,7 +75,7 @@
 			</table>
 		</div>
 	</div> --%>
-	<a href="./add">add</a>
+	
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

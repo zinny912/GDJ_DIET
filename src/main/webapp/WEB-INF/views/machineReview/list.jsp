@@ -99,7 +99,7 @@
 		<c:if test="${not empty sessionMember}">
 		<div class="row my-3">
 			<div class="col-md-7">
-				<button class="btn btn-primary add"
+				<button class="btn btn-primary add float-start"
 					data-comment-num="${pager.machineNum}" data-bs-toggle="modal"
 					data-bs-target="#contentsModal">리뷰쓰기</button>
 			</div>
