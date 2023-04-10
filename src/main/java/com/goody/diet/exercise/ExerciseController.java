@@ -108,7 +108,7 @@ public class ExerciseController {
 		int result = exerciseService.setExerciseUpdate(exerciseDTO, addFiles, session, fileNum);
 		mv.setViewName("common/result");
 		mv.addObject("result", "수정성공");
-		mv.addObject("url", "./update?num="+exerciseDTO.getNum());
+		mv.addObject("url", "./info?bodyNum="+exerciseDTO.getBodyNum());
 		
 		return mv;
 	}
