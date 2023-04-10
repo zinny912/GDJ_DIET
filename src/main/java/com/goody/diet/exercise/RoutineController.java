@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.healthMachine.HealthMachineDTO;
+
 
 @Controller
 @RequestMapping(value="/routine/*")
@@ -135,6 +137,15 @@ public class RoutineController {
 		mv.addObject("result", msg);
 		mv.addObject("url", "/routine/calendar");
 		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("machine")
+	public ModelAndView getMachineName() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<HealthMachineDTO> ar = routineService.getMachineName();
+		mv.setViewName("routine/machine");
+	    mv.addObject("list", ar);
 		return mv;
 	}
 	

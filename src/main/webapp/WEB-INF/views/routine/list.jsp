@@ -15,8 +15,10 @@
          <input type="date" class="form-control" id="routineendDay" name="endDay" value="${dto.endDay}">
          <label for="videoId" class="col-form-label">루틴영상URL</label>
          <input type="text" class="form-control" id="routinevideoId" name="videoId" value="${dto.videoId}"> 
-         <label for="machineNum" class="col-form-label">운동기구</label>
-         <input type="text" class="form-control" id="routinemachineNum" name="machineNum" value="${dto.machineNum}"> 
+         <label for="machineName" class="col-form-label">운동기구</label>
+         <input type="text" class="form-control" id="routinemachineName" name="machineName" value="${dto.machineName}"> 
          <input type="hidden" id="routinenum" name="num" value="${dto.num}">
+         <button id="machinebtnup" class="btn btn-primary" type="button">운동기구리스트</button>
+		<div id="machineListup" style="text-align: center;"></div>
       </div>
 </c:forEach>

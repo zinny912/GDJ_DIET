@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     	    	  return containerEl;
     	    	} */
     	  },
+    	  
     	  /* eventDrop: function (info) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
     		  console.log(info);
     		  if(confirm("'"+ info.event.title +"' 매니저의 일정을 수정하시겠습니까 ?")){
@@ -158,8 +159,14 @@ document.addEventListener('DOMContentLoaded', function() {
          <input type="date" class="form-control" id="endDay" name="endDay">
          <label for="videoId" class="col-form-label">루틴영상URL</label>
          <input type="text" class="form-control" id="videoId" name="videoId"> 
-         <label for="machineNum" class="col-form-label">운동기구</label>
-         <input type="text" class="form-control" id="machineNum" name="machineNum"> 
+         <label for="machineName" class="col-form-label">운동기구</label>
+         <input type="text" class="form-control" id="machineName" name="machineName">
+         <!-- <select class="form-select" id="machineSelect" name="HealthMachineDTOs">
+         <option id="option"></option>
+         </select> -->
+         <button id="machinebtn" class="btn btn-primary" type="button">운동기구 리스트</button>
+         <div id="machineList" style="text-align: center;">
+         </div>    
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">취소</button>
@@ -179,8 +186,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="modal-body">
                   <input type="date" id="selectedDay" name="selectedDay" class="form-control mb-3" required>
                   <div id="scheduleList">
-                  	
-                  </div>
+						
+				</div>
+                  
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">닫기</button>
@@ -190,40 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           </div>
 </div>
-
-<%-- <div class="modal fade" id="upModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
-         <div class="modal-dialog">
-         <div class="modal-content">
-          <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">루틴을 수정하세요!</h1>
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-           </div>
-           <label for="startDay">수정할 날짜</label>
-           <input type="date" id="${list.startDay}" name ="startDay">${list.startDay}</input>
-           <c:forEach items="${list}" var="dto">
-           <div id="scheduleList">  </div>
-           </c:forEach>
-           <div class="modal-body">
-           <label for="title" class="col-form-label">루틴 제목</label>
-              <input type="text" class="form-control" id="title" name="title">'
-              <label for="startDay" class="col-form-label">시작 날짜</label>
-               <input type="date" class="form-control" id="startDay" name="startDay">
-               <label for="endDay" class="col-form-label">종료 날짜</label>
-              <input type="date" class="form-control" id="endDay" name="endDay">
-               <label for="videoId" class="col-form-label">루틴영상URL</label>
-               <input type="text" class="form-control" id="videoId" name="videoId">
-               <label for="machineNum" class="col-form-label">운동기구</label>
-              <input type="text" class="form-control" id="machineNum" name="machineNum">
-            </div>
-            <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">취소</button>
-              <button type="submit" class="btn btn-primary" id="updateConfirm">수정하기</button>
-              <button type="submit" class="btn btn-primary" id="deleteConfirm">삭제하기</button>
-           </div>
-        </div>
-       </div>
- --%>
-
  
  <div>
 <div id='calendar'></div>

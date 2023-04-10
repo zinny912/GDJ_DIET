@@ -2,6 +2,21 @@
 //routineAdd 
 $('#modalButtons').ready(function() {
   // 등록 버튼 클릭시
+  // fetch('/routine/machine',{
+  //   method:'GET'
+  // })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     // SELECT 태그에 운동기구 리스트 데이터 추가하기
+  //     const machineSelect = document.getElementById('#machineSelect');
+  //     for (let machine of data) {
+  //       const option = document.createElement('#option');
+  //       option.value = machine.machineName;
+  //       option.text = machine.machineName;
+  //       machineSelect.appendChild(option);
+  //     }
+  //   })
+  //   .catch(error => console.error(error));
   $('#routineConfirm').click(function() {
     // 입력된 데이터 가져오기
     const title = $('#title').val();
@@ -9,6 +24,7 @@ $('#modalButtons').ready(function() {
     const endDay = new Date($('#endDay').val()); // Date 객체로 변환
     const videoId = $('#videoId').val();
     const machineNum = $('#machineNum').val();
+    const machineName = $('#machineName').val();
 
     console.log(title);
     console.log(startDay);
@@ -25,7 +41,7 @@ $('#modalButtons').ready(function() {
         startDay: startDay, 
         endDay: endDay, 
         videoId: videoId,
-        machineNum: machineNum
+        machineName:machineName
       },
       success: function(data) {
         console.log('성공');
@@ -40,6 +56,17 @@ $('#modalButtons').ready(function() {
       }
     });
   });
+
+  $('#machinebtn').click(function(){
+    fetch("/routine/machine",{
+      method:'GET'
+      
+  })
+  .then((response)=>response.text())
+  .then((res)=>{
+      $('#machineList').html(res.trim());
+  })
+  })
 });
 
 
@@ -52,13 +79,8 @@ $('#modalButtons').ready(function() {
 
       // 선택된 날짜에 해당하는 일정 목록 가져오기
       $('#selectedDay').on('change', function() {
-        //let startDay = $(this).val();
       let startDay = $(this).val(); // yyyy-MM-dd 형태의 문자열
-      // let formattedDate = moment(startDay).format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
-      // let encodedStartDay = encodeURIComponent(startDay.toISOString());
-      //     console.log(formattedDate);
         console.log(startDay);
-       // console.log(selectedDay);
         fetch("/routine/list?startDay="+startDay,{
           method:'GET'
           
@@ -68,6 +90,16 @@ $('#modalButtons').ready(function() {
           $('#scheduleList').html(res.trim());
           let num=$('#routinenum').val();
           $("#contentsConfirm").attr("data-update-num",num);
+          $('#machinebtnup').click(function(){
+            fetch("/routine/machine",{
+              method:'GET'
+              
+          })
+          .then((response)=>response.text())
+          .then((res)=>{
+              $('#machineListup').html(res.trim());
+          })
+          })
       })
     });
   });
@@ -78,7 +110,7 @@ $("#contentsConfirm").click(function(){
   const endDay = new Date($('#routineendDay').val()); // Date 객체로 변환
   const title = $('#routinetitle').val();
   const videoId = $('#routinevideoId').val();
-  const machineNum = $('#routinemachineNum').val();
+  const machineName = $('#routinemachineName').val();
   const num=$(this).attr("data-update-num");
   
   $.ajax({
@@ -90,7 +122,7 @@ $("#contentsConfirm").click(function(){
       startDay: startDay, 
       endDay: endDay, 
       videoId: videoId,
-      machineNum: machineNum
+      machineName: machineName
     },
     success: function(data) {
       alert('수정 성공');
