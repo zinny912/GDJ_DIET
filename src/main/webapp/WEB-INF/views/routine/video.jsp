@@ -6,7 +6,7 @@
 <html>
   <head>
     
-    <title>이달의 루틴 ${dto.startDay.date}</title>
+    <title>이달의 루틴 ${dto.startDay.date}일차</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,9 +43,7 @@
         </div>
 	</div>
 </div>
-  
-  
-  
+
 <section class="ftco-section">
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-3 bread">루틴 ${dto.startDay.date}일차</h1> 
