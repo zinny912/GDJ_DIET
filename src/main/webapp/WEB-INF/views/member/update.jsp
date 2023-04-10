@@ -53,23 +53,16 @@
 				<td class="col-3">이메일</td>
 				<td class="col-9">${sessionMember.email }</td>
 			</tr>
-			<tr>
-				<td class="col-3">연락처</td>
-				<td class="col-9">${sessionMember.phone }</td>
 
-			</tr>
-			<tr>
-			    <td class="col-3">연락처</td>
-			    <td>
-			        <input type="text" class="phone-change" value="${sessionMember.phone }">
-			        <button type="button" class="phone-submit">변경/+</button>
-			        <div class="member__input-guide-area_set member__input-guide-area4"></div>
-			    </td>
-			</tr>
 			<tr>
 			</tr>
 		</tbody>	
 	</table>
+	
+	
+
+
+
 
 <c:if test="${sessionMember.loginType eq 'general'}">
 

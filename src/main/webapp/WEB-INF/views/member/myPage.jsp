@@ -13,11 +13,14 @@
 
 <div class="container-fluid">
 <div class="row" style="height: 1000px;">
-<c:import url="./memberHeader.jsp"></c:import>
-	<div class="container-fluid text-center">
-		
-				
-	</div>
+		<c:import url="./memberHeader.jsp"></c:import>
+
+
+<div class="col text-center">
+<h3>^^</h3>
+study/studyDetail?studyNum=${sessionMember.studyNum}
+</div>
+
 </div></div>
 
 
