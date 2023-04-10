@@ -116,7 +116,7 @@ public class ExerciseController {
 	@PostMapping("delete")
 	public ModelAndView setExerciseDelete(ExerciseDTO exerciseDTO, Long fileNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println(exerciseDTO.getBodyNum());
 		System.out.println(exerciseDTO.getNum());
 		int result = exerciseService.setExerciseDelete(exerciseDTO, fileNum);
 		mv.setViewName("common/result");
