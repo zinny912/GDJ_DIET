@@ -19,11 +19,11 @@
 			<c:import url="../member/memberHeader.jsp"></c:import>
 
 			<div class="col-10">
-				<div class="row">
+				<div class="row"><!-- row -->
 
 					<c:forEach items="${orderDTOs}" var="orderDTO">
 						<div class="orderList order_number">
-
+							<h3>${orderDTO.orderDate} 주문</h3>
 
 <c:forEach items="${orderDTO.cartDTOs}" var="cartDTO">
 
@@ -62,18 +62,46 @@
 	<div class="card">
 		<div class="card-body">
 
+			<!-- 상품세부정보삽입 -->
+<!-- 			<a -->
+<%-- 				href="/healthMachine/detail?machineNum=${cartDTO.realMachineNum}" --%>
+<!-- 				class="moveProduct"> <img -->
+<%-- 				src="/resources/images/${cartDTO.healthMachineDTO.healthMachineImgDTOs[0].fileName}" --%>
+<!-- 				width="78" height="78" class="product-img img"> -->
+<!-- 			</a>  -->
+<%-- 			<span class="option-item-name" style="font-size: 25px">${cartDTO.healthMachineDTO.machineName}, --%>
+<%-- 				${cartDTO.realHealthMachineDTO.optName1}, --%>
+<%-- 				${cartDTO.realHealthMachineDTO.optName2}, --%>
+<%-- 				${cartDTO.realHealthMachineDTO.optName3}, --%>
+<%-- 				${cartDTO.realHealthMachineDTO.optName4} </span> --%>
+<%-- 			<span>${cartDTO.count}개</span> --%>
+				
+			
+<div class="row">
+	<div class="col-2">
 			<a
 				href="/healthMachine/detail?machineNum=${cartDTO.realMachineNum}"
 				class="moveProduct"> <img
 				src="/resources/images/${cartDTO.healthMachineDTO.healthMachineImgDTOs[0].fileName}"
 				width="78" height="78" class="product-img img">
-			</a> <span class="option-item-name" style="font-size: 25px">${cartDTO.healthMachineDTO.machineName},
-				${cartDTO.realHealthMachineDTO.optName1},
-				${cartDTO.realHealthMachineDTO.optName2},
-				${cartDTO.realHealthMachineDTO.optName3},
-				${cartDTO.realHealthMachineDTO.optName4} </span>
-			<!-- 상품세부정보삽입 -->
-			<span>${cartDTO.count}개</span>
+			</a> 		
+	</div>
+	<div class="col">
+			<div class="row">
+				<span class="option-item-name" style="font-size: 25px">${cartDTO.healthMachineDTO.machineName},
+					${cartDTO.realHealthMachineDTO.optName1},
+					${cartDTO.realHealthMachineDTO.optName2},
+					${cartDTO.realHealthMachineDTO.optName3},
+					${cartDTO.realHealthMachineDTO.optName4} </span>
+				<span>${cartDTO.count}개</span>
+				<p>${cartDTO.cartPrice}원
+			</div>
+	</div>
+</div>
+			
+			
+			
+			
 			<div>
 				<button type="button"
 					class="btn btn-secondary btn-addCart-machine to-cart-popper"
@@ -107,7 +135,11 @@
 
 						</div>
 					</c:forEach>
-				</div>
+					
+					
+					
+					
+				</div><!-- row -->
 			</div>
 
 		</div>

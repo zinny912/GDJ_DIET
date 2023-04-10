@@ -6,12 +6,15 @@
 
 <p class="info 아이디">
 	<strong>${deliveryDTO.recipient}</strong>
+	<input hidden="" name="recipient" value="${deliveryDTO.recipient}">
 </p>
 <p class="info 배송주소">
 	<strong>${deliveryDTO.address}</strong>
+	<input hidden="" name="address" value="${deliveryDTO.address}">
 </p>
 <p class="info 연락처">
 	<strong>${deliveryDTO.recipientTel}</strong>
+	<input hidden="" name="recipientTel" value="${deliveryDTO.recipientTel}">
 </p>
 
 

@@ -48,7 +48,7 @@
   <input class="col form-control" id="verification_val" type="text" placeholder="인증번호">
   <button type="button" id="verification_submit" onclick="javascript:verificationSubmit()" class="col-2 btn btn-secondary text-nowrap">제출</button>
   <div class="vr "></div>
-  <button type="button" id="verification_re" onclick="javascript:verificationRe()" class="col-2 btn btn-outline-danger text-nowrap">다시</button>
+  <button type="button" id="verification_re" class="col-3 btn btn-outline-danger text-nowrap">인증번호</button> <!-- onclick="javascript:verificationRe()" -->
 </div>
 
 

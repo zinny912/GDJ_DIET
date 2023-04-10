@@ -142,24 +142,25 @@
 					<div class="col-md-6">
 						<div class="bordered">
 							<h3 class="text-center mb-4">주문자 정보</h3>
-							<p class="info" id="ordererName">
-								<strong>${sessionMember.names}</strong>
-							</p>
-							<p class="info" id="ordererPhone">
-								<strong>${sessionMember.phone}</strong>
-							</p>
-							<p class="info" id="ordererEmail">
-								<strong>${sessionMember.email}</strong>
-							</p>
-							<p class="info" id="ordererAddress">
-								<strong>${sessionMember.address}</strong>
-							</p>
-							<form action="/member/deliveryNew" method="get">
-								<input type="hidden" name="email" value="${sessionMember.email}">
-								<button type="submit" class="btn btn-primary">배송지 추가</button>
-							</form>
+<!-- 							<p class="info" id="ordererName"> -->
+<%-- 								<strong>${sessionMember.names}</strong> --%>
+<!-- 							</p> -->
+<!-- 							<p class="info" id="ordererPhone"> -->
+<%-- 								<strong>${sessionMember.phone}</strong> --%>
+<!-- 							</p> -->
+<!-- 							<p class="info" id="ordererEmail"> -->
+<%-- 								<strong>${sessionMember.email}</strong> --%>
+<!-- 							</p> -->
+<!-- 							<p class="info" id="ordererAddress"> -->
+<%-- 								<strong>${sessionMember.address}</strong> --%>
+<!-- 							</p> -->
+<!-- 							<form action="/member/deliveryNew" method="get"> -->
+<%-- 								<input type="hidden" name="email" value="${sessionMember.email}"> --%>
+<!-- 								<button type="submit" class="btn btn-primary">배송지 추가</button> -->
+<!-- 							</form> -->
 
-							<button class="btn btn-secondary btn_delivery_change"
+							<!-- 배송지 -->
+							<button type="button" class="btn btn-secondary btn_delivery_change"
 								style="margin-left: 80%;">변경</button>
 							<div class="pay-deliver-ajax"></div>
 
@@ -190,8 +191,8 @@
 	</form>
 <form action="/" method="get" id="formTag"></form>
 	<script type="text/javascript" src="/resources/js/payment.js"></script>
-	<script type="text/javascript" src="/resources/js/order/payment.js"></script>
-	<!-- 배송지 -->
+	<script type="text/javascript" src="/resources/js/order/payment.js"></script>	<!-- 배송지 -->
+
 	<!-- <script src="https://cdn.iamport.kr/v1/iamport.js"></script> -->
 	<c:import url="../template/footer.jsp"></c:import>
 	<c:import url="../template/common_js.jsp"></c:import>

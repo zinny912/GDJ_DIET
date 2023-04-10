@@ -14,8 +14,32 @@ public class OrderDTO {
 	private List<CartDTO> cartDTOs;
 	private Long price;
 	
+	private String address;
+	private String recipient;
+	private String recipientTel;
+	
 	
 
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getRecipient() {
+		return recipient;
+	}
+	public void setRecipient(String recipient) {
+		this.recipient = recipient;
+	}
+	public String getRecipientTel() {
+		return recipientTel;
+	}
+	public void setRecipientTel(String recipientTel) {
+		this.recipientTel = recipientTel;
+	}
+	
+	
 	public Long getPrice() {
 		return price;
 	}

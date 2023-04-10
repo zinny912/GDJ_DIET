@@ -23,7 +23,7 @@ function deliveryCall(){
             // recipientTel:
         },
         success:(res)=>{
-            console.log(res.trim())
+            // console.log(res.trim())
             $('.pay-deliver-ajax').html(res.trim())
             
             
