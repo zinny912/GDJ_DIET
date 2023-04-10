@@ -11,7 +11,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private Long machineNum;
 	private String urlId;
 	private Long power;
-	private String bodyPart;
 	private String time;
 	private String detailTitle;
 	private String highLight;
@@ -101,12 +100,6 @@ public class ExerciseDTO extends HealthMachineDTO {
 	}
 	public void setPower(Long power) {
 		this.power = power;
-	}
-	public String getBodyPart() {
-		return bodyPart;
-	}
-	public void setBodyPart(String bodyPart) {
-		this.bodyPart = bodyPart;
 	}
 	public String getTime() {
 		return time;
