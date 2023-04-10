@@ -1,8 +1,8 @@
 let TotalCost=$("#totalCost").attr("data-totalCost")
 
 
-TotalCost=100
-
+TotalCost=10
+let str=""
 var today = new Date();   
         var hours = today.getHours(); // 시
         var minutes = today.getMinutes();  // 분
@@ -38,14 +38,16 @@ function checkPayment(){
     // // } 
 }, function (rsp) { // callback
     // console.log(rsp);
+    str= JSON.stringify(rsp);
     if (rsp.success) {
         jQuery.ajax({
             url: "/order/success", 
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            // headers: { "Content-Type": "application/json" },
             data: {
-              imp_uid: rsp.imp_uid,            // 결제 고유번호
-              merchant_uid: rsp.merchant_uid   // 주문번호
+            //   imp_uid: rsp.imp_uid,            // 결제 고유번호
+            //   merchant_uid: rsp.merchant_uid,   // 주문번호
+              jsonString:str
             }
           }).done(function (data) {
             console.log(data.trim())
