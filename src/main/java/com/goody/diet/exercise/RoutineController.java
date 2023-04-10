@@ -1,6 +1,7 @@
 package com.goody.diet.exercise;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.goody.diet.healthMachine.HealthMachineDTO;
 
 
 @Controller
@@ -37,15 +40,31 @@ public class RoutineController {
 		
 		return mv;
 	}
+
 	@GetMapping("list")
-	public ModelAndView getSelectList(@RequestParam("startDay") Date startDay) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<RoutineDTO> ar = routineService.getSelectList(startDay);
-		
-		mv.setViewName("routine/list");
-		mv.addObject("list", ar);
-		return mv;
+	public ModelAndView getSelectList(@RequestParam("startDay") String startDay) throws Exception{
+	    ModelAndView mv = new ModelAndView();
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    LocalDate localDate = LocalDate.parse(startDay, formatter);
+	    java.sql.Date date = java.sql.Date.valueOf(localDate);
+	    RoutineDTO routineDTO = new RoutineDTO();
+	    routineDTO.setStartDay(date);
+	    System.out.println(routineDTO.getStartDate());
+	    List<RoutineDTO> ar = routineService.getSelectList(routineDTO);
+	    mv.setViewName("routine/list");
+	    mv.addObject("list", ar);
+	    return mv;
 	}
+	
+//	@GetMapping("list")
+//	public ModelAndView getSelectList(@RequestParam("startDay") Date startDay) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<RoutineDTO> ar = routineService.getSelectList(startDay);
+//		
+//		mv.setViewName("routine/list");
+//		mv.addObject("list", ar);
+//		return mv;
+//	}
 	
 //	@GetMapping("routine/list")
 //	public ResponseEntity<List<RoutineDTO>> getSelectList(@RequestParam("startDay") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDay) throws Exception {
@@ -94,17 +113,6 @@ public class RoutineController {
 		return mv;	
 	}
 	
-	@GetMapping("update")
-	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
-		routineDTO = routineService.getRoutineVideo(routineDTO);
-		List<RoutineDTO> ar = routineService.getRoutineUpdate();
-		//mv.addObject("dto", routineDTO);
-		System.out.println(ar);
-		mv.addObject("list", ar);
-		mv.setViewName("routine/update");
-		return mv;
-	}
-	
 	@PostMapping("update")
 	public ModelAndView  setRoutineUpdate(RoutineDTO routineDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -114,10 +122,58 @@ public class RoutineController {
 			msg = "업데이트 성공";
 		}
 		mv.addObject("result", msg);
-		mv.addObject("url", "./calendar");
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@PostMapping("delete")
+	public ModelAndView  setRoutineDelete(RoutineDTO routineDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = routineService.setRoutineDelete(routineDTO);
+		String msg = "삭제 실패";
+		if(result>0) {
+			msg = "삭제 성공";
+		}
+		mv.addObject("result", msg);
+		mv.addObject("url", "/routine/calendar");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("machine")
+	public ModelAndView getMachineName() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<HealthMachineDTO> ar = routineService.getMachineName();
+		mv.setViewName("routine/machine");
+	    mv.addObject("list", ar);
+		return mv;
+	}
+	
+	@PostMapping("checked")
+	public ModelAndView  setRoutineChecked(RoutineDTO routineDTO, HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = routineService.setRoutineChecked(routineDTO);
+		String msg = "출석체크 실패";
+		if(result>0) {
+			msg = "출석체크 성공";
+		}
+		mv.addObject("result", msg);
+		mv.setViewName("common/result");
+		return mv;
+	}	
+	
+//	@GetMapping("update")
+//	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
+//		routineDTO = routineService.getRoutineVideo(routineDTO);
+//		List<RoutineDTO> ar = routineService.getRoutineUpdate();
+//		//mv.addObject("dto", routineDTO);
+//		System.out.println(ar);
+//		mv.addObject("list", ar);
+//		mv.setViewName("routine/update");
+//		return mv;
+//	}
+	
+	
 	
 	
 	
