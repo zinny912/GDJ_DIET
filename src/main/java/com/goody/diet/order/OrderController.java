@@ -1,10 +1,13 @@
 package com.goody.diet.order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.util.JSONPObject;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.goody.diet.cart.CartDAO;
-import com.goody.diet.cart.CartDTO;
-import com.goody.diet.healthMachine.HealthMachineDTO;
-import com.goody.diet.healthMachine.HealthMachineImgDTO;
-import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
-import com.goody.diet.study.StudyDTO;
 
 @Controller
 @RequestMapping("/order/*")
@@ -44,7 +41,14 @@ public class OrderController {
 	}
 	
 	@PostMapping("success")
-	public ModelAndView getOrderSuccess(ModelAndView mv)throws Exception{
+	public ModelAndView getOrderSuccess(ModelAndView mv,String jsonString)throws Exception{
+		
+		System.out.println(jsonString);
+		JSONParser jsonParser =new JSONParser();
+		JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
+		
+		
+		
 		mv.addObject("result",1);
 		mv.setViewName("/common/ajaxResult");
 		return mv;
