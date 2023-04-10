@@ -1,6 +1,5 @@
 package com.goody.diet.order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,15 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.goody.diet.cart.CartDAO;
-import com.goody.diet.cart.CartDTO;
-import com.goody.diet.healthMachine.HealthMachineDTO;
-import com.goody.diet.healthMachine.HealthMachineImgDTO;
-import com.goody.diet.healthMachine.RealHealthMachineDTO;
 import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
-import com.goody.diet.study.StudyDTO;
-
+ 
 @Controller
 @RequestMapping("/order/*")
 public class OrderController {
