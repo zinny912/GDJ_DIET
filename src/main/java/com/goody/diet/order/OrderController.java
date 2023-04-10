@@ -49,7 +49,7 @@ public class OrderController {
 		
 		
 		
-		mv.addObject("result",0);
+		mv.addObject("result",1);
 		mv.setViewName("/common/ajaxResult");
 		return mv;
 	}
