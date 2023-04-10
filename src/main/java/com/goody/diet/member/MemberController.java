@@ -130,9 +130,10 @@ public class MemberController {
 		System.out.println("로그인타입: "+memberDTO.getLoginType());
 		
 		
-		if(memberDTO!=null) {
+		if(memberDTO!=null) { //무결성 로그인
 			memberDTO = memberService.getMyPage(memberDTO);
 		}
+		
 		mv.addObject("mypage",memberDTO );
 		mv.setViewName("/member/myPage");
 //		mv.setViewName("/order/orderListPage");

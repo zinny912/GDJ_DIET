@@ -13,13 +13,9 @@
     <c:if test="${sessionMember.studyNum ne null}">
   	<a class="nav-link" href="/member/myPage">수업</a>
   </c:if>
-    
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/order/list">주문목록</a>
   </li>
    <li class="nav-item">
-    <a class="nav-link" href="/member/update">개인정보/수정</a>
+    <a class="nav-link" href="/member/update">개인정보</a>
   </li> 
   <li class="nav-item">
     <a class="nav-link" href="/member/delivery">배송지 설정</a>
