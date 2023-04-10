@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.util.JSONPObject;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.member.DeliveryDTO;
 import com.goody.diet.member.MemberDTO;
- 
+
 @Controller
 @RequestMapping("/order/*")
 public class OrderController {
@@ -37,8 +41,15 @@ public class OrderController {
 	}
 	
 	@PostMapping("success")
-	public ModelAndView getOrderSuccess(ModelAndView mv)throws Exception{
-		mv.addObject("result",1);
+	public ModelAndView getOrderSuccess(ModelAndView mv,String jsonString)throws Exception{
+		
+		System.out.println(jsonString);
+		JSONParser jsonParser =new JSONParser();
+		JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
+		
+		
+		
+		mv.addObject("result",0);
 		mv.setViewName("/common/ajaxResult");
 		return mv;
 	}
