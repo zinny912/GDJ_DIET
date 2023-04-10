@@ -17,9 +17,9 @@
 <!-- 		SELECT * FROM MEMBERAUTH WHERE ID=#{id} -->
 <!-- 	</select> -->
 		
-	<select id="getEmailCheck" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT * FROM "MEMBER" WHERE EMAIL=#{email}
-	</select>	
+<!-- 	<select id="getEmailCheck" parameterType="MemberDTO" resultType="MemberDTO"> -->
+<!-- 		SELECT * FROM "MEMBER" WHERE EMAIL=#{email} -->
+<!-- 	</select>	 -->
 	
 	<insert id="setMemberJoin" parameterType="com.goody.diet.member.MemberDTO">
 		INSERT INTO "MEMBER" (ID, PW, NAMES, PHONE, EMAIL, ADDRESS, LOGINTYPE) 
