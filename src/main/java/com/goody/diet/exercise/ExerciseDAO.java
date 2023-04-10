@@ -22,6 +22,9 @@ public class ExerciseDAO {
 	public List<ExerciseDTO> getExerciseList(ExerciseDTO exerciseDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getExerciseList");
 	}
+	public ExerciseDTO getMachineName(ExerciseDTO exerciseDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMachineName", exerciseDTO);
+	}
 	//info 상세페이지 리스트 촤르르르륵
 	public List<ExerciseDTO> getExerciseTypeList(ExerciseDTO exerciseDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getExerciseTypeList",exerciseDTO);
@@ -72,13 +75,18 @@ public class ExerciseDAO {
 		return sqlSession.update(NAMESPACE+"setExerciseUpdate", exerciseDTO);
 	}
 	
+	public int setBodyUpdate(ExerciseDTO exerciseDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setBodyUpdate", exerciseDTO);
+	}
+	
+	
 	//delete - 짧강효확 사진 삭제
 	public int setFileDelete(Long fileNum) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setFileDelete", fileNum);
 	}
 	//delete - 짧강효확 삭제
 	public int setExerciseDelete(ExerciseDTO exerciseDTO) throws Exception {
-		return sqlSession.delete(NAMESPACE+"setExercsieDelete", exerciseDTO);
+		return sqlSession.delete(NAMESPACE+"setExerciseDelete", exerciseDTO);
 	}
 	//delete - EXERCISEROLE 삭제 
 	public int setExerciseRoleDelete(ExerciseDTO exerciseDTO) throws Exception {
