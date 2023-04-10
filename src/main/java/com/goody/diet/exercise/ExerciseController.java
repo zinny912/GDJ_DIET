@@ -76,7 +76,7 @@ public class ExerciseController {
 	public ModelAndView setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO, MultipartFile [] Files,HealthMachineDTO healthMachineDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(exerciseDTO.getBodyNum());
+		System.out.println("add bodyNum:"+exerciseDTO.getBodyNum());
 		int result = exerciseService.setExerciseAdd(exerciseDTO, Files, session, healthMachineDTO);
 		//System.out.println("카테고리 머신 : " + bodyDTO.getBodyNum());
 		System.out.println("헬스머신 넘 : "+exerciseDTO.getNum());
@@ -91,11 +91,10 @@ public class ExerciseController {
 	}
 	// 짧강효확 수정 
 	@GetMapping("update")
-	public ModelAndView setExerciseUpdate(ExerciseDTO exerciseDTO) throws Exception{
+	public ModelAndView setExerciseUpdate(ExerciseDTO exerciseDTO, Long fileNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		exerciseDTO = exerciseService.getExerciseDetail(exerciseDTO);
 		mv.addObject("dto", exerciseDTO);
-		
 		mv.setViewName("exercise/update");
 		
 		return mv;
@@ -104,8 +103,10 @@ public class ExerciseController {
 	@PostMapping("update")
 	public ModelAndView setExerciseUpdate(ExerciseDTO exerciseDTO, MultipartFile[] addFiles, HttpSession session, Long fileNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		System.out.println(fileNum);
 		int result = exerciseService.setExerciseUpdate(exerciseDTO, addFiles, session, fileNum);
+		System.out.println(exerciseDTO.getPower());
 		mv.setViewName("common/result");
 		mv.addObject("result", "수정성공");
 		mv.addObject("url", "./info?bodyNum="+exerciseDTO.getBodyNum());
@@ -117,7 +118,9 @@ public class ExerciseController {
 	public ModelAndView setExerciseDelete(ExerciseDTO exerciseDTO, Long fileNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		System.out.println(fileNum);
 		System.out.println(exerciseDTO.getNum());
+		
 		int result = exerciseService.setExerciseDelete(exerciseDTO, fileNum);
 		mv.setViewName("common/result");
 		mv.addObject("result", "삭제성공");
