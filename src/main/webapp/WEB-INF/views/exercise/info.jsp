@@ -25,8 +25,8 @@
 
 <body>
 
-			<div class="row col-5 mx-auto mb-7">
-				<strong>추천 / 난이도 / 운동시간을 참고해 내 몸에 알맞은 운동을 직접 선택해 보세요 :)</strong>
+			<div class="row col-5 text-center mx-auto my-5">
+				<strong><mark>추천 / 난이도 / 운동시간을 참고해 내 몸에 알맞은 운동을 직접 선택해 보세요 :)</mark></strong>
 			</div>
 <c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
 <a href="./add" class="detailAdd btn btn-primary">추가하기</a>
@@ -112,11 +112,11 @@
                     <button id="del" type="button" class="btn btn-warning" data-delete-num="${dto.num}">삭제하기</button>
                     </c:if>
                     <input type="hidden" value="${dto.num}" name="num">
-                    <%-- <c:forEach items="${dto.boardFileDTOs}" var="filedto"> --%>
+                
                     <input type="hidden" value="${dto.boardFileDTOs[0].fileNum}" name="fileNum">
-                    <p>${dto.boardFileDTOs[0].fileNum}</p>
-                    <%-- </c:forEach> --%>
-                    <p>zz</p>
+                 
+           
+                   
 				</form>
 				</div>
 				</div>

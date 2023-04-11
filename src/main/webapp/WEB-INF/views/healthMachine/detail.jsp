@@ -35,7 +35,7 @@
 	<div class="container px-4 px-lg-5">
 
 		<div
-			class="row gx-4 gx-lg-5 align-items-center my-3 border border-secondary-subtle" >
+			class="row gx-4 gx-lg-5 align-items-center my-3 " >
 			<div class="col-lg-7 d-flex justify-content-center align-items-center">
 		  <img class="img-fluid rounded mb-4 mb-lg-0"
 		    src="/resources/images/${dto.healthMachineImgDTOs[0].fileName}"

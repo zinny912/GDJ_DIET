@@ -12,7 +12,8 @@
 
       .ftco-section {
         padding: 3em 0;
-        position: relative; }
+        position: relative; 
+        align-items: center}
         @media (max-width: 767.98px) {
           .ftco-section {
             padding: 2em 0; } }
@@ -24,7 +25,7 @@
       } */
 
 
-      #box {
+      #boxx {
           width: 100%;
           border-radius: 0px;
           overflow: hidden;
@@ -63,29 +64,33 @@
         padding-right:10%;
         margin-top: 20px;
         padding-left: 0; }
-        
-      
+     
 
       .container {
         position: relative;
-        padding: 5% auto;
+        padding: 3% auto;
       } /*폭을 일정하게 담기 위한 css*/
       
       
-      .first {
-        width: 30%;
-        margin-right: 5px;
+      #first {
+        width: 20%;
+        margin-left: 5%;
       } /* 화면을 이분할하기 위해 width에 50% 적용 */
       
-      .second {
-        width: 70%;
+      #second {
+        width: 80%;
       } /* 화면을 이분할하기 위해 width에 50% 적용 */
       
       .left {
         font-size: 20px;
         font-weight: bold;
       }
-      
+      .col-md-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%; }
+
       #machineName {
           position: relative;
           font-weight: 700;
@@ -114,7 +119,7 @@
         font-weight: 700;
       }
       
-      #one {
+      .one {
         display: flex;
         clear: both;
       } /* container div중 하나를 선택하기 위한 id태그*/

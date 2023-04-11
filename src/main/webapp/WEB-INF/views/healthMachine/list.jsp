@@ -24,38 +24,58 @@
 				</c:if>
 			</div>
 			
-	<section class="ftco-section" id="box">
-		<div class="row">
-			<div class="container" id="one">
-				<div class="first">
-				<div> <p>카테고리 리스트</p> </div>
-				
-				
-				
+			 <header class="bg-dark py-4">
+            <div class="container  my-3">
+                <div class="text-center text-white">
+                <img class="bg-dark" src="../resources/images/machinemain.png">
+                  
+                   
+                </div>
+            </div>
+        </header>
+        
+	<section class="ftco-section" id="boxx">
+	<section class="one">
+	<div class="container row" id="first">
+				<div> 
+				<h3>카테고리</h3> 
+				<p><a href="./list">전체</a></p>
+				<p><a href="./list?categoryNum=2">근력향상</a></p>
+				<p><a href="./list?categoryNum=3">스트레칭&균형</a></p>
+				<p><a href="./list?categoryNum=21">헬스소품&보호대</a></p>
+				<p><a href="./list?categoryNum=22">요가&필라테스</a></p>
+				<p><a href="./list?categoryNum=23">유산소</a></p>
+				<p><a href="./list?categoryNum=999">기타</a></p>
 				</div>
-				<div class="second">
-				
+				</div>
+	<div class="container" id="second">
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row">
 				<c:forEach items="${list}" var="dto">
-				<div class="col-md-3">
+				<div class="col-3 mb-3">
 					<div class="classes w-70 ftco-animate">
-						<a href="./detail?machineNum=${dto.machineNum }" class="img w-70 mb-2"
+						<a href="./detail?machineNum=${dto.machineNum}" class="img w-70 mb-2"
 							style="background-image: url(/resources/images/${dto.healthMachineImgDTOs[0].fileName});"></a>
-						<div class="text w-70 text-center">
-							<h3>
+						<div class="text w-70 text-left">
+							<h4>
 								<a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a>
-							</h3>
-							<p id=price>${dto.price }</p>
-							<h5>${dto.salePrice }</h5>
+							</h4>
+							<p id="price">${dto.price}</p>
+							<h5>${dto.salePrice}</h5>
 						</div>
 					</div>
 				</div>
 				</c:forEach>
 			</div>
 			</div>
+			</section>
+			</div>
+			</section>
 			
-		</div>
 	</section>
-
+       
+ 
 
 	<%-- <div class="container-fluid">
 		<div class="row mb-4 mt-4 md-7">

@@ -136,12 +136,13 @@ sup {
   top: -.5em; }
 
 a {
-  color: #007bff;
+  color: #2c396b;;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #0056b3;
-    text-decoration: underline; }
+    color: tomato;
+    text-decoration: underline;
+    cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -313,7 +314,8 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
   font-weight: 500;
-  line-height: 1.2; }
+  line-height: 1.2; 
+  }
 
 h1, .h1 {
   font-size: 2.5rem; }
@@ -3380,7 +3382,8 @@ input[type="button"].btn-block {
   display: block;
   padding: 0.3rem 0.5rem; }
   .nav-link:hover, .nav-link:focus {
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: pointer }
   .nav-link.disabled {
     color: #6c757d;
     pointer-events: none;
@@ -5425,7 +5428,7 @@ button.bg-light:focus {
   background-color: #dae0e5 !important; }
 
 .bg-dark {
-  background-color: #343a40 !important; }
+  background-color: #fff !important; }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
@@ -9152,11 +9155,11 @@ textarea.form-control {
   background: #ffb5b5 !important; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 5em 0;
   position: relative; }
   @media (max-width: 767.98px) {
     .ftco-section {
-      padding: 6em 0; } }
+      padding: 4em 0; } }
 
 .ftco-bg-dark {
   background: #090808; }
