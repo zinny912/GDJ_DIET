@@ -8168,15 +8168,15 @@ body {
     width: 100%; }
 
 span {
-  color: #bfbfbf; }
+  color: #2c396b; }
 
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #ffb5b5; }
+  color: #2c396b; }
   a:hover, a:active, a:focus {
-    color: #6c757d; 
+    color: tomato; 
     /* color: #ffb5b5; a태그 active color tomato로 변경 */
     outline: none !important;
     text-decoration: none !important; }

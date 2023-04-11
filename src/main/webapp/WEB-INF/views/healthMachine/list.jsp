@@ -9,7 +9,9 @@
 <c:import url="../template/common_css.jsp"></c:import>
 <c:import url="../template/header.jsp"></c:import>
  <link href="../resources/css/mlist.css" rel="stylesheet" type="text/css" />
+
 </head>
+
 <body>
 	<div class="container">
 	 <div class="row justify-content-center mb-5 pb-3">
@@ -37,15 +39,15 @@
 	<section class="ftco-section" id="boxx">
 	<section class="one">
 	<div class="container row" id="first">
-				<div> 
-				<h3>카테고리</h3> 
-				<p><a href="./list">전체</a></p>
-				<p><a href="./list?categoryNum=2">근력향상</a></p>
-				<p><a href="./list?categoryNum=3">스트레칭&균형</a></p>
-				<p><a href="./list?categoryNum=21">헬스소품&보호대</a></p>
-				<p><a href="./list?categoryNum=22">요가&필라테스</a></p>
-				<p><a href="./list?categoryNum=23">유산소</a></p>
-				<p><a href="./list?categoryNum=999">기타</a></p>
+				<div class="first-cate"> 
+				<h3 class="cate-h">카테고리</h3> 
+				<p class="cate-p"><a href="./list">전체</a></p>
+				<p class="cate-p"><a href="./list?categoryNum=2">근력향상</a></p>
+				<p class="cate-p"><a href="./list?categoryNum=3">스트레칭&균형</a></p>
+				<p class="cate-p"><a href="./list?categoryNum=21">헬스소품&보호대</a></p>
+				<p class="cate-p"><a href="./list?categoryNum=22">요가&필라테스</a></p>
+				<p class="cate-p"><a href="./list?categoryNum=23">유산소</a></p>
+				<p class="cate-p"><a href="./list?categoryNum=999">기타</a></p>
 				</div>
 				</div>
 	<div class="container" id="second">
@@ -58,11 +60,17 @@
 						<a href="./detail?machineNum=${dto.machineNum}" class="img w-70 mb-2"
 							style="background-image: url(/resources/images/${dto.healthMachineImgDTOs[0].fileName});"></a>
 						<div class="text w-70 text-left">
-							<h4>
-								<a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a>
-							</h4>
-							<p id="price">${dto.price}</p>
-							<h5>${dto.salePrice}</h5>
+							<p></p>
+							<h5>
+								<a href="./detail?machineNum=${dto.machineNum}">${dto.machineName}</a>
+							</h5>
+							<div class="priceBox">
+							<span class="sale-price">${dto.salePrice}원</span> 
+							<span class="ori-price" id="price">
+							<strike>${dto.price}원</strike>
+							</span>
+							</div>
+						
 						</div>
 					</div>
 				</div>
