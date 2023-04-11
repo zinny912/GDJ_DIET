@@ -34,9 +34,10 @@ public class RoutineController {
 	public ModelAndView getRoutineList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<RoutineDTO> ar = routineService.getRoutineList();
-		
+		List<HealthMachineDTO> list = routineService.getMachineName();
 		mv.setViewName("routine/calendar");
 		mv.addObject("routine", ar);
+		mv.addObject("list", list);
 		
 		return mv;
 	}
@@ -51,8 +52,10 @@ public class RoutineController {
 	    routineDTO.setStartDay(date);
 	    System.out.println(routineDTO.getStartDate());
 	    List<RoutineDTO> ar = routineService.getSelectList(routineDTO);
+	    List<HealthMachineDTO> list = routineService.getMachineName();
 	    mv.setViewName("routine/list");
-	    mv.addObject("list", ar);
+	    mv.addObject("ar", ar);
+	    mv.addObject("list", list);
 	    return mv;
 	}
 	
@@ -93,12 +96,12 @@ public class RoutineController {
 	
 
 	
-	@GetMapping("add")
-	public ModelAndView setRoutineAdd() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("routine/add");
-		return mv;
-	}
+//	@GetMapping("add")
+//	public ModelAndView setRoutineAdd() throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("routine/add");
+//		return mv;
+//	}
 
 	@PostMapping("add")
 	public ModelAndView setRoutineAdd(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
@@ -140,27 +143,27 @@ public class RoutineController {
 		return mv;
 	}
 	
-	@GetMapping("machine")
-	public ModelAndView getMachineName() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<HealthMachineDTO> ar = routineService.getMachineName();
-		mv.setViewName("routine/machine");
-	    mv.addObject("list", ar);
-		return mv;
-	}
+//	@GetMapping("machine")
+//	public ModelAndView getMachineName() throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<HealthMachineDTO> ar = routineService.getMachineName();
+//		mv.setViewName("routine/machine");
+//	    mv.addObject("list", ar);
+//		return mv;
+//	}
 	
-	@PostMapping("checked")
-	public ModelAndView  setRoutineChecked(RoutineDTO routineDTO, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = routineService.setRoutineChecked(routineDTO);
-		String msg = "출석체크 실패";
-		if(result>0) {
-			msg = "출석체크 성공";
-		}
-		mv.addObject("result", msg);
-		mv.setViewName("common/result");
-		return mv;
-	}	
+//	@PostMapping("checked")
+//	public ModelAndView  setRoutineChecked(RoutineDTO routineDTO, HttpSession session)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = routineService.setRoutineChecked(routineDTO);
+//		String msg = "출석체크 실패";
+//		if(result>0) {
+//			msg = "출석체크 성공";
+//		}
+//		mv.addObject("result", msg);
+//		mv.setViewName("common/result");
+//		return mv;
+//	}	
 	
 //왜 주석되어있죠? 심지어 주석되어있는데 실행이 되네요 ㅋㅋ
 	@GetMapping("update")

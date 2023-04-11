@@ -138,13 +138,7 @@ $("#contentsConfirm").click(function(){
         if(res.trim()>0){
             alert('글쓰기 성공');
             $("#closeModal").click();
-            fetch("/machineReview/list?machineNum="+machineReviewList.getAttribute('data-review-machineNum'),{
-                method:'GET'
-            })
-            .then((response)=>response.text())
-            .then((res)=>{
-                $('#machineListResult').html(res.trim());
-            })           
+            location.href='/healthMachine/detail?machineNum='+machineReviewList.getAttribute('data-review-machineNum');        
         }else {
             alert('글쓰기 실패');
         }

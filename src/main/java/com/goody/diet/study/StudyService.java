@@ -29,6 +29,14 @@ public class StudyService {
 		return studyDAO.getBoardList(pager);
 	}
 	
+	public Long getStudyReivewCount(StudyDTO studyDTO) throws Exception {
+		return studyDAO.getStudyReivewCount(studyDTO);
+	}
+	
+	public Long getStudyQnaCount(StudyDTO studyDTO) throws Exception {
+		return studyDAO.getStudyQnaCount(studyDTO);
+	}
+	
 	public StudyDTO getBoardDetail(StudyDTO studyDTO) throws Exception{
 		return studyDAO.getBoardDetail(studyDTO);
 	}
@@ -112,7 +120,5 @@ public class StudyService {
 		return result;
 	}
 	
-	public Long getStudyReivewCount(StudyDTO studyDTO) throws Exception {
-		return studyDAO.getStudyReivewCount(studyDTO);
-	}
+
 }

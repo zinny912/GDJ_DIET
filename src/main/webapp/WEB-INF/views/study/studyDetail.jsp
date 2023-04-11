@@ -14,12 +14,22 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
  
  <style>
- .my-hr2 {
- border: 0;
- height: 2px;
- background: #ccc;
- }
- </style>
+.my-hr2 {
+	border: 0;
+	height: 2px;
+	background: #ccc;
+}
+
+  .my-table tr:nth-child(even) {
+    background-color: #ffb5b52c; /* 짝수 줄 배경색 */
+  }
+  
+  .my-table tr:nth-child(odd) {
+    background-color: #ffffff; /* 홀수 줄 배경색 */
+  }
+  
+}
+</style>
 
  </head>
  <body>
@@ -37,23 +47,25 @@
                     <hr class="my-hr2">
             		<div class="text-center">
                     <h6><strong>스터디 일정안내</strong></h6>
-                   	${dto.studyStartPeriod}~${dto.studyEndPeriod} 스터디 기간
+                   	스터디 기간: ${dto.studyStartPeriod}~${dto.studyEndPeriod}
                     <br>반배정 문자 일괄 발송
-                    <br>문의:010-0000-1111
+                 	<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
+                    <br>문의:${sessionMember.roleDTO.roleName eq 'ADMIN'}
+                    </c:if>
                     </div>
                     <br>
-				<c:choose>
+				<%-- <c:choose>
 					<c:when test="${sessionMember eq null}">
 						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">장바구니에 담기</a>
-					</c:when>
-					<c:when test="${sessionMember ne null}">
+					</c:when> --%>
+					<%-- <c:when test="${sessionMember ne null and sessionMember.studyNum eq null}"> --%>
 						<form action="/cart/cartAdd" method="post">
 							<input type="hidden" name="studyNum" value="${dto.studyNum}">
 							<input type="hidden" name="cartPrice" value="${dto.studyCost}">	
 							<button class="btn btn-primary" type="submit">장바구니에 담기</button>
 						</form>
-					</c:when>
-				</c:choose>
+					<%-- </c:when> --%>
+				<%-- </c:choose> --%>
 
 				<form action="./studyUpdate" id="frm">
 					<input type="hidden" name="studyNum" value="${dto.studyNum}">
@@ -75,10 +87,10 @@
 			          <div class="nav-link" id="studyQnaInfo" style="cursor: pointer">상세정보</div>
 			        </div>
 			        <div class="col-md-4">
-			         <div class="nav-link" id="studyReviewList" data-review-studyNum="${dto.studyNum}" style="cursor: pointer">구매평(${count})</div>
+			         <div class="nav-link" id="studyReviewList" data-review-studyNum="${dto.studyNum}" style="cursor: pointer">구매평(${review})</div>
 			        </div>
 			        <div class="col-md-4">
-			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}" style="cursor: pointer">Q&amp;A</div>
+			          <div class="nav-link" id="studyQnaList" data-study-studyNum="${dto.studyNum}" style="cursor: pointer">Q&amp;A(${qna})</div>
 			        </div>
 			        <hr class="my-hr2">
 			        </div>
