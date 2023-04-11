@@ -28,10 +28,10 @@ public class OrderService {
 		return orderDAO.getPrimeDelivery(memberDTO);
 	}
 	
-	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
+	public List<OrderDTO> getOrderList(OrderCalendar orderCalendar) throws Exception {
+		 
 		
-		
-	return orderDAO.getOrderList(memberDTO);
+	return orderDAO.getOrderList(orderCalendar);
 	}
 	public int setUpdateCart(OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
 		//1. order생성
