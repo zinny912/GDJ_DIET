@@ -48,11 +48,12 @@ public class ExerciseService {
 	
 	//짧강효확 상세페이지 
 	//받은것 = bodyNum
-	//얻고싶은것 : bodyNum에 해당하는 exerciseDTO,img 
+	//얻고싶은것 : bodyNum에 해당하는 exerciseDTO,img, machcineName
+	//#machineName은 컬럼에는 
 	public List<ExerciseDTO> getExerciseTypeList(BodyDTO bodyDTO) throws Exception{//ExerciseDTO X bodyDTO O
 		//이미있음join
 		List<ExerciseDTO> ar=exerciseDAO.getExerciseTypeList(bodyDTO);
-
+		
 		return ar;
 	}
 
@@ -83,21 +84,21 @@ public class ExerciseService {
 	}
 
 	// 머신 이름 리스트 불러오기 
-	public List<ExerciseDTO> getExerciseMachine() throws Exception {
-		List<ExerciseDTO> exerciseDTOs = exerciseDAO.getExerciseMachine();
-		for (ExerciseDTO exerciseDTO : exerciseDTOs) {
-			List<HealthMachineDTO> healthMachineDTOs = exerciseDTO.getHealthMachineDTOs();
-			if (healthMachineDTOs != null && !healthMachineDTOs.isEmpty()) {
-				exerciseDTO.setMachineName(healthMachineDTOs.get(0).getMachineName());
-				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
-				System.out.println("machineNum : " + exerciseDTO.getMachineNum());
-				System.out.println("machineName : " + exerciseDTO.getMachineName());
-
-			}
-
-		}
-		return exerciseDTOs;
-	}
+//	public List<ExerciseDTO> getExerciseMachine() throws Exception {
+//		List<ExerciseDTO> exerciseDTOs = exerciseDAO.getExerciseMachine();
+//		for (ExerciseDTO exerciseDTO : exerciseDTOs) {
+//			List<HealthMachineDTO> healthMachineDTOs = exerciseDTO.getHealthMachineDTOs();
+//			if (healthMachineDTOs != null && !healthMachineDTOs.isEmpty()) {
+//				exerciseDTO.setMachineName(healthMachineDTOs.get(0).getMachineName());
+//				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
+//				System.out.println("machineNum : " + exerciseDTO.getMachineNum());
+//				System.out.println("machineName : " + exerciseDTO.getMachineName());
+//
+//			}
+//
+//		}
+//		return exerciseDTOs;
+//	}
 
 	// add 
 	public int setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO, MultipartFile [] Files,Long [] bodyNums) throws Exception{
