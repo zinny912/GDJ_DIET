@@ -16,6 +16,15 @@
 		WHERE C.ID=#{id} AND c.status &lt; 2
 		ORDER BY C.NUM ASC
 	</select>
+	
+	<update id="setMemberStudyNum" parameterType="CartDTO">
+		UPDATE MEMBER SET STUDYNUM=#{studyNum} WHERE ID=#{id}
+	</update>
+	
+	<update id="setStudyStock" parameterType="CartDTO">
+		UPDATE STUDY SET STUDYSTOCK = STUDYSTOCK -1 WHERE STUDYNUM=#{studyNum}
+	</update>
+	
 	<!-- 태현 리스트 machine에선 saleprice,image필요-->
 	<!-- id : cart-N   /cart : realMachine / machinenum: realmachine -N -->
 	<!-- &lt; 는 < ///  &gt;는 >  -->
@@ -101,6 +110,11 @@
 	<delete id="setCartDelete" parameterType="Long">
 		DELETE CART WHERE NUM=#{num}
 	</delete>
+	
+	<update id="setMachineStock" parameterType="RealHealthMachineDTO">
+		UPDATE REALHEALTHMACHINE SET STOCK = STOCK -1 WHERE REALMACHINENUM=#{realMachineNum}
+	</update>
+	
 <!--태현  -->
 	<resultMap type="CartDTO" id="CartMachineMap">
 	<id column="num" property="num" />

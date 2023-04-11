@@ -51,6 +51,8 @@
 
 					<c:forEach items="${list}" var="dto">
 						<input name="num" type="hidden" value="${dto.num}">
+						<c:if test="${not empty dto.studyNum }">
+						<input name="studyNum" type="hidden" value="${dto.studyNum}">
 						<c:forEach items="${dto.studyDTOs}" var="studyDTO">
 							<c:forEach items="${studyDTO.studyBoardFileDTOs}"
 								var="studyFileDTO">
@@ -67,9 +69,9 @@
 									<td style="width: 29%;"><span class="price">${studyDTO.studyCost}원</span></td>
 									<td style="width: 29%;">무료</td>
 								</tr>
-
 							</c:forEach>
 						</c:forEach>
+						</c:if>
 					</c:forEach>
 				</tbody>
 			</table>
@@ -89,8 +91,10 @@
 
 
 					<c:forEach items="${list}" var="dto">
+						
 						<c:if test="${not empty dto.realMachineNum }">
 							<%-- <c:forEach items="${dto.studyDTOs}" var="studyDTO"> --%>
+							<input name="realMachineNum" type="hidden" value="${dto.realMachineNum}">
 							<c:forEach items="${dto.healthMachineDTO.healthMachineImgDTOs}"
 								var="machineFileDTO">
 								<tr class="cart__list__machine__detail">

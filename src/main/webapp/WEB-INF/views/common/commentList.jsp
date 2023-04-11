@@ -7,7 +7,7 @@
 		<ul class="comment-list">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="/resources/images/reviewcomment.jpg" alt="Image placeholder">
+                    <img src="/resources/images/goodeePaysucces.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>${dto.writer}</h3>
