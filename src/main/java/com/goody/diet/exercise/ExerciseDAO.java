@@ -23,7 +23,7 @@ public class ExerciseDAO {
 		return sqlSession.selectList(NAMESPACE+"getExerciseList");
 	}
 	public List<HealthMachineDTO> getHealthMachineList()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getHealthMachineList", NAMESPACE);
+		return sqlSession.selectList(NAMESPACE+"getHealthMachineList");
 	}
 	public ExerciseDTO getMachineName(ExerciseDTO exerciseDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getMachineName", exerciseDTO);
