@@ -20,12 +20,10 @@ $("#submitbtn").click(function(){
     
     $(".essential").each(function(index,essential){
         if($(essential).val().length==0){
-            
             alert("입력란을 다시 확인해주세요");
             nullCheck=true;
-            return;
+            return false;
         }
-        
     })
     if(nullCheck!=true){
         $("#frm").submit();
