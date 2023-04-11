@@ -25,6 +25,10 @@ public class StudyDAO {
 		return sqlSession.selectOne(NAMESPACE+"getStudyReivewCount",studyDTO);
 	}
 	
+	public Long getStudyQnaCount(StudyDTO studyDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getStudyQnaCount",studyDTO);
+	}
+	
 	public List<StudyDTO> getBoardList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardList",pager);

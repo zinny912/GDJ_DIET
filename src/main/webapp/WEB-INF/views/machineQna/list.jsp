@@ -3,29 +3,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="row">
-	<table class="table table-striped">
-		<thead>
-			<c:if test="${not empty list}">
-			<tr>
-				<th>TITLE</th>
-				<th>WRITER</th>
-				<th>DATE</th>
-				<th>HIT</th>
-			</tr>
-			</c:if>
-		</thead>
-		<tbody>
-			<c:forEach items="${list}" var="dto">
-				<tr>
-					<td><c:forEach begin="1" end="${dto.depth}"><img src="/resources/images/reply.png" style="margin-left:15px;"></c:forEach>
-					<a href="/machineQna/detail?machineNum=${dto.machineNum}&num=${dto.num}" >${dto.title}</a></td>
-					<td>${dto.writer}</td>
-					<td>${dto.regDate}</td>
-					<td>${dto.hit}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+    <table class="table my-table">
+        <thead>
+            <c:if test="${not empty list}">
+                <tr>
+                    <th style="text-align: left;">TITLE</th>
+                    <th>WRITER</th>
+                    <th>DATE</th>
+                    <th>HIT</th>
+                </tr>
+            </c:if>
+        </thead>
+        <tbody>
+            <c:forEach items="${list}" var="dto">
+                <tr>
+                    <td>
+                    	<c:choose>
+                    	<c:when test="${dto.depth ge 1}">
+                        <div style="margin-left: ${dto.depth * 20}px">
+                            <img src="/resources/images/reply.png" style="float: left;">
+                            <a href="/machineQna/detail?machineNum=${dto.machineNum}&num=${dto.num}" style="text-align: left;">${dto.title}</a>
+                        </div>
+                        </c:when>
+                        <c:otherwise>
+                        	 <a href="/machineQna/detail?machineNum=${dto.machineNum}&num=${dto.num}" style="text-align: left;">${dto.title}</a>
+                       	</c:otherwise>
+                       	</c:choose>
+                    </td>
+                    <td>${dto.writer}</td>
+                    <td>${dto.regDate}</td>
+                    <td>${dto.hit}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </div>
 <!-- 페이징 -->
 <div class="row">

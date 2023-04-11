@@ -158,7 +158,7 @@
                         	<c:forEach items="${list}" var="dto">
 								<input type="hidden" name="num" value="${dto.num}">
 							</c:forEach> --%>
-						<button id="delete" type="submit" class="cart__list__optionbtn"
+						<button id="delete" type="button" class="cart__list__optionbtn"
 							onclick="checkDelete()">상품삭제하기</button> <!-- </form> -->
 					</td>
 					<td></td>

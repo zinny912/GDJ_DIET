@@ -1,22 +1,6 @@
 
 //routineAdd 
 $('#modalButtons').ready(function() {
-  // 등록 버튼 클릭시
-  // fetch('/routine/machine',{
-  //   method:'GET'
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     // SELECT 태그에 운동기구 리스트 데이터 추가하기
-  //     const machineSelect = document.getElementById('#machineSelect');
-  //     for (let machine of data) {
-  //       const option = document.createElement('#option');
-  //       option.value = machine.machineName;
-  //       option.text = machine.machineName;
-  //       machineSelect.appendChild(option);
-  //     }
-  //   })
-  //   .catch(error => console.error(error));
   $('#routineConfirm').click(function() {
     // 입력된 데이터 가져오기
     const title = $('#title').val();
@@ -24,14 +8,7 @@ $('#modalButtons').ready(function() {
     const endDay = new Date($('#endDay').val()); // Date 객체로 변환
     const videoId = $('#videoId').val();
     const machineNum = $('#machineNum').val();
-    const machineName = $('#machineName').val();
-
-    console.log(title);
-    console.log(startDay);
-    console.log(endDay);
-    console.log(videoId);
-    console.log(machineNum);
-
+    var machineName = $('#machineSelect').val();
     // 데이터 전송
     $.ajax({
       url: '/routine/add',
@@ -56,17 +33,6 @@ $('#modalButtons').ready(function() {
       }
     });
   });
-
-  $('#machinebtn').click(function(){
-    fetch("/routine/machine",{
-      method:'GET'
-      
-  })
-  .then((response)=>response.text())
-  .then((res)=>{
-      $('#machineList').html(res.trim());
-  })
-  })
 });
 
 
@@ -90,16 +56,6 @@ $('#modalButtons').ready(function() {
           $('#scheduleList').html(res.trim());
           let num=$('#routinenum').val();
           $("#contentsConfirm").attr("data-update-num",num);
-          $('#machinebtnup').click(function(){
-            fetch("/routine/machine",{
-              method:'GET'
-              
-          })
-          .then((response)=>response.text())
-          .then((res)=>{
-              $('#machineListup').html(res.trim());
-          })
-          })
       })
     });
   });
@@ -110,8 +66,8 @@ $("#contentsConfirm").click(function(){
   const endDay = new Date($('#routineendDay').val()); // Date 객체로 변환
   const title = $('#routinetitle').val();
   const videoId = $('#routinevideoId').val();
-  const machineName = $('#routinemachineName').val();
-  const num=$(this).attr("data-update-num");
+  var machineName = $('#machineSelected').val();
+  const num=$('#routinenum').val();
   
   $.ajax({
     url: '/routine/update',

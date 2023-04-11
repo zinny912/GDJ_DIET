@@ -4,7 +4,7 @@
 
 <div class="row">
 	<table class="table table-hover">
-		<tbody class="table-group-divider">
+		<tbody class="table-group-divider" >
 			<c:forEach items="${list}" var="dto">
 				<tr>
 					<td><a href="/studyReview/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.contents}</a></td>

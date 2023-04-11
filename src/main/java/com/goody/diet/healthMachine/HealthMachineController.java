@@ -53,8 +53,12 @@ public class HealthMachineController {
 	@GetMapping("detail")
 	public ModelAndView getHealthMachineDetail(ModelAndView mv,HealthMachineDTO healthMachineDTO)throws Exception{
 		healthMachineDTO =healthMachineService.getHealthMachineDetail(healthMachineDTO);
+		Long review = healthMachineService.getMachineReviewCount(healthMachineDTO);
+		Long qna = healthMachineService.getMachineQnaCount(healthMachineDTO);
 
 		mv.addObject("dto", healthMachineDTO);
+		mv.addObject("review", review);
+		mv.addObject("qna", qna);
 		mv.setViewName("healthMachine/detail");
 		return mv;
 	}
