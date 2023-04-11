@@ -1,8 +1,10 @@
 package com.goody.diet.order;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.util.JSONPObject;
@@ -26,20 +28,35 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 
-	
-	@GetMapping("list")
-	public ModelAndView getOrderList(ModelAndView mv, HttpSession session) throws Exception {
+	@GetMapping("listCalen")
+	public ModelAndView getOrderList (ModelAndView mv, OrderCalendar orderCalendar, HttpSession session) throws Exception {
+		System.out.println("-------------------test------------------");
+		System.out.println(orderCalendar.getStartDate()); System.out.println(orderCalendar.getEndDate());
+		
+		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		orderCalendar.setId(memberDTO.getId());
 		
 		if(memberDTO!=null) { //로그인안하면 어케댐?
-			List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);	
+			List<OrderDTO> orderDTOs=orderService.getOrderList(orderCalendar);	
 			mv.addObject("orderDTOs", orderDTOs);
+
+			System.out.println("------------------오더리스트-----------------");
+			System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
+			System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
+			System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyDTOs().get(0)
+					.getStudyBoardFileDTOs().get(0).getStudyNum());
+			System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyDTOs().get(0)
+					.getStudyBoardFileDTOs().get(0).getFileName());
+
 		}
 		
-//		System.out.println("------------------오더리스트-----------------");
-//		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
-//		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
-//		
+		mv.setViewName("/order/detailAjax");
+		return mv;
+	}
+	@GetMapping("list")
+	public ModelAndView getOrderList(ModelAndView mv) throws Exception {
+
 		
 		mv.setViewName("/order/orderListPage");
 		return mv;

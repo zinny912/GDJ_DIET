@@ -22,8 +22,16 @@
 		SELECT * FROM DELIVERY d WHERE ADDRESS=(SELECT ADDRESS FROM "MEMBER" m WHERE ID=#{id})
 	</select>
 
-	<select id="getOrderList" parameterType="MemberDTO" resultMap="OrderDTOMap">
-		SELECT * FROM "ORDER" O
+	<select id="getOrderList" parameterType="com.goody.diet.order.OrderCalendar" resultMap="OrderDTOMap">
+		SELECT 
+		o.ORDERNUM, o.ID, o.ORDERDATE, o.ORDERSTATUS, o.PRICE, o.ADDRESS, o.RECIPIENTTEL, o.RECIPIENT, 
+			c.NUM, c.STUDYNUM, c.REALMACHINENUM, c.COUNT, c.STATUS, c.CARTPRICE, 
+			R.MACHINENUM, R.STOCK, R.OPTNAME1, R.OPTID1, R.OPTNAME2, R.OPTID2, R.OPTNAME3, R.OPTID3, R.OPTNAME4, R.OPTID4, 
+			H.MACHINESCORE, H.PRICE, H.SALEPRICE, H.OPTION1, H.OPTION2, H.OPTION3, H.OPTION4, 
+			t.FILENUM, T.FILENAME, T.ORINAME, 
+			S.STUDYNAME, S.STUDYCOST, S.STUDYSTARTPERIOD, S.STUDYENDPERIOD, S.STUDYSTOCK, 
+			SF.FILENUM AS SFILENUM, SF.FILENAME AS SFILENAME, SF.ORINAME AS SORINAME 
+		FROM "ORDER" O
 		LEFT OUTER JOIN      
 		ORDERDETAIL od
 		on(O.ORDERNUM=od.ORDERNUM)
@@ -50,7 +58,8 @@
 				LEFT JOIN
 				STUDYFILE SF
 				ON (S.STUDYNUM = SF.STUDYNUM) 
-		WHERE O.ID  =#{id} AND c.status =2 AND O.ORDERSTATUS=1
+		WHERE O.ID  =#{id} AND c.status =2 AND O.ORDERSTATUS=1 
+		AND ORDERDATE BETWEEN #{startDate} AND #{endDate}
 		ORDER BY ORDERDATE DESC
 	</select>
 	
@@ -105,7 +114,6 @@
 						</collection>
 					</association>
 					<!-- 운동기구 -->
-		
 				<!-- study -->
 				<collection property="studyDTOs" javaType="List" ofType="StudyDTO">
 					<id column="studyNum" property="studyNum" />
@@ -114,10 +122,11 @@
 						<result column="studyStartPeriod" property="studyStartPeriod" />
 						<result column="studyEndPeriod" property="studyEndPeriod" />
 						<result column="studyStock" property="studyStock" />
-					<collection property="studyBoardFileDTOs" javaType="List"  ofType="StudyBoardFileDTO">
-						<id column="fileNum" property="fileNum" />
-							<result column="fileName" property="fileName" />
-							<result column="oriName" property="oriName"/>
+					<collection property="studyBoardFileDTOs" javaType="List" ofType="StudyBoardFileDTO">
+						<id column="SfileNum" property="fileNum" />
+							<result column="StudyNum" property="StudyNum"/>
+							<result column="SfileName" property="fileName"/>
+							<result column="SoriName" property="oriName"/>
 					</collection>
 				</collection>		
 			

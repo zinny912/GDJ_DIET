@@ -67,7 +67,10 @@ public class MemberController {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		//주소삭제
-		memberService.setDeliveryDeleteOnMemberDelete(memberDTO);
+		memberService.setDeleteOnMemberDelete(memberDTO);
+		//주문-카트삭제
+		//카트삭제
+		//주문삭제
 
 		int delResult=memberService.setMemberDelete(memberDTO);
 		session.invalidate();
