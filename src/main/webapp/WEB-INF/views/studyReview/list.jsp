@@ -33,6 +33,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${empty list}">
+		<div class="col my-5">
+			<div style="text-align: center; font-size: 1.5em;">등록된 리뷰가
+				없습니다.</div>
+		</div>
+	</c:if>
 </div>
 
 <!-- 페이징 -->

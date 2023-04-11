@@ -73,7 +73,7 @@
 	    $(this).parent().remove();
 	})
 	</script>
-	<script type="text/javascript" src="/resources/js/studyUpdate.js"></script>	
+	<script type="text/javascript" src="/resources/js/studyDateCheck.js"></script>	
 	<c:import url="../template/common_js.jsp"></c:import>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

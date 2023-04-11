@@ -37,7 +37,7 @@ public class CartService {
 	}
 
 	public List<CartDTO> getPaymentList(CartDTO cartDTO) throws Exception{
-		List<CartDTO> ar = cartDAO.getPaymentList(cartDTO);
+		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
 		List<CartDTO> machines = cartDAO.getPaymentMachineList(cartDTO);
 		for(CartDTO dto:machines) {
 			ar.add(dto);

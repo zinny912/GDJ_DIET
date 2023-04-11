@@ -63,6 +63,13 @@
 						</c:forEach>
 					</c:if>
 				</c:forEach>
+					<c:if test="${empty list}">
+						<div style="text-align: center; margin-top: 50px;">
+							<img src="/resources/images/cart.png" width="200px">
+							<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
+								비어있습니다.</div>
+						</div>
+					</c:if>
 				</tbody>
 				<tfoot>
 				   <tr>

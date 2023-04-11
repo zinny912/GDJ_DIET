@@ -30,7 +30,7 @@
 	<!-- &lt; 는 < ///  &gt;는 >  -->
 	<select id="getCartMachineList" parameterType="CartDTO" resultMap="CartMachineMap">
 	SELECT * FROM cart c
-	LEFT OUTER JOIN
+	INNER JOIN
 	REALHEALTHMACHINE r 
 	on(c.REALMACHINENUM=r.REALMACHINENUM)
 	LEFT OUTER JOIN 
@@ -50,7 +50,7 @@
 	<select id="getPaymentList" parameterType="CartDTO" resultMap="CartDTOMap">
 		SELECT C.*,S.*,SF.*
 		FROM CART C
-			LEFT JOIN
+			INNER JOIN
 			STUDY S
 			ON (C.STUDYNUM = S.STUDYNUM)
 			LEFT JOIN

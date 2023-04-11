@@ -1,6 +1,7 @@
 const studyStartPeriod = document.getElementById("studyStartPeriod");
 const studyEndPeriod = document.getElementById("studyEndPeriod");
 const studyStartResult = document.getElementById("studyStartResult");
+const submitBtn = document.getElementById("submitbtn");
 
 studyStartPeriod.addEventListener("change", () => {
     const startDate = new Date(studyStartPeriod.value);
@@ -22,3 +23,14 @@ studyStartPeriod.addEventListener("change", () => {
     }
   }
   );
+
+  submitBtn.addEventListener("click", (event) => {
+    const startDate = new Date(studyStartPeriod.value);
+    const endDate = new Date(studyEndPeriod.value);
+  
+    if (startDate > endDate) {
+      event.preventDefault();
+      alert("올바른 날짜를 선택해주세요.");
+    }
+  });
+
