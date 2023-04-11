@@ -59,6 +59,7 @@
 			<result column="id" property="id" />
 			<result column="orderDate" property="orderDate" />
 			<result column="orderStatus" property="orderStatus" />
+			<result column="price" property="price"/>
 			<result column="ADDRESS" property="address"/>
 			<result column="recipient" property="recipient"/>			
 			<result column="recipientTel" property="recipientTel"/>

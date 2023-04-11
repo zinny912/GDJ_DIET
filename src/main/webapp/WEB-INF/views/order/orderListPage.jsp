@@ -180,23 +180,24 @@ body {
                                     <div class="media-body my-auto text-right">
                                         <div class="row  my-auto flex-column flex-md-row">
                                             <div class="col my-auto"> <h6 class="mb-0"> ${cartDTO.studyDTOs[0].studyName}</h6>  </div>
-                                            <div class="col-auto my-auto"> <small>Golden Rim </small></div>
-                                            <div class="col my-auto"> <small>Size : M</small></div>
-                                            <div class="col my-auto"> <small>Qty : 1</small></div>
+                                            <div class="col-auto my-auto"> <small></small></div>
+                                            <div class="col my-auto"> <small></small></div>
+                                            <div class="col my-auto"> <small></small></div>
                                             <div class="col my-auto"><h6 class="mb-0">${cartDTO.studyDTOs[0].studyCost}원</h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="my-3 ">
-                                <div class="row">
+                                <div class="row"> <div class="col-2">
 <button type="button" class="btn btn-secondary btn-addCart to-cart-popper"
 	data-addCart-price="${cartDTO.cartPrice}"
 	data-addCart="${cartDTO.studyNum}" data-bs-container="body"
 	data-bs-toggle="popover" data-bs-placement="top"
 	data-bs-content="Top popover">장바구니 담기</button>
-<button type="button" class="btn btn-secondary">리뷰
-	작성하기</button>
+                                </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -222,17 +223,18 @@ body {
                                     src="/resources/images/${cartDTO.healthMachineDTO.healthMachineImgDTOs[0].fileName}" width="135" height="135" /> </div>
                                     <div class="media-body my-auto text-right">
                                         <div class="row  my-auto flex-column flex-md-row">
-                                            <div class="col my-auto"> <h6 class="mb-0"> ${cartDTO.studyDTOs[0].studyName}</h6>  </div>
-                                            <div class="col-auto my-auto"> <small>${cartDTO.realHealthMachineDTO.optName1} </small></div>
-                                            <div class="col my-auto"> <small>Size : ${cartDTO.realHealthMachineDTO.optName2}</small></div>
-                                            <div class="col my-auto"> <small>${cartDTO.count}개</small></div>
-                                            <div class="col my-auto"><h6 class="mb-0">${cartDTO.healthMachineDTO.salePrice}원</h6>
+                                            <div class="col my-auto"> <h6 class=""> ${cartDTO.studyDTOs[0].studyName}</h6>  </div>
+                                            <div class="col-auto my-auto"> <h6>${cartDTO.realHealthMachineDTO.optName1} </h6></div>
+                                            <div class="col my-auto"> <h6><c:if test="${cartDTO.realHealthMachineDTO.optName2 ne null}">size:</c:if>${cartDTO.realHealthMachineDTO.optName2}</h6></div>
+                                            <div class="col my-auto"> <h6>${cartDTO.count}개</h6></div>
+                                            <div class="col my-auto"><h6 class="">${cartDTO.healthMachineDTO.salePrice}원</h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="my-3 ">
                                 <div class="row">
+                                <div class="col-2">
 <button type="button"
 	class="btn btn-secondary btn-addCart-machine to-cart-popper"
 	data-bs-container="body" data-bs-toggle="popover"
@@ -245,8 +247,8 @@ body {
 	data-addCartop-3="${cartDTO.realHealthMachineDTO.optId3}"
 	data-addCartop-4="${cartDTO.realHealthMachineDTO.optId4}">장바구니
 	담기</button>
-<button type="button" class="btn btn-secondary">리뷰
-	작성하기</button>
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -263,20 +265,20 @@ body {
                     <div class="col">
                         <div class="row justify-content-between">
                             <div class="col-auto"><p class="mb-1 text-dark"><b>Order Details</b></p></div>
-                            <div class="flex-sm-col text-right col"> <p class="mb-1"><b>Total</b></p> </div>
+                            <div class="flex-sm-col text-right col"> <p class="mb-1"><b>.</b></p> </div>
                             <div class="flex-sm-col col-auto"> <p class="mb-1">${orderDTO.price}원</p> </div>
                         </div>
                         <div class="row justify-content-between">
-                            <div class="flex-sm-col text-right col"><p class="mb-1"> <b>Discount</b></p> </div>
-                            <div class="flex-sm-col col-auto"><p class="mb-1">xx원</p></div>
+                            <div class="flex-sm-col text-right col"><p class="mb-1"> <b>.</b></p> </div>
+                            <div class="flex-sm-col col-auto"><p class="mb-1">${orderDTO.address}</p></div>
                         </div>
                         <div class="row justify-content-between">
-                            <div class="flex-sm-col text-right col"><p class="mb-1"><b>GST xx%</b></p></div>
-                            <div class="flex-sm-col col-auto"><p class="mb-1">xx</p></div>
+                            <div class="flex-sm-col text-right col"><p class="mb-1"><b>.</b></p></div>
+                            <div class="flex-sm-col col-auto"><p class="mb-1">${orderDTO.recipient}</p></div>
                         </div>
                         <div class="row justify-content-between">
-                            <div class="flex-sm-col text-right col"><p class="mb-1"><b>Delivery Charges</b></p></div>
-                            <div class="flex-sm-col col-auto"><p class="mb-1">Free?</p></div>
+                            <div class="flex-sm-col text-right col"><p class="mb-1"><b>.</b></p></div>
+                            <div class="flex-sm-col col-auto"><p class="mb-1">${orderDTO.recipientTel}</p></div>
                         </div>
                     </div>
                 </div>
