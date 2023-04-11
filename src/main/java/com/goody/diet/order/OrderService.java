@@ -27,11 +27,13 @@ public class OrderService {
 		return orderDAO.getPrimeDelivery(memberDTO);
 	}
 	
-	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
-		
-		
-	return orderDAO.getOrderList(memberDTO);
+	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {	
+		return orderDAO.getOrderList(memberDTO);
 	}
+	public OrderDTO getOrderDetail (OrderDTO orderDTO) throws Exception {	
+		return orderDAO.getOrderDetail(orderDTO);
+	}
+	
 	public int setUpdateCart(OrderDTO orderDTO,Long [] num, HttpSession session)throws Exception{
 		//1. order생성
 		int result= orderDAO.setOrder(orderDTO); 

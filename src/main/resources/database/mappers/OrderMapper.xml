@@ -51,7 +51,37 @@
 				STUDYFILE SF
 				ON (S.STUDYNUM = SF.STUDYNUM) 
 		WHERE O.ID  =#{id} AND c.status =2 AND O.ORDERSTATUS=1
-
+	</select>
+	
+	<select id="getOrderDetail" parameterType="OrderDTO" resultMap="OrderDTOMap">
+		SELECT * FROM "ORDER" O
+		LEFT OUTER JOIN      
+		ORDERDETAIL od
+		on(O.ORDERNUM=od.ORDERNUM)
+		LEFT OUTER JOIN
+		cart C 
+		on(od.NUM=c.NUM)
+			LEFT OUTER JOIN
+			REALHEALTHMACHINE r 
+			on(c.REALMACHINENUM=r.REALMACHINENUM)
+			LEFT OUTER JOIN 
+			HEALTHMACHINE h 
+			on(r.MACHINENUM=h.MACHINENUM)
+			LEFT OUTER JOIN 
+			(
+					SELECT * FROM (
+					SELECT m2.*,rank()over(PARTITION BY MACHINENUM ORDER BY filenum ASC)
+					ranknum
+					FROM MACHINEIMG m2
+					) WHERE ranknum=1) t
+			on(h.MACHINENUM=t.machinenum)
+				LEFT JOIN
+				STUDY S
+				ON (C.STUDYNUM = S.STUDYNUM)
+				LEFT JOIN
+				STUDYFILE SF
+				ON (S.STUDYNUM = SF.STUDYNUM) 
+		WHERE O.ORDERNUM=#{orderNum} AND c.status =2 AND O.ORDERSTATUS=1
 	</select>
 
 	<resultMap id="OrderDTOMap" type="OrderDTO">
@@ -59,7 +89,10 @@
 			<result column="id" property="id" />
 			<result column="orderDate" property="orderDate" />
 			<result column="orderStatus" property="orderStatus" />
-			
+			<result column="ADDRESS" property="address"/>
+			<result column="recipient" property="recipient"/>			
+			<result column="recipientTel" property="recipientTel"/>
+						
 			<collection property="cartDTOs" javaType="List" ofType="CartDTO">
 				<id column="num" property="num" />
 				<result column="id" property="id" />

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.member.DeliveryDTO;
@@ -29,14 +30,32 @@ public class OrderController {
 	@GetMapping("list")
 	public ModelAndView getOrderList(ModelAndView mv, HttpSession session) throws Exception {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
-		List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);
+		
+		if(memberDTO!=null) { //로그인안하면 어케댐?
+			List<OrderDTO> orderDTOs=orderService.getOrderList(memberDTO);	
+			mv.addObject("orderDTOs", orderDTOs);
+		}
 		
 //		System.out.println("------------------오더리스트-----------------");
 //		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getStudyNum());
 //		System.out.println(orderDTOs.get(0).getCartDTOs().get(0).getRealMachineNum());
 //		
-		mv.addObject("orderDTOs", orderDTOs);
+		
 		mv.setViewName("/order/orderListPage");
+		return mv;
+	}
+	@GetMapping("detail")
+	public ModelAndView getOrderDetail(ModelAndView mv, OrderDTO orderDTO) throws Exception {
+		
+		orderDTO=orderService.getOrderDetail(orderDTO);
+		
+//		System.out.println("-------------getOrderDetail-----------");
+//		System.out.println(orderDTO);
+//		System.out.println(orderDTO.getOrderDate());
+//		System.out.println(orderDTO.getRecipient());
+		
+		mv.addObject("orderDTO", orderDTO);
+		mv.setViewName("/order/detail");
 		return mv;
 	}
 	

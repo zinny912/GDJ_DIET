@@ -59,17 +59,23 @@ function enter_or_click (){
 // history.pushState(null, null, '');
 window.onpageshow = function(event) {
     if (event.persisted) {
-        // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
-        // 이벤트 추가하는 곳
-        console.log('back button event4');
 
-		document.getElementById('loginForm').reset();
-        document.getElementById('kloginForm').reset();
+        location.href="/member/login"
+
+        // // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
+        // // 이벤트 추가하는 곳
+        // console.log('back button event4');
+
+		// document.getElementById('loginForm').reset();
+        // document.getElementById('kloginForm').reset();
         
-        if($('#when_back').attr("data-sessionMember")!=null){
-            location.href="/";
-            alert("이미로그인함");
-        }
+
+
+        // $('#when_back').attr("data-sessionMember",'')
+        // if($('#when_back').attr("data-sessionMember")!=""||$('#when_back').attr("data-sessionMember")!=null){
+        //     // location.href="/";
+        //     // alert("이미로그인함");
+        // }
 
     }
 }

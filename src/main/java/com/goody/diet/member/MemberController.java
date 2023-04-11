@@ -337,7 +337,7 @@ public class MemberController {
 		return mv;
 	}
 	@PostMapping("deliveryUpdate")
-	public ModelAndView setdeliveryUpdate(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
+	public ModelAndView setdeliveryUpdate(boolean popUp, HttpSession session,String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
 		
 		System.out.println("--------------setdeliveryUpdate---------------");
 		System.out.println(deliveryDTO.getAddress());
@@ -352,6 +352,13 @@ public class MemberController {
 			memberDTO.setId(deliveryDTO.getId());
 			memberDTO.setAddress(deliveryDTO.getAddress());
 			memberService.setMemberAddressUpdate(memberDTO);
+			
+			//세션업데이트
+//			MemberDTO memberCheck=(MemberDTO)session.getAttribute("sessionMember");
+			session.setAttribute("sessionMember", memberDTO);
+		}
+		if(popUp) {
+			mv.addObject("popUp", popUp);
 		}
 		
 		mv.setViewName("redirect:./delivery");
