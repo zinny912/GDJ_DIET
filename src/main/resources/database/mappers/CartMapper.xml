@@ -7,13 +7,13 @@
 	<select id="getCartList" parameterType="CartDTO" resultMap="CartDTOMap">
 		SELECT C.*,S.*,SF.*
 		FROM CART C
-			LEFT JOIN
+			inner JOIN
 			STUDY S
 			ON (C.STUDYNUM = S.STUDYNUM)
 			LEFT JOIN
 			STUDYFILE SF
 			ON (S.STUDYNUM = SF.STUDYNUM) 
-		WHERE C.ID=#{id} AND c.status &lt; 2
+		WHERE C.ID=#{id} AND c.status =1
 		ORDER BY C.NUM ASC
 	</select>
 	
@@ -30,7 +30,7 @@
 	<!-- &lt; 는 < ///  &gt;는 >  -->
 	<select id="getCartMachineList" parameterType="CartDTO" resultMap="CartMachineMap">
 	SELECT * FROM cart c
-	LEFT OUTER JOIN
+	inner JOIN
 	REALHEALTHMACHINE r 
 	on(c.REALMACHINENUM=r.REALMACHINENUM)
 	LEFT OUTER JOIN 
@@ -44,13 +44,13 @@
 			FROM MACHINEIMG m2
 			) WHERE ranknum=1) t
 	on(h.MACHINENUM=t.machinenum)
-	WHERE c.ID =#{id} AND c.status &lt; 2
+	WHERE c.ID =#{id} AND c.status =1
 	</select>
 	
 	<select id="getPaymentList" parameterType="CartDTO" resultMap="CartDTOMap">
 		SELECT C.*,S.*,SF.*
 		FROM CART C
-			LEFT JOIN
+			inner JOIN
 			STUDY S
 			ON (C.STUDYNUM = S.STUDYNUM)
 			LEFT JOIN
@@ -61,7 +61,7 @@
 	</select>
 	<select id="getPaymentMachineList" parameterType="CartDTO" resultMap="CartMachineMap">
 	SELECT * FROM cart c
-	LEFT OUTER JOIN
+	inner JOIN
 	REALHEALTHMACHINE r 
 	on(c.REALMACHINENUM=r.REALMACHINENUM)
 	LEFT OUTER JOIN 

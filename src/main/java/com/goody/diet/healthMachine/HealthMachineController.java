@@ -126,6 +126,9 @@ public class HealthMachineController {
 	}
 	@PostMapping("update")
 	public ModelAndView  setHealthMachineUpdate(ModelAndView mv, HealthMachineDTO healthMachineDTO,Long []  categoryDTOs, Long thumnailNum, MultipartFile [] Files, Long [] fileNum, HttpSession session)throws Exception{
+		
+		System.out.println("thumnailNum : "+thumnailNum);
+		System.out.println("fileNum : thunail지워야함 : "+fileNum[0]);
 		int result = healthMachineService.setHealthMachineUpdate(healthMachineDTO, categoryDTOs, thumnailNum, Files, fileNum,session);
 		String mes = "업데이트 실패";
 		if(result>0) {
