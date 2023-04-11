@@ -64,8 +64,8 @@
 
 				<div id="fileList">
 				<label for="Files"class="form-label">썸네일</label>
-				<input type="file" class="form-control" name='Files' id="thumnailFile">
-					<!-- <button type="button" class="btn btn-primary col-md-2" id="fileAdd">fileadd</button> -->
+				<input type="file" class="form-control essential" name='Files' id="thumnailFile">
+				
 				</div>
 
 
