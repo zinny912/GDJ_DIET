@@ -210,9 +210,10 @@ public class HealthMachineService {
 		boolean thumnailcheck = false;
 		if(fileNums!=null) {
 			for(Long fileNum : fileNums) {
-				healthMachineDAO.setMachineFileDelete(fileNum);
-				if(fileNum==thumnailNum){//썸네일이 삭제되면 구분하기
+				result = healthMachineDAO.setMachineFileDelete(fileNum);
+				if(fileNum.equals(thumnailNum)){//썸네일이 삭제되면 구분하기
 					thumnailcheck=true;
+					System.out.println("true");
 				}
 			}
 		}
