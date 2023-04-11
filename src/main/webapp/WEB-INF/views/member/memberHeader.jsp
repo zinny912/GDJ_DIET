@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="col-2 border border-primary" style="height: 700px;">
+
+<div class="col-2 mx-1 mb-3" style="box-shadow: 2px 2px 10px 0px rgb(190, 108, 170); ">
 <ul class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="/order/list">주문/배송</a>

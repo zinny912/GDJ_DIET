@@ -85,8 +85,18 @@ public class MemberController {
 	}
 	
 	@GetMapping("login")
-	public String setMemberLogin() throws Exception {
-		return "/member/login";
+	public ModelAndView setMemberLogin(ModelAndView mv, HttpSession session) throws Exception {
+		System.out.println(session.getAttribute("sessionMember"));
+		if(session.getAttribute("sessionMember")!=null) {
+			String result="이미 로그인함";
+			mv.setViewName("/common/result");
+			mv.addObject("url", "/");
+			mv.addObject("result", result);
+		}else {			
+			mv.setViewName("/member/login");
+		}
+		
+		return mv;
 	}
 	@PostMapping("login")
 	public ModelAndView getMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
@@ -149,15 +159,15 @@ public class MemberController {
 		mv.setViewName("/member/ajaxResult");
 		return mv;
 	}
-	@PostMapping("emailCheck")
-	public ModelAndView getEmailCheck (MemberDTO memberDTO, ModelAndView mv) throws Exception {
-//		System.out.println(memberDTO.getId());
-		String result = memberService.getEmailCheck(memberDTO);
-//		System.out.println(result);
-		mv.addObject("result", result);
-		mv.setViewName("/member/ajaxResult");
-		return mv;
-	}
+//	@PostMapping("emailCheck")
+//	public ModelAndView getEmailCheck (MemberDTO memberDTO, ModelAndView mv) throws Exception {
+////		System.out.println(memberDTO.getId());
+//		String result = memberService.getEmailCheck(memberDTO);
+////		System.out.println(result);
+//		mv.addObject("result", result);
+//		mv.setViewName("/member/ajaxResult");
+//		return mv;
+//	}
 	
 	@GetMapping("join")
 	public String setMemberJoin() throws Exception {
@@ -192,7 +202,7 @@ public class MemberController {
 		System.out.println("-----------------");
 		System.out.println(emailVer);
 		String result = sendEmail.generateEmail(httpSession, emailVer);
-		System.out.println("보낸 번호: "+httpSession.getAttribute("verificationCode"));
+		System.out.println("result: "+result+"보낸 번호: "+httpSession.getAttribute("verificationCode"));
 		mv.addObject("result", result);
 		mv.setViewName("/member/ajaxResult");
 		return mv;
@@ -327,7 +337,7 @@ public class MemberController {
 		return mv;
 	}
 	@PostMapping("deliveryUpdate")
-	public ModelAndView setdeliveryUpdate(String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
+	public ModelAndView setdeliveryUpdate(boolean popUp, HttpSession session,String primaryAddress, DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
 		
 		System.out.println("--------------setdeliveryUpdate---------------");
 		System.out.println(deliveryDTO.getAddress());
@@ -342,6 +352,13 @@ public class MemberController {
 			memberDTO.setId(deliveryDTO.getId());
 			memberDTO.setAddress(deliveryDTO.getAddress());
 			memberService.setMemberAddressUpdate(memberDTO);
+			
+			//세션업데이트
+//			MemberDTO memberCheck=(MemberDTO)session.getAttribute("sessionMember");
+			session.setAttribute("sessionMember", memberDTO);
+		}
+		if(popUp) {
+			mv.addObject("popUp", popUp);
 		}
 		
 		mv.setViewName("redirect:./delivery");
@@ -366,7 +383,7 @@ public class MemberController {
 	
 	//password Update
 	@PostMapping("pwUpCheck")
-	public ModelAndView passwordChangeCheck(MemberDTO memberDTO, ModelAndView mv, HttpSession httpSession) throws Exception {
+	public ModelAndView passwordChangeCheck(String pw2,MemberDTO memberDTO, ModelAndView mv, HttpSession httpSession) throws Exception {
 		MemberDTO memberCheck=(MemberDTO)httpSession.getAttribute("sessionMember");
 		memberCheck=memberService.getMyPage(memberCheck);
 		System.out.println("보낸pw: "+memberDTO.getPw());
@@ -374,13 +391,18 @@ public class MemberController {
 		System.out.println(memberCheck.getPw());
 		System.out.println(memberDTO.getPw());
 		
-		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())   ) {
-
-			mv.addObject("result", 1);
+		
+		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())  ) {
+			String result="1";
 			
-		}else {
-			mv.addObject("result", 0);
+			if(memberDTO.getPw().equals(pw2)) {
+				result="2";
+			}
+			mv.addObject("result", result);
 		}
+//		else {
+//			mv.addObject("result", 0);
+//		}
 		
 		mv.setViewName("member/ajaxResult");
 		return mv;

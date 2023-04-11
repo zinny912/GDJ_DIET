@@ -65,7 +65,7 @@
 
 
 <c:if test="${sessionMember.loginType eq 'general'}">
-
+<form action="" id="pwUpdateForm">
 	    <table class=" table " >    
 			<tbody>
 
@@ -78,13 +78,13 @@
 			<tr>
 			    <th class="col-2">현재 비밀번호</th>
 			    <td class="col-10">
-			        <input type="password" class="password-change1"><div class="member__input-guide-area_set member__input-guide-area1"></div>
+			        <input type="password" class="password-change1" id="password-change1"><div class="member__input-guide-area_set member__input-guide-area1"></div>
 			    </td>
 			</tr>
 			<tr>
 			    <th>새 비밀번호</th>
 			    <td>
-			        <input type="password" class="password-change2"><div class="member__input-guide-area_set member__input-guide-area2"></div>
+			        <input type="password" class="password-change2" id="password-change2"><div class="member__input-guide-area_set member__input-guide-area2"></div>
 			    </td>
 			</tr>
 			<tr>
@@ -103,6 +103,7 @@
 			</tr>
 	    </tbody>
 	</table>
+</form>
 </c:if>
 
 </div>

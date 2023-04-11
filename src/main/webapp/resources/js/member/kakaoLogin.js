@@ -8,6 +8,8 @@ Kakao.isInitialized();
 // SDK 초기화 여부를 판단
 console.log(Kakao.isInitialized());
 
+console.log(Kakao.Auth.getAccessToken())
+
 //카카오로그인 버튼 누르면 호출
 // function loginWithKakao() {
 //     Kakao.Auth.authorize({
@@ -130,16 +132,20 @@ function kakaoConstant(email, nickname,kakao_id){
 //회원탈퇴
 function kakaoDelete(){
 
-    Kakao.API.request({
-        url: '/v1/user/unlink',
-      })
-    .then(function(response) {
-        console.log(response);
-    })
-    .catch(function(error) {
-        alert('탈퇴처리가 미완료되었습니다. \n관리자에게 문의하시기 바랍니다.');
-        console.log(error);
-    });
+    if(Kakao.Auth.getAccessToken()){
+
+        Kakao.API.request({
+            url: '/v1/user/unlink',
+          })
+        .then(function(response) {
+            console.log(response);
+        })
+        .catch(function(error) {
+            alert('탈퇴처리가 미완료되었습니다. \n관리자에게 문의하시기 바랍니다.');
+            console.log(error);
+        });
+    }
+
 
 }
 

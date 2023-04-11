@@ -32,9 +32,9 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"setMemberJoin", memberDTO);
 	}
 
-	public MemberDTO getEmailCheck (MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getEmailCheck", memberDTO);
-	}
+//	public MemberDTO getEmailCheck (MemberDTO memberDTO) throws Exception {
+//		return sqlSession.selectOne(NAMESPACE+"getEmailCheck", memberDTO);
+//	}
 	
 	public int setMemberRole(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setMemberRole", memberDTO);

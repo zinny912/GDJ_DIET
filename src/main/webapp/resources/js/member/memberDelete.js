@@ -15,10 +15,11 @@ function modalMemberDelete(){
                 
                 console.log("res: "+res)
                 $('#modalClose').click()
+                alert("탈퇴완료")
                 location.href="/"
             }
-        }
-
+        },
+        error:function(){alert('오류')}
     })
 
 }
