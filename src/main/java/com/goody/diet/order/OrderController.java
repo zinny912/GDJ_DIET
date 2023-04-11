@@ -43,9 +43,10 @@ public class OrderController {
 	@PostMapping("success")
 	public ModelAndView getOrderSuccess(ModelAndView mv,String jsonString)throws Exception{
 		
-		System.out.println(jsonString);
-		JSONParser jsonParser =new JSONParser();
-		JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
+		/*
+		 * System.out.println(jsonString); JSONParser jsonParser =new JSONParser();
+		 * JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
+		 */
 		
 		
 		
@@ -54,13 +55,16 @@ public class OrderController {
 		return mv;
 	}
 	@PostMapping("paymentUpdate")
-	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num, HttpSession session) throws Exception{
+	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session) throws Exception{
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		
-		System.out.println(orderDTO.getRecipientTel());
+//		System.out.println(orderDTO.getRecipientTel());
+		System.out.println("num " + num.length);
+		System.out.println("studyNum : "+studyNum.length);
+		System.out.println("machineNum : " +realMachineNum.length);
 		
 		orderDTO.setId(memberDTO.getId());
-		int result = orderService.setUpdateCart(orderDTO, num, session);
+		int result = orderService.setUpdateCart(orderDTO, num,studyNum,realMachineNum,session);
 		if(result>0) {
 			mv.setViewName("/order/orderSuccessPage");
 		}

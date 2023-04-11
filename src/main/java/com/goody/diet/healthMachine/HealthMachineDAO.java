@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.goody.diet.study.StudyDTO;
+
 @Repository
 public class HealthMachineDAO {
 
@@ -111,6 +113,15 @@ public class HealthMachineDAO {
 	//healthmAchine update
 	public int setHealthMachineUpdate(HealthMachineDTO healthMachineDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setHealthMachineUpdate", healthMachineDTO);
+	}
+	
+	// qna & review count
+	public Long getMachineReviewCount(HealthMachineDTO healthMachineDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getMachineReviewCount",healthMachineDTO);
+	}
+	
+	public Long getMachineQnaCount(HealthMachineDTO healthMachineDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getMachineQnaCount",healthMachineDTO);
 	}
 	
 } 

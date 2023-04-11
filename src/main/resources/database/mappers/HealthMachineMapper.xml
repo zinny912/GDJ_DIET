@@ -249,5 +249,17 @@
 		order by optname4
 	</select>
 
-	<!-- -->
+	<!-- qna review count-->
+	
+	 	<select id="getMachineReviewCount" parameterType="HealthMachineDTO" resultType="Long">
+ 		SELECT COUNT(NUM)
+		FROM MACHINEREVIEW
+		WHERE MACHINENUM=#{machineNum}
+ 	</select>
+ 	
+ 	<select id="getMachineQnaCount" parameterType="HealthMachineDTO" resultType="Long">
+ 		SELECT COUNT(NUM)
+		FROM MACHINEQNA
+		WHERE MACHINENUM=#{machineNum}
+ 	</select>
 </mapper>

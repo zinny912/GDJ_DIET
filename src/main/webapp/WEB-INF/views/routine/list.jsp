@@ -5,7 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </head>
 
-<c:forEach items="${list}" var="dto">
+<c:forEach items="${ar}" var="dto">
 	 <div>
          <label for="title" class="col-form-label">루틴 제목</label>
          <input type="text" class="form-control" id="routinetitle" name="title" value="${dto.title}">	
@@ -16,9 +16,11 @@
          <label for="videoId" class="col-form-label">루틴영상URL</label>
          <input type="text" class="form-control" id="routinevideoId" name="videoId" value="${dto.videoId}"> 
          <label for="machineName" class="col-form-label">운동기구</label>
-         <input type="text" class="form-control" id="routinemachineName" name="machineName" value="${dto.machineName}"> 
+                  <select class="form-select" id="machineSelected" name="HealthMachineDTOs">
+         	<c:forEach items="${list}" var="machine">
+				<option value="${machine.machineName}">${machine.machineName}</option>
+			</c:forEach>
+         </select> 
          <input type="hidden" id="routinenum" name="num" value="${dto.num}">
-         <button id="machinebtnup" class="btn btn-primary" type="button">운동기구리스트</button>
-		<div id="machineListup" style="text-align: center;"></div>
-      </div>
+         
 </c:forEach>

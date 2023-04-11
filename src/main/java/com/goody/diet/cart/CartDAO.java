@@ -17,6 +17,16 @@ public class CartDAO {
 		return sqlSession.selectList(NAMESPACE+"getCartList", cartDTO);
 	}
 	
+	//구매 후 studyNum update
+	public int setMemberStudyNum (CartDTO cartDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setMemberStudyNum", cartDTO);
+	}
+	
+	//구매 후 study stock-1
+		public int setStudyStock (CartDTO cartDTO) throws Exception{
+			return sqlSession.update(NAMESPACE+"setStudyStock", cartDTO);
+	}
+	
 	public List<CartDTO> getPaymentList(CartDTO cartDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getPaymentList", cartDTO);
 	}
@@ -56,5 +66,10 @@ public class CartDAO {
 	public int setCartDelete(Long item) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setCartDelete", item);
 	}
+	
+	//구매 후 machine stock-1
+	public int setMachineStock (CartDTO cartDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setMachineStock", cartDTO);
+}
 
 }

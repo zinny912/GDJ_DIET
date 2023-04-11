@@ -253,6 +253,15 @@ public class HealthMachineService {
 			String fileName = fileManager.fileSave(files, realPath);
 			return "/resources/upload/machineReviewFile/"+fileName;
 	}
+	
+	// qna & review count
+	public Long getMachineReviewCount(HealthMachineDTO healthMachineDTO) throws Exception {
+		return healthMachineDAO.getMachineReviewCount(healthMachineDTO);
+	}
+	
+	public Long getMachineQnaCount(HealthMachineDTO healthMachineDTO) throws Exception {
+		return healthMachineDAO.getMachineQnaCount(healthMachineDTO);
+	}
 
 
 }
