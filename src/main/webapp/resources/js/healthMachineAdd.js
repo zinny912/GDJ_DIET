@@ -141,6 +141,7 @@ $(".dropdown").on("focus",".optInput",function(){
     toggleStatus = $(this).attr("id");
     toggleFlag=true;
 })
+
 $(".dropdown").on("click", ".dropdown-item", function () {
     let $this = $(this).parents(".dropdown");
     $this.find(".optInput").val($(this).attr("data-name"))
