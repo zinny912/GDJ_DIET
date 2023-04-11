@@ -26,9 +26,7 @@ public class CartService {
 	public List<CartDTO> getCartList(CartDTO cartDTO) throws Exception{
 		List<CartDTO> ar = cartDAO.getCartList(cartDTO);
 		List<CartDTO> machines = cartDAO.getCartMachineList(cartDTO);
-		for(CartDTO dto:machines) {
-			ar.add(dto);
-		}
+		ar.addAll(machines);
 		return ar;
 	}
 
@@ -39,16 +37,17 @@ public class CartService {
 	public List<CartDTO> getPaymentList(CartDTO cartDTO) throws Exception{
 		List<CartDTO> ar = cartDAO.getPaymentList(cartDTO);
 		List<CartDTO> machines = cartDAO.getPaymentMachineList(cartDTO);
-		for(CartDTO dto:machines) {
-			ar.add(dto);
-		}
+		ar.addAll(machines);
+		
 		return ar;  
 	}
 
 	public List<CartDTO> setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] cartNum,Long [] count) throws Exception{
 		//count update
 		//태현------------
+		System.out.println();
 		for(int i=0; i<cartNum.length;i++) {
+			
 			CartDTO dto = new CartDTO();
 			dto.setNum(cartNum[i]);
 			dto.setCount(count[i]);
@@ -70,6 +69,7 @@ public class CartService {
 		}
 		//4. getPaymentList
 		List<CartDTO> ar =  this.getPaymentList(cartDTO);
+		System.out.println(ar.size());
 		return ar;
 		
 		
