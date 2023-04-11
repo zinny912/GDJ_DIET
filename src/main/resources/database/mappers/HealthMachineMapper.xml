@@ -87,7 +87,7 @@
 		on(h.MACHINENUM=m.MACHINENUM)
 		WHERE
 		h.MACHINENUM =#{machineNum}
-		ORDER BY FILENUM
+		ORDER BY FILENUM asc
 	</select>
 	<resultMap type="HealthMachineDTO"
 		id="getHealthMachineResult">

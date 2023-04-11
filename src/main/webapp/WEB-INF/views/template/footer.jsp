@@ -12,9 +12,9 @@
               <p>구디 다이어트</p>
               
               <ul class="ftco-footer-social list-unstyled float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="">개인정보 처리방침</span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="">취소 및 환불정책</span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="">이용약관</span></a></li>
+                <li class="ftco-animate"><a href="#"><span style="font-size:10px;">개인정보<br>처리방침</span></a></li>
+                <li class="ftco-animate"><a href="#"><span style="font-size:10px;">취소 및<br>환불정책</span></a></li>
+                <li class="ftco-animate"><a href="#"><span style="font-size:10px;">이용약관</span></a></li>
               </ul>
             </div>
           </div>
