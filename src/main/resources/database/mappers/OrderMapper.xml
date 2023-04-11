@@ -51,6 +51,7 @@
 				STUDYFILE SF
 				ON (S.STUDYNUM = SF.STUDYNUM) 
 		WHERE O.ID  =#{id} AND c.status =2 AND O.ORDERSTATUS=1
+		ORDER BY ORDERDATE DESC
 	</select>
 	
 
