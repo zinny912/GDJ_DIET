@@ -116,17 +116,17 @@
 </head>
 <body>
 	<script type="text/javascript">
-		$(function(){
-		    $("#selboxDirect").hide();
-		    $("#selbox").change(function() {
-		        if($("#selbox").val() == "direct") {
-		            $("#selboxDirect").show();
-		            }  else {
-		            $("#selboxDirect").hide();
-		        }
-		    })
+		$(function() {
+			$("#selboxDirect").hide();
+			$("#selbox").change(function() {
+				if ($("#selbox").val() == "direct") {
+					$("#selboxDirect").show();
+				} else {
+					$("#selboxDirect").hide();
+				}
+			})
 		});
-		</script>
+	</script>
 	<div class="container-fluid">
 		<div class="row mb-4 mt-4 md-7">
 			<h1 class="h1">짧강효확 상세 페이지 등록</h1>
@@ -141,36 +141,38 @@
 				<label class="l1" for="bodyNum" id="bodyNum"> 운동부위 </label>
 
 				<fieldset class="f1">
-					<label class="l2"> <input class="ty1" type="radio"
-						name="bodyNum" value="36" checked /> <span class="s1">상체ALL</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					<label class="l2"> <input class="ty1" type="checkbox"
+						name="bodyNum" value="36" /> <span class="s1">상체ALL</span>
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="21" /> <span class="s1">얼굴</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="22" /> <span class="s1">겨드랑이</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="23" /> <span class="s1">팔뚝살</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="28" /> <span class="s1">직각어깨</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="29" /> <span class="s1">등</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="30" /> <span class="s1">허리</span>
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
+						name="bodyNum" value="37" /> <span class="s1">하체All</span>
 					</label>
 				</fieldset>
 				<fieldset class="f1">
-					<label class="l2"> <input class="ty1" type="radio"
+					<label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="32" /> <span class="s1">복근&뱃살</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="33" /> <span class="s1">아랫배</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="24" /> <span class="s1">애플힙</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="25" /> <span class="s1">종아리</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="26" /> <span class="s1">앞벅지</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="27" /> <span class="s1">안쪽허벅지</span>
-					</label> <label class="l2"> <input class="ty1" type="radio"
+					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="31" /> <span class="s1">승마살</span>
 					</label>
 				</fieldset>
@@ -183,9 +185,16 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="machineNum" class="form-label">운동기구</label> <input
-					type="text" name="machineNum" class="form-control" id="machineNum"
-					placeholder="운동기구 입력">
+				<fieldset class="f1">
+					<label for="machineNum" class="form-label">운동기구</label>
+					<c:forEach items="${machines }" var="machine">
+						<label class="machineLabel"> <input class="machines"
+							type="radio" name="machineNum" value="${machine.machineNum }" />
+							<span class="s1">${machine.machineName }</span>
+						</label>
+					</c:forEach>
+				</fieldset>
+
 			</div>
 
 			<div class="mb-3">
@@ -201,7 +210,7 @@
 
 
 			<div class="mb-3">
-				<label for="highLight" class="form-label">추천 : </label> <input
+				<label for="highLight" class="form-label">추천  </label> <input
 					type="text" name="highLight" class="form-control" id="highLight"
 					placeholder="추천 입력">
 			</div>

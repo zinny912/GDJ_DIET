@@ -37,29 +37,41 @@
 
 	<form action="./update" method="POST" enctype="multipart/form-data"
 		id="frm">
+		<input type="hidden" value="${dto.num }" name="num">
 		<section id="box">
+			<div class="mb-3">
+				<fieldset class="f1">
+					<label id="machineNum" for="machineNum" class="form-label"
+						data-machineNum="${dto.machineNum }">운동기구</label>
+					<c:forEach items="${machines }" var="machine">
+						<label class="machineLabel"><input class="machines"
+							type="radio" name="machineNum" value="${machine.machineNum }">
+							<span class="s1">${machine.machineName }</span></label>
+
+					</c:forEach>
+				</fieldset>
+
+			</div>
 			<div>
-			
+				<!-- dtailTitleNull임 -->
 				<input class="detail1 form-input-title" value="${dto.detailTitle}"
-					id="detailTitle" name="detailTitle" /> 
-					<input id="machineNum"
-					name="machineNum" value="${dto.machineName}" />
-					<input type="hidden" value="${dto.num }" name="num"/>
+					id="detailTitle" name="detailTitle" placeholder="detailTitle" />
+
 			</div>
 
 			<div class="container" id="one">
 				<!-- 전체를 감싸는 div 태그-->
 				<div class="first">
 					<!--두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
-					
-					<input type="hidden" value="${dto.boardFileDTOs[0].fileNum}"
-						name="fileNum"> <img
-						src="/resources/images/${dto.boardFileDTOs[0].fileName}" alt="">
-						
+
+
 					<div id="fileList">
-						<button type="button" class="btn btn-primary col-md-2"
-							id="fileAdd">이미지 업로드</button>
+						<img src="/resources/images/${dto.boardFileDTOs[0].fileName}"
+							alt="">
+
 					</div>
+					<button type="button" class="btn btn-primary col-md-2"
+						id="fileChange">이미지 교체</button>
 
 				</div>
 				<div class="second">
@@ -72,35 +84,34 @@
 					<div class="detail4">
 
 						<input class="highlight" id="highLight" name="highLight"
-							value="${dto.highLight}" /> <input type="hidden" value="1"
-							name="power">
+							value="${dto.highLight}" /> 
 					</div>
-					<input type="text" id="bodyNum" name="bodyNum" value="${dto.bodyNum}" />
+					<c:forEach items="${bodyList }" var="body">
+						<label> <input class="bodys" type="checkbox"
+							name="bodyNum" value="${body.bodyNum }" /> <span class="s1">${body.bodyName }</span>
+						</label>
+					</c:forEach>
+					<c:forEach items="${dto.bodyDTO }" var="checkbody">
+						<input class="checkbodys" type="hidden" disabled="disabled"
+							data-bodydata="${checkbody.bodyNum }">
+					</c:forEach>
+
+
 					<div class="detail3">
 						<div class="boxone">
-							<ul>
-								<li><span class="power">난이도</span></li>
-								<li><c:choose>
-										<c:when test="${dto.power eq 0}">
-											<span class="star">☆☆☆☆☆</span>
-										</c:when>
-										<c:when test="${dto.power eq 1}">
-											<span class="star">★☆☆☆☆</span>
-										</c:when>
-										<c:when test="${dto.power eq 2}">
-											<span class="star">★★☆☆☆</span>
-										</c:when>
-										<c:when test="${dto.power eq 3}">
-											<span class="star">★★★☆☆</span>
-										</c:when>
-										<c:when test="${dto.power eq 4}">
-											<span class="star">★★★★☆</span>
-										</c:when>
-										<c:when test="${dto.power eq 5}">
-											<span class="star">★★★★★</span>
-										</c:when>
-									</c:choose></li>
-							</ul>
+							<fieldset class="f1" data-power=${dto.power } id="power">
+								<label class="l2"> <input class="ty1" type="radio"
+									name="power" value="1"> <span class="s3">★</span>
+								</label> <label class="l2"> <input class="ty1" type="radio"
+									name="power" value="2"> <span class="s3">★★</span>
+								</label> <label class="l2"> <input class="ty1" type="radio"
+									name="power" value="3"> <span class="s3">★★★</span>
+								</label> <label class="l2"> <input class="ty1" type="radio"
+									name="power" value="4"> <span class="s3">★★★★</span>
+								</label> <label class="l2"> <input class="ty1" type="radio"
+									name="power" value="5"> <span class="s3">★★★★★</span>
+								</label>
+							</fieldset>
 						</div>
 
 						<div class="boxtwo">
@@ -112,8 +123,9 @@
 						</div>
 
 					</div>
-					<input class="golink" value="${dto.urlId}" id="urlId" name="urlId" />
-					<a class="golink" href="./video?num=${dto.num}">루틴 보러가기</a>
+					<label>영상링크</label> <input class="golink" value="${dto.urlId}"
+						id="urlId" name="urlId" />
+
 
 				</div>
 			</div>
@@ -124,9 +136,8 @@
 
 	</form>
 	<script>
-	
-		setParam('Files');
-</script>
+		/* setParam('Files'); */
+	</script>
 
 
 	<script src="/resources/js/exerciseAdd.js"></script>

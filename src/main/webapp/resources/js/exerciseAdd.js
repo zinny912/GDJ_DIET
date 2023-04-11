@@ -94,3 +94,35 @@ $("#del").click(function(){
         $("#frm").submit();
     }
 })
+
+let machineNum= $("#machineNum").attr("data-machineNum")
+console.log(machineNum);
+$(".machines").each(function(index,machine){
+    if($(machine).val()==machineNum*1){
+        $(machine).prop("checked",true)
+    }
+})
+
+$(".bodys").each(function(index,body){
+    $(".checkbodys").each(function(i,checkbody){
+        if($(body).val()==$(checkbody).attr("data-bodydata")*1){
+            $(body).prop("checked",true)
+        }
+    })
+    
+})
+let powerchecked=$("#power").attr("data-power")
+$(".ty1").each(function(index,power){
+    if($(power).val()==powerchecked*1){
+        $(power).prop("checked",true)
+    }
+})
+$("#fileChange").click(function(){
+    let check = window.confirm("정말 삭제 하시겠습니까?");
+    if (check) {
+        $("#fileList").empty()
+        $("#fileList").append('<input type="file" class="form-control" name="Files">')
+
+    }
+
+})
