@@ -4,29 +4,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>리스트</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<c:import url="../template/common_css.jsp"></c:import>
 
+<c:import url="../template/common_css.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
+ <link href="../resources/css/mlist.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-12 heading-section ftco-animate text-center">
-					<h2 class="mb-1">운동기구 목록</h2>
-				</div>
+	<div class="container">
+	 <div class="row justify-content-center mb-5 pb-3">
+ 	 <div class="col-md-12 heading-section ftco-animate text-center" style="line-height:5%">
+ 	 <h3 class="mb-1"><br>홈트용품 & 액세서리</h3><br><br>
+ 	</div></div></div>
+	
+	
+			<div>
+				<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+					<a href="./add" class="btn btn-primary">운동기구 추가하기</a>
+				</c:if>
 			</div>
-			<div class="row">
+			
+	<section class="ftco-section" id="box">
+		<div class="row">
+			<div class="container" id="one">
+				<div class="first">
+				<div> <p>카테고리 리스트</p> </div>
+				
+				
+				
+				</div>
+				<div class="second">
+				
 				<c:forEach items="${list}" var="dto">
-				<div class="col-md-4">
-					<div class="classes w-100 ftco-animate">
-						<a href="./detail?machineNum=${dto.machineNum }" class="img w-100 mb-3"
+				<div class="col-md-3">
+					<div class="classes w-70 ftco-animate">
+						<a href="./detail?machineNum=${dto.machineNum }" class="img w-70 mb-2"
 							style="background-image: url(/resources/images/${dto.healthMachineImgDTOs[0].fileName});"></a>
-						<div class="text w-100 text-center">
+						<div class="text w-70 text-center">
 							<h3>
 								<a href="./detail?machineNum=${dto.machineNum }">${dto.machineName }</a>
 							</h3>
@@ -37,11 +51,8 @@
 				</div>
 				</c:forEach>
 			</div>
-			<div>
-				<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
-					<a href="./add" class="btn btn-primary">운동기구 추가하기</a>
-				</c:if>
 			</div>
+			
 		</div>
 	</section>
 
@@ -77,5 +88,6 @@
 	</div> --%>
 	
 	<c:import url="../template/common_js.jsp"></c:import>
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
