@@ -17,8 +17,8 @@ public class ExerciseDTO extends HealthMachineDTO {
 	private String info;
 	
 	private List<BoardFileDTO> boardFileDTOs;
-	private List<HealthMachineDTO> healthMachineDTOs;
-	private String machinName;
+	private HealthMachineDTO healthMachineDTOs;
+	private String machinName;//info에서 사용
 	
 	private List<BodyDTO> bodyDTO;
 	private Long bodyNum;
@@ -26,11 +26,13 @@ public class ExerciseDTO extends HealthMachineDTO {
 	
 	
 
-    public List<HealthMachineDTO> getHealthMachineDTOs() {
+  
+
+	public HealthMachineDTO getHealthMachineDTOs() {
 		return healthMachineDTOs;
 	}
 
-	public void setHealthMachineDTOs(List<HealthMachineDTO> healthMachineDTOs) {
+	public void setHealthMachineDTOs(HealthMachineDTO healthMachineDTOs) {
 		this.healthMachineDTOs = healthMachineDTOs;
 	}
 

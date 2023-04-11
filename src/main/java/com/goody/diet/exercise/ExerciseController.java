@@ -66,20 +66,20 @@ public class ExerciseController {
 		mv.setViewName("exercise/add");
 		return mv;
 	}
-	@GetMapping("machineList")
-	public ModelAndView getExerciseMachine() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<ExerciseDTO> ar = exerciseService.getExerciseMachine();
-		System.out.println("MachineName:" + ar.get(0).getMachineName());
-		mv.addObject("body",ar);
-		mv.setViewName("exercise/add");
-		mv.setViewName("exercise/update");
-		return mv;
-	}
+//	@GetMapping("machineList")
+//	public ModelAndView getExerciseMachine() throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		List<ExerciseDTO> ar = exerciseService.getExerciseMachine();
+//		System.out.println("MachineName:" + ar.get(0).getMachineName());
+//		mv.addObject("body",ar);
+//		mv.setViewName("exercise/add");
+//		mv.setViewName("exercise/update");
+//		return mv;
+//	}
 	
 	@PostMapping("add")//bodyNum 여러개로 변경하였습니다.
 	public ModelAndView setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO, MultipartFile [] Files,Long [] bodyNum)throws Exception{
-		ModelAndView mv = new ModelAndView();						//Long타입으로 받는이유 : html에서 name 여러개일때 배열로 받아야 하는데 dto타입은 모두 list로 setter를 만들어 놓았기 때문에 list로 받을 수 없다 그렇기 때문에 번호만(Num)만 추출하여 service 에서 각각의 타입에 대입해야함
+		ModelAndView mv = new ModelAndView();		//Long타입으로 받는이유 : html에서 name 여러개일때 배열로 받아야 하는데 dto타입은 모두 list로 setter를 만들어 놓았기 때문에 list로 받을 수 없다 그렇기 때문에 번호만(Num)만 추출하여 service 에서 각각의 타입에 대입해야함
 		
 //		
 		int result = exerciseService.setExerciseAdd(session, exerciseDTO, Files, bodyNum);

@@ -57,6 +57,9 @@
 	ON EX.NUM = IMG.NUM
 	INNER JOIN EXERCISEROLE EXR
 	ON EXR.NUM = EX.NUM
+	LEFT outer JOIN 
+	HEALTHMACHINE h 
+	ON EX.MACHINENUM =h.MACHINENUM 
 	WHERE EXR.BODYNUM = #{bodyNum}
 	</select>
 	<select id="getMachineName" parameterType="ExerciseDTO" resultType="ExerciseDTO">
@@ -95,6 +98,10 @@
 		<result column="detailTitle" property="detailTitle"/>
 		<result column="info" property="info"/>
 		<result column="highLight" property="highLight"/>
+		<association property="healthMachineDTOs" javaType="HealthMachineDTO">
+				<id column="machineNum" property="machineNum"/>
+		  		<result column="machineName" property="machineName"/>
+		</association>
 		<collection property="bodyDTO" javaType="list" ofType="BodyDTO">
 			<id column="bodyNum" property="bodyNum"/>
 			<result column="bodyName" property="bodyName"/> 
@@ -103,10 +110,6 @@
 			<id column="fileNum" property="fileNum"/>
 	  			<result column="fileName" property="fileName"/>
 	  			<result column="oriName" property="oriName"/>
-		</collection>
-		<collection property="healthMachineDTOs" javaType="list" ofType="healthMachineDTO">
-				<id column="machineNum" property="machineNum"/>
-		  		<result column="machineName" property="machineName"/>
 		</collection>
 			
 		
