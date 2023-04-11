@@ -43,7 +43,8 @@ function checkPayment(){
         jQuery.ajax({
             url: "/order/success", 
             method: "POST",
-            // headers: { "Content-Type": "application/json" },
+            //dataType:"jsonp",
+            // headers: { "Content-Type": "application/jsonp" },
             data: {
             //   imp_uid: rsp.imp_uid,            // 결제 고유번호
             //   merchant_uid: rsp.merchant_uid,   // 주문번호
@@ -51,7 +52,7 @@ function checkPayment(){
             }
           }).done(function (data) {
             console.log(data.trim())
-            if(data.trim().length>0){
+            if(data.trim()=='1'){
                 $("#frm").attr("action","/order/paymentUpdate")
                 $("#frm").attr("method","post");
                 $("#frm").submit();

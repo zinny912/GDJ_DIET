@@ -121,8 +121,6 @@ public class HealthMachineController {
 		healthMachineDTO = healthMachineService.getHealthMachineDetail(healthMachineDTO);
 		
 		mv.addObject("dto", healthMachineDTO);
-		
-		
 		mv.setViewName("healthMachine/update");
 		return mv;
 	}
