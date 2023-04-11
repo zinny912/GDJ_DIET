@@ -37,7 +37,7 @@
                <div><p class="detail1" id="detailTitle">${dto.detailTitle} </p>
              		<input type="hidden" value="${dto.machineNum}" name="machineNum"/>
              		
-             		<label id="machineName">${dto.machineName}</label></div>
+             		<label id="machineName">${dto.healthMachineDTOs.machineName}</label></div>
 				
         <div class="container" id="one"> <!-- 전체를 감싸는 div 태그-->
             <div class="first"> <!--두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
