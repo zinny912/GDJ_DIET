@@ -4334,13 +4334,14 @@ input[type=submit].btn-block {
     padding-bottom: .3125rem;
     margin-right: 1rem;
     font-size: 1.25rem;
+    color: #2c396b;
     line-height: inherit;
     white-space: nowrap
 }
 
 .navbar-brand:focus,
 .navbar-brand:hover {
-    text-decoration: none
+    text-decoration: #2c396b;
 }
 
 .navbar-nav {
@@ -4389,7 +4390,7 @@ input[type=submit].btn-block {
 
 .navbar-toggler:focus,
 .navbar-toggler:hover {
-    text-decoration: none
+    text-decoration: #2c396b;
 }
 
 .navbar-toggler:not(:disabled):not(.disabled) {
@@ -4698,12 +4699,12 @@ input[type=submit].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-    color: #fff
+    color: #2c396b
 }
 
 .navbar-dark .navbar-brand:focus,
 .navbar-dark .navbar-brand:hover {
-    color: #fff
+    color:#2c396b;
 }
 
 .navbar-dark .navbar-nav .nav-link {

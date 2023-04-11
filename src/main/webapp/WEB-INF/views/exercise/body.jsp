@@ -2,24 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>짧.강.효.확</title>
-<meta charset="UTF-8">
 <meta name="HandheldFriendly" content="true"/>
 <meta name="MobileOptimized" content="320"/>
-<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <c:import url="../template/common_css.jsp"></c:import> 
 <c:import url="../template/header.jsp"></c:import>
 <style>
-	body {
-		font-family: Helvetica, Arial, sans-serif;
-	}
-	h1 {
-		font-size: 20px;
-	}
-	div {
-		width: 100%;
-	}
+	
 	img[usemap] {
 		border: none;
 		height: auto;
