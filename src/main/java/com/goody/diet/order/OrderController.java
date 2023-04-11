@@ -44,20 +44,7 @@ public class OrderController {
 		mv.setViewName("/order/orderListPage");
 		return mv;
 	}
-	@GetMapping("detail")
-	public ModelAndView getOrderDetail(ModelAndView mv, OrderDTO orderDTO) throws Exception {
-		
-		orderDTO=orderService.getOrderDetail(orderDTO);
-		
-//		System.out.println("-------------getOrderDetail-----------");
-//		System.out.println(orderDTO);
-//		System.out.println(orderDTO.getOrderDate());
-//		System.out.println(orderDTO.getRecipient());
-		
-		mv.addObject("orderDTO", orderDTO);
-		mv.setViewName("/order/detail");
-		return mv;
-	}
+
 	
 	@PostMapping("success")
 	public ModelAndView getOrderSuccess(ModelAndView mv,String jsonString)throws Exception{

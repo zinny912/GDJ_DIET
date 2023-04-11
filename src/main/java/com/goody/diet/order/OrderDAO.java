@@ -27,9 +27,7 @@ public class OrderDAO {
 	public List<OrderDTO> getOrderList (MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getOrderList", memberDTO);
 	}
-	public OrderDTO getOrderDetail (OrderDTO orderDTO) throws Exception {	
-		return sqlSession.selectOne(NAMESPACE+"getOrderDetail", orderDTO);
-	}
+
 	
 	public int setOrder(OrderDTO orderDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setOrder", orderDTO);	
