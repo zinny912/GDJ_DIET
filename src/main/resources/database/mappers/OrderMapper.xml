@@ -51,15 +51,18 @@
 				STUDYFILE SF
 				ON (S.STUDYNUM = SF.STUDYNUM) 
 		WHERE O.ID  =#{id} AND c.status =2 AND O.ORDERSTATUS=1
-
 	</select>
+	
 
 	<resultMap id="OrderDTOMap" type="OrderDTO">
 		<id column="orderNum" property="orderNum" />
 			<result column="id" property="id" />
 			<result column="orderDate" property="orderDate" />
 			<result column="orderStatus" property="orderStatus" />
-			
+			<result column="ADDRESS" property="address"/>
+			<result column="recipient" property="recipient"/>			
+			<result column="recipientTel" property="recipientTel"/>
+						
 			<collection property="cartDTOs" javaType="List" ofType="CartDTO">
 				<id column="num" property="num" />
 				<result column="id" property="id" />

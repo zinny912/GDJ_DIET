@@ -28,6 +28,7 @@
 
 
 
+<div id="when_back" data-sessionMember="${sessionMember.id}"></div>
 
 <!-- 카카오 토큰있으면 로그인 -->
 <form hidden="" class="mx-1 mx-md-4" id="kloginForm" action="/member/kakaoLogin" method="post">
