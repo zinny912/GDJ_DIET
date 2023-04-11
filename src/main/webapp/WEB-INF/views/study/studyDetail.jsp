@@ -50,7 +50,7 @@
                    	스터디 기간: ${dto.studyStartPeriod}~${dto.studyEndPeriod}
                     <br>반배정 문자 일괄 발송
                  	<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
-                    <br>문의:${sessionMember.roleDTO.roleName eq 'ADMIN'}
+                    <br>문의:010-0000-0000
                     </c:if>
                     </div>
                     <br>
