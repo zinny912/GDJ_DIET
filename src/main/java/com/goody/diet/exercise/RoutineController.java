@@ -165,16 +165,17 @@ public class RoutineController {
 //		return mv;
 //	}	
 	
-//	@GetMapping("update")
-//	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
-//		routineDTO = routineService.getRoutineVideo(routineDTO);
-//		List<RoutineDTO> ar = routineService.getRoutineUpdate();
-//		//mv.addObject("dto", routineDTO);
-//		System.out.println(ar);
-//		mv.addObject("list", ar);
-//		mv.setViewName("routine/update");
-//		return mv;
-//	}
+//왜 주석되어있죠? 심지어 주석되어있는데 실행이 되네요 ㅋㅋ
+	@GetMapping("update")
+	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
+		routineDTO = routineService.getRoutineVideo(routineDTO);
+		List<RoutineDTO> ar = routineService.getRoutineUpdate();
+		//mv.addObject("dto", routineDTO);
+		System.out.println(ar);
+		mv.addObject("list", ar);
+		mv.setViewName("routine/update");
+		return mv;
+	}
 	
 	
 	
