@@ -39,7 +39,7 @@
 				
 
 				<c:forEach items="${list}" var="dto">
-					<c:if test="${not empty dto.studyNum }">
+					<%-- <c:if test="${not empty dto.studyNum}"> --%>
 						<c:forEach items="${dto.studyDTOs}" var="studyDTO">
 							<c:forEach items="${studyDTO.studyBoardFileDTOs}"
 								var="studyFileDTO">
@@ -61,15 +61,21 @@
 								<%-- <c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" /> --%>
 							</c:forEach>
 						</c:forEach>
-					</c:if>
+					<%-- </c:if> --%>
 				</c:forEach>
 					<c:if test="${empty list}">
+					<tr>
+					<td colspan="2"></td>
+					<td colspan="2">
 						<div style="text-align: center; margin-top: 50px;">
-							<img src="/resources/images/cart.png" width="200px">
+							<img src="/resources/images/cartList.png"
+								style="width: 32px; height: 32px;">
 							<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
 								비어있습니다.</div>
-						</div>
-					</c:if>
+						</div></td>
+						<td colspan="2"></td>
+					</tr>
+					</c:if> 
 				</tbody>
 				<tfoot>
 				   <tr>
@@ -104,7 +110,6 @@
 				 
 				<c:forEach items="${list}" var="dto">
 					<c:if test="${not empty dto.realMachineNum }">
-						<%-- <c:forEach items="${dto.studyDTOs}" var="studyDTO"> --%>
 							<c:forEach items="${dto.healthMachineDTO.healthMachineImgDTOs}"
 								var="machineFileDTO">
 								<tr class="cart__list__machine__detail" >
@@ -154,9 +159,21 @@
 								</tr>
 								<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
 							</c:forEach>
-						<%-- </c:forEach> --%>
 					</c:if>
 				</c:forEach>
+				<c:if test="${empty list}">
+					<tr>
+					<td colspan="2"></td>
+					<td colspan="2">
+						<div style="text-align: center; margin-top: 50px;">
+							<img src="/resources/images/cartList.png"
+								style="width: 32px; height: 32px;">
+							<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
+								비어있습니다.</div>
+						</div></td>
+						<td colspan="2"></td>
+					</tr>
+					</c:if> 
 			</tbody>
 			<tfoot>
 				<tr>
