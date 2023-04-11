@@ -34,7 +34,10 @@
 
  	<c:forEach items="${body}" var="dto">
     <section id="box"> 
-               <p class="detail1" id="detailTitle">${dto.detailTitle}<button id="machineName">${dto.machineNum}</button></p>
+               <div><p class="detail1" id="detailTitle">${dto.detailTitle} </p>
+             		<input type="hidden" value="${dto.machineNum}" name="machineNum"/>
+             		
+             		<label id="machineName">${dto.machineName}</label></div>
 				
         <div class="container" id="one"> <!-- 전체를 감싸는 div 태그-->
             <div class="first"> <!--두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
@@ -102,12 +105,18 @@
                    
                    <form id="frm">
                     <c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
-             	
+             		<c:forEach items="${dto.bodyDTO}" var="bodydto">
+             		<input type="hidden" value="${bodydto.bodyNum}" name="bodyNum">
+             		</c:forEach>
                     <a href="update?num=${dto.num}" class="detailUpdate btn btn-danger">수정하기</a>
                     <button id="del" type="button" class="btn btn-warning" data-delete-num="${dto.num}">삭제하기</button>
                     </c:if>
-                    <input type="hidden" value="${dto.num }" name="num">
+                    <input type="hidden" value="${dto.num}" name="num">
+                    <%-- <c:forEach items="${dto.boardFileDTOs}" var="filedto"> --%>
                     <input type="hidden" value="${dto.boardFileDTOs[0].fileNum}" name="fileNum">
+                    <p>${dto.boardFileDTOs[0].fileNum}</p>
+                    <%-- </c:forEach> --%>
+                    <p>zz</p>
 				</form>
 				</div>
 				</div>

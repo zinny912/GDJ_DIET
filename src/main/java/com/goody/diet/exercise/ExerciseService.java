@@ -44,12 +44,16 @@ public class ExerciseService {
 
 	//짧강효확 상세페이지 
 	public List<ExerciseDTO> getExerciseTypeList(ExerciseDTO exerciseDTO) throws Exception{
-
+		int i=0;
 		List<ExerciseDTO> ar=exerciseDAO.getExerciseTypeList(exerciseDTO);
 		for(ExerciseDTO dto:ar) {
-			System.out.println(dto.getDetailTitle());
+			System.out.println("helthmachikneNum : "+dto.getMachineNum());
+			dto = exerciseDAO.getMachineName(dto);
+//			System.out.println(dto.getMachineName());
+			ar.get(i).setMachineName(dto.getMachineName());
+			i++;
 		}
-
+		
 		//		System.out.println(bodyDTO.getBodyName());
 		//		System.out.println(bodyDTO.getBodyNum());
 		//		System.out.println(bodyDTO.getCoordinate());
@@ -70,23 +74,6 @@ public class ExerciseService {
 	public ExerciseDTO getExerciseDetail(ExerciseDTO exerciseDTO) throws Exception{
 		return exerciseDAO.getExerciseDetail(exerciseDTO);
 	}
-	////	getRealHealthMachineDetailList
-	//	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception {
-	//		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
-	//
-	//	}
-	//	//오버로딩
-	//	public HealthMachineDTO getRealHealthMachineList(HealthMachineDTO healthMachineDTO)throws Exception {
-	//		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
-	//		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
-	//		healthMachineDTO=healthMachineDAO.getHealthMachineDetail(healthMachineDTO);
-	//		healthMachineDTO.setRealHealthMachineDTOs(healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO));
-	//		
-	//		return healthMachineDTO;
-	//	}
-
-
-
 
 	// 머신 이름 리스트 불러오기 
 		public List<ExerciseDTO> getExerciseMachine() throws Exception {
@@ -109,7 +96,7 @@ public class ExerciseService {
 	public int setExerciseAdd(ExerciseDTO exerciseDTO, MultipartFile [] multipartFiles, HttpSession session, HealthMachineDTO healthMachineDTO) throws Exception{
 		int result = exerciseDAO.setExerciseAdd(exerciseDTO);
 		result = exerciseDAO.setExerciseBodyAdd(exerciseDTO);
-
+		
 		String realPath = session.getServletContext().getRealPath("resources/images/");
 		System.out.println(realPath);
 		for(MultipartFile multipartFile : multipartFiles) {
@@ -134,10 +121,14 @@ public class ExerciseService {
 	}
 	//update 짧강효확 
 	public int setExerciseUpdate(ExerciseDTO exerciseDTO,MultipartFile[] multipartFiles, HttpSession session, Long fileNum) throws Exception{
-		int result =  exerciseDAO.setFileDelete(fileNum);
+		
+//		int result =  exerciseDAO.setFileDelete(fileNum);
+//		System.out.println("fileNummm:" + result);
+		int result = exerciseDAO.setExerciseUpdate(exerciseDTO);
+		
 
-		result = exerciseDAO.setExerciseUpdate(exerciseDTO);
-	
+		//1. exercise Role 추가
+		result = exerciseDAO.setBodyUpdate(exerciseDTO);
 		//file을 HDD에 저장
 		String realPath = session.getServletContext().getRealPath("resources/images/");
 		System.out.println(realPath);
@@ -162,14 +153,14 @@ public class ExerciseService {
 	}	
 
 	public int setExerciseDelete(ExerciseDTO exerciseDTO, Long fileNum)throws Exception{
-	
 		int result = exerciseDAO.setExerciseDelete(exerciseDTO);
 		
-//		//delete ExerciseRole
-//		result = exerciseDAO.setExerciseRoleDelete(exerciseDTO);
-//		System.out.println("ExerciseRole : "+result);
+		//delete ExerciseRole
+		result = exerciseDAO.setExerciseRoleDelete(exerciseDTO);
+		System.out.println("ExerciseRole : "+result);
 
 		//delete ExerciseImg File
+		
 		result=exerciseDAO.setFileDelete(fileNum);
 		return result;
 	}

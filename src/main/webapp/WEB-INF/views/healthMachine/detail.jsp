@@ -17,6 +17,14 @@
  height: 2px;
  background: #ccc;
  }
+ 
+   .my-table tr:nth-child(even) {
+    background-color: #ffb5b52c; /* 짝수 줄 배경색 */
+  }
+  
+  .my-table tr:nth-child(odd) {
+    background-color: #ffffff; /* 홀수 줄 배경색 */
+  }
 
  </style>
 
@@ -88,10 +96,10 @@
 			          <div class="nav-link" id="machineQnaInfo" style="cursor: pointer">상세정보</div>
 			        </div>
 			        <div class="col-md-4">
-			         <div class="nav-link" id="machineReviewList" data-review-machineNum="${dto.machineNum}" style="cursor: pointer">구매평</div>
+			         <div class="nav-link" id="machineReviewList" data-review-machineNum="${dto.machineNum}" style="cursor: pointer">구매평(${review})</div>
 			        </div>
 			        <div class="col-md-4">
-			          <div class="nav-link" id="machineQnaList" data-qna-machineNum="${dto.machineNum}" style="cursor: pointer">Q&amp;A</div>
+			          <div class="nav-link" id="machineQnaList" data-qna-machineNum="${dto.machineNum}" style="cursor: pointer">Q&amp;A(${qna})</div>
 			        </div>
 			        <hr class="my-hr2">
 			        </div>

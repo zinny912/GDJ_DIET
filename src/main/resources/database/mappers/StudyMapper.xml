@@ -8,13 +8,16 @@
  		SELECT COUNT(STUDYNUM) FROM STUDY
  	</select>
  	
- 	<select id="getStudyReivewCount" parameterType="StudyDTO" resultMap="getStudyCounts">
- 		SELECT COUNT(SR.NUM)
-		FROM STUDY S
-			LEFT JOIN
-			STUDYREVIEW SR
-			ON (S.STUDYNUM = SR.STUDYNUM)
-		WHERE S.STUDYNUM=8
+ 	<select id="getStudyReivewCount" parameterType="StudyDTO" resultType="Long">
+ 		SELECT COUNT(NUM)
+		FROM STUDYREVIEW
+		WHERE STUDYNUM=#{studyNum}
+ 	</select>
+ 	
+ 	<select id="getStudyQnaCount" parameterType="StudyDTO" resultType="Long">
+ 		SELECT COUNT(NUM)
+		FROM STUDYQNA
+		WHERE STUDYNUM=#{studyNum}
  	</select>
   	
 	<select id="getBoardList" parameterType="Pager" resultMap="getBoardResult">
@@ -50,7 +53,7 @@
 		</collection>  		
   	</resultMap>
   	
-  	<resultMap type="StudyDTO" id="getStudyCounts">
+<!--   	<resultMap type="StudyDTO" id="getStudyCounts">
   		<id column="studyNum" property="studyNum"/>
 	  		<result column="studyName" property="studyName"/>
 	  		<result column="studyCost" property="studyCost"/>
@@ -61,7 +64,7 @@
 			<id column="num" property="num"/>
 				<result column="studyNum" property="studyNum"/>
 		</collection>  		
-  	</resultMap>
+  	</resultMap> -->
 	
 	<insert id="setBoardAdd" parameterType="StudyDTO">
 		<selectKey keyProperty="studyNum" resultType="Long" order="BEFORE">

@@ -73,6 +73,8 @@
 	<update id="setdeliveryUpdate" parameterType="com.goody.diet.member.DeliveryDTO">
 		UPDATE DELIVERY SET ADDRESS=#{address}, RECIPIENT=#{recipient}, RECIPIENTTEL=#{recipientTel} WHERE ADDRESSNUM=#{addressNum}
 	</update>
+	
+	
 		
 	<resultMap type="MemberDTO" id="getMemberRole">
 		<id column="ID" property="id"/>

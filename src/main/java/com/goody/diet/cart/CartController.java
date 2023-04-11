@@ -50,8 +50,7 @@ public class CartController {
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.getCartList(cartDTO);
 		for (CartDTO cartDTO2 : ar) {
-			System.out.println(cartDTO2.getStatus());
-			if(cartDTO2.getStatus()==0) {
+			if(cartDTO2.getStatus()==0 && cartDTO2.getStudyNum()!=null) {
 				mv.setViewName("common/result");
 				mv.addObject("result", "이미 장바구니에 클래스가 존재합니다. 장바구니를 확인하세요.");
 				mv.addObject("url", "./cartList");
@@ -80,7 +79,7 @@ public class CartController {
 	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] cartNum,Long [] count,Long totalCost) throws Exception{
 		ModelAndView mv = new ModelAndView();
 //		System.out.println(totalCost);
-		
+		System.out.println(checkedItems.length);
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());

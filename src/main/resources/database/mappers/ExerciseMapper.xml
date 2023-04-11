@@ -26,25 +26,27 @@
   <select id="getBodyDetail" parameterType="ExerciseDTO" resultType="BodyDTO">
 	SELECT * FROM BODY WHERE BODYNUM IN (SELECT BODYNUM FROM EXERCISEROLE EXR WHERE NUM = #{num})
   </select>
-	<!-- 부위별 리스트 + IMG + 영상 조인 리스트 -->
+	<!-- 부위별 리스트 + IMG + 영상 + machine 조인 리스트 -->
 	<select id="getExerciseTypeList" resultMap="getExerciseResult" parameterType="exerciseDTO">
-		SELECT * FROM
-		EXERCISE EX
-		LEFT OUTER JOIN
-		(
-		SELECT * FROM (
-		SELECT
-		EXI.*,rank()over(PARTITION BY NUM ORDER BY FILENUM ASC) RANKNUM
-		FROM EXERCISEIMG EXI
-		) WHERE RANKNUM=1) B
-		on(EX.NUM=B.NUM)
-		INNER JOIN
-		EXERCISEROLE B
-		ON(B.NUM=EX.NUM)
-		INNER JOIN 
-		"BODY" Q
-		on(B.BODYNUM = Q.BODYNUM)
-		WHERE Q.BodyNUM=#{bodyNum}
+	SELECT *
+	FROM EXERCISE EX
+	LEFT OUTER JOIN (
+	SELECT *
+	FROM (
+	SELECT EXI.*, RANK() OVER (PARTITION BY NUM ORDER BY FILENUM ASC) RANKNUM
+	FROM EXERCISEIMG EXI
+	) WHERE RANKNUM = 1
+	) IMG
+	ON EX.NUM = IMG.NUM
+	INNER JOIN EXERCISEROLE EXR
+	ON EXR.NUM = EX.NUM
+	INNER JOIN "BODY" B
+	ON B.BODYNUM = EXR.BODYNUM
+	WHERE B.BODYNUM = #{bodyNum}
+	</select>
+	<select id="getMachineName" parameterType="ExerciseDTO" resultType="ExerciseDTO">
+	select * from HEALTHMACHINE
+	where machineNum=#{machineNum}
 	</select>
 <!-- FILE 이랑 EXERCISE -->
 	<select id="getExerciseDetail" parameterType="ExerciseDTO" resultMap="getExerciseResult">
@@ -87,6 +89,12 @@
 	  			<result column="fileName" property="fileName"/>
 	  			<result column="oriName" property="oriName"/>
 		</collection>
+		<collection property="healthMachineDTOs" javaType="list" ofType="healthMachineDTO">
+				<id column="machineNum" property="machineNum"/>
+		  		<result column="machineName" property="machineName"/>
+		</collection>
+			
+		
 	</resultMap>
 
   		<insert id="setExerciseAdd" parameterType="ExerciseDTO">
@@ -95,6 +103,7 @@
 	  	</selectKey>
 		INSERT INTO EXERCISE (NUM, MACHINENUM, URLID, POWER, TIME, DETAILTITLE, HIGHLIGHT, INFO)
 		VALUES(#{num}, #{machineNum}, #{urlId}, #{power}, #{time}, #{detailTitle}, #{highLight}, #{info})
+	
 		</insert>
 		<insert id="setExerciseImg" parameterType="BoardFileDTO">
 			INSERT INTO EXERCISEIMG(FILENUM, NUM, FILENAME, ORINAME)
@@ -123,17 +132,22 @@
 			<result column="info" property="info"/>
 			<collection property="healthMachineDTOs" javaType="list" ofType="healthMachineDTO">
 				<id column="machineNum" property="machineNum"/>
-		  			<result column="machineName" property="machineName"/>
+		  		<result column="machineName" property="machineName"/>
 			</collection>
+			
+			
 		</resultMap> 
 	
 	<update id="setExerciseUpdate" parameterType="ExerciseDTO">
  		UPDATE EXERCISE SET DETAILTITLE=#{detailTitle},MACHINENUM=#{machineNum},URLID=#{urlId},POWER=#{power},TIME=#{time},HIGHLIGHT=#{highLight},INFO=#{info}
  		WHERE NUM=#{num}
  	</update>	
+ 	
+ 	<update id="setBodyUpdate" parameterType="ExerciseDTO">
+ 		UPDATE EXERCISEROLE SET NUM=#{num}, BODYNUM=#{bodyNum} WHERE NUM=#{num}
+ 	</update>
 
-
-	<delete id="setExercsieDelete" parameterType="ExerciseDTO">
+	<delete id="setExerciseDelete" parameterType="ExerciseDTO">
   		DELETE EXERCISE WHERE NUM=#{num}
   	</delete>
   	
@@ -141,7 +155,7 @@
  		DELETE EXERCISEIMG WHERE FILENUM=#{fileNum}
  	</delete> 
 
- 	<delete id="setExerciseRoleDelete" parameterType="BodyDTO">
+ 	<delete id="setExerciseRoleDelete" parameterType="ExerciseDTO">
  		DELETE EXERCISEROLE WHERE NUM=#{num}
  	</delete>
   	

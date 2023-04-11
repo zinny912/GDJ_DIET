@@ -146,13 +146,7 @@ $("#contentsConfirm").click(function(){
         if(res.trim()>0){
             alert('글쓰기 성공');
             $("#closeModal").click();
-            fetch("/studyReview/list?studyNum="+studyReviewList.getAttribute('data-review-studyNum'),{
-                method:'GET'
-            })
-            .then((response)=>response.text())
-            .then((res)=>{
-                $('#studyListResult').html(res.trim());
-            })           
+            location.href='/study/studyDetail?studyNum='+studyReviewList.getAttribute('data-review-studyNum');           
         }else {
             alert('글쓰기 실패');
         }

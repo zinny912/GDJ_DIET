@@ -18,7 +18,7 @@ public class ExerciseDTO extends HealthMachineDTO {
 	
 	private List<BoardFileDTO> boardFileDTOs;
 	private List<HealthMachineDTO> healthMachineDTOs;
-	private Long machinName;
+	private String machinName;
 	
 	private List<BodyDTO> bodyDTO;
 	private Long bodyNum;
@@ -50,13 +50,16 @@ public class ExerciseDTO extends HealthMachineDTO {
 	public void setBodyDTO(List<BodyDTO> bodyDTO) {
 		this.bodyDTO = bodyDTO;
 	}
-	public Long getMachinName() {
+	
+	
+	public String getMachinName() {
 		return machinName;
 	}
-	public void setMachinName(Long machinName) {
+
+	public void setMachinName(String machinName) {
 		this.machinName = machinName;
 	}
-	
+
 	public String getHighLight() {
 		return highLight;
 	}
