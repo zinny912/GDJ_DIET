@@ -19,7 +19,7 @@
 	</sql>
   	
   	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-  		SELECT COUNT(NUM) FROM MEMBER 
+  		SELECT COUNT(ID) FROM MEMBER 
   			<include refid="qnaCondition"></include>
   	</select>
 

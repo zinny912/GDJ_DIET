@@ -11,100 +11,122 @@
 <body>
 
 <div class="container-fluid">
+<c:import url="../template/header.jsp"></c:import>
+<div id="studyListResult"></div>
 
-<div class="row">
-    <table class="table my-table">
-        <thead>
-            <c:if test="${not empty list}">
-                <tr>
-                    <th style="text-align: left;">TITLE</th>
-                    <th>ID</th>
-                    <th>STUDYNUM</th>
-                    <th>PW</th>
-                    <th>NAME</th>
-                    <th>PHONE</th>
-                    <th>EMAIL</th>
-                    <th>ADDRESS</th>
-                    <th>loginType</th>
-                </tr>
-            </c:if>
-        </thead>
-        <tbody>
-            <c:forEach items="${list}" var="dto">
-                <tr>
-                    <td>${dto.id}</td>
-                    <td>${dto.studyNum}</td>
-                    <td>${dto.pw}</td>				
-                    <td>${dto.name}</td>
-                    <td>${dto.phone}</td>
-                    <td>${dto.email}</td>
-                    <td>${dto.address}</td>
-                    <td>${dto.loginType}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</div>
 
-<!-- 페이징 -->
-<div class="row">
-	<nav aria-label="Page navigation example">
-		<ul class="pagination ">
-			<li class="page-item "><a class="page-link text-dark page-qna" href="#"
-				aria-label="Previous" data-board-page="1"> <span
-					aria-hidden="true">&laquo;</span>
-			</a></li>
-			<li class="page-item ${pager.before?'disabled':''}"><a
-				class="page-link text-dark page-qna" href="#" aria-label="Previous"
-				data-board-page="${pager.startNum-1}"> <span aria-hidden="true">&lsaquo;</span>
-			</a></li>
 
-			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<li class="page-item"><a class="page-link text-dark page-qna" href="#"
-					data-board-page="${i}">${i}</a></li>
-			</c:forEach>
-
-			<li class="page-item ${pager.after eq false ? 'disabled' : ''}">
-				<%--${pager.after eq false ? 'disabled' : ''} --%> <a
-				class="page-link text-dark page-qna" href="#" aria-label="Next"
-				data-board-page="${pager.lastNum+1}"> <span aria-hidden="true">&rsaquo;</span>
-			</a>
-			</li>
-			<li class="page-item ">
-				<%--${pager.after eq false ? 'disabled' : ''} --%> <a
-				class="page-link text-dark page-qna" href="#" aria-label="Next"
-				data-board-page="${pager.totalPage}"> <span aria-hidden="true">&raquo;</span>
-			</a>
-			</li>
-		</ul>
-	</nav>
-</div>
-
-<!-- 검색창 -->
-<div class="row">
-	
-		<div class="col-auto">
-			<label for="kind" class="visually-hidden">Kind</label> <select
-				class="form-select" name="kind" id="kind"
-				aria-label="Default select example">
-				<option class="searchOption" value="names" ${pager.kind eq 'names'?'selected':''}>이름</option>
-				<option class="searchOption" value="loginType" ${pager.kind eq 'loginType'?'selected':''}>LOGIN TYPE</option>
-			</select>
-		</div>
-		<div class="col-auto">
-			<label for="search" class="visually-hidden">Search</label> <input
-				type="text" class="form-control" style="font-size:15px;" value="${pager.search}"
-				name="search" id="search" placeholder="검색어를 입력하세요.">
-		</div>
-		<div class="col-auto">
-			<button type="button" class="btn btn-primary mb-3" id="searchbutton">검색</button>
-		</div>
-		
-
-</div>
 </div>
 
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
+
+<script type="text/javascript">
+//studyQna목록
+fetch("/member/memberList",{
+    method:'POST'
+})
+.then((response)=>response.text())
+.then((res)=>{
+    $('#studyListResult').html(res.trim());
+})
+    
+//page를 요청할 수 있도록 만든 이벤트
+$('#studyListResult').on("click",".page-qna",function(e){
+    let page = $(this).attr('data-board-page');
+    let kind =''
+    $(".searchOption").each(function(idx, item){
+        if($(item).prop("selected")){
+            kind = $(item).val();
+        }
+    })
+
+    let search = $("#search").val();
+
+    fetch("/member/memberList?page="+page+"&kind="+kind+"&search="+search,{
+        method:'POST'
+    })
+    .then((response)=>response.text())
+    .then((res)=>{
+        $('#studyListResult').html(res.trim());
+    })
+
+    e.preventDefault();
+})
+
+//검색할 수 있도록 만든 이벤트
+$('#studyListResult').on("click","#searchbutton",function(e){
+    let kind = ''
+    $(".searchOption").each(function(idx, item){
+        if($(item).prop("selected")){
+            kind = $(item).val();
+        }
+    })
+
+    let search = $("#search").val();
+
+    fetch("/member/memberList?kind="+kind+"&search="+search,{
+        method:'POST',
+    })
+    .then((response)=>response.text())
+    .then((res)=>{
+        $('#studyListResult').html(res.trim());
+    })
+})
+
+
+
+
+// let search = '';
+// let kind = '';
+// getPage()
+// function getPage(){
+//     fetch("/member/memberList?kind="+kind+"&search="+search,{
+//         method:'POST',
+//     })
+//     .then((response)=>response.text())
+//     .then((res)=>{
+//         $('#studyListResult').html(res.trim());
+//     })
+// }
+
+// //page를 요청할 수 있도록 만든 이벤트
+// $('#studyListResult').on("click",".page-qna",function(e){
+//     let page = $(this).attr('data-board-page');
+// 	console.log(page)
+//     $(".searchOption").each(function(idx, item){
+//         if($(item).prop("selected")){
+//             kind = $(item).val();
+//         }
+//     })
+
+//     search = $("#search").val();
+//     //페이지
+//     fetch("/member/memberList?kind="+kind+"&search="+search+"&page="+page,{
+//         method:'POST',
+//     })
+//     .then((response)=>response.text())
+//     .then((res)=>{
+//         $('#studyListResult').html(res.trim());
+//     })
+
+//     e.preventDefault();
+// })
+
+// //검색할 수 있도록 만든 이벤트
+// $('#studyListResult').on("click","#searchbutton",function(e){
+    
+//     $(".searchOption").each(function(idx, item){
+//         if($(item).prop("selected")){
+//             kind = $(item).val();
+//         }
+//     })
+
+// 	search = $("#search").val();
+//     getPage()
+
+// })
+</script>
+
 </body>
 </html>

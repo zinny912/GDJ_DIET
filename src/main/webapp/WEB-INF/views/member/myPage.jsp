@@ -23,7 +23,7 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 		<c:import url="./memberHeader.jsp"></c:import>
 
 <div class="col-9">
-<div hidden="" class="nav-link" id="studyQnaList" data-study-studyNum="${sessionMember.studyNum}" style="cursor: pointer">Q&amp;A(${qna})</div>
+<div hidden="" class="nav-link" id="studyQnaList" data-study-studyNum="${sessionMember.studyNum}"></div>
 	<div id="studyListResult" class=""></div>
 </div>
 

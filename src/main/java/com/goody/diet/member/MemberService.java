@@ -15,8 +15,9 @@ public class MemberService {
 	
 
 	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
-		pager.makeRow();
+		System.out.println("totalpage: "+memberDAO.getTotalCount(pager));
 		pager.makeNum(memberDAO.getTotalCount(pager));//totalcountDAO만드어,,
+		pager.makeRow();
 		
 		return memberDAO.getMemberList(pager);
 	}
@@ -103,16 +104,18 @@ public class MemberService {
 		return memberDTO;
 	}
 
-	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception {
+	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception { //pw변경시 검사, 
+		memberDTO = memberDAO.getMemberLogin(memberDTO);
 		
-		if(memberDTO.getLoginType().equals("kakao")) {
-			memberDTO = memberDAO.getMemberLogin(memberDTO);
-
-		}else if(memberDTO.getLoginType().equals("general")) {
-			memberDTO = memberDAO.getMemberLogin(memberDTO);
-//			memberDTO.setPw(null); //일반 로그인은 getMemberLogin로 해... pw필요해..
-			
-		}
+		//이거 왜 나눠놨지...?
+//		if(memberDTO.getLoginType().equals("kakao")) {
+//			memberDTO = memberDAO.getMemberLogin(memberDTO);
+//
+//		}else if(memberDTO.getLoginType().equals("general")) {
+//			memberDTO = memberDAO.getMemberLogin(memberDTO);
+////			memberDTO.setPw(null); //일반 로그인은 getMemberLogin로 해... pw필요해..
+//			
+//		}
 
 		return memberDTO;
 		

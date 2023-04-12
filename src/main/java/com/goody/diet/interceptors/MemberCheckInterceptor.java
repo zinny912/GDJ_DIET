@@ -16,10 +16,10 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 
 		
-		System.out.println("--------멤버첵 인터셉터--------");
+//		System.out.println("--------멤버첵 인터셉터--------");
 //		return super.preHandle(request, response, handler);
+//		System.out.println(request.getSession().getAttribute("sessionMember"));
 		
-		System.out.println(request.getSession().getAttribute("sessionMember"));
 		if(request.getSession().getAttribute("sessionMember") != null) {
 			
 			return true;
