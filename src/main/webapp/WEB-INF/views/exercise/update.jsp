@@ -47,14 +47,15 @@
 						<label class="machineLabel"><input class="machines"
 							type="radio" name="machineNum" value="${machine.machineNum }">
 							<span class="s1">${machine.machineName }</span></label>
-
+					
 					</c:forEach>
+					<button class="btn btn-outline-primary" type="button" id="machineCheckout">기구 선택안함</button>
 				</fieldset>
 
 			</div>
 			<div>
 				<!-- dtailTitleNull임 -->
-				<input class="detail1 form-input-title" value="${dto.detailTitle}"
+				<input class="detail1 form-input-title essential" value="${dto.detailTitle}"
 					id="detailTitle" name="detailTitle" placeholder="detailTitle" />
 
 			</div>
@@ -78,16 +79,16 @@
 					<!-- 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
 					<div class="detail2">
 
-						<input class="l" id="info" name="info" value="${dto.info}" />
+						<input class="l essential" id="info" name="info" value="${dto.info}" />
 
 					</div>
 					<div class="detail4">
 
-						<input class="highlight" id="highLight" name="highLight"
+						<input class="highlight essential" id="highLight" name="highLight"
 							value="${dto.highLight}" /> 
 					</div>
 					<c:forEach items="${bodyList }" var="body">
-						<label> <input class="bodys" type="checkbox"
+						<label> <input class="bodys check" type="checkbox"
 							name="bodyNum" value="${body.bodyNum }" /> <span class="s1">${body.bodyName }</span>
 						</label>
 					</c:forEach>
@@ -117,13 +118,13 @@
 						<div class="boxtwo">
 							<ul>
 								<li><span class="time">운동소요시간 </span></li>
-								<li><input class="mmss" id="time" name="time"
+								<li><input class="mmss essential" id="time" name="time"
 									value="${dto.time}" /></li>
 							</ul>
 						</div>
 
 					</div>
-					<label>영상링크</label> <input class="golink" value="${dto.urlId}"
+					<label>영상링크</label> <input class="golink essential" value="${dto.urlId}"
 						id="urlId" name="urlId" />
 
 
@@ -132,7 +133,7 @@
 
 		</section>
 
-		<button type="submit" class="btn btn-primary">수정하기</button>
+		<button type="button" class="btn btn-primary" id="submitbtn">수정하기</button>
 
 	</form>
 	<script>

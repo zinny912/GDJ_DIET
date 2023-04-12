@@ -44,46 +44,13 @@ $("#fileAdd").click(()=>{
     count++;
 
     let child = '<div class="input-group mb-3" id="f'+idx+'">';
-    child = child + '<input type="file" class="form-control" name="'+param+'">'
+    child = child + '<input type="file" class="form-control essential" name="'+param+'">'
     child = child + '<button type="button" class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button></div>'
     child = child+'</div>';
     $("#fileList").append(child);
     idx++;
 });
 
-
-$(".deleteCheck").click(function(e){
-    let result  = confirm("파일이 영구 삭제 됩니다.")
-    let ch =$(this);
-    if(result){
-        let fileNum = $(this).val();
-        $.ajax({
-            type:"POST",
-            url:"./boardFileDelete",
-            data:{
-                fileNum:fileNum
-            },
-            success : function(response){
-                if(response.trim()>0){
-                    alert("삭제되었습니다.")
-                    ch.parent().parent().remove();
-                    //this : ajax객체 자기자신
-                    console.log($(ch))
-                    count--;
-                }else{
-                    alert("삭제 실패하였습니다.")
-                }
-            },
-            error:function(){
-
-            }
-        })
-        
-
-    }else{
-        $(this).prop('checked',false)
-    }
-})
 
 $("#del").click(function(){
     $("#frm").attr("action","./delete")
@@ -102,7 +69,11 @@ $(".machines").each(function(index,machine){
         $(machine).prop("checked",true)
     }
 })
-
+$("#machineCheckout").click(function(){
+    $(".machines").each(function(index,machine){
+    $(machine).prop("checked",false)
+})
+})
 $(".bodys").each(function(index,body){
     $(".checkbodys").each(function(i,checkbody){
         if($(body).val()==$(checkbody).attr("data-bodydata")*1){
@@ -118,11 +89,38 @@ $(".ty1").each(function(index,power){
     }
 })
 $("#fileChange").click(function(){
-    let check = window.confirm("정말 삭제 하시겠습니까?");
+    let check = window.confirm("썸네일을 변경 하시겠습니까?");
     if (check) {
         $("#fileList").empty()
         $("#fileList").append('<input type="file" class="form-control" name="Files">')
 
     }
 
+})
+
+$("#submitbtn").click(function(){
+    let nullCheck=false;
+    let checkCount=0
+    
+    $(".check").each(function(index,check){
+        if($(check).prop("checked")==true){
+            checkCount=1;
+        }
+    })
+    if(checkCount==0){
+        alert("하나 이상의 부위를 선택해야 합니다.")
+        return false;
+    }
+    $(".essential").each(function(index,essential){
+        if($(essential).val().length==0){
+            alert("입력란을 다시 확인해주세요");
+            nullCheck=true;
+            return false;
+        }
+    })
+    if(nullCheck!=true){
+        $("#frm").submit();
+
+    }
+  
 })
