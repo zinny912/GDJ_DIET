@@ -45,8 +45,8 @@ public class OrderService {
 		};
 		return verification;
 	}
-	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
-		return orderDAO.getOrderList(memberDTO);	
+	public List<OrderDTO> getOrderList(OrderCalendar orderCalendar) throws Exception {
+		return orderDAO.getOrderList(orderCalendar);	
 	}
 	public int setUpdateCart(MemberDTO memberDTO, OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
 		//1. order생성
@@ -78,6 +78,9 @@ public class OrderService {
 					cartDAO.setStudyStock(cartDTO);
 					studyidx++;//
 					count++;
+					//세션업데이트
+					memberDTO.setStudyNum(cartDTO.getStudyNum());
+					session.setAttribute("sessionMember", memberDTO);
 				}
 				continue;
 			}
