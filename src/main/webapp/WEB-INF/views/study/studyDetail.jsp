@@ -58,13 +58,17 @@
 					<c:when test="${sessionMember eq null}">
 						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">장바구니에 담기</a>
 					</c:when> 
-					<c:when test="${sessionMember ne null}">
+					<c:when test="${sessionMember ne null and dto.studyStock>0}">
 					 <!-- and sessionMember.studyNum eq null -->
 						<form action="/cart/cartAdd" method="post">
 							<input type="hidden" name="studyNum" value="${dto.studyNum}">
-							<input type="hidden" name="cartPrice" value="${dto.studyCost}">	
+							<input type="hidden" name="cartPrice" value="${dto.studyCost}">		
 							<button class="btn btn-primary" type="submit">장바구니에 담기</button>
 						</form>
+					</c:when>
+					<c:when test="${dto.studyStock==0}">
+						<div>
+						<button class="btn btn-secondary" style="width: 100%;">품절상품 입니다.</button></div>
 					</c:when>
 				</c:choose>
 

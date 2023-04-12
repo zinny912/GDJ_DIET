@@ -263,6 +263,11 @@ public class HealthMachineService {
 	public Long getMachineQnaCount(HealthMachineDTO healthMachineDTO) throws Exception {
 		return healthMachineDAO.getMachineQnaCount(healthMachineDTO);
 	}
+	
+	//realhealthMachine stock 갯수 
+	public Long getMachineStock(HealthMachineDTO healthMachineDTO) throws Exception {
+		return healthMachineDAO.getMachineStock(healthMachineDTO);
+	}
 
 
 }

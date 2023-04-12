@@ -67,7 +67,7 @@
 					<tr>
 					<td colspan="2"></td>
 					<td colspan="2">
-						<div style="text-align: center; margin-top: 50px;">
+						<div style="text-align: center; margin-top: 20px;">
 							<img src="/resources/images/cartList.png"
 								style="width: 32px; height: 32px;">
 							<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
@@ -162,17 +162,12 @@
 					</c:if>
 				</c:forEach>
 				<c:if test="${empty list}">
-					<tr>
-					<td colspan="2"></td>
-					<td colspan="2">
-						<div style="text-align: center; margin-top: 50px;">
-							<img src="/resources/images/cartList.png"
-								style="width: 32px; height: 32px;">
-							<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
-								비어있습니다.</div>
-						</div></td>
-						<td colspan="2"></td>
-					</tr>
+					<tr style="text-align: center;">
+			<td colspan="6">
+				<img src="/resources/images/cartList.png" style="width: 32px; height: 32px;">
+				<div style="font-size: 1.5em; margin-top: 20px;">장바구니가 비어있습니다.</div>
+			</td>
+		</tr>
 					</c:if> 
 			</tbody>
 			<tfoot>
