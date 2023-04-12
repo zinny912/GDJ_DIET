@@ -78,7 +78,8 @@
 			<label for="kind" class="visually-hidden">Kind</label> <select
 				class="form-select" name="kind" id="kind"
 				aria-label="Default select example">
-				<option class="searchOption" value="names" ${pager.kind eq 'names'?'selected':''}>이름</option>
+				<option class="searchOption">선택</option>
+				<option class="searchOption" value="names" ${pager.kind eq 'names'?'selected':''}>NAME</option>
 				<option class="searchOption" value="loginType" ${pager.kind eq 'loginType'?'selected':''}>LOGIN TYPE</option>
 			</select>
 		</div>

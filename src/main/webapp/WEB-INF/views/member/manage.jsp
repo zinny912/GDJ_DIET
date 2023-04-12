@@ -30,6 +30,7 @@ fetch("/member/memberList",{
 .then((res)=>{
     $('#studyListResult').html(res.trim());
 })
+
     
 //page를 요청할 수 있도록 만든 이벤트
 $('#studyListResult').on("click",".page-qna",function(e){
