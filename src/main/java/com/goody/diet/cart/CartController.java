@@ -75,6 +75,7 @@ public class CartController {
 	public ModelAndView setCartCheckUpdate(CartDTO cartDTO, Long[] checkedItems,HttpSession session, Long [] cartNum,Long [] count,Long totalCost) throws Exception{
 		ModelAndView mv = new ModelAndView();
 //		System.out.println(totalCost);
+//		System.out.println(checkedItems.length);
 		/* String[] checkedItems = request.getParameterValues("checkedItems"); */
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
