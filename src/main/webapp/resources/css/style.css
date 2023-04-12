@@ -136,28 +136,28 @@ sup {
   top: -.5em; }
 
 a {
-  color: #2c396b;;
+  color: #2c396b;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
     color: tomato;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer; }
 
-a:not([href]):not([tabindex]) {
-  color: inherit;
-  text-decoration: none; }
-  a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
-    color: inherit;
-    text-decoration: none; }
-  a:not([href]):not([tabindex]):focus {
-    outline: 0; }
-
- a .footer-text{
-  font-family: "Gowun Dodum",  sans-serif;
-  font-weight: 100;
-  font-size: 5px;
-}  
+    a:not([href]):not([tabindex]) {
+      color: inherit;
+      text-decoration: none; }
+      a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
+        color: inherit;
+        text-decoration: none; }
+      a:not([href]):not([tabindex]):focus {
+        outline: 0; }
+    
+     a .footer-text{
+      font-family: "Gowun Dodum",  sans-serif;
+      font-weight: 100;
+      font-size: 5px;
+    }  
 
 pre,
 code,
@@ -3850,7 +3850,8 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem; 
+}
   .card > hr {
     margin-right: 0;
     margin-left: 0; }

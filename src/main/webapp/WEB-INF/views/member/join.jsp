@@ -8,6 +8,11 @@
 <title>회원가입</title>
 
 	<style type="text/css">
+		.card-body {
+		width:100%;
+		height: 80%;
+		}
+		
 		.redResult{
 			color: red;
 		}
@@ -16,7 +21,8 @@
 		}
 	</style>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<c:import url="../template/common_css.jsp"></c:import>  
+<c:import url="../template/header.jsp"></c:import>
 </head>
 <body>
 
@@ -29,7 +35,7 @@
         <div class="card text-black" style="border-radius: 25px;">
           <div class="card-body">
           
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">회원가입</p>
 
                 <form id="login_form" class="mx-1 mx-md-4" action="./join" method="post">
 
@@ -203,6 +209,6 @@
         element_wrap.style.display = 'block';
     }
 </script>
-
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
