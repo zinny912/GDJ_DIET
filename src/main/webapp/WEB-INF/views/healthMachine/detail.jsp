@@ -69,7 +69,7 @@
 				</div>
 				<br>
 
-				<form id="frm">
+<%-- 				<form id="frm">
 					<div id="btn">
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
 					<c:if test="test=${sessionMember ne null and sessionMember.roleDTO.roleName ne 'ADMIN' and (stock==0 or empty stock)}}">
@@ -100,7 +100,29 @@
 						</div>
 					</c:if>
 					</div>
-			</form>
+			</form> --%>
+			
+			<form id="frm">
+					<input type="hidden" name="machineNum" value="${dto.machineNum}">
+					<!-- <input type="hidden" id="optId1" name="optId1"> <input
+						type="hidden" id="optId2" name="optId2"> <input
+						type="hidden" id="optId3" name="optId3"> <input
+						type="hidden" id="optId4" name="optId4"> -->
+					<!-- <a class="btn btn-primary" href="#">장바구니에 담기</a> -->
+					<div id="btn">
+						<c:if test="${sessionMember ne null}">
+						<button id="cartAdd" type="button" class="btn btn-outline-primary"
+							disabled="disabled">장바구니에 담기</button>
+						</c:if>
+						<c:if test="${sessionMember eq null}">
+							<a href="#" class="btn btn-primary" data-toggle="modal"
+								data-target="#loginModal">장바구니에 담기</a>
+						</c:if>
+						<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+							<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+						</c:if>
+					</div>
+				</form>
 
 
 
