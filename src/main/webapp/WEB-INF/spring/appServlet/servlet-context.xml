@@ -26,6 +26,23 @@
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
 	
+	<!-- Interceptors -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/agree"/>
+			<mapping path="/member/delete"/>
+			<mapping path="/member/logout"/>
+			<mapping path="/member/myPage"/>
+			<mapping path="/member/update*"/>
+			<mapping path="/member/pw*"/>
+			<mapping path="/member/delivery*"/>
+			<mapping path="/order/list*"/>
+<!-- 			<exclude-mapping path="/member/"/> -->
+			<beans:ref bean="memberCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+
+
 	<context:component-scan base-package="com.goody.diet" />
 
 </beans:beans>

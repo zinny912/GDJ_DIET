@@ -37,7 +37,7 @@
 	<c:import url="./memberHeader.jsp"></c:import>
 </c:if>	
 	
-    <div class="col-10">
+    <div class="col-9">
       <div class="row toPayment-mother">
 
 

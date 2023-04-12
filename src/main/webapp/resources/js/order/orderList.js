@@ -1,5 +1,57 @@
 
+const date = new Date();
+let pastDate  = new Date();
+pastDate.setDate(pastDate.getDate() - 7);
 
+
+//만약 안들어간경우.
+if($('#startDate').val()==null||$('#startDate').val()==""){
+    $('#startDate').val(pastDate.toISOString().slice(0,10))
+}
+if($('#endDate').val()==null||$('#endDate').val()==""){
+    $('#endDate').val(date.toISOString().slice(0,10))
+}
+
+//마지막날짜+1
+// input 요소를 가져옴
+let dateInput = document.getElementById("endDate");
+// input 요소의 value 속성에서 날짜를 가져옴
+let currentDatePlus = new Date(dateInput.value); 
+// 1일을 추가함
+currentDatePlus.setDate(currentDatePlus.getDate() + 1);
+// input 요소의 value 속성에 새로운 날짜를 설정함
+// dateInput.value = currentDatePlus.toISOString().slice(0,10); //이거하면 html값도 바낌..
+
+
+
+datedate()
+function datedate(){
+
+    $.ajax({
+        type:"GET",
+        url:"/order/listCalen",
+        data:{
+            startDate: $('#startDate').val(),
+            endDate: currentDatePlus.toISOString().slice(0,10)  
+    
+    
+        },
+            success: (res)=>{
+                console.log(res.trim())
+                $('.ajaxOut').html(res.trim())
+
+                // let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
+                // let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
+                // title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
+
+            },
+            error: ()=>{
+                console.log('실패')
+            }
+    })
+}
+
+$('#startDate').focus(()=>{console.log($('#startDate').val())})
 
 // //orderNum으로 cartList불러오기
 // let orderLeng = document.getElementsByClassName("order_number")
@@ -23,12 +75,17 @@
 // }
 
 $(document).ajaxComplete(function(e){
+
+    let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
+    let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
+    title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
+
     e.preventDefault()
   });
 
-let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
-let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
-title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
+// let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
+// let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
+// title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
 
 
 ///장바구니 추가버튼

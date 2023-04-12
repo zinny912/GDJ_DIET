@@ -79,6 +79,14 @@ public class MemberDAO {
 	public int setDeliveryDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setDeliveryDeleteOnMemberDelete", memberDTO);
 	}
-	
+	public int setOrderDetailDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setOrderDetailDeleteOnMemberDelete", memberDTO);
+	}
+	public int setCartDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setCartDeleteOnMemberDelete", memberDTO);
+	}
+	public int setOrderDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setOrderDeleteOnMemberDelete", memberDTO);
+	}
 	
 }
