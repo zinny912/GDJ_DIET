@@ -61,6 +61,18 @@
 	<delete id="setDeliveryDeleteOnMemberDelete" parameterType="MemberDTO">
 		DELETE DELIVERY WHERE ID=(SELECT ID FROM MEMBER WHERE ID=#{id})
 	</delete>
+	<delete id="setOrderDetailDeleteOnMemberDelete" parameterType="MemberDTO">
+		DELETE ORDERDETAIL WHERE id=#{id}
+	</delete>
+	<delete id="setCartDeleteOnMemberDelete" parameterType="MemberDTO">
+		DELETE CART WHERE id=#{id}
+	</delete>
+	<delete id="setOrderDeleteOnMemberDelete" parameterType="MemberDTO">
+		DELETE "ORDER" WHERE id=#{id}
+	</delete>
+	
+	
+	
 	<update id="setPasswordUpdate" parameterType="MemberDTO">
 		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
 	</update>

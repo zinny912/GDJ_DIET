@@ -12,21 +12,28 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-<div class="container-fluid">
-<div class="row" style="height: 1000px;">
-		<c:import url="./memberHeader.jsp"></c:import>
-
-
 <div class="col text-center">
 <h3>^^</h3>
 study/studyDetail?studyNum=${sessionMember.studyNum}
 </div>
 
-</div></div>
+
+<div class="container-fluid">
+<div class="row" style="height: 1000px;">
+		<c:import url="./memberHeader.jsp"></c:import>
+
+<div class="col-9">
+<div hidden="" class="nav-link" id="studyQnaList" data-study-studyNum="${sessionMember.studyNum}" style="cursor: pointer">Q&amp;A(${qna})</div>
+	<div id="studyListResult" class=""></div>
+</div>
+
+
+</div><!-- row end -->
+</div>
 
 
 
-
+<script src="/resources/js/studyBoard.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 

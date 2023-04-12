@@ -111,7 +111,7 @@ public class MemberService {
 	}
 	
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
-		memberDTO.setLoginType("general"); //내가젖소..ㅠ
+		memberDTO.setLoginType("general"); 
 		memberDAO.setMemberRole(memberDTO);
 		return memberDAO.setMemberJoin(memberDTO);
 	}
@@ -151,7 +151,11 @@ public class MemberService {
 		return memberDAO.getDeliveryPage(memberDTO);
 	}
 
-	public int setDeliveryDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
-		return memberDAO.setDeliveryDeleteOnMemberDelete(memberDTO);
+	public int setDeleteOnMemberDelete (MemberDTO memberDTO) throws Exception {
+		memberDAO.setDeliveryDeleteOnMemberDelete(memberDTO);
+		memberDAO.setOrderDetailDeleteOnMemberDelete(memberDTO);
+		memberDAO.setCartDeleteOnMemberDelete(memberDTO);
+		memberDAO.setOrderDeleteOnMemberDelete(memberDTO);
+		return 0;
 	}
 }
