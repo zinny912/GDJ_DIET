@@ -5,13 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.goody.diet.util.Pager;
+
 @Service
 public class MemberService {
 	
 	@Autowired
 	MemberDAO memberDAO;
 	
-	//카카오
+
+	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
+		pager.makeRow();
+		pager.makeNum(memberDAO.getTotalCount(pager));//totalcountDAO만드어,,
+		
+		return memberDAO.getMemberList(pager);
+	}
 	
 	public MemberDTO getKakaoLogin (MemberDTO memberDTO) throws Exception {
 		System.out.println("서비스카카오로긴1");

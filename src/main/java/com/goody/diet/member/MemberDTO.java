@@ -1,7 +1,5 @@
 package com.goody.diet.member;
 
-import java.util.List;
-
 public class MemberDTO {
 
 	private String id;

@@ -1,5 +1,7 @@
 package com.goody.diet.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.util.Pager;
+
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
@@ -19,8 +23,28 @@ public class MemberController {
 	private MemberService memberService;
 
 	@GetMapping("manage")
-	public String getMemberList() {
-		return "manage";
+	public ModelAndView getMemberList(HttpSession session, ModelAndView mv) throws Exception {
+		
+		//@@@인터셉터 누가만들면 바까주기
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		String message="권한 부족";
+		if(!memberDTO.getRoleDTO().getRoleName().equals("ADMIN")) {
+			mv.addObject("url", "/");
+			mv.addObject("result", message);
+			mv.setViewName("common/result");
+		}else {
+			mv.setViewName("/member/manage");
+		}
+		
+		return mv;
+	}
+	@PostMapping("manage")
+	public ModelAndView getMemberList(Pager pager, ModelAndView mv) throws Exception {
+		List<MemberDTO> ar = memberService.getMemberList(pager);
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);		
+
+		return mv;
 	}
 	
 	@PostMapping("kakaoLogin")
@@ -52,11 +76,11 @@ public class MemberController {
 		return mv;
 	}
 	
-	@GetMapping("agree")
-	public ModelAndView setMemberAgree(ModelAndView mv) throws Exception {
-		mv.setViewName("member/agree");
-		return mv;
-	}
+//	@GetMapping("agree")
+//	public ModelAndView setMemberAgree(ModelAndView mv) throws Exception {
+//		mv.setViewName("member/agree");
+//		return mv;
+//	}
 	
 	@GetMapping("login")
 	public ModelAndView setMemberLogin(ModelAndView mv, HttpSession session) throws Exception {

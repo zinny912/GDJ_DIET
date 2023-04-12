@@ -38,6 +38,7 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 <c:import url="../template/common_js.jsp"></c:import>
 
 <script type="text/javascript">
+	//상품창에서 말고 여기서 myPage보낼께..
 	fetch("/studyQna/list?myPage=y&studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
 	    method:'GET'
 	})

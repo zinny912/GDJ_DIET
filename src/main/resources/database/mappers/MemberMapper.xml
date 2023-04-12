@@ -5,6 +5,40 @@
 
 <mapper namespace="com.goody.diet.member.MemberDAO">
 
+  	<sql id="qnaCondition">
+	  	<trim prefix="where" suffixOverrides="and">
+
+			<if test="kind == 'names'">
+				NAMES LIKE '%'|| #{search} || '%'
+			</if>
+			
+			<if test="kind == 'loginType'">
+				LOGINTYPE LIKE '%'|| #{search} || '%'
+			</if>
+		</trim> 
+	</sql>
+  	
+  	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+  		SELECT COUNT(NUM) FROM MEMBER 
+  			<include refid="qnaCondition"></include>
+  	</select>
+
+	<select id="getMemberList" parameterType="Pager" resultMap="getMemberRole">
+  		SELECT * FROM
+  		(	
+  			SELECT ROWNUM R, MM.* FROM
+  				(	SELECT * FROM MEMBER m
+					LEFT JOIN MEMBERROLE mr
+					ON (m.ID = mr.ID)
+					LEFT JOIN "ROLE" r 
+					ON (mr.ROLENUM = r.ROLENUM)
+					<include refid="qnaCondition"></include>
+					ORDER BY NAMES DESC, PHONE ASC
+				) MM
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+
 	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberRole">
 		SELECT * FROM "MEMBER" m 
 		LEFT JOIN MEMBERROLE mr

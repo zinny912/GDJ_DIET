@@ -116,8 +116,8 @@
 
 <!-- 약관동의 모달창 -->
 <!-- Button trigger modal -->
-<!-- <button type="button" id="modalBtn" hidden="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal"> -->
-<!-- </button> -->
+<button type="button" id="modalBtn" hidden="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal">
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -331,7 +331,7 @@
 
 <c:import url="./common_js.jsp"></c:import>
 
-<!-- <script src="/resources/js/member/memberAgree.js"></script>z -->
+<script src="/resources/js/member/memberAgree.js"></script>
 
 
 <!-- 주소api -->
