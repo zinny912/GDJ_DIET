@@ -48,7 +48,7 @@ public class OrderService {
 	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
 		return orderDAO.getOrderList(memberDTO);	
 	}
-	public int setUpdateCart(OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
+	public int setUpdateCart(MemberDTO memberDTO, OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
 		//1. order생성
 		int result= orderDAO.setOrder(orderDTO); 
 
