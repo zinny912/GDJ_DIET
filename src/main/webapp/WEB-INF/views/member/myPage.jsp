@@ -19,7 +19,7 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 
 
 <div class="container-fluid">
-<div class="row" style="height: 1000px;">
+<div class="row">
 		<c:import url="./memberHeader.jsp"></c:import>
 
 <div class="col-9">
@@ -38,13 +38,26 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 <c:import url="../template/common_js.jsp"></c:import>
 
 <script type="text/javascript">
-	fetch("/studyQna/list?studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
+	fetch("/studyQna/list?myPage=y&studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
 	    method:'GET'
 	})
 	.then((response)=>response.text())
 	.then((res)=>{
 	    $('#studyListResult').html(res.trim());
 	})
+// 	$('#studyListResult').on("click",$('.ajax-myPage'),function(){
+// 		$.ajax({
+// 			type:"GET", 
+// 			url:"/studyQna/add", 
+// 			data:{
+// 				myPage:"y",
+// 				studyNum:$('#studyQnaList').attr('data-study-studyNum')
+// 				}, 
+// 				success:function (res){
+// 					$('#studyListResult').html(res.trim());
+// 					}
+// 		})		
+// 	})
 </script>
 
 </body>

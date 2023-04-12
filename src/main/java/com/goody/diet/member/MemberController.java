@@ -18,6 +18,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@GetMapping("manage")
+	public String getMemberList() {
+		return "manage";
+	}
+	
 	@PostMapping("kakaoLogin")
 	public ModelAndView getKakaoLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
 		memberDTO = memberService.getKakaoLogin(memberDTO);
@@ -97,8 +102,9 @@ public class MemberController {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		System.out.println("-----------------myPage-------------------");
-		System.out.println("로그인타입: "+memberDTO.getLoginType());
-		System.out.println("q&na부르는: "+memberDTO.getStudyNum());
+//		System.out.println("로그인타입: "+memberDTO.getLoginType());
+//		System.out.println("q&na부르는: "+memberDTO.getStudyNum());
+		System.out.println(memberDTO.getRoleDTO().getRoleName());
 		
 		if(memberDTO!=null) { //무결성 로그인
 			memberDTO = memberService.getMyPage(memberDTO);

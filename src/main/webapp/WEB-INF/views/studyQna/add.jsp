@@ -48,6 +48,7 @@
 			<div class="mb-3">
 				<button class="btn btn-primary" type="submit">글쓰기</button> 
 			</div>
+			<input hidden="" name="myPage" value="1">
 		</form>
 	</div>
 </div>
