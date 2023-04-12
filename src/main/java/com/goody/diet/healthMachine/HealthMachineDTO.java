@@ -62,6 +62,10 @@ public class HealthMachineDTO {
 	}
 	public void setSalePrice(Long salePrice) {
 		this.salePrice = salePrice;
+		if(salePrice==null) {
+			this.salePrice=price;
+			
+		}
 	}
 	public String getOption1() {
 		return option1;

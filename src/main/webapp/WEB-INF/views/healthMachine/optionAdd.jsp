@@ -16,7 +16,7 @@
 		</div>
 		<div class="row col-md-7 mx-auto">
 			<form action="./optionAdd" method="POST"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" id="frm">
 				<div class="row text-center" id="optionSelect"
 					data-machineNum="${dto.machineNum}">
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
@@ -24,7 +24,7 @@
 					<div class="mb-3 col-4 dropdown" id="opt1"
 						data-optName="${dto.option1 }">
 						<label for="optName1" class="form-label">${dto.option1} 작성</label>
-						<input type="text" class="form-control optInput" name="optName1">
+						<input type="text" class="form-control optInput essential" name="optName1">
 						 <div class="dropdown-menu">
 							<ul style="list-style: none" id="optSelect1">
 							<c:forEach items="${optList1}" var="option">
@@ -34,7 +34,7 @@
 							</ul>
 						</div> 
 						<label for="optId1" class="form-label">option1 id 작성(영문)</label> <input
-							type="text" class="form-control optInputId" name="optId1">
+							type="text" class="form-control optInputId essential" name="optId1">
 
 					</div>
 
@@ -44,7 +44,7 @@
 						<div class="mb-3 col-4 dropdown" id="opt2"
 							data-optName="${dto.option2 }">
 							<label for="optName2" class="form-label">${dto.option2}
-								작성</label> <input type="text" class="form-control optInput"
+								작성</label> <input type="text" class="form-control optInput essential"
 								name="optName2">
 								<div class="dropdown-menu">
 							<ul style="list-style: none" id="optSelect2">
@@ -54,14 +54,14 @@
 									</c:forEach>
 								</ul>
 						</div> <label for="optId2" class="form-label">option2
-								id 작성(영문)</label> <input type="text" class="form-control optInputId" name="optId2">
+								id 작성(영문)</label> <input type="text" class="form-control optInputId essential" name="optId2">
 						</div>
 					</c:if>
 					<c:if test="${not empty dto.option3}">
 						<div class="mb-3 col-4 dropdown"  id="opt3"
 							data-optName="${dto.option3 }">
 							<label for="optName3" class="form-label">${dto.option3}
-								작성</label> <input type="text" class="form-control optInput"
+								작성</label> <input type="text" class="form-control optInput essential"
 								name="optName3"> 
 								<div class="dropdown-menu">
 								<ul style="list-style: none" id="optSelect3">
@@ -72,14 +72,14 @@
 								</ul>
 							</div>
 						<label for="optId3" class="form-label">option3
-								id 작성(영문)</label> <input type="text" class="form-control optInputId" name="optId3">
+								id 작성(영문)</label> <input type="text" class="form-control optInputId essential" name="optId3">
 						</div>
 					</c:if>
 					<c:if test="${not empty dto.option4}">
 						<div class="mb-3 col-4 dropdown"  id="opt4"
 							data-optName="${dto.option4 }">
 							<label for="optName4" class="form-label">${dto.option4}
-								작성</label> <input type="text" class="form-control optInput" name="optName4">
+								작성</label> <input type="text" class="form-control optInput essential" name="optName4">
 								<div class="dropdown-menu ">
 								<ul style="list-style: none" id="optSelect4">
 									<c:forEach items="${optList4}" var="option">
@@ -89,23 +89,21 @@
 								</ul>
 							</div>
 							<label for="optId4" class="form-label">option4 id 작성(영문)</label>
-							<input type="text" class="form-control optInputId" name="optId4">
+							<input type="text" class="form-control optInputId essential" name="optId4">
 						</div>
 					</c:if>
 				</div>
 
 				<div class="mb-3 col-4">
 					<label for="stock" class="form-label">재고</label> <input type="text"
-						class="form-control" name="stock">
+						class="form-control essential" name="stock">
 				</div>
 
 
-				<div id="fileList">
-					<button type="button" class="btn btn-primary col-md-2" id="fileAdd">fileadd</button>
-				</div>
+				
 
-				<button type="submit"
-					class="btn btn-outline-primary col col-md-2 offset-md-10">add
+				<button type="button"
+					class="btn btn-outline-primary col col-md-2 offset-md-10" id="submitbtn">add
 				</button>
 			</form>
 		</div>
@@ -114,9 +112,6 @@
 	<c:import url="../template/common_js.jsp"></c:import>
 	
 	<script src="/resources/js/healthMachineAdd.js"></script>
-	<script>
-		setMax(100);
-		setParam('Files');
-	</script>
+
 </body>
 </html>

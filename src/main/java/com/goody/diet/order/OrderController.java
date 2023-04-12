@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.util.JSONPObject;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,27 +48,23 @@ public class OrderController {
 
 	
 	@PostMapping("success")
-	public ModelAndView getOrderSuccess(ModelAndView mv,String jsonString)throws Exception{
-		
-		/*
-		 * System.out.println(jsonString); JSONParser jsonParser =new JSONParser();
-		 * JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonString);
-		 */
-		
-		
-		
-		mv.addObject("result",1);
+	public ModelAndView getOrderSuccess(ModelAndView mv,String result, HttpSession session, OrderDTO orderDTO)throws Exception{
+		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
+		orderDTO.setId(memberDTO.getId());
+
+		int verification=orderService.getOrderVerification(result, session, orderDTO);
+		mv.addObject("result",verification);
 		mv.setViewName("/common/ajaxResult");
+		return mv;
+	}
+	@GetMapping("orderFaild")
+	public ModelAndView orderFaild(ModelAndView mv)throws Exception{
+		mv.setViewName("/order/orderFaildPage");
 		return mv;
 	}
 	@PostMapping("paymentUpdate")
 	public ModelAndView setUpdateCart(ModelAndView mv,OrderDTO orderDTO, Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session) throws Exception{
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
-		
-//		System.out.println(orderDTO.getRecipientTel());
-		System.out.println("num " + num.length);
-		System.out.println("studyNum : "+studyNum.length);
-		System.out.println("machineNum : " +realMachineNum.length);
 		
 		orderDTO.setId(memberDTO.getId());
 		int result = orderService.setUpdateCart(orderDTO, num,studyNum,realMachineNum,session);
