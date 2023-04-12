@@ -14,28 +14,22 @@ let toggleStatus = "off";
 let toggleFlag=false;
 let categorycount=2;
 
+
 $("#submitbtn").click(function(){
-    console.log($("#thumnailFile").val());
+    let nullCheck=false;
+    
     $(".essential").each(function(index,essential){
         if($(essential).val().length==0){
-            
             alert("입력란을 다시 확인해주세요");
-            $(this).addClass("ass")
-            return;
+            nullCheck=true;
+            return false;
         }
-        console.log($(this).val())
     })
-
-
-
-    // if($("#thumnailFile").val().length>0){
+    if(nullCheck!=true){
         $("#frm").submit();
-    //     return;
-    // }
-    
-    // alert("썸네일 하나는 필수 입니다.")
-    
-    
+
+    }
+  
 })
 
 

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,51 +22,82 @@ import com.goody.diet.util.Pager;
 
 @Service
 public class OrderService {
-	
+
 	@Autowired OrderDAO orderDAO;
 	@Autowired CartDAO cartDAO;
-	
+
 	public DeliveryDTO getPrimeDelivery (MemberDTO memberDTO) throws Exception {
 		return orderDAO.getPrimeDelivery(memberDTO);
 	}
-	
-	public List<OrderDTO> getOrderList(OrderCalendar orderCalendar) throws Exception {
-		 
-		
-	return orderDAO.getOrderList(orderCalendar);
+	public int getOrderVerification(String result, HttpSession session, OrderDTO orderDTO)throws Exception{
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
+
+		//검증하기
+		int verification=0;
+		Long amount = (Long)jsonObject.get("paid_amount");
+		System.out.println(amount);
+		Long totalPrice=orderDAO.getOrderVerification(orderDTO);
+		System.out.println(totalPrice);
+		if(totalPrice.equals(amount)) {
+			verification=1;
+			System.out.println(verification);
+		};
+		return verification;
+	}
+	public List<OrderDTO> getOrderList(MemberDTO memberDTO) throws Exception {
+		return orderDAO.getOrderList(memberDTO);	
 	}
 	public int setUpdateCart(OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
 		//1. order생성
 		int result= orderDAO.setOrder(orderDTO); 
-		
+
 		//2. CartUpdate
 		CartDTO cartDTO = new CartDTO();
+		cartDTO.setOrderNum(orderDTO.getOrderNum());
+		cartDTO.setId(orderDTO.getId());
+		
+		//stock수정
+		int count = 0;
+		int studyidx = 0;
+		int machineidx=0;
 		for(Long cartNum:num) {
 			cartDTO.setNum(cartNum);
-			cartDTO.setOrderNum(orderDTO.getOrderNum());
-			cartDTO.setId(orderDTO.getId());
 
 			//cart status 2로 설정
 			cartDAO.setCartStatusUpdate(cartDTO);
 			//detail생성
 			orderDAO.setOrderDetail(cartDTO);
-		}
-		
-		for(Long studyNumber:studyNum) {
-			cartDTO.setStudyNum(studyNumber);
-			if(cartDTO.getStudyNum()!=null) {
-				cartDAO.setMemberStudyNum(cartDTO);
-				cartDAO.setStudyStock(cartDTO);
+			//
+
+			
+			if(count<studyNum.length) {
+				cartDTO.setStudyNum(studyNum[studyidx]);
+				if(cartDTO.getStudyNum()!=null) {
+					cartDAO.setMemberStudyNum(cartDTO);
+					cartDAO.setStudyStock(cartDTO);
+					studyidx++;//
+					count++;
+				}
+				continue;
 			}
-		}
-		
-		for(Long realMachineNumber:realMachineNum) {
-			cartDTO.setRealMachineNum(realMachineNumber);
-	
+
+			cartDTO.setRealMachineNum(realMachineNum[machineidx]);
 			if(cartDTO.getRealMachineNum()!=null) {
 				cartDAO.setMachineStock(cartDTO);
+				count++;
+				machineidx++;
 			}
+
+
+
+
 		}
+
+
+
+
+
 		return result;
 	}
 

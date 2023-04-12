@@ -132,45 +132,45 @@
 	</div>
 
 	<form class="col-md-7" action="./add" method="post"
-		enctype="multipart/form-data">
+		enctype="multipart/form-data" id="frm">
 		<div class="row justify-content-center">
 
 			<div class="mb-3">
 				<label class="l1" for="bodyNum" id="bodyNum"> 운동부위 </label>
 
 				<fieldset class="f1">
-					<label class="l2"> <input class="ty1" type="checkbox"
+					<label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="36" /> <span class="s1">상체ALL</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="21" /> <span class="s1">얼굴</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="22" /> <span class="s1">겨드랑이</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="23" /> <span class="s1">팔뚝살</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="28" /> <span class="s1">직각어깨</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="29" /> <span class="s1">등</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="30" /> <span class="s1">허리</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="37" /> <span class="s1">하체All</span>
 					</label>
 				</fieldset>
 				<fieldset class="f1">
-					<label class="l2"> <input class="ty1" type="checkbox"
+					<label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="32" /> <span class="s1">복근&뱃살</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="33" /> <span class="s1">아랫배</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="24" /> <span class="s1">애플힙</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="25" /> <span class="s1">종아리</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="26" /> <span class="s1">앞벅지</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="27" /> <span class="s1">안쪽허벅지</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="31" /> <span class="s1">승마살</span>
 					</label>
 				</fieldset>
@@ -178,7 +178,7 @@
 
 			<div class="mb-3">
 				<label for="detailTitle" class="form-label">영상 제목</label> <input
-					type="text" name="detailTitle" class="form-control"
+					type="text" name="detailTitle" class="form-control essential"
 					id="detailTitle" placeholder="영상제목 입력">
 			</div>
 
@@ -197,19 +197,19 @@
 
 			<div class="mb-3">
 				<label for="urlId" class="form-label">영상주소URL</label> <input
-					type="text" name="urlId" class="form-control" id="urlId"
+					type="text" name="urlId" class="form-control essential" id="urlId"
 					placeholder="영상주소 입력">
 			</div>
 
 			<div class="mb-3">
 				<label for="info" class="form-label">상세설명</label> <input type="text"
-					name="info" class="form-control" id="info" placeholder="상세설명 입력">
+					name="info" class="form-control essential" id="info" placeholder="상세설명 입력">
 			</div>
 
 
 			<div class="mb-3">
 				<label for="highLight" class="form-label">추천  </label> <input
-					type="text" name="highLight" class="form-control" id="highLight"
+					type="text" name="highLight" class="form-control essential" id="highLight"
 					placeholder="추천 입력">
 			</div>
 
@@ -232,7 +232,7 @@
 
 			<div class="mb-3">
 				<label for="time" class="form-label">운동시간</label> <input type="text"
-					name="time" class="form-control" id="time" placeholder="추천 입력">
+					name="time" class="form-control essential" id="time" placeholder="추천 입력">
 			</div>
 		</div>
 
@@ -241,8 +241,8 @@
 				업로드</button>
 		</div>
 
-		<button type="submit"
-			class="btn btn-outline-primary col col-md-4 offset-md-10">
+		<button type="button"
+			class="btn btn-outline-primary col col-md-4 offset-md-10" id="submitbtn">
 			짧강효확 상세페이지 등록</button>
 	</form>
 

@@ -27,7 +27,9 @@ public class OrderDAO {
 	public List<OrderDTO> getOrderList (OrderCalendar orderCalendar) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getOrderList", orderCalendar);
 	}
-
+	public Long getOrderVerification(OrderDTO orderDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getOrderVerification", orderDTO);
+	}
 	
 	public int setOrder(OrderDTO orderDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setOrder", orderDTO);	

@@ -13,7 +13,9 @@
 		VALUES (#{orderNum}, #{id}, SYSDATE, 1,#{price}, #{address}, #{recipientTel}, #{recipient})
 	</insert>
 	
-	
+	<select id="getOrderVerification" parameterType="OrderDTO" resultType="Long">
+	SELECT sum(CARTPRICE) FROM CART WHERE id=#{id} AND STATUS =1
+	</select>
 	 <insert id="setOrderDetail" parameterType="CartDTO">
 		INSERT INTO ORDERDETAIL (ORDERNUM,num)
 		values(#{orderNum},#{num})
