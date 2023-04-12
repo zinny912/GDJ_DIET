@@ -84,7 +84,7 @@ public class OrderController {
 		System.out.println("machineNum : " +realMachineNum.length);
 		
 		orderDTO.setId(memberDTO.getId());
-		int result = orderService.setUpdateCart(orderDTO, num,studyNum,realMachineNum,session);
+		int result = orderService.setUpdateCart(memberDTO, orderDTO, num,studyNum,realMachineNum,session);
 		if(result>0) {
 			mv.setViewName("/order/orderSuccessPage");
 		}

@@ -33,7 +33,7 @@ public class OrderService {
 		
 	return orderDAO.getOrderList(orderCalendar);
 	}
-	public int setUpdateCart(OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
+	public int setUpdateCart(MemberDTO memberDTO, OrderDTO orderDTO,Long [] num,Long[] studyNum, Long[] realMachineNum, HttpSession session)throws Exception{
 		//1. order생성
 		int result= orderDAO.setOrder(orderDTO); 
 		
@@ -55,6 +55,9 @@ public class OrderService {
 			if(cartDTO.getStudyNum()!=null) {
 				cartDAO.setMemberStudyNum(cartDTO);
 				cartDAO.setStudyStock(cartDTO);
+				//세션업데이트
+				memberDTO.setStudyNum(cartDTO.getStudyNum());
+				session.setAttribute("sessionMember", memberDTO);
 			}
 		}
 		
