@@ -9,8 +9,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.goody.diet.util.FileManager;
 
@@ -35,6 +37,11 @@ public class HealthMachineService {
 
 	}
 //	getRealHealthMachineDetailList
+	public Long getStock(RealHealthMachineDTO realHealthMachineDTO)throws Exception{
+		realHealthMachineDTO= healthMachineDAO.getRealHealthMachineDetail(realHealthMachineDTO);
+		
+		return realHealthMachineDTO.getStock();
+	}
 	public List<RealHealthMachineDTO> getRealHealthMachineList(RealHealthMachineDTO realHealthMachineDTO)throws Exception {
 		return healthMachineDAO.getRealHealthMachineList(realHealthMachineDTO);
 

@@ -14,7 +14,8 @@
 	</insert>
 	
 	<select id="getOrderVerification" parameterType="OrderDTO" resultType="Long">
-	SELECT sum(CARTPRICE) FROM CART WHERE id=#{id} AND STATUS =1
+	SELECT sum(total)from(
+		SELECT CARTPRICE*COUNT total  FROM cart WHERE id=#{id} AND status=1)
 	</select>
 	 <insert id="setOrderDetail" parameterType="CartDTO">
 		INSERT INTO ORDERDETAIL (ORDERNUM,num)
