@@ -96,15 +96,15 @@ public class MemberController {
 	public ModelAndView getMyPage(ModelAndView mv, HttpSession session) throws Exception {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
-		
+		System.out.println("-----------------myPage-------------------");
 		System.out.println("로그인타입: "+memberDTO.getLoginType());
-		
+		System.out.println("q&na부르는: "+memberDTO.getStudyNum());
 		
 		if(memberDTO!=null) { //무결성 로그인
 			memberDTO = memberService.getMyPage(memberDTO);
 		}
 		
-		mv.addObject("mypage",memberDTO );
+//		mv.addObject("mypage",memberDTO );
 		mv.setViewName("/member/myPage");
 //		mv.setViewName("/order/orderListPage");
 		return mv;

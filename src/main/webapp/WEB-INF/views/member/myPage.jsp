@@ -37,5 +37,15 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 
+<script type="text/javascript">
+	fetch("/studyQna/list?studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
+	    method:'GET'
+	})
+	.then((response)=>response.text())
+	.then((res)=>{
+	    $('#studyListResult').html(res.trim());
+	})
+</script>
+
 </body>
 </html>
