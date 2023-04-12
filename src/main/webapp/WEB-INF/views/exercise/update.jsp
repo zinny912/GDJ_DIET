@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>짧강효확 수정/삭제 페이지</title>
-<link href="../resources/css/info.css" rel="stylesheet" type="text/css" />
+<link href="../resources/css/infoupdate.css" rel="stylesheet" type="text/css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,25 +37,19 @@
 
 	<form action="./update" method="POST" enctype="multipart/form-data"
 		id="frm">
-		<input type="hidden" value="${dto.num }" name="num">
+		<input type="hidden" value="${dto.num}" name="num">
 		<section id="box">
 			<div class="mb-3">
-				<fieldset class="f1">
-					<label id="machineNum" for="machineNum" class="form-label"
-						data-machineNum="${dto.machineNum }">운동기구</label>
-					<c:forEach items="${machines }" var="machine">
-						<label class="machineLabel"><input class="machines"
-							type="radio" name="machineNum" value="${machine.machineNum }">
-							<span class="s1">${machine.machineName }</span></label>
-
-					</c:forEach>
-				</fieldset>
-
-			</div>
 			<div>
 				<!-- dtailTitleNull임 -->
 				<input class="detail1 form-input-title" value="${dto.detailTitle}"
 					id="detailTitle" name="detailTitle" placeholder="detailTitle" />
+
+			</div>
+				<fieldset class="f1">
+					<label id="machineNum" for="machineNum" class="form-label"
+						data-machineNum="${dto.machineNum}">운동기구</label>
+				</fieldset>
 
 			</div>
 
@@ -70,35 +64,26 @@
 							alt="">
 
 					</div>
-					<button type="button" class="btn btn-primary col-md-2"
+					<button type="button" class="btn btn-primary col-md-3"
 						id="fileChange">이미지 교체</button>
 
 				</div>
 				<div class="second">
 					<!-- 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
 					<div class="detail2">
-
+						<span class="info">상세설명</span>
 						<input class="l" id="info" name="info" value="${dto.info}" />
 
 					</div>
 					<div class="detail4">
-
+						<span class="highlight">추천: </span>
 						<input class="highlight" id="highLight" name="highLight"
 							value="${dto.highLight}" /> 
 					</div>
-					<c:forEach items="${bodyList }" var="body">
-						<label> <input class="bodys" type="checkbox"
-							name="bodyNum" value="${body.bodyNum }" /> <span class="s1">${body.bodyName }</span>
-						</label>
-					</c:forEach>
-					<c:forEach items="${dto.bodyDTO }" var="checkbody">
-						<input class="checkbodys" type="hidden" disabled="disabled"
-							data-bodydata="${checkbody.bodyNum }">
-					</c:forEach>
-
-
+					
 					<div class="detail3">
 						<div class="boxone">
+						<span class="power">난이도</span>
 							<fieldset class="f1" data-power=${dto.power } id="power">
 								<label class="l2"> <input class="ty1" type="radio"
 									name="power" value="1"> <span class="s3">★</span>
@@ -116,9 +101,9 @@
 
 						<div class="boxtwo">
 							<ul>
-								<li><span class="time">운동소요시간 </span></li>
-								<li><input class="mmss" id="time" name="time"
-									value="${dto.time}" /></li>
+								<li><span class="time">운동소요시간</span></li>
+								<li><input class="mmss form-control-red" id="time" name="time"
+									value="${dto.time}"/></li>
 							</ul>
 						</div>
 
@@ -131,6 +116,27 @@
 			</div>
 
 		</section>
+		<fieldset class="f1" style="margin-left:14%;">
+					<label id="machineNum" class="form-label">운동기구</label>
+			<c:forEach items="${machines}" var="machine">
+						<label class="machineLabel"><input class="machines"
+							type="radio" name="machineNum" value="${machine.machineNum }">
+							<span class="s1">${machine.machineName}</span></label>
+
+			</c:forEach>	
+			<br>
+			<label class="form-label">운동부위</label>
+			<c:forEach items="${bodyList }" var="body">
+						<label> <input class="bodys" type="checkbox"
+							name="bodyNum" value="${body.bodyNum }" /> <span class="s1">${body.bodyName }</span>
+						</label>
+					</c:forEach>
+					<c:forEach items="${dto.bodyDTO}" var="checkbody">
+						<input class="checkbodys" type="hidden" disabled="disabled"
+							data-bodydata="${checkbody.bodyNum }">
+					</c:forEach>							
+				</fieldset>
+		
 
 		<button type="submit" class="btn btn-primary">수정하기</button>
 

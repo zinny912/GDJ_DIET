@@ -40,6 +40,7 @@
 	<section class="one">
 	<div class="container row" id="first">
 				<div class="first-cate"> 
+				<p></p>
 				<h3 class="cate-h">카테고리</h3> 
 				<p class="cate-p"><a href="./list">전체</a></p>
 				<p class="cate-p"><a href="./list?categoryNum=2">근력향상</a></p>
@@ -67,8 +68,9 @@
 							<div class="priceBox">
 							<span class="sale-price">${dto.salePrice}원</span> 
 							<span class="ori-price" id="price">
-							<strike>${dto.price}원</strike>
+							<strike style="color:tomato; margin-left:10px;">${dto.price}원</strike>
 							</span>
+							<p class="underline"></p>
 							</div>
 						
 						</div>
