@@ -111,8 +111,11 @@
 		DELETE CART WHERE NUM=#{num}
 	</delete>
 	
-	<update id="setMachineStock" parameterType="RealHealthMachineDTO">
-		UPDATE REALHEALTHMACHINE SET STOCK = STOCK -1 WHERE REALMACHINENUM=#{realMachineNum}
+	<update id="setMachineStock" parameterType="CartDTO">
+	<selectKey keyProperty="count" resultType="Long" order="BEFORE">
+		SELECT count FROM cart where num=#{num}
+	  </selectKey>
+		UPDATE REALHEALTHMACHINE SET STOCK = STOCK -#{count} WHERE REALMACHINENUM=#{realMachineNum}
 	</update>
 	
 <!--태현  -->

@@ -148,8 +148,6 @@ public class ExerciseService {
 	//4. 처음에 fileDELETE를 하는 이유 : jsp에는 삭제버튼을 누르면 파일이 삭제 된 것 처럼 보이지만 사실 삭제되지 않았고 update했을 때 만약 file이 새로 바뀌면 기존에 있던 파일을 삭제 후 새로운 파일로 교체하는 방식
 	public int setExerciseUpdate(ExerciseDTO exerciseDTO, MultipartFile[] Files, HttpSession session,Long [] bodyNums) throws Exception{
 
-
-
 		//1 exerciseUpdate
 		int result = exerciseDAO.setExerciseUpdate(exerciseDTO);
 

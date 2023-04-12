@@ -109,7 +109,7 @@ public class CartService {
 		//중복이면 count+1
 		List<CartDTO> dtos = cartDAO.getCartMachineList(cartDTO);
 		for(CartDTO dto : dtos) {
-			if(cartDTO.getRealMachineNum()==dto.getRealMachineNum()) {
+			if(cartDTO.getRealMachineNum().equals(dto.getRealMachineNum())) {
 				return cartDAO.setCartMachineCount(cartDTO);
 			}
 		}

@@ -45,12 +45,12 @@
 				</div>
 				<div class="mb-3">
 					<label for="salePrice" class="form-label">할인가격</label> <input
-						type="text" class="form-control essential" name="salePrice">
+						type="text" class="form-control" name="salePrice">
 				</div>
 				<div id="optionList">
 					<div class="mb-3 was-validated " id=option1>
 						<label for="option1" class="form-label">필수옵션 이름</label> <input
-							type="text" class="form-control" name="option1" placeholder="필수입력창 입니다." required>
+							type="text" class="form-control essential" name="option1" placeholder="필수입력창 입니다." required>
 					</div>
 		
 
@@ -64,8 +64,8 @@
 
 				<div id="fileList">
 				<label for="Files"class="form-label">썸네일</label>
-				<input type="file" class="form-control" name='Files' id="thumnailFile">
-					<!-- <button type="button" class="btn btn-primary col-md-2" id="fileAdd">fileadd</button> -->
+				<input type="file" class="form-control essential" name='Files' id="thumnailFile">
+				
 				</div>
 
 
