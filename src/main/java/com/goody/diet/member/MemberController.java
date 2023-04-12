@@ -18,30 +18,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	
-//그냥 JS에서 할게요...ㅠ
-//	@RequestMapping(value = "kakaoLogin")
-//    public String kakaoLogin() throws Exception {
-//    	System.out.println("왔어...");
-////    	String kakaoUrl="https://kauth.kakao.com/oauth/authorize?client_id=4dbfcfd2f5a649a659ccd93aa0364e69&redirect_uri=https://localhost/oauth&response_type=code";
-////    	String url = "/member/kakao";
-////    	return kakaoUrl;
-//    	
-//    	String restAPI="4dbfcfd2f5a649a659ccd93aa0364e69";
-//        StringBuffer loginUrl = new StringBuffer();
-//        loginUrl.append("https://kauth.kakao.com/oauth/authorize?client_id=");
-//        loginUrl.append(restAPI); //REST API
-//        loginUrl.append("&redirect_uri=");
-//        loginUrl.append("https://localhost/oauth"); //redirect URL
-//        loginUrl.append("&response_type=code");
-//        
-//        return "redirect:"+loginUrl.toString();
-//    }	
-
-
 	@PostMapping("kakaoLogin")
 	public ModelAndView getKakaoLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
-		System.out.println("카카오왓니?");
 		memberDTO = memberService.getKakaoLogin(memberDTO);
 		if(memberDTO!=null) {
 			memberService.getMyPage(memberDTO);
@@ -49,16 +27,7 @@ public class MemberController {
 		}
 		mv.setViewName("redirect:/");
 
-//		MemberAuthDTO result = (MemberAuthDTO)session.getAttribute("sessionMember");
-//		System.out.println("세션: "+result.getEmail());
 		return mv;
-	}
-//------------------카카오 끝----------------------
-	
-	
-	@GetMapping("dummiHome")
-	public String dummiHome() throws Exception {
-		return "/member/dummiHome";
 	}
 
 	@PostMapping("delete")
@@ -67,15 +36,12 @@ public class MemberController {
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		//주소삭제
-		memberService.setDeleteOnMemberDelete(memberDTO);
-		//주문-카트삭제
-		//카트삭제
-		//주문삭제
+		memberService.setDeleteOnMemberDelete(memberDTO); //주문-카트삭제 카트삭제 주문삭제
 
 		int delResult=memberService.setMemberDelete(memberDTO);
 		session.invalidate();
 		
-		System.out.println("del ajax 가니?: " +delResult);
+		System.out.println("회원탈퇴 del ajax 가니?: " +delResult);
 		mv.addObject("result", delResult);
 		mv.setViewName("/member/ajaxResult");
 		return mv;
@@ -103,30 +69,21 @@ public class MemberController {
 	}
 	@PostMapping("login")
 	public ModelAndView getMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
-//		System.out.println("컨트롤러왔니..?");
-//		System.out.println("ajax옴?: "+memberDTO.getPw());
-//		memberDTO.setLoginType("general"); //내가젖소..ㅠ
+//		System.out.println("pwcheck ajax옴?: "+memberDTO.getPw());
 		System.out.println(memberDTO.getPw());
-		memberDTO = memberService.getMemberLogin(memberDTO);
+		memberDTO = memberService.getMemberLogin(memberDTO); //MyPage는 비번도 옴
 		System.out.println("----------getMemberLogin---------");
 //		System.out.println("타입: "+memberDTO.getLoginType());
 		
 		if(memberDTO!=null) {
-//			memberService.getMyPage(memberDTO);
-			session.setAttribute("sessionMember", memberDTO);			
-//			mv.setViewName("redirect:./dummiHome");
-//			MemberDTO result = (MemberDTO)session.getAttribute("sessionMember");
-//			System.out.println("세션: "+result+" 이메일"+result.getEmail());	
+			session.setAttribute("sessionMember", memberDTO);		
 			
-			mv.addObject("result", "굳^^");
+//			mv.addObject("result", "1");
 			mv.setViewName("/member/ajaxResult");
 		}else {//로그인실패
-			mv.addObject("result", "id/pw불일치"); //trim인데 띄어쓰기댐?
+			mv.addObject("result", "0"); //trim인데 띄어쓰기댐?
 			mv.setViewName("/member/ajaxResult");
 		}
-		
-		
-		
 		return mv;
 	}
 	@GetMapping("logout")
@@ -162,15 +119,6 @@ public class MemberController {
 		mv.setViewName("/member/ajaxResult");
 		return mv;
 	}
-//	@PostMapping("emailCheck")
-//	public ModelAndView getEmailCheck (MemberDTO memberDTO, ModelAndView mv) throws Exception {
-////		System.out.println(memberDTO.getId());
-//		String result = memberService.getEmailCheck(memberDTO);
-////		System.out.println(result);
-//		mv.addObject("result", result);
-//		mv.setViewName("/member/ajaxResult");
-//		return mv;
-//	}
 	
 	@GetMapping("join")
 	public String setMemberJoin() throws Exception {
@@ -240,14 +188,14 @@ public class MemberController {
 		return "/member/update";
 	}	
 	
-	@GetMapping("emailUpdate")
-	public ModelAndView setEmailUpdate(DeliveryDTO deliveryDTO, MemberDTO memberDTO, ModelAndView mv) throws Exception {
-		int result=memberService.setEmailUpdate(memberDTO);
-		mv.addObject("result", result);
-		mv.setViewName("/member/ajaxResult");
-		//인증번호를 받고 submit버튼 누르면, 바로 업데이트되고 버튼 삭제
-		return mv;
-	}
+//	@GetMapping("emailUpdate") //안함~
+//	public ModelAndView setEmailUpdate(DeliveryDTO deliveryDTO, MemberDTO memberDTO, ModelAndView mv) throws Exception {
+//		int result=memberService.setEmailUpdate(memberDTO);
+//		mv.addObject("result", result);
+//		mv.setViewName("/member/ajaxResult");
+//		//인증번호를 받고 submit버튼 누르면, 바로 업데이트되고 버튼 삭제
+//		return mv;
+//	}
 	
 	@GetMapping("delivery")
 	public ModelAndView getDeliveryPage(HttpSession session, ModelAndView mv, boolean popUp) throws Exception {
@@ -368,20 +316,7 @@ public class MemberController {
 		return mv;
 	}
 	
-	//대표주소 변경 어떤 dto로 받을지.
-	@GetMapping("addressUpdate")
-	public ModelAndView setMemberAddressUpdate(MemberDTO memberDTO, ModelAndView mv, HttpSession session) throws Exception {
-		session.setAttribute("sessionMember", memberService.setMemberAddressUpdate(memberDTO));
-//		int result = memberService.setMemberAddressUpdate(memberDTO);
-//		mv.addObject("result", result);
-		//ajax로 deliveryDTO중 대표 주소 정하기. 결과 return //session으로 정할께..
-		mv.setViewName("redirect:../");
-		return mv;
-	}
-	@GetMapping("primaryAddress")
-	public void setPrimaryAddress(DeliveryDTO deliveryDTO, ModelAndView mv) throws Exception {
-		
-	}
+
 
 	
 	//password Update

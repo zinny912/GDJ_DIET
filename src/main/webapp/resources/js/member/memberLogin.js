@@ -47,7 +47,7 @@ function enter_or_click (){
         return response.text();
     }).then((res)=>{
         console.log(res.trim())
-        if(res.trim()=="id/pw불일치"){
+        if(res.trim()=="0"){
             alert('id/pw 불일치')
         }else{
             location.href="/";

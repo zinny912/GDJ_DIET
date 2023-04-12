@@ -9,10 +9,10 @@
   </li>
   <li class="nav-item">
   <c:if test="${sessionMember.studyNum eq null}">
-  	<a class="nav-link" href="/study/studyList">수업</a>
+  	<a class="nav-link" href="/study/studyList">수업111</a>
   </c:if>
     <c:if test="${sessionMember.studyNum ne null}">
-  	<a class="nav-link" href="/member/myPage">수업</a>
+  	<a class="nav-link" href="/member/myPage">수업222</a>
   </c:if>
   </li>
    <li class="nav-item">
