@@ -26,6 +26,9 @@
   .my-table tr:nth-child(odd) {
     background-color: #ffffff; /* 홀수 줄 배경색 */
   }
+  
+  body {
+  font-family:'IBM Plex Sans KR', sans-serif;}
 
  </style>
 
@@ -35,7 +38,7 @@
 	<div class="container px-4 px-lg-5">
 
 		<div
-			class="row gx-4 gx-lg-5 align-items-center my-3 border border-secondary-subtle" >
+			class="row gx-4 gx-lg-5 align-items-center my-3 " >
 			<div class="col-lg-7 d-flex justify-content-center align-items-center">
 		  <img class="img-fluid rounded mb-4 mb-lg-0"
 		    src="/resources/images/${dto.healthMachineImgDTOs[0].fileName}"
@@ -46,14 +49,13 @@
 					<strong>${dto.machineName}</strong>
 				</h2>
 				<h6 class="font-weight-light" style="text-decoration: line-through;">${dto.price}원</h6>
-				<h1 class="font-weight-light" style="color: red">${dto.salePrice}원</h1>
+				<h1 class="font-weight-light" style="color: tomato">${dto.salePrice}원</h1>
 				<hr class="my-hr2">
 				<div class="text-center" id="optionSelect"
 					data-machineNum="${dto.machineNum}">
-					<h6 class="font-weight-light">옵션선택</h6>
-					<div class="dropdown" id="opt1" data-optName="${dto.option1 }">
-
-						<button class="btn dropdown-toggle" id="optbtn1">${dto.option1}을
+					<h6 class="font-weight" style="font-weight:700; color:#6c757d">옵션선택</h6>
+					<div class="dropdown" style="font-weight:200;" id="opt1" data-optName="${dto.option1 }">
+						<button class="btn dropdown-toggle"  id="optbtn1">${dto.option1}을
 							선택해 주세요</button>
 						<div class="dropdown-menu">
 							<ul style="list-style: none;" id='optSelect1'>
@@ -108,7 +110,7 @@
 						<button id="cartAdd" type="button" class="btn btn-outline-primary"
 							disabled="disabled">장바구니에 담기</button>
 						<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
-							<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+							<button id="del" type="button" class="btn btn-danger">해당제품삭제</button>
 						</c:if>
 					</div>
 				</form> --%>
@@ -117,8 +119,8 @@
 	
 	<div style="text-align: right;">
 	<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
-	  <a href="optionAdd?machineNum=${dto.machineNum}" class="btn btn-primary" style="margin-right: 10px;">add</a>
-	  <a href="update?machineNum=${dto.machineNum}" class="btn btn-primary">update</a>
+	  <a href="optionAdd?machineNum=${dto.machineNum}" class="btn btn-primary" style="margin-right: 10px;">옵션추가하기</a>
+	  <a href="update?machineNum=${dto.machineNum}" class="btn btn-primary">제품수정하기</a>
 	</c:if>
 	</div>
 

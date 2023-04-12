@@ -5,26 +5,78 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>옵션추가 관리자페이지</title>
 <c:import url="../template/common_css.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
+<style>
+body {
+font-family: 'IBM Plex Sans KR', sans-serif;
+}
+.boxxx {
+	width: 100%;
+	border-radius: 0.25rem;
+	border: 3px #2c396b double;
+
+}
+
+.boxx {
+          width: 100%;
+          overflow: hidden;
+          margin: 10px auto;
+          padding-bottom: 4%;
+          padding-top: 2%;
+          background-color: #fff;
+          }
+          
+  .container {
+        position: relative;
+        padding: 3% auto;
+
+      } /*폭을 일정하게 담기 위한 css*/
+      
+      .one {
+        display: flex;
+        clear: both;
+      } /* container div중 하나를 선택하기 위한 id태그*/
+       
+      .first {
+        width: 50%;
+        padding: 0 2%;
+      } /* 화면을 이분할하기 위해 width에 50% 적용 */
+      
+      .second {
+        width: 50%;
+        padding: 0 2%;
+      } /* 화면을 이분할하기 위해 width에 50% 적용 */
+      
+      .form-label {
+      	font-weight:700;
+      	font-size: 20px;
+      }
+               
+</style>
 </head>
 <body>
 
 	<div class="container-fluid">
 		<div class="row mb-4 mt-4 md-7">
-			<h4 class="col-md-5 mx-auto text-center pb-3">물품 등록페이지</h4>
+			<h4 class="col-md-5 mx-auto text-center pb-3">제품옵션추가 등록</h4>
 		</div>
-		<div class="row col-md-7 mx-auto">
-			<form action="./optionAdd" method="POST"
-				enctype="multipart/form-data" id="frm">
-				<div class="row text-center" id="optionSelect"
-					data-machineNum="${dto.machineNum}">
+		<div class="boxxx col-md-6 mx-auto">
+		<div class="row col-md-12 mx-auto">
+			<form action="./optionAdd" method="POST" enctype="multipart/form-data">
+				<div class="row text-center" id="optionSelect" data-machineNum="${dto.machineNum}">
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
-
-					<div class="mb-3 col-4 dropdown" id="opt1"
-						data-optName="${dto.option1 }">
-						<label for="optName1" class="form-label">${dto.option1} 작성</label>
-						<input type="text" class="form-control optInput essential" name="optName1">
+			
+			<div class="boxx">
+					<label for="optName1" class="form-label">옵션1 ${dto.option1}</label>
+			<section class="one">
+				<div class="first">
+				<div class="dropdown" id="opt1" data-optName="${dto.option1}">
+						<input type="text" class="form-control optInput text-center" name="optName1" placeholder="${dto.option1}작성">
+						</div>
+						</div>
+						<div class="second">
 						 <div class="dropdown-menu">
 							<ul style="list-style: none" id="optSelect1">
 							<c:forEach items="${optList1}" var="option">
@@ -33,19 +85,22 @@
 								</c:forEach>
 							</ul>
 						</div> 
-						<label for="optId1" class="form-label">option1 id 작성(영문)</label> <input
-							type="text" class="form-control optInputId essential" name="optId1">
-
+					<input type="text" class="form-control optInputId text-center" name="optId1" placeholder="영문명">
 					</div>
-
-
+			</section>
+				</div>
 
 					<c:if test="${not empty dto.option2}">
-						<div class="mb-3 col-4 dropdown" id="opt2"
-							data-optName="${dto.option2 }">
-							<label for="optName2" class="form-label">${dto.option2}
-								작성</label> <input type="text" class="form-control optInput essential"
-								name="optName2">
+					<p class="underline" style="border-bottom:2px dotted;"></p>
+					<div class="boxx">
+							<label for="optName2" class="form-label">옵션2 ${dto.option2}</label> 
+						<section class="one">
+							<div class="first">
+						<div class="dropdown" id="opt2" data-optName="${dto.option2}">
+							<input type="text" class="form-control optInput text-center" name="optName2" placeholder="${dto.option2}작성">
+								</div>
+						</div>
+						<div class="second">
 								<div class="dropdown-menu">
 							<ul style="list-style: none" id="optSelect2">
 									<c:forEach items="${optList2}" var="option">
@@ -53,16 +108,22 @@
 											data-id="${option.optId2}" data-name="${option.optName2}">${option.optName2}</li>
 									</c:forEach>
 								</ul>
-						</div> <label for="optId2" class="form-label">option2
-								id 작성(영문)</label> <input type="text" class="form-control optInputId essential" name="optId2">
+						</div>  
+						<input type="text" class="form-control optInputId text-center" name="optId2" placeholder="영문명">
 						</div>
+						</section>
+					</div>
 					</c:if>
 					<c:if test="${not empty dto.option3}">
-						<div class="mb-3 col-4 dropdown"  id="opt3"
-							data-optName="${dto.option3 }">
-							<label for="optName3" class="form-label">${dto.option3}
-								작성</label> <input type="text" class="form-control optInput essential"
-								name="optName3"> 
+					<div class="boxx">
+							<label for="optName3" class="form-label">옵션3 ${dto.option3}</label> 
+						<section class="one">
+						<div class="first">
+						<div class="dropdown"  id="opt3" data-optName="${dto.option3 }">
+							<input type="text" class="form-control optInput text-center" name="optName3" placeholder="${dto.option3}작성"> 
+							</div>
+						</div>
+						<div class="second">
 								<div class="dropdown-menu">
 								<ul style="list-style: none" id="optSelect3">
 									<c:forEach items="${optList3}" var="option">
@@ -71,16 +132,22 @@
 									</c:forEach>
 								</ul>
 							</div>
-						<label for="optId3" class="form-label">option3
-								id 작성(영문)</label> <input type="text" class="form-control optInputId essential" name="optId3">
+						<input type="text" class="form-control optInputId" name="optId3" placeholder="영문명">
 						</div>
+						</section>
+					</div>
 					</c:if>
 					<c:if test="${not empty dto.option4}">
-						<div class="mb-3 col-4 dropdown"  id="opt4"
-							data-optName="${dto.option4 }">
-							<label for="optName4" class="form-label">${dto.option4}
-								작성</label> <input type="text" class="form-control optInput essential" name="optName4">
-								<div class="dropdown-menu ">
+						<div class="boxx">
+							<label for="optName4" class="form-label">옵션4 ${dto.option4}</label>
+								<section class="one">
+								<div class="first">
+						<div class="dropdown"  id="opt4" data-optName="${dto.option4 }">
+								 <input type="text" class="form-control optInput" name="optName4" placeholder="${dto.option4}작성">
+								</div>
+						</div>
+						<div class="second">
+								<div class="dropdown-menu">
 								<ul style="list-style: none" id="optSelect4">
 									<c:forEach items="${optList4}" var="option">
 										<li class="dropdown-item cursor-pointer" id="op4"
@@ -88,30 +155,38 @@
 									</c:forEach>
 								</ul>
 							</div>
-							<label for="optId4" class="form-label">option4 id 작성(영문)</label>
-							<input type="text" class="form-control optInputId essential" name="optId4">
+							<input type="text" class="form-control optInputId" name="optId4" placeholder="영문명">
+						</div>
+						</section>
 						</div>
 					</c:if>
-				</div>
+				<p class="underline"></p>
 
 				<div class="mb-3 col-4">
 					<label for="stock" class="form-label">재고</label> <input type="text"
 						class="form-control essential" name="stock">
 				</div>
+			</div>
 
+				<div id="fileList">
+					<button type="button" class="btn btn-primary col-md-2" id="fileAdd">파일추가등록</button>
+				</div>
 
-				
-
-				<button type="button"
-					class="btn btn-outline-primary col col-md-2 offset-md-10" id="submitbtn">add
+				<button type="submit"
+					class="btn btn-outline-primary col col-md-2 offset-md-10">등록하기
 				</button>
+				<br>
 			</form>
 		</div>
 	</div>
-
+</div>
 	<c:import url="../template/common_js.jsp"></c:import>
 	
 	<script src="/resources/js/healthMachineAdd.js"></script>
-
+	<script>
+		setMax(100);
+		setParam('Files');
+	</script>
+<c:import url="../template/footer.jsp"></c:import>	
 </body>
 </html>
