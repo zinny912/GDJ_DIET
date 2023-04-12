@@ -33,11 +33,7 @@ public class CartController {
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("sessionMember");
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.getCartList(cartDTO);
-		
-//		태현 MachineList넣기
-		
-		
-//		System.out.println(ar.size());
+
 		mv.setViewName("cart/cartList");
 		mv.addObject("list", ar);
 		return mv;
@@ -85,12 +81,6 @@ public class CartController {
 		cartDTO.setId(memberDTO.getId());
 		List<CartDTO> ar = cartService.setCartCheckUpdate(cartDTO,checkedItems,session,cartNum,count);
 //		String token = getToken.getpaymentToken();
-		for(CartDTO dto : ar) {
-			System.out.println("cartNum : "+dto.getNum());
-			System.out.println("studyNum : "+dto.getStudyNum());
-			System.out.println("machineNum : "+dto.getRealMachineNum());
-			System.out.println("------------------");
-		}
 		mv.addObject("list", ar);
 		mv.addObject("totalCost", totalCost);
 //		mv.addObject("token", token);

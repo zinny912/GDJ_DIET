@@ -154,15 +154,15 @@ font-family: "IBM Plex Sans KR", sans-serif;
 						<span class="s1">복근&뱃살</span>
 					</label> <label class="l2"> <input class="ty1" type="checkbox"
 						name="bodyNum" value="33" /> <span class="s1">아랫배</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="24" /> <span class="s1">애플힙</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="25" /> <span class="s1">종아리</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="26" /> <span class="s1">앞벅지</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="27" /> <span class="s1">안쪽허벅지</span>
-					</label> <label class="l2"> <input class="ty1" type="checkbox"
+					</label> <label class="l2"> <input class="ty1 check" type="checkbox"
 						name="bodyNum" value="31" /> <span class="s1">승마살</span>
 					</label>
 				</fieldset>

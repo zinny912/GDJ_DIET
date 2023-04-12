@@ -164,7 +164,7 @@ font-family: 'IBM Plex Sans KR', sans-serif;
 
 				<div class="mb-3 col-4">
 					<label for="stock" class="form-label">재고</label> <input type="text"
-						class="form-control" name="stock">
+						class="form-control essential" name="stock">
 				</div>
 			</div>
 

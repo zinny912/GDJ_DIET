@@ -42,7 +42,7 @@
 			<div class="mb-3">
 			<div>
 				<!-- dtailTitleNull임 -->
-				<input class="detail1 form-input-title" value="${dto.detailTitle}"
+				<input class="detail1 form-input-title essential" value="${dto.detailTitle}"
 					id="detailTitle" name="detailTitle" placeholder="detailTitle" />
 
 			</div>
@@ -108,7 +108,7 @@
 						</div>
 
 					</div>
-					<label>영상링크</label> <input class="golink" value="${dto.urlId}"
+					<label>영상링크</label> <input class="golink essential" value="${dto.urlId}"
 						id="urlId" name="urlId" />
 
 
@@ -138,7 +138,7 @@
 				</fieldset>
 		
 
-		<button type="submit" class="btn btn-primary">수정하기</button>
+		<button type="button" class="btn btn-primary" id="submitbtn">수정하기</button>
 
 	</form>
 	<script>
