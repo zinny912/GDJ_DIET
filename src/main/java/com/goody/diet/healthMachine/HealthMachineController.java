@@ -209,7 +209,14 @@ public class HealthMachineController {
 		return mv;
 
 	}
-
+	@PostMapping("getStock")
+	public ModelAndView getStock(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO ) throws Exception{
+		Long result = healthMachineService.getStock(realHealthMachineDTO);
+		System.out.println("stock : "+result);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
 	@PostMapping("optionDelete")
 	public ModelAndView setOptionDelete(ModelAndView mv, RealHealthMachineDTO realHealthMachineDTO) throws Exception{
 		System.out.println(realHealthMachineDTO.getOptId1());

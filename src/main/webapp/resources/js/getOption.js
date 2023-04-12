@@ -10,8 +10,48 @@ let url = "";
 let select = "";
 let toggleStatus = "off";
 let toggleFlag=false;
-let optName
+let optName;
 
+function getStock(){
+    let result=0;
+    $.ajax({
+        type:"POST",
+        url:"./getStock",
+        data:{
+            machineNum:machineNum,
+                optId1:optId1,
+                optId2:optId2,
+                optId3:optId3,
+                optId4:optId4
+        },
+        success(response){
+            console.log(response.trim());
+            result= response.trim()*1;
+            buttonON(result);
+        }
+    })
+    return result;
+}
+function buttonON(stock){//다음 옵션이 없을때
+    $("#cartAdd").removeClass("btn-outline-primary")
+    $("#cartAdd").addClass("btn-primary")
+    console.log(stock);
+    if(stock>0){
+        $("#cartAdd").text("장바구니에 담기")
+        $("#cartAdd").attr("disabled",false)
+    }
+    else{
+        $("#cartAdd").text("품절되었습니다.")
+        $("#cartAdd").attr("disabled",true)
+    }
+}
+function buttonOFF(){// 다음 옵션이 있을때
+    $("#cartAdd").text("옵션을 선택해주세요")
+    $("#cartAdd").removeClass("btn-primary")
+    $("#cartAdd").addClass("btn-outline-primary")
+    $("#cartAdd").attr("disabled",true)
+    
+}
 $.ajax({
     type: "POST",
     url: "./option1",
@@ -45,15 +85,21 @@ $("#optionSelect").on("click", ".op1", function (e) {
             optId1: optId1
         },
         success: function (response) {
-            
+            optId2=null;
+            optId3=null;
+            optId4=null;
             if (response.trim().length > 20) {
                 $("#opt2").append(select);
                 $("#optSelect2").append(response.trim())
+                getStock();
+                
             }
             else{
-                $("#cartAdd").removeClass("btn-outline-primary")
-                $("#cartAdd").addClass("btn-primary")
-                $("#cartAdd").attr("disabled",false)
+                
+                buttonON(getStock());
+                // $("#cartAdd").removeClass("btn-outline-primary")
+                // $("#cartAdd").addClass("btn-primary")
+                // $("#cartAdd").attr("disabled",false)
             //     if($("#btn").find('#optionDelete').length<=0)
             //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
             }
@@ -87,6 +133,8 @@ $("#optionSelect").on("click", ".op2", function (e) {
             optId2: optId2
         },
         success: function (response) {
+            optId3=null;
+            optId4=null;
             if (response.trim().length > 20) {
                 $("#opt" + idx).append(select);
                 $("#optSelect3").append(response.trim())
@@ -124,7 +172,7 @@ $("#optionSelect").on("click", ".op3", function (e) {
             optId3: optId3
         },
         success: function (response) {
-
+            optId4=null;
             if (response.trim().length > 20) {
                 $("#opt" + idx).append(select);
                 $("#optSelect4").append(response.trim())
