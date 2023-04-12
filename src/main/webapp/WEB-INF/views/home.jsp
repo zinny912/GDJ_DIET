@@ -23,7 +23,7 @@
 		      <a href="/study/studyList"><img src="/resources/images/001.png"class="d-block w-100" alt="..."></a>
 		    </div>
 		    <div class="carousel-item">
-		     <a href="/exercise/routine"> <img src="/resources/images/002.png" class="d-block w-100" alt="..."></a>
+		     <a href="/exercise/calendar"> <img src="/resources/images/002.png" class="d-block w-100" alt="..."></a>
 		    </div>
 		    
 		  </div>

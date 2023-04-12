@@ -2,46 +2,27 @@
 
 @media (min-width: 100px) {
     body {
-      margin: 10px 0 0 0;
+      margin: 50px 0 0 0;
     }
     * {
         font-family: 'IBM Plex Sans KR', sans-serif;
-        box-sizing: content-box;
+        box-sizing: border-box;
         cursor:default;
       }
-
-      .ftco-section {
-        padding: 3em 0;
-        position: relative; 
-        align-items: center}
-        @media (max-width: 767.98px) {
-          .ftco-section {
-            padding: 2em 0; } }
       
-    .first-cate {
-        width: 80%;
-        border:#2c396b solid 0 1px 0 1px;
-      }
-
-    .underline {
-      border-bottom: 1px solid #cad0d5;
-    }
-
-      /* .detailAdd {
+      .detailAdd {
         margin-left : 50px;
         margin-top : 100px;
-      } */
+      }
 
 
-      #boxx {
-          width: 100%;
-          border-radius: 0px;
+      #box {
+          width: 900px;
+          border-radius: 30px;
           overflow: hidden;
-          margin: 10px auto;
-          background-color: #fff;
-          border-top: 0.5px solid #cad0d5;
-          /* transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0); */
-          /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+          margin: 100px auto;
+          transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
         
         /* #box:hover {
@@ -60,53 +41,6 @@
         list-style: none;
       }
       
-      /* a,
-      .a {
-        color: #2c396b;
-        font-weight:300;
-        font-size:15px;
-      } */
-
-      p,
-      .cate-p {
-        color: #2c396b;
-        font-weight:400;
-        font-size:17px;
-      }
-
-      h3,
-      .cate-h {
-        color: #2c396b;
-        font-weight:700;
-      }
-
-      h3,
-      .mb-1 {
-        color: #2c396b;
-        font-weight:400;
-      }
-
-      h5, 
-      .h5 {
-        color: black;
-        font-weight: 400;
-      }
-
-      span,
-      .sale-price {
-        color : black;
-        font-weight: 400;
-        font-size: 16px;
-      }
-
-      span,
-      .ori-price {
-        color : #6c757d;
-        font-weight: 300;
-        font-size: 13px;
-      }
-
-
       .form-input-title {
         height: 30px !important;
         background: #fff !important;
@@ -121,34 +55,34 @@
         padding-right:10%;
         margin-top: 20px;
         padding-left: 0; }
-     
+       
+      .form-control-red {
+        border: 10px solid tomato;
+        margin-left : 5px;
+        color : tomato;
+      } 
+      
 
       .container {
         position: relative;
-        padding: 3% auto;
-
+        padding: 5% auto;
       } /*폭을 일정하게 담기 위한 css*/
       
       
-      #first {
-        width: 20%;
-        margin-left: 5%;
+      .first {
+        width: 50%;
+        margin-right: 5px;
       } /* 화면을 이분할하기 위해 width에 50% 적용 */
       
-      #second {
-        width: 80%;
+      .second {
+        width: 50%;
       } /* 화면을 이분할하기 위해 width에 50% 적용 */
       
       .left {
         font-size: 20px;
         font-weight: bold;
       }
-      .col-md-3 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-        flex: 0 0 25%;
-        max-width: 25%; }
-
+      
       #machineName {
           position: relative;
           font-weight: 700;
@@ -177,7 +111,7 @@
         font-weight: 700;
       }
       
-      .one {
+      #one {
         display: flex;
         clear: both;
       } /* container div중 하나를 선택하기 위한 id태그*/
@@ -274,12 +208,12 @@
           margin: 0;
         }
       .boxone {
-        width: 30%;
-        
+        width: 50%;
+        border-right: 2px dotted gray;
         justify-content: center;
       }
       .boxtwo {
-        width: 70%;
+        width: 50%;
         justify-content: center;
       }
       
@@ -317,18 +251,18 @@
     }
     * {
         font-family: 'IBM Plex Sans KR', sans-serif;
-        box-sizing: content-box;
+        box-sizing: border-box;
         cursor:default;
       }
       
       #box {
-          width:100%;
-          border-radius: 0px;
+          width: 900px;
+          border-radius: 30px;
           overflow: hidden;
           margin: 100px auto;
-          transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);}
-          /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        } */
+          transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
         
         /* #box:hover {
           box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -368,12 +302,12 @@
       
       
       .first {
-        width:20%;
+        width: 50%;
         margin-right: 5px;
       } /* 화면을 이분할하기 위해 width에 50% 적용 */
       
       .second {
-        width: 80%;
+        width: 50%;
       } /* 화면을 이분할하기 위해 width에 50% 적용 */
       
       .left {
