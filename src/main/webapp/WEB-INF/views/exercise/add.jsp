@@ -233,7 +233,7 @@ font-family: "IBM Plex Sans KR", sans-serif;
 			<button type="button" class="btn btn-primary col-md-2" id="fileAdd">이미지 업로드</button>
 		</div>
 
-		<button type="submit" class="btn btn-outline-primary col col-md-4 offset-md-10">
+		<button type="button" class="btn btn-outline-primary col col-md-4 offset-md-10" id="submitbtn">
 			짧강효확 상세페이지 등록</button>
 	</form>
 </div>
