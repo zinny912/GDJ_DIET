@@ -46,13 +46,18 @@ public class CartService {
 		//count update
 		//태현------------
 		System.out.println();
-		for(int i=0; i<cartNum.length;i++) {
-			
-			CartDTO dto = new CartDTO();
-			dto.setNum(cartNum[i]);
-			dto.setCount(count[i]);
-			cartDAO.setCartCountUpdate(dto);
+		if(cartNum!=null) {
+			for(int i=0; i<cartNum.length;i++) {
+				
+				CartDTO dto = new CartDTO();
+				dto.setNum(cartNum[i]);
+				dto.setCount(count[i]);
+				cartDAO.setCartCountUpdate(dto);
+			}
+		}else {
+			return null;
 		}
+		
 		//------------------------
 		int error = 0;
 		//태현

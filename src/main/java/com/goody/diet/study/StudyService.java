@@ -80,9 +80,12 @@ public class StudyService {
 	
 	public int setBoardUpdate(StudyDTO studyDTO, MultipartFile[] multipartFiles, HttpSession session, Long fileNum)
 			throws Exception {
+		int result =0;
 		//qnaFiles Delete
-		int result =  studyDAO.setBoardFileDelete(fileNum);
-
+		if(fileNum != null) {
+		result =  studyDAO.setBoardFileDelete(fileNum);
+		}
+		
 		//qna Update
 		result = studyDAO.setBoardUpdate(studyDTO);
 		
@@ -112,9 +115,11 @@ public class StudyService {
 	}
 	
 	public int setBoardDelete(StudyDTO studyDTO, Long fileNum) throws Exception {
+		int result=0;
 		//studyFile Delete
-		int result = studyDAO.setBoardFileDelete(fileNum);
-		
+		if(fileNum != null) {
+		result = studyDAO.setBoardFileDelete(fileNum);
+		}
 		//study Delete
 		result = studyDAO.setBoardDelete(studyDTO);
 		return result;

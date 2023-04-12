@@ -34,3 +34,13 @@ studyStartPeriod.addEventListener("change", () => {
     }
   });
 
+  $(document).ready(function() {
+    $('input[name="addFiles"]').change(function() {
+        if($(this).val()) {
+            $('#submitbtn').prop('disabled', false);
+        } else {
+            $('#submitbtn').prop('disabled', true);
+        }
+    });
+});
+

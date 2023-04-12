@@ -53,16 +53,17 @@
 				
 			</div>
 			
-			<div id="fileList">
-				<div class="input-group mb-3", id="f'+idx+'">
-					<input type="file" class="form-control" name="addFiles" value="${dto.studyBoardFileDTOs[0].fileName}">
-					<button type="button" class="btn btn-outline-danger dels">X</button>
+				<div id="fileList">
+					<div class="input-group mb-3" id="f1">
+						<input type="file" class="form-control" name="addFiles">
+						<button type="button" class="btn btn-outline-danger dels">X</button>
+					</div>
 				</div>
-			</div>
-		
-			<div class="mb-3 my-5">
-				<button class="btn btn-outline-primary" id="submitbtn" type="submit">글쓰기</button> 
-			</div>
+				<div class="mb-3 my-5">
+					<button class="btn btn-outline-primary" id="submitbtn"
+						type="submit">글쓰기</button>
+				</div>
+
 		</form>
 	</div>
 </div>
