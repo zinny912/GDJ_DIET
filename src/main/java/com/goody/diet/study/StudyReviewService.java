@@ -30,7 +30,12 @@ public class StudyReviewService {
 	}
 
 	public int setBoardAdd(StudyReviewDTO studyReviewDTO) throws Exception {
-		return studyReviewDAO.setBoardAdd(studyReviewDTO);
+		
+		int result = studyReviewDAO.setBoardAdd(studyReviewDTO);
+		if(result>0) {
+			result = studyReviewDAO.setStudyScoreUpdate(studyReviewDTO);
+		}
+		return result;
 		
 	}
 	
