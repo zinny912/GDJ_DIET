@@ -27,27 +27,34 @@ public class StudyQnaController {
 	}
 	
 	@GetMapping("list")
-	public ModelAndView getBoardList(Pager pager) throws Exception {
+	public ModelAndView getBoardList(Pager pager, String myPage) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<StudyQnaDTO> ar = studyQnaService.getBoardList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("studyQna/list");
 		
+		System.out.println("mypage: "+myPage);
+		if(myPage!=null) {
+			mv.addObject("myPage", myPage);
+		}
+		
 		return mv;
 	}
 	
 	@GetMapping("add")
-	public ModelAndView setBoardAdd(Pager pager) throws Exception{
+	public ModelAndView setBoardAdd(Pager pager, String myPage) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		if(myPage!=null) {
+			mv.addObject("myPage", myPage);
+		}
 		mv.setViewName("studyQna/add");
-		
 		return mv;
 	}
 	
 
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(StudyQnaDTO qnaDTO) throws Exception{
+	public ModelAndView setBoardAdd(StudyQnaDTO qnaDTO, String myPage) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = studyQnaService.setBoardAdd(qnaDTO);
 		
@@ -55,10 +62,13 @@ public class StudyQnaController {
 		if(result>0) {
 			message="글이 등록 되었습니다";
 		}
-		
-		mv.addObject("result",message);
-		mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
-		mv.setViewName("common/result");
+		if(myPage==null) {
+			mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
+			mv.addObject("result",message);
+			mv.setViewName("common/result");
+		}else {			
+			mv.setViewName("/member/myPage");
+		}
 		return mv;
 	}
 	

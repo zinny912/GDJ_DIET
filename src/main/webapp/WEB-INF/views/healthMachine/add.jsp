@@ -42,7 +42,7 @@ font-family:"IBM Plex Sans KR", sans-serif;
 
 				<div class="mb-3">
 					<label for="machineName" class="form-label">용품이름</label> <input
-						type="text" class="form-control essential" name="machineName" placeholder="필수입력창 입니다.">
+						type="text" class="form-control essential" name="machineName">
 				</div>
 
 				<div class="mb-3">
@@ -51,7 +51,7 @@ font-family:"IBM Plex Sans KR", sans-serif;
 				</div>
 				<div class="mb-3">
 					<label for="salePrice" class="form-label" style="color:tomato;">할인가격</label><br> <input
-						type="text" class="form-control-red essential" id="red-point" name="salePrice">
+						type="text" class="form-control essential" id="red-point" name="salePrice">
 				</div>
 				<div id="optionList">
 					<div class="mb-3 was-validated " id=option1>
@@ -70,7 +70,7 @@ font-family:"IBM Plex Sans KR", sans-serif;
 
 				<div id="fileList">
 				<br><label for="Files"class="form-label">썸네일 이미지</label>
-				<input type="file" class="form-control" name='Files' id="thumnailFile">
+				<input type="file" class="form-control essential" name='Files' id="thumnailFile">
 					<!-- <button type="button" class="btn btn-primary col-md-2" id="fileAdd">fileadd</button> -->
 				</div>
 			</form>

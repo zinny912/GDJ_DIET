@@ -15,22 +15,6 @@ let toggleFlag=false;
 let categorycount=2;
 
 
-$("#submitbtn").click(function(){
-    let nullCheck=false;
-    
-    $(".essential").each(function(index,essential){
-        if($(essential).val().length==0){
-            alert("입력란을 다시 확인해주세요");
-            nullCheck=true;
-            return false;
-        }
-    })
-    if(nullCheck!=true){
-        $("#frm").submit();
-
-    }
-  
-})
 
 
 //--caregoryAddbtn---------------------

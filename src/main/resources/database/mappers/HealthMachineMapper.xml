@@ -25,6 +25,7 @@
 		</trim>
 	</sql>
 
+	
 	<select id="getRealHealthMachineDetail"
 		parameterType="RealHealthMachineDTO" resultType="RealHealthMachineDTO">
 		select * FROM REALHEALTHMACHINE

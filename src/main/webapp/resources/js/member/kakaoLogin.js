@@ -14,6 +14,7 @@ console.log(Kakao.Auth.getAccessToken())
 // function loginWithKakao() {
 //     Kakao.Auth.authorize({
 //       redirectUri: 'http://localhost/login/oauth',
+//       prompts:'login'
 //     });
 //   }
 

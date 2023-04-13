@@ -137,15 +137,16 @@
 				</fieldset>
 		
 
-		<button type="button" class="btn btn-primary" id="submitbtn">수정하기</button>
 
 	</form>
+		<button type="button" class="btn btn-primary" id="submitbtn">수정하기</button>
 	<script>
 		/* setParam('Files'); */
 	</script>
 
 
 	<script src="/resources/js/exerciseAdd.js"></script>
+	<c:import url="../template/common_js.jsp"></c:import>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
