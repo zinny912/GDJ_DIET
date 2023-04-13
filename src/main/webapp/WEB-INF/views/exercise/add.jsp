@@ -114,7 +114,6 @@ font-family: "IBM Plex Sans KR", sans-serif;
 	box-sizing: border-box;
 }
 
-
 </style>
 </head>
 <body>
@@ -257,7 +256,7 @@ font-family: "IBM Plex Sans KR", sans-serif;
 	<script src="/resources/js/exerciseAdd.js"></script>
 <c:import url="../template/footer.jsp"></c:import> 
 	<c:import url="../template/common_js.jsp"></c:import>
-
+<script src="/resources/js/essential.js"></script>
 	<script>
 		setMax(1);
 		setParam('Files');

@@ -52,6 +52,7 @@
 	</div>
 </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/resources/js/essential.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
