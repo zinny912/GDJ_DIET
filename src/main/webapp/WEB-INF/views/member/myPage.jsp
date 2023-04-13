@@ -64,7 +64,7 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 <script type="text/javascript">
 console.log($('#studyQnaList').attr('data-study-studyNum'))
 if($('#studyQnaList').attr('data-study-studyNum')==""||$('#studyQnaList').attr('data-study-studyNum')==null){
-	$('#studyListResult').html("사세요...");
+	$('#studyListResult').html('<a href="/study/studyList">사세요...</a>');
 }else{
 	//상품창에서 말고 여기서 myPage보낼께..
 	fetch("/studyQna/list?myPage=y&studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{

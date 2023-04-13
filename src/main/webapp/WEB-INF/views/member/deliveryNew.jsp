@@ -36,7 +36,7 @@
 <div class="input-group mb-3">
   <span class="input-group-text">@</span>
   <div class="form-floating">
-	<input type="text" name="address" class="form-control" id="sample3_address" onclick="sample3_execDaumPostcode()" placeholder="우편번호 찾기">
+	<input readonly="readonly" type="text" name="address" class="form-control" id="sample3_address" onclick="sample3_execDaumPostcode()" placeholder="우편번호 찾기">
   <label for="sample3_address" style="color: gray;">우편번호 찾기</label>
     </div>
   <div class="form-floating">  
