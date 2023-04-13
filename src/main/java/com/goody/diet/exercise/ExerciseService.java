@@ -83,23 +83,6 @@ public class ExerciseService {
 		return exerciseDTO;
 	}
 
-	// 머신 이름 리스트 불러오기 
-//	public List<ExerciseDTO> getExerciseMachine() throws Exception {
-//		List<ExerciseDTO> exerciseDTOs = exerciseDAO.getExerciseMachine();
-//		for (ExerciseDTO exerciseDTO : exerciseDTOs) {
-//			List<HealthMachineDTO> healthMachineDTOs = exerciseDTO.getHealthMachineDTOs();
-//			if (healthMachineDTOs != null && !healthMachineDTOs.isEmpty()) {
-//				exerciseDTO.setMachineName(healthMachineDTOs.get(0).getMachineName());
-//				exerciseDTO.setMachineNum(healthMachineDTOs.get(0).getMachineNum());
-//				System.out.println("machineNum : " + exerciseDTO.getMachineNum());
-//				System.out.println("machineName : " + exerciseDTO.getMachineName());
-//
-//			}
-//
-//		}
-//		return exerciseDTOs;
-//	}
-
 	// add 
 	public int setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO, MultipartFile [] Files,Long [] bodyNums) throws Exception{
 
@@ -140,6 +123,7 @@ public class ExerciseService {
 		return result;
 
 	}
+	
 	//update 짧강효확 
 	//setupdate 구조 설명
 	//1. 먼저 바꾸고 싶은 exercise Update하기
