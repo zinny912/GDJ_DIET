@@ -14,10 +14,13 @@
 <c:import url="../template/header.jsp"></c:import>
 <style>
 .str1{
+font-family:"IBM Plex Sans KR";
 color:tomato;
 position:absolute;
-margin-top:0;
-text-align:right;
+margin-top:-17px;
+margin-left:4%;
+text-align:center;
+justify-content:center;
 }
 </style>
 </head>
@@ -56,7 +59,7 @@ text-align:right;
 									<h3>
 										<a href="./studyDetail?studyNum=${dto.studyNum}">${dto.studyName}</a>
 									</h3>
-									<p>${dto.studyStartPeriod}~${dto.studyEndPeriod}</p>
+									
 									<div class="row">
 									<strong class="str1">
 									<c:choose>
@@ -83,7 +86,11 @@ text-align:right;
 										    </c:otherwise> 
 								</c:choose>
 								</strong>
+								<div>
+								<p>${dto.studyStartPeriod}~${dto.studyEndPeriod}</p>
 								</div>
+								</div>
+								<p class="underline"></p>
 								</div>
 							</div>
 						</div>

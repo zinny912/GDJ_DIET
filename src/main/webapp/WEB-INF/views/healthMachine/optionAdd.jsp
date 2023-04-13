@@ -17,6 +17,7 @@ body {
 	width: 100%;
 	border-radius: 0.25rem;
 	border: 3px #2c396b double;
+	
 }
 
 .boxx {
@@ -26,6 +27,7 @@ body {
 	padding-bottom: 4%;
 	padding-top: 2%;
 	background-color: #fff;
+	overflow: visible;
 }
 
 .container {
@@ -35,18 +37,25 @@ body {
 .one {
 	display: flex;
 	clear: both;
+	
 } /* container div중 하나를 선택하기 위한 id태그*/
 .first {
 	width: 50%;
 	padding: 0 2%;
+	
 } /* 화면을 이분할하기 위해 width에 50% 적용 */
 .second {
 	width: 50%;
 	padding: 0 2%;
+	
 } /* 화면을 이분할하기 위해 width에 50% 적용 */
 .form-label {
 	font-weight: 700;
 	font-size: 20px;
+}
+
+.btn {
+margin-bottom:3%;
 }
 </style>
 </head>
@@ -74,9 +83,6 @@ body {
 											<input type="text"
 												class="form-control optInput text-center essential"
 												name="optName1" placeholder="${dto.option1}작성">
-										</div>
-									</div>
-									<div class="second">
 										<div class="dropdown-menu">
 											<ul style="list-style: none" id="optSelect1">
 												<c:forEach items="${optList1}" var="option">
@@ -85,6 +91,9 @@ body {
 												</c:forEach>
 											</ul>
 										</div>
+										</div>
+									</div>
+										<div class="second">
 										<input type="text"
 											class="form-control optInputId text-center essential"
 											name="optId1" placeholder="영문명">
@@ -103,9 +112,6 @@ body {
 												<input type="text"
 													class="form-control optInput text-center essential"
 													name="optName2" placeholder="${dto.option2}작성">
-											</div>
-										</div>
-										<div class="second">
 											<div class="dropdown-menu">
 												<ul style="list-style: none" id="optSelect2">
 													<c:forEach items="${optList2}" var="option">
@@ -114,6 +120,9 @@ body {
 													</c:forEach>
 												</ul>
 											</div>
+											</div>
+										</div>
+											<div class="second">
 											<input type="text"
 												class="form-control optInputId text-center essential"
 												name="optId2" placeholder="영문명">
@@ -122,6 +131,7 @@ body {
 								</div>
 							</c:if>
 							<c:if test="${not empty dto.option3}">
+							<p class="underline" style="border-bottom: 2px dotted;"></p>
 								<div class="boxx">
 									<label for="optName3" class="form-label">옵션3
 										${dto.option3}</label>
@@ -132,9 +142,7 @@ body {
 												<input type="text"
 													class="form-control optInput text-center essential"
 													name="optName3" placeholder="${dto.option3}작성">
-											</div>
-										</div>
-										<div class="second">
+											
 											<div class="dropdown-menu">
 												<ul style="list-style: none" id="optSelect3">
 													<c:forEach items="${optList3}" var="option">
@@ -143,9 +151,13 @@ body {
 													</c:forEach>
 												</ul>
 											</div>
-											<input type="text" class="form-control optInputId essential"
+											</div>
+										</div>
+											<div class="second">
+											<input type="text" class="form-control optInputId text-center essential"
 												name="optId3" placeholder="영문명">
 										</div>
+										
 									</section>
 								</div>
 							</c:if>
@@ -159,9 +171,8 @@ body {
 												data-optName="${dto.option4 }">
 												<input type="text" class="form-control optInput essential"
 													name="optName4" placeholder="${dto.option4}작성">
-											</div>
-										</div>
-										<div class="second">
+											
+										
 											<div class="dropdown-menu">
 												<ul style="list-style: none" id="optSelect4">
 													<c:forEach items="${optList4}" var="option">
@@ -169,14 +180,17 @@ body {
 															data-id="${option.optId4}" data-name="${option.optName4}">${option.optName4}</li>
 													</c:forEach>
 												</ul>
+												</div>
+										</div>
 											</div>
-											<input type="text" class="form-control optInputId essential"
+											<div class="second">
+											<input type="text" class="form-control optInputId essential text-center"
 												name="optId4" placeholder="영문명">
 										</div>
 									</section>
 								</div>
 							</c:if>
-							<p class="underline"></p>
+							<p class="underline" style="border-bottom: 2px dotted;"></p>
 
 							<div class="mb-3 col-4">
 								<label for="stock" class="form-label">재고</label> <input
@@ -189,7 +203,6 @@ body {
 						<button type="button" id="submitbtn"
 							class="btn btn-outline-primary col col-md-2 offset-md-10">등록하기
 						</button>
-						<br>
 					</form>
 				</div>
 			</div>
