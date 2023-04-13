@@ -46,7 +46,7 @@
 					id="detailTitle" name="detailTitle" placeholder="detailTitle" />
 
 			</div>
-				<fieldset class="f1">
+				<fieldset class="f1 essbox">
 					<label id="machineNum" for="machineNum" class="form-label"
 						data-machineNum="${dto.machineNum}">운동기구</label>
 				</fieldset>
@@ -70,9 +70,9 @@
 				</div>
 				<div class="second">
 					<!-- 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
-					<div class="detail2">
-						<span class="info">상세설명</span>
-						<input class="l" id="info" name="info" value="${dto.info}" />
+					<div class="detail2 essbox">
+						<span class="info text-left">상세설명</span>
+						<input class="l essential" id="info" name="info" value="${dto.info}" />
 
 					</div>
 					<div class="detail4">
@@ -84,25 +84,25 @@
 					<div class="detail3">
 						<div class="boxone">
 						<span class="power">난이도</span>
-							<fieldset class="f1" data-power=${dto.power } id="power">
-								<label class="l2"> <input class="ty1" type="radio"
+							<fieldset class="f1 essbox" data-power=${dto.power } id="power">
+								<label class="l2"> <input class="ty1 check1" type="radio"
 									name="power" value="1"> <span class="s3">★</span>
-								</label> <label class="l2"> <input class="ty1" type="radio"
+								</label> <label class="l2"> <input class="ty1 check1" type="radio"
 									name="power" value="2"> <span class="s3">★★</span>
-								</label> <label class="l2"> <input class="ty1" type="radio"
+								</label> <label class="l2"> <input class="ty1 check1" type="radio"
 									name="power" value="3"> <span class="s3">★★★</span>
-								</label> <label class="l2"> <input class="ty1" type="radio"
+								</label> <label class="l2"> <input class="ty1 check1" type="radio"
 									name="power" value="4"> <span class="s3">★★★★</span>
-								</label> <label class="l2"> <input class="ty1" type="radio"
+								</label> <label class="l2"> <input class="ty1 check1" type="radio"
 									name="power" value="5"> <span class="s3">★★★★★</span>
 								</label>
 							</fieldset>
 						</div>
 
-						<div class="boxtwo">
+						<div class="boxtwo essbox">
 							<ul>
 								<li><span class="time">운동소요시간</span></li>
-								<li><input class="mmss form-control-red" id="time" name="time"
+								<li><input class="mmss essential" id="time" name="time"
 									value="${dto.time}"/></li>
 							</ul>
 						</div>
@@ -116,17 +116,18 @@
 			</div>
 
 		</section>
+		<div class="essbox">
 		<fieldset class="f1" style="margin-left:14%;">
 					<label id="machineNum" class="form-label">운동기구</label>
 			<c:forEach items="${machines}" var="machine">
-						<label class="machineLabel"><input class="machines"
+						<label class="machineLabel"><input class="machines check2"
 							type="radio" name="machineNum" value="${machine.machineNum }">
 							<span class="s1">${machine.machineName}</span></label>
 			</c:forEach>	
 			<br>
 			<label class="form-label">운동부위</label>
 			<c:forEach items="${bodyList }" var="body">
-						<label> <input class="bodys check" type="checkbox"
+						<label> <input class="bodys check3" type="checkbox"
 							name="bodyNum" value="${body.bodyNum }" /> <span class="s1">${body.bodyName }</span>
 						</label>
 					</c:forEach>
@@ -135,7 +136,7 @@
 							data-bodydata="${checkbody.bodyNum }">
 					</c:forEach>							
 				</fieldset>
-		
+		</div>
 
 
 	</form>
@@ -145,8 +146,8 @@
 	</script>
 
 
-	<script src="/resources/js/exerciseAdd.js"></script>
 	<c:import url="../template/common_js.jsp"></c:import>
+	<script src="/resources/js/exerciseAdd.js"></script>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
