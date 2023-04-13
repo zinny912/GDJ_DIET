@@ -31,6 +31,11 @@
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
+								<div>
+					<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+						<a href="./studyAdd" class="btn btn-primary" style="margin:0 0 0.5%">스터디 추가하기</a>
+					</c:if>
+				</div>
 					<c:forEach items="${list}" var="dto">
 						<div class="col-md-4">
 							<div class="classes w-100 ftco-animate">
@@ -50,11 +55,6 @@
 							</div>
 						</div>
 					</c:forEach>
-				</div>
-				<div>
-					<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
-						<a href="./studyAdd" class="btn btn-primary">스터디 추가하기</a>
-					</c:if>
 				</div>
 			</div>
 		</section>
