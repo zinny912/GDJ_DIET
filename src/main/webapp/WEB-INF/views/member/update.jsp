@@ -38,7 +38,32 @@
 	<div class="row">
 
 
-<c:import url="./memberHeader.jsp"></c:import>
+<%-- <c:import url="./memberHeader.jsp"></c:import> --%>
+<div class="col-2 mx-1 mb-3">
+<h3 class="h3" style="margin-left:15px;"> 마이페이지 </h3>
+<ul class="nav flex-column" >
+  <li class="nav-item">
+    <a class="nav-link active mt-1" aria-current="page" href="/order/list">주문/배송</a>
+  </li>
+  <li class="nav-item">
+    <c:if test="${sessionMember.studyNum ne null}">
+  	<a class="nav-link" href="/member/myPage">수업</a>
+  </c:if>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" href="/member/update">개인정보</a>
+  </li> 
+  <li class="nav-item">
+    <a class="nav-link" href="/member/delivery">배송지 설정</a>
+  </li>
+  <c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+  <li><a class="nav-link" href="/member/manage">회원관리</a></li>
+  </c:if>
+
+</ul>
+</div>
+
+
 
 <div class="col-8">
 <div class="mt-3"><h2 class="usermodify-title">회원정보</h2></div>
