@@ -1685,16 +1685,16 @@ pre {
         -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
       .form-control-red::-webkit-input-placeholder {
-        color: #6c757d;
+        color: tomato;
         opacity: 1; }
       .form-control-red:-ms-input-placeholder {
-        color: #6c757d;
+        color: tomato;
         opacity: 1; }
       .form-control-red::-ms-input-placeholder {
-        color: #6c757d;
+        color: tomato;
         opacity: 1; }
       .form-control-red::placeholder {
-        color: #6c757d;
+        color: tomato;
         opacity: 1; }
       .form-control-red:disabled, .form-control-red[readonly] {
         background-color: #e9ecef;
