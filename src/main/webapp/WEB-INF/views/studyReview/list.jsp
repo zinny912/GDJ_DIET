@@ -7,7 +7,7 @@
 		<tbody class="table-group-divider" >
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><a href="/studyReview/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.contents}</a></td>
+					<td><a style="color:tomato;" href="/studyReview/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.contents}</a></td>
 					<c:choose>
 						<c:when test="${dto.score eq 0}">
 							<td>☆☆☆☆☆</td>

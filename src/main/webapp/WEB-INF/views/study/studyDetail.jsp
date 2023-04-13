@@ -29,6 +29,10 @@
   }
   
 }
+
+body {
+font-family: "IBM Plex Sans KR";
+}
 </style>
 
  </head>
