@@ -19,11 +19,11 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 
 
 <div class="container-fluid">
-<div class="row" style="height: 1000px;">
+<div class="row">
 		<c:import url="./memberHeader.jsp"></c:import>
 
 <div class="col-9">
-<div hidden="" class="nav-link" id="studyQnaList" data-study-studyNum="${sessionMember.studyNum}" style="cursor: pointer">Q&amp;A(${qna})</div>
+<div hidden="" class="nav-link" id="studyQnaList" data-study-studyNum="${sessionMember.studyNum}"></div>
 	<div id="studyListResult" class=""></div>
 </div>
 
@@ -36,6 +36,30 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 <script src="/resources/js/studyBoard.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
+
+<script type="text/javascript">
+	//상품창에서 말고 여기서 myPage보낼께..
+	fetch("/studyQna/list?myPage=y&studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
+	    method:'GET'
+	})
+	.then((response)=>response.text())
+	.then((res)=>{
+	    $('#studyListResult').html(res.trim());
+	})
+// 	$('#studyListResult').on("click",$('.ajax-myPage'),function(){
+// 		$.ajax({
+// 			type:"GET", 
+// 			url:"/studyQna/add", 
+// 			data:{
+// 				myPage:"y",
+// 				studyNum:$('#studyQnaList').attr('data-study-studyNum')
+// 				}, 
+// 				success:function (res){
+// 					$('#studyListResult').html(res.trim());
+// 					}
+// 		})		
+// 	})
+</script>
 
 </body>
 </html>

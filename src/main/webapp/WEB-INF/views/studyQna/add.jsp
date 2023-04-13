@@ -50,6 +50,7 @@
 				 
 				
 			</div>
+			<input hidden="" name="myPage" value="1">
 		</form>
 	</div>
 </div>

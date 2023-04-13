@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.goody.diet.cart.CartDTO;
+import com.goody.diet.util.Pager;
 
 @Repository
 public class MemberDAO {
@@ -14,6 +15,14 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlSession; 
 	private final String NAMESPACE = "com.goody.diet.member.MemberDAO.";
+	
+	public Long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
+	}
+	
+	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getMemberList", pager);
+	}
 	
 //	public MemberDTO getKakaoLogin (MemberDTO memberDTO) {
 //		return sqlSession.selectOne(NAMESPACE+"getKakaoLogin", memberDTO);

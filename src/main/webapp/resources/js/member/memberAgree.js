@@ -22,15 +22,16 @@ function mAgree(){
 
 	$('#modalBtn').click()
 
-	fetch("/member/agree", {
-		method:"get",
-	}).then((response)=> response.text()) // (response)=> {return response.text()}
-	.then((res)=> {
-		// console.log(res)
-		$('.modal-body').text(res)
-	})
-	//예외 발생시 처리
-	.catch(()=>console.log('에러 발생'))
+	// fetch("/member/agree", {
+	// 	method:"get",
+	// }).then((response)=> response.text()) // (response)=> {return response.text()}
+	// .then((res)=> {
+	// 	// console.log(res)
+	// 	$('.modal-body').text(res)
+	// })
+	// //예외 발생시 처리
+	// .catch(()=>console.log('에러 발생'))
+
 }
 
 $('#modalSubmit').click(()=>{
