@@ -86,12 +86,12 @@
   </div>
 
   <div class="d-flex flex-row align-items-center mb-4">
-    <button type="button" id="submitBtnJoin" class="btn btn-secondary col-12">가입</button>
+    <button type="button" id="submitBtnJoin" class="btn btn-secondary col-12">일반가입</button>
   </div>                 
 
  
   <div class="d-flex flex-row align-items-center mb-4">
-  <a class="btn btnKakao px-2 pb-5" href="javascript:loginWithKakao()">카카오 로그인/회원가입</a></div>
+  <a class="btn btnKakao px-2 pb-5" href="javascript:loginWithKakao()">카카오 로그인 / 회원가입</a></div>
   
 </form>
 

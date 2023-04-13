@@ -1,7 +1,11 @@
 
 $('#submitBtnJoin').click(()=>{
-	location.href="/member/join"
-})
+    swal('구디다이어트', '회원가입Go!', 'info')
+    .then(function() {
+        location.href="./join";
+      })
+
+});
 
 
 
@@ -48,7 +52,7 @@ function enter_or_click (){
     }).then((res)=>{
         console.log(res.trim())
         if(res.trim()=="0"){
-            swal('아이디 와 패스워드가 불일치 합니다! ', '확인 후 재시도 해주세요', 'error');
+            swal('아이디 와 패스워드가 불일치 합니다 ', '확인 후 재시도 해주세요', 'error');
         }else{
             location.href="/";
         }

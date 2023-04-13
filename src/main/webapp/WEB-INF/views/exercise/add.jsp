@@ -7,6 +7,8 @@
 <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="../resources/css/info.css" rel="stylesheet" type="text/css" />
+
+
 <c:import url="../template/common_css.jsp"></c:import>
 <c:import url="../template/header.jsp"></c:import>
 <!-- radio box style -->
@@ -48,6 +50,10 @@ font-family: "IBM Plex Sans KR", sans-serif;
 	height: 1em;
 	transition: border 0.2s ease-in-out;
 }
+.ty1:checked {
+	border: 0.3em solid tomato;
+}
+
 
  .ty2:checked {
 	border: 0.3em solid tomato;
@@ -64,7 +70,14 @@ font-family: "IBM Plex Sans KR", sans-serif;
   align-items: center
 }
 
-.ty1, .ty2:hover {
+.ty1:hover {
+	box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+	cursor: pointer;
+
+}
+
+
+.ty2:hover {
 	box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
 	cursor: pointer;
 }
@@ -241,11 +254,9 @@ font-family: "IBM Plex Sans KR", sans-serif;
 
 
 
-
-	<!-- <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+	
 	<script src="/resources/js/exerciseAdd.js"></script>
-<%-- 	<c:import url="../template/footer.jsp"></c:import> --%>
+<c:import url="../template/footer.jsp"></c:import> 
 	<c:import url="../template/common_js.jsp"></c:import>
 
 	<script>

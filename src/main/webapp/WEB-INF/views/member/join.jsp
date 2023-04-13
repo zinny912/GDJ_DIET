@@ -8,10 +8,6 @@
 <title>회원가입</title>
 
 	<style type="text/css">
-		.card-body {
-		width:100%;
-		height: 80%;
-		}
 		
 		.redResult{
 			color: red;
@@ -23,19 +19,20 @@
 
 <c:import url="../template/common_css.jsp"></c:import>  
 <c:import url="../template/header.jsp"></c:import>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
-<section class="vh-100" style="background-color: #eee;">
+<section class="vh-70" style="background-color: #eee;">
   <div class="container-fluid">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row d-flex justify-content-center align-items-center h-80">
       <div class="col-lg-12 col-xl-11">
             <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-        <div class="card text-black" style="border-radius: 25px;">
+              <div class="col-md-8 col-lg-5 col-xl-4 order-1 order-lg-1">
+        <div class="card text-black" style="border-radius: 20px;">
           <div class="card-body">
           
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">회원가입</p>
+                <p class="text-center h3 fw-bold mb-2 mx-1 mx-md-4 mt-2">회원가입</p>
 
                 <form id="login_form" class="mx-1 mx-md-4" action="./join" method="post">
 
@@ -97,10 +94,13 @@
                   </div>
 
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2 form-control" onClick="return false;" type="checkbox" value="" id="agree" />
+                   <p>모든 약관에 동의합니다.</p>
                     <label class="form-check-label" for="agree">
-                      I agree all statements in <a id="terms" href="javascript:mAgree()">Terms of service</a>
+                    <br>
+                   <input class="form-check-input me-2 text-center" onClick="return false;" type="checkbox" value="" id="agree" />
+                     <a id="terms" href="javascript:mAgree()">약관확인</a>
                     </label>
+    				
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -108,9 +108,7 @@
                   </div>
 
                 </form>
-
               </div>
-
             </div>
           </div>
         </div>
@@ -130,14 +128,14 @@
   <div class="modal-dialog modal-dialog-scrollable"  >
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="agreeModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="agreeModalLabel">개인정보 제공 약관동의서</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="modalSubmit">Save changes</button>
-        <button type="button" class="btn btn-secondary" id="modalCancel" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="modalSubmit">약관동의</button>
+        <button type="button" class="btn btn-secondary" id="modalCancel" data-bs-dismiss="modal">취소</button>
         <button type="button" class="btn btn-secondary" id="modalClose" data-bs-dismiss="modal" hidden=""></button>
       </div>
     </div>
@@ -209,6 +207,6 @@
         element_wrap.style.display = 'block';
     }
 </script>
-<c:import url="../template/footer.jsp"></c:import>
+
 </body>
 </html>

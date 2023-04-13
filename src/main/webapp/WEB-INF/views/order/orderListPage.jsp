@@ -14,7 +14,7 @@
 body {
             min-height: 100vh;
             background-size: cover;
-            font-family: 'Lato', sans-serif;
+            font-family:"IBM Plex Sans KR" , sans-serif;
             color: rgba(116, 116, 116, 0.667);
 /*             background: linear-gradient(140deg , #fff , 50% , #BA68C8);     */
 

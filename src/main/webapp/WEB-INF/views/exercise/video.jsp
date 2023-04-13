@@ -35,8 +35,6 @@
         </div>
 	</div>
 </div>
-
-  
   
   
 <section class="ftco-section">
@@ -45,12 +43,9 @@
             <img id=thumbsup src="../../resources/images/thumbsup.png" width="200px" height="200px" alt="">
           </div>
 </section>
-	
-
   
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/resources/js/detailVideo.js"></script>
-
 <c:import url="../template/footer.jsp"></c:import> 
 <c:import url="../template/common_js.jsp"></c:import>   
   </body>
