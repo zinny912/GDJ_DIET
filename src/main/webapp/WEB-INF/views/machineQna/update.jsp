@@ -39,7 +39,7 @@
 			
 			<div class="mb-3">
 				<label for="title" class="form-label">제목</label> 
-				<input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+				<input type="text" name="title" class="form-control essential" id="title" placeholder="제목 입력">
 			</div>
 	
 			<div class="mb-3">
@@ -54,7 +54,7 @@
 		</form>
 	</div>
 </div>
-
+<script src="/resources/js/essential.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
 	<script>

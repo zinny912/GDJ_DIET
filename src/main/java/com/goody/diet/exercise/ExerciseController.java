@@ -66,16 +66,6 @@ public class ExerciseController {
 		mv.setViewName("exercise/add");
 		return mv;
 	}
-//	@GetMapping("machineList")
-//	public ModelAndView getExerciseMachine() throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		List<ExerciseDTO> ar = exerciseService.getExerciseMachine();
-//		System.out.println("MachineName:" + ar.get(0).getMachineName());
-//		mv.addObject("body",ar);
-//		mv.setViewName("exercise/add");
-//		mv.setViewName("exercise/update");
-//		return mv;
-//	}
 	
 	@PostMapping("add")//bodyNum 여러개로 변경하였습니다.
 	public ModelAndView setExerciseAdd(HttpSession session, ExerciseDTO exerciseDTO, MultipartFile [] Files,Long [] bodyNum)throws Exception{

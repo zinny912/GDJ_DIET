@@ -7,9 +7,16 @@ $('.reviewUpdate').click(function(e){
 
 // modal에서 확인버튼과 cancel버튼 눌렀을 때 동작
 $("#contentsConfirm").click(function(){
-    console.log('Update Post');
+    let nullCheck=false;
+    console.log(nullCheck);
+        if ($(".note-editable").children().children().prop("tagName") == "BR") {
+            swal('상세내용을 입력해 주세요.', '상세내용 입력 요망', 'error');
+            nullCheck = true;
+            return false;
+        }
+    
 
-
+    if (nullCheck != true) {
     fetch('/studyReview/update', {
         method:'POST',
         headers:{
@@ -19,16 +26,16 @@ $("#contentsConfirm").click(function(){
     }).then( (response) => response.text())
       .then( (res) => {
         if(res.trim()>0){
-            alert('글쓰기 성공');
+            swal('글쓰기 성공', '성공', 'success');
             $("#closeModal").click();
             location.href='/studyReview/detail?studyNum='+$(this).attr("data-comment-num")+"&num="+$("#num").val();        
         }else { 
-            alert('글쓰기 실패');
+            swal('글쓰기 실패', '실패', 'fail');
         }
       })
        .catch(()=>{
-         alert('관리자에게 문의 하세요');
+        swal('관리자에게 문의하세요.', '관리자 문의 요망', 'info');
        })
-
+    }
 
 })
