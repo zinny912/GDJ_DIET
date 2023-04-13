@@ -1,31 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+.td1 {
+color:tomato;
+
+
+}
+
+</style>
 
 <div class="row">
 	<table class="table table-hover">
 		<tbody class="table-group-divider" >
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><a style="color:tomato;" href="/studyReview/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.contents}</a></td>
+					<td><a href="/studyReview/detail?studyNum=${dto.studyNum}&num=${dto.num}">${dto.contents}</a></td>
 					<c:choose>
 						<c:when test="${dto.score eq 0}">
-							<td>☆☆☆☆☆</td>
+							<td class="td1">☆☆☆☆☆</td>
 						</c:when>
 						<c:when test="${dto.score eq 1}">
-							<td>★☆☆☆☆</td>
+							<td class="td1">★☆☆☆☆</td>
 						</c:when>
 						<c:when test="${dto.score eq 2}">
-							<td>★★☆☆☆</td>
+							<td class="td1">★★☆☆☆</td>
 						</c:when>
 						<c:when test="${dto.score eq 3}">
-							<td>★★★☆☆</td>
+							<td class="td1">★★★☆☆</td>
 						</c:when>
 						<c:when test="${dto.score eq 4}">
-							<td>★★★★☆</td>
+							<td class="td1">★★★★☆</td>
 						</c:when>
 						<c:when test="${dto.score eq 5}">
-							<td>★★★★★</td>
+							<td class="td1">★★★★★</td>
 						</c:when>
 					</c:choose>
 					<td>${dto.writer}</td>

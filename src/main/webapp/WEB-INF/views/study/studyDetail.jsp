@@ -14,6 +14,12 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
  
  <style>
+ * {
+font-family: "IBM Plex Sans KR";
+}
+ 
+ 
+ 
 .my-hr2 {
 	border: 0;
 	height: 2px;
@@ -30,9 +36,7 @@
   
 }
 
-body {
-font-family: "IBM Plex Sans KR";
-}
+
 </style>
 
  </head>
