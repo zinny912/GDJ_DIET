@@ -148,6 +148,7 @@
 
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="/resources/js/exerciseAdd.js"></script>
+	<script src="/resources/js/essential.js"></script>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
