@@ -193,6 +193,7 @@
 		
 		
 	</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <script src="../resources/js/studyReviewUpdate.js"></script>
 <script src="../resources/js/boardForm.js"></script>
