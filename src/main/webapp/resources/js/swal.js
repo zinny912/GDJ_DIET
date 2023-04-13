@@ -1,9 +1,18 @@
+let url=$("#data").attr("data-url");
+let resultNum=$("#data").attr("data-resultNum");
+let result=$("#data").attr("data-result");
 
 
-let url = $("#url").val;
-console.log(url);
-let message=$("#msg").val;
-	if(message != ''){
-		swal(message,"df",'error');		
+	if(result != ''){
+		if(resultNum*1>0){
+			swal(result," ",'success');		
+
+		}
+		else{
+			swal(result," ",'error');		
+		}
 	}
-	location.href=url;
+	document.addEventListener("click",function(){
+
+		 location.href=url;
+	})

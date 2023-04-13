@@ -77,7 +77,7 @@ public class StudyController {
 		if(result>0) {
 			message="글이 등록 되었습니다";
 		}
-		
+		mv.addObject("resultNum", result);
 		mv.addObject("result",message);
 		mv.addObject("url","./studyList");
 		mv.setViewName("common/result");
@@ -101,6 +101,7 @@ public class StudyController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(fileNum);
 		int result = studyService.setBoardUpdate(studyDTO, addFiles, session, fileNum);
+		mv.addObject("resultNum", result);
 		mv.setViewName("common/result");
 		mv.addObject("result", "수정성공");
 		mv.addObject("url", "./studyList");
@@ -112,7 +113,15 @@ public class StudyController {
 	public ModelAndView setBoardDelete(StudyDTO studyDTO, Long fileNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = studyService.setBoardDelete(studyDTO, fileNum);
-		mv.setViewName("redirect:./studyList");
+		
+		String message="삭제 실패";
+		if(result>0) {
+			message="글이 삭제 되었습니다";
+		}
+		mv.addObject("resultNum", result);
+		mv.addObject("result",message);
+		mv.addObject("url", "./studyList");
+		mv.setViewName("common/result");
 		return mv;
 	}
 } 

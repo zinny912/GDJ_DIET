@@ -24,15 +24,15 @@ studyStartPeriod.addEventListener("change", () => {
   }
   );
 
-  submitBtn.addEventListener("click", (event) => {
-    const startDate = new Date(studyStartPeriod.value);
-    const endDate = new Date(studyEndPeriod.value);
+  // submitBtn.addEventListener("click", (event) => {
+  //   const startDate = new Date(studyStartPeriod.value);
+  //   const endDate = new Date(studyEndPeriod.value);
   
-    if (startDate > endDate) {
-      event.preventDefault();
-      alert("올바른 날짜를 선택해주세요.");
-    }
-  });
+  //   if (startDate > endDate) {
+  //     event.preventDefault();
+  //     alert("올바른 날짜를 선택해주세요.");
+  //   }
+  // });
 
   $(document).ready(function() {
     $('input[name="addFiles"]').change(function() {
