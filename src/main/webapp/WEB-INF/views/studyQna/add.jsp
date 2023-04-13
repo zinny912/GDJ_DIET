@@ -23,7 +23,7 @@
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./add" method="post">
+		<form class="col-md-7" action="./add" method="post" id="frm">
 			<input type="hidden" name="studyNum" value="${pager.studyNum}" id="studyNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
@@ -37,7 +37,7 @@
 			
 			<div class="mb-3">
 				<label for="title" class="form-label">제목</label> 
-				<input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+				<input type="text" name="title" class="form-control essential" id="title" placeholder="제목 입력">
 			</div>
 	
 			<div class="mb-3">
@@ -46,7 +46,9 @@
 			</div>
 		
 			<div class="mb-3">
-				<button class="btn btn-primary" type="submit">글쓰기</button> 
+				<button class="btn btn-primary" type="button" id="submitbtn">글쓰기</button> 
+				 
+				
 			</div>
 		</form>
 	</div>
@@ -54,6 +56,7 @@
 
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
+	
 	<script>
 		$('#contents').summernote();
 	</script>

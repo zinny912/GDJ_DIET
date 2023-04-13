@@ -29,7 +29,12 @@ public class MachineReviewService {
 	}
 	
 	public int setBoardAdd(MachineReviewDTO machineReviewDTO) throws Exception {
-		return machineReviewDAO.setBoardAdd(machineReviewDTO);
+		
+		int result = machineReviewDAO.setBoardAdd(machineReviewDTO);
+		if(result>0) {
+			result = machineReviewDAO.setMachineScoreUpdate(machineReviewDTO);
+		}
+		return result;
 		
 	}
 	
