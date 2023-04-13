@@ -57,7 +57,7 @@ body {
 					<div id="optionList">
 						<div class="mb-3 was-validated " id=option1>
 							<label for="option1" class="form-label">필수옵션명</label> <input
-								type="text" class="form-control" name="option1"
+								type="text" class="form-control essential" name="option1"
 								placeholder="필수입력창 입니다." required>
 						</div>
 

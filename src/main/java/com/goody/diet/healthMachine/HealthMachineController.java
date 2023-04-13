@@ -88,11 +88,14 @@ public class HealthMachineController {
 		//		System.out.println("카테고리 머신 : " + categoryDTO.getMachineNum());
 		//		System.out.println("헬스머신 넘 : "+healthMachineDTO.getMachineNum());
 		String message="실패";
+		
 		if(result>0) {
 			message="성공";
 		}
 		mv.addObject("url","./list");
+		mv.addObject("resultNum", result);
 		mv.addObject("result", message);
+		
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -105,6 +108,7 @@ public class HealthMachineController {
 			mes = "삭제성공";
 
 		}
+		mv.addObject("resultNum", result);
 		mv.addObject("result", mes);
 		mv.addObject("url", "./list");
 		mv.setViewName("common/result");
@@ -137,6 +141,7 @@ public class HealthMachineController {
 			mes = "업데이트 성공";
 
 		}
+		mv.addObject("resultNum", result);
 		mv.addObject("result", mes);
 		mv.addObject("url", "./list");
 		mv.setViewName("common/result");
@@ -204,9 +209,11 @@ public class HealthMachineController {
 		if(result>0) {
 			message="성공";
 		}
+		mv.addObject("resultNum", result);
 		mv.addObject("url","./detail?machineNum="+realHealthMachineDTO.getMachineNum());
 		//post여도 파라미터 값 넘기기 가능
 		mv.addObject("result", message);
+		
 		mv.setViewName("common/result");
 		return mv;
 

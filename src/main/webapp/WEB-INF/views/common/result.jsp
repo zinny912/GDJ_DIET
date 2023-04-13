@@ -10,13 +10,11 @@
 
 </head>
 <body>
+<input data-result="${result }" data-resultNum="${resultNum }" data-url="${url }" disabled="disabled" id="data">
 <c:import url="../template/common_js.jsp"></c:import>
+<script src="/resources/js/swal.js"></script>
 <script type="text/javascript">
-	let message="${result}";
-	if(message != ''){
-		swal("sd","d","error");
-	}
-	/* location.href="${url}"; */
+	
 </script>
 </body>
 </html>
