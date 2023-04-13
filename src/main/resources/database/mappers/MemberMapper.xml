@@ -96,7 +96,9 @@
 		DELETE DELIVERY WHERE ID=(SELECT ID FROM MEMBER WHERE ID=#{id})
 	</delete>
 	<delete id="setOrderDetailDeleteOnMemberDelete" parameterType="MemberDTO">
-		DELETE ORDERDETAIL WHERE id=#{id}
+		DELETE ORDERDETAIL WHERE ORDERNUM IN (
+		SELECT ORDERNUM FROM "ORDER" o WHERE ID IN (SELECT M.ID FROM "MEMBER" m WHERE ID=#{id})
+		)
 	</delete>
 	<delete id="setCartDeleteOnMemberDelete" parameterType="MemberDTO">
 		DELETE CART WHERE id=#{id}
