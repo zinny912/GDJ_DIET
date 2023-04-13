@@ -56,6 +56,7 @@ public class MachineQnaController {
 		}
 		
 		mv.addObject("result",message);
+		mv.addObject("resultNum", result);
 		mv.addObject("url","/healthMachine/detail?machineNum="+qnaDTO.getMachineNum());
 		mv.setViewName("common/result");
 		return mv;
@@ -92,6 +93,7 @@ public class MachineQnaController {
 			message="글이 수정 되었습니다";
 		}
 		mv.addObject("result", message);
+		mv.addObject("resultNum", result);
 		mv.addObject("url", "/healthMachine/detail?machineNum="+qnaDTO.getMachineNum());
 		mv.setViewName("common/result");
 		
@@ -107,6 +109,7 @@ public class MachineQnaController {
 			message="글이 삭제 되었습니다";
 		}
 		mv.addObject("result", message);
+		mv.addObject("resultNum", result);
 		mv.addObject("url", "/healthMachine/detail?machineNum="+qnaDTO.getMachineNum());
 		mv.setViewName("common/result");
 		return mv;
@@ -130,6 +133,7 @@ public class MachineQnaController {
 		}
 		
 		mv.setViewName("common/result");
+		mv.addObject("resultNum", result);
 		mv.addObject("result", message);
 		mv.addObject("url","/healthMachine/detail?machineNum="+qnaDTO.getMachineNum());
 		return mv;

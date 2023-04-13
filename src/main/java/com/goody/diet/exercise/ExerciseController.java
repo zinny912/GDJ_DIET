@@ -79,6 +79,7 @@ public class ExerciseController {
 		}
 		mv.addObject("url","./info?bodyNum="+exerciseDTO.getBodyNum());
 		mv.addObject("result",message);
+		mv.addObject("resultNum", result);
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -105,6 +106,7 @@ public class ExerciseController {
 
 		int result = exerciseService.setExerciseUpdate(exerciseDTO,Files,session,bodyNum);
 		mv.setViewName("common/result");
+		mv.addObject("resultNum", result);
 		mv.addObject("result", "수정성공");
 		mv.addObject("url", "./info?bodyNum="+exerciseDTO.getBodyNum());
 		
@@ -117,6 +119,7 @@ public class ExerciseController {
 
 		int result = exerciseService.setExerciseDelete(exerciseDTO, fileNum,session);
 		mv.setViewName("common/result");
+		mv.addObject("resultNum", result);
 		mv.addObject("result", "삭제성공");
 		mv.addObject("url", "./info?bodyNum="+exerciseDTO.getBodyNum());
 		return mv;
