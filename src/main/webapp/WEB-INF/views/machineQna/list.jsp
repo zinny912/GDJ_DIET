@@ -13,7 +13,7 @@
                     <th>HIT</th>
                 </tr>
             </c:if>
-        </thead>
+		</thead>
         <tbody>
             <c:forEach items="${list}" var="dto">
                 <tr>
@@ -37,7 +37,17 @@
             </c:forEach>
         </tbody>
     </table>
+
+	<c:if test="${empty list}">
+		<div class="col my-5">
+			<div style="text-align: center; font-size: 1.5em;">등록된 QNA가
+				없습니다.</div>
+		</div>
+	</c:if>
+
 </div>
+
+
 <!-- 페이징 -->
 <div class="row">
 	<nav aria-label="Page navigation example">

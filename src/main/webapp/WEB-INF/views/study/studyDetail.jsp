@@ -21,7 +21,7 @@
 }
 
   .my-table tr:nth-child(even) {
-    background-color: #ffb5b52c; /* 짝수 줄 배경색 */
+    background-color: #39487c28; /* 짝수 줄 배경색 */
   }
   
   .my-table tr:nth-child(odd) {
@@ -50,22 +50,26 @@
                    	스터디 기간: ${dto.studyStartPeriod}~${dto.studyEndPeriod}
                     <br>반배정 문자 일괄 발송
                  	<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
-                    <br>문의:${sessionMember.roleDTO.roleName eq 'ADMIN'}
+                    <br>문의:010-0000-0000
                     </c:if>
                     </div>
                     <br>
-				<%-- <c:choose>
+				<c:choose>
 					<c:when test="${sessionMember eq null}">
 						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">장바구니에 담기</a>
-					</c:when> --%>
-					<%-- <c:when test="${sessionMember ne null and sessionMember.studyNum eq null}"> --%>
+					</c:when> 
+					<c:when test="${sessionMember ne null and sessionMember.studyNum eq null}">
 						<form action="/cart/cartAdd" method="post">
 							<input type="hidden" name="studyNum" value="${dto.studyNum}">
-							<input type="hidden" name="cartPrice" value="${dto.studyCost}">	
-							<button class="btn btn-primary" type="submit">장바구니에 담기</button>
+							<input type="hidden" name="cartPrice" value="${dto.studyCost}">		
+							<button class="btn btn-primary" type="submit" data-stock-cart="${dto.studyStock}" id="submitbtn"></button>
 						</form>
-					<%-- </c:when> --%>
-				<%-- </c:choose> --%>
+					</c:when>
+					<c:when test="${dto.studyStock==0 or empty dto.studyStock}">
+						<div>
+						<button class="btn btn-secondary" style="width: 100%;">품절상품 입니다.</button></div>
+					</c:when>
+				</c:choose>
 
 				<form action="./studyUpdate" id="frm">
 					<input type="hidden" name="studyNum" value="${dto.studyNum}">

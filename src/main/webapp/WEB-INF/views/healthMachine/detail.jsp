@@ -20,7 +20,7 @@
  }
  
    .my-table tr:nth-child(even) {
-    background-color: #ffb5b52c; /* 짝수 줄 배경색 */
+    background-color: #39487c28; /* 짝수 줄 배경색 */
   }
   
   .my-table tr:nth-child(odd) {
@@ -68,7 +68,41 @@
 					<div class="dropdown" id="opt4" data-optName="${dto.option4 }"></div>
 				</div>
 				<br>
-				<form id="frm">
+
+<%-- 				<form id="frm">
+					<div id="btn">
+					<input type="hidden" name="machineNum" value="${dto.machineNum}">
+					<c:if test="test=${sessionMember ne null and sessionMember.roleDTO.roleName ne 'ADMIN' and (stock==0 or empty stock)}}">
+						<div>
+							<button class="btn btn-secondary" style="width: 100%;">품절상품
+								입니다.</button></div>	
+					</c:if>
+					<c:if test="test=${sessionMember ne null and sessionMember.roleDTO.roleName ne 'ADMIN' and (stock>0 or not empty stock)}">
+							<button id="cartAdd" type="button"
+								class="btn btn-outline-primary" disabled="disabled">장바구니에
+								담기</button>
+					</c:if>
+					<c:if test="${sessionMember eq null}">
+						<a href="#" class="btn btn-primary" data-toggle="modal"
+							data-target="#loginModal">장바구니에 담기</a>
+					</c:if>
+					<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN' and ( stock>0 or not empty stock)}">
+						<button id="cartAdd" type="button"
+								class="btn btn-outline-primary" disabled="disabled">장바구니에
+								담기</button>
+						<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+					</c:if>
+					<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN' and ( stock==0 or empty stock)}">
+						<div>
+							<button class="btn btn-secondary" style="width: 100%;">품절상품
+								입니다.</button>
+							<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+						</div>
+					</c:if>
+					</div>
+			</form> --%>
+			
+			<form id="frm">
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
 					<!-- <input type="hidden" id="optId1" name="optId1"> <input
 						type="hidden" id="optId2" name="optId2"> <input
@@ -76,13 +110,32 @@
 						type="hidden" id="optId4" name="optId4"> -->
 					<!-- <a class="btn btn-primary" href="#">장바구니에 담기</a> -->
 					<div id="btn">
+						<c:if test="${sessionMember ne null}">
+						<button id="cartAdd" type="button" class="btn btn-outline-primary"
+							disabled="disabled">장바구니에 담기</button>
+						</c:if>
+						<c:if test="${sessionMember eq null}">
+							<a href="#" class="btn btn-primary" data-toggle="modal"
+								data-target="#loginModal">장바구니에 담기</a>
+						</c:if>
+						<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
+							<button id="del" type="button" class="btn btn-danger">운동기구삭제</button>
+						</c:if>
+					</div>
+				</form>
+
+
+
+			<%-- <form id="frm">
+					<input type="hidden" name="machineNum" value="${dto.machineNum}">
+					<div id="btn">
 						<button id="cartAdd" type="button" class="btn btn-outline-primary"
 							disabled="disabled">옵션을 선택해주세요</button>
 						<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
 							<button id="del" type="button" class="btn btn-danger">해당제품삭제</button>
 						</c:if>
 					</div>
-				</form>
+				</form> --%>
 			</div>
 		</div>
 	
@@ -151,7 +204,26 @@
 	  </div>
 	</div>
   </div>
-	
+
+<div class="modal fade" id="loginModal" tabindex="-1"
+	aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="loginModalLabel">로그인이 필요합니다</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">로그인 후 이용해주세요.</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+				<a href="/member/login" class="btn btn-primary">로그인</a>
+			</div>
+		</div>
+	</div>
+</div>
 			
 	
 	<script>

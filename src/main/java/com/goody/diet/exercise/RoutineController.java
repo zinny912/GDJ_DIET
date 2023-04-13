@@ -59,22 +59,6 @@ public class RoutineController {
 	    return mv;
 	}
 	
-//	@GetMapping("list")
-//	public ModelAndView getSelectList(@RequestParam("startDay") Date startDay) throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		List<RoutineDTO> ar = routineService.getSelectList(startDay);
-//		
-//		mv.setViewName("routine/list");
-//		mv.addObject("list", ar);
-//		return mv;
-//	}
-	
-//	@GetMapping("routine/list")
-//	public ResponseEntity<List<RoutineDTO>> getSelectList(@RequestParam("startDay") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDay) throws Exception {
-//	    List<RoutineDTO> ar = routineService.getSelectList(startDay);
-//	    return ResponseEntity.ok(ar);
-//	}
-	
 	//이달의 루틴영상 play page  - routine detail 
 	@GetMapping("video")
 	public ModelAndView getRoutineVideo(ModelAndView mv, RoutineDTO routineDTO) throws Exception {
@@ -83,26 +67,6 @@ public class RoutineController {
 		mv.addObject("dto", routineDTO);
 		return mv;
 	}
-	// 루틴 등록 
-	// JSON 데이터를 받아서 Java 객체로 변환하고 MyBatis를 사용하여 DB에 저장하는 메소드
-//    @PostMapping("/routineAdd")
-//    @ResponseBody
-//    public String saveData(@RequestBody List<RoutineDTO> routineDTOs) {
-//        for (RoutineDTO routineDTO : routineDTOs) {
-//            routineService.saveRoutine(routineDTO);
-//        }
-//        return "success";
-//    }
-	
-
-	
-//	@GetMapping("add")
-//	public ModelAndView setRoutineAdd() throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("routine/add");
-//		return mv;
-//	}
-
 	@PostMapping("add")
 	public ModelAndView setRoutineAdd(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
 		int result = routineService.setRoutineAdd(routineDTO, session);
@@ -142,99 +106,6 @@ public class RoutineController {
 		mv.setViewName("common/result");
 		return mv;
 	}
-	
-//	@GetMapping("machine")
-//	public ModelAndView getMachineName() throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		List<HealthMachineDTO> ar = routineService.getMachineName();
-//		mv.setViewName("routine/machine");
-//	    mv.addObject("list", ar);
-//		return mv;
-//	}
-	
-//	@PostMapping("checked")
-//	public ModelAndView  setRoutineChecked(RoutineDTO routineDTO, HttpSession session)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		int result = routineService.setRoutineChecked(routineDTO);
-//		String msg = "출석체크 실패";
-//		if(result>0) {
-//			msg = "출석체크 성공";
-//		}
-//		mv.addObject("result", msg);
-//		mv.setViewName("common/result");
-//		return mv;
-//	}	
-	
-//왜 주석되어있죠? 심지어 주석되어있는데 실행이 되네요 ㅋㅋ
-	@GetMapping("update")
-	public ModelAndView setRoutineUpdate(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
-		routineDTO = routineService.getRoutineVideo(routineDTO);
-		List<RoutineDTO> ar = routineService.getRoutineUpdate();
-		//mv.addObject("dto", routineDTO);
-		System.out.println(ar);
-		mv.addObject("list", ar);
-		mv.setViewName("routine/update");
-		return mv;
-	}
-	
-	
-	
-	
-	
-//	@PostMapping("add")
-//	public ModelAndView setRoutineAdd(ModelAndView mv, @RequestBody String eventData, HttpSession session) throws Exception {
-//	    ObjectMapper objectMapper = new ObjectMapper();
-//	    RoutineDTO routineDTO = objectMapper.readValue(eventData, RoutineDTO.class);
-//	    int result = routineService.setRoutineAdd(routineDTO, session);
-//	    String message = "실패";
-//	    if(result > 0) {
-//	        message = "성공";
-//	    }
-//	    mv.addObject("url", "./calendar");
-//	    mv.addObject("result", message);
-//
-//	    List<HealthMachineDTO> machineList = routineService.getRoutineMachine();
-//	    mv.addObject("machineList", machineList);
-//
-//	    mv.setViewName("routine/routindAdd");
-//	    return mv;
-//	}
-
-
-	
-//	@GetMapping("machineAdd")
-//	public ModelAndView getRoutineMachine(ModelAndView mv) throws Exception {
-//		List<HealthMachineDTO> ar = routineService.getRoutineMachine();
-//		mv.addObject("machine",ar);
-//		mv.setViewName("common/machineList");
-//		return mv;
-//	}
-	
-//	@PostMapping("add")
-//	public ModelAndView setRoutineAdd(ModelAndView mv, RoutineDTO routineDTO, HttpSession session) throws Exception {
-//	    int result = routineService.setRoutineAdd(routineDTO, session);
-//	    String message = "실패";
-//	    if(result > 0) {
-//	        message = "성공";
-//	    }
-//	    mv.addObject("url", "./calendar");
-//	    mv.addObject("result", message);
-//
-//	    List<HealthMachineDTO> machineList = routineService.getRoutineMachine();
-//	    mv.addObject("machineList", machineList);
-//
-//	    mv.setViewName("routine/add");
-//	    return mv;
-//	}
-//	@GetMapping("add")
-//	public ModelAndView setRoutineAdd(HttpSession session) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		List<HealthMachineDTO> ar = routineService.getRoutineMachine();
-//		    mv.addObject("machineList", ar);
-//		    mv.setViewName("routine/add");
-//		    return mv;
-//	
-//	}
 
 	
 }

@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <title>구디다이어트</title>
+ <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <c:import url="../template/common_css.jsp"></c:import>

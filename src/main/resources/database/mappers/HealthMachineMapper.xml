@@ -263,4 +263,9 @@
 		FROM MACHINEQNA
 		WHERE MACHINENUM=#{machineNum}
  	</select>
+  	
+ 	<!-- realhealthMachine stock 갯수 -->
+ 	<select id="getMachineStock" parameterType="HealthMachineDTO" resultType="Long">
+ 	SELECT max(STOCK) FROM REALHEALTHMACHINE WHERE MACHINENUM = #{machineNum}
+ 	</select>
 </mapper>

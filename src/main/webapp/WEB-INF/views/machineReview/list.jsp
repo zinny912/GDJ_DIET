@@ -33,6 +33,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${empty list}">
+		<div class="col my-5">
+			<div style="text-align: center; font-size: 1.5em;">등록된 리뷰가
+				없습니다.</div>
+		</div>
+	</c:if>
 </div>
 
 <!-- 페이징 -->
@@ -96,7 +102,7 @@
 			</form>			
 		</div> --%>
 
-		<c:if test="${not empty sessionMember}">
+		<c:if test="${cartDto.id eq sessionMember.id}">
 		<div class="row my-3">
 			<div class="col-md-7">
 				<button class="btn btn-primary add float-start"

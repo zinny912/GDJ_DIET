@@ -55,10 +55,12 @@ public class HealthMachineController {
 		healthMachineDTO =healthMachineService.getHealthMachineDetail(healthMachineDTO);
 		Long review = healthMachineService.getMachineReviewCount(healthMachineDTO);
 		Long qna = healthMachineService.getMachineQnaCount(healthMachineDTO);
+		Long stock = healthMachineService.getMachineStock(healthMachineDTO);
 
 		mv.addObject("dto", healthMachineDTO);
 		mv.addObject("review", review);
 		mv.addObject("qna", qna);
+		mv.addObject("stock", stock);
 		mv.setViewName("healthMachine/detail");
 		return mv;
 	}

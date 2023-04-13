@@ -33,6 +33,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${empty list}">
+		<div class="col my-5">
+			<div style="text-align: center; font-size: 1.5em;">등록된 리뷰가
+				없습니다.</div>
+		</div>
+	</c:if>
 </div>
 
 <!-- 페이징 -->
@@ -96,6 +102,8 @@
 			</form>			
 		</div> --%>
 
+		<%-- <c:forEach items="${list}" var="dto">
+		<c:if test="${dto.studyNum eq sessionMember.studyNum}"> --%>
 		<c:if test="${not empty sessionMember}">
 		<div class="row my-3">
 			<div class="col-md-7">
@@ -104,5 +112,7 @@
 					data-bs-target="#contentsModal">리뷰쓰기</button>
 			</div>
 		</div>
-	</c:if>
+		</c:if>
+<%-- 		</c:if>
+	</c:forEach> --%>
 </div>

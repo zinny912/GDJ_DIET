@@ -92,7 +92,7 @@ $("#fileChange").click(function(){
     let check = window.confirm("썸네일을 변경 하시겠습니까?");
     if (check) {
         $("#fileList").empty()
-        $("#fileList").append('<input type="file" class="form-control" name="Files">')
+        $("#fileList").append('<input type="file" class="form-control essential" name="Files">')
 
     }
 

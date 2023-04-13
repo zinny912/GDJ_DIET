@@ -33,30 +33,32 @@
 			
 			<div class="mb-3">
 				<label for="studyStartPeriod" class="form-label">스터디 시작일</label>
-			<input type="date" name="studyStartPeriod" id="studyStartPeriod">
+			<input type="date" name="studyStartPeriod" id="studyStartPeriod" value="${dto.studyStartPeriod}">
+			<label class="form-label" id="studyStartResult" for="studyStartPeriod"></label>
 			</div>
 			
 			<div class="mb-3">
 				<label for="studyEndPeriod" class="form-label">스터디 종료일</label>
-			<input type="date" name="studyEndPeriod" id="studyEndPeriod">
+			<input type="date" name="studyEndPeriod" id="studyEndPeriod" value="${dto.studyEndPeriod}">
+			<label class="form-label" id="studyEndResult" for="studyEndPeriod"></label>
 			</div>
 			
 			<div class="mb-3">
 				<label for="studyStock" class="form-label">스터디 재고</label>
 				<input type="text" name="studyStock" class="form-control" id="studyStock" placeholder="스터디 재고 입력">
 			</div>
-			
-			<div id="fileList">
-				<div class="input-group mb-3" id="f'+idx+'">
-					<input type="file" class="form-control" name="addFiles">
-					<button type="button" class="btn btn-outline-danger dels">X</button>
+
+				<div id="fileList">
+					<div class="input-group mb-3" id="f1">
+						<input type="file" class="form-control" name="addFiles">
+					</div>
 				</div>
-			</div>
-		
-			<div class="mb-3 my-5">
-				<button class="btn btn-outline-primary" type="submit">글쓰기</button> 
-			</div>
-		</form>
+				<div class="mb-3 my-5">
+					<button class="btn btn-outline-primary" id="submitbtn"
+						type="button">글쓰기</button>
+				</div>
+
+			</form>
 	</div>
 </div>
 	<script>
@@ -65,7 +67,8 @@
 	    // $("#"+id).remove();
 	    $(this).parent().remove();
 	})
-	</script>	
+	</script>
+	<script type="text/javascript" src="/resources/js/studyDateCheck.js"></script>		
 	<c:import url="../template/common_js.jsp"></c:import>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

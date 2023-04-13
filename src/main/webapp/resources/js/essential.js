@@ -15,7 +15,7 @@
 
 
 //input text,file태그 전용
-$("#submitbtn").click(function () {
+$('.container-fluid').on('click','#submitbtn',function(){
     let nullCheck = false;
 
 

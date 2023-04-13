@@ -123,5 +123,9 @@ public class HealthMachineDAO {
 	public Long getMachineQnaCount(HealthMachineDTO healthMachineDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getMachineQnaCount",healthMachineDTO);
 	}
-	
+
+	//realhealthMachine stock 갯수 
+	public Long getMachineStock(HealthMachineDTO healthMachineDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getMachineStock",healthMachineDTO);
+	}
 } 

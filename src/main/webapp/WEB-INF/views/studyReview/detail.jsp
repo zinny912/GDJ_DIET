@@ -60,7 +60,7 @@
 				<form action="./update" id="frm">
 					<input type="hidden" id="num" name="num" value="${dto.num}">
 					<input type="hidden" id="studyNum" name="studyNum" value="${dto.studyNum}">
-					<c:if test="${dto.writer eq sessionMember.id}">
+					<c:if test="${sessionMember.id eq dto.writer}">
 						<!-- <button id="update" type="submit" class="btn btn-primary">UPDATE</button> -->
 						<button class="btn btn-primary reviewUpdate" data-comment-num="${dto.studyNum}" data-bs-toggle="modal" data-bs-target="#contentsModal">리뷰수정</button>
 						<button id="delete" type="button" class="btn btn-primary">삭제</button>
@@ -72,7 +72,7 @@
 			<c:if test="${not empty sessionMember}"> 
 				<div class="mb-3">
 					<textarea class="form-control" rows="3" id="replyContents" data-study-reply="${dto.num}"></textarea>
-				</div>		
+				</div>	
 				<div class="mb-3">
 						<button type="button" class="btn btn-primary" id="replyAdd" data-study-reviewNum="${dto.num}">댓글작성</button>
 				</div>
