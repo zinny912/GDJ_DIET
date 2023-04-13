@@ -1,5 +1,5 @@
 let verificationChecked="";
-let checkCount = [];
+let checkCount = [false, false, false, true, false];
 let formCheckInput=document.getElementsByClassName('form-check-input')
 // $('#terms').click(()=>{
 
@@ -142,7 +142,7 @@ $('#passwordCheck').blur(()=>{
 //---------------------------- Email ---------------------------//
 //이메일 형식 xx@xx.xx
 function validateEmail(email) {
-	const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ 				//	/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	return regex.test(email);
   }
 
@@ -287,37 +287,6 @@ function verificationSubmit(){
 }
 
 
-
-
-//@회원가입버튼
-$('#submitBtn').click(()=>{
-	console.log("체크박스값: "+$('.form-check-input').is(':checked'))
-
-	idCheck() //아이디첵한번더
-
-	if($('.form-check-input').is(':checked')==false){
-		swal('회원가입 시', '약관동의가 필요합니다', 'warning')
-    	.then(function() {
-			location.href="/member/join";
-		});
-
-	}else if(checkCount.includes(false)){
-		alert("필수입력사항입니다.")
-		if(checkCount[2]=false){
-			$('#verificationLabel').remove()
-			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
-			$('#verificationLabel').prop("class", "form-label redResult")
-			$('#verificationLabel').text("이메일 중간에 바뀜")
-		}
-	}
-	else{
-		$('#submitBtn').attr("type", "submit")
-		//input val비우기.
-		$('.form-control').removeAttr("value")
-		$('#emailLabel').remove()
-	}
-
-})
 //뒤로가기 했을 때.
 // history.pushState(null, null, '');
 window.onpageshow = function(event) {
@@ -333,3 +302,110 @@ window.onpageshow = function(event) {
 		console.log(checkCount);
     }
 }
+
+
+
+
+
+
+// //@회원가입버튼.
+// $('#submitbtn').click(()=>{
+// 	console.log("체크박스값: "+$('.form-check-input').is(':checked'))
+
+// 	idCheck() //아이디첵한번더
+
+// 	if($('.form-check-input').is(':checked')==false){
+// 		swal('회원가입 시', '약관동의가 필요합니다', 'warning')
+//     	.then(function() {
+// 			location.href="/member/join";
+// 		});
+
+// 	}
+// 	if(checkCount.includes(false)){
+// 		if(checkCount[2]=false){
+// 			$('#verificationLabel').remove()
+// 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
+// 			$('#verificationLabel').prop("class", "form-label redResult")
+// 			$('#verificationLabel').text("이메일 중간에 바뀜")
+// 		}
+// 	}
+// 	if(!checkCount.includes(false) && $('.form-check-input').is(':checked')!=false ){
+// 		$('#submitBtn').attr("type", "submit")
+// 		//input val비우기.
+// 		$('.form-control').removeAttr("value")
+// 		$('#emailLabel').remove()
+// 	}
+
+// })
+
+
+//@essential펌
+//input text,file태그 전용
+$('.container-fluid').on('click','#submitbtn',function(){
+    let nullCheck = false;
+
+
+    $(".essential").each(function (index, essential) {
+        $(essential).removeClass("form-control-red")
+        // $(essential).attr("placeholder", '필수로 입력해야 합니다.')
+
+        if ($(essential).val().length == 0) {
+            $(essential).addClass("form-control-red")
+            if ($(essential).prop('type') == "text") {
+                alert("입력란을 다시 확인해주세요");
+                nullCheck = true;
+            }else {
+                alert("다시 확인해주세요");
+                nullCheck = true;
+            }
+
+            if (nullCheck == true) {
+                return false;
+            }
+        }
+    })
+    if ($(".container-fluid").find(".check1").length > 0) {
+
+        let radioCount1 = 0
+        let checkBoxCount1 = 0
+        $(".check1").each(function (index, check) {
+            if ($(check).prop("checked") == true) {
+                if ($(check).prop("type") == "radio") {
+                    radioCount1 = 1;
+                }
+                else if ($(check).prop("type") == "checkbox") {
+                    checkBoxCount1 = 1;
+                }
+            }
+        })
+        if (checkBoxCount1 == 0 && radioCount1 == 0) {
+            nullCheck = true;
+            alert("체크박스 체크점")
+            return false;
+        }
+
+    }
+
+
+	if(checkCount.includes(false)){
+		if(checkCount[2]==false){
+			console.log(checkCount[2])
+
+			$('#verificationLabel').remove()
+			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
+			$('#verificationLabel').prop("class", "form-label redResult")
+			$('#verificationLabel').text("이메일 or 인증번호 불일치.")		
+		}
+	}
+
+	console.log(nullCheck)
+	console.log(checkCount)
+    if (nullCheck == false && !checkCount.includes(false) && $('.form-check-input').is(':checked')!=false) {
+        $(".login_form").submit();
+
+		//input val비우기.
+		$('.form-control').removeAttr("value")
+		$('#emailLabel').remove()
+    }
+
+})

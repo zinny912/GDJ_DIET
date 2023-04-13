@@ -34,30 +34,30 @@
           
                 <p class="text-center h3 fw-bold mb-2 mx-1 mx-md-4 mt-2">회원가입</p>
 
-                <form id="login_form" class="mx-1 mx-md-4" action="./join" method="post">
+                <form id="login_form" class="login_form mx-1 mx-md-4" action="./join" method="post">
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="id" name="id" class="form-control" placeholder="아이디"/>
+                      <input type="text" id="id" name="id" class="essential form-control" placeholder="아이디"/>
                            <label class="form-label" id="idLabel" for="id"></label>
 					<div  class="hstack gap-3" id="emailDiv">
-                      <input  type="email" id="email" name="email" class="col form-control" placeholder="이메일"/>
+                      <input  type="email" id="email" name="email" class="col essential form-control" placeholder="이메일"/>
 <!--                       <button type="button" class="col-2 btn btn-secondary text-nowrap">인증</button> -->
 					</div>
                     
 
 <div id="verification_div" class="hstack gap-3">
-  <input class="col form-control" id="verification_val" type="text" placeholder="인증번호">
+  <input class="col essential form-control" id="verification_val" type="text" placeholder="인증번호">
   <button type="button" id="verification_submit" onclick="javascript:verificationSubmit()" class="col-2 btn btn-secondary text-nowrap">제출</button>
   <div class="vr "></div>
   <button type="button" id="verification_re" class="col-3 btn btn-outline-danger text-nowrap">인증번호</button> <!-- onclick="javascript:verificationRe()" -->
 </div>
 
 
-                      <input type="password" id="password" name="pw" class="form-control" placeholder="비밀번호"/>
+                      <input type="password" id="password" name="pw" class="essential form-control" placeholder="비밀번호"/>
                       <label class="form-label" for="Password" id="passwordLabel"></label>
-                      <input type="password" id="passwordCheck" class="form-control" placeholder="비밀번호 확인"/>
+                      <input type="password" id="passwordCheck" class="essential form-control" placeholder="비밀번호 확인"/>
                       <label class="form-label" id="passwordCheckLabel" for="passwordCheck"></label>
                     </div>
                   </div>
@@ -65,7 +65,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="name" name="names" class="form-control" placeholder="이름"/>
+                      <input type="text" id="name" name="names" class="essential form-control" placeholder="이름"/>
 <!--                       <label class="form-label" for="name">Your Name</label> -->
                     </div>
                   </div>
@@ -75,7 +75,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="phone" name="phone" class="form-control" placeholder="연락처"/>
+                      <input type="text" id="phone" name="phone" class="essential form-control" placeholder="연락처"/>
 <!--                       <label class="form-label" for="phone">연락처</label> -->
                     </div>
                   </div>
@@ -83,12 +83,12 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input readonly="readonly" type="text" id="sample3_address" onclick="sample3_execDaumPostcode()" name="address" class="form-control" placeholder="주소"/>
+                      <input readonly="readonly" type="text" id="sample3_address" onclick="sample3_execDaumPostcode()" name="address" class="essential form-control" placeholder="주소"/>
 <!--                       <label class="form-label" for="address">주소</label> -->
 <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 </div>
-                      <input type="text" id="sample3_detailAddress" name="address" class="form-control" placeholder="상세주소"/>
+                      <input type="text" id="sample3_detailAddress" name="address" class="essential form-control" placeholder="상세주소"/>
 <!--                       <label class="form-label" for="addressDetail">주소</label> -->
                     </div>
                   </div>
@@ -97,14 +97,14 @@
                    <p>모든 약관에 동의합니다.</p>
                     <label class="form-check-label" for="agree">
                     <br>
-                   <input class="form-check-input me-2 text-center" onClick="return false;" type="checkbox" value="" id="agree" />
+                   <input class="check1 form-check-input me-2 text-center" onClick="javascript:mAgree();" type="checkbox" value="" id="agree" />
                      <a id="terms" href="javascript:mAgree()">약관확인</a>
                     </label>
     				
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" id="submitBtn" class="btn btn-primary btn-lg">회원가입</button>
+                    <button type="button" id="submitbtn" class="btn btn-primary btn-lg">회원가입</button>
                   </div>
 
                 </form>
