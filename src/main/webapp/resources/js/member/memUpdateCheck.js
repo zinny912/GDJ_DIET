@@ -13,13 +13,13 @@ $('#sbmBtnUpChk').click(()=>{
         },
         success:(res)=>{
             console.log(res.trim())
-            if(res.trim()=="굳^^"){
-                location.href="/member/update2"
-                console.log("굳")
-            }else{
+            if(res.trim()=="0"){
                 $('.form-err').text($('.usermodify-auth-password-tf').attr("data-errmsg"))
                 $('.form-err').attr("style","color: red;")
                 console.log("에러메시지")
+            }else{
+                location.href="/member/update2"
+                console.log("굳")
             }
         },
         error:()=>{
