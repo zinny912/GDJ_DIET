@@ -105,7 +105,7 @@ public class MemberController {
 		
 		return mv;
 	}
-	@PostMapping("login")
+	@PostMapping("login") //이거 회원관리할떼 비번확인에도 씀..
 	public ModelAndView getMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
 //		System.out.println("pwcheck ajax옴?: "+memberDTO.getPw());
 		System.out.println(memberDTO.getPw());
