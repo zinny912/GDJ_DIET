@@ -63,6 +63,17 @@
 			<mapping path="/machineQna/delete"/>
 			<beans:ref bean="ownerCheckInterceptor"/>
 		</interceptor>
+		
+		<!-- machine -->
+		<interceptor>
+			<mapping path="/healthMachine/update"/>
+			<mapping path="/healthMachine/delete"/>
+			<mapping path="/healthMachine/add"/>
+			<mapping path="/healthMachine/update"/>
+			<mapping path="/healthMachine/optionAdd"/>
+			
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor> 
 	</interceptors>
 	
 	
