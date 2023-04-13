@@ -12,7 +12,14 @@
 
 <c:import url="../template/common_css.jsp"></c:import>
 <c:import url="../template/header.jsp"></c:import>
-
+<style>
+.str1{
+color:tomato;
+position:absolute;
+margin-top:0;
+text-align:right;
+}
+</style>
 </head>
 <body>
 
@@ -50,7 +57,33 @@
 										<a href="./studyDetail?studyNum=${dto.studyNum}">${dto.studyName}</a>
 									</h3>
 									<p>${dto.studyStartPeriod}~${dto.studyEndPeriod}</p>
-
+									<div class="row">
+									<strong class="str1">
+									<c:choose>
+										<c:when test="${dto.studyScore lt 0.5}">
+											<td class="td1">☆☆☆☆☆</td>
+										</c:when>
+										<c:when test="${dto.studyScore lt 1.5}">
+											<td class="td1">★☆☆☆☆</td>
+										</c:when>
+										<c:when test="${dto.studyScore lt 2.5}">
+											<td class="td1">★★☆☆☆</td>
+										</c:when>
+										<c:when test="${dto.studyScore lt 3.5}">
+											<td class="td1">★★★☆☆</td>
+										</c:when>
+										<c:when test="${dto.studyScore lt 4.5}">
+											<td class="td1">★★★★☆</td>
+										</c:when>
+										 <c:when test="${dto.studyScore lt 5.5}">
+											<td class="td1">★★★★★</td>
+										</c:when>
+										<c:otherwise>
+										        <td> </td>
+										    </c:otherwise> 
+								</c:choose>
+								</strong>
+								</div>
 								</div>
 							</div>
 						</div>
