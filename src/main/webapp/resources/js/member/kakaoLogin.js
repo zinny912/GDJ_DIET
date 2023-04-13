@@ -68,20 +68,20 @@ function getInfo() {
 // 5. 로그아웃 기능 - 카카오 서버에 접속하는 엑세스 토큰을 만료, 사용자 어플리케이션의 로그아웃은 따로 진행.
 function kakaoLogout() {
 
-    console.log(document.cookie)
+    if (!Kakao.Auth.getAccessToken()) {
+        // alert('Not logged in.');
+        location.href="/member/logout"
+        // return;
+    }else{
+        location.href="https://kauth.kakao.com/oauth/logout?client_id=4dbfcfd2f5a649a659ccd93aa0364e69&logout_redirect_uri=http://172.30.1.36/member/logout";
+        
+        //카카오계정 유지
+        // Kakao.Auth.logout(function() {
+        //     alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+        //     location.href="/member/logout"
+        // })      
 
-    // if (!Kakao.Auth.getAccessToken()) {
-    //     // alert('Not logged in.');
-    //     location.href="/member/logout"
-    //     // return;
-    // }else{
-    //     Kakao.Auth.logout(function() {
-
-    //         alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
-    //         location.href="/member/logout"
-    //     })      
-
-    // }
+    }
 }
 
 // //뿌리기
