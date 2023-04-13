@@ -98,29 +98,29 @@ $("#fileChange").click(function(){
 
 })
 
-$("#submitbtn").click(function(){
-    let nullCheck=false;
-    let checkCount=0
+// $("#submitbtn").click(function(){
+//     let nullCheck=false;
+//     let checkCount=0
     
-    $(".check").each(function(index,check){
-        if($(check).prop("checked")==true){
-            checkCount=1;
-        }
-    })
-    if(checkCount==0){
-        alert("하나 이상의 부위를 선택해야 합니다.")
-        return false;
-    }
-    $(".essential").each(function(index,essential){
-        if($(essential).val().length==0){
-            alert("입력란을 다시 확인해주세요");
-            nullCheck=true;
-            return false;
-        }
-    })
-    if(nullCheck!=true){
-        $("#frm").submit();
+//     $(".check").each(function(index,check){
+//         if($(check).prop("checked")==true){
+//             checkCount=1;
+//         }
+//     })
+//     if(checkCount==0){
+//         alert("하나 이상의 부위를 선택해야 합니다.")
+//         return false;
+//     }
+//     $(".essential").each(function(index,essential){
+//         if($(essential).val().length==0){
+//             alert("입력란을 다시 확인해주세요");
+//             nullCheck=true;
+//             return false;
+//         }
+//     })
+//     if(nullCheck!=true){
+//         $("#frm").submit();
 
-    }
+//     }
   
-})
+// })

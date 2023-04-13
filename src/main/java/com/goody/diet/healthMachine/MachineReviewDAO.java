@@ -50,4 +50,7 @@ public class MachineReviewDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"setBoardDelete", machineReviewDTO);
 	}
+	public int setMachineScoreUpdate(MachineReviewDTO machineReviewDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setMachineScoreUpdate", machineReviewDTO);
+	}
 }

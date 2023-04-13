@@ -130,7 +130,7 @@
 					<input type="hidden" name="machineNum" value="${dto.machineNum}">
 					<div id="btn">
 						<button id="cartAdd" type="button" class="btn btn-outline-primary"
-							disabled="disabled">장바구니에 담기</button>
+							disabled="disabled">옵션을 선택해주세요</button>
 						<c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}">
 							<button id="del" type="button" class="btn btn-danger">해당제품삭제</button>
 						</c:if>

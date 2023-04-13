@@ -28,7 +28,9 @@ public class StudyReviewDAO {
 	public int setBoardAdd(StudyReviewDTO studyReviewDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setBoardAdd", studyReviewDTO);
 	}
-	
+	public int setStudyScoreUpdate(StudyReviewDTO studyReviewDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setStudyScoreUpdate",studyReviewDTO);
+	}
 	public StudyReviewDTO getBoardDetail(StudyReviewDTO studyReviewDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", studyReviewDTO);
@@ -48,5 +50,6 @@ public class StudyReviewDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"setBoardDelete", studyReviewDTO);
 	}
+	
 
 }

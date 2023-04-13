@@ -1,9 +1,6 @@
 
 let machineNum = $("#machineNum").val();
-$("#submitbtn").click(function(){
-    
-    $("#frm").submit();
-})
+
 function init(){
     $.ajax({
         type: "POST",

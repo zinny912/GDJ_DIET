@@ -3,88 +3,102 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.goody.diet.healthMachine.MachineReviewDAO">
- 
-   <sql id="reviewCondition">
-	  	<trim prefix="where" suffixOverrides="and">
+<mapper namespace="com.goody.diet.healthMachine.MachineReviewDAO">
+
+	<sql id="reviewCondition">
+		<trim prefix="where" suffixOverrides="and">
 			MACHINENUM=#{machineNum} AND
-			
+
 			<if test="kind == 'contents'">
 				CONTENTS LIKE '%'|| #{search} || '%'
 			</if>
-			
+
 			<if test="kind == 'writer'">
 				WRITER LIKE '%'|| #{search} || '%'
 			</if>
-		</trim> 
+		</trim>
 	</sql>
-	
-	<select id="getTotalCount" resultType="Long" parameterType="Pager">
-  		SELECT COUNT(NUM) FROM MACHINEREVIEW 
-  			<include refid="reviewCondition"></include>
-  	</select>
-  
-  <select id="getBoardList" resultType="MachineReviewDTO" parameterType="Pager">
+
+	<select id="getTotalCount" resultType="Long"
+		parameterType="Pager">
+		SELECT COUNT(NUM) FROM MACHINEREVIEW
+		<include refid="reviewCondition"></include>
+	</select>
+
+	<select id="getBoardList" resultType="MachineReviewDTO"
+		parameterType="Pager">
 		SELECT * FROM
-  		(	
-  			SELECT ROWNUM R, C.* FROM
-  				(	SELECT * FROM MACHINEREVIEW 
-  					<include refid="reviewCondition"></include>
-					ORDER BY NUM DESC
-				) C
+		(
+		SELECT ROWNUM R, C.* FROM
+		( SELECT * FROM MACHINEREVIEW
+		<include refid="reviewCondition"></include>
+		ORDER BY NUM DESC
+		) C
 		)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}  
-  </select>
-  
-   <insert id="setBoardAdd" parameterType="MachineReviewDTO">
-  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
-  			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
-  		</selectKey>
-  		INSERT INTO MACHINEREVIEW (NUM,MACHINENUM,CONTENTS,WRITER,REGDATE,HIT,SCORE)
-  		VALUES(#{num},#{machineNum},#{contents}, #{writer},SYSDATE,0,#{score})
-  </insert>
-  
-  	<select id="getBoardDetail" resultMap="MachineDTOMap" parameterType="MachineReviewDTO">
-  		SELECT MR.*,H.*
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+
+	<!-- score평균내기 -->
+	<update id="setMachineScoreUpdate" parameterType="MachineReviewDTO">
+		UPDATE HEALTHMACHINE SET machinescore=
+		(SELECT AVG(SCORE) FROM MACHINEREVIEW WHERE MACHINENUM =#{machineNum})
+		WHERE machineNum=#{machineNum}
+	</update>
+	<insert id="setBoardAdd" parameterType="MachineReviewDTO">
+		<selectKey keyProperty="num" resultType="Long"
+			order="BEFORE">
+			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO MACHINEREVIEW
+		(NUM,MACHINENUM,CONTENTS,WRITER,REGDATE,HIT,SCORE)
+		VALUES(#{num},#{machineNum},#{contents}, #{writer},SYSDATE,0,#{score})
+	</insert>
+
+	<select id="getBoardDetail" resultMap="MachineDTOMap"
+		parameterType="MachineReviewDTO">
+		SELECT MR.*,H.*
 		FROM MACHINEREVIEW MR
-			LEFT JOIN
-			HEALTHMACHINE H
-			ON (H.MACHINENUM = MR.MACHINENUM)
-		WHERE MR.MACHINENUM=#{machineNum} AND MR.NUM=#{num}
-  	</select>
-  	
-  	<resultMap id="MachineDTOMap" type="MachineReviewDTO">
+		LEFT JOIN
+		HEALTHMACHINE H
+		ON (H.MACHINENUM = MR.MACHINENUM)
+		WHERE MR.MACHINENUM=#{machineNum} AND
+		MR.NUM=#{num}
+	</select>
+
+	<resultMap id="MachineDTOMap" type="MachineReviewDTO">
 		<id column="num" property="num" />
-			<result column="machineNum" property="machineNum" />
-			<result column="contents" property="contents" />
-			<result column="writer" property="writer" />
-			<result column="regDate" property="regDate" />
-			<result column="hit" property="hit" />
-			<result column="score" property="score" />
-		<collection property="healthMachineDTOs" ofType="HealthMachineDTO">
+		<result column="machineNum" property="machineNum" />
+		<result column="contents" property="contents" />
+		<result column="writer" property="writer" />
+		<result column="regDate" property="regDate" />
+		<result column="hit" property="hit" />
+		<result column="score" property="score" />
+		<collection property="healthMachineDTOs"
+			ofType="HealthMachineDTO">
 			<id column="MACHINENUM" property="machineNum" />
-				<result column="machineName" property="machineName" />
-				<result column="machineScore" property="machineScore" />
-				<result column="price" property="price" />
-				<result column="salePrice" property="salePrice" />
-				<result column="option1" property="option1" />
-				<result column="option2" property="option2" />
-				<result column="option3" property="option3" />
-				<result column="option4" property="option4" />
+			<result column="machineName" property="machineName" />
+			<result column="machineScore" property="machineScore" />
+			<result column="price" property="price" />
+			<result column="salePrice" property="salePrice" />
+			<result column="option1" property="option1" />
+			<result column="option2" property="option2" />
+			<result column="option3" property="option3" />
+			<result column="option4" property="option4" />
 		</collection>
 	</resultMap>
-	
+
 	<update id="setHitUpdate" parameterType="MachineReviewDTO">
-		UPDATE MACHINEREVIEW SET HIT=HIT+1 WHERE NUM=#{num}
+		UPDATE MACHINEREVIEW SET
+		HIT=HIT+1 WHERE NUM=#{num}
 	</update>
-	
+
 	<update id="setBoardUpdate" parameterType="MachineReviewDTO">
- 		UPDATE MACHINEREVIEW SET CONTENTS=#{contents},SCORE=#{score},REGDATE=SYSDATE WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
- 	</update>
-  	
-  	<delete id="setBoardDelete" parameterType="MachineReviewDTO">
-  		DELETE MACHINEREVIEW WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
-  	</delete> 
-  	
- 
- </mapper>
+		UPDATE MACHINEREVIEW SET CONTENTS=#{contents},SCORE=#{score},REGDATE=SYSDATE
+		WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
+	</update>
+
+	<delete id="setBoardDelete" parameterType="MachineReviewDTO">
+		DELETE MACHINEREVIEW WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
+	</delete>
+
+</mapper>

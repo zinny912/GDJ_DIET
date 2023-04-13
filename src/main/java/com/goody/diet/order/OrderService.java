@@ -71,7 +71,7 @@ public class OrderService {
 			//
 
 			
-			if(count<studyNum.length) {
+			if(studyNum!=null&&count<studyNum.length) {
 				cartDTO.setStudyNum(studyNum[studyidx]);
 				if(cartDTO.getStudyNum()!=null) {
 					cartDAO.setMemberStudyNum(cartDTO);

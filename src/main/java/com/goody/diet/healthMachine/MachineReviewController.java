@@ -39,7 +39,7 @@ public class MachineReviewController {
 	public ModelAndView setBoardAdd(MachineReviewDTO machineReviewDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("sessionMember");
-		System.out.println(memberDTO.getId());
+		
 		
 		machineReviewDTO.setWriter(memberDTO.getId());
 		int result = machineReviewService.setBoardAdd(machineReviewDTO);

@@ -23,7 +23,12 @@
   		SELECT COUNT(NUM) FROM STUDYREVIEW 
   			<include refid="reviewCondition"></include>
   	</select>
-  
+  <!-- score평균내기 -->
+	<update id="setStudyScoreUpdate" parameterType="StudyReviewDTO">
+		UPDATE STUDY SET studyscore=
+		(SELECT AVG(SCORE) FROM studyREVIEW WHERE studyNum =#{studyNum})
+		WHERE studynum=#{studyNum}
+	</update>
   <select id="getBoardList" resultType="StudyReviewDTO" parameterType="Pager">
 		SELECT * FROM
   		(	
