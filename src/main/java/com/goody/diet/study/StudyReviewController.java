@@ -87,6 +87,7 @@ public class StudyReviewController {
 		}
 		System.out.println(studyReviewDTO.getStudyNum());
 		mv.addObject("result", message);
+		mv.addObject("resultNum", result);
 		mv.addObject("url", "/study/studyDetail?studyNum=" + studyReviewDTO.getStudyNum());
 		mv.setViewName("common/result");
 		return mv;

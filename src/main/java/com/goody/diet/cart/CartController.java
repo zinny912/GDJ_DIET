@@ -49,6 +49,7 @@ public class CartController {
 			if(cartDTO2.getStatus()==0 && cartDTO2.getStudyNum()!=null) {
 				mv.setViewName("common/result");
 				mv.addObject("result", "이미 장바구니에 클래스가 존재합니다. 장바구니를 확인하세요.");
+				mv.addObject("resultNum", 0);
 				mv.addObject("url", "./cartList");
 				return mv;
 			}
@@ -68,6 +69,7 @@ public class CartController {
 		int result = cartService.setCartStudyAdd(cartDTO);
 		mv.setViewName("common/result");
 		mv.addObject("result", "장바구니로 이동합니다.");
+		mv.addObject("resultNum", result);
 		mv.addObject("url", "./cartList");
 		return mv;
 	}
