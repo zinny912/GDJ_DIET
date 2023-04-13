@@ -81,6 +81,7 @@ public class MachineReviewController {
 		if (result > 0) {
 			message = "글이 삭제 되었습니다";
 		}
+		mv.addObject("resultNum", result);
 		mv.addObject("result", message);
 		mv.addObject("url", "/healthMachine/detail?machineNum=" + machineReviewDTO.getMachineNum());
 		mv.setViewName("common/result");
