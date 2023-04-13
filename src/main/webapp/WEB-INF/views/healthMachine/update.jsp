@@ -140,8 +140,8 @@ font-family: 'IBM Plex Sans KR', sans-serif;
 				</div>
 				<div class="third">
 				<div class="mb-3">
-					<label for="salePrice" class="form-label" style="color:tomato;">할인가격</label> <input
-						type="text" class="form-control-red" name="salePrice"
+					<label for="salePrice" class="form-label">할인가격</label> <input
+						type="text" class="form-control" name="salePrice"
 						value="${dto.salePrice }">
 				</div>
 				</div>
