@@ -81,7 +81,7 @@
       #machineName {
           position: relative;
           font-weight: 700;
-          margin-top : 30px;
+          margin-top : 10px;
           margin-left : 15px;
           border:0;
           height:23px;
@@ -101,6 +101,7 @@
 
       .detail1 {
         margin-left: 40px;
+        margin-top: 20px;
         float:left;
         font-size: 23px;
         font-weight: 700;
@@ -228,15 +229,17 @@
       위와 같이 Flex가 주된 css 적용*/
       
       .golink {
+        text-align: center;
         display: flex;
         position:relative;
         background-color: rgb(243, 240, 240);
         height: 40px;
-        width: 110px;
-        align-items: center;
-        padding-left: 10px;
+        width: 70px;
+        float:right;
+        margin-right: 25px;
         border-radius: 3px;
         font-weight: bold;
+        
       }
 }
 

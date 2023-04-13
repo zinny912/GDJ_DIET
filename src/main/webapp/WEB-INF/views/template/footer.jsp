@@ -8,14 +8,14 @@
           <div class="col-md">
             <div class="ftco-footer-widget col-md-12 text-center">
               <h2 class="ftco-heading-2">GOODEE DIET</h2>
-              <p>오늘 운동 뭐하지? 고민할 필요없이 루틴대로 홈트하세요</p>
+              <p style="font-family:"Gowun Dodum">오늘 운동 뭐하지? 고민할 필요없이 루틴대로 홈트하세요</p>
               <p>구디 다이어트</p>
               
-              <ul class="ftco-footer-social list-unstyled float-lft mt-3">
+             <!--  <ul class="ftco-footer-social list-unstyled float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span style="font-size:10px;">개인정보<br>처리방침</span></a></li>
                 <li class="ftco-animate"><a href="#"><span style="font-size:10px;">취소 및<br>환불정책</span></a></li>
                 <li class="ftco-animate"><a href="#"><span style="font-size:10px;">이용약관</span></a></li>
-              </ul>
+              </ul> -->
             </div>
           </div>
          </div>

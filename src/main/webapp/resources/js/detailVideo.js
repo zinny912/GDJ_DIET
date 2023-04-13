@@ -35,10 +35,11 @@ function onPlayerStateChange(event) {
   } else if (event.data == YT.PlayerState.ENDED && done){
     stopVideo();
     
-    
-    swal('운동완료! ', `${dto.detailTitle}`, 'success')
+    let day = document.getElementById('days');
+    let dayday= day.getAttribute('data-day-days');
+    swal('운동완료! ', dayday, 'warning')
     .then(function() {
-      location.href="/exercise/info";
+      location.href="/exercise/body";
     });
   }
   function stopVideo (){

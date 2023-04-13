@@ -6,13 +6,12 @@
 					<c:forEach items="${orderDTOs}" var="orderDTO">
 					
 <!-- 상품반복 -->	
-        <div class="card card-1 mb-3 d-flex  justify-content-center">
+        <div class="card card-1 d-flex  justify-content-center " style="margin-left:37%; margin-top:-180px">
 
             <div class="card-body">
             
                 <div class="row justify-content-between mb-3">
-                    <div class="col-auto"> <h6 class="color-1 mb-0 change-color">ㅎㅎ</h6> </div>
-<!--                     <div class="col-auto  "> <small>Receipt Voucher : 1KAU9-84UIL</small> </div> -->
+                    <div class="col-auto"> </div>
                 </div>
 							
 <!-- 스터디 반복 -->
@@ -27,12 +26,11 @@
                                 <div class="media">
                                     <div class="sq align-self-center "> <img onclick="javascript:location.href='/study/studyDetail?studyNum=${cartDTO.studyNum}'" class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" 
                                     	src="/resources/upload/study/${cartDTO.studyDTOs[0].studyBoardFileDTOs[0].fileName}" width="135" height="135" /> </div>
-                                    <div class="media-body my-auto text-right">
+                                    <div class="media-body my-auto text-left">
+                                    <p>상품명</p>
                                         <div class="row  my-auto flex-column flex-md-row">
                                             <div class="col my-auto"> <h6 class="mb-0 text-start"> ${cartDTO.studyDTOs[0].studyName}</h6>  </div>
-<!--                                             <div class="col-auto my-auto"> <small></small></div> -->
-<!--                                             <div class="col my-auto"> <small></small></div> -->
-<!--                                             <div class="col my-auto"> <small></small></div> -->
+
                                             <div class="col my-auto"><h6 class="mb-0">${cartDTO.studyDTOs[0].studyCost}원</h6>
                                             </div>
                                             <div class="col-2 my-3 salePrice" data-salePrice="${cartDTO.studyDTOs[0].studyCost}"></div>
@@ -72,7 +70,8 @@
                                     <div class="sq align-self-center "> <img 
                                     onclick="javascript:location.href='/study/studyDetail?studyNum=${cartDTO.realMachineNum}'" class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" 
                                     src="/resources/images/${cartDTO.healthMachineDTO.healthMachineImgDTOs[0].fileName}" width="135" height="135" /> </div>
-                                    <div class="media-body my-auto text-right">
+                                    <div class="media-body my-auto text-left">
+                                    <p>상품명</p>
                                         <div class="row  my-auto flex-column flex-md-row">
                                             <div class="col my-auto"> <h6 class="text-start"> ${cartDTO.healthMachineDTO.machineName}</h6>  </div>
                                             <div class="col-auto my-auto"> <h6>${cartDTO.realHealthMachineDTO.optName1} </h6></div>

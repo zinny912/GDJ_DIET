@@ -5,21 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/style.css">
+  <style>
+ img { display : block;
+       margin:auto;}
+
+    </style>
 </head>
 <body>
-<div class="row m-auto">
-	<div class="col-12 w-100 text-center">
-		
-			<a class="navbar-brand w-100" href="/">상품구매에 실패 하였습니다!</a>
-			<div id="img" style="cursor : pointer;">
-				<img alt="..." src="/resources/images/goodeePay.png"
-					style="width: 50%; height: 50%">
-				<div class="border border-primary">
-					<h4><a href="/">홈으로 이동</a></h4>
+<div class="row mx-auto">
+	<div class="col-3 w-100 mx-auto my-5 border">
+		<form action="/member/myPage" method="get" id="frm">
+            
+           <a class="navbar-brand w-100 mt-3 text-center" style="font-size:25px" href="/"> 결제 실패</a>
+            <div class="underline"></div>
+			<div id="img" style="cursor: pointer;">
+				<img alt="..." src="/resources/images/alertfail.png">
+				
+				<div class="text-center justify-content-center">
+                    <div>
+                    <p style="color:tomato; font-weight: bolder;">결제에 실패하였습니다<br></p>
+                
+                    <p>불편을 드려 죄송합니다<br>
+                    확인하여 다시 결제바랍니다</p>
+                    </div>
+                
+
+                </div>
+                <div class="underline"></div>
+                <div class="row col-4 my-2">
+					<a href="/cart/cartList">돌아가기</a>
 				</div>
 			</div>
-		
+		</form>
 	</div>
+	
 </div>
+
 </body>
 </html>

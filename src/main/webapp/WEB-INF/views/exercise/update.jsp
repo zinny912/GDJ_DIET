@@ -122,12 +122,11 @@
 						<label class="machineLabel"><input class="machines"
 							type="radio" name="machineNum" value="${machine.machineNum }">
 							<span class="s1">${machine.machineName}</span></label>
-
 			</c:forEach>	
 			<br>
 			<label class="form-label">운동부위</label>
 			<c:forEach items="${bodyList }" var="body">
-						<label> <input class="bodys" type="checkbox"
+						<label> <input class="bodys check" type="checkbox"
 							name="bodyNum" value="${body.bodyNum }" /> <span class="s1">${body.bodyName }</span>
 						</label>
 					</c:forEach>

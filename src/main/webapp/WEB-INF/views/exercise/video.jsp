@@ -35,8 +35,6 @@
         </div>
 	</div>
 </div>
-
-  
   
   
 <section class="ftco-section">
@@ -45,15 +43,9 @@
             <img id=thumbsup src="../../resources/images/thumbsup.png" width="200px" height="200px" alt="">
           </div>
 </section>
-	
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-<script src="/resources/js/detailVideo.js"></script>
+  
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script src="/resources/js/detailVideo.js"></script>
 <c:import url="../template/footer.jsp"></c:import> 
 <c:import url="../template/common_js.jsp"></c:import>   
   </body>

@@ -61,19 +61,19 @@ function idCheck(){
 		if(res.trim()=="사용가능"){
 			// $('#idLabel').prop("hidden", "false")
 			$('#idLabel').prop("class", "form-label blueResult")
-			$('#idLabel').text("사용가능 아이디")
+			$('#idLabel').text("사용가능한 아이디입니다.")
 			console.log('사용가능 아이디')
 			checkCount[0]=true;
 
 		}else if(res.trim()=="중복아이디"){
 			// $('#idLabel').prop("hidden", "false")
 			$('#idLabel').prop("class", "form-label redResult")
-			$('#idLabel').text("아이디 중복")
+			$('#idLabel').text("이미 등록된 아이디 입니다.")
 			console.log('아이디 중복')
 			checkCount[0]=false;
 		}else{
 			$('#idLabel').prop("class", "form-label redResult")
-			$('#idLabel').text("필수정보")
+			$('#idLabel').text("필수입력사항입니다.")
 			checkCount[0]=false;
 		}
 	})
@@ -107,7 +107,7 @@ $('#password').blur(()=>{
    // }
 
    if(password.value.length<6 || password.value.length>14){
-	   $('#passwordLabel').text('6자리 이상 14이하')
+	   $('#passwordLabel').text('비밀번호는 6자리 이상 14이하로 설정가능합니다.')
 	   $('#passwordLabel').prop("class", "form-label redResult")
 	   checkCount[1]=false;
    }else{
@@ -119,7 +119,7 @@ $('#password').blur(()=>{
 //@pw재확인
 $('#password').change(()=>{
    if(passwordCheck.value!=""&&password.value!=passwordCheck.value){
-	   $('#passwordCheckLabel').text('비밀번호가 다름')
+	   $('#passwordCheckLabel').text('비밀번호가 일치하지 않습니다.')
 	   $('#passwordCheckLabel').prop("class", "form-label redResult")
 	   checkCount[3]=false;
    }else if(passwordCheck.value!=""&&password.value==passwordCheck.value){
@@ -129,7 +129,7 @@ $('#password').change(()=>{
 })
 $('#passwordCheck').blur(()=>{
    if(password.value!=passwordCheck.value){
-	   $('#passwordCheckLabel').text('비밀번호가 다름')
+	   $('#passwordCheckLabel').text('비밀번호가 일치하지 않습니다.')
 	   $('#passwordCheckLabel').prop("class", "form-label redResult")
 	   checkCount[4]=false;
    }else{
@@ -161,7 +161,7 @@ $('#verification_re').click(()=>{
 		verificationChecked=$('#email').val();
 		verificationRe()
 	}else{
-		alert('불가능한 이메일 형식')
+		alert('email 형식이 다릅니다.')
 	}
 
 
@@ -245,7 +245,7 @@ function verificationRe(){
 		if(res==1){
 			$('#emailDiv').after('<label class=" form-label" id="emailLabel" for="email"></label>')
 			$('#emailLabel').prop("class", "form-label blueResult")
-			$('#emailLabel').text("보냈어용^^ "+$('#email').attr('id'))
+			$('#emailLabel').text("이메일로 전송된 인증번호를 확인해주세요 "+$('#email').attr('id'))
 
 			$('#verification_re').removeAttr("disabled")
 		}
@@ -271,14 +271,14 @@ function verificationSubmit(){
 			$('#verificationLabel').remove()
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
 			$('#verificationLabel').prop("class", "form-label blueResult")
-			$('#verificationLabel').text("굳^^ "+$('#email').attr('id'))
+			$('#verificationLabel').text("인증번호가 일치합니다."+$('#email').attr('id'))
 			checkCount[2]=true;//바까...
 			
 		}else{
 			$('#verificationLabel').remove()
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
 			$('#verificationLabel').prop("class", "form-label redResult")
-			$('#verificationLabel').text("불일치")
+			$('#verificationLabel').text("인증번호가 일치하지 않습니다.")
 			checkCount[2]=false;
 			
 
@@ -296,10 +296,13 @@ $('#submitBtn').click(()=>{
 	idCheck() //아이디첵한번더
 
 	if($('.form-check-input').is(':checked')==false){
-		alert("약관동의점..")
+		swal('회원가입 시', '약관동의가 필요합니다', 'warning')
+    	.then(function() {
+			location.href="/member/join";
+		});
 
 	}else if(checkCount.includes(false)){
-		alert("필수정보 입력점")
+		alert("필수입력사항입니다.")
 		if(checkCount[2]=false){
 			$('#verificationLabel').remove()
 			$('#verification_div').after('<label class=" form-label" id="verificationLabel"></label>')
