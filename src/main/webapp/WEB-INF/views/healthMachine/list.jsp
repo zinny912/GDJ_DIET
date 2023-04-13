@@ -67,6 +67,7 @@
 							</h5>
 							<div class="priceBox">
 							<span class="sale-price">${dto.salePrice}원</span> 
+							<span class="mscore">${dto.machineScore}</span>
 							<span class="ori-price" id="price">
 							<strike style="color:tomato; margin-left:10px;">${dto.price}원</strike>
 							</span>

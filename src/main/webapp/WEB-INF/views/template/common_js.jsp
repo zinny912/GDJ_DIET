@@ -6,6 +6,9 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<!-- <script src="/resources/js/essential.js"></script> -->
+
  <!--  <script src="/resources/js/jquery.min.js"></script> -->
   <script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="/resources/js/popper.min.js"></script>

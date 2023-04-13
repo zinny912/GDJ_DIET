@@ -4,12 +4,15 @@
     padding-bottom:56.25%; 
     padding-top:30px; 
     height:0; 
+   
     overflow:hidden;}
   .video-container iframe,
   .video-container object,
   .video-container embed {
     position:absolute; 
     top:0; left:0; 
-    margin:center;
-    width:80%; height:80%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content: center;
+    width:90%; height:90%;
   }
