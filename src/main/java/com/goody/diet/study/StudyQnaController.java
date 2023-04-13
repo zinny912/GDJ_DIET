@@ -65,6 +65,7 @@ public class StudyQnaController {
 		if(myPage==null) {
 			mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 			mv.addObject("result",message);
+			mv.addObject("resultNum", result);
 			mv.setViewName("common/result");
 		}else {			
 			mv.setViewName("/member/myPage");
@@ -103,6 +104,7 @@ public class StudyQnaController {
 			message="글이 수정 되었습니다";
 		}
 		mv.addObject("result", message);
+		mv.addObject("resultNum", result);
 		mv.addObject("url", "/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 		mv.setViewName("common/result");
 		
@@ -142,6 +144,7 @@ public class StudyQnaController {
 		}
 		
 		mv.setViewName("common/result");
+		mv.addObject("resultNum", result);
 		mv.addObject("result", message);
 		mv.addObject("url","/study/studyDetail?studyNum="+qnaDTO.getStudyNum());
 		return mv;

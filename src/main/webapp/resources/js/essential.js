@@ -15,7 +15,7 @@
 
 
 //input text,file태그 전용
-$('.essbox').on('click','#submitbtn',function(){
+$('.essbox').on('click', '#submitbtn', function () {
     let nullCheck = false;
 
 
@@ -26,15 +26,15 @@ $('.essbox').on('click','#submitbtn',function(){
         if ($(essential).val().length == 0) {
             $(essential).addClass("form-control-red")
             if ($(essential).prop('type') == "text") {
-                swal('공란이있습니다','입력란을 다시 확인해주세요','error');
+                swal('공란이있습니다', '입력란을 다시 확인해주세요', 'error');
                 nullCheck = true;
             }
             else if ($(essential).prop('type') == "file") {
-                swal('파일업로드 오류','추가한 파일을 다시 확인해주세요','error');
+                swal('파일업로드 오류', '추가한 파일을 다시 확인해주세요', 'error');
                 nullCheck = true;
             }
             else {
-                swal('등록오류','다시 확인해주세요', 'error');
+                swal('등록오류', '다시 확인해주세요', 'error');
                 nullCheck = true;
             }
 
@@ -59,7 +59,7 @@ $('.essbox').on('click','#submitbtn',function(){
         })
         if (checkBoxCount1 == 0 && radioCount1 == 0) {
             nullCheck = true;
-            swal('선택오류','하나 이상 선택해야 합니다.','error');
+            swal('선택오류', '하나 이상 선택해야 합니다.', 'error');
             return false;
         }
 
@@ -80,7 +80,7 @@ $('.essbox').on('click','#submitbtn',function(){
         })
         if (checkBoxCount2 == 0 && radioCount2 == 0) {
             nullCheck = true;
-            swal('선택오류','하나 이상 선택해야 합니다.', 'error');
+            swal('선택오류', '하나 이상 선택해야 합니다.', 'error');
             return false;
         }
 
@@ -100,7 +100,7 @@ $('.essbox').on('click','#submitbtn',function(){
         })
         if (checkBoxCount3 == 0 && radioCount3 == 0) {
             nullCheck = true;
-            swal('선택오류','하나 이상 선택해야 합니다.','error')
+            swal('선택오류', '하나 이상 선택해야 합니다.', 'error')
             return false;
         }
 
@@ -109,12 +109,25 @@ $('.essbox').on('click','#submitbtn',function(){
     //summernote전용(textArea)
     if (nullCheck != true) {
         if ($(".note-editable").children().children().prop("tagName") == "BR") {
-            swal('상세내용 공백','상세내용을 입력해 주세요.', 'error');
-            nullCheck = true;
-            return false;
+            swal('상세내용 공백', '상세내용을 입력해 주세요.', 'error');
+
         }
     }
+//스터디 날짜부분
 
+    if (nullCheck != true) {
+        if(document.getElementById("studyStartPeriod")){
+            const startDate = new Date(studyStartPeriod.value);
+            const endDate = new Date(studyEndPeriod.value);
+    
+            if (startDate > endDate) {
+                swal('날짜선택 오류', '올바른 날짜를 선택해주세요.', 'error');
+                nullCheck = true;
+                return false;
+            }
+        }
+        
+    }
 
     if (nullCheck != true) {
         $("#frm").submit();
