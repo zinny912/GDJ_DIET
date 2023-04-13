@@ -61,15 +61,23 @@ public class MemberController {
 	}
 
 	@PostMapping("delete")
-	public ModelAndView setMemberDelete(ModelAndView mv, HttpSession session) throws Exception {
+	public ModelAndView setMemberDelete(ModelAndView mv, HttpSession session, MemberDTO memberDTO) throws Exception {
 		System.out.println("-------------회원탈퇴------------");
-		
-		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		int delResult=0;
+		if(memberDTO.getId().equals(null)||memberDTO.getId().equals("")) {	//회원탈퇴
+			memberDTO=(MemberDTO)session.getAttribute("sessionMember");	
+			delResult=memberService.setMemberDelete(memberDTO);
+			session.invalidate();
+		}else {					//ADMIN이 회원삭제
+			//주소삭제
+			memberService.setDeleteOnMemberDelete(memberDTO); //주문-카트삭제 카트삭제 주문삭제
+			delResult=memberService.setMemberDelete(memberDTO);
+					
+		}
 		//주소삭제
 		memberService.setDeleteOnMemberDelete(memberDTO); //주문-카트삭제 카트삭제 주문삭제
 
-		int delResult=memberService.setMemberDelete(memberDTO);
-		session.invalidate();
+
 		
 		System.out.println("회원탈퇴 del ajax 가니?: " +delResult);
 		mv.addObject("result", delResult);
@@ -97,7 +105,7 @@ public class MemberController {
 		
 		return mv;
 	}
-	@PostMapping("login")
+	@PostMapping("login") //이거 회원관리할떼 비번확인에도 씀..
 	public ModelAndView getMemberLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
 //		System.out.println("pwcheck ajax옴?: "+memberDTO.getPw());
 		System.out.println(memberDTO.getPw());

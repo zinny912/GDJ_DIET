@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<!-- 안쓰는듯? -->
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="container-fluid">
