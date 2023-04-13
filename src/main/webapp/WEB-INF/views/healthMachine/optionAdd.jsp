@@ -192,7 +192,7 @@ body {
 		</div>
 	</div>
 	<c:import url="../template/common_js.jsp"></c:import>
-<script src="/resources/js/essential.js"></script>
+ <script src="/resources/js/essential.js"></script> 
 	<script src="/resources/js/healthMachineAdd.js"></script>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

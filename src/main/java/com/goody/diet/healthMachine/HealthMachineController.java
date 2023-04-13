@@ -1,5 +1,6 @@
 package com.goody.diet.healthMachine;
 
+import java.net.MulticastSocket;
 import java.util.Iterator;
 import java.util.List;
 
@@ -185,6 +186,7 @@ public class HealthMachineController {
 	@GetMapping("optionAdd")
 	public ModelAndView setOptionAdd(ModelAndView mv, HealthMachineDTO healthMachineDTO)throws Exception{
 		healthMachineDTO= healthMachineService.getHealthMachineDetail(healthMachineDTO);
+		
 		RealHealthMachineDTO realHealthMachineDTO = new RealHealthMachineDTO();
 		realHealthMachineDTO.setMachineNum(healthMachineDTO.getMachineNum());
 
@@ -192,7 +194,10 @@ public class HealthMachineController {
 		List<RealHealthMachineDTO> ar2 = healthMachineService.getOption2(realHealthMachineDTO);
 		List<RealHealthMachineDTO> ar3 = healthMachineService.getOption3(realHealthMachineDTO);
 		List<RealHealthMachineDTO> ar4 = healthMachineService.getOption4(realHealthMachineDTO);
-
+		for(RealHealthMachineDTO dto : ar1) {
+			System.out.println(dto.getOptId1());
+			System.out.println(dto.getOptName1());
+		}
 		mv.addObject("dto", healthMachineDTO);
 		mv.addObject("optList1", ar1);
 		mv.addObject("optList2", ar2);
