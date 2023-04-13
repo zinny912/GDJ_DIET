@@ -4,20 +4,20 @@
 <html>
 <head>
 <title>루틴등록-관리자페이지</title>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="../resources/css/info.css" rel="stylesheet" type="text/css" />
+
+
 <c:import url="../template/common_css.jsp"></c:import>
 <c:import url="../template/header.jsp"></c:import>
 <!-- radio box style -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-* {
-	font-family: "IBM Plex Sans KR", sans-serif;
-}
 
+*{
+font-family: "IBM Plex Sans KR", sans-serif;
+}
 .l1 {
 	font-size: 18px;
 	line-height: 2rem;
@@ -50,6 +50,9 @@
 	height: 1em;
 	transition: border 0.2s ease-in-out;
 }
+.ty1:checked {
+	border: 0.3em solid tomato;
+}
 
  .ty2:checked {
 	border: 0.3em solid tomato;
@@ -61,9 +64,9 @@
 }
 
 .ty2 {
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center
+-webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
 }
 
 .ty1:hover {
@@ -116,7 +119,7 @@
 </head>
 <body>
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row mb-4 mt-4 md-7">
 			<h1 class="h1">짧강효확 상세 페이지 등록</h1>
 		</div>
@@ -192,44 +195,10 @@
 							<span class="s1">${machine.machineName}</span>
 							<%-- <c:if > --%>
 						</label>
+					</c:forEach>
+				</fieldset>
 
-						<fieldset class="f1">
-							<label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="36" /> <span class="s1">상체ALL</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="21" /> <span class="s1">얼굴</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="22" /> <span class="s1">겨드랑이</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="23" /> <span class="s1">팔뚝살</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="28" /> <span class="s1">직각어깨</span>
-							</label> <label class="l2"> <input class="ty1 check1" type="checkbox"
-								name="bodyNum" value="29" /> <span class="s1">등</span>
-							</label> <label class="l2"> <input class="ty1 check1" type="checkbox"
-								name="bodyNum" value="30" /> <span class="s1">허리</span>
-							</label> <label class="l2"> <input class="ty1 check1" type="checkbox"
-								name="bodyNum" value="37" /> <span class="s1">하체All</span>
-							</label>
-						</fieldset>
-						<fieldset class="f1">
-							<label class="l2"> <input class="ty1 check1" type="checkbox"
-								name="bodyNum" value="32" /> <span class="s1">복근&뱃살</span>
-							</label> <label class="l2"> <input class="ty1 check1" type="checkbox"
-								name="bodyNum" value="33" /> <span class="s1">아랫배</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="24" /> <span class="s1">애플힙</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="25" /> <span class="s1">종아리</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="26" /> <span class="s1">앞벅지</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="27" /> <span class="s1">안쪽허벅지</span>
-							</label> <label class="l2"> <input class="ty1 check1"
-								type="checkbox" name="bodyNum" value="31" /> <span class="s1">승마살</span>
-							</label>
-						</fieldset>
-					</div>
+			</div>
 
 			<div class="mb-3">
 				<label for="urlId" class="form-label l1">영상주소/URL</label> <input
@@ -284,12 +253,9 @@
 
 
 
-
-	<!-- <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+	
 	<script src="/resources/js/exerciseAdd.js"></script>
-	
-	
+<c:import url="../template/footer.jsp"></c:import> 
 	<c:import url="../template/common_js.jsp"></c:import>
 
 	<script>
