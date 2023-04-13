@@ -73,6 +73,15 @@ function kakaoLogout() {
         // return;
     }
     Kakao.Auth.logout(function() {
+
+//토큰도..        
+// // localStorage에서 토큰 삭제
+// localStorage.removeItem('kakao_token');
+
+// // sessionStorage에서 토큰 삭제
+// sessionStorage.removeItem('kakao_token');
+document.cookie = 'path=/; domain=.kakao.com; expires=' + new Date(0).toUTCString();
+
         alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
         location.href="/member/logout"
     });
