@@ -58,7 +58,7 @@
 			<h6><strong>${dto.regDate}&nbsp;&nbsp;조회수: ${dto.hit}</strong></h6>
 			</div>
 			<div class="my-3">
-				<form action="./update" id="frm">
+				<form action="./update" id="frm" method="post">
 					<input type="hidden" id="num" name="num" value="${dto.num}">
 					<input type="hidden" id="machineNum" name="machineNum" value="${dto.machineNum}">
 					<c:if test="${dto.writer eq sessionMember.id}">
@@ -194,6 +194,7 @@
 		
 		
 	</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <script src="../resources/js/machineReviewUpdate.js"></script>
 <script src="../resources/js/boardForm.js"></script>

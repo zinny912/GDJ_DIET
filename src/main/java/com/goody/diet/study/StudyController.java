@@ -112,9 +112,7 @@ public class StudyController {
 	public ModelAndView setBoardDelete(StudyDTO studyDTO, Long fileNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = studyService.setBoardDelete(studyDTO, fileNum);
-		mv.setViewName("common/result");
-		mv.addObject("result", "삭제성공");
-		mv.addObject("url", "./studyList");
+		mv.setViewName("redirect:./studyList");
 		return mv;
 	}
 } 
