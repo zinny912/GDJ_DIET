@@ -1,5 +1,7 @@
 package com.goody.diet.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.util.Pager;
+
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
@@ -18,6 +22,32 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@GetMapping("manage")
+	public ModelAndView getMemberList(Pager pager, HttpSession session, ModelAndView mv) throws Exception {
+		
+		//@@@인터셉터 누가만들면 바까주기 //이상하게 들어왓을 때
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		String message="권한 부족";
+		if(!memberDTO.getRoleDTO().getRoleName().equals("ADMIN")) {
+			mv.addObject("url", "/");
+			mv.addObject("result", message);
+			mv.setViewName("common/result");
+		}else {
+			mv.setViewName("/member/manage");
+		}
+		
+		return mv;
+	}
+	@PostMapping("memberList")
+	public ModelAndView getMemberList(Pager pager, ModelAndView mv) throws Exception {
+		List<MemberDTO> ar = memberService.getMemberList(pager);
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);		
+		mv.setViewName("/member/memberList");
+		return mv;
+	}
+
+	
 	@PostMapping("kakaoLogin")
 	public ModelAndView getKakaoLogin(ModelAndView mv, MemberDTO memberDTO, HttpSession session) throws Exception {
 		memberDTO = memberService.getKakaoLogin(memberDTO);
@@ -47,11 +77,11 @@ public class MemberController {
 		return mv;
 	}
 	
-	@GetMapping("agree")
-	public ModelAndView setMemberAgree(ModelAndView mv) throws Exception {
-		mv.setViewName("member/agree");
-		return mv;
-	}
+//	@GetMapping("agree")
+//	public ModelAndView setMemberAgree(ModelAndView mv) throws Exception {
+//		mv.setViewName("member/agree");
+//		return mv;
+//	}
 	
 	@GetMapping("login")
 	public ModelAndView setMemberLogin(ModelAndView mv, HttpSession session) throws Exception {
@@ -95,16 +125,17 @@ public class MemberController {
 	@GetMapping("myPage")
 	public ModelAndView getMyPage(ModelAndView mv, HttpSession session) throws Exception {
 		
-		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+//		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
+		System.out.println("-----------------myPage-------------------");
+//		System.out.println("로그인타입: "+memberDTO.getLoginType());
+//		System.out.println("q&na부르는: "+memberDTO.getStudyNum());
+//		System.out.println(memberDTO.getRoleDTO().getRoleName());
 		
-		System.out.println("로그인타입: "+memberDTO.getLoginType());
+//		if(memberDTO!=null) { //무결성 로그인
+//			memberDTO = memberService.getMyPage(memberDTO);
+//		}
 		
-		
-		if(memberDTO!=null) { //무결성 로그인
-			memberDTO = memberService.getMyPage(memberDTO);
-		}
-		
-		mv.addObject("mypage",memberDTO );
+//		mv.addObject("mypage",memberDTO );
 		mv.setViewName("/member/myPage");
 //		mv.setViewName("/order/orderListPage");
 		return mv;
@@ -174,12 +205,12 @@ public class MemberController {
 	//--이메일 끝
 	
 	//--업데이트--
-	@GetMapping("update")
+	@GetMapping("update") //비번확인
 	public ModelAndView setMyPageUpdate(ModelAndView mv, HttpSession session) {
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		if(memberDTO.getLoginType().equals("general")) {			
 			mv.setViewName("/member/updateCheck");
-		}else {mv.setViewName("/member/update");}
+		}else {mv.setViewName("/member/update");} //카카오면 걍가
 		
 		return mv;
 	}
@@ -323,17 +354,17 @@ public class MemberController {
 	@PostMapping("pwUpCheck")
 	public ModelAndView passwordChangeCheck(String pw2,MemberDTO memberDTO, ModelAndView mv, HttpSession httpSession) throws Exception {
 		MemberDTO memberCheck=(MemberDTO)httpSession.getAttribute("sessionMember");
-		memberCheck=memberService.getMyPage(memberCheck);
+		memberCheck=memberService.getMyPage(memberCheck); 
 		System.out.println("보낸pw: "+memberDTO.getPw());
 		
 		System.out.println(memberCheck.getPw());
 		System.out.println(memberDTO.getPw());
 		
-		
-		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())  ) {
+		//여기서 pw검사를...?
+		if( memberDTO!=null && memberCheck.getPw().equals(memberDTO.getPw())  ) { //원래비번 일치
 			String result="1";
 			
-			if(memberDTO.getPw().equals(pw2)) {
+			if(memberDTO.getPw().equals(pw2)) { //새비번과 중복
 				result="2";
 			}
 			mv.addObject("result", result);

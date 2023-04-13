@@ -29,6 +29,10 @@
 	<!-- Interceptors -->
 	<interceptors>
 		<interceptor>
+		<!-- 장바구니 -->
+			<mapping path="/cart/cartList"/>
+			
+			<mapping path="/member/manage"/>
 			<mapping path="/member/agree"/>
 			<mapping path="/member/delete"/>
 			<mapping path="/member/logout"/>

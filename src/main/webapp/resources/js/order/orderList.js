@@ -4,6 +4,14 @@ let pastDate  = new Date();
 pastDate.setDate(pastDate.getDate() - 7);
 
 
+
+
+
+
+datedate()
+function datedate(){
+
+
 //만약 안들어간경우.
 if($('#startDate').val()==null||$('#startDate').val()==""){
     $('#startDate').val(pastDate.toISOString().slice(0,10))
@@ -23,10 +31,6 @@ currentDatePlus.setDate(currentDatePlus.getDate() + 1);
 // dateInput.value = currentDatePlus.toISOString().slice(0,10); //이거하면 html값도 바낌..
 
 
-
-datedate()
-function datedate(){
-
     $.ajax({
         type:"GET",
         url:"/order/listCalen",
@@ -37,12 +41,13 @@ function datedate(){
     
         },
             success: (res)=>{
-                console.log(res.trim())
                 $('.ajaxOut').html(res.trim())
-
-                // let popoverTriggerList = document.getElementsByClassName('to-cart-popper')
-                // let popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, { container: 'body',
-                // title: "이건안해요...ㅠ", content:'<a href="/cart/cartList" class="btn btn-danger">장바구니로</a>', html: true}))
+                
+                let discount=0;
+                $('.salePrice').each(function(){
+                    discount+= parseInt($(this).attr("data-salePrice"), 10);
+                })
+                $('.discount').text(discount-parseInt($('.totalPrice').attr("data-totalPrice"), 10));
 
             },
             error: ()=>{
@@ -51,7 +56,11 @@ function datedate(){
     })
 }
 
-$('#startDate').focus(()=>{console.log($('#startDate').val())})
+// $('#startDate').focus(()=>{console.log($('#startDate').val())})
+
+
+
+//-----------------------달력--------------------------
 
 // //orderNum으로 cartList불러오기
 // let orderLeng = document.getElementsByClassName("order_number")

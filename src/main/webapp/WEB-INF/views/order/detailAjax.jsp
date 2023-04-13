@@ -16,7 +16,7 @@
                 </div>
 							
 <!-- 스터디 반복 -->
-<c:forEach items="${orderDTO.cartDTOs}" var="cartDTO">
+<c:forEach items="${orderDTO.cartDTOs}" var="cartDTO" >
 
 <c:if test="${cartDTO.studyNum ne null}">
 
@@ -35,7 +35,7 @@
 <!--                                             <div class="col my-auto"> <small></small></div> -->
                                             <div class="col my-auto"><h6 class="mb-0">${cartDTO.studyDTOs[0].studyCost}원</h6>
                                             </div>
-                                            <div class="col-2 my-3"></div>
+                                            <div class="col-2 my-3 salePrice" data-salePrice="${cartDTO.studyDTOs[0].studyCost}"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -79,9 +79,9 @@
                                             <c:if test="${cartDTO.realHealthMachineDTO.optName2 ne null}"><div class="col my-auto"> <h6>size:${cartDTO.realHealthMachineDTO.optName2}</h6></div></c:if>
                                             <c:if test="${cartDTO.realHealthMachineDTO.optName3 ne null}"><div class="col my-auto"> <h6>무게:${cartDTO.realHealthMachineDTO.optName3}</h6></div></c:if>
                                             <div class="col my-auto"> <h6>${cartDTO.count}개</h6></div>
-                                            <div class="col my-auto"><h6 class="">${cartDTO.healthMachineDTO.salePrice}원</h6>
+                                            <div class="col my-auto"><h6 class="">${cartDTO.healthMachineDTO.price}원</h6>
                                             </div>
-                                            <div class="col-2 my-3"></div>
+                                            <div class="col-2 my-3 salePrice" data-salePrice="${cartDTO.healthMachineDTO.salePrice}"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +119,11 @@
                         <div class="row justify-content-between">
                             <div class="col-auto"><p class="mb-1 text-dark"><b>Order Details</b></p></div>
                             <div class="flex-sm-col text-right col"> <p class="mb-1"><b>total price</b></p> </div>
-                            <div class="flex-sm-col col-auto"> <p class="mb-1">${orderDTO.price}원</p> </div>
+                            <div class="flex-sm-col col-auto totalPrice" data-totalPrice="${orderDTO.price}"> <p class="mb-1">${orderDTO.price}원</p> </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="flex-sm-col text-right col"><p class="mb-1"> <b>Discount</b></p> </div>
+                            <div class="flex-sm-col col-auto"><p class="mb-1 discount"></p></div>
                         </div>
                         <div class="row justify-content-between">
                             <div class="flex-sm-col text-right col"><p class="mb-1"> <b>.</b></p> </div>

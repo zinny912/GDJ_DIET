@@ -31,8 +31,8 @@ public class OrderController {
 
 	@GetMapping("listCalen")
 	public ModelAndView getOrderList (ModelAndView mv, OrderCalendar orderCalendar, HttpSession session) throws Exception {
-//		System.out.println("-------------------test------------------");
-//		System.out.println(orderCalendar.getStartDate()); System.out.println(orderCalendar.getEndDate());
+		System.out.println("-------------------test------------------");
+		System.out.println(orderCalendar.getStartDate()+"~"+orderCalendar.getEndDate());
 		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("sessionMember");
 		orderCalendar.setId(memberDTO.getId());

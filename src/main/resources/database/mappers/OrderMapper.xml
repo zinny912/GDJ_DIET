@@ -30,7 +30,7 @@
 		o.ORDERNUM, o.ID, o.ORDERDATE, o.ORDERSTATUS, o.PRICE, o.ADDRESS, o.RECIPIENTTEL, o.RECIPIENT, 
 			c.NUM, c.STUDYNUM, c.REALMACHINENUM, c.COUNT, c.STATUS, c.CARTPRICE, 
 			R.MACHINENUM, R.STOCK, R.OPTNAME1, R.OPTID1, R.OPTNAME2, R.OPTID2, R.OPTNAME3, R.OPTID3, R.OPTNAME4, R.OPTID4, 
-			H.MACHINESCORE, H.PRICE, H.SALEPRICE, H.OPTION1, H.OPTION2, H.OPTION3, H.OPTION4, 
+			H.MACHINESCORE, H.PRICE as HPRICE, H.SALEPRICE, H.OPTION1, H.OPTION2, H.OPTION3, H.OPTION4, 
 			t.FILENUM, T.FILENAME, T.ORINAME, 
 			S.STUDYNAME, S.STUDYCOST, S.STUDYSTARTPERIOD, S.STUDYENDPERIOD, S.STUDYSTOCK, 
 			SF.FILENUM AS SFILENUM, SF.FILENAME AS SFILENAME, SF.ORINAME AS SORINAME 
@@ -103,7 +103,7 @@
 					<id column="MACHINENUM" property="machineNum"/>
 					<result column="machineName" property="machineName"/>
 					<result column="machinescore" property="machineScore"/>
-					<result column="price" property="price"/>
+					<result column="HPRICE" property="price"/>
 					<result column="saleprice" property="salePrice"/>
 					<result column="option1" property="option1"/>
 					<result column="option2" property="option2"/>
