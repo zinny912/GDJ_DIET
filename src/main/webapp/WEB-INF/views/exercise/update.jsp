@@ -84,7 +84,7 @@
 					<div class="detail3">
 						<div class="boxone">
 						<span class="power">난이도</span>
-							<fieldset class="f1 essbox" data-power=${dto.power } id="power">
+							<fieldset class="f1 essbox" data-power=${dto.power} id="power">
 								<label class="l2"> <input class="ty1 check1" type="radio"
 									name="power" value="1"> <span class="s3">★</span>
 								</label> <label class="l2"> <input class="ty1 check1" type="radio"
