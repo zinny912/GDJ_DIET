@@ -23,7 +23,6 @@ $(document).on("keyup",function(key){
     }
 });
 
-
 function enter_or_click (){
     console.log($('#id').val())
 
