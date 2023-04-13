@@ -29,7 +29,14 @@
                     <td>${dto.phone}</td>
                     <td>${dto.email}</td>
                     <td>${dto.address}</td>
-                    <td>${dto.loginType}</td>
+                    <td>
+                    ${dto.loginType}
+	<!-- Button trigger modal -->
+	<c:if test="${dto.loginType eq 'general'}">
+	<button type="button" class="btn btn-primary delBtn" data-bs-toggle="modal" data-del-id="${dto.id}"
+		data-bs-target="#deleteModal">회원탈퇴</button>	
+	</c:if>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
