@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goody.diet.cart.CartDTO;
 import com.goody.diet.member.MemberDTO;
 import com.goody.diet.study.StudyReviewDTO;
 import com.goody.diet.util.Pager;
@@ -27,7 +28,6 @@ public class MachineReviewController {
 	public ModelAndView getBoardList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<MachineReviewDTO> ar = machineReviewService.getBoardList(pager);
-
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("machineReview/list");
@@ -50,11 +50,10 @@ public class MachineReviewController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getBoardDetail(MachineReviewDTO machineReviewDTO) throws Exception {
+	public ModelAndView getBoardDetail(MachineReviewDTO machineReviewDTO,HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = machineReviewService.setHitUpdate(machineReviewDTO);
 		MachineReviewDTO qnaDTO = machineReviewService.getBoardDetail(machineReviewDTO);
-
 		mv.addObject("dto", qnaDTO);
 		mv.setViewName("machineReview/detail");
 		return mv;

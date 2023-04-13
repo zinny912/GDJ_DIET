@@ -102,6 +102,8 @@
 			</form>			
 		</div> --%>
 
+		<%-- <c:forEach items="${list}" var="dto">
+		<c:if test="${dto.studyNum eq sessionMember.studyNum}"> --%>
 		<c:if test="${not empty sessionMember}">
 		<div class="row my-3">
 			<div class="col-md-7">
@@ -110,5 +112,7 @@
 					data-bs-target="#contentsModal">리뷰쓰기</button>
 			</div>
 		</div>
-	</c:if>
+		</c:if>
+<%-- 		</c:if>
+	</c:forEach> --%>
 </div>

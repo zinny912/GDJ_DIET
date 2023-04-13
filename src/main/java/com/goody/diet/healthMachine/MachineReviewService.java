@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goody.diet.cart.CartDTO;
 import com.goody.diet.study.StudyReviewDTO;
 import com.goody.diet.util.FileManager;
 import com.goody.diet.util.Pager;
@@ -61,4 +62,5 @@ public class MachineReviewService {
 			String fileName = fileManager.fileSave(files, realPath);
 			return "/resources/upload/machineReviewFile/"+fileName;
 	}
+
 }

@@ -40,8 +40,28 @@
 <!-- 			<exclude-mapping path="/member/"/> -->
 			<beans:ref bean="memberCheckInterceptor"/>
 		</interceptor>
-	</interceptors>
 
+		<interceptor>
+			<mapping path="/study/studyAdd"/>
+			<mapping path="/study/studyUpdate"/>
+			<mapping path="/study/studyDelete"/>
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/studyReview/update"/>
+			<mapping path="/studyReview/delete"/>
+			<mapping path="/machineReview/update"/>
+			<mapping path="/machineReview/delete"/>
+			<mapping path="/studyQna/update"/>
+			<mapping path="/studyQna/delete"/>
+			<mapping path="/machineQna/update"/>
+			<mapping path="/machineQna/delete"/>
+			<beans:ref bean="ownerCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
 
 	<context:component-scan base-package="com.goody.diet" />
 

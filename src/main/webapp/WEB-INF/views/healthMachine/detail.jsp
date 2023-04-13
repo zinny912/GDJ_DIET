@@ -20,7 +20,7 @@
  }
  
    .my-table tr:nth-child(even) {
-    background-color: #ffb5b52c; /* 짝수 줄 배경색 */
+    background-color: #39487c28; /* 짝수 줄 배경색 */
   }
   
   .my-table tr:nth-child(odd) {

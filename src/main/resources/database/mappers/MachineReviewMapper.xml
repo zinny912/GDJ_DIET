@@ -85,5 +85,6 @@
   	<delete id="setBoardDelete" parameterType="MachineReviewDTO">
   		DELETE MACHINEREVIEW WHERE NUM=#{num} AND MACHINENUM=#{machineNum}
   	</delete> 
+  	
  
  </mapper>

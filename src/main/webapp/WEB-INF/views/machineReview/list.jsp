@@ -102,7 +102,7 @@
 			</form>			
 		</div> --%>
 
-		<c:if test="${not empty sessionMember}">
+		<c:if test="${cartDto.id eq sessionMember.id}">
 		<div class="row my-3">
 			<div class="col-md-7">
 				<button class="btn btn-primary add float-start"
