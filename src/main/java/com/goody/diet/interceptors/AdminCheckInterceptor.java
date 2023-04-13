@@ -18,8 +18,9 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 				MemberDTO memberDTO =(MemberDTO)request.getSession().getAttribute("sessionMember");
+				
 				if(memberDTO != null) {
-					if(memberDTO.getRoleDTO().getRoleName().equals("ADMIN")) {
+					if(memberDTO.getRoleDTO().getRoleNum()<3 && memberDTO.getRoleDTO().getRoleNum()>0) {
 						return true;
 					}	
 				}
