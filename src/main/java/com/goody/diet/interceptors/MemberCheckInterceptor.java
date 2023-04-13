@@ -1,6 +1,11 @@
 package com.goody.diet.interceptors;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
@@ -28,7 +33,7 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 			//Jsp를 거치지만 IRV를 안거침
 			
 			//2. Redirect
-//			response.sendRedirect("../../../../member/login"); //Jsp를 안거치고 바로 나감.
+			response.sendRedirect("../../../../member/login"); //Jsp를 안거치고 바로 나감.
 			
 			return false;
 			
