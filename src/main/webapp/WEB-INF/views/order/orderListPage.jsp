@@ -34,7 +34,7 @@ body {
         }
 
         .card-1 {
-            box-shadow: 2px 2px 10px 0px rgb(190, 108, 170);
+            box-shadow: 1px 1px 3px 0px #6c757d;
         }
 
         hr {
@@ -51,7 +51,7 @@ body {
         }
 
         .card-2 {
-            box-shadow: 1px 1px 3px 0px rgb(112, 115, 139);
+            box-shadow: 1px 1px 3px 0px #6c757d;
 
         }
 
@@ -141,11 +141,11 @@ body {
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-
-<div class="calendar"></div>
+<div style="margin:2% 0 -7% 25%;">
+<div class="calendar" ></div>
 <input type="date" id="startDate" name="startDate"/>~<input type="date" id="endDate" name="endDate" />
-<button type="button" onclick="javascript:datedate()">datedate</button>
-
+<button type="button" class="btn btn-primary" style="margin-left:15px;" onclick="javascript:datedate()">날짜검색</button>
+</div>
 
 	<div class="container-fluid">
 		<div class="row">

@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container-fluid" style="margin-left:5%;">
-<h3 class="text-center"> 마이페이지 </h3>
-<div class="col-2 mx-1 mb-3 " style="box-shadow: 0px 0px 2px 0px #6c757d;">
+<h3 class="h3" style="margin-left:15px;"> 마이페이지 </h3>
+<div class="col-2 mx-1 mb-3 " >
 <ul class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link active mt-1" aria-current="page" href="/order/list">주문/배송</a>
