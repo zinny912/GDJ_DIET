@@ -116,8 +116,8 @@
 
 <!-- 약관동의 모달창 -->
 <!-- Button trigger modal -->
-<!-- <button type="button" id="modalBtn" hidden="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal"> -->
-<!-- </button> -->
+<button type="button" id="modalBtn" hidden="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agreeModal">
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="agreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -316,7 +316,7 @@
 
 부칙
 
-이 약관은 <2022.04.18>부터 시행합니다.
+이 약관은 <span id="current-time"></span>부터 시행합니다. 
 </p>            
       </div>
       <div class="modal-footer">
@@ -331,7 +331,7 @@
 
 <c:import url="./common_js.jsp"></c:import>
 
-<!-- <script src="/resources/js/member/memberAgree.js"></script>z -->
+<script src="/resources/js/member/memberAgree.js"></script>
 
 
 <!-- 주소api -->
@@ -393,6 +393,13 @@
         element_wrap.style.display = 'block';
     }
 </script>
-
+<script type="text/javascript">
+// Modal 창이 열릴 때 실행되는 함수
+$('#agreeModal').on('shown.bs.modal', function () {
+	// 현재 시간 표시
+	var currentTime = new Date();
+	document.getElementById("current-time").innerHTML = currentTime.toISOString().slice(0,10) //.toLocaleString();
+})
+</script>
 </body>
 </html>

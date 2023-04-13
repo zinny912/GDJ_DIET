@@ -16,7 +16,7 @@
 <table class="usermodify-table">
                 <tbody>
                 <tr>
-                    <th scope="row">아이디(이메일)</th>
+                    <th scope="row">아이디</th>
                     <td>
                         <div id="ChkId">${sessionMember.id}</div>
                     </td>

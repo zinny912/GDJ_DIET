@@ -5,13 +5,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.goody.diet.util.Pager;
+
 @Service
 public class MemberService {
 	
 	@Autowired
 	MemberDAO memberDAO;
 	
-	//카카오
+
+	public List<MemberDTO> getMemberList(Pager pager) throws Exception {
+		System.out.println("totalpage: "+memberDAO.getTotalCount(pager));
+		pager.makeNum(memberDAO.getTotalCount(pager));//totalcountDAO만드어,,
+		pager.makeRow();
+		
+		return memberDAO.getMemberList(pager);
+	}
 	
 	public MemberDTO getKakaoLogin (MemberDTO memberDTO) throws Exception {
 		System.out.println("서비스카카오로긴1");
@@ -95,16 +104,18 @@ public class MemberService {
 		return memberDTO;
 	}
 
-	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception {
+	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception { //pw변경시 검사, 
+		memberDTO = memberDAO.getMemberLogin(memberDTO);
 		
-		if(memberDTO.getLoginType().equals("kakao")) {
-			memberDTO = memberDAO.getMemberLogin(memberDTO);
-
-		}else if(memberDTO.getLoginType().equals("general")) {
-			memberDTO = memberDAO.getMemberLogin(memberDTO);
-//			memberDTO.setPw(null); //일반 로그인은 getMemberLogin로 해... pw필요해..
-			
-		}
+		//이거 왜 나눠놨지...?
+//		if(memberDTO.getLoginType().equals("kakao")) {
+//			memberDTO = memberDAO.getMemberLogin(memberDTO);
+//
+//		}else if(memberDTO.getLoginType().equals("general")) {
+//			memberDTO = memberDAO.getMemberLogin(memberDTO);
+////			memberDTO.setPw(null); //일반 로그인은 getMemberLogin로 해... pw필요해..
+//			
+//		}
 
 		return memberDTO;
 		
