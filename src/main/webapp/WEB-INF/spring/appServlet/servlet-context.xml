@@ -35,7 +35,7 @@
 			<mapping path="/member/manage"/>
 			<mapping path="/member/agree"/>
 			<mapping path="/member/delete"/>
-			<mapping path="/member/logout"/>
+<!-- 			<mapping path="/member/logout"/> -->
 			<mapping path="/member/myPage"/>
 			<mapping path="/member/update*"/>
 			<mapping path="/member/pw*"/>

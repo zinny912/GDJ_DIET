@@ -10,141 +10,132 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="../template/common_css.jsp"></c:import>
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"> -->
+<style type="text/css">
+body {
+            min-height: 100vh;
+            background-size: cover;
+            font-family: 'Lato', sans-serif;
+            color: rgba(116, 116, 116, 0.667);
+/*             background: linear-gradient(140deg , #fff , 50% , #BA68C8);     */
+        }
+        .container-fluid {
+            margin-top: 50px ;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+        .small {
+            letter-spacing: 0.5px !important;
+        }
+        .card-1 {
+            box-shadow: 2px 2px 10px 0px rgb(190, 108, 170);
+        }
+        hr {
+            background-color: rgba(248, 248, 248, 0.667);
+        }
+        .bold {
+            font-weight: 500;
+        }
+        .change-color {
+            color: #AB47BC !important;
+        }
+        .card-2 {
+            box-shadow: 1px 1px 3px 0px rgb(112, 115, 139);
+        }
+        .fa-circle.active {
+            font-size: 8px;
+            color: #AB47BC;
+        }
+        .fa-circle {
+            font-size: 8px;
+            color: #aaa;
+        }
+        .rounded {
+            border-radius: 2.25rem !important;
+        }
+        .progress-bar {
+            background-color: #AB47BC !important;
+        }
+        .progress {
+            height: 5px !important;
+            margin-bottom: 0;
+        }
+        .invoice {
+            position: relative;
+            top: -70px;
+        }
+        .Glasses {
+            position: relative;
+            top: -12px !important;
+        }
+        .card-footer {
+            background-color: #AB47BC;
+            color: #fff;
+        }
+        h2 {
+            color: rgb(78, 0, 92);
+            letter-spacing: 2px !important;
+        }
+        .display-3 {
+            font-weight: 500 !important;
+        }
+        @media (max-width: 479px) {
+            .invoice {
+                position: relative;
+                top: 7px;
+            }
+            .border-line {
+                border-right: 0px solid rgb(226, 206, 226) !important;
+            }
+        }
+        @media (max-width: 700px) {
+            h2 {
+                color: rgb(78, 0, 92);
+                font-size: 17px;
+            }
+            .display-3 {
+                font-size: 28px;
+                font-weight: 500 !important;
+            }
+        }
+        .card-footer small {
+            letter-spacing: 7px !important;
+            font-size: 12px;
+        }
+        .border-line {
+            border-right: 1px solid rgb(226, 206, 226)
+        }
+</style>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
+
+<div class="calendar"></div>
+<input type="date" id="startDate" name="startDate"/>~<input type="date" id="endDate" name="endDate" />
+<button type="button" onclick="javascript:datedate()">datedate</button>
+
 
 	<div class="container-fluid">
 		<div class="row">
 			<c:import url="../member/memberHeader.jsp"></c:import>
 
-			<div class="col-10">
-				<div class="row"><!-- row -->
-
-					<c:forEach items="${orderDTOs}" var="orderDTO">
-						<div class="orderList order_number">
-<div class="d-flex">
-  <div class="p-2"><h3>${orderDTO.orderDate} 주문</h3></div>
-<!--   <div class="ms-auto p-2 btn btn-primary" style="">주문상세</div> -->
-  <button type="button" class="ms-auto p-2 btn btn-primary btn-orderDetail" onclick="javascript:location.href='./detail?orderNum=${orderDTO.orderNum}'" style="margin: 10px 0px;">주문상세</button>
-</div>
-							
-
-<c:forEach items="${orderDTO.cartDTOs}" var="cartDTO">
-
-<c:if test="${cartDTO.studyNum ne null}">
-
-	<div class="card">
-		<div class="card-body"> 		<!-- 아니면, ${cartDTO.studyNum}, ${cartDTO.studyDTOs[0].studyNum} -->
-			<div class="row">
-				<div class="col-2">
-				
-			<a href="/study/studyDetail?studyNum=${cartDTO.studyNum}" 
-				class="moveProduct"> <img
-				src="/resources/images/${cartDTO.studyDTOs[0].studyBoardFileDTOs[0].fileName}"
-				width="78" height="78" class="product-img img">
-			</a> 
-				
-				</div>
-
-	<div class="col">
-			<div class="row">
-			<span class="option-item-name" style="font-size: 25px">${cartDTO.studyDTOs[0].studyName}</span>
-			<span>${cartDTO.studyDTOs[0].studyCost}원</span>
-	</div></div>
-				
-			</div>
-			<div>
-				<button type="button" class="btn btn-secondary btn-addCart to-cart-popper"
-					data-addCart-price="${cartDTO.cartPrice}"
-					data-addCart="${cartDTO.studyNum}" data-bs-container="body"
-					data-bs-toggle="popover" data-bs-placement="top"
-					data-bs-content="Top popover">장바구니 담기</button>
-				<button type="button" class="btn btn-secondary">리뷰
-					작성하기</button>
-			</div>
-
-		</div>
-
-	</div>
-</c:if>
-
-
-
-<!-- 기구 -->
-<c:if
-	test="${cartDTO.realMachineNum ne null}">
-
-
-	<div class="card">
-		<div class="card-body">
-	
-			
-<div class="row">
-	<div class="col-2">
-			<a
-				href="/healthMachine/detail?machineNum=${cartDTO.realMachineNum}"
-				class="moveProduct"> <img
-				src="/resources/images/${cartDTO.healthMachineDTO.healthMachineImgDTOs[0].fileName}"
-				width="78" height="78" class="product-img img">
-			</a> 		
-	</div>
-	<div class="col">
-			<div class="row">
-				<span class="option-item-name" style="font-size: 25px">${cartDTO.healthMachineDTO.machineName},
-					${cartDTO.realHealthMachineDTO.optName1} <c:if test="${cartDTO.realHealthMachineDTO.optName2 ne null}">,</c:if>
-					${cartDTO.realHealthMachineDTO.optName2} <c:if test="${cartDTO.realHealthMachineDTO.optName3 ne null}">,</c:if>
-					${cartDTO.realHealthMachineDTO.optName3} <c:if test="${cartDTO.realHealthMachineDTO.optName4 ne null}">,</c:if>
-					${cartDTO.realHealthMachineDTO.optName4} </span>
-				<span>${cartDTO.healthMachineDTO.salePrice}원 ${cartDTO.count}개</span>
-			
-			</div>
-	</div>
-</div>
-			
-			
-			
-			
-			<div>
-				<button type="button"
-					class="btn btn-secondary btn-addCart-machine to-cart-popper"
-					data-bs-container="body" data-bs-toggle="popover"
-					data-bs-placement="top" data-bs-content="Top popover"
-					data-addCart="${cartDTO.realMachineNum}"
-					data-addCart-price="${cartDTO.cartPrice}"
-					data-addCart-machineNum="${cartDTO.realHealthMachineDTO.machineNum}"
-					data-addCart-op1="${cartDTO.realHealthMachineDTO.optId1}"
-					data-addCartop-2="${cartDTO.realHealthMachineDTO.optId2}"
-					data-addCartop-3="${cartDTO.realHealthMachineDTO.optId3}"
-					data-addCartop-4="${cartDTO.realHealthMachineDTO.optId4}">장바구니
-					담기</button>
-				<button type="button" class="btn btn-secondary">리뷰
-					작성하기</button>
-
-
-
-			</div>
-
-		</div>
-	</div>
-
-</c:if>
-
-</c:forEach>
+			<div class="col-8">
+				<div class="row ajaxOut"><!-- ajaxOut -->
 
 
 
 
+					
 
-						</div>
-					</c:forEach>
+					
+
 					
 					
-					
-					
-				</div><!-- row -->
+				</div><!-- ajaxOut -->
 			</div>
 
+<div class="col-2"></div>
 		</div>
 	</div>
 
@@ -184,15 +175,17 @@
 
 
 
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/js/order/orderList.js"></script>
 
 
+	
 	<script src="/resources/js/member/memberDelete.js"></script>
 
 	<c:import url="../template/footer.jsp"></c:import>
 	<c:import url="../template/common_js.jsp"></c:import>
+
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/js/order/orderList.js"></script>
 
 </body>
 </html>
