@@ -71,7 +71,7 @@
 				<div class="second">
 					<!-- 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
 					<div class="detail2 essbox">
-						<span class="info text-left">상세설명</span>
+						<span class="info mx-0">상세설명</span>
 						<input class="l essential" id="info" name="info" value="${dto.info}" />
 
 					</div>
