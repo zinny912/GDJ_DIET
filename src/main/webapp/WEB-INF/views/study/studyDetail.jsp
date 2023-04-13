@@ -215,15 +215,20 @@
 			  }
 		  const frm = document.getElementById('frm');
 		  const del = document.getElementById('delete');
-
+		  
 		  del.addEventListener('click',function(){
-		      let check = window.confirm("정말 삭제 하시겠습니까?");
-		      if(check){
-		    	  frm.setAttribute("action", "./studyDelete")
-		          frm.setAttribute("method","post")
-		          frm.submit();
+		    swal({
+		      title: '정말 삭제 하시겠습니까?',
+		      icon: 'warning',
+		      buttons: ['아니요', '예']
+		    }).then((result) => {
+		      if (result) {
+		        frm.setAttribute("action", "./studyDelete");
+		        frm.setAttribute("method","post");
+		        frm.submit();
 		      }
-		  })
+		    });
+		  });
 	</script>
      
     <div class="modal fade" id="loginModal" tabindex="-1"
@@ -245,7 +250,7 @@
 		</div>
 	</div>
 </div>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/studyBoard.js"></script>

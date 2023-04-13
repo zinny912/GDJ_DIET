@@ -23,35 +23,37 @@
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./add" method="post">
-			<input type="hidden" name="machineNum" value="${pager.machineNum}" id="machineNum"> 	
+		<form class="col-md-7" action="./add" method="post" id="frm">
+			<input type="hidden" class="essential" name="machineNum" value="${pager.machineNum}" id="machineNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
 				<c:if test="${not empty sessionMember}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${sessionMember.id}" readonly>
+					<input type="text" name="writer" class="form-control essential" id="writer" value="${sessionMember.id}" readonly>
 				</c:if>
 				<c:if test="${empty sessionMember}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${sessionMember.id}" disabled>
+					<input type="text" name="writer" class="form-control essential" id="writer" value="${sessionMember.id}" disabled>
 				</c:if>
 			</div>
 			
 			<div class="mb-3">
 				<label for="title" class="form-label">제목</label> 
-				<input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+				<input type="text" name="title" class="form-control essential" id="title" placeholder="제목 입력">
 			</div>
 	
 			<div class="mb-3">
 				<label for="contents" class="form-label">상세내용</label>
-				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
+				<textarea name="contents" class="form-control " id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
 		
 			<div class="mb-3">
-				<button class="btn btn-primary" type="submit">글쓰기</button> 
+				<button class="btn btn-primary" id="submitbtn" type="button">글쓰기</button> 
 			</div>
 		</form>
 	</div>
 </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/resources/js/essential.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
 	<script>

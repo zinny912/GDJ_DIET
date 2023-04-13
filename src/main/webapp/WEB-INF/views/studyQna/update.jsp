@@ -17,19 +17,19 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-<div class="container-fluid">
+<div class="container-fluid essbox">
 	<div class="row justify-content-center">
 		<h1 class="col-md-7 text-center my-5">Q&amp;A 상품문의 수정</h1>
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./update" method="post">
+		<form class="col-md-7" action="./update" method="post" id="frm">
 			<input type="hidden" name="num" value="${dto.num}" id="num">
 			<input type="hidden" name="studyNum" value="${dto.studyNum}" id="studyNum"> 	
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
 				<c:if test="${not empty member}">
-					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly>
+					<input type="text" name="writer" class="form-control " id="writer" value="${member.id}" readonly>
 				</c:if>
 				<c:if test="${empty member}">
 					<input type="text" name="writer" class="form-control" id="writer" value="${dto.writer}">
@@ -39,7 +39,7 @@
 			
 			<div class="mb-3">
 				<label for="title" class="form-label">제목</label> 
-				<input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+				<input type="text" name="title" class="form-control essential" id="title" placeholder="제목 입력">
 			</div>
 	
 			<div class="mb-3">
@@ -49,12 +49,13 @@
 			
 		
 			<div class="mb-3">
-				<button class="btn btn-primary" type="submit">글쓰기</button> 
+				<button class="btn btn-primary" type="button" id="submitbtn">글쓰기</button> 
 			</div>
 		</form>
 	</div>
 </div>
 
+<script src="/resources/js/essential.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
 	<script>

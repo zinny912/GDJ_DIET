@@ -17,7 +17,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-<div class="container-fluid">
+<div class="container-fluid essbox">
 	<div class="row justify-content-center">
 		<h1 class="col-md-7 text-center my-5">Q&amp;A 상품문의</h1>
 	</div>	
@@ -55,6 +55,7 @@
 	</div>
 </div>
 
+<script src="/resources/js/essential.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
 	
