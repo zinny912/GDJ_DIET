@@ -25,13 +25,14 @@ function getStock(){
                 optId4:optId4
         },
         success(response){
-            console.log(response.trim());
+            
             result= response.trim()*1;
             buttonON(result);
         }
     })
     return result;
 }
+
 function buttonON(stock){//다음 옵션이 없을때
     $("#cartAdd").removeClass("btn-outline-primary")
     $("#cartAdd").addClass("btn-primary")
@@ -91,12 +92,12 @@ $("#optionSelect").on("click", ".op1", function (e) {
             if (response.trim().length > 20) {
                 $("#opt2").append(select);
                 $("#optSelect2").append(response.trim())
-                getStock();
+                buttonOFF();
                 
             }
             else{
+                getStock();
                 
-                buttonON(getStock());
                 // $("#cartAdd").removeClass("btn-outline-primary")
                 // $("#cartAdd").addClass("btn-primary")
                 // $("#cartAdd").attr("disabled",false)
@@ -137,12 +138,14 @@ $("#optionSelect").on("click", ".op2", function (e) {
             optId4=null;
             if (response.trim().length > 20) {
                 $("#opt" + idx).append(select);
-                $("#optSelect3").append(response.trim())
+                $("#optSelect3").append(response.trim());
+                buttonOFF();
             }
             else{
-                $("#cartAdd").removeClass("btn-outline-primary")
-                $("#cartAdd").addClass("btn-primary")
-                $("#cartAdd").attr("disabled",false)
+                getStock();
+                // $("#cartAdd").removeClass("btn-outline-primary")
+                // $("#cartAdd").addClass("btn-primary")
+                // $("#cartAdd").attr("disabled",false)
             //     if($("#btn").find('#optionDelete').length<=0)
             //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
             }
@@ -176,11 +179,13 @@ $("#optionSelect").on("click", ".op3", function (e) {
             if (response.trim().length > 20) {
                 $("#opt" + idx).append(select);
                 $("#optSelect4").append(response.trim())
+                buttonOFF();
             }
             else{
-                $("#cartAdd").removeClass("btn-outline-primary")
-                $("#cartAdd").addClass("btn-primary")
-                $("#cartAdd").attr("disabled",false)
+                getStock();
+                // $("#cartAdd").removeClass("btn-outline-primary")
+                // $("#cartAdd").addClass("btn-primary")
+                // $("#cartAdd").attr("disabled",false)
             //     if($("#btn").find('#optionDelete').length<=0)
             //     $("#btn").prepend('<button id="optionDelete" type="button" class="btn btn-border">해당옵션삭제</button>')
             }   
@@ -193,7 +198,7 @@ $("#optionSelect").on("click", ".op3", function (e) {
 })
 $("#optionSelect").on("click", ".op4", function (e) {
     optId4 = $(this).attr("data-id");
-    
+    getStock();
         
     $("#opt" + 5).children().remove()
     $("#cartAdd").removeClass("btn-outline-primary")
