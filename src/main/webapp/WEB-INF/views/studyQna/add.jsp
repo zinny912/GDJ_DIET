@@ -55,6 +55,7 @@
 	</div>
 </div>
 
+<script src="/resources/js/essential.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 <c:import url="../template/footer.jsp"></c:import>
 	

@@ -3,7 +3,7 @@
 //  1. 필수input(text,file)태그엔 모두 class="essential" 있어야 작동합니다.
 //   하나라도 있어야하는 checkbox, radio 에는 class="check1"(2개면 첫번째 check무리들은 check1 그다음 무리들은 check2 등등| check3까지가능) 를 넣습니다.
 
-//  2. 전송버튼(add, update)는 모두 id="submitbtn"이 있어야합니다.
+//  2. 전송버튼(add, update)는 모두 id="submitbtn"이 있어야합니다. 버튼타입 무조건 button으로
 
 //  3. 전송할 데이터들이 모여있는 <form>태그엔 모두 id="frm" 이 있어야합니다.
 
