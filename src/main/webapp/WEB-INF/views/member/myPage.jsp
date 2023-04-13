@@ -57,11 +57,15 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 
 
 
-<script src="/resources/js/studyBoard.js"></script>
+
 <c:import url="../template/footer.jsp"></c:import>
 <c:import url="../template/common_js.jsp"></c:import>
 
 <script type="text/javascript">
+console.log($('#studyQnaList').attr('data-study-studyNum'))
+if($('#studyQnaList').attr('data-study-studyNum')==""||$('#studyQnaList').attr('data-study-studyNum')==null){
+	$('#studyListResult').html("사세요...");
+}else{
 	//상품창에서 말고 여기서 myPage보낼께..
 	fetch("/studyQna/list?myPage=y&studyNum="+studyQnaList.getAttribute('data-study-studyNum'),{
 	    method:'GET'
@@ -82,8 +86,14 @@ study/studyDetail?studyNum=${sessionMember.studyNum}
 // 					$('#studyListResult').html(res.trim());
 // 					}
 // 		})		
-// 	})
+// 	})	
+	
+}
+
 </script>
+<c:if test="${sessionMember.studyNum ne null}">
+<script src="/resources/js/studyBoard.js"></script>
+</c:if>
 
 </body>
 </html>
