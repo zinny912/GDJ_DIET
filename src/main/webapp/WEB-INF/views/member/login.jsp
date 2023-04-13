@@ -16,12 +16,35 @@
 			color: blue;
 		}
 		.btnKakao{display:inline-block!important;margin-top:25px;padding-left:20px;width:100%;height:45px;line-height:45px;background-color:#fee500;background-image:url('/resources/images/kakao_btn.svg');background-repeat:no-repeat;background-size:15px;background-position:15px;border-radius:6px;font-size:15px;color:#111;box-sizing:border-box}
+		
+		
+	a {	
+	color: #2c396b;
+  	text-decoration: none;
+  	background-color: transparent; }
+		
+		a:hover{
+		color:#6c757d;
+		text-decoration: none;
+		cursor:pointer;
+		}
+		
+		a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none; }
+  a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
+    color: inherit;
+    text-decoration: none; }
+  a:not([href]):not([tabindex]):focus {
+    outline: 0; }
 
+ a .footer-text{
+  font-family: "Gowun Dodum",  sans-serif;
+  font-weight: 100;
+  font-size: 5px;
+}  
 
-
-
-
-	</style>
+</style>
 
 </head>
 <body>
@@ -43,11 +66,12 @@
 <div class="container-fluid">
 <div class="row d-flex justify-content-center">
 <div class="col-6" style="
-	margin-top: 20%;
+	margin-top: 5%;
 ">
 
-<form class="mx-1 mx-md-4" id="loginForm" action="./login" method="post">
-
+<form class="col-6 mx-auto my-5 justify-content-center" id="loginForm" action="./login" method="post">
+<a href="/"><h4>GOODEE DIET</h4></a>
+<br><h3 class="col-6 text-center mx-auto" style="padding-bottom:10%;">로그인</h3>
   <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
       <input type="text" id="id" name="id" class="form-control" placeholder="아이디"/>
@@ -62,12 +86,12 @@
   </div>
 
   <div class="d-flex flex-row align-items-center mb-4">
-    <button type="button" id="submitBtnJoin" class="btn btn-secondary col-12">가입</button>
+    <button type="button" id="submitBtnJoin" class="btn btn-secondary col-12">일반가입</button>
   </div>                 
 
  
   <div class="d-flex flex-row align-items-center mb-4">
-  <a class="btn btnKakao px-2 pb-5" href="javascript:loginWithKakao()">카카오 로그인/회원가입</a></div>
+  <a class="btn btnKakao px-2 pb-5" href="javascript:loginWithKakao()">카카오 로그인 / 회원가입</a></div>
   
 </form>
 
@@ -131,7 +155,7 @@
 <!--     </div> -->
 <!--   </div>	 -->
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

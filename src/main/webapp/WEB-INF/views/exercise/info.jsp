@@ -101,7 +101,7 @@
 
                     </div>
                    
-                    <a class="golink" href="./video?num=${dto.num}">루틴 보러가기</a> 
+                    <a class="golink text-center" href="./video?num=${dto.num}">루틴 보러가기</a> 
                    
                    <form id="frm">
                     <c:if test="${sessionMember.roleDTO.roleName eq 'ADMIN'}"> 
@@ -114,9 +114,7 @@
                     <input type="hidden" value="${dto.num}" name="num">
                 
                     <input type="hidden" value="${dto.boardFileDTOs[0].fileNum}" name="fileNum">
-                 
-           
-                   
+          
 				</form>
 				</div>
 				</div>
