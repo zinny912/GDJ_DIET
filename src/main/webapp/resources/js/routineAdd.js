@@ -2,14 +2,6 @@
 //routineAdd 
 $('#modalButtons').ready(function() {
   $('#routineConfirm').click(function() {
-    //  const startDate = new Date(studyStartPeriod.value);
-    //         const endDate = new Date(studyEndPeriod.value);
-    
-    //         if (startDate > endDate) {
-    //             swal('날짜선택 오류', '올바른 날짜를 선택해주세요.', 'error');
-    //             nullCheck = true;
-    //             return false;
-    //         }
     // 입력된 데이터 가져오기
     const title = $('#title').val();
     const startDay = new Date($('#startDay').val()); // Date 객체로 변환
@@ -37,7 +29,7 @@ $('#modalButtons').ready(function() {
       error: function() {
         console.log('실패');
         // 등록이 실패하면 에러 메시지 출력
-        swal('등록에 실패했습니다.',' ','error');
+        alert('등록에 실패했습니다.');
       }
     });
   });
@@ -76,8 +68,14 @@ $("#contentsConfirm").click(function(){
   const videoId = $('#routinevideoId').val();
   var machineName = $('#machineSelected').val();
   const num=$('#routinenum').val();
+  console.log(startDay);
+
+  console.log(endDay);
+  console.log(title);
+  console.log(videoId);
+  console.log(num);
+
   
- 
   $.ajax({
     url: '/routine/update',
     type: 'POST',
@@ -90,15 +88,15 @@ $("#contentsConfirm").click(function(){
       machineName: machineName
     },
     success: function(data) {
-      swal('수정 성공', ' ','success');
+      alert('수정 성공');
       // 등록이 성공하면 모달을 닫고 화면을 리다이렉트
       $("#closeModal").click();
        location.href = './calendar';
     },
     error: function() {
-      swal('수정 실패',' ','warning');
+      alert('수정 실패');
       // 등록이 실패하면 에러 메시지 출력
-      swal('등록에 실패했습니다.',' ','error');
+      alert('등록에 실패했습니다.');
     }
   });
 })
@@ -314,6 +312,5 @@ $("#contentsConfirm").click(function(){
 // $('#routineBtn').click(function(){
 //     location.href="./add";
 // });
-
 
 
