@@ -77,7 +77,6 @@ $("#contentsConfirm").click(function(){
   var machineName = $('#machineSelected').val();
   const num=$('#routinenum').val();
   
-if(nullCheck==false){
  
   $.ajax({
     url: '/routine/update',
@@ -102,7 +101,6 @@ if(nullCheck==false){
       swal('등록에 실패했습니다.',' ','error');
     }
   });
-}
 })
 
 
@@ -316,7 +314,6 @@ if(nullCheck==false){
 // $('#routineBtn').click(function(){
 //     location.href="./add";
 // });
-
 
 
 
