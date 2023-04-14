@@ -29,6 +29,7 @@ public class OrderService {
 	public DeliveryDTO getPrimeDelivery (MemberDTO memberDTO) throws Exception {
 		return orderDAO.getPrimeDelivery(memberDTO);
 	}
+	
 	public int getOrderVerification(String result, HttpSession session, OrderDTO orderDTO)throws Exception{
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObject = (JSONObject)jsonParser.parse(result);

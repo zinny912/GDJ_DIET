@@ -174,7 +174,7 @@ public class HealthMachineService {
 			}
 		}
 
-		return result;
+		return 1;
 	}
 
 	//옵션 1개만 삭제
@@ -248,7 +248,7 @@ public class HealthMachineService {
 				result = healthMachineDAO.setMachineImg(healthMachineImgDTO);
 			}
 		}
-		return result;
+		return 1;
 	}
 
 	public String setBoardFileAdd(MultipartFile files,HttpSession session) throws Exception {
