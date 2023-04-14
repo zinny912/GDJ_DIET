@@ -39,7 +39,7 @@
 				
 
 				<c:forEach items="${list}" var="dto">
-					<c:if test="${not empty dto.studyNum }">
+					<%-- <c:if test="${not empty dto.studyNum }"> --%>
 						<c:forEach items="${dto.studyDTOs}" var="studyDTO">
 							<c:forEach items="${studyDTO.studyBoardFileDTOs}"
 								var="studyFileDTO">
@@ -61,8 +61,21 @@
 								<%-- <c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" /> --%>
 							</c:forEach>
 						</c:forEach>
-					</c:if>
+					<%-- </c:if> --%>
 				</c:forEach>
+					<c:if test="${empty list}">
+					<tr>
+					<td colspan="2"></td>
+					<td colspan="2">
+						<div style="text-align: center; margin-top: 20px;">
+							<img src="/resources/images/cartList.png"
+								style="width: 32px; height: 32px;">
+							<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
+								비어있습니다.</div>
+						</div></td>
+						<td colspan="2"></td>
+					</tr>
+					</c:if> 
 				</tbody>
 				<tfoot>
 				   <tr>
@@ -94,63 +107,68 @@
 			</thead>
 			<tbody>
 
-				 
-				<c:forEach items="${list}" var="dto">
-					<c:if test="${not empty dto.realMachineNum }">
-						<%-- <c:forEach items="${dto.studyDTOs}" var="studyDTO"> --%>
+
+					<c:forEach items="${list}" var="dto">
+						<c:if test="${not empty dto.realMachineNum }">
+							<%-- <c:forEach items="${dto.studyDTOs}" var="studyDTO"> --%>
 							<c:forEach items="${dto.healthMachineDTO.healthMachineImgDTOs}"
 								var="machineFileDTO">
-								<tr class="cart__list__machine__detail" >
-									<td style="width: 2%;">
-									<input type="checkbox"
-										value="${dto.num}" class="checks" name="checkedItems" 
-										id="checkboxs">
-										<input type="hidden" value="${dto.num }" name="cartNum">
-									
-										
-										</td>
+								<tr class="cart__list__machine__detail">
+									<td style="width: 2%;"><input type="checkbox"
+										value="${dto.num}" class="checks" name="checkedItems"
+										id="checkboxs"> <input type="hidden"
+										value="${dto.num }" name="cartNum"></td>
 									<td style="width: 13%;"><img
 										src="/resources/images/${dto.healthMachineDTO.healthMachineImgDTOs[0].fileName}"
 										alt="magic mouse"></td>
 									<td style="width: 59%;" colspan="2"><span
 										class="cart__list__studyname">${dto.healthMachineDTO.machineName}</span>
-										
-										<div class="price">옵션 정보</div>
-										<c:if test="${not empty dto.healthMachineDTO.option1 }">
-										<div>${dto.healthMachineDTO.option1 } : ${dto.realHealthMachineDTO.optName1}</div>
-										</c:if>
-										<c:if test="${not empty dto.healthMachineDTO.option2 }">
-										<div>${dto.healthMachineDTO.option2 } : ${dto.realHealthMachineDTO.optName2}</div>
-										</c:if>
-										<c:if test="${not empty dto.healthMachineDTO.option3 }">
-										<div>${dto.healthMachineDTO.option3 } : ${dto.realHealthMachineDTO.optName3}</div>
-										</c:if>
-										<c:if test="${not empty dto.healthMachineDTO.option4 }">
-										<div>${dto.healthMachineDTO.option4 } : ${dto.realHealthMachineDTO.optName4}</div>
-										</c:if>
-										
-									</td>
+
+										<div class="price">옵션 정보</div> <c:if
+											test="${not empty dto.healthMachineDTO.option1 }">
+											<div>${dto.healthMachineDTO.option1 }:
+												${dto.realHealthMachineDTO.optName1}</div>
+										</c:if> <c:if test="${not empty dto.healthMachineDTO.option2 }">
+											<div>${dto.healthMachineDTO.option2 }:
+												${dto.realHealthMachineDTO.optName2}</div>
+										</c:if> <c:if test="${not empty dto.healthMachineDTO.option3 }">
+											<div>${dto.healthMachineDTO.option3 }:
+												${dto.realHealthMachineDTO.optName3}</div>
+										</c:if> <c:if test="${not empty dto.healthMachineDTO.option4 }">
+											<div>${dto.healthMachineDTO.option4 }:
+												${dto.realHealthMachineDTO.optName4}</div>
+										</c:if></td>
 									<!-- <td></td> -->
 									<td style="width: 13%;">
-									<%-- <span class="price" style="text-decoration: line-through;">${dto.healthMachineDTO.price}원</span> --%>
-									<span class="price cartPrice" style="font-size: 15px" id="cartPrice" >${dto.cartPrice*dto.count}</span>원
-									
+										<%-- <span class="price" style="text-decoration: line-through;">${dto.healthMachineDTO.price}원</span> --%>
+										<span class="price cartPrice" style="font-size: 15px"
+										id="cartPrice">${dto.cartPrice*dto.count}</span>원
+
 									</td>
-									<td style="width: 13%;">
-									<span class="price machineval" style="font-size: 15px;" id="count">${dto.count}</span>
-									<input class="machineCount" type="hidden" value="" name="count">
-									<div class="countBtn">
-										<button type="button" class="btn btn-primary plusbtn" style="border:none">+</button>
-										<button type="button" class="btn btn-primary minusbtn" style="border:none">-</button>
-									</div>
-									</td>
+									<td style="width: 13%;"><span class="price machineval"
+										style="font-size: 15px;" id="count">${dto.count}</span> <input
+										class="machineCount" type="hidden" value="" name="count">
+										<div class="countBtn">
+											<button type="button" class="btn btn-primary plusbtn"
+												style="border: none">+</button>
+											<button type="button" class="btn btn-primary minusbtn"
+												style="border: none">-</button>
+										</div></td>
 								</tr>
 								<c:set var="totalCost" value="${totalCost + studyDTO.studyCost}" />
 							</c:forEach>
-						<%-- </c:forEach> --%>
+							<%-- </c:forEach> --%>
+						</c:if>
+					</c:forEach>
+					<c:if test="${empty list}">
+						<tr style="text-align: center;">
+							<td colspan="6"><img src="/resources/images/cartList.png"
+								style="width: 32px; height: 32px;">
+								<div style="font-size: 1.5em; margin-top: 20px;">장바구니가
+									비어있습니다.</div></td>
+						</tr>
 					</c:if>
-				</c:forEach>
-			</tbody>
+				</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="3">
