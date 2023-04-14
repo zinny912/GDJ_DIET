@@ -34,11 +34,11 @@
                 </div>
                 <div class="underline"></div>
                 <div class="row col-4 my-2">
-				    <a href="#" onclick="goBack()">돌아가기</a>
+				    <a href="/" onclick="goBack()">돌아가기</a>
 				</div>
 
 				</div>
-		<!-- </form> -->
+		<!--  </form> -->
 		</div>
 	</div>
 	

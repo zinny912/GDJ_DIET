@@ -60,7 +60,6 @@ font-family: "IBM Plex Sans KR";}
 				<div id="fileList">
 					<div class="input-group mb-3" id="f1">
 						<input type="file" class="form-control essential" name="addFiles">
-						<button type="button" class="btn btn-outline-danger dels">X</button>
 					</div>
 				</div>
 				<div class="mb-3 my-5">
